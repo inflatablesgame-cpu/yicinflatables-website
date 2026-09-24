@@ -224,10 +224,10 @@ const organizationSchema = {
         const href = link.getAttribute('href');
         if (!href || link.hasAttribute('data-preserve-contact-url')) return;
         const quoteUrl = new URL(href, window.location.origin);
-        if (!quoteUrl.searchParams.has('source')) quoteUrl.searchParams.set('source', sourcePageUrl);
         // Keep the main navigation Contact link as a page entry point, but
         // take every quote/request CTA directly to the quotation form.
         const isMainContactLink = link.closest('#main-nav') && !link.classList.contains('nav-cta');
+        if (!isMainContactLink && !quoteUrl.searchParams.has('source')) quoteUrl.searchParams.set('source', sourcePageUrl);
         if (!isMainContactLink && !quoteUrl.hash) quoteUrl.hash = 'quote-form';
         link.setAttribute('href', `${quoteUrl.pathname}${quoteUrl.search}${quoteUrl.hash}`);
       });
