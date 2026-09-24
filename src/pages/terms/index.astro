@@ -1,0 +1,14 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { company } from '../../data/site';
+---
+
+<SiteLayout title="Website Terms | YIC Inflatable Sports" description="Website and quotation terms for commercial inflatable products, custom OEM projects, and factory enquiries with YIC Inflatable Sports.">
+  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / Terms</div><p class="eyebrow">Working with the factory</p><h1>Website Terms</h1><p>Important conditions for using the YIC catalog, requesting quotations, and discussing custom commercial inflatable projects.</p></div></section>
+  <section class="section legal-page"><div class="container legal-content">
+    <h2>Catalog information</h2><p>Product photos, reference dimensions, materials, accessories, and applications are provided to help buyers shortlist a model. The final specification is the approved quotation and production document for the requested product and destination market.</p>
+    <h2>Custom projects and quotations</h2><p>Custom color, artwork, dimensions, layouts, accessories, lead time, packing, shipping terms, payment terms, and applicable documents must be confirmed in writing before production. A website enquiry is a request for discussion, not an accepted purchase order.</p>
+    <h2>Compliance and operation</h2><p>Certificates and test reports are product-, component-, and market-specific. Buyers are responsible for confirming local installation, supervision, anchoring, electrical, insurance, and operating requirements before using an attraction.</p>
+    <h2>Questions</h2><p>For clarification about a quotation or product specification, contact <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+  </div></section>
+</SiteLayout>

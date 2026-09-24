@@ -1,0 +1,15 @@
+{
+  "name": "b2b-astro-site",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "sync:assets": "node scripts/sync-assets.mjs",
+    "build:site": "npm run sync:assets && astro build"
+  },
+  "dependencies": {
+    "astro": "latest"
+  }
+}

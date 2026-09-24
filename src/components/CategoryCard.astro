@@ -1,0 +1,15 @@
+---
+import type { Category } from '../data/site';
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+---
+
+<a class="category-card" href={`/products/${category.slug}/`} aria-label={`Browse ${category.name}, ${category.count} products`}>
+  <img src={category.heroImage} alt={category.name} loading="lazy" decoding="async" width="900" height="675" />
+  <span class="category-card-overlay"></span>
+  <span class="category-card-content"><strong>{category.name}</strong><small>Commercial · OEM/ODM · View category →</small></span>
+</a>

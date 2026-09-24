@@ -1,0 +1,43 @@
+---
+import { company, productCardDescription, productCardLabel, productDetailContent, productDisplayTitle, productPath } from '../data/site';
+import type { Product } from '../data/site';
+
+interface Props {
+  product: Product;
+  variant?: 'default' | 'selector';
+}
+
+const { product, variant = 'default' } = Astro.props;
+const displayTitle = productDisplayTitle(product);
+const url = productPath(product);
+const detail = productDetailContent(product);
+const applications = detail.applications.slice(0, 2).map((application) => application.title).join(' · ') || detail.primaryBuyer;
+// The quote should identify the page where the buyer clicked the card
+// (home, product hub, category, or related-products section), not silently
+// replace it with the destination product URL.
+const sourcePageUrl = new URL(Astro.url.pathname, `https://${company.domain}`).href;
+---
+
+<article class="product-card" data-product-card data-product-url={url}>
+  <a class="product-card-image" href={url}>
+    <img src={product.images[0]} alt={displayTitle} loading="lazy" decoding="async" width="900" height="675" />
+    <span class="image-label">View product</span>
+  </a>
+  <div class="product-card-body">
+    <p class="eyebrow">{product.category}</p>
+    <h3><a href={url}>{displayTitle}</a></h3>
+    {variant === 'selector' ? (
+      <dl class="product-selector-meta">
+        <div><dt>Application</dt><dd>{applications}</dd></div>
+        <div><dt>Reference size</dt><dd>{product.dimensions || 'Custom dimensions'}</dd></div>
+        <div><dt>Customization</dt><dd>Custom artwork &amp; dimensions · OEM/ODM</dd></div>
+      </dl>
+    ) : (
+      <>
+        <p class="product-card-description">{productCardDescription(product)}</p>
+        <small class="product-card-material">{productCardLabel(product)}</small>
+      </>
+    )}
+    <div class="card-actions"><a href={url}>View details</a><a href={`/contact/?product=${encodeURIComponent(displayTitle)}&source=${encodeURIComponent(sourcePageUrl)}`}>Get quote</a></div>
+  </div>
+</article>

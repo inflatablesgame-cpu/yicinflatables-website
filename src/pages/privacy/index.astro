@@ -1,0 +1,14 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { company } from '../../data/site';
+---
+
+<SiteLayout title="Privacy Policy | YIC Inflatable Sports" description="How YIC Inflatable Sports handles contact, quotation, and website enquiry information from global B2B buyers.">
+  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / Privacy</div><p class="eyebrow">Buyer information</p><h1>Privacy Policy</h1><p>Clear information about the details shared with YIC when you request a quotation or contact the factory.</p></div></section>
+  <section class="section legal-page"><div class="container legal-content">
+    <h2>Information you choose to share</h2><p>When you contact YIC, you may provide your name, company, email address, country, product requirements, artwork, destination, and delivery information. We use these details to answer your enquiry, prepare a quotation, discuss production, and coordinate follow-up communication.</p>
+    <h2>How enquiries are handled</h2><p>Enquiries may be sent to YIC by email, WhatsApp, or the configured website form endpoint. We do not sell enquiry information. Information is shared internally only with people who need it to respond, quote, manufacture, or coordinate delivery.</p>
+    <h2>Website analytics and links</h2><p>This static website does not require an account. Links to WhatsApp, Google Maps, social networks, and other third-party services are governed by those services' own policies. Do not send confidential payment details through the website enquiry form.</p>
+    <h2>Contact</h2><p>For a privacy question, contact <a href={`mailto:${company.email}`}>{company.email}</a> and identify the enquiry or information you are asking about.</p>
+  </div></section>
+</SiteLayout>

@@ -1,0 +1,101 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { company } from '../../data/site';
+
+const product = Astro.url.searchParams.get('product') ?? '';
+const pageUrl = new URL(Astro.url.pathname, `https://${company.domain}`).href;
+const sourceUrl = Astro.url.searchParams.get('source') || pageUrl;
+const presetMessage = product
+  ? `Hello YIC, I would like a quotation for ${product}.`
+  : 'Hello YIC, I would like a quotation for your commercial inflatable products.';
+const prefillMessage = `${presetMessage}\n\nPage URL: ${sourceUrl}`;
+const quickWhatsAppText = prefillMessage;
+const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || '';
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(company.mapQuery)}`;
+const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.mapQuery)}&output=embed`;
+---
+
+<SiteLayout title="Contact YIC Inflatable Sports | Request a Quote" description="Contact YIC for factory-direct quotes on commercial inflatables, OEM/ODM customization, product specifications, and international shipping.">
+  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / Contact</div><p class="eyebrow">Talk to the factory</p><h1>Tell us what you want to build</h1><p>Send a model, quantity, destination, and any artwork or dimensions. We will reply with the next practical step.</p></div></section>
+  <section class="section"><div class="container contact-grid">
+    <div class="contact-copy"><p class="eyebrow">Direct contact</p><h2>Clear answers, from the people coordinating your order</h2><p>For the fastest response, include the product category, target quantity, country, preferred size, branding requirements, and expected delivery date.</p><div class="contact-list"><div class="contact-list-group"><span>Email</span><span>{company.teamEmails.map((email) => <a href={`mailto:${email}`}>{email}</a>)}</span></div><div class="contact-list-group"><span>WhatsApp</span><span>{company.teamWhatsApp.map((number, index) => <a href={`https://wa.me/${number}`} target="_blank" rel="noopener">{company.teamWhatsAppDisplay[index]}</a>)}</span></div><a href={company.facebook} target="_blank" rel="noopener"><span>Facebook</span><span>YIC Inflatable Sports</span></a><a href={company.youtube} target="_blank" rel="noopener"><span>YouTube</span><span>@YICInflatables</span></a><div><span>Website</span><span>{company.domain}</span></div></div></div>
+    <form id="quote-form" class="quote-form" data-quote-form action={formEndpoint || `mailto:${company.email}`} method="post" enctype={formEndpoint ? undefined : 'text/plain'}>
+      <h2>Request a quotation</h2><p>Only your name and email are required. The other details are optional and help us quote accurately.</p>
+      <div class="form-grid">
+        <div class="form-field"><label for="name">Name</label><input id="name" name="Name" autocomplete="name" required /></div>
+        <div class="form-field"><label for="company">Company <span>(optional)</span></label><input id="company" name="Company" autocomplete="organization" /></div>
+        <div class="form-field"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required /></div>
+        <div class="form-field"><label for="country">Country <span>(optional)</span></label><input id="country" name="Country" autocomplete="country-name" /></div>
+        <div class="form-field full"><label for="product">Product or category <span>(optional)</span></label><input id="product" name="Product" value={product} placeholder="For example: commercial bounce house" /></div>
+        <input type="hidden" name="Source page URL" value={sourceUrl} />
+        <div class="form-field full"><label for="message">Requirements <span>(optional)</span></label><textarea id="message" name="Requirements" placeholder="Quantity, size, logo, colors, delivery date, and any other details">{prefillMessage}</textarea></div>
+        <div class="form-field full"><div class="quote-actions"><button class="button" type="submit">Send by email <span aria-hidden="true">→</span></button><a class="button button-whatsapp" data-whatsapp-button href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(quickWhatsAppText)}`} target="_blank" rel="noopener">Quick WhatsApp <span aria-hidden="true">→</span></a></div></div>
+      </div>
+    </form>
+  </div></section>
+  <section class="section contact-location-section"><div class="container contact-location-grid"><div class="contact-location-copy"><p class="eyebrow">Our location</p><h2>Visit the YIC team in Guangzhou</h2><p>{company.address}</p><a class="text-link" href={mapUrl} target="_blank" rel="noopener">Open in Google Maps ↗</a></div><div class="contact-map"><iframe title="YIC Inflatable Sports company location in Guangzhou" src={mapEmbedUrl} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><a class="map-overlay-link" href={mapUrl} target="_blank" rel="noopener">Open in Maps ↗</a></div></div></section>
+  <div class="success-toast" data-success-toast role="status" aria-live="polite">Your request is ready to send.</div>
+  <script define:vars={{ email: company.email, defaultProduct: product, defaultSourceUrl: pageUrl, defaultMessage: prefillMessage, whatsapp: company.whatsapp, formEndpoint }}>
+    const form = document.querySelector('[data-quote-form]');
+    const toast = document.querySelector('[data-success-toast]');
+    const whatsappButton = document.querySelector('[data-whatsapp-button]');
+    const productInput = document.querySelector('#product');
+    const messageInput = document.querySelector('#message');
+    const sourceInput = document.querySelector('input[name="Source page URL"]');
+    const query = new URLSearchParams(window.location.search);
+    const queryProduct = query.get('product') || defaultProduct || '';
+    const querySource = query.get('source') || '';
+    const referrer = document.referrer;
+    let activeSourceUrl = querySource || (referrer && new URL(referrer).origin === window.location.origin ? referrer : defaultSourceUrl);
+    const defaultRequest = queryProduct
+      ? `Hello YIC, I would like a quotation for ${queryProduct}.`
+      : 'Hello YIC, I would like a quotation for your commercial inflatable products.';
+    const initialMessage = `${defaultRequest}\n\nPage URL: ${activeSourceUrl}`;
+    if (productInput && !productInput.value) productInput.value = queryProduct;
+    if (messageInput) messageInput.value = initialMessage;
+    if (sourceInput) sourceInput.value = activeSourceUrl;
+    const buildMessage = () => {
+      const data = new FormData(form);
+      const productName = String(data.get('Product') || queryProduct || 'Commercial inflatable products');
+      const requirements = String(data.get('Requirements') || initialMessage);
+      const pageUrlLine = /Page URL:/i.test(requirements) ? '' : `\n\nPage URL: ${activeSourceUrl}`;
+      return `${requirements}${pageUrlLine}\n\nProduct: ${productName}\nName: ${String(data.get('Name') || '')}\nEmail: ${String(data.get('Email') || '')}\nCompany: ${String(data.get('Company') || '')}\nCountry: ${String(data.get('Country') || '')}`;
+    };
+    whatsappButton?.addEventListener('click', (event) => {
+      event.preventDefault();
+      const url = `https://wa.me/${whatsapp}?text=${encodeURIComponent(buildMessage())}`;
+      window.open(url, '_blank', 'noopener');
+    });
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const subject = `Quotation request: ${String(data.get('Product') || queryProduct || 'Commercial inflatables')}`;
+      const message = buildMessage();
+      if (formEndpoint) {
+        const payload = new URLSearchParams();
+        for (const [key, value] of data.entries()) payload.set(key, String(value));
+        payload.set('Subject', subject);
+        payload.set('Message', message);
+        fetch(formEndpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: payload })
+          .then((response) => {
+            if (!response.ok) throw new Error('Form submission failed');
+            if (toast) toast.textContent = 'Thanks. Your request has been sent.';
+            toast?.classList.add('is-visible');
+            form.reset();
+            if (sourceInput) sourceInput.value = activeSourceUrl;
+          })
+          .catch(() => {
+            if (toast) toast.textContent = 'The request could not be sent. Please use WhatsApp or email.';
+            toast?.classList.add('is-visible');
+          })
+          .finally(() => window.setTimeout(() => toast?.classList.remove('is-visible'), 3500));
+        return;
+      }
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+      if (toast) toast.textContent = 'Your email draft is ready to send.';
+      toast?.classList.add('is-visible');
+      window.setTimeout(() => toast?.classList.remove('is-visible'), 2500);
+    });
+  </script>
+</SiteLayout>

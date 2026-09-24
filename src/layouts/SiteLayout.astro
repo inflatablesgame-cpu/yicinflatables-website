@@ -1,0 +1,236 @@
+---
+import '../styles/global.css';
+import { categories, company, policyLinks } from '../data/site';
+import { blogArticles } from '../data/blog';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  keywords?: string;
+  robots?: string;
+}
+
+const logo = '/assets/%E6%96%B0LOGO.webp';
+const {
+  title = 'Commercial Inflatable Manufacturer | YIC Inflatable Sports',
+  description = 'Commercial inflatable products manufactured for party rental companies, event venues, and family entertainment businesses worldwide.',
+  image = logo,
+  imageAlt = 'YIC Inflatable Sports commercial inflatable manufacturer',
+  keywords = 'commercial inflatable manufacturer, inflatable products, OEM inflatable, YIC Inflatable Sports',
+  robots = 'index, follow, max-image-preview:large',
+} = Astro.props;
+const currentPath = Astro.url.pathname;
+const canonicalUrl = new URL(currentPath, `https://${company.domain}`).href;
+const socialImage = new URL(image, `https://${company.domain}`).href;
+const quickWhatsAppMessage = `Hello YIC, I would like to discuss a commercial inflatable. Page URL: ${canonicalUrl}`;
+const compactTitle = title.length > 62 ? `${title.slice(0, 61).replace(/\s+\S*$/, '').trim()}` : title;
+const compactDescription = description.length > 158 ? `${description.slice(0, 157).replace(/\s+\S*$/, '').trim()}.` : description;
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `https://${company.domain}/#organization`,
+  name: company.name,
+  url: `https://${company.domain}`,
+  logo: `https://${company.domain}${logo}`,
+  email: company.email,
+  telephone: company.whatsappDisplay,
+  description: 'Commercial inflatable manufacturer serving party rental companies, event businesses, and family entertainment operators worldwide.',
+  sameAs: [company.facebook, company.youtube, company.instagram, company.linkedin],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: company.address,
+    addressLocality: 'Guangzhou',
+    addressRegion: 'Guangdong',
+    addressCountry: 'CN',
+  },
+  contactPoint: [{
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: company.email,
+    telephone: company.whatsappDisplay,
+    availableLanguage: ['English', 'Chinese'],
+  }],
+  knowsAbout: ['Commercial inflatables', 'Bounce houses', 'Inflatable slides', 'Inflatable obstacle courses', 'OEM inflatable manufacturing'],
+  areaServed: ['United States', 'United Kingdom', 'Europe', 'Worldwide'],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={compactDescription} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="preload" as="image" href={socialImage} fetchpriority="high" />
+    <meta property="og:site_name" content="YIC Inflatable Sports" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={compactTitle} />
+    <meta property="og:description" content={compactDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={compactTitle} />
+    <meta name="twitter:description" content={compactDescription} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <link rel="icon" type="image/webp" href={logo} />
+    <title>{compactTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+  </head>
+  <body data-page-url={canonicalUrl}>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="YIC Inflatable Sports home">
+          <img src={logo} alt="YIC Inflatable Sports" width="52" height="52" decoding="async" />
+          <span>
+            <strong>YIC</strong>
+            <small>INFLATABLE SPORTS</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">Menu</button>
+        <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+          <a class:list:active={currentPath === '/'} aria-current={currentPath === '/' ? 'page' : undefined} href="/">Home</a>
+          <div class="nav-dropdown">
+            <a class:list:active={currentPath.startsWith('/products')} class="nav-products-toggle" href="/products/" aria-current={currentPath.startsWith('/products') ? 'page' : undefined} aria-haspopup="true" aria-expanded="false">Products <span class="nav-chevron" aria-hidden="true">⌄</span></a>
+            <div class="nav-dropdown-menu" aria-label="Product categories">
+              <a class="nav-all-products" href="/products/">All products</a>
+              {categories.map((category) => <a href={`/products/${category.slug}/`}>{category.name}</a>)}
+            </div>
+          </div>
+          <a class:list:active={currentPath.startsWith('/about')} aria-current={currentPath.startsWith('/about') ? 'page' : undefined} href="/about/">About</a>
+          <a class:list:active={currentPath.startsWith('/blog')} aria-current={currentPath.startsWith('/blog') ? 'page' : undefined} href="/blog/">Blog</a>
+          <a class:list:active={currentPath.startsWith('/faq')} aria-current={currentPath.startsWith('/faq') ? 'page' : undefined} href="/faq/">FAQ</a>
+          <a class:list:active={currentPath === '/contact/'} aria-current={currentPath === '/contact/' ? 'page' : undefined} href="/contact/">Contact</a>
+          <div class="nav-search-wrap">
+            <button class="nav-search" type="button" aria-expanded="false" aria-controls="nav-search-form" aria-label="Open site search" title="Search products and blog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"></circle><path d="m16 16 5 5"></path></svg></button>
+            <form class="nav-search-form" id="nav-search-form" action="/search/" method="get" role="search">
+              <label class="sr-only" for="nav-search-input">Search products or blog</label>
+              <input id="nav-search-input" name="q" type="search" placeholder="Search..." autocomplete="off" />
+              <button type="submit" aria-label="Submit search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"></circle><path d="m16 16 5 5"></path></svg></button>
+            </form>
+          </div>
+          <a class="button button-small nav-cta" href="/contact/">Get a Quote</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand brand-footer" href="/">
+            <img src={logo} alt="YIC Inflatable Sports" width="46" height="46" loading="lazy" decoding="async" />
+            <span><strong>YIC</strong><small>INFLATABLE SPORTS</small></span>
+          </a>
+          <p class="footer-copy">Commercial inflatable products for party rental operators and event businesses worldwide.</p>
+        </div>
+        <div>
+          <h2>Explore</h2>
+          <a href="/products/">Product categories</a>
+          <a href="/about/">Factory and quality</a>
+          <a href="/blog/">Buyer resources</a>
+          <a href="/faq/">Frequently asked questions</a>
+          <a href="/contact/">OEM and ODM service</a>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <a href={`mailto:${company.email}`}>{company.email}</a>
+          <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noopener">WhatsApp: {company.whatsappDisplay}</a>
+          <span>{company.domain}</span>
+        </div>
+        <div>
+          <h2>Social</h2>
+          <a href={company.facebook} target="_blank" rel="noopener">Facebook</a>
+          <a href={company.youtube} target="_blank" rel="noopener">YouTube</a>
+          <a href={company.instagram} target="_blank" rel="noopener">Instagram</a>
+          <a href={company.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} YIC Inflatable Sports Co., Ltd.</span><span class="footer-policy-links">{policyLinks.map((link) => <a href={link.href}>{link.label}</a>)}</span></div>
+    </footer>
+    <div class="conversion-rail" aria-label="Quick contact options">
+      <a class="rail-quote" href="/contact/" aria-label="Request a quotation"><span>Get a quote</span><strong>RFQ</strong></a>
+      <a class="rail-whatsapp" href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(quickWhatsAppMessage)}`} target="_blank" rel="noopener" aria-label="Chat with YIC on WhatsApp"><span>WhatsApp</span><strong>WA</strong></a>
+    </div>
+    <a class="mobile-whatsapp" href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(quickWhatsAppMessage)}`} target="_blank" rel="noopener" aria-label="Chat with YIC on WhatsApp">WhatsApp</a>
+    <script>
+      const menuButton = document.querySelector('.menu-toggle');
+      const navigation = document.querySelector('#main-nav');
+      const productsToggle = document.querySelector('.nav-products-toggle');
+      const productsDropdown = productsToggle?.closest('.nav-dropdown');
+      menuButton?.addEventListener('click', () => {
+        const isOpen = navigation?.classList.toggle('is-open') ?? false;
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      });
+      productsToggle?.addEventListener('click', (event) => {
+        if (window.matchMedia('(max-width: 700px)').matches) {
+          event.preventDefault();
+          const isOpen = productsDropdown?.classList.toggle('is-open') ?? false;
+          productsToggle.setAttribute('aria-expanded', String(isOpen));
+        }
+      });
+      const searchToggle = document.querySelector('.nav-search');
+      const searchForm = document.querySelector('#nav-search-form');
+      const searchInput = document.querySelector('#nav-search-input');
+      searchToggle?.addEventListener('click', () => {
+        const isOpen = searchForm?.classList.toggle('is-open') ?? false;
+        searchToggle.setAttribute('aria-expanded', String(isOpen));
+        if (isOpen) searchInput?.focus();
+      });
+      document.addEventListener('click', (event) => {
+        if (!searchForm?.contains(event.target) && !searchToggle?.contains(event.target)) {
+          searchForm?.classList.remove('is-open');
+          searchToggle?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      searchInput?.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          searchForm?.classList.remove('is-open');
+          searchToggle?.setAttribute('aria-expanded', 'false');
+          searchToggle?.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        navigation?.classList.remove('is-open');
+        menuButton?.setAttribute('aria-expanded', 'false');
+        menuButton?.setAttribute('aria-label', 'Open menu');
+        productsDropdown?.classList.remove('is-open');
+        productsToggle?.setAttribute('aria-expanded', 'false');
+      });
+
+      // Keep the entire product card clickable without injecting one script
+      // per card. Explicit links still win, so View details and Get quote
+      // remain independent destinations.
+      document.addEventListener('click', (event) => {
+        if (!(event.target instanceof Element) || event.target.closest('a, button')) return;
+        const card = event.target.closest('[data-product-card]');
+        const url = card?.getAttribute('data-product-url');
+        if (url) window.location.href = url;
+      });
+
+      // Preserve the page that initiated a quote request, including buttons
+      // rendered by product cards and category templates.
+      const sourcePageUrl = document.body.dataset.pageUrl || window.location.href;
+      document.querySelectorAll('a[href^="/contact/"]').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (!href || link.hasAttribute('data-preserve-contact-url')) return;
+        const quoteUrl = new URL(href, window.location.origin);
+        if (!quoteUrl.searchParams.has('source')) quoteUrl.searchParams.set('source', sourcePageUrl);
+        // Keep the main navigation Contact link as a page entry point, but
+        // take every quote/request CTA directly to the quotation form.
+        const isMainContactLink = link.closest('#main-nav') && !link.classList.contains('nav-cta');
+        if (!isMainContactLink && !quoteUrl.hash) quoteUrl.hash = 'quote-form';
+        link.setAttribute('href', `${quoteUrl.pathname}${quoteUrl.search}${quoteUrl.hash}`);
+      });
+    </script>
+  </body>
+</html>

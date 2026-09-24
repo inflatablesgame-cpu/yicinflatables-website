@@ -1,0 +1,57 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import Pagination from '../../../components/Pagination.astro';
+import { products, productAbsoluteUrl, productDisplayTitle } from '../../../data/site';
+
+const pageSize = 16;
+const totalPages = Math.ceil(products.length / pageSize);
+
+export function getStaticPaths() {
+  const pageCount = Math.ceil(products.length / 16);
+  return Array.from({ length: pageCount - 1 }, (_, index) => {
+    const page = index + 2;
+    return { params: { page: String(page) }, props: { page } };
+  });
+}
+
+const { page } = Astro.props as { page: number };
+const pageProducts = products.slice((page - 1) * pageSize, page * pageSize);
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `Commercial Inflatable Products | Page ${page}`,
+  url: `https://yicinflatables.com/products/page/${page}/`,
+  isPartOf: { '@id': 'https://yicinflatables.com/products/#collection' },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: pageProducts.length,
+    itemListElement: pageProducts.map((product, index) => ({
+      '@type': 'ListItem',
+      position: ((page - 1) * pageSize) + index + 1,
+      url: productAbsoluteUrl(product),
+      name: productDisplayTitle(product),
+    })),
+  },
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://yicinflatables.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://yicinflatables.com/products/' },
+    { '@type': 'ListItem', position: 3, name: `Page ${page}`, item: `https://yicinflatables.com/products/page/${page}/` },
+  ],
+};
+---
+
+<SiteLayout title={`Commercial Inflatable Products | Page ${page} | OEM Factory | YIC`} description={`Browse page ${page} of YIC commercial inflatable products for party rental, event, and family entertainment businesses. OEM and custom production support available.`} keywords="commercial inflatable products, OEM inflatable factory, commercial bounce house supplier, custom inflatables">
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / Page {page}</div><p class="eyebrow">Product catalog · Page {page}</p><h1>Commercial Inflatable Products from an OEM Factory</h1><p>Browse page {page} of the YIC commercial product catalog. Compare models, open full specifications, and send the products you want quoted.</p></div></section>
+  <section class="section catalog-page"><div class="container">
+    <div class="catalog-page-intro"><p class="eyebrow">Commercial product catalog</p><p>YIC supplies commercial inflatables for rental companies, entertainment venues, events, resorts, and distributors. Send us the models, quantity, destination, and customization details you need quoted.</p></div>
+    <div class="section-heading catalog-heading"><div><p class="eyebrow">Factory catalog</p><h2>Products ready for your next quote</h2></div><p>Choose a model to view all photos, specifications, customization options, and buyer FAQs.</p></div>
+    <div class="product-grid">{pageProducts.map((product) => <ProductCard product={product} />)}</div>
+    <Pagination currentPage={page} totalPages={totalPages} basePath="/products/" />
+  </div></section>
+</SiteLayout>

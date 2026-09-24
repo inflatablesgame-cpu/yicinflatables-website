@@ -1,0 +1,32 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  basePath: string;
+  label?: string;
+}
+
+const { currentPage, totalPages, basePath, label = 'Product pages' } = Astro.props;
+const pageUrl = (page: number) => page === 1 ? basePath : `${basePath}page/${page}/`;
+const pageItems: Array<number | 'ellipsis'> = [];
+
+if (totalPages <= 7) {
+  for (let page = 1; page <= totalPages; page += 1) pageItems.push(page);
+} else {
+  pageItems.push(1);
+  const start = Math.max(2, currentPage - 1);
+  const end = Math.min(totalPages - 1, currentPage + 1);
+  if (start > 2) pageItems.push('ellipsis');
+  for (let page = start; page <= end; page += 1) pageItems.push(page);
+  if (end < totalPages - 1) pageItems.push('ellipsis');
+  pageItems.push(totalPages);
+}
+---
+
+{totalPages > 1 && <nav class="pagination" aria-label={label}>
+  {currentPage > 1 ? <a href={pageUrl(currentPage - 1)}>Previous</a> : <span class="pagination-disabled" aria-disabled="true">Previous</span>}
+  {pageItems.map((item) => item === 'ellipsis'
+    ? <span class="pagination-ellipsis" aria-hidden="true">…</span>
+    : <a class:list:active={item === currentPage} href={pageUrl(item)} aria-current={item === currentPage ? 'page' : undefined}>{item}</a>)}
+  {currentPage < totalPages ? <a href={pageUrl(currentPage + 1)}>Next</a> : <span class="pagination-disabled" aria-disabled="true">Next</span>}
+</nav>}

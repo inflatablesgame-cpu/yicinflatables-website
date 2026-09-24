@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { faqItems } from '../../data/faq';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })),
+};
+---
+
+<SiteLayout title="Commercial Inflatable FAQ | YIC Inflatable Sports" description="Answers to common questions about commercial inflatables, OEM/ODM customization, materials, quality, quotes, shipping, and rental operations." image="/assets/commercial-inflatable-manufacturer-workshop-interior.webp" imageAlt="YIC commercial inflatable factory and workshop" keywords="commercial inflatable FAQ, bounce house manufacturer FAQ, inflatable OEM FAQ, inflatable quotation questions">
+  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / FAQ</div><p class="eyebrow">Buyer questions</p><h1>Commercial inflatable questions, answered clearly</h1><p>Find practical answers about products, customization, quality, documents, quotations, shipping, and rental operations.</p></div></section>
+  <section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Frequently asked questions</p><h2>What B2B buyers ask before placing an order</h2></div><p>Every project is different. Use these answers as a starting point, then send your model list and market requirements to the factory for confirmation.</p></div><div class="faq-directory">{faqItems.map((item, index) => <article class="faq-directory-item"><span class="faq-category">{item.category} · {String(index + 1).padStart(2, '0')}</span><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div></section>
+  <section class="cta-band"><div class="container cta-band-inner"><div><p class="eyebrow">Still deciding?</p><h2>Send your requirements to the factory</h2><p>We can confirm the product, customization, documents, packing, and delivery details for your market.</p></div><div class="hero-actions"><a class="button button-secondary" href="/contact/">Ask the factory</a><a class="button button-secondary" href="/products/">Browse products</a></div></div></section>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</SiteLayout>

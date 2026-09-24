@@ -1,0 +1,21 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { blogArticles } from '../../data/blog';
+
+const blogImage = '/assets/commercial-inflatable-manufacturer-workshop-interior.webp';
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'YIC Inflatable Sports Resources',
+  url: 'https://yicinflatables.com/blog/',
+  description: 'Buying, operating, sourcing, and compliance guides for commercial inflatable businesses.',
+  publisher: { '@type': 'Organization', name: 'YIC Inflatable Sports Co., Ltd.', url: 'https://yicinflatables.com/' },
+};
+---
+
+<SiteLayout title="Commercial Inflatable Business Resources | YIC Blog" description="Practical guides for commercial inflatable buyers, party rental operators, event venues, family entertainment centers, and OEM customers." image={blogImage} imageAlt="Commercial inflatable manufacturing and factory resources by YIC" keywords="commercial inflatable blog, bounce house rental business, inflatable buying guide, OEM inflatable manufacturer">
+  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / Blog</div><p class="eyebrow">YIC buyer resources</p><h1>Commercial inflatable guides for smarter B2B decisions</h1><p>Practical articles about buying, operating, customizing, shipping, and maintaining commercial inflatables.</p></div></section>
+  <section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Latest resources</p><h2>Ideas and checklists for your next order</h2></div><p>Use these guides to prepare a better RFQ, compare products, plan your rental fleet, and discuss requirements with a commercial inflatable factory.</p></div><div class="article-grid">{blogArticles.map((article) => <article class="article-card"><div class="article-card-top"><span>{article.category}</span><span>{article.readTime}</span></div><h3><a href={`/blog/${article.slug}/`}>{article.title}</a></h3><p>{article.description}</p><a class="text-link" href={`/blog/${article.slug}/`}>Read the guide →</a></article>)}</div></div></section>
+  <section class="cta-band"><div class="container cta-band-inner"><div><p class="eyebrow">Need a product quote?</p><h2>Turn your product list into a factory conversation</h2><p>Send your models, quantity, destination, artwork, and target date to YIC.</p></div><a class="button button-secondary" href="/contact/">Request a factory quote</a></div></section>
+  <script type="application/ld+json" set:html={JSON.stringify(blogSchema)}></script>
+</SiteLayout>

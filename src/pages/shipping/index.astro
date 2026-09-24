@@ -1,0 +1,14 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { company } from '../../data/site';
+---
+
+<SiteLayout title="Shipping, Warranty & Support | YIC Inflatable Sports" description="Shipping, warranty, accessories, inspection, and after-sales support information for commercial inflatables from YIC.">
+  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / Shipping and support</div><p class="eyebrow">Order planning</p><h1>Shipping, Warranty &amp; Support</h1><p>Plan the practical details around a commercial inflatable order before it leaves the factory.</p></div></section>
+  <section class="section legal-page"><div class="container legal-content">
+    <h2>Export packing and delivery</h2><p>YIC confirms packed dimensions, gross weight, accessories, destination, shipping term, and delivery timing against the quotation. Buyers should provide the delivery city or port and any destination-market document requirements before production is finalized.</p>
+    <h2>Accessories and repair support</h2><p>Depending on the material and model, the package may include a blower or pump, repair kits, and a carry bag. The exact accessory list is confirmed on the product specification and quotation.</p>
+    <h2>Warranty</h2><p>Product pages reference a three-year warranty. Warranty scope, exclusions, operating requirements, and the process for reporting a problem are confirmed for the model and order in the final quotation.</p>
+    <h2>After-sales communication</h2><p>Keep photos, videos, product information, and the order reference when reporting a quality or accessory issue. Contact <a href={`mailto:${company.email}`}>{company.email}</a> or the assigned WhatsApp team so the factory can review the case.</p>
+  </div></section>
+</SiteLayout>

@@ -1,0 +1,114 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import Pagination from '../../components/Pagination.astro';
+import { categories, products, productAbsoluteUrl, productDisplayTitle } from '../../data/site';
+
+const pageSize = 16;
+const totalPages = Math.ceil(products.length / pageSize);
+const featuredSlugs = [
+  // Category-balanced merchandising: two models from each core product line.
+  'bounce-house--modern-white-bounce-houses-1',
+  'bounce-house--white-wedding-bounce-house-9',
+  'bounce-house-combo--pink-bounce-house-with-slide-and-ball-pit-8',
+  'bounce-house-combo--all-white-bounce-house-with-slide-9',
+  'inflatable-obstacle-course--wipeout-inflatable-obstacle-course-for-sale-2',
+  'inflatable-obstacle-course--dinosaur-inflatable-obstacle-course-5',
+  'inflatable-slide--inflatable-pirate-ship-slide-2',
+  'inflatable-slide--inflatable-panda-slide-7',
+  'inflatable-games--commercial-inflatable-carnival-games-2',
+  'inflatable-games--commercial-inflatable-batting-cage-6',
+  'inflatable-water-park--commercial-inflatable-paddle-boat-pool-for-sale-1',
+  'inflatable-water-park--floating-island-inflatable-water-park-2',
+  'inflatable-theme-park--adventure-play-inflatable-park-1',
+  'advertising-inflatable--inflatable-logo-display-1',
+  'inflatable-mechanical-games--commercial-mechanical-bull-for-sale-1',
+  'inflatable-tent--heavy-duty-outdoor-event-marquee-1',
+];
+const pageProducts = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)).filter((product): product is (typeof products)[number] => Boolean(product));
+const productHubFaqs = [
+  { question: 'What types of commercial inflatables does YIC manufacture?', answer: 'YIC supplies bounce houses, bounce house combos, slides, obstacle courses, inflatable games, water attractions, theme parks, advertising inflatables, tents, and other custom commercial formats for business use.' },
+  { question: 'Which products are suitable for party rental businesses?', answer: 'Bounce houses, combos, dry slides, obstacle courses, and interactive games are common rental-fleet choices. The right mix depends on your customer demand, venue footprint, transport plan, setup time, and expected repeat use.' },
+  { question: 'Can I order mixed inflatable products in one shipment?', answer: 'Mixed product orders can be discussed. Send the models, quantities, destination, preferred delivery timing, and any shared artwork or accessory requirements so YIC can review packing and quotation options.' },
+  { question: 'Can YIC customize a product that is not shown in the catalog?', answer: 'Yes. Share a reference image, sketch, dimensions, colors, artwork, play features, intended application, quantity, and destination. The team can review a custom OEM or ODM design before production.' },
+  { question: 'What information is needed for a commercial inflatable quotation?', answer: 'Include the product or reference image, quantity, destination country and city, preferred dimensions, application, artwork or logo, target delivery date, accessories, and any required documents.' },
+  { question: 'Does YIC support distributors and importers?', answer: 'Yes. YIC works with distributors and importers on product selection, private-label artwork, repeatable specifications, mixed product ranges, packing details, and export coordination.' },
+];
+const categoryImageIndex: Record<string, number> = {
+  'inflatable-tent': 2,
+  'inflatable-mechanical-games': 5,
+  'inflatable-obstacle-course': 7,
+  'inflatable-slide': 5,
+};
+const categoryCards = categories.map((category) => ({
+  ...category,
+  product: products.filter((product) => product.categorySlug === category.slug)[categoryImageIndex[category.slug] ?? 1] ?? products.find((product) => product.categorySlug === category.slug),
+}));
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': 'https://yicinflatables.com/products/#collection',
+  name: 'Commercial Inflatable Products',
+  url: 'https://yicinflatables.com/products/',
+  description: 'Commercial inflatables from YIC Inflatable Sports, an OEM manufacturer and factory for global B2B buyers.',
+  isPartOf: { '@id': 'https://yicinflatables.com/#organization' },
+  about: { '@type': 'Thing', name: 'Commercial inflatables' },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: pageProducts.length,
+    itemListElement: pageProducts.map((product, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: productAbsoluteUrl(product),
+      name: productDisplayTitle(product),
+    })),
+  },
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://yicinflatables.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://yicinflatables.com/products/' },
+  ],
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: productHubFaqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<SiteLayout
+  title="Commercial Inflatable Products | OEM Manufacturer | YIC"
+  description="Browse YIC commercial inflatables for global B2B buyers: bounce houses, combos, slides, obstacle courses, water attractions, games, tents and custom OEM products."
+  image={pageProducts[0]?.images[0] ?? '/assets/commercial-inflatable-manufacturer-hero.webp'}
+  imageAlt="Selected commercial inflatable products from YIC including bounce house combos and inflatable slides"
+  keywords="commercial inflatable products, commercial inflatable manufacturer, inflatable OEM factory, bounce house manufacturer, inflatable slide supplier, custom inflatables"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / Products</div><p class="eyebrow">OEM Manufacturer &amp; Factory</p><h1>Commercial Inflatable Products</h1><p>Browse our commercial product range by category, business application, and model. Compare proven designs, then send YIC your product list, quantity, destination, and customization requirements for a factory quotation.</p></div></section>
+
+  <section class="section product-hub-intro"><div class="container"><div class="hub-intro-copy"><p class="eyebrow">Commercial product hub</p><h2>Commercial inflatables for rental businesses, venues, and events</h2><p>YIC Inflatable Sports supplies commercial inflatable products for party rental companies, family entertainment centers, resorts, event operators, and distributors. Our range includes bounce houses, bounce house combos, inflatable slides, obstacle courses, inflatable games, theme parks, water parks, advertising inflatables, and inflatable tents. Commercial-grade PVC options, custom sizing, artwork, and OEM/ODM production are available for different markets and applications.</p></div></div></section>
+
+  <section class="section section-muted product-category-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Browse by category</p><h2>Commercial inflatable products by category</h2></div><p>Start with the product line that matches your venue, rental fleet, event plan, or distribution range.</p></div><div class="hub-category-grid">{categoryCards.map((category) => <a class="hub-category-card" href={'/products/' + category.slug + '/'}><img src={category.product?.images[0] ?? category.heroImage} alt={'Commercial ' + category.name.toLowerCase() + ' products from YIC'} loading="lazy" width="900" height="675" /><span><strong>{category.name}</strong><small>View category products →</small></span></a>)}<a class="hub-category-card hub-category-card-cta" href="/contact/"><img src="/assets/commercial-inflatable-manufacturer-workshop-interior.webp" alt="Custom inflatable manufacturing and OEM support from YIC" loading="lazy" width="900" height="675" /><span><strong>Custom Inflatables</strong><small>Discuss OEM / ODM design →</small></span></a></div></div></section>
+
+  <section class="section business-application-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Choose by business</p><h2>Commercial inflatables for different businesses</h2></div><p>Match your purchase to the way your customers will use the products.</p></div><div class="use-case-grid"><a href="/products/bounce-house/"><h3>Party rental companies</h3><span>Bounce houses, combos, slides, and obstacle courses for repeat rental inventory.</span></a><a href="/products/inflatable-theme-park/"><h3>Family entertainment centers</h3><span>Themed play attractions, games, and interactive products for busy indoor or outdoor venues.</span></a><a href="/products/inflatable-water-park/"><h3>Water parks and resorts</h3><span>Water attractions and inflatable recreation products for seasonal or permanent operations.</span></a><a href="/products/advertising-inflatable/"><h3>Events and brand activations</h3><span>Advertising inflatables, event tents, and branded structures for promotions and public events.</span></a><a href="/contact/#quote-form"><h3>Distributors and importers</h3><span>Build a commercial product range with OEM/ODM artwork and factory-direct coordination.</span></a><a href="/products/inflatable-obstacle-course/"><h3>Schools and activity operators</h3><span>Obstacle courses and interactive games for sports days, team activities, and community events.</span></a><a href="/products/inflatable-theme-park/"><h3>Theme parks and attractions</h3><span>Large themed play environments for visitor attractions, malls, parks, and destination venues.</span></a><a href="/products/inflatable-games/"><h3>Sports clubs and team events</h3><span>Interactive games and inflatable challenges for tournaments, team building, and community programs.</span></a></div></div></section>
+
+  <section class="section section-muted catalog-page"><div class="container"><div class="section-heading catalog-heading"><div><p class="eyebrow">Selected catalog models</p><h2>Selected Commercial Inflatable Products</h2></div><p>Explore a balanced selection across our core product lines. Open a model to view all photos, specifications, customization options, and buyer FAQs, or browse the full catalog below.</p></div><form class="catalog-search hub-catalog-search" action="/search/" method="get" role="search"><label for="hub-product-search">Search the full commercial inflatable catalog</label><div class="catalog-search-row"><input id="hub-product-search" name="q" type="search" placeholder="Try bounce house, water slide, obstacle course…" /><button class="button" type="submit">Search catalog</button></div></form><div class="product-grid">{pageProducts.map((product) => <ProductCard product={product} />)}</div><Pagination currentPage={1} totalPages={totalPages} basePath="/products/" /></div></section>
+
+  <section class="section oem-grid-section"><div class="container oem-grid"><div><p class="eyebrow">Custom inflatable OEM / ODM</p><h2>Need a product that is not in the catalog?</h2><p>YIC provides OEM and ODM manufacturing for custom inflatable products. Send a reference image, logo, dimensions, colors, quantity, intended use, and destination market. We can support 3D design, artwork confirmation, production, quality inspection, and export preparation.</p><div class="oem-detail-grid"><div><h3>What we can customize</h3><ul><li>Size, layout, structure, and play features</li><li>Colors, printed artwork, logos, and themes</li><li>Accessories, packaging, and product configuration</li></ul></div><div><h3>What you send us</h3><ul><li>Reference image, dimensions, quantity, and destination</li><li>Artwork, application, target users, and target date</li><li>Required documents or accessory preferences</li></ul></div></div><a class="button" href="/contact/#quote-form">Request custom design</a></div><div class="oem-steps" aria-label="Custom inflatable OEM and ODM process"><div><strong>01</strong><span>Share your idea, reference, logo, quantity, and market</span></div><div><strong>02</strong><span>Review design, material, size, and artwork</span></div><div><strong>03</strong><span>Approve the specification before production</span></div><div><strong>04</strong><span>Manufacture with defined production and QC checkpoints</span></div><div><strong>05</strong><span>Confirm export packing and shipment details</span></div></div></div></section>
+
+  <section class="section product-trust-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Why buy from YIC</p><h2>A factory partner for commercial inflatable orders</h2></div><p>Use the catalog to shortlist models, then work directly with the manufacturing team on product details and quotation requirements.</p></div><div class="product-trust-grid"><a href="/about/"><strong>15+ years</strong><span>Manufacturing and export experience · See factory</span></a><a href="/about/"><strong>Commercial PVC</strong><span>Product-specific material and reinforcement options · Materials</span></a><a href="/contact/#quote-form"><strong>OEM &amp; ODM</strong><span>Custom sizes, colors, artwork, and product concepts · Start an RFQ</span></a><a href="/about/"><strong>Quality checks</strong><span>Inspection, inflation testing, and export packing coordination · Quality process</span></a><a href="/about/"><strong>Global support</strong><span>Communication for rental, event, venue, and distributor buyers · Partner support</span></a><a href="/contact/#quote-form"><strong>Quote-ready</strong><span>Send models, quantity, destination, and requirements · Request a quote</span></a></div></div></section>
+
+  <section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Buyer questions</p><h2>Commercial Inflatable Product FAQ</h2></div><p>Practical answers for selecting products, planning a mixed order, and starting an OEM or wholesale conversation.</p></div><div class="faq-list">{productHubFaqs.map((faq) => <article class="faq-item"><h3>{faq.question}</h3><p>{faq.answer}</p></article>)}</div></div></section>
+
+  <section class="section section-muted"><div class="container"><div class="section-heading"><div><p class="eyebrow">Buyer resources</p><h2>Useful next steps for commercial buyers</h2></div><p>Continue from product discovery to a clear factory conversation.</p></div><div class="resource-grid"><a href="/about/"><strong>Factory and quality</strong><span>Review materials, production, inspection, and compliance information.</span></a><a href="/blog/"><strong>Buying guides</strong><span>Learn about product selection, OEM, shipping, safety, and rental planning.</span></a><a href="/faq/"><strong>Buyer FAQ</strong><span>Get practical answers about customization, documents, packing, and quotations.</span></a><a href="/contact/"><strong>Request a quote</strong><span>Send your product list and requirements to the factory.</span></a></div></div></section>
+
+  <section class="cta-band"><div class="container cta-band-inner"><div><p class="eyebrow">Factory quotation</p><h2>Ready to build your commercial inflatable product range?</h2><p>Send us the models, quantity, destination, branding, dimensions, or custom idea you want quoted.</p></div><div class="hero-actions"><a class="button button-secondary" href="/contact/">Request a factory quote</a><a class="button button-secondary" href="https://wa.me/8613580380807?text=Hello%20YIC%2C%20I%20would%20like%20a%20commercial%20inflatable%20quotation.%20Page%20URL%3A%20https%3A%2F%2Fyicinflatables.com%2Fproducts%2F" target="_blank" rel="noopener">WhatsApp the factory</a></div></div></section>
+</SiteLayout>

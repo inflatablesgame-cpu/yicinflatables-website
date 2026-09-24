@@ -1,0 +1,62 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import Pagination from '../../../components/Pagination.astro';
+import { categories, products, categorySeoProfile, categoryBuyingGuide, categoryCustomization, categoryOptionDescription, company, productAbsoluteUrl, productDisplayTitle } from '../../../data/site';
+
+export function getStaticPaths() {
+  return categories.map((category) => ({ params: { category: category.slug }, props: { category } }));
+}
+
+const { category } = Astro.props;
+const profile = categorySeoProfile(category.name);
+const categoryProducts = products.filter((product) => product.categorySlug === category.slug);
+const pageSize = 16;
+const totalPages = Math.ceil(categoryProducts.length / pageSize);
+const pageProducts = categoryProducts.slice(0, pageSize);
+const relatedCategories = profile.related.map((name) => categories.find((item) => item.name === name)).filter(Boolean);
+const pageUrl = `https://${company.domain}/products/${category.slug}/`;
+const buyingGuide = categoryBuyingGuide(category.name);
+const customizationOptions = categoryCustomization(category.name);
+const pluralCategory = category.name.endsWith('s') ? category.name : `${category.name}s`;
+const breadcrumbSchema = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${company.domain}/` },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `https://${company.domain}/products/` },
+    { '@type': 'ListItem', position: 3, name: category.name, item: pageUrl },
+  ],
+};
+const collectionSchema = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': `${pageUrl}#collection`,
+  name: profile.h1, url: pageUrl, description: profile.description,
+  isPartOf: { '@id': `https://${company.domain}/products/#collection` },
+  about: { '@type': 'Thing', name: `Commercial ${category.name}` },
+  mainEntity: { '@type': 'ItemList', numberOfItems: pageProducts.length, itemListElement: pageProducts.map((product, index) => ({ '@type': 'ListItem', position: index + 1, url: productAbsoluteUrl(product), name: productDisplayTitle(product) })) },
+};
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: profile.faq.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) };
+---
+
+<SiteLayout title={profile.title} description={profile.description} image={category.heroImage} imageAlt={`Commercial ${category.name.toLowerCase()} products manufactured by YIC`} keywords={`${category.name.toLowerCase()}, commercial ${category.name.toLowerCase()}, ${category.name.toLowerCase()} manufacturer, custom ${category.name.toLowerCase()}, OEM inflatables`}>
+  <section class="page-hero category-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / {category.name}</div><p class="eyebrow">Commercial {category.name} · OEM factory</p><h1>{profile.h1}</h1><p>{profile.intro}</p><div class="hero-actions"><a class="button button-secondary" href="#catalog">Browse {category.name} models</a><a class="button button-secondary" href="/contact/">Request a factory quote</a></div></div></section>
+
+  <section class="section category-options-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Category overview</p><h2>Commercial {category.name} options</h2></div><p>Compare formats by activity, site requirements, buyer application, and customization potential before selecting models.</p></div><div class="category-option-grid">{profile.options.map((option, index) => <article><span>0{index + 1}</span><h3>{option}</h3><p>{categoryOptionDescription(category.name, option)}</p></article>)}</div></div></section>
+
+  <section class="section section-muted category-guide-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Buyer guide</p><h2>How to choose commercial {pluralCategory.toLowerCase()}</h2></div><p>Use these buying criteria to shortlist a practical format before comparing individual models.</p></div><div class="category-guide-grid">{buyingGuide.map((item, index) => <article><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></div></section>
+
+  <section class="section section-muted" id="catalog"><div class="container"><div class="category-intro"><div><p class="eyebrow">Factory catalog · {category.count} models</p><h2>Compare {category.name} models for your next order</h2></div><p>Open any model for specifications, applications, product-level FAQs, and a direct quotation request. This catalog shows 16 products per page for easier comparison.</p></div><div class="product-grid">{pageProducts.map((product) => <ProductCard product={product} />)}</div><Pagination currentPage={1} totalPages={totalPages} basePath={`/products/${category.slug}/`} label={`${category.name} product pages`} /></div></section>
+
+  <section class="section category-buyers-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Buyer applications</p><h2>Who buys commercial {pluralCategory.toLowerCase()}?</h2></div><p>Each buyer type has different priorities for product features, guest flow, repeat use, branding, and order planning.</p></div><div class="category-buyer-grid">{profile.buyers.map((buyer) => <article><h3>{buyer.title}</h3><p>{buyer.text}</p></article>)}</div></div></section>
+
+  <section class="section section-muted category-oem-section"><div class="container"><div class="category-oem-grid"><div><p class="eyebrow">Custom {category.name} OEM / ODM</p><h2>Need a version made for your market?</h2><p>{profile.oem}</p><a class="button" href="/contact/">Discuss a custom project</a></div><div class="category-order-flow"><div><strong>01</strong><span>Share model, application, size, quantity, and destination</span></div><div><strong>02</strong><span>Confirm artwork, construction, accessories, and packing</span></div><div><strong>03</strong><span>Approve the production specification before manufacturing</span></div><div><strong>04</strong><span>Complete inspection, export preparation, and shipment coordination</span></div></div></div><div class="category-customization"><div><p class="eyebrow">Customization scope</p><h3>What YIC can customize</h3></div><ul>{customizationOptions.map((item) => <li>{item}</li>)}</ul></div></div></section>
+
+  <section class="section category-faq-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Buyer questions</p><h2>{category.name} FAQ</h2></div><p>Practical answers for product selection, customization, site planning, and factory quotations.</p></div><div class="faq-list">{profile.faq.map((faq) => <article class="faq-item"><h3>{faq.question}</h3><p>{faq.answer}</p></article>)}</div></div></section>
+
+  <section class="section section-muted related-category-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Continue browsing</p><h2>Related commercial inflatable categories</h2></div><p>Compare adjacent product lines when planning a broader rental fleet, venue, event, or distribution range.</p></div><div class="related-category-grid">{relatedCategories.map((related) => related && <a href={`/products/${related.slug}/`}><strong>{related.name}</strong><span>View {related.name.toLowerCase()} products →</span></a>)}</div></div></section>
+
+  <section class="cta-band"><div class="container cta-band-inner"><div><p class="eyebrow">Factory quotation</p><h2>Ready to request a quote for commercial {pluralCategory.toLowerCase()}?</h2><p>Send the models, quantity, destination, artwork, dimensions, or custom requirements you want quoted.</p></div><div class="hero-actions"><a class="button button-secondary" href="/contact/">Request a factory quote</a><a class="button button-secondary" href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(`Hello YIC, I would like a ${category.name.toLowerCase()} quotation. Page URL: ${pageUrl}`)}`} target="_blank" rel="noopener">WhatsApp the factory</a></div></div></section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</SiteLayout>

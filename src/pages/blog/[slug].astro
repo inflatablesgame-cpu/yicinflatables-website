@@ -1,0 +1,64 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { blogArticles, getBlogArticle } from '../../data/blog';
+import { categories, company, seoTitle } from '../../data/site';
+
+export function getStaticPaths() {
+  return blogArticles.map((article) => ({ params: { slug: article.slug }, props: { article } }));
+}
+
+const { article: routeArticle } = Astro.props;
+const article = routeArticle ?? getBlogArticle(Astro.params.slug ?? '');
+if (!article) throw new Error('Blog article not found');
+const image = '/assets/commercial-inflatable-manufacturer-workshop-interior.webp';
+const articleUrl = `https://${company.domain}/blog/${article.slug}/`;
+const categoryLinksByTopic: Record<string, string[]> = {
+  'Rental Business': ['bounce-house', 'bounce-house-combo', 'inflatable-slide', 'inflatable-obstacle-course'],
+  'Buying Guide': ['bounce-house', 'bounce-house-combo', 'inflatable-slide', 'inflatable-obstacle-course'],
+  'Sourcing': ['bounce-house-combo', 'inflatable-obstacle-course', 'inflatable-tent'],
+  'Compliance': ['bounce-house', 'inflatable-slide', 'inflatable-water-park'],
+  'Materials': ['bounce-house', 'inflatable-slide', 'inflatable-tent'],
+  'Product Guide': ['inflatable-slide', 'inflatable-obstacle-course', 'inflatable-games'],
+  'OEM / ODM': ['advertising-inflatable', 'inflatable-tent', 'inflatable-theme-park'],
+  'Water Attractions': ['inflatable-water-park', 'inflatable-slide'],
+  'Venue Planning': ['inflatable-games', 'inflatable-theme-park', 'inflatable-obstacle-course'],
+  'Export': ['bounce-house-combo', 'inflatable-tent', 'inflatable-water-park'],
+  'Operations': ['bounce-house', 'inflatable-slide', 'inflatable-games'],
+  'Advertising': ['advertising-inflatable', 'inflatable-tent'],
+};
+const relatedCategorySlugs = categoryLinksByTopic[article.category] ?? ['bounce-house-combo', 'inflatable-slide', 'inflatable-games'];
+const relatedCategories = relatedCategorySlugs
+  .map((slug) => categories.find((category) => category.slug === slug))
+  .filter((category): category is (typeof categories)[number] => Boolean(category));
+const relatedArticles = [
+  ...blogArticles.filter((item) => item.slug !== article.slug && item.category === article.category),
+  ...blogArticles.filter((item) => item.slug !== article.slug && item.category !== article.category),
+].slice(0, 3);
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.description,
+  datePublished: article.published,
+  dateModified: article.published,
+  mainEntityOfPage: articleUrl,
+  image: `https://${company.domain}${image}`,
+  author: { '@type': 'Organization', name: company.name, url: `https://${company.domain}/` },
+  publisher: { '@type': 'Organization', name: company.name, url: `https://${company.domain}/` },
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${company.domain}/` },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `https://${company.domain}/blog/` },
+    { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
+  ],
+};
+---
+
+<SiteLayout title={seoTitle(article.title, 'YIC Inflatable Sports')} description={article.description} image={image} imageAlt={`YIC commercial inflatable guide: ${article.title}`} keywords={article.keywords}>
+  <article class="article-page"><header class="article-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/blog/">Blog</a> / {article.title}</div><p class="eyebrow">{article.category} · {article.readTime}</p><h1>{article.title}</h1><p>{article.intro}</p><div class="article-meta"><span>Published {article.published}</span><span>YIC Inflatable Sports buyer resource</span></div></div></header><div class="container article-layout"><div class="article-content">{article.sections.map((section) => <section><h2>{section.heading}</h2><p>{section.body}</p></section>)}<section><h2>Explore relevant commercial inflatables</h2><p>Compare the product categories that relate to this buying guide, then send YIC the models, quantity, destination, and customization details you want quoted.</p><div class="article-category-links">{relatedCategories.map((category) => <a href={`/products/${category.slug}/`}>{category.name} <span aria-hidden="true">→</span></a>)}</div></section><section><h2>Talk with a commercial inflatable manufacturer</h2><p>Have a product list, custom idea, or venue plan? <a href="/contact/">Send your requirements to YIC</a> and include the destination market, quantity, dimensions, artwork, and target delivery date. You can also <a href="/products/">browse the commercial product catalog</a> before requesting a quote.</p></section><section class="related-articles"><p class="eyebrow">Continue learning</p><h2>Related buyer guides</h2><div>{relatedArticles.map((item) => <a href={`/blog/${item.slug}/`}><span>{item.category}</span><strong>{item.title}</strong><em>Read guide →</em></a>)}</div></section></div><aside class="article-aside"><div class="article-aside-card"><img src={image} alt="YIC commercial inflatable factory and workshop" loading="lazy" width="900" height="720" /><strong>Need a product recommendation?</strong><p>Tell us what you are planning to buy and where it will be used.</p><a class="button button-small" href="/contact/">Request a factory quote</a></div><div class="article-aside-links"><strong>Explore more</strong><a href="/products/">Commercial product catalog →</a><a href="/about/">Factory and quality →</a><a href="/faq/">Buyer FAQ →</a></div></aside></div></article>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+</SiteLayout>

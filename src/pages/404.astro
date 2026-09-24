@@ -1,0 +1,31 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { categories } from '../data/site';
+
+const usefulCategories = categories.slice(0, 4);
+---
+
+<SiteLayout
+  title="Page Not Found | YIC Inflatable Sports"
+  description="The page may have moved. Browse YIC's commercial inflatable products or contact the factory for help."
+  robots="noindex, nofollow"
+>
+  <section class="page-hero error-page">
+    <div class="container">
+      <div class="breadcrumbs"><a href="/">Home</a> / Page not found</div>
+      <p class="eyebrow">404 · Page not found</p>
+      <h1>This page may have moved</h1>
+      <p>The link may be outdated or the address may have a typo. Start again from the product catalog, explore a category, or tell us what you are looking for.</p>
+      <div class="hero-actions">
+        <a class="button" href="/products/">Browse all products</a>
+        <a class="button button-secondary" href="/contact/">Contact the factory</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Explore the catalog</p><h2>Popular product categories</h2></div></div>
+      <div class="error-category-grid">{usefulCategories.map((category) => <a class="error-category" href={`/products/${category.slug}/`}><strong>{category.name}</strong><span>{category.count} models <span aria-hidden="true">→</span></span></a>)}</div>
+    </div>
+  </section>
+</SiteLayout>
