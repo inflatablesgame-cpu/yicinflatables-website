@@ -32,7 +32,14 @@ Save it, then use **Deployments > Retry deployment** (or push a new Git commit).
 
 The Google endpoint stays server-side. Visitors never receive the secret or the Apps Script URL.
 
-## 3. Test
+## 3. Verify Google Sheets access
+
+In the Apps Script editor, select `testTracking` from the function picker and
+click **Run**. Authorize it if requested. It must create a `Page Views` tab
+and one `manual-test` row. If it does not, resolve the Apps Script
+authorization before testing the website.
+
+## 4. Test the website
 
 1. Open a page of the live site: a row should appear in `Page Views`.
 2. Click a WhatsApp button: a row should appear in `WhatsApp Clicks`.

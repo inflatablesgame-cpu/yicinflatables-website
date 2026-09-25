@@ -25,25 +25,30 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return Response.json({ ok: false, error: 'Name and email are required.' }, { status: 400 });
   }
 
-  const response = await fetch(context.env.GOOGLE_SHEETS_WEBHOOK_URL, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({
-      eventType: 'form_submit_success',
-      receivedAt: new Date().toISOString(),
-      pageUrl: new URL(context.request.url).origin + '/contact/',
-      sourceUrl: inquiry['Source page URL'],
-      product: inquiry.Product,
-      name: inquiry.Name,
-      company: inquiry.Company,
-      email: inquiry.Email,
-      country: inquiry.Country,
-      requirements: inquiry.Requirements,
-      countryCode: context.request.cf?.country || '',
-    }),
-  });
-
-  if (!response.ok) {
+  let response: Response;
+  try {
+    response = await fetch(context.env.GOOGLE_SHEETS_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        eventType: 'form_submit_success',
+        receivedAt: new Date().toISOString(),
+        pageUrl: new URL(context.request.url).origin + '/contact/',
+        sourceUrl: inquiry['Source page URL'],
+        product: inquiry.Product,
+        name: inquiry.Name,
+        company: inquiry.Company,
+        email: inquiry.Email,
+        country: inquiry.Country,
+        requirements: inquiry.Requirements,
+        countryCode: context.request.cf?.country || '',
+      }),
+    });
+  } catch {
+    return Response.json({ ok: false, error: 'The inquiry could not be recorded.' }, { status: 502 });
+  }
+  const result = await response.json().catch(() => null) as { ok?: boolean } | null;
+  if (!response.ok || result?.ok !== true) {
     return Response.json({ ok: false, error: 'The inquiry could not be recorded.' }, { status: 502 });
   }
   return Response.json({ ok: true });

@@ -52,18 +52,22 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
   if (!event) return Response.json({ ok: false, error: 'Unsupported event.' }, { status: 400 });
 
-  const response = await fetch(context.env.GOOGLE_SHEETS_WEBHOOK_URL, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({
-      ...event,
-      receivedAt: new Date().toISOString(),
-      country: context.request.cf?.country || '',
-      deviceType: context.request.cf?.clientTcpRtt ? 'browser' : '',
-    }),
-  });
-
-  if (!response.ok) {
+  let response: Response;
+  try {
+    response = await fetch(context.env.GOOGLE_SHEETS_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        ...event,
+        receivedAt: new Date().toISOString(),
+        country: context.request.cf?.country || '',
+      }),
+    });
+  } catch {
+    return Response.json({ ok: false, error: 'Analytics delivery failed.' }, { status: 502 });
+  }
+  const result = await response.json().catch(() => null) as { ok?: boolean } | null;
+  if (!response.ok || result?.ok !== true) {
     return Response.json({ ok: false, error: 'Analytics delivery failed.' }, { status: 502 });
   }
   return new Response(null, { status: 204 });

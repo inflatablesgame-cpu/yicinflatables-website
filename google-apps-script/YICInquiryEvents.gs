@@ -17,6 +17,12 @@ function doGet() {
   return reply_({ ok: true, service: 'YIC inquiry event receiver' });
 }
 
+// Run this once from the Apps Script editor after saving. It confirms that
+// the script can write to this spreadsheet before website traffic is tested.
+function testTracking() {
+  append_('Page Views', [new Date(), 'https://yicinflatables.com/diagnostic-test/', '', 'manual-test', '']);
+}
+
 function doPost(e) {
   try {
     if (!e || !e.postData || e.parameter.key !== WEBHOOK_KEY) return reply_({ ok: false, error: 'Unauthorized' });
