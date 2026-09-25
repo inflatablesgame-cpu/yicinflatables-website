@@ -207,6 +207,40 @@ const organizationSchema = {
         productsToggle?.setAttribute('aria-expanded', 'false');
       });
 
+      type TrackingDetails = Record<string, string>;
+      type TrackingWindow = Window & { yicTrack?: (eventType: string, details?: TrackingDetails) => void };
+      const trackingWindow = window as TrackingWindow;
+      const trackingSessionKey = 'yic-tracking-session';
+      const trackingSessionId = window.sessionStorage.getItem(trackingSessionKey) || crypto.randomUUID();
+      window.sessionStorage.setItem(trackingSessionKey, trackingSessionId);
+      const cleanTrackingUrl = (value: string) => {
+        try {
+          const url = new URL(value, window.location.origin);
+          url.search = '';
+          url.hash = '';
+          return url.href;
+        } catch {
+          return '';
+        }
+      };
+      const sourcePage = cleanTrackingUrl(new URLSearchParams(window.location.search).get('source') || '');
+      const sendAnalyticsEvent = (eventType: string, details: TrackingDetails = {}) => {
+        const payload = JSON.stringify({
+          eventType,
+          pageUrl: cleanTrackingUrl(window.location.href),
+          sourceUrl: sourcePage,
+          referrer: cleanTrackingUrl(document.referrer),
+          sessionId: trackingSessionId,
+          ...details,
+        });
+        const eventBlob = new Blob([payload], { type: 'application/json' });
+        if (!navigator.sendBeacon('/api/analytics', eventBlob)) {
+          fetch('/api/analytics', { method: 'POST', headers: { 'content-type': 'application/json' }, body: payload, keepalive: true }).catch(() => undefined);
+        }
+      };
+      trackingWindow.yicTrack = sendAnalyticsEvent;
+      sendAnalyticsEvent('page_view');
+
       // Keep the entire product card clickable without injecting one script
       // per card. Explicit links still win, so View details and Get quote
       // remain independent destinations.
@@ -216,6 +250,21 @@ const organizationSchema = {
         const url = card?.getAttribute('data-product-url');
         if (url) window.location.href = url;
       });
+
+      document.addEventListener('click', (event) => {
+        if (!(event.target instanceof Element)) return;
+        const link = event.target.closest('a[href]');
+        if (!link) return;
+        const rawHref = link.getAttribute('href') || '';
+        const linkUrl = new URL(rawHref, window.location.origin);
+        const linkLabel = (link.getAttribute('aria-label') || link.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 160);
+        if (linkUrl.hostname !== 'wa.me' && !linkUrl.hostname.endsWith('whatsapp.com')) return;
+        sendAnalyticsEvent('whatsapp_click', {
+          linkLabel,
+          targetUrl: cleanTrackingUrl(linkUrl.href),
+          product: new URLSearchParams(window.location.search).get('product') || '',
+        });
+      }, { capture: true });
 
       // Preserve the page that initiated a quote request, including buttons
       // rendered by product cards and category templates.

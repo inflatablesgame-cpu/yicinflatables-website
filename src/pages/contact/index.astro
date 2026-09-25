@@ -10,7 +10,7 @@ const presetMessage = product
   : 'Hello YIC, I would like a quotation for your commercial inflatable products.';
 const prefillMessage = `${presetMessage}\n\nPage URL: ${sourceUrl}`;
 const quickWhatsAppText = prefillMessage;
-const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || '';
+const formEndpoint = '/api/inquiry';
 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(company.mapQuery)}`;
 const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.mapQuery)}&output=embed`;
 ---
@@ -19,7 +19,7 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
   <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / Contact</div><p class="eyebrow">Talk to the factory</p><h1>Tell us what you want to build</h1><p>Send a model, quantity, destination, and any artwork or dimensions. We will reply with the next practical step.</p></div></section>
   <section class="section"><div class="container contact-grid">
     <div class="contact-copy"><p class="eyebrow">Direct contact</p><h2>Clear answers, from the people coordinating your order</h2><p>For the fastest response, include the product category, target quantity, country, preferred size, branding requirements, and expected delivery date.</p><div class="contact-list"><div class="contact-list-group"><span>Email</span><span>{company.teamEmails.map((email) => <a href={`mailto:${email}`}>{email}</a>)}</span></div><div class="contact-list-group"><span>WhatsApp</span><span>{company.teamWhatsApp.map((number, index) => <a href={`https://wa.me/${number}`} target="_blank" rel="noopener">{company.teamWhatsAppDisplay[index]}</a>)}</span></div><a href={company.facebook} target="_blank" rel="noopener"><span>Facebook</span><span>YIC Inflatable Sports</span></a><a href={company.youtube} target="_blank" rel="noopener"><span>YouTube</span><span>@YICInflatables</span></a><div><span>Website</span><span>{company.domain}</span></div></div></div>
-    <form id="quote-form" class="quote-form" data-quote-form action={formEndpoint || `mailto:${company.email}`} method="post" enctype={formEndpoint ? undefined : 'text/plain'}>
+    <form id="quote-form" class="quote-form" data-quote-form action={formEndpoint} method="post">
       <h2>Request a quotation</h2><p>Only your name and email are required. The other details are optional and help us quote accurately.</p>
       <div class="form-grid">
         <div class="form-field"><label for="name">Name</label><input id="name" name="Name" autocomplete="name" required /></div>
@@ -72,30 +72,24 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
       const data = new FormData(form);
       const subject = `Quotation request: ${String(data.get('Product') || queryProduct || 'Commercial inflatables')}`;
       const message = buildMessage();
-      if (formEndpoint) {
-        const payload = new URLSearchParams();
-        for (const [key, value] of data.entries()) payload.set(key, String(value));
-        payload.set('Subject', subject);
-        payload.set('Message', message);
-        fetch(formEndpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: payload })
-          .then((response) => {
-            if (!response.ok) throw new Error('Form submission failed');
-            if (toast) toast.textContent = 'Thanks. Your request has been sent.';
-            toast?.classList.add('is-visible');
-            form.reset();
-            if (sourceInput) sourceInput.value = activeSourceUrl;
-          })
-          .catch(() => {
-            if (toast) toast.textContent = 'The request could not be sent. Please use WhatsApp or email.';
-            toast?.classList.add('is-visible');
-          })
-          .finally(() => window.setTimeout(() => toast?.classList.remove('is-visible'), 3500));
-        return;
-      }
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-      if (toast) toast.textContent = 'Your email draft is ready to send.';
-      toast?.classList.add('is-visible');
-      window.setTimeout(() => toast?.classList.remove('is-visible'), 2500);
+      const payload = new URLSearchParams();
+      for (const [key, value] of data.entries()) payload.set(key, String(value));
+      payload.set('Subject', subject);
+      payload.set('Message', message);
+      fetch(formEndpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: payload })
+        .then((response) => {
+          if (!response.ok) throw new Error('Form submission failed');
+          if (toast) toast.textContent = 'Thanks. Your request has been sent.';
+          toast?.classList.add('is-visible');
+          form.reset();
+          if (sourceInput) sourceInput.value = activeSourceUrl;
+        })
+        .catch(() => {
+          window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+          if (toast) toast.textContent = 'The request could not be sent automatically. Your email draft is ready to send.';
+          toast?.classList.add('is-visible');
+        })
+        .finally(() => window.setTimeout(() => toast?.classList.remove('is-visible'), 3500));
     });
   </script>
 </SiteLayout>
