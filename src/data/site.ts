@@ -33,6 +33,14 @@ export function productPath(product: Pick<Product, 'categorySlug' | 'productSlug
   return `/products/${product.categorySlug}/${product.productSlug}/`;
 }
 
+// Compact product cards use generated WebP thumbnails; product pages retain
+// the original files for their full-detail galleries.
+export function productCardImage(product: Pick<Product, 'images'>) {
+  return product.images[0]
+    .replace('/assets/product/', '/assets/product-thumbs/')
+    .replace(/\.(jpe?g|png|webp)$/i, '.webp');
+}
+
 export const policyLinks = [
   { href: '/privacy/', label: 'Privacy policy' },
   { href: '/terms/', label: 'Website terms' },

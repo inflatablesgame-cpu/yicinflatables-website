@@ -8,11 +8,13 @@ interface Props {
   description?: string;
   image?: string;
   imageAlt?: string;
+  preloadImage?: boolean;
   keywords?: string;
   robots?: string;
 }
 
 const logo = '/assets/%E6%96%B0LOGO.webp';
+const displayLogo = '/assets/yic-logo-128.webp';
 const {
   title = 'Commercial Inflatable Manufacturer | YIC Inflatable Sports',
   description = 'Commercial inflatable products manufactured for party rental companies, event venues, and family entertainment businesses worldwide.',
@@ -20,6 +22,7 @@ const {
   imageAlt = 'YIC Inflatable Sports commercial inflatable manufacturer',
   keywords = 'commercial inflatable manufacturer, inflatable products, OEM inflatable, YIC Inflatable Sports',
   robots = 'index, follow, max-image-preview:large',
+  preloadImage = false,
 } = Astro.props;
 const currentPath = Astro.url.pathname;
 const canonicalUrl = new URL(currentPath, `https://${company.domain}`).href;
@@ -66,7 +69,7 @@ const organizationSchema = {
     <meta name="keywords" content={keywords} />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="preload" as="image" href={socialImage} fetchpriority="high" />
+    {preloadImage && <link rel="preload" as="image" href={socialImage} fetchpriority="high" />}
     <meta property="og:site_name" content="YIC Inflatable Sports" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={compactTitle} />
@@ -88,7 +91,7 @@ const organizationSchema = {
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="/" aria-label="YIC Inflatable Sports home">
-          <img src={logo} alt="YIC Inflatable Sports" width="52" height="52" decoding="async" />
+          <img src={displayLogo} alt="YIC Inflatable Sports" width="52" height="52" decoding="async" />
           <span>
             <strong>YIC</strong>
             <small>INFLATABLE SPORTS</small>
@@ -125,7 +128,7 @@ const organizationSchema = {
       <div class="container footer-grid">
         <div>
           <a class="brand brand-footer" href="/">
-            <img src={logo} alt="YIC Inflatable Sports" width="46" height="46" loading="lazy" decoding="async" />
+            <img src={displayLogo} alt="YIC Inflatable Sports" width="46" height="46" loading="lazy" decoding="async" />
             <span><strong>YIC</strong><small>INFLATABLE SPORTS</small></span>
           </a>
           <p class="footer-copy">Commercial inflatable products for party rental operators and event businesses worldwide.</p>

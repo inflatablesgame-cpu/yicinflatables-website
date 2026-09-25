@@ -7,6 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "sync:assets": "node scripts/sync-assets.mjs",
+    "optimize:images": "node scripts/optimize-page-images.mjs",
     "build:site": "npm run sync:assets && astro build"
   },
   "dependencies": {

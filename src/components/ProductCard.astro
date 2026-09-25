@@ -1,5 +1,5 @@
 ---
-import { company, productCardDescription, productCardLabel, productDetailContent, productDisplayTitle, productPath } from '../data/site';
+import { company, productCardDescription, productCardImage, productCardLabel, productDetailContent, productDisplayTitle, productPath } from '../data/site';
 import type { Product } from '../data/site';
 
 interface Props {
@@ -20,7 +20,7 @@ const sourcePageUrl = new URL(Astro.url.pathname, `https://${company.domain}`).h
 
 <article class="product-card" data-product-card data-product-url={url}>
   <a class="product-card-image" href={url}>
-    <img src={product.images[0]} alt={displayTitle} loading="lazy" decoding="async" width="900" height="675" />
+    <img src={productCardImage(product)} alt={displayTitle} loading="lazy" decoding="async" width="720" height="540" />
     <span class="image-label">View product</span>
   </a>
   <div class="product-card-body">

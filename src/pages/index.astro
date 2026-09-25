@@ -56,7 +56,7 @@ const homeSchema = {
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) };
 ---
 
-<SiteLayout title="Commercial Inflatable Manufacturer | YIC Inflatable Sports" description="YIC manufactures commercial bounce houses, inflatable slides, obstacle courses, sports games, water parks, tents, and custom inflatables for global B2B buyers." image={heroImage} imageAlt="Commercial inflatable park with bounce houses, slides, and family entertainment attractions" keywords="commercial inflatable manufacturer, custom inflatable manufacturer, OEM inflatable, bounce house manufacturer, inflatable slide manufacturer, YIC Inflatable Sports">
+<SiteLayout title="Commercial Inflatable Manufacturer | YIC Inflatable Sports" description="YIC manufactures commercial bounce houses, inflatable slides, obstacle courses, sports games, water parks, tents, and custom inflatables for global B2B buyers." image={heroImage} imageAlt="Commercial inflatable park with bounce houses, slides, and family entertainment attractions" preloadImage={true} keywords="commercial inflatable manufacturer, custom inflatable manufacturer, OEM inflatable, bounce house manufacturer, inflatable slide manufacturer, YIC Inflatable Sports">
   <section class="hero">
     <div class="hero-media" style={`background-image: url('${heroImage}')`}></div>
     <div class="container hero-content">
