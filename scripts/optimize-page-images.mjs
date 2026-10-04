@@ -18,7 +18,11 @@ async function writeWebp(sourceUrl, outputUrl, width, quality = 74) {
   await mkdir(path.dirname(outputPath), { recursive: true });
   await sharp(toFilePath(sourceUrl))
     .rotate()
-    .resize({ width, withoutEnlargement: true })
+    // Some catalog exports are square canvases with large white borders.
+    // Trim only contiguous white edge pixels before making the card image;
+    // this keeps the product visible without changing the original gallery.
+    .trim({ background: { r: 255, g: 255, b: 255 }, threshold: 12 })
+    .resize({ width, height: Math.round(width * 0.75), fit: 'cover', position: 'centre', withoutEnlargement: true })
     .webp({ quality, effort: 5 })
     .toFile(outputPath);
 }
