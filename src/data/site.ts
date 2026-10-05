@@ -25,7 +25,7 @@ export const categories = catalogData.categories as Category[];
 const rawProducts = catalogData.products as Product[];
 const bubbleTentSource = '/assets/product/Inflatable%20Tent/3m%20diameter%20%2B%201.7m%20tunnel%2C%200.8%20mm%20PVC%20%2B0.6mmPVC%20%20%20%20inflatable%20bubble%20tent%20with%20balloons/';
 const bubbleTentSafe = '/assets/product/inflatable-tent-bubble-tent/';
-export const products = rawProducts.map((product) => product.slug === 'inflatable-tent--diameter-1-7m-tunnel-0-8-mm-pvc-0-6mmpvc-inflatable-bubble-tent-with-balloons-2'
+export const products = rawProducts.map((product) => /bubble tent with balloons/i.test(product.sourceName)
   ? { ...product, images: product.images.map((image) => image.replace(bubbleTentSource, bubbleTentSafe)) }
   : product);
 

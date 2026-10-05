@@ -28,7 +28,7 @@ async function writeWebp(sourceUrl, outputUrl, width, quality = 74) {
 }
 
 const productSources = new Set(
-  catalog.products.map((product) => product.slug === 'inflatable-tent--diameter-1-7m-tunnel-0-8-mm-pvc-0-6mmpvc-inflatable-bubble-tent-with-balloons-2'
+  catalog.products.map((product) => /bubble tent with balloons/i.test(product.sourceName)
     ? product.images[0].replace(bubbleTentSource, bubbleTentSafe)
     : product.images[0]),
 );

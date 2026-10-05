@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T05:29:55.971Z",
+  "generatedAt": "2026-10-05T01:45:42.536Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -165,22 +165,22 @@
         "inflatable-games--inflatable-soccer-pit-16",
         "inflatable-games--outdoor-inflatable-soccer-field-17",
         "inflatable-games--commercial-inflatable-trampoline-18",
-        "inflatable-games--2-5mh-inflatable-football-dart-game-19",
-        "inflatable-games--2-5mh-commercial-dart-board-for-sale-20",
-        "inflatable-games--2-5mh-dart-board-blow-up-21",
+        "inflatable-games--inflatable-football-dart-game-19",
+        "inflatable-games--commercial-dart-board-for-sale-20",
+        "inflatable-games--dart-board-blow-up-21",
         "inflatable-games--inflatable-axe-throwing-game-for-sale-22",
         "inflatable-games--inflatable-water-roller-ball-23",
         "inflatable-games--inflatable-soccer-field-for-sale-24",
         "inflatable-games--human-foosball-inflatable-for-sale-25",
         "inflatable-games--portable-inflatable-soccer-field-26",
         "inflatable-games--inflatable-dart-board-soccer-27",
-        "inflatable-games--2mh-0-6mm-pvc-inflatable-dart-board-rental-28",
-        "inflatable-games--2mh-inflatable-soccer-dart-board-for-sale-29",
+        "inflatable-games--inflatable-dart-board-rental-28",
+        "inflatable-games--inflatable-soccer-dart-board-for-sale-29",
         "inflatable-games--small-inflatable-soccer-goal-30",
         "inflatable-games--inflatable-basketball-connect-4-game-31",
         "inflatable-games--inflatable-soccer-football-field-32",
-        "inflatable-games--3mh-giant-soccer-dart-board-for-sale-33",
-        "inflatable-games--3mh-velcro-soccer-darts-for-sale-34",
+        "inflatable-games--giant-soccer-dart-board-for-sale-33",
+        "inflatable-games--velcro-soccer-darts-for-sale-34",
         "inflatable-games--axe-throwing-inflatable-game-35",
         "inflatable-games--human-sized-whac-a-mole-36",
         "inflatable-games--human-whack-a-mole-team-building-game-37",
@@ -200,12 +200,12 @@
         "inflatable-games--commercial-inflatable-foam-pit-51",
         "inflatable-games--3-in-1-inflatable-carnival-game-52",
         "inflatable-games--commercial-inflatable-batting-cage-53",
-        "inflatable-games--6x4mx1-7m-inflatable-gladiator-jousting-54",
-        "inflatable-games--7-3-dia-x-0-91-mh-commercial-inflatable-gaga-ball-pit-55",
+        "inflatable-games--inflatable-gladiator-jousting-54",
+        "inflatable-games--commercial-inflatable-gaga-ball-pit-55",
         "inflatable-games--human-billiards-inflatable-56",
         "inflatable-games--inflatable-foam-party-pit-rental-57",
         "inflatable-games--commercial-rock-climbing-wall-for-sale-58",
-        "inflatable-games--9-5-7-5m-6-5m-commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-59"
+        "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-59"
       ]
     },
     {
@@ -272,9 +272,9 @@
       "heroImage": "/assets/product/Inflatable%20Tent/17x8.5x5m%20%E6%9D%90%E6%96%990.65mm%20PVC%20%20%20%20heavy%20duty%20outdoor%20event%20marquee/1.webp",
       "products": [
         "inflatable-tent--heavy-duty-outdoor-event-marquee-1",
-        "inflatable-tent--diameter-1-7m-tunnel-0-8-mm-pvc-0-6mmpvc-inflatable-bubble-tent-with-balloons-2",
+        "inflatable-tent--inflatable-bubble-tent-with-balloons-2",
         "inflatable-tent--inflatable-canopy-for-sale-3",
-        "inflatable-tent--5-2z4-7x3-5m-heavy-duty-portable-shelter-4",
+        "inflatable-tent--heavy-duty-portable-shelter-4",
         "inflatable-tent--commercial-inflatable-black-honeycomb-tent-5",
         "inflatable-tent--outdoor-exhibition-tents-6"
       ]
@@ -2573,11 +2573,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--2-5mh-inflatable-football-dart-game-19",
-      "productSlug": "2-5mh-inflatable-football-dart-game",
+      "slug": "inflatable-games--inflatable-football-dart-game-19",
+      "productSlug": "inflatable-football-dart-game",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "2.5mH inflatable football dart game",
+      "title": "inflatable football dart game",
       "sourceName": "2.5mH   材料0.6mm PVC    inflatable football dart game",
       "material": "0.6mm commercial PVC",
       "images": [
@@ -2591,11 +2591,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--2-5mh-commercial-dart-board-for-sale-20",
-      "productSlug": "2-5mh-commercial-dart-board-for-sale",
+      "slug": "inflatable-games--commercial-dart-board-for-sale-20",
+      "productSlug": "commercial-dart-board-for-sale",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "2.5mH commercial dart board for sale",
+      "title": "commercial dart board for sale",
       "sourceName": "2.5mH  材料0.6mm PVC    commercial dart board for sale",
       "material": "0.6mm commercial PVC",
       "images": [
@@ -2609,11 +2609,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--2-5mh-dart-board-blow-up-21",
-      "productSlug": "2-5mh-dart-board-blow-up",
+      "slug": "inflatable-games--dart-board-blow-up-21",
+      "productSlug": "dart-board-blow-up",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "2.5mH dart board blow up",
+      "title": "dart board blow up",
       "sourceName": "2.5mH  材料0.6mm PVC    dart board blow up",
       "material": "0.6mm commercial PVC",
       "images": [
@@ -2735,11 +2735,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--2mh-0-6mm-pvc-inflatable-dart-board-rental-28",
-      "productSlug": "2mh-0-6mm-pvc-inflatable-dart-board-rental",
+      "slug": "inflatable-games--inflatable-dart-board-rental-28",
+      "productSlug": "inflatable-dart-board-rental",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "2mH 0.6mm PVC inflatable dart board rental",
+      "title": "inflatable dart board rental",
       "sourceName": "2mH  0.6mm PVC    inflatable dart board rental",
       "material": "0.6mm commercial PVC",
       "images": [
@@ -2753,11 +2753,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--2mh-inflatable-soccer-dart-board-for-sale-29",
-      "productSlug": "2mh-inflatable-soccer-dart-board-for-sale",
+      "slug": "inflatable-games--inflatable-soccer-dart-board-for-sale-29",
+      "productSlug": "inflatable-soccer-dart-board-for-sale",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "2mH inflatable soccer dart board for sale",
+      "title": "inflatable soccer dart board for sale",
       "sourceName": "2mH  材料0.6mm PVC    inflatable soccer dart board for sale",
       "material": "0.6mm commercial PVC",
       "images": [
@@ -2825,11 +2825,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--3mh-giant-soccer-dart-board-for-sale-33",
-      "productSlug": "3mh-giant-soccer-dart-board-for-sale",
+      "slug": "inflatable-games--giant-soccer-dart-board-for-sale-33",
+      "productSlug": "giant-soccer-dart-board-for-sale",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "3mH giant soccer dart board for sale",
+      "title": "giant soccer dart board for sale",
       "sourceName": "3mH    giant soccer dart board for sale",
       "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
       "images": [
@@ -2843,11 +2843,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--3mh-velcro-soccer-darts-for-sale-34",
-      "productSlug": "3mh-velcro-soccer-darts-for-sale",
+      "slug": "inflatable-games--velcro-soccer-darts-for-sale-34",
+      "productSlug": "velcro-soccer-darts-for-sale",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "3mH velcro soccer darts for sale",
+      "title": "velcro soccer darts for sale",
       "sourceName": "3mH  材料商用0.6mm PVC        velcro soccer darts for sale",
       "material": "0.6mm commercial PVC",
       "images": [
@@ -3203,11 +3203,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--6x4mx1-7m-inflatable-gladiator-jousting-54",
-      "productSlug": "6x4mx1-7m-inflatable-gladiator-jousting",
+      "slug": "inflatable-games--inflatable-gladiator-jousting-54",
+      "productSlug": "inflatable-gladiator-jousting",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "6x4mx1.7m inflatable gladiator jousting",
+      "title": "inflatable gladiator jousting",
       "sourceName": "6x4mx1.7m    inflatable gladiator jousting",
       "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
       "images": [
@@ -3221,11 +3221,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--7-3-dia-x-0-91-mh-commercial-inflatable-gaga-ball-pit-55",
-      "productSlug": "7-3-dia-x-0-91-mh-commercial-inflatable-gaga-ball-pit",
+      "slug": "inflatable-games--commercial-inflatable-gaga-ball-pit-55",
+      "productSlug": "commercial-inflatable-gaga-ball-pit",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "7.3 dia x 0.91 mH commercial inflatable gaga ball pit",
+      "title": "commercial inflatable gaga ball pit",
       "sourceName": "7.3 dia x 0.91 mH   commercial inflatable gaga ball pit",
       "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
       "images": [
@@ -3293,11 +3293,11 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--9-5-7-5m-6-5m-commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-59",
-      "productSlug": "9-5-7-5m-6-5m-commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale",
+      "slug": "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-59",
+      "productSlug": "commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
-      "title": "9.5×7.5m×6.5m commercial mario kart theme inflatable slide and climb for sale",
+      "title": "commercial mario kart theme inflatable slide and climb for sale",
       "sourceName": "9.5×7.5m×6.5m    commercial mario kart theme inflatable slide and climb for sale",
       "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
       "images": [
@@ -3923,11 +3923,11 @@
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-tent--diameter-1-7m-tunnel-0-8-mm-pvc-0-6mmpvc-inflatable-bubble-tent-with-balloons-2",
-      "productSlug": "diameter-1-7m-tunnel-0-8-mm-pvc-0-6mmpvc-inflatable-bubble-tent-with-balloons",
+      "slug": "inflatable-tent--inflatable-bubble-tent-with-balloons-2",
+      "productSlug": "inflatable-bubble-tent-with-balloons",
       "category": "Inflatable Tent",
       "categorySlug": "inflatable-tent",
-      "title": "diameter + 1.7m tunnel, 0.8 mm PVC +0.6mmPVC inflatable bubble tent with balloons",
+      "title": "inflatable bubble tent with balloons",
       "sourceName": "3m diameter + 1.7m tunnel, 0.8 mm PVC +0.6mmPVC    inflatable bubble tent with balloons",
       "material": "0.8mm commercial PVC",
       "images": [
@@ -3959,11 +3959,11 @@
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-tent--5-2z4-7x3-5m-heavy-duty-portable-shelter-4",
-      "productSlug": "5-2z4-7x3-5m-heavy-duty-portable-shelter",
+      "slug": "inflatable-tent--heavy-duty-portable-shelter-4",
+      "productSlug": "heavy-duty-portable-shelter",
       "category": "Inflatable Tent",
       "categorySlug": "inflatable-tent",
-      "title": "5.2z4.7x3.5m heavy duty portable shelter",
+      "title": "heavy duty portable shelter",
       "sourceName": "5.2z4.7x3.5m  材料是牛津布    heavy duty portable shelter",
       "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
       "images": [

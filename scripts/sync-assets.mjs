@@ -35,6 +35,10 @@ function cleanProductName(value) {
     .replace(/材料是牛津布/iu, ' ')
     .replace(/所有材料.*$/u, ' ');
   return withoutMaterialNotes
+    .replace(/^\s*\d+(?:\.\d+)?\s*m?\s*diameter\s*\+.*?(?=\binflatable\b)/i, '')
+    .replace(/^\s*\d+(?:\.\d+)?\s*dia\s*x.*?mH\s*/i, '')
+    .replace(/^\s*\d+(?:\.\d+)?mH(?:\s+\d+(?:\.\d+)?mm\s*PVC)?\s*/i, '')
+    .replace(/^\s*\d+(?:\.\d+)?(?:[x×z]\d+(?:\.\d+)?m?){1,3}\s*(?:m\b)?\s*/i, '')
     .replace(/^\s*[\d.]+\s*m\s+Dia\s+/i, '')
     .replace(/^\s*[\d.]+(?:\s*[x×]\s*[\d.]+)+(?:\s*m)?\s+/i, '')
     .replace(/^\s*[\d.]+\s*m\s+/i, '')
