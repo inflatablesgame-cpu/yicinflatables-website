@@ -39,6 +39,7 @@ function cleanProductName(value) {
     .replace(/^\s*\d+(?:\.\d+)?\s*dia\s*x.*?mH\s*/i, '')
     .replace(/^\s*\d+(?:\.\d+)?mH(?:\s+\d+(?:\.\d+)?mm\s*PVC)?\s*/i, '')
     .replace(/^\s*\d+(?:\.\d+)?(?:[x×z]\d+(?:\.\d+)?m?){1,3}\s*(?:m\b)?\s*/i, '')
+    .replace(/^\s*\d+(?:\.\d+)?m(?:\s*[x×]\s*\d+(?:\.\d+)?m){1,3}\s*/i, '')
     .replace(/^\s*[\d.]+\s*m\s+Dia\s+/i, '')
     .replace(/^\s*[\d.]+(?:\s*[x×]\s*[\d.]+)+(?:\s*m)?\s+/i, '')
     .replace(/^\s*[\d.]+\s*m\s+/i, '')

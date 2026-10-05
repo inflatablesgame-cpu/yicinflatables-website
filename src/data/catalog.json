@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T01:45:42.536Z",
+  "generatedAt": "2026-10-05T01:56:02.668Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -58,7 +58,7 @@
         "bounce-house-combo--all-white-bounce-house-with-slide-9",
         "bounce-house-combo--paint-splatter-bounce-house-combo-10",
         "bounce-house-combo--spiderman-inflatable-bounce-house-with-slide-11",
-        "bounce-house-combo--4mx4mx2-5m-lion-king-bounce-house-12",
+        "bounce-house-combo--lion-king-bounce-house-12",
         "bounce-house-combo--pink-bounce-house-with-slide-and-ball-pit-13",
         "bounce-house-combo--graffiti-inflatable-bounce-14",
         "bounce-house-combo--iron-man-bounce-house-15",
@@ -935,11 +935,11 @@
       "excerpt": "Commercial bounce house combo built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "bounce-house-combo--4mx4mx2-5m-lion-king-bounce-house-12",
-      "productSlug": "4mx4mx2-5m-lion-king-bounce-house",
+      "slug": "bounce-house-combo--lion-king-bounce-house-12",
+      "productSlug": "lion-king-bounce-house",
       "category": "Bounce House Combo",
       "categorySlug": "bounce-house-combo",
-      "title": "4mx4mx2.5m lion king bounce house",
+      "title": "lion king bounce house",
       "sourceName": "4mx4mx2.5m  lion king bounce house",
       "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
       "images": [
