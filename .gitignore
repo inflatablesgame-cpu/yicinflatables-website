@@ -1,8 +1,10 @@
 node_modules/
 dist/
+dist-new/
 .astro/
 work/
 .env
 .env.*
 !.env.example
 *.log
+public/assets/product-thumbs/Inflatable Tent/3m diameter + 1.7m tunnel*
