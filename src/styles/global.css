@@ -370,6 +370,9 @@ h3 { font-size: 1.25rem; }
 .product-detail-page.category-template-8 .detail-wrap { background: linear-gradient(90deg, rgba(92,117,199,.07), transparent 50%); }
 .product-detail-page.category-template-9 .detail-main-image { border: 1px solid rgba(45,155,155,.35); }
 .product-detail-page.category-template-10 .detail-wrap { background: linear-gradient(180deg, rgba(40,119,165,.09), transparent 42%); }
+.product-detail-page.category-template-11 .detail-wrap { border-top-color: #0f8b8d; background: linear-gradient(135deg, rgba(15,139,141,.09), transparent 48%); }
+.product-detail-page.category-template-11 .detail-grid { grid-template-columns: .95fr 1.05fr; }
+.product-detail-page.category-template-11 .detail-copy { padding: 24px 0 24px 24px; }
 .detail-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 68px; align-items: start; }
 .product-detail-page .detail-gallery { order: 0; }
 .detail-gallery { position: sticky; top: 105px; width: 100%; min-width: 0; overflow: visible; }

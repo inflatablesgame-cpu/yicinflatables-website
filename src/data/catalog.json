@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T01:56:02.668Z",
+  "generatedAt": "2026-10-05T13:47:27.141Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -300,6 +300,37 @@
       "products": [
         "inflatable-water-park--commercial-inflatable-paddle-boat-pool-for-sale-1",
         "inflatable-water-park--floating-island-inflatable-water-park-2"
+      ]
+    },
+    {
+      "name": "Inflatable Water Slide",
+      "slug": "inflatable-water-slide",
+      "count": 23,
+      "heroImage": "/assets/product/Inflatable%20Water%20Slide/1.5x1.5x0.4m%20%20%20%20commercial%20inflatable%20pools%20for%20sale/1.webp",
+      "products": [
+        "inflatable-water-slide--commercial-inflatable-pools-for-sale-1",
+        "inflatable-water-slide--dual-lane-inflatable-slip-and-slide-rental-2",
+        "inflatable-water-slide--tropical-inflatable-water-slide-3",
+        "inflatable-water-slide--tropical-inflatable-water-slide-4",
+        "inflatable-water-slide--water-slide-red-and-yellow-5",
+        "inflatable-water-slide--heavy-duty-inflatable-water-slide-6",
+        "inflatable-water-slide--inflatable-pastel-multi-lane-water-slide-7",
+        "inflatable-water-slide--inflatable-dolphin-water-slide-8",
+        "inflatable-water-slide--inflatable-double-water-slide-with-splash-pool-9",
+        "inflatable-water-slide--pink-inflatable-pool-slide-10",
+        "inflatable-water-slide--luxury-white-dry-and-wet-slide-with-pool-11",
+        "inflatable-water-slide--princess-inflatable-water-slide-12",
+        "inflatable-water-slide--white-bounce-house-double-slide-13",
+        "inflatable-water-slide--commercial-inflatable-water-slide-manufacturer-14",
+        "inflatable-water-slide--triple-lane-inflatable-water-slide-15",
+        "inflatable-water-slide--inflatable-tropical-water-slide-16",
+        "inflatable-water-slide--tropical-inflatable-water-slide-17",
+        "inflatable-water-slide--inflatable-jungle-water-slide-18",
+        "inflatable-water-slide--inflatable-wave-water-slide-19",
+        "inflatable-water-slide--shark-inflatable-water-slide-with-pool-20",
+        "inflatable-water-slide--backyard-water-slide-for-kids-21",
+        "inflatable-water-slide--inflatable-rainbow-water-slide-22",
+        "inflatable-water-slide--inflatable-water-slide-hawaii-23"
       ]
     }
   ],
@@ -4137,6 +4168,420 @@
       ],
       "dimensions": "8x8x1.8m ",
       "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--commercial-inflatable-pools-for-sale-1",
+      "productSlug": "commercial-inflatable-pools-for-sale",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "commercial inflatable pools for sale",
+      "sourceName": "1.5x1.5x0.4m    commercial inflatable pools for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/1.5x1.5x0.4m%20%20%20%20commercial%20inflatable%20pools%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/1.5x1.5x0.4m%20%20%20%20commercial%20inflatable%20pools%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/1.5x1.5x0.4m%20%20%20%20commercial%20inflatable%20pools%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/1.5x1.5x0.4m%20%20%20%20commercial%20inflatable%20pools%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/1.5x1.5x0.4m%20%20%20%20commercial%20inflatable%20pools%20for%20sale/5.webp"
+      ],
+      "dimensions": "1.5x1.5x0.4m    ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--dual-lane-inflatable-slip-and-slide-rental-2",
+      "productSlug": "dual-lane-inflatable-slip-and-slide-rental",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "dual lane inflatable slip and slide rental",
+      "sourceName": "10.7x3x3m   dual lane inflatable slip and slide rental",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/10.7x3x3m%20%20%20dual%20lane%20inflatable%20slip%20and%20slide%20rental/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/10.7x3x3m%20%20%20dual%20lane%20inflatable%20slip%20and%20slide%20rental/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/10.7x3x3m%20%20%20dual%20lane%20inflatable%20slip%20and%20slide%20rental/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/10.7x3x3m%20%20%20dual%20lane%20inflatable%20slip%20and%20slide%20rental/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/10.7x3x3m%20%20%20dual%20lane%20inflatable%20slip%20and%20slide%20rental/5.webp"
+      ],
+      "dimensions": "10.7x3x3m   ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--tropical-inflatable-water-slide-3",
+      "productSlug": "tropical-inflatable-water-slide-commercial",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "tropical inflatable water slide",
+      "sourceName": "6.4x3x3.9m  tropical inflatable water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x3.9m%20%20tropical%20inflatable%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x3.9m%20%20tropical%20inflatable%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x3.9m%20%20tropical%20inflatable%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x3.9m%20%20tropical%20inflatable%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x3.9m%20%20tropical%20inflatable%20water%20slide/5.webp"
+      ],
+      "dimensions": "6.4x3x3.9m  ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--tropical-inflatable-water-slide-4",
+      "productSlug": "tropical-inflatable-water-slide-for-sale",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "tropical inflatable water slide",
+      "sourceName": "6.4x3x4m  tropical inflatable water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20tropical%20inflatable%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20tropical%20inflatable%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20tropical%20inflatable%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20tropical%20inflatable%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20tropical%20inflatable%20water%20slide/5.webp"
+      ],
+      "dimensions": "6.4x3x4m  ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--water-slide-red-and-yellow-5",
+      "productSlug": "water-slide-red-and-yellow",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "water slide red and yellow",
+      "sourceName": "6.4x3x4m  water slide red and yellow",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20water%20slide%20red%20and%20yellow/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20water%20slide%20red%20and%20yellow/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20water%20slide%20red%20and%20yellow/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20water%20slide%20red%20and%20yellow/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6.4x3x4m%20%20water%20slide%20red%20and%20yellow/5.webp"
+      ],
+      "dimensions": "6.4x3x4m  ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--heavy-duty-inflatable-water-slide-6",
+      "productSlug": "heavy-duty-inflatable-water-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "heavy duty inflatable water slide",
+      "sourceName": "6x3x4.5m   heavy duty inflatable water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/6x3x4.5m%20%20%20heavy%20duty%20inflatable%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6x3x4.5m%20%20%20heavy%20duty%20inflatable%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6x3x4.5m%20%20%20heavy%20duty%20inflatable%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6x3x4.5m%20%20%20heavy%20duty%20inflatable%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6x3x4.5m%20%20%20heavy%20duty%20inflatable%20water%20slide/5.webp"
+      ],
+      "dimensions": "6x3x4.5m   ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--inflatable-pastel-multi-lane-water-slide-7",
+      "productSlug": "inflatable-pastel-multi-lane-water-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "inflatable pastel multi-lane water slide",
+      "sourceName": "6x5.5x3.35m    inflatable pastel multi-lane water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/6x5.5x3.35m%20%20%20%20inflatable%20pastel%20multi-lane%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6x5.5x3.35m%20%20%20%20inflatable%20pastel%20multi-lane%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6x5.5x3.35m%20%20%20%20inflatable%20pastel%20multi-lane%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6x5.5x3.35m%20%20%20%20inflatable%20pastel%20multi-lane%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/6x5.5x3.35m%20%20%20%20inflatable%20pastel%20multi-lane%20water%20slide/5.webp"
+      ],
+      "dimensions": "6x5.5x3.35m    ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--inflatable-dolphin-water-slide-8",
+      "productSlug": "inflatable-dolphin-water-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "inflatable dolphin water slide",
+      "sourceName": "7.6x3x5.5m   inflatable dolphin water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/7.6x3x5.5m%20%20%20inflatable%20dolphin%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/7.6x3x5.5m%20%20%20inflatable%20dolphin%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/7.6x3x5.5m%20%20%20inflatable%20dolphin%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/7.6x3x5.5m%20%20%20inflatable%20dolphin%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/7.6x3x5.5m%20%20%20inflatable%20dolphin%20water%20slide/5.webp"
+      ],
+      "dimensions": "7.6x3x5.5m   ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--inflatable-double-water-slide-with-splash-pool-9",
+      "productSlug": "inflatable-double-water-slide-with-splash-pool",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "inflatable double water slide with splash pool",
+      "sourceName": "8x4.3x5.48m  inflatable double water slide with splash pool",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/8x4.3x5.48m%20%20inflatable%20double%20water%20slide%20with%20splash%20pool/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.3x5.48m%20%20inflatable%20double%20water%20slide%20with%20splash%20pool/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.3x5.48m%20%20inflatable%20double%20water%20slide%20with%20splash%20pool/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.3x5.48m%20%20inflatable%20double%20water%20slide%20with%20splash%20pool/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.3x5.48m%20%20inflatable%20double%20water%20slide%20with%20splash%20pool/5.webp"
+      ],
+      "dimensions": "8x4.3x5.48m  ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--pink-inflatable-pool-slide-10",
+      "productSlug": "pink-inflatable-pool-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "pink inflatable pool slide",
+      "sourceName": "8x4.5 6m   pink inflatable pool slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5%206m%20%20%20pink%20inflatable%20pool%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5%206m%20%20%20pink%20inflatable%20pool%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5%206m%20%20%20pink%20inflatable%20pool%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5%206m%20%20%20pink%20inflatable%20pool%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5%206m%20%20%20pink%20inflatable%20pool%20slide/5.webp"
+      ],
+      "dimensions": "8x4.5 ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--luxury-white-dry-and-wet-slide-with-pool-11",
+      "productSlug": "luxury-white-dry-and-wet-slide-with-pool",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "luxury white dry and wet slide with pool",
+      "sourceName": "8x4.5x6m    luxury white dry and wet slide with pool",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20luxury%20white%20dry%20and%20wet%20slide%20with%20pool/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20luxury%20white%20dry%20and%20wet%20slide%20with%20pool/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20luxury%20white%20dry%20and%20wet%20slide%20with%20pool/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20luxury%20white%20dry%20and%20wet%20slide%20with%20pool/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20luxury%20white%20dry%20and%20wet%20slide%20with%20pool/5.webp"
+      ],
+      "dimensions": "8x4.5x6m    ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--princess-inflatable-water-slide-12",
+      "productSlug": "princess-inflatable-water-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "princess inflatable water slide",
+      "sourceName": "8x4.5x6m    princess inflatable water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20princess%20inflatable%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20princess%20inflatable%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20princess%20inflatable%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20princess%20inflatable%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20princess%20inflatable%20water%20slide/5.webp"
+      ],
+      "dimensions": "8x4.5x6m    ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--white-bounce-house-double-slide-13",
+      "productSlug": "white-bounce-house-double-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "white bounce house double slide",
+      "sourceName": "8x4.5x6m    white bounce house double slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20white%20bounce%20house%20double%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20white%20bounce%20house%20double%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20white%20bounce%20house%20double%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20white%20bounce%20house%20double%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20%20white%20bounce%20house%20double%20slide/5.webp"
+      ],
+      "dimensions": "8x4.5x6m    ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--commercial-inflatable-water-slide-manufacturer-14",
+      "productSlug": "commercial-inflatable-water-slide-manufacturer",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "commercial inflatable water slide manufacturer",
+      "sourceName": "8x4.5x6m   commercial inflatable water slide manufacturer",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20commercial%20inflatable%20water%20slide%20manufacturer/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20commercial%20inflatable%20water%20slide%20manufacturer/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20commercial%20inflatable%20water%20slide%20manufacturer/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20commercial%20inflatable%20water%20slide%20manufacturer/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x4.5x6m%20%20%20commercial%20inflatable%20water%20slide%20manufacturer/5.webp"
+      ],
+      "dimensions": "8x4.5x6m   ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--triple-lane-inflatable-water-slide-15",
+      "productSlug": "triple-lane-inflatable-water-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "triple lane inflatable water slide",
+      "sourceName": "8x5.1x5m    triple lane inflatable water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/8x5.1x5m%20%20%20%20triple%20lane%20inflatable%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x5.1x5m%20%20%20%20triple%20lane%20inflatable%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x5.1x5m%20%20%20%20triple%20lane%20inflatable%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x5.1x5m%20%20%20%20triple%20lane%20inflatable%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/8x5.1x5m%20%20%20%20triple%20lane%20inflatable%20water%20slide/5.webp"
+      ],
+      "dimensions": "8x5.1x5m    ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--inflatable-tropical-water-slide-16",
+      "productSlug": "inflatable-tropical-water-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "inflatable tropical water slide",
+      "sourceName": "9x3x5.3 m   inflatable tropical water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.3%20m%20%20%20inflatable%20tropical%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.3%20m%20%20%20inflatable%20tropical%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.3%20m%20%20%20inflatable%20tropical%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.3%20m%20%20%20inflatable%20tropical%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.3%20m%20%20%20inflatable%20tropical%20water%20slide/5.webp"
+      ],
+      "dimensions": "9x3x5.3 m",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--tropical-inflatable-water-slide-17",
+      "productSlug": "tropical-inflatable-water-slide-rental",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "tropical inflatable water slide",
+      "sourceName": "9x3x5.5 m    tropical inflatable water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20%20%20tropical%20inflatable%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20%20%20tropical%20inflatable%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20%20%20tropical%20inflatable%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20%20%20tropical%20inflatable%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20%20%20tropical%20inflatable%20water%20slide/5.webp"
+      ],
+      "dimensions": "9x3x5.5 m",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--inflatable-jungle-water-slide-18",
+      "productSlug": "inflatable-jungle-water-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "inflatable jungle water slide",
+      "sourceName": "9x3x5.5 m  inflatable jungle water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20inflatable%20jungle%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20inflatable%20jungle%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20inflatable%20jungle%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20inflatable%20jungle%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5%20m%20%20inflatable%20jungle%20water%20slide/5.webp"
+      ],
+      "dimensions": "9x3x5.5 m",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--inflatable-wave-water-slide-19",
+      "productSlug": "inflatable-wave-water-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "inflatable wave water slide",
+      "sourceName": "9x3x5.5m    inflatable wave water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5m%20%20%20%20inflatable%20wave%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5m%20%20%20%20inflatable%20wave%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5m%20%20%20%20inflatable%20wave%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5m%20%20%20%20inflatable%20wave%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x5.5m%20%20%20%20inflatable%20wave%20water%20slide/5.webp"
+      ],
+      "dimensions": "9x3x5.5m    ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--shark-inflatable-water-slide-with-pool-20",
+      "productSlug": "shark-inflatable-water-slide-with-pool",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "shark inflatable water slide with pool",
+      "sourceName": "9x3x6.55m   shark inflatable water slide with pool",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/9x3x6.55m%20%20%20shark%20inflatable%20water%20slide%20with%20pool/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x6.55m%20%20%20shark%20inflatable%20water%20slide%20with%20pool/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x6.55m%20%20%20shark%20inflatable%20water%20slide%20with%20pool/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x6.55m%20%20%20shark%20inflatable%20water%20slide%20with%20pool/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x3x6.55m%20%20%20shark%20inflatable%20water%20slide%20with%20pool/5.webp"
+      ],
+      "dimensions": "9x3x6.55m   ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--backyard-water-slide-for-kids-21",
+      "productSlug": "backyard-water-slide-for-kids",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "backyard water slide for kids",
+      "sourceName": "9x4.5x5.5 m    backyard water slide for kids",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/9x4.5x5.5%20m%20%20%20%20backyard%20water%20slide%20for%20kids/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4.5x5.5%20m%20%20%20%20backyard%20water%20slide%20for%20kids/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4.5x5.5%20m%20%20%20%20backyard%20water%20slide%20for%20kids/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4.5x5.5%20m%20%20%20%20backyard%20water%20slide%20for%20kids/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4.5x5.5%20m%20%20%20%20backyard%20water%20slide%20for%20kids/5.webp"
+      ],
+      "dimensions": "9x4.5x5.5 m",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--inflatable-rainbow-water-slide-22",
+      "productSlug": "inflatable-rainbow-water-slide",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "inflatable rainbow water slide",
+      "sourceName": "9x4x5m    inflatable rainbow water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20rainbow%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20rainbow%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20rainbow%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20rainbow%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20rainbow%20water%20slide/5.webp"
+      ],
+      "dimensions": "9x4x5m    ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-slide--inflatable-water-slide-hawaii-23",
+      "productSlug": "inflatable-water-slide-hawaii",
+      "category": "Inflatable Water Slide",
+      "categorySlug": "inflatable-water-slide",
+      "title": "inflatable water slide hawaii",
+      "sourceName": "9x4x5m    inflatable water slide hawaii",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20water%20slide%20hawaii/1.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20water%20slide%20hawaii/2.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20water%20slide%20hawaii/3.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20water%20slide%20hawaii/4.webp",
+        "/assets/product/Inflatable%20Water%20Slide/9x4x5m%20%20%20%20inflatable%20water%20slide%20hawaii/5.webp"
+      ],
+      "dimensions": "9x4x5m    ",
+      "excerpt": "Commercial inflatable water slide built for party rental operators, family entertainment centers, and event venues."
     }
   ]
 }

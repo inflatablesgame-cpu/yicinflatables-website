@@ -88,6 +88,7 @@ const categorySummaries: Record<string, string> = {
   'Inflatable Tent': 'Inflatable shelters, event tents, dome tents, and branded spaces for outdoor operations.',
   'Inflatable Theme Park': 'Large themed inflatable play attractions for parks, malls, family entertainment centers, and events.',
   'Inflatable Water Park': 'Commercial inflatable water attractions for resorts, rental fleets, recreation businesses, and water venues.',
+  'Inflatable Water Slide': 'Commercial inflatable water slides for party rentals, resorts, water parks, events, and seasonal recreation venues.',
 };
 
 export function categorySummary(category: string) {
@@ -175,6 +176,12 @@ const categoryOptionDetails: Record<string, Record<string, string>> = {
     'Water obstacle courses': 'Climbing, balancing, and sliding challenges can create a high-energy aquatic route for group visitors.',
     'Custom modular aquatic attractions': 'A water-area plan can guide module selection, branding, anchoring, guest flow, and seasonal storage.',
   },
+  'Inflatable Water Slide': {
+    'Commercial single-lane water slides': 'A focused wet-use attraction for resorts, pool venues, seasonal rentals, and supervised family recreation.',
+    'Multi-lane racing water slides': 'Parallel lanes create a clear race format for higher-throughput water parks, events, and competitive play.',
+    'Themed water slides with pools': 'Color, artwork, splash pools, and character styling turn a water slide into a stronger destination attraction.',
+    'Custom water-slide layouts for venues': 'Height, lane count, landing, pool, access, and anchoring can be planned around the available water site.',
+  },
 };
 
 const categoryBuyingGuides: Record<string, CategoryGuide[]> = {
@@ -244,6 +251,12 @@ const categoryBuyingGuides: Record<string, CategoryGuide[]> = {
     { title: 'Choose the module mix', text: 'Combine slides, climbing, balancing, jumping, resting, and obstacle modules for the intended experience.' },
     { title: 'Prepare seasonal handling', text: 'Plan installation, inspection, cleaning, drying, repair, removal, packing, transport, and storage.' },
   ],
+  'Inflatable Water Slide': [
+    { title: 'Confirm wet-use conditions', text: 'Share water depth, supply, drainage, surface, access, and the planned landing or splash-pool area before selecting a model.' },
+    { title: 'Choose the slide format', text: 'Compare single-lane, dual-lane, triple-lane, themed, pool, and dry-or-wet configurations around your guest flow.' },
+    { title: 'Plan safety and supervision', text: 'Allow queue space, slide landing, operator visibility, anchoring, height clearance, and local venue operating procedures.' },
+    { title: 'Prepare seasonal operation', text: 'Review cleaning, drying, inspection, repair, packing, transport, storage, and target opening dates for repeat use.' },
+  ],
 };
 
 const defaultBuyingGuides: CategoryGuide[] = [
@@ -265,6 +278,7 @@ const categoryCustomizationOptions: Record<string, string[]> = {
   'Inflatable Tent': ['Footprint, height, dome, tunnel, or shelter structure', 'Doors, windows, counters, partitions, and lighting', 'Logo, colors, printed graphics, and interior branding', 'Anchoring, accessories, packing, and site requirements'],
   'Inflatable Theme Park': ['Theme, characters, artwork, and color palette', 'Modules, zones, footprint, and guest flow', 'Entry, exit, installation, and venue layout', 'Accessories, packing, and staged project delivery'],
   'Inflatable Water Park': ['Module mix, layout, water access, and capacity', 'Slides, obstacles, colors, and branding', 'Anchoring, accessories, storage, and packing', 'Project dimensions and destination requirements'],
+  'Inflatable Water Slide': ['Slide height, lane count, landing, pool, and water-flow layout', 'Theme, colors, printed artwork, and logo placement', 'Anchoring, access, queue, supervision, and drainage planning', 'Blower, pump, repair kit, carry bag, packing, and destination requirements'],
 };
 
 export function categoryOptionDescription(category: string, option: string) {
@@ -403,6 +417,26 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   },
 };
 
+categorySeoProfiles['Inflatable Water Slide'] = {
+  title: 'Commercial Inflatable Water Slides | OEM Manufacturer | YIC',
+  description: 'Commercial inflatable water slides for resorts, water parks, party rental businesses and events. YIC offers themed, multi-lane and custom OEM water slides.',
+  h1: 'Commercial Inflatable Water Slides for Resorts, Rentals and Water Parks',
+  intro: 'YIC manufactures commercial inflatable water slides for resorts, water parks, party rental fleets, pool venues, events, and seasonal recreation operators. The range includes single-lane, multi-lane, themed, pool-finish, and custom water-slide formats. Compare the models below, then send the site dimensions, water conditions, landing plan, artwork, quantity, and destination for a factory quotation.',
+  options: ['Commercial single-lane water slides', 'Multi-lane racing water slides', 'Themed water slides with pools', 'Custom water-slide layouts for venues'],
+  buyers: [
+    { title: 'Water parks and resorts', text: 'Plan a high-visibility wet-use attraction around water depth, guest capacity, queue flow, anchoring, and seasonal operation.' },
+    { title: 'Party rental companies', text: 'Add a water-slide format to summer rental packages with practical setup, transport, drying, storage, and repair planning.' },
+    { title: 'Pool and event operators', text: 'Coordinate landing, drainage, supervision, access, and branded artwork for temporary or permanent water activities.' },
+  ],
+  oem: 'Send the water-area plan, depth, desired height, lane count, landing or splash-pool format, theme references, quantity, and destination. YIC can support custom layout, artwork approval, production inspection, packing, and export coordination.',
+  faq: [
+    { question: 'What is the difference between a commercial water slide and a dry inflatable slide?', answer: 'A commercial water slide is designed around wet-use water flow, landing, drainage, anchoring, supervision, and site conditions. A dry slide uses a dry landing and does not require the same water infrastructure.' },
+    { question: 'How do I choose the right water-slide size and lane count?', answer: 'Review the available footprint, height clearance, access route, expected guest throughput, target age group, queue area, landing space, and whether single-, dual-, or triple-lane racing is appropriate.' },
+    { question: 'Can YIC make a themed inflatable water slide with a pool?', answer: 'Yes. YIC can review theme artwork, colors, characters, slide height, lane count, splash-pool or landing arrangement, logos, and accessories for a custom OEM project.' },
+  ],
+  related: ['Inflatable Slide', 'Inflatable Water Park', 'Bounce House Combo'],
+};
+
 const categorySixthFaqs: Record<string, { question: string; answer: string }> = {
   'Advertising Inflatable': { question: 'Can advertising inflatables be reused across multiple campaigns?', answer: 'They can be planned for repeat events. Confirm the display structure, replaceable or fixed artwork, packing, storage, anchoring, and inspection needs for the campaign schedule.' },
   'Bounce House': { question: 'Which accessories should I confirm with a commercial bounce house order?', answer: 'Confirm the compatible blower and electrical specification, anchoring equipment, repair kit, carry bag, and any market-specific documents for the selected model.' },
@@ -415,6 +449,7 @@ const categorySixthFaqs: Record<string, { question: string; answer: string }> = 
   'Inflatable Tent': { question: 'What site details are needed to plan an inflatable tent installation?', answer: 'Share the surface, anchoring approach, footprint, access points, expected weather exposure, event duration, and local venue restrictions for the installation review.' },
   'Inflatable Theme Park': { question: 'Can a themed inflatable park be planned in phases?', answer: 'A project can be discussed around priority zones, future expansion, available site area, guest flow, installation timing, and a consistent theme and artwork brief.' },
   'Inflatable Water Park': { question: 'What information helps plan a floating water park layout?', answer: 'Share a water-area plan, depth information, access points, anchoring locations, target capacity, module preferences, operating season, and supervision arrangements.' },
+  'Inflatable Water Slide': { question: 'What water, drainage, and anchoring details should I confirm before ordering?', answer: 'Share the water supply, depth, drainage, landing or pool area, surface, anchoring points, access route, expected capacity, supervision plan, and seasonal operating schedule.' },
 };
 
 export function categorySeoProfile(category: string): CategorySeoProfile {
@@ -556,6 +591,7 @@ const categoryKeywordVariants: Record<string, string[]> = {
   'Inflatable Tent': ['commercial inflatable tent', 'branded inflatable tent', 'event inflatable tent', 'inflatable dome tent', 'exhibition inflatable tent', 'inflatable tent for sale', 'inflatable event shelter'],
   'Inflatable Theme Park': ['commercial inflatable theme park', 'inflatable playground', 'indoor inflatable park', 'adventure inflatable park', 'inflatable amusement park', 'commercial inflatable park', 'themed inflatable playground'],
   'Inflatable Water Park': ['commercial inflatable water park', 'floating water park', 'inflatable water playground', 'water obstacle course', 'commercial water park inflatables', 'floating inflatable obstacle course', 'water park equipment'],
+  'Inflatable Water Slide': ['commercial inflatable water slide', 'inflatable water slide rental', 'inflatable water slide for sale', 'commercial water slide', 'water slide with pool', 'dual lane inflatable water slide', 'themed inflatable water slide', 'water slide manufacturer'],
 };
 
 export function productKeywordVariants(product: Product) {
@@ -604,6 +640,7 @@ const productApplications: Record<string, string> = {
   'Inflatable Tent': 'exhibitions, outdoor events, and branded activations',
   'Inflatable Theme Park': 'family entertainment centers, malls, parks, and attractions',
   'Inflatable Water Park': 'water parks, resorts, and seasonal recreation venues',
+  'Inflatable Water Slide': 'water parks, resorts, pool venues, party rental fleets, and seasonal recreation operators',
 };
 
 export function productApplication(product: Product) {
@@ -712,6 +749,14 @@ const categoryDetailProfiles: Record<string, Omit<DetailContent, 'template'>> = 
     planningPoints: ['Water area, depth, water conditions, access, and anchoring plan', 'Expected capacity, lifeguard or supervision plan, and local rules', 'Seasonal schedule, transport, maintenance, and storage requirements'],
     customization: ['Module combination, colors, logo, and branded water-play details', 'Size, access, slide, pool, and connection configuration', 'Anchoring, accessories, packing, and operational requirements'],
     operationNote: 'Water depth, anchoring, access, supervision, water conditions, and local operating requirements must be confirmed for every installation.', quoteItems: ['Water area, depth, and site photos or plan', 'Expected capacity, operating season, and anchoring conditions', 'Module requirements, destination, and target delivery date'],
+  },
+  'Inflatable Water Slide': {
+    productType: 'commercial inflatable water slide', primaryBuyer: 'water parks, resorts, pool venues, party rental fleets, and seasonal recreation operators',
+    purpose: 'It creates a visible wet-use attraction that combines sliding, splash play, and repeat guest activity around a managed water site.',
+    applications: [{ title: 'Resorts and water parks', text: 'Add a high-visibility water attraction planned around guest capacity, water depth, anchoring, and queue flow.' }, { title: 'Party rental fleets', text: 'Offer a summer water-slide package with practical setup, drying, transport, storage, and repair planning.' }, { title: 'Pool and event venues', text: 'Coordinate landing, drainage, supervision, access, and themed artwork for a temporary or permanent water program.' }],
+    planningPoints: ['Water supply, depth, drainage, landing, and splash-pool conditions', 'Height clearance, footprint, access route, queue, anchoring, and supervision', 'Target age group, throughput, seasonal schedule, and local venue requirements'],
+    customization: ['Slide height, lane count, pool, landing, and water-flow layout', 'Theme, colors, characters, printed artwork, and logo placement', 'Anchoring, access, queue, pump or blower, repair kit, carry bag, and packing'],
+    operationNote: 'Confirm wet-use conditions, water flow, drainage, anchoring, supervision, cleaning, drying, and local operating procedures before use.', quoteItems: ['Water-area plan, depth, supply, and drainage details', 'Preferred height, lane count, landing or pool format, and theme', 'Quantity, destination, operating season, and target delivery date'],
   },
 };
 
