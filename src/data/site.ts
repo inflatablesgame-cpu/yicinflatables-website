@@ -579,40 +579,54 @@ export function productBatch(product: Product) {
   return Math.floor(Math.max(0, position) / 10) % 3;
 }
 
-const categoryKeywordVariants: Record<string, string[]> = {
-  'Advertising Inflatable': ['custom branded inflatable', 'promotional inflatable', 'inflatable advertising display', 'commercial event display inflatable', 'branded inflatable display', 'inflatable display for events', 'custom logo inflatable'],
-  'Bounce House': ['commercial bounce house', 'bouncy castle', 'jumping castle', 'commercial bouncy castle', 'bounce house for sale', 'bounce house rental', 'party rental bounce house'],
-  'Bounce House Combo': ['bounce house combo', 'commercial bounce house combo', 'bouncy castle combo', 'bounce house with slide', 'combo bounce house for sale', 'bounce house combo rental', 'inflatable slide combo'],
-  'Bumper Ball': ['commercial bumper balls', 'inflatable bumper ball', 'bubble soccer balls', 'bumper ball rental', 'bumper balls for sale', 'human bubble ball', 'zorb ball attraction'],
-  'Inflatable Games': ['commercial inflatable games', 'interactive inflatable game', 'inflatable carnival games', 'inflatable sports game', 'inflatable game rental', 'inflatable game for sale', 'event inflatable game'],
-  'Inflatable Mechanical Games': ['commercial mechanical game', 'mechanical bull rental', 'inflatable wipeout game', 'mechanical ride rental', 'operator-led inflatable attraction', 'commercial mechanical attraction'],
-  'Inflatable Obstacle Course': ['commercial inflatable obstacle course', 'obstacle course rental', 'obstacle course for sale', 'inflatable fun run', 'ninja warrior inflatable', 'commercial obstacle course equipment', 'inflatable race course'],
-  'Inflatable Slide': ['commercial inflatable slide', 'inflatable slide rental', 'inflatable slide for sale', 'dry inflatable slide', 'commercial water slide', 'party inflatable slide', 'themed inflatable slide'],
-  'Inflatable Tent': ['commercial inflatable tent', 'branded inflatable tent', 'event inflatable tent', 'inflatable dome tent', 'exhibition inflatable tent', 'inflatable tent for sale', 'inflatable event shelter'],
-  'Inflatable Theme Park': ['commercial inflatable theme park', 'inflatable playground', 'indoor inflatable park', 'adventure inflatable park', 'inflatable amusement park', 'commercial inflatable park', 'themed inflatable playground'],
-  'Inflatable Water Park': ['commercial inflatable water park', 'floating water park', 'inflatable water playground', 'water obstacle course', 'commercial water park inflatables', 'floating inflatable obstacle course', 'water park equipment'],
-  'Inflatable Water Slide': ['commercial inflatable water slide', 'inflatable water slide rental', 'inflatable water slide for sale', 'commercial water slide', 'water slide with pool', 'dual lane inflatable water slide', 'themed inflatable water slide', 'water slide manufacturer'],
-};
-
 export function productKeywordVariants(product: Product) {
   const name = productDisplayTitle(product);
   const lowerName = name.toLowerCase();
-  const variants = [...(categoryKeywordVariants[product.category] ?? [])];
+  const searchable = `${lowerName} ${product.sourceName.toLowerCase()}`;
+  const variants: string[] = [];
+  const add = (...values: string[]) => values.forEach((value) => {
+    const normalized = value.replace(/\s+/g, ' ').trim();
+    // Do not publish awkward phrases created by joining a theme/color that is
+    // already present in the product name (for example, "dolphin inflatable
+    // dolphin water slide"). Also keep adjacent duplicate words out of the
+    // keyword set so every variant reads like a real buyer search.
+    const words = normalized.toLowerCase().split(' ');
+    const hasAdjacentDuplicate = words.some((word, index) => index > 0 && word === words[index - 1]);
+    if (normalized.length > 2 && !hasAdjacentDuplicate && !variants.includes(normalized)) variants.push(normalized);
+  });
   const color = lowerName.match(/\b(white|pink|blue|red|yellow|black|purple|green|rainbow|pastel)\b/)?.[1];
-  if (color && /bounce|bouncer|castle|jumping/.test(lowerName)) {
-    variants.unshift(`${color} bounce house`, `${color} bouncy castle`, `${color} jumping castle`, `${color} bounce house for sale`, `${color} bounce house rental`);
+  const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
+  const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
+
+  // Build phrases from the actual product entity and visible features. The
+  // category list is deliberately not copied into every product page.
+  add(base, `${base} for sale`, `${base} rental`, `custom ${base}`);
+  if (/bounce house|bouncer|bouncy castle|jumping castle|jump house/.test(searchable)) {
+    add(`${color ? `${color} ` : ''}bounce house`, `${color ? `${color} ` : ''}bouncy castle`, `${color ? `${color} ` : ''}jumping castle`, `${base} for party rental`);
   }
-  if (/wedding/.test(lowerName)) variants.unshift('wedding bouncy house', 'wedding bounce house rental', 'white wedding bounce house');
-  if (/tiki bar/.test(lowerName)) variants.unshift('inflatable tiki bar for sale', 'custom inflatable tiki bar', 'inflatable bar for events');
-  if (/food truck/.test(lowerName)) variants.unshift('inflatable food truck', 'inflatable food truck display', 'food truck inflatable for events');
-  if (/pool bar/.test(lowerName)) variants.unshift('inflatable pool bar', 'floating inflatable bar', 'custom pool bar inflatable');
-  if (/panda/.test(lowerName)) variants.unshift('panda inflatable attraction', 'panda slide rental', 'themed panda inflatable');
-  if (/pirate/.test(lowerName)) variants.unshift('pirate inflatable attraction', 'pirate slide rental', 'pirate themed inflatable');
-  if (/dinosaur/.test(lowerName)) variants.unshift('dinosaur inflatable attraction', 'dinosaur bounce house rental', 'dinosaur themed inflatable');
-  if (/water/.test(lowerName) && /slide|park|pool/.test(lowerName)) variants.unshift('inflatable water slide rental', 'commercial water attraction', 'water park inflatable equipment');
-  const titleIntent = [`${lowerName} for sale`, `${lowerName} rental`, `custom ${lowerName}`];
+  if (/water slide|pool slide|slip and slide/.test(searchable)) {
+    add(`commercial ${base}`, 'inflatable water slide supplier', `${base} for water parks`, `${base} for resorts`);
+    if (/dual lane|double|triple|multi-lane/.test(searchable)) add('multi lane inflatable water slide', 'racing water slide', 'dual lane water slide rental');
+    if (/pool|splash/.test(searchable)) add('inflatable water slide with pool', 'water slide splash pool', 'pool slide inflatable');
+    if (/dry and wet|wet and dry/.test(searchable)) add('dry and wet inflatable slide', 'dual use inflatable slide');
+  }
+  if (/obstacle course|fun run|ninja/.test(searchable)) add('inflatable obstacle course rental', 'commercial inflatable fun run', 'ninja obstacle course inflatable');
+  if (/bumper|bubble soccer|zorb/.test(searchable)) add('bumper ball rental', 'bubble soccer equipment', 'commercial bubble ball supplier');
+  if (/tiki bar|pool bar|bar/.test(searchable)) add('inflatable bar for events', 'custom inflatable bar', `${base} for brand activations`);
+  if (/food truck/.test(searchable)) add('inflatable food truck display', 'food truck inflatable for events', 'branded inflatable food truck');
+  if (/tent|marquee|shelter|canopy|dome/.test(searchable)) add('commercial event tent inflatable', 'branded inflatable shelter', `${base} for exhibitions`);
+  if (/game|dart|foosball|batting|boxing|carnival|whack|billiard/.test(searchable)) add('commercial inflatable game', `${base} for events`, 'interactive inflatable game rental');
+  if (/mechanical bull|wipeout|sweeper|meltdown/.test(searchable)) add('mechanical ride rental', 'operator led inflatable attraction', 'commercial mechanical game supplier');
+  if (/water park|floating island|paddle boat/.test(searchable)) add('commercial water park equipment', 'floating inflatable attraction', `${base} for resorts`);
+  if (theme) {
+    add(`${theme} themed inflatable`, `${theme} inflatable attraction`);
+    if (!new RegExp(`\\b${theme}\\b`).test(base)) add(`${theme} ${base}`);
+  }
+  if (color && !new RegExp(`\\b${color}\\b`).test(base)) add(`${color} ${base}`);
+  if (/wedding/.test(searchable)) add('wedding inflatable rental', 'white wedding bounce house');
+  if (/wholesale|supplier|manufacturer/.test(searchable) || product.category.includes('Water')) add(`wholesale ${base}`, `${base} manufacturer`, `${base} OEM supplier`);
   const intentKeyword = productIntentKeyword(product);
-  return [...new Set([intentKeyword, ...variants, ...titleIntent, lowerName])].filter((value) => value.length > 2);
+  return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
 }
 
 export function productDisplayTitle(product: Product) {
@@ -777,8 +791,21 @@ export function productDetailContent(product: Product): DetailContent {
 export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
-  const core = [name, `${name} for ${content.primaryBuyer}`, ...productKeywordVariants(product), `${product.category} manufacturer`, `commercial ${product.category.toLowerCase()}`, ...content.applications.map((item) => item.title), content.primaryBuyer, 'custom inflatable manufacturer', 'OEM inflatable', 'ODM inflatable', 'YIC Inflatable Sports'];
-  return [...new Set(core)].join(', ');
+  const primaryBuyer = productTargetBuyers(product)[0] || 'commercial buyers';
+  const core = [
+    name,
+    `${name} for ${primaryBuyer}`,
+    ...productKeywordVariants(product),
+    `${product.category} manufacturer`,
+    `commercial ${product.category.toLowerCase()}`,
+    ...content.applications.map((item) => item.title),
+    primaryBuyer,
+    'custom inflatable manufacturer',
+    'OEM inflatable',
+    'ODM inflatable',
+    'YIC Inflatable Sports',
+  ];
+  return [...new Set(core)].filter((value) => value && !/\b(\w+)\s+\1\b/i.test(value)).join(', ');
 }
 
 export function productCategoryTemplate(product: Product) {
