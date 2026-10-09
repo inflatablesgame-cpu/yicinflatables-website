@@ -27,6 +27,18 @@ async function writeWebp(sourceUrl, outputUrl, width, quality = 74) {
     .toFile(outputPath);
 }
 
+// Full-width content images should keep their original composition. Unlike
+// catalog thumbnails, these are resized without trimming or forced cropping.
+async function writeContentWebp(sourceUrl, outputUrl, width, quality = 70) {
+  const outputPath = toFilePath(outputUrl);
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  await sharp(toFilePath(sourceUrl))
+    .rotate()
+    .resize({ width, withoutEnlargement: true })
+    .webp({ quality, effort: 5 })
+    .toFile(outputPath);
+}
+
 const productSources = new Set(
   catalog.products.map((product) => /bubble tent with balloons/i.test(product.sourceName)
     ? product.images[0].replace(bubbleTentSource, bubbleTentSafe)
@@ -57,4 +69,25 @@ for (const [sourceUrl, outputUrl, width, quality] of aboutImages) {
   await writeWebp(sourceUrl, outputUrl, width, quality);
 }
 
-console.log(`Created ${productCount} product thumbnails and ${aboutImages.length} optimized About assets.`);
+const homeImages = [
+  ['/assets/%E5%B7%A5%E5%8E%82%E5%86%85%E9%83%A8%E5%B1%95%E7%A4%BA.webp', '/assets/optimized/home/factory-construction.webp', 980, 70],
+  ['/assets/commercial-inflatable-manufacturer-workshop-interior.webp', '/assets/optimized/home/workshop-interior.webp', 1000, 70],
+  ['/assets/commercial-inflatable-manufacturer-clients-exhibition-2026.webp', '/assets/optimized/home/exhibition.webp', 1100, 70],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-design-process.webp', '/assets/optimized/home/process-design.webp', 520, 68],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-material-cutting.webp', '/assets/optimized/home/process-material-cutting.webp', 520, 68],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-sewing-production.webp', '/assets/optimized/home/process-sewing.webp', 520, 68],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-heat-sealing-splicing.webp', '/assets/optimized/home/process-heat-sealing.webp', 520, 68],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-inflation-testing.webp', '/assets/optimized/home/process-inflation-test.webp', 520, 68],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-inspection-packaging.webp', '/assets/optimized/home/process-final-inspection.webp', 520, 68],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-packing-shipping.webp', '/assets/optimized/home/process-export-packing.webp', 520, 68],
+  ['/assets/%E8%AF%81%E4%B9%A6/commercial-inflatable-manufacturer-UL-certified.webp', '/assets/optimized/home/certificate-ul.webp', 400, 68],
+  ['/assets/%E8%AF%81%E4%B9%A6/commercial-inflatable-manufacturer-ROHS-reach-compliance.webp', '/assets/optimized/home/certificate-rohs-reach.webp', 400, 68],
+  ['/assets/%E8%AF%81%E4%B9%A6/commercial-inflatable-manufacturer-ISO25649-certificate.webp', '/assets/optimized/home/certificate-iso25649.webp', 400, 68],
+  ['/assets/%E8%AF%81%E4%B9%A6/commercial-inflatable-manufacturer-EN14960-certificate.webp', '/assets/optimized/home/certificate-en14960.webp', 400, 68],
+];
+
+for (const [sourceUrl, outputUrl, width, quality] of homeImages) {
+  await writeContentWebp(sourceUrl, outputUrl, width, quality);
+}
+
+console.log(`Created ${productCount} product thumbnails, ${aboutImages.length} optimized About assets, and ${homeImages.length} optimized Home assets.`);
