@@ -7,10 +7,11 @@ interface Props {
 
 const { category } = Astro.props;
 const cardImage = productCardImage({ images: [category.heroImage] });
+const mobileCardImage = `/assets/optimized/category-cards/${category.slug}.webp`;
 ---
 
 <a class="category-card" href={`/products/${category.slug}/`} aria-label={`Browse ${category.name}, ${category.count} products`}>
-  <img src={cardImage} alt={category.name} loading="lazy" decoding="async" width="720" height="540" />
+  <picture><source media="(max-width: 700px)" srcset={mobileCardImage} type="image/webp" /><img src={cardImage} alt={category.name} loading="lazy" decoding="async" width="720" height="540" sizes="(max-width: 700px) 50vw, 25vw" /></picture>
   <span class="category-card-overlay"></span>
   <span class="category-card-content"><strong>{category.name}</strong><small>Commercial · OEM/ODM · View category →</small></span>
 </a>

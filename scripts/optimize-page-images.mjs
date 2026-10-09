@@ -39,6 +39,16 @@ async function writeContentWebp(sourceUrl, outputUrl, width, quality = 70) {
     .toFile(outputPath);
 }
 
+async function writeHeroMobile(sourceUrl, outputUrl) {
+  const outputPath = toFilePath(outputUrl);
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  await sharp(toFilePath(sourceUrl))
+    .rotate()
+    .resize({ width: 780, height: 920, fit: 'cover', position: 'centre' })
+    .webp({ quality: 65, effort: 5 })
+    .toFile(outputPath);
+}
+
 const productSources = new Set(
   catalog.products.map((product) => /bubble tent with balloons/i.test(product.sourceName)
     ? product.images[0].replace(bubbleTentSource, bubbleTentSafe)
@@ -49,6 +59,12 @@ let productCount = 0;
 for (const sourceUrl of productSources) {
   await writeWebp(sourceUrl, thumbUrl(sourceUrl), 720, 72);
   productCount += 1;
+}
+
+let categoryCardCount = 0;
+for (const category of catalog.categories) {
+  await writeWebp(category.heroImage, `/assets/optimized/category-cards/${category.slug}.webp`, 480, 64);
+  categoryCardCount += 1;
 }
 
 const aboutImages = [
@@ -90,4 +106,6 @@ for (const [sourceUrl, outputUrl, width, quality] of homeImages) {
   await writeContentWebp(sourceUrl, outputUrl, width, quality);
 }
 
-console.log(`Created ${productCount} product thumbnails, ${aboutImages.length} optimized About assets, and ${homeImages.length} optimized Home assets.`);
+await writeHeroMobile('/assets/commercial-inflatable-manufacturer-hero.webp', '/assets/optimized/home/hero-mobile.webp');
+
+console.log(`Created ${productCount} product thumbnails, ${categoryCardCount} mobile category-card assets, ${aboutImages.length} optimized About assets, ${homeImages.length} optimized Home assets, and a mobile Hero image.`);
