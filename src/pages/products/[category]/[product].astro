@@ -41,6 +41,8 @@ const schema = {
     { '@type': 'PropertyValue', name: 'Customization', value: 'OEM / ODM artwork, colors, layout, and dimensions available' },
     { '@type': 'PropertyValue', name: 'Warranty', value: '3 years' },
     { '@type': 'PropertyValue', name: 'Accessories', value: accessoryLabel },
+    { '@type': 'PropertyValue', name: 'Lead time', value: '7-10 Work Days' },
+    { '@type': 'PropertyValue', name: 'Compliance', value: 'EN14960 / ASTM / CE / NFPA 701' },
     { '@type': 'PropertyValue', name: 'Applications', value: detail.applications.map((item) => item.title).join(', ') },
     { '@type': 'PropertyValue', name: 'Target buyers', value: detail.primaryBuyer },
     { '@type': 'PropertyValue', name: 'Production', value: 'Factory direct production with artwork approval, inspection, export packing, and global delivery coordination' },
@@ -73,7 +75,7 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
         <p class="eyebrow">{product.category} · Custom OEM/ODM manufacturer · Factory direct</p>
         <h1>{displayTitle}</h1>
         <p>{description}</p>
-        <div class="detail-meta"><div><span>Material</span><strong>{product.material}</strong></div><div><span>Best for</span><strong>{detail.primaryBuyer}</strong></div><div><span>Reference size</span><strong>{product.dimensions || 'Custom dimensions available'}</strong></div><div><span>Customization</span><strong>OEM / ODM supported</strong></div><div><span>Warranty</span><strong>3 years</strong></div><div><span>Accessories</span><strong>{accessoryLabel}</strong></div></div>
+        <div class="detail-meta"><div><span>Material</span><strong>{product.material}</strong></div><div><span>Best for</span><strong>{detail.primaryBuyer}</strong></div><div><span>Reference size</span><strong>{product.dimensions || 'Custom dimensions available'}</strong></div><div><span>Customization</span><strong>OEM / ODM supported</strong></div><div><span>Warranty</span><strong>3 years</strong></div><div><span>Accessories</span><strong>{accessoryLabel}</strong></div><div><span>Lead Time</span><strong>7-10 Work Days</strong></div><div><span>Compliance</span><strong>EN14960 / ASTM / CE / NFPA 701</strong></div></div>
         <div class="detail-actions"><a class="button" href={`/contact/?product=${encodeURIComponent(displayTitle)}&source=${encodeURIComponent(pageUrl)}`}>Request a quote</a><a class="button button-secondary" href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(`Hello YIC, I would like a quotation for ${displayTitle}. Product URL: ${pageUrl}. Please confirm specifications, customization options, lead time, and shipping details.`)}`} target="_blank" rel="noopener">WhatsApp us</a></div>
         <div class="detail-trust"><div><strong>Factory direct</strong><span>From specification to export packing</span></div><div><strong>Custom project</strong><span>Artwork, layout, colors, and size options</span></div><div><strong>Buyer focused</strong><span>Built around your market and venue</span></div></div>
       </div>
