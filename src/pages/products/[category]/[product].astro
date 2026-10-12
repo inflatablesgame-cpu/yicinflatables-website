@@ -63,7 +63,10 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
   <article class:list={['product-detail-page', `product-template-${detail.template}`, `category-template-${categoryTemplate}`, `batch-template-${batchTemplate}`]}>
     <section class="detail-wrap"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / <a href={`/products/${product.categorySlug}/`}>{product.category}</a> / {displayTitle}</div><div class="detail-grid">
       <div class="detail-gallery" data-gallery>
-        <img class="detail-main-image" data-main-image src={product.images[0]} alt={imageAlt} title={imageAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
+        <div class="detail-main-frame">
+          <img class="detail-main-image" data-main-image src={product.images[0]} alt={imageAlt} title={imageAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
+          <span class="detail-certification-badge" aria-label="EN14960, ASTM, and CE information">EN14960 / ASTM / CE</span>
+        </div>
         <div class="detail-thumbs">{product.images.map((image, index) => <button class:list:active={index === 0} type="button" data-image={image} aria-label={`View ${displayTitle} photo ${index + 1}`}><img src={image} alt={`${displayTitle} product photo ${index + 1}`} title={`${displayTitle} product photo ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width="240" height="180" /></button>)}</div>
       </div>
       <div class="detail-copy">

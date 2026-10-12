@@ -377,7 +377,9 @@ h3 { font-size: 1.25rem; }
 .detail-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 68px; align-items: start; }
 .product-detail-page .detail-gallery { order: 0; }
 .detail-gallery { position: sticky; top: 105px; width: 100%; min-width: 0; overflow: visible; }
+.detail-main-frame { position: relative; width: 100%; overflow: hidden; }
 .product-detail-page .detail-main-image { display: block; width: 100%; max-width: 100%; height: auto; min-width: 0; border-radius: 8px; object-fit: contain; object-position: center; background: var(--surface); }
+.detail-certification-badge { position: absolute; z-index: 1; top: 16px; left: 16px; color: #f13b42; font-size: 1.05rem; font-weight: 800; line-height: 1.2; letter-spacing: .01em; white-space: nowrap; text-shadow: 0 1px 2px rgba(255, 255, 255, .85); }
 .product-detail-page .detail-copy { min-width: 0; overflow-wrap: anywhere; }
 .detail-thumbs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin-top: 10px; }
 .detail-thumbs button { aspect-ratio: 4 / 3; padding: 0; border: 2px solid transparent; background: var(--surface); cursor: pointer; overflow: hidden; }
@@ -766,6 +768,7 @@ h3 { font-size: 1.25rem; }
 @media (max-width: 900px) { .category-option-grid, .category-buyer-grid, .category-guide-grid { grid-template-columns: repeat(2, 1fr); } .category-oem-grid { grid-template-columns: 1fr; gap: 42px; } .category-customization { grid-template-columns: 1fr; gap: 20px; } .related-category-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 900px) { .detail-application-grid { grid-template-columns: 1fr 1fr; } .detail-project-flow { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 700px) { .hub-category-grid, .product-trust-grid { grid-template-columns: repeat(2, 1fr); } .hub-category-card, .hub-category-card img { min-height: 180px; height: 180px; } .product-hub-intro, .product-category-section, .business-application-section { padding-top: 64px; padding-bottom: 64px; } }
+@media (max-width: 700px) { .detail-certification-badge { top: 10px; left: 10px; font-size: .78rem; } }
 @media (max-width: 700px) { .oem-detail-grid { grid-template-columns: 1fr; gap: 16px; } }
 @media (max-width: 700px) { .category-hero .hero-actions { align-items: stretch; flex-direction: column; } .category-option-grid, .category-buyer-grid, .category-guide-grid, .related-category-grid, .category-order-flow, .category-customization ul { grid-template-columns: 1fr; } .category-option-grid article, .category-buyer-grid article, .category-guide-grid article { min-height: 0; } }
 @media (max-width: 700px) { .detail-application-grid, .detail-custom-grid { grid-template-columns: 1fr; } .detail-note { grid-template-columns: 1fr; gap: 8px; } .detail-project-flow { grid-template-columns: 1fr 1fr; } }
