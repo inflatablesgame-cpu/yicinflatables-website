@@ -499,10 +499,12 @@ const landingKeywordSets: Record<string, string[]> = {
 
 const climbingKeywordSets: Record<string, string[]> = {
   'blow-up-rock-climbing-wall': ['blow up rock climbing wall', 'blow up rock wall'],
-  'inflatable-rock-climbing-wall-for-sale': ['inflatable rock climbing wall for sale', 'inflatable rock wall'],
-  'inflatable-climbing-wall': ['inflatable climbing wall', 'inflatable climbing tower'],
+  'inflatable-rock-climbing-wall-for-sale': ['inflatable rock climbing'],
+  'commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale': ['inflatable rock climbing wall for sale'],
+  'commercial-rock-climbing-wall-for-sale': ['inflatable rock wall'],
+  'inflatable-climbing-wall': ['inflatable climbing wall'],
   'inflatable-climbing-wall-and-slide': ['inflatable climbing wall and slide', 'rock climbing bounce house'],
-  'rock-climbing-wall-inflatable': ['rock climbing wall inflatable', 'inflatable rock climbing'],
+  'rock-climbing-wall-inflatable': ['rock climbing wall inflatable'],
   'bounce-house-climbing-wall': ['bounce house climbing wall', 'bouncy castle climbing wall'],
   'inflatable-rock-climbing-wall': ['inflatable rock climbing wall', 'inflatable rock climbing wall for water'],
   'inflatable-climbing-tower': ['inflatable climbing tower', 'blow up climbing wall'],
