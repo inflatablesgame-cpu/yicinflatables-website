@@ -56,8 +56,8 @@ function sortImages(left, right) {
 
 function materialFor(categoryName, productName) {
   if (/bumper ball/i.test(categoryName)) return 'Commercial TPU';
-  const thickness = productName.match(/(0\.\d+)\s*mm/i)?.[1];
-  if (thickness) return `${thickness}mm commercial PVC`; 
+  const thicknessMatch = productName.match(/(0)\.\s*(\d+)\s*mm/i);
+  if (thicknessMatch) return `${thicknessMatch[1]}.${thicknessMatch[2]}mm commercial PVC`;
   return 'Commercial grade 0.55mm (1000D, 18 OZ) PVC';
 }
 

@@ -519,6 +519,14 @@ const foamKeywordSets: Record<string, string[]> = {
   'inflatable-foam-pit-rental': ['backyard foam pit', 'foam machine pit', 'foam pit bounce house', 'soap foam pit'],
 };
 
+const volleyballKeywordSets: Record<string, string[]> = {
+  'inflatable-water-volleyball-court': ['inflatable water volleyball court', 'blow up water volleyball court', 'giant inflatable water volleyball court', 'water volleyball inflatable court'],
+  'inflatable-volleyball-court-for-sale': ['inflatable volleyball court for sale', 'commercial inflatable volleyball pool', 'giant inflatable pool volleyball court', 'inflatable pool volleyball court'],
+  'inflatable-volleyball-court': ['inflatable volleyball court', 'blow up volleyball court', 'commercial inflatable volleyball court', 'inflatable outdoor volleyball court'],
+  'water-inflatable-volleyball-court': ['water inflatable volleyball court', 'inflatable volleyball water court', 'commercial inflatable volleyball pool court', 'blow up volleyball pool court'],
+  'inflatable-volleyball-field': ['inflatable volleyball field', 'big inflatable volleyball court', 'giant inflatable volleyball court', 'inflatable beach volleyball court'],
+};
+
 function landingKeywordSet(product: Product) {
   return landingKeywordSets[product.productSlug] ?? [];
 }
@@ -531,10 +539,15 @@ function foamKeywordSet(product: Product) {
   return foamKeywordSets[product.productSlug] ?? [];
 }
 
+function volleyballKeywordSet(product: Product) {
+  return volleyballKeywordSets[product.productSlug] ?? [];
+}
+
 function productSearchTerms(product: Product) {
   if (landingKeywordSet(product).length) return landingKeywordSet(product);
   if (climbingKeywordSet(product).length) return climbingKeywordSet(product);
-  return foamKeywordSet(product);
+  if (foamKeywordSet(product).length) return foamKeywordSet(product);
+  return volleyballKeywordSet(product);
 }
 
 function truncateMeta(value: string, maxLength: number, punctuation = '.') {
@@ -610,6 +623,15 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /volleyball/.test(searchable)) {
+    const isWater = /water|pool/.test(searchable);
+    const isField = /field/.test(searchable);
+    return isWater
+      ? ['Floating court and boundary layout for pool or water venues', 'Net, player-zone, and spectator-flow planning', 'Commercial PVC options with custom colors and branding', 'Anchoring, cleaning, drying, storage, and seasonal-use coordination']
+      : isField
+        ? ['Portable volleyball field layout for team and event programs', 'Court boundary, net, and player-flow planning', 'Custom dimensions, team colors, logos, and sponsor artwork', 'Packing, anchoring, repair-kit, and rental-fleet coordination']
+        : ['Commercial court layout for team play, tournaments, and rentals', 'Net, boundary, access, and spectator-zone planning', 'Custom dimensions, colors, logos, and event artwork', 'Commercial packing, anchoring, cleaning, and storage support'];
+  }
   if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
     return [
       'Controlled landing zone for BMX, FMX, or freestyle training',
@@ -679,6 +701,11 @@ export function productKeywordVariants(product: Product) {
   if (/foam|bubble/.test(searchable)) {
     add(...foamKeywordSet(product));
     add(`${base} for events`, `${base} for rental`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+  if (/volleyball/.test(searchable)) {
+    add(...volleyballKeywordSet(product));
+    add(`${base} for rental`, `custom ${base}`);
     return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
   }
 
@@ -898,6 +925,52 @@ export function productDetailContent(product: Product): DetailContent {
       ],
     };
   }
+  if (product.category === 'Inflatable Games' && /volleyball/.test(searchable)) {
+    const isField = /field/.test(searchable);
+    const isWater = /water|pool/.test(searchable);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: isField ? 'inflatable volleyball field and court system' : isWater ? 'inflatable water volleyball court and pool-play system' : 'commercial inflatable volleyball court',
+      primaryBuyer: isWater ? 'water parks, resorts, pool venues, party rental businesses, and event operators' : isField ? 'sports clubs, schools, event operators, party rental businesses, and distributors' : 'sports clubs, family entertainment centers, resorts, party rental businesses, and event operators',
+      purpose: isField ? 'It creates a defined, portable volleyball field for team play, tournaments, school programs, and branded sports events.' : isWater ? 'It creates a buoyant volleyball play area for pool programs, resorts, water parks, and supervised summer events.' : 'It gives venues a visible, configurable volleyball court for team activities, tournaments, rentals, and repeat event programming.',
+      applications: isField ? [
+        { title: 'Sports clubs and schools', text: 'Create a clear court boundary for training, team play, school activity days, and supervised competition.' },
+        { title: 'Events and brand activations', text: 'Use the portable field as a branded activity zone with team colors, sponsor graphics, and controlled player flow.' },
+        { title: 'Rental and distributor programs', text: 'Offer an easy-to-explain court package for tournaments, festivals, corporate events, and seasonal rental programs.' },
+      ] : isWater ? [
+        { title: 'Resorts and pool venues', text: 'Add a water-play court that encourages group participation while fitting the confirmed pool or water-area plan.' },
+        { title: 'Water parks and seasonal programs', text: 'Build a visible summer attraction around water depth, anchoring, net placement, supervision, and guest throughput.' },
+        { title: 'Party rentals and events', text: 'Package pool volleyball for birthdays, camps, team days, and temporary activations with practical setup and storage planning.' },
+      ] : [
+        { title: 'Sports clubs and team events', text: 'Provide a defined play surface for training sessions, tournaments, team building, and supervised group activity.' },
+        { title: 'FECs and party rentals', text: 'Add a repeat-play sports station to indoor or outdoor entertainment packages with clear entry, player, and spectator zones.' },
+        { title: 'Resorts and event venues', text: 'Plan a branded court around guest flow, net position, access, surface, and the operating schedule.' },
+      ],
+      planningPoints: isWater ? [
+        'Pool or water-area footprint, water depth, surface conditions, buoyancy, access, and anchoring method',
+        'Net height, court boundary, player capacity, entry points, spectator separation, and supervision plan',
+        'Inflation, cleaning, drying, storage, seasonal removal, and local water-venue operating requirements',
+      ] : [
+        'Available court footprint, playing surface, net height, clear boundary, access route, and spectator flow',
+        'Player age group, court capacity, queue or rotation plan, supervision, anchoring, and indoor or outdoor use',
+        'Setup crew, inflation and deflation routine, cleaning, storage, transport, and event schedule',
+      ],
+      customization: [
+        'Court length and width, boundary height, net position and height, entry points, and player-zone layout',
+        'Team colors, court graphics, sponsor logos, printed artwork, branding, and themed visual treatment',
+        'Water or ground anchoring, accessories, carry bag, repair kit, blower package, packing, and custom dimensions',
+      ],
+      operationNote: isWater ? 'Water depth, anchoring, net tension, player separation, cleaning, drying, supervision, and local pool or water-venue rules must be confirmed before operation.' : 'Court stability, anchoring, net placement, player separation, inflation checks, cleaning, supervision, and local venue rules should be confirmed before use.',
+      quoteItems: [
+        'Venue type, playing surface or water area, footprint, player capacity, and intended operating schedule',
+        'Court dimensions, net requirements, boundary colors, logos or artwork, anchoring, and accessory needs',
+        'Quantity, destination, target delivery date, packing preferences, and any tournament or rental requirements',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     const hasSlide = /slide/.test(searchable);
     const isBounce = /bounce|bouncy|castle/.test(searchable);
@@ -1038,6 +1111,14 @@ export function productCardDescription(product: Product) {
     const feature = /bubble/.test(searchable) ? 'bubble-foam play' : 'foam-party play';
     return `${name} creates a contained ${feature} attraction for party rental packages, FEC activity zones, resorts, and supervised events. ${reference}`;
   }
+  if (product.category === 'Inflatable Games' && /volleyball/.test(searchable)) {
+    const feature = /field/.test(searchable)
+      ? 'a portable court boundary for team play and sports events'
+      : /water|pool/.test(searchable)
+        ? 'a buoyant pool or water-volleyball play zone for resorts and seasonal events'
+        : 'a commercial court layout for tournaments, team activities, and rental programs';
+    return `${name} creates ${feature} with planned net, player, and spectator zones. ${reference}`;
+  }
   const detectedFeatures: string[] = [];
   const addFeature = (pattern: RegExp, label: string) => { if (pattern.test(searchable) && !detectedFeatures.includes(label)) detectedFeatures.push(label); };
   addFeature(/double slide|dual lane|double lane/, 'dual-lane slide');
@@ -1142,6 +1223,14 @@ export function productCardLabel(product: Product) {
   if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
     return `${material} · ${/bubble/.test(searchable) ? 'Bubble foam play' : 'Foam party layout'} · Event and rental use`;
   }
+  if (product.category === 'Inflatable Games' && /volleyball/.test(searchable)) {
+    const label = /field/.test(searchable)
+      ? 'Outdoor court layout · Team and event use'
+      : /water|pool/.test(searchable)
+        ? 'Water volleyball format · Pool and resort use'
+        : 'Court and net planning · Sports and rental use';
+    return `${material} · ${label}`;
+  }
   const labels = categoryLabels[product.category] ?? ['Custom OEM/ODM'];
   return `${material} · ${labels[cardVariantIndex(product, labels.length)]}`;
 }
@@ -1188,6 +1277,20 @@ export function productFaqs(product: Product) {
       { question: `Can YIC customize the dimensions and printed artwork?`, answer: `Yes. YIC can review the landing footprint, air chambers, ramp connection, colors, sponsor graphics, logos, blower package, anchor points, carry bag, repair kit, and custom dimensions.` },
       { question: `What safety and operating information should be confirmed?`, answer: `${content.operationNote} Confirm rider rules, supervision, inflation pressure or appearance checks, anchoring, spectator separation, clear zones, cleaning, and local venue requirements before use.` },
       { question: `What should I include in an airbag landing quotation request?`, answer: `Send the sport and discipline, jump profile, rider level, required landing dimensions, ramp details, artwork, quantity, destination, target date, blower preferences, and storage or transport requirements. YIC can then confirm the approved specification and accessory list.` },
+    ];
+  }
+  if (product.category === 'Inflatable Games' && /volleyball/.test(searchable)) {
+    const terms = volleyballKeywordSet(product);
+    const isField = /field/.test(searchable);
+    const isWater = /water|pool/.test(searchable);
+    const format = isField ? 'inflatable volleyball field' : isWater ? 'water volleyball court' : 'commercial inflatable volleyball court';
+    return [
+      { question: `What is the ${name} ${format} designed for?`, answer: `${isField ? 'This portable court system is designed for team training, tournaments, school programs, rentals, and branded sports events.' : isWater ? 'This floating court format is designed for supervised pool volleyball, resort activities, water-park programming, and seasonal events.' : 'This commercial court format is designed for team activities, tournaments, FEC programs, sports clubs, and supervised rental events.'} ${dimensions}` },
+      { question: `How should I plan the surface, water area, and court footprint?`, answer: `${isWater ? 'Confirm the pool or water-area dimensions, water depth, buoyancy, access, anchoring, drainage or cleaning routine, and spectator separation.' : 'Confirm the usable ground or floor area, playing surface, court clearance, access route, anchoring, net position, and spectator flow before production.'} Include the target player count and operating schedule in the site plan.` },
+      { question: `Where should the net, boundary, and player zones be placed?`, answer: `YIC can review net height, court length and width, boundary visibility, entry points, rotation or queue flow, player separation, operator position, and any team or spectator zones so the layout fits your venue.` },
+      { question: `Can the volleyball court size, colors, logos, and branding be customized?`, answer: `Yes. Custom court dimensions, boundary height, net arrangement, team colors, printed graphics, sponsor logos, event artwork, anchoring, accessories, packing, and ${isWater ? 'pool or water-venue' : 'ground-venue'} details can be specified.` },
+      { question: `What anchoring, cleaning, storage, and supervision details matter?`, answer: `${content.operationNote} Plan inflation checks, net tension, player rules, cleaning, drying where applicable, dry storage, repair-kit access, transport, and a documented supervision routine for repeated operation.` },
+      { question: `What should I include in a volleyball court quotation request?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, ground or water-area plan, target dimensions, net requirements, player capacity, branding, quantity, destination, target date, anchoring, and storage or packing requirements.` },
     ];
   }
   const categoryQuestions: Record<string, Array<{ question: string; answer: string }>> = {
