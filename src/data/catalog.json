@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T11:46:45.899Z",
+  "generatedAt": "2026-10-17T12:07:36.622Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 67,
+      "count": 75,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -152,6 +152,8 @@
         "inflatable-games--used-commercial-carnival-games-for-sale-3",
         "inflatable-games--inflatable-pool-for-foam-party-4",
         "inflatable-games--inflatable-climbing-mountain-5",
+        "inflatable-games--blow-up-rock-climbing-wall-68",
+        "inflatable-games--inflatable-rock-climbing-wall-for-sale-69",
         "inflatable-games--commercial-inflatable-batting-cage-6",
         "inflatable-games--inflatable-volleyball-court-for-sale-7",
         "inflatable-games--inflatable-batting-tunnels-8",
@@ -212,7 +214,13 @@
         "inflatable-games--inflatable-foam-party-pit-rental-63",
         "inflatable-games--commercial-rock-climbing-wall-for-sale-64",
         "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-65",
+        "inflatable-games--inflatable-climbing-wall-70",
+        "inflatable-games--inflatable-climbing-wall-and-slide-71",
+        "inflatable-games--rock-climbing-wall-inflatable-72",
+        "inflatable-games--bounce-house-climbing-wall-73",
         "inflatable-games--fmx-airbag-landing-66",
+        "inflatable-games--inflatable-rock-climbing-wall-74",
+        "inflatable-games--inflatable-climbing-tower-75",
         "inflatable-games--inflatable-landing-ramp-67"
       ]
     },
@@ -2378,6 +2386,42 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--blow-up-rock-climbing-wall-68",
+      "productSlug": "blow-up-rock-climbing-wall",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "blow up rock climbing wall",
+      "sourceName": "10x10x7.8m         blow up rock climbing wall",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20blow%20up%20rock%20climbing%20wall/1.webp",
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20blow%20up%20rock%20climbing%20wall/2.webp",
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20blow%20up%20rock%20climbing%20wall/3.webp",
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20blow%20up%20rock%20climbing%20wall/4.webp",
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20blow%20up%20rock%20climbing%20wall/5.webp"
+      ],
+      "dimensions": "10x10x7.8m         ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-rock-climbing-wall-for-sale-69",
+      "productSlug": "inflatable-rock-climbing-wall-for-sale",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable rock climbing wall for sale",
+      "sourceName": "10x10x7.8m         inflatable rock climbing wall for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Games/10x10x7.8m%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall%20for%20sale/5.webp"
+      ],
+      "dimensions": "10x10x7.8m         ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--commercial-inflatable-batting-cage-6",
       "productSlug": "commercial-inflatable-batting-cage-commercial",
       "category": "Inflatable Games",
@@ -3458,6 +3502,78 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-climbing-wall-70",
+      "productSlug": "inflatable-climbing-wall",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable climbing wall",
+      "sourceName": "9.5x7.5x6.5m       inflatable climbing wall",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/9.5x7.5x6.5m%20%20%20%20%20%20%20inflatable%20climbing%20wall/1.webp",
+        "/assets/product/Inflatable%20Games/9.5x7.5x6.5m%20%20%20%20%20%20%20inflatable%20climbing%20wall/2.webp",
+        "/assets/product/Inflatable%20Games/9.5x7.5x6.5m%20%20%20%20%20%20%20inflatable%20climbing%20wall/3.webp",
+        "/assets/product/Inflatable%20Games/9.5x7.5x6.5m%20%20%20%20%20%20%20inflatable%20climbing%20wall/4.webp",
+        "/assets/product/Inflatable%20Games/9.5x7.5x6.5m%20%20%20%20%20%20%20inflatable%20climbing%20wall/5.webp"
+      ],
+      "dimensions": "9.5x7.5x6.5m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-climbing-wall-and-slide-71",
+      "productSlug": "inflatable-climbing-wall-and-slide",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable climbing wall and slide",
+      "sourceName": "尺寸定制            inflatable climbing wall and slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20climbing%20wall%20and%20slide/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20climbing%20wall%20and%20slide/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20climbing%20wall%20and%20slide/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20climbing%20wall%20and%20slide/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20climbing%20wall%20and%20slide/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--rock-climbing-wall-inflatable-72",
+      "productSlug": "rock-climbing-wall-inflatable",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "rock climbing wall inflatable",
+      "sourceName": "尺寸定制            rock climbing wall inflatable",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20rock%20climbing%20wall%20inflatable/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20rock%20climbing%20wall%20inflatable/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20rock%20climbing%20wall%20inflatable/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20rock%20climbing%20wall%20inflatable/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20rock%20climbing%20wall%20inflatable/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--bounce-house-climbing-wall-73",
+      "productSlug": "bounce-house-climbing-wall",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "bounce house climbing wall",
+      "sourceName": "尺寸定制           bounce house climbing wall",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20bounce%20house%20climbing%20wall/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20bounce%20house%20climbing%20wall/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20bounce%20house%20climbing%20wall/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20bounce%20house%20climbing%20wall/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20bounce%20house%20climbing%20wall/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--fmx-airbag-landing-66",
       "productSlug": "fmx-airbag-landing",
       "category": "Inflatable Games",
@@ -3471,6 +3587,42 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-rock-climbing-wall-74",
+      "productSlug": "inflatable-rock-climbing-wall",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable rock climbing wall",
+      "sourceName": "尺寸定制           inflatable rock climbing wall",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-climbing-tower-75",
+      "productSlug": "inflatable-climbing-tower",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable climbing tower",
+      "sourceName": "尺寸定制         inflatable climbing tower",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20climbing%20tower/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20climbing%20tower/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20climbing%20tower/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20climbing%20tower/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20climbing%20tower/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."

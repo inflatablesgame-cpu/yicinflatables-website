@@ -475,13 +475,13 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 
 export function productDescription(product: Product) {
   const details = productDetailContent(product);
-  const landingTerms = landingKeywordSet(product);
-  const searchVariants = (landingTerms.length ? landingTerms : productKeywordVariants(product).slice(0, 4)).join(', ');
+  const focusedTerms = productSearchTerms(product);
+  const searchVariants = (focusedTerms.length ? focusedTerms : productKeywordVariants(product).slice(0, 4)).join(', ');
   const intent = productIntentKeyword(product);
   const intentSentence = intent ? ` This listing is positioned for buyers searching for ${intent}.` : '';
   const name = productDisplayTitle(product);
-  const landingSentence = landingTerms.length ? ` This page covers the ${landingTerms.join(' and ')} formats; the final landing profile and dimensions are confirmed against the riding or training application.` : '';
-  return `YIC Inflatable Sports manufactures commercial inflatables for ${details.primaryBuyer}. This listing features the “${name}” model. ${details.purpose} Custom artwork, colors, layout, and functional details can be developed around your venue, brand, and destination-market requirements.${intentSentence}${landingSentence || ` Buyers researching this format may also compare terms such as ${searchVariants}.`}`;
+  const focusedSentence = focusedTerms.length ? ` This page covers the ${focusedTerms.join(' and ')} search intent; final dimensions and construction are confirmed against the intended application.` : '';
+  return `YIC Inflatable Sports manufactures commercial inflatables for ${details.primaryBuyer}. This listing features the “${name}” model. ${details.purpose} Custom artwork, colors, layout, and functional details can be developed around your venue, brand, and destination-market requirements.${intentSentence}${focusedSentence || ` Buyers researching this format may also compare terms such as ${searchVariants}.`}`;
 }
 
 // Each newly published action-sports product owns a separate keyword set. This
@@ -497,8 +497,27 @@ const landingKeywordSets: Record<string, string[]> = {
   'inflatable-landing-ramp': ['inflatable landing ramp'],
 };
 
+const climbingKeywordSets: Record<string, string[]> = {
+  'blow-up-rock-climbing-wall': ['blow up rock climbing wall', 'blow up rock wall'],
+  'inflatable-rock-climbing-wall-for-sale': ['inflatable rock climbing wall for sale', 'inflatable rock wall'],
+  'inflatable-climbing-wall': ['inflatable climbing wall', 'inflatable climbing tower'],
+  'inflatable-climbing-wall-and-slide': ['inflatable climbing wall and slide', 'rock climbing bounce house'],
+  'rock-climbing-wall-inflatable': ['rock climbing wall inflatable', 'inflatable rock climbing'],
+  'bounce-house-climbing-wall': ['bounce house climbing wall', 'bouncy castle climbing wall'],
+  'inflatable-rock-climbing-wall': ['inflatable rock climbing wall', 'inflatable rock climbing wall for water'],
+  'inflatable-climbing-tower': ['inflatable climbing tower', 'blow up climbing wall'],
+};
+
 function landingKeywordSet(product: Product) {
   return landingKeywordSets[product.productSlug] ?? [];
+}
+
+function climbingKeywordSet(product: Product) {
+  return climbingKeywordSets[product.productSlug] ?? [];
+}
+
+function productSearchTerms(product: Product) {
+  return landingKeywordSet(product).length ? landingKeywordSet(product) : climbingKeywordSet(product);
 }
 
 function truncateMeta(value: string, maxLength: number, punctuation = '.') {
@@ -633,6 +652,11 @@ export function productKeywordVariants(product: Product) {
   if (/airbag|landing ramp|landing/.test(searchable)) {
     add(...landingKeywordSet(product));
     add(`${base} for training`, `${base} for rental`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+  if (/climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
+    add(...climbingKeywordSet(product));
+    add(`${base} for rental`, `custom ${base}`);
     return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
   }
 
@@ -817,6 +841,42 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
+    const hasSlide = /slide/.test(searchable);
+    const isBounce = /bounce|bouncy|castle/.test(searchable);
+    const isTower = /tower/.test(searchable);
+    const format = hasSlide ? 'climbing-and-slide attraction' : isTower ? 'inflatable climbing tower' : isBounce ? 'bounce house climbing wall' : 'inflatable rock climbing wall';
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: format,
+      primaryBuyer: 'family entertainment centers, adventure parks, party rental businesses, resorts, schools, and event operators',
+      purpose: hasSlide ? 'It combines a climb-and-slide sequence into one visible attraction for supervised play and commercial entertainment.' : `It gives venues a vertical climbing challenge with a clear route, supervised play zone, and strong visual presence${isTower ? ' for tower-style adventure programming' : ''}.`,
+      applications: [
+        { title: 'Family entertainment centers', text: 'Create a structured climbing challenge with defined entry, route, exit, supervision, and guest-flow planning.' },
+        { title: 'Adventure parks and resorts', text: 'Add a high-visibility rock-wall attraction to seasonal recreation, resort programming, or outdoor activity zones.' },
+        { title: 'Party rental and events', text: 'Offer a memorable climbing feature for birthdays, school events, team activities, and supervised temporary installations.' },
+      ],
+      planningPoints: [
+        'Available footprint, total height, route layout, landing zone, access route, and clear supervision area',
+        'User age range, climbing difficulty, throughput, queue space, anchoring, blower position, and venue surface',
+        'Indoor or outdoor operation, weather exposure, setup crew, storage, cleaning, and local operating requirements',
+      ],
+      customization: [
+        'Wall height, footprint, climbing route, holds, entry and exit, landing zone, and slide or bounce integration',
+        'Theme, colors, printed graphics, sponsor logos, characters, and venue branding',
+        'Blower package, anchoring, repair kit, carry bag, packing format, and custom dimensions',
+      ],
+      operationNote: 'A commercial climbing attraction should be matched to the planned user group, route difficulty, landing area, supervision, anchoring, inflation checks, and venue rules.',
+      quoteItems: [
+        'Venue type, user age range, climbing format, target capacity, and intended indoor or outdoor use',
+        'Required footprint, height, route features, slide or bounce options, artwork, and destination-market requirements',
+        'Quantity, target date, destination, blower and accessory preferences',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
     const isBmx = /bmx/.test(searchable);
     const isFmx = /fmx|motocross/.test(searchable);
@@ -912,6 +972,10 @@ export function productCardDescription(product: Product) {
     const sport = /fmx|motocross/.test(searchable) ? 'FMX and motocross' : /bmx/.test(searchable) ? 'BMX and bike' : /freestyle/.test(searchable) ? 'freestyle action-sports' : 'bike training';
     const feature = /ramp/.test(searchable) ? 'inflatable landing ramp' : 'airbag landing zone';
     return `${name} provides a ${feature} for ${sport} training, bike parks, and supervised stunt events. ${reference}`;
+  }
+  if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
+    const feature = /slide/.test(searchable) ? 'climbing and slide play' : /bounce|bouncy|castle/.test(searchable) ? 'bounce-house climbing play' : 'vertical rock-wall challenge';
+    return `${name} creates ${feature} for family entertainment centers, adventure parks, resorts, and supervised rental events. ${reference}`;
   }
   const detectedFeatures: string[] = [];
   const addFeature = (pattern: RegExp, label: string) => { if (pattern.test(searchable) && !detectedFeatures.includes(label)) detectedFeatures.push(label); };
@@ -1011,6 +1075,9 @@ export function productCardLabel(product: Product) {
   if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
     return `${material} · ${/ramp/.test(searchable) ? 'Landing ramp interface' : 'Impact-zone airbag'} · Custom sports use`;
   }
+  if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
+    return `${material} · ${/slide/.test(searchable) ? 'Climb + slide layout' : 'Climbing route attraction'} · Custom venue use`;
+  }
   const labels = categoryLabels[product.category] ?? ['Custom OEM/ODM'];
   return `${material} · ${labels[cardVariantIndex(product, labels.length)]}`;
 }
@@ -1023,6 +1090,18 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
+    const terms = climbingKeywordSet(product);
+    const format = /slide/.test(searchable) ? 'climbing wall and slide' : /bounce|bouncy|castle/.test(searchable) ? 'bounce house climbing wall' : /tower/.test(searchable) ? 'inflatable climbing tower' : 'inflatable rock climbing wall';
+    return [
+      { question: `What is the ${name} ${format} designed for?`, answer: `It is designed for supervised climbing, adventure-play, family entertainment, resort programming, school activities, and commercial rental events. ${dimensions}` },
+      { question: `How should I plan the site for a commercial climbing attraction?`, answer: `Confirm the footprint, total height, access route, landing area, queue space, anchoring, blower position, surface, clear supervision zone, and indoor or outdoor operating conditions before production.` },
+      { question: `Can the climbing route or slide layout be customized?`, answer: `Yes. YIC can review wall height, route difficulty, holds, entry and exit, landing zone, slide or bounce integration, overall dimensions, colors, printed artwork, and venue branding.` },
+      { question: `Which businesses typically buy this climbing inflatable?`, answer: `Typical buyers include family entertainment centers, adventure parks, resorts, party rental companies, schools, event operators, and distributors planning supervised activity programs.` },
+      { question: `What safety and maintenance details should be confirmed?`, answer: `${content.operationNote} Confirm user age range, supervision, climbing rules, anchoring, inflation checks, cleaning, dry storage, repair-kit access, inspection routines, and local venue requirements before use.` },
+      { question: `What keywords and information should I include in a quotation request?`, answer: `This model is positioned around ${terms.join(' and ')}. Send the venue type, user age range, required footprint and height, route or slide features, quantity, artwork, destination, target date, blower preferences, and packing requirements.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
     const sport = /fmx|motocross/.test(searchable) ? 'FMX and motocross' : /bmx/.test(searchable) ? 'BMX and bike' : /freestyle/.test(searchable) ? 'freestyle action-sports' : 'bike and action-sports';
     const landingType = /ramp/.test(searchable) ? 'landing ramp' : 'landing airbag';
