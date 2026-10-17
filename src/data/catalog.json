@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T12:07:36.622Z",
+  "generatedAt": "2026-10-17T15:40:55.108Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,12 +144,14 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 75,
+      "count": 81,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
         "inflatable-games--commercial-inflatable-carnival-games-2",
         "inflatable-games--used-commercial-carnival-games-for-sale-3",
+        "inflatable-games--foam-party-inflatable-76",
+        "inflatable-games--inflatable-foam-pit-for-sale-77",
         "inflatable-games--inflatable-pool-for-foam-party-4",
         "inflatable-games--inflatable-climbing-mountain-5",
         "inflatable-games--blow-up-rock-climbing-wall-68",
@@ -202,8 +204,10 @@
         "inflatable-games--freestyle-airbag-landing-51",
         "inflatable-games--inflatable-airbag-landing-52",
         "inflatable-games--inflatable-bmx-landing-ramp-53",
+        "inflatable-games--inflatable-foam-pit-78",
         "inflatable-games--inflatable-foam-party-pit-54",
         "inflatable-games--commercial-inflatable-foam-pit-55",
+        "inflatable-games--inflatable-rainbow-arch-bubble-foam-pit-79",
         "inflatable-games--airbag-landing-ramp-for-sale-56",
         "inflatable-games--fmx-landing-ramp-57",
         "inflatable-games--3-in-1-inflatable-carnival-game-58",
@@ -219,7 +223,9 @@
         "inflatable-games--rock-climbing-wall-inflatable-72",
         "inflatable-games--bounce-house-climbing-wall-73",
         "inflatable-games--fmx-airbag-landing-66",
+        "inflatable-games--inflatable-foam-pit-rental-81",
         "inflatable-games--inflatable-rock-climbing-wall-74",
+        "inflatable-games--inflatable-candy-land-bubble-foam-pit-rental-80",
         "inflatable-games--inflatable-climbing-tower-75",
         "inflatable-games--inflatable-landing-ramp-67"
       ]
@@ -2350,6 +2356,42 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--foam-party-inflatable-76",
+      "productSlug": "foam-party-inflatable",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "foam party inflatable",
+      "sourceName": "10x10m       foam party inflatable",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20foam%20party%20inflatable/1.webp",
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20foam%20party%20inflatable/2.webp",
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20foam%20party%20inflatable/3.webp",
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20foam%20party%20inflatable/4.webp",
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20foam%20party%20inflatable/5.webp"
+      ],
+      "dimensions": "10x10m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-foam-pit-for-sale-77",
+      "productSlug": "inflatable-foam-pit-for-sale",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable foam pit for sale",
+      "sourceName": "10x10m       inflatable foam pit for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20inflatable%20foam%20pit%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20inflatable%20foam%20pit%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20inflatable%20foam%20pit%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20inflatable%20foam%20pit%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Games/10x10m%20%20%20%20%20%20%20inflatable%20foam%20pit%20for%20sale/5.webp"
+      ],
+      "dimensions": "10x10m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-pool-for-foam-party-4",
       "productSlug": "inflatable-pool-for-foam-party",
       "category": "Inflatable Games",
@@ -3286,6 +3328,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-foam-pit-78",
+      "productSlug": "inflatable-foam-pit",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable foam pit",
+      "sourceName": "5x5m           inflatable foam pit",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/5x5m%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit/1.webp",
+        "/assets/product/Inflatable%20Games/5x5m%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit/2.webp",
+        "/assets/product/Inflatable%20Games/5x5m%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit/3.webp",
+        "/assets/product/Inflatable%20Games/5x5m%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit/4.webp",
+        "/assets/product/Inflatable%20Games/5x5m%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit/5.webp"
+      ],
+      "dimensions": "5x5m           ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-foam-party-pit-54",
       "productSlug": "inflatable-foam-party-pit",
       "category": "Inflatable Games",
@@ -3319,6 +3379,24 @@
         "/assets/product/Inflatable%20Games/5x5x2m%20%20%20%20commercial%20inflatable%20foam%20pit/5.webp"
       ],
       "dimensions": "5x5x2m    ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-rainbow-arch-bubble-foam-pit-79",
+      "productSlug": "inflatable-rainbow-arch-bubble-foam-pit",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "Inflatable Rainbow Arch bubble foam pit",
+      "sourceName": "5x5x4m       Inflatable Rainbow Arch bubble foam pit",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/5x5x4m%20%20%20%20%20%20%20Inflatable%20Rainbow%20Arch%20bubble%20foam%20pit/1.webp",
+        "/assets/product/Inflatable%20Games/5x5x4m%20%20%20%20%20%20%20Inflatable%20Rainbow%20Arch%20bubble%20foam%20pit/2.webp",
+        "/assets/product/Inflatable%20Games/5x5x4m%20%20%20%20%20%20%20Inflatable%20Rainbow%20Arch%20bubble%20foam%20pit/3.webp",
+        "/assets/product/Inflatable%20Games/5x5x4m%20%20%20%20%20%20%20Inflatable%20Rainbow%20Arch%20bubble%20foam%20pit/4.webp",
+        "/assets/product/Inflatable%20Games/5x5x4m%20%20%20%20%20%20%20Inflatable%20Rainbow%20Arch%20bubble%20foam%20pit/5.webp"
+      ],
+      "dimensions": "5x5x4m       ",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
@@ -3592,6 +3670,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-foam-pit-rental-81",
+      "productSlug": "inflatable-foam-pit-rental",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable foam pit rental",
+      "sourceName": "尺寸定制           inflatable foam pit rental",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit%20rental/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit%20rental/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit%20rental/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit%20rental/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit%20rental/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-rock-climbing-wall-74",
       "productSlug": "inflatable-rock-climbing-wall",
       "category": "Inflatable Games",
@@ -3605,6 +3701,24 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20rock%20climbing%20wall/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-candy-land-bubble-foam-pit-rental-80",
+      "productSlug": "inflatable-candy-land-bubble-foam-pit-rental",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable candy land bubble foam pit rental",
+      "sourceName": "尺寸定制          inflatable candy land bubble foam pit rental",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20candy%20land%20bubble%20foam%20pit%20rental/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20candy%20land%20bubble%20foam%20pit%20rental/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20candy%20land%20bubble%20foam%20pit%20rental/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20candy%20land%20bubble%20foam%20pit%20rental/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20candy%20land%20bubble%20foam%20pit%20rental/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."

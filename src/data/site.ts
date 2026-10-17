@@ -510,6 +510,15 @@ const climbingKeywordSets: Record<string, string[]> = {
   'inflatable-climbing-tower': ['inflatable climbing tower', 'blow up climbing wall'],
 };
 
+const foamKeywordSets: Record<string, string[]> = {
+  'foam-party-inflatable': ['foam party pit', 'foam party rental', 'foam party rental near me', 'foam party inflatable'],
+  'inflatable-foam-pit-for-sale': ['foam pit', 'foam pit for sale', 'inflatable foam pit for sale', 'giant foam pit'],
+  'inflatable-foam-pit': ['inflatable foam pit', 'foam pit rental', 'foam pit rental near me', 'portable foam pit'],
+  'inflatable-rainbow-arch-bubble-foam-pit': ['bubble foam pit', 'bubble foam pit rental', 'bubble pit', 'bubble pit rental'],
+  'inflatable-candy-land-bubble-foam-pit-rental': ['foam party pit for sale', 'inflatable foam pit rental', 'inflatable foam pit rental near me', 'party foam pit'],
+  'inflatable-foam-pit-rental': ['backyard foam pit', 'foam machine pit', 'foam pit bounce house', 'soap foam pit'],
+};
+
 function landingKeywordSet(product: Product) {
   return landingKeywordSets[product.productSlug] ?? [];
 }
@@ -518,8 +527,14 @@ function climbingKeywordSet(product: Product) {
   return climbingKeywordSets[product.productSlug] ?? [];
 }
 
+function foamKeywordSet(product: Product) {
+  return foamKeywordSets[product.productSlug] ?? [];
+}
+
 function productSearchTerms(product: Product) {
-  return landingKeywordSet(product).length ? landingKeywordSet(product) : climbingKeywordSet(product);
+  if (landingKeywordSet(product).length) return landingKeywordSet(product);
+  if (climbingKeywordSet(product).length) return climbingKeywordSet(product);
+  return foamKeywordSet(product);
 }
 
 function truncateMeta(value: string, maxLength: number, punctuation = '.') {
@@ -659,6 +674,11 @@ export function productKeywordVariants(product: Product) {
   if (/climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     add(...climbingKeywordSet(product));
     add(`${base} for rental`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+  if (/foam|bubble/.test(searchable)) {
+    add(...foamKeywordSet(product));
+    add(`${base} for events`, `${base} for rental`);
     return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
   }
 
@@ -843,6 +863,41 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
+    const isBubble = /bubble/.test(searchable);
+    const isRainbow = /rainbow/.test(searchable);
+    const isCandy = /candy/.test(searchable);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: isBubble ? 'bubble foam pit and foam-play attraction' : 'inflatable foam party pit',
+      primaryBuyer: 'party rental businesses, family entertainment centers, indoor play venues, resorts, and event operators',
+      purpose: isBubble ? `It creates a colorful foam-play zone${isRainbow || isCandy ? ` with ${isRainbow ? 'rainbow-arch' : 'candy-land'} visual theming` : ''} for supervised events, repeat rental packages, and family entertainment.` : 'It creates a contained foam-play zone for parties, summer events, family venues, and repeat commercial rental programs.',
+      applications: [
+        { title: 'Foam party rental', text: 'Build a memorable party package around a contained play area, foam machine position, participant flow, drainage, and practical cleanup planning.' },
+        { title: 'Family entertainment centers', text: 'Add a repeat-play foam attraction with defined entry, exit, supervision, access, and customer throughput.' },
+        { title: 'Events and resorts', text: 'Use the pit as a branded seasonal attraction for festivals, resort activities, camps, birthdays, and supervised outdoor programs.' },
+      ],
+      planningPoints: [
+        'Available footprint, wall height, foam depth, entry and exit, access route, queue area, and clear supervision zone',
+        'Foam machine position, power or water needs, drainage, surface, ventilation, cleaning, and drying plan',
+        'Target age group, participant capacity, event schedule, indoor or outdoor exposure, storage, and local venue requirements',
+      ],
+      customization: [
+        'Pit footprint, wall height, entry layout, foam-machine opening, splash or drainage details, and custom dimensions',
+        'Rainbow, candy-land, brand, sponsor, team, or event artwork with selected colors and printed graphics',
+        'Blower or foam-machine coordination, anchoring, repair kit, carry bag, packing format, and accessories',
+      ],
+      operationNote: 'A foam pit should be planned around foam-machine output, drainage, participant supervision, surface conditions, cleaning, drying, and safe access in the intended venue.',
+      quoteItems: [
+        'Venue type, user age range, target capacity, footprint, wall height, and intended foam-party format',
+        'Foam machine, drainage, artwork, theme, custom dimensions, and destination-market requirements',
+        'Quantity, target date, destination, packing, carry-bag, repair-kit, and accessory preferences',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     const hasSlide = /slide/.test(searchable);
     const isBounce = /bounce|bouncy|castle/.test(searchable);
@@ -979,6 +1034,10 @@ export function productCardDescription(product: Product) {
     const feature = /slide/.test(searchable) ? 'climbing and slide play' : /bounce|bouncy|castle/.test(searchable) ? 'bounce-house climbing play' : 'vertical rock-wall challenge';
     return `${name} creates ${feature} for family entertainment centers, adventure parks, resorts, and supervised rental events. ${reference}`;
   }
+  if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
+    const feature = /bubble/.test(searchable) ? 'bubble-foam play' : 'foam-party play';
+    return `${name} creates a contained ${feature} attraction for party rental packages, FEC activity zones, resorts, and supervised events. ${reference}`;
+  }
   const detectedFeatures: string[] = [];
   const addFeature = (pattern: RegExp, label: string) => { if (pattern.test(searchable) && !detectedFeatures.includes(label)) detectedFeatures.push(label); };
   addFeature(/double slide|dual lane|double lane/, 'dual-lane slide');
@@ -1080,6 +1139,9 @@ export function productCardLabel(product: Product) {
   if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     return `${material} · ${/slide/.test(searchable) ? 'Climb + slide layout' : 'Climbing route attraction'} · Custom venue use`;
   }
+  if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
+    return `${material} · ${/bubble/.test(searchable) ? 'Bubble foam play' : 'Foam party layout'} · Event and rental use`;
+  }
   const labels = categoryLabels[product.category] ?? ['Custom OEM/ODM'];
   return `${material} · ${labels[cardVariantIndex(product, labels.length)]}`;
 }
@@ -1092,6 +1154,18 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
+    const terms = foamKeywordSet(product);
+    const isBubble = /bubble/.test(searchable);
+    return [
+      { question: `What is the ${name} designed for?`, answer: `This ${isBubble ? 'bubble-foam' : 'foam-party'} attraction is designed for supervised party rentals, family entertainment, resorts, festivals, camps, and event programs. ${dimensions}` },
+      { question: `How should I plan the site for a commercial foam pit?`, answer: `Confirm the footprint, wall height, foam depth, entry and exit, queue space, foam-machine position, drainage, surface, access route, ventilation, and clear supervision area before production.` },
+      { question: `Which foam machine and drainage details should I confirm?`, answer: `Share the foam-machine output, power or water requirements, drainage arrangement, cleaning routine, drying schedule, and expected operating duration so the pit layout matches the venue.` },
+      { question: `Can the foam party pit be customized with a theme or branding?`, answer: `Yes. YIC can review custom dimensions, wall height, entry layout, machine opening, rainbow or candy-land artwork, colors, logos, sponsor graphics, anchoring, packing, and accessories.` },
+      { question: `Who typically buys an inflatable foam pit?`, answer: `Typical buyers include party rental companies, FECs, indoor play centers, resorts, event operators, schools, camps, and distributors building seasonal activity packages.` },
+      { question: `What should I include in a foam-pit quotation request?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, target age group, capacity, dimensions, foam-machine details, drainage, theme or artwork, quantity, destination, target date, and storage requirements.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     const terms = climbingKeywordSet(product);
     const format = /slide/.test(searchable) ? 'climbing wall and slide' : /bounce|bouncy|castle/.test(searchable) ? 'bounce house climbing wall' : /tower/.test(searchable) ? 'inflatable climbing tower' : 'inflatable rock climbing wall';
