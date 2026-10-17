@@ -1,4 +1,4 @@
-import { cp, mkdir, readdir, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -108,6 +108,13 @@ async function buildCatalog() {
   const categoryEntries = await readdir(productRoot, { withFileTypes: true });
   const categories = [];
   const products = [];
+  const previousCatalog = await readFile(path.join(dataRoot, 'catalog.json'), 'utf8')
+    .then((value) => JSON.parse(value))
+    .catch(() => ({ products: [] }));
+  const previousSlugs = new Map((previousCatalog.products ?? []).map((product) => [
+    `${product.categorySlug}|${product.sourceName}`,
+    product.slug,
+  ]));
 
   for (const categoryEntry of categoryEntries.filter((entry) => entry.isDirectory()).sort((left, right) => left.name.localeCompare(right.name))) {
     const categoryName = cleanCategoryName(categoryEntry.name);
@@ -126,11 +133,13 @@ async function buildCatalog() {
       if (!imageEntries.length) continue;
 
       const title = cleanProductName(productEntry.name) || `${categoryName} Product ${index + 1}`;
-      const slug = `${categorySlug}--${slugify(title)}-${index + 1}`;
+      const key = `${categorySlug}|${productEntry.name}`;
       const relativeDirectory = path.join('product', categoryEntry.name, productEntry.name);
       const images = imageEntries.map((imageName) => assetUrl(path.join(relativeDirectory, imageName)));
+      const parsedDimensions = productEntry.name.match(/^\s*([^\s]+(?:\s*[x×]\s*[^\s]+)*\s*(?:m|Dia)?)/i)?.[1] ?? '';
+      const dimensions = /尺寸定制/u.test(parsedDimensions) ? 'Custom dimensions available' : parsedDimensions;
       const product = {
-        slug,
+        slug: previousSlugs.get(key) ?? '',
         productSlug: slugify(title),
         category: categoryName,
         categorySlug,
@@ -138,10 +147,9 @@ async function buildCatalog() {
         sourceName: productEntry.name,
         material: materialFor(categoryName, productEntry.name),
         images,
-        dimensions: productEntry.name.match(/^\s*([^\s]+(?:\s*[x×]\s*[^\s]+)*\s*(?:m|Dia)?)/i)?.[1] ?? '',
+        dimensions,
         excerpt: `Commercial ${categoryName.toLowerCase()} built for party rental operators, family entertainment centers, and event venues.`,
       };
-      products.push(product);
       categoryProducts.push(product);
     }
 
@@ -170,6 +178,27 @@ async function buildCatalog() {
       product.productSlug = publicSlug;
       usedSlugs.add(publicSlug);
     }
+
+    // Preserve each existing product's internal catalog slug so adding a new
+    // alphabetically sorted folder cannot renumber old homepage references or
+    // product SKUs. New products receive the next unused category index.
+    const usedInternalSlugs = new Set(categoryProducts.map((product) => product.slug).filter(Boolean));
+    let nextInternalIndex = categoryProducts.reduce((highest, product) => {
+      const suffix = Number.parseInt(product.slug.match(/-(\d+)$/)?.[1] ?? '0', 10);
+      return Math.max(highest, suffix);
+    }, 0) + 1;
+    for (const product of categoryProducts) {
+      if (product.slug) continue;
+      let candidate = `${categorySlug}--${slugify(product.title)}-${nextInternalIndex}`;
+      while (usedInternalSlugs.has(candidate)) {
+        nextInternalIndex += 1;
+        candidate = `${categorySlug}--${slugify(product.title)}-${nextInternalIndex}`;
+      }
+      product.slug = candidate;
+      usedInternalSlugs.add(candidate);
+      nextInternalIndex += 1;
+    }
+    products.push(...categoryProducts);
 
     categories.push({
       name: categoryName,

@@ -475,11 +475,30 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 
 export function productDescription(product: Product) {
   const details = productDetailContent(product);
-  const searchVariants = productKeywordVariants(product).slice(0, 4).join(', ');
+  const landingTerms = landingKeywordSet(product);
+  const searchVariants = (landingTerms.length ? landingTerms : productKeywordVariants(product).slice(0, 4)).join(', ');
   const intent = productIntentKeyword(product);
   const intentSentence = intent ? ` This listing is positioned for buyers searching for ${intent}.` : '';
   const name = productDisplayTitle(product);
-  return `YIC Inflatable Sports manufactures commercial inflatables for ${details.primaryBuyer}. This listing features the “${name}” model. ${details.purpose} Custom artwork, colors, layout, and functional details can be developed around your venue, brand, and destination-market requirements.${intentSentence} Buyers researching this format may also compare terms such as ${searchVariants}.`;
+  const landingSentence = landingTerms.length ? ` This page covers the ${landingTerms.join(' and ')} formats; the final landing profile and dimensions are confirmed against the riding or training application.` : '';
+  return `YIC Inflatable Sports manufactures commercial inflatables for ${details.primaryBuyer}. This listing features the “${name}” model. ${details.purpose} Custom artwork, colors, layout, and functional details can be developed around your venue, brand, and destination-market requirements.${intentSentence}${landingSentence || ` Buyers researching this format may also compare terms such as ${searchVariants}.`}`;
+}
+
+// Each newly published action-sports product owns a separate keyword set. This
+// keeps related landing-airbag phrases differentiated across product pages.
+const landingKeywordSets: Record<string, string[]> = {
+  'bmx-airbag-landing': ['bmx airbag landing', 'inflatable bmx ramp'],
+  'inflatable-airbag-landing': ['inflatable airbag landing', 'inflatable landing airbag'],
+  'inflatable-bmx-landing-ramp': ['inflatable bmx landing ramp'],
+  'freestyle-airbag-landing': ['freestyle airbag landing'],
+  'airbag-landing-ramp-for-sale': ['airbag landing ramp for sale'],
+  'fmx-landing-ramp': ['fmx landing ramp', 'fmx landing airbag'],
+  'fmx-airbag-landing': ['fmx airbag landing', 'fmx airbag landing for sale', 'fmx airbag landing price'],
+  'inflatable-landing-ramp': ['inflatable landing ramp'],
+};
+
+function landingKeywordSet(product: Product) {
+  return landingKeywordSets[product.productSlug] ?? [];
 }
 
 function truncateMeta(value: string, maxLength: number, punctuation = '.') {
@@ -554,6 +573,15 @@ export function productMetaDescription(product: Product) {
 
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
+  const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
+    return [
+      'Controlled landing zone for BMX, FMX, or freestyle training',
+      'Impact-zone and ramp interface planning',
+      'Custom dimensions, artwork, and sponsor branding',
+      'Blower, anchoring, repair-kit, and carry-bag coordination',
+    ];
+  }
   const categoryFeatures: Record<string, string[]> = {
     'Advertising Inflatable': ['Large branded display area', 'Custom logo and campaign artwork', 'Designed for promotions and exhibitions', 'Export-ready packing for event teams'],
     'Bounce House': ['Recognizable jumping attraction', 'Commercial PVC and reinforced seams', 'Rental-friendly setup and storage planning', 'Custom colors, themes, and dimensions'],
@@ -597,6 +625,16 @@ export function productKeywordVariants(product: Product) {
   const color = lowerName.match(/\b(white|pink|blue|red|yellow|black|purple|green|rainbow|pastel)\b/)?.[1];
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
+  const intentKeyword = productIntentKeyword(product);
+
+  // Landing airbags are a distinct action-sports product family. Keep their
+  // search language specific to BMX/FMX/freestyle use instead of applying the
+  // generic inflatable-games keyword set to every model.
+  if (/airbag|landing ramp|landing/.test(searchable)) {
+    add(...landingKeywordSet(product));
+    add(`${base} for training`, `${base} for rental`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   // Build phrases from the actual product entity and visible features. The
   // category list is deliberately not copied into every product page.
@@ -625,7 +663,6 @@ export function productKeywordVariants(product: Product) {
   if (color && !new RegExp(`\\b${color}\\b`).test(base)) add(`${color} ${base}`);
   if (/wedding/.test(searchable)) add('wedding inflatable rental', 'white wedding bounce house');
   if (/wholesale|supplier|manufacturer/.test(searchable) || product.category.includes('Water')) add(`wholesale ${base}`, `${base} manufacturer`, `${base} OEM supplier`);
-  const intentKeyword = productIntentKeyword(product);
   return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
 }
 
@@ -779,6 +816,44 @@ function productCategoryPosition(product: Product) {
 }
 
 export function productDetailContent(product: Product): DetailContent {
+  const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
+    const isBmx = /bmx/.test(searchable);
+    const isFmx = /fmx|motocross/.test(searchable);
+    const isFreestyle = /freestyle/.test(searchable);
+    const sport = isFmx ? 'FMX and motocross' : isBmx ? 'BMX and bike' : isFreestyle ? 'freestyle action-sports' : 'bike and action-sports';
+    const rampLabel = /ramp/.test(searchable) ? 'inflatable landing ramp' : 'inflatable landing airbag';
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: `${sport} landing airbag and ${rampLabel}`,
+      primaryBuyer: 'bike parks, skateparks, action-sports training centers, stunt schools, and event rental operators',
+      purpose: `It provides a controlled inflatable landing zone for ${sport} jumps, progression training, and supervised stunt sessions.`,
+      applications: [
+        { title: 'Action-sports training', text: `Use the airbag to give ${sport} riders a repeatable landing target while coaches review take-off, rotation, and landing technique.` },
+        { title: 'Bike parks and skateparks', text: 'Add a managed training feature for progression sessions, demonstrations, camps, and supervised venue programming.' },
+        { title: 'Events and rental programs', text: 'Plan a branded landing attraction for demonstrations or temporary activations with clear setup, anchoring, supervision, and storage requirements.' },
+      ],
+      planningPoints: [
+        'Jump height, approach speed, rider level, landing angle, and the required clear zone',
+        'Available footprint, setup surface, anchoring, blower position, access route, and spectator separation',
+        'Training schedule, supervision, inflation time, deflation and storage routine, and local venue requirements',
+      ],
+      customization: [
+        'Overall landing footprint, ramp interface, air chambers, and impact-zone configuration',
+        'Brand colors, printed graphics, sponsor logos, and event or team artwork',
+        'Blower package, anchor points, repair kit, carry bag, packing format, and custom dimensions',
+      ],
+      operationNote: 'A landing airbag must be matched to the jump profile and operated with appropriate supervision, clear zones, anchoring, inflation checks, and rider rules.',
+      quoteItems: [
+        'Sport and discipline, jump profile, rider level, and intended training or event use',
+        'Required landing dimensions, ramp connection, artwork, and destination-market requirements',
+        'Quantity, target date, destination, blower and accessory preferences',
+      ],
+    };
+  }
   const profile = categoryDetailProfiles[product.category] ?? {
     productType: product.category.toLowerCase(), primaryBuyer: 'commercial buyers', purpose: `It supports ${productApplication(product)}.`, applications: [], planningPoints: [], customization: [], operationNote: 'Confirm site and operating requirements before production.', quoteItems: [],
   };
@@ -833,6 +908,11 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
+    const sport = /fmx|motocross/.test(searchable) ? 'FMX and motocross' : /bmx/.test(searchable) ? 'BMX and bike' : /freestyle/.test(searchable) ? 'freestyle action-sports' : 'bike training';
+    const feature = /ramp/.test(searchable) ? 'inflatable landing ramp' : 'airbag landing zone';
+    return `${name} provides a ${feature} for ${sport} training, bike parks, and supervised stunt events. ${reference}`;
+  }
   const detectedFeatures: string[] = [];
   const addFeature = (pattern: RegExp, label: string) => { if (pattern.test(searchable) && !detectedFeatures.includes(label)) detectedFeatures.push(label); };
   addFeature(/double slide|dual lane|double lane/, 'dual-lane slide');
@@ -927,6 +1007,10 @@ export function productCardLabel(product: Product) {
     'Inflatable Theme Park': ['Multi-play venue project', 'Themed attraction layout', 'Guest-flow planning'],
     'Inflatable Water Park': ['Floating water play', 'Modular water attraction', 'Anchoring & site planning'],
   };
+  const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
+    return `${material} · ${/ramp/.test(searchable) ? 'Landing ramp interface' : 'Impact-zone airbag'} · Custom sports use`;
+  }
   const labels = categoryLabels[product.category] ?? ['Custom OEM/ODM'];
   return `${material} · ${labels[cardVariantIndex(product, labels.length)]}`;
 }
@@ -938,6 +1022,19 @@ export function productFaqs(product: Product) {
   const applicationNames = content.applications.map((item) => item.title.toLowerCase()).join(', ') || productApplication(product);
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
+  const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
+    const sport = /fmx|motocross/.test(searchable) ? 'FMX and motocross' : /bmx/.test(searchable) ? 'BMX and bike' : /freestyle/.test(searchable) ? 'freestyle action-sports' : 'bike and action-sports';
+    const landingType = /ramp/.test(searchable) ? 'landing ramp' : 'landing airbag';
+    return [
+      { question: `What is the ${name} ${landingType} designed for?`, answer: `It is designed to create a controlled landing zone for ${sport} jumps, progression training, demonstrations, and supervised stunt sessions. ${dimensions}` },
+      { question: `How should I match this airbag to a jump or ramp?`, answer: `Confirm the jump height, approach speed, rider level, landing angle, ramp interface, clear zone, and expected impact pattern before approving the final size and chamber configuration.` },
+      { question: `Which venues can use a commercial ${landingType}?`, answer: `Typical applications include bike parks, skateparks, action-sports training centers, stunt schools, camps, event demonstrations, and supervised rental programs.` },
+      { question: `Can YIC customize the dimensions and printed artwork?`, answer: `Yes. YIC can review the landing footprint, air chambers, ramp connection, colors, sponsor graphics, logos, blower package, anchor points, carry bag, repair kit, and custom dimensions.` },
+      { question: `What safety and operating information should be confirmed?`, answer: `${content.operationNote} Confirm rider rules, supervision, inflation pressure or appearance checks, anchoring, spectator separation, clear zones, cleaning, and local venue requirements before use.` },
+      { question: `What should I include in an airbag landing quotation request?`, answer: `Send the sport and discipline, jump profile, rider level, required landing dimensions, ramp details, artwork, quantity, destination, target date, blower preferences, and storage or transport requirements. YIC can then confirm the approved specification and accessory list.` },
+    ];
+  }
   const categoryQuestions: Record<string, Array<{ question: string; answer: string }>> = {
     'Advertising Inflatable': [
       { question: `What is the main use of the ${name} model?`, answer: `This model is intended for brand activations, exhibitions, launches, retail promotions, and outdoor event displays where a large branded focal point is needed.` },

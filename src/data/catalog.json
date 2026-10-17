@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T13:47:27.141Z",
+  "generatedAt": "2026-10-17T11:46:01.503Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 59,
+      "count": 67,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -196,16 +196,24 @@
         "inflatable-games--inflatable-boxing-ring-for-sale-47",
         "inflatable-games--batter-up-inflatable-game-48",
         "inflatable-games--inflatable-axe-throwing-for-sale-49",
-        "inflatable-games--inflatable-foam-party-pit-50",
-        "inflatable-games--commercial-inflatable-foam-pit-51",
-        "inflatable-games--3-in-1-inflatable-carnival-game-52",
-        "inflatable-games--commercial-inflatable-batting-cage-53",
-        "inflatable-games--inflatable-gladiator-jousting-54",
-        "inflatable-games--commercial-inflatable-gaga-ball-pit-55",
-        "inflatable-games--human-billiards-inflatable-56",
-        "inflatable-games--inflatable-foam-party-pit-rental-57",
-        "inflatable-games--commercial-rock-climbing-wall-for-sale-58",
-        "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-59"
+        "inflatable-games--bmx-airbag-landing-50",
+        "inflatable-games--freestyle-airbag-landing-51",
+        "inflatable-games--inflatable-airbag-landing-52",
+        "inflatable-games--inflatable-bmx-landing-ramp-53",
+        "inflatable-games--inflatable-foam-party-pit-54",
+        "inflatable-games--commercial-inflatable-foam-pit-55",
+        "inflatable-games--airbag-landing-ramp-for-sale-56",
+        "inflatable-games--fmx-landing-ramp-57",
+        "inflatable-games--3-in-1-inflatable-carnival-game-58",
+        "inflatable-games--commercial-inflatable-batting-cage-59",
+        "inflatable-games--inflatable-gladiator-jousting-60",
+        "inflatable-games--commercial-inflatable-gaga-ball-pit-61",
+        "inflatable-games--human-billiards-inflatable-62",
+        "inflatable-games--inflatable-foam-party-pit-rental-63",
+        "inflatable-games--commercial-rock-climbing-wall-for-sale-64",
+        "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-65",
+        "inflatable-games--fmx-airbag-landing-66",
+        "inflatable-games--inflatable-landing-ramp-67"
       ]
     },
     {
@@ -3162,7 +3170,79 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--inflatable-foam-party-pit-50",
+      "slug": "inflatable-games--bmx-airbag-landing-50",
+      "productSlug": "bmx-airbag-landing",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "bmx airbag landing",
+      "sourceName": "5x3x1.8m        bmx airbag landing",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20bmx%20airbag%20landing/1.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20bmx%20airbag%20landing/2.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20bmx%20airbag%20landing/3.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20bmx%20airbag%20landing/4.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20bmx%20airbag%20landing/5.webp"
+      ],
+      "dimensions": "5x3x1.8m        ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--freestyle-airbag-landing-51",
+      "productSlug": "freestyle-airbag-landing",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "freestyle airbag landing",
+      "sourceName": "5x3x1.8m        freestyle airbag landing",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20freestyle%20airbag%20landing/1.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20freestyle%20airbag%20landing/2.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20freestyle%20airbag%20landing/3.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20freestyle%20airbag%20landing/4.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20freestyle%20airbag%20landing/5.webp"
+      ],
+      "dimensions": "5x3x1.8m        ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-airbag-landing-52",
+      "productSlug": "inflatable-airbag-landing",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable airbag landing",
+      "sourceName": "5x3x1.8m        inflatable airbag landing",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20airbag%20landing/1.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20airbag%20landing/2.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20airbag%20landing/3.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20airbag%20landing/4.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20airbag%20landing/5.webp"
+      ],
+      "dimensions": "5x3x1.8m        ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-bmx-landing-ramp-53",
+      "productSlug": "inflatable-bmx-landing-ramp",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable bmx landing ramp",
+      "sourceName": "5x3x1.8m        inflatable bmx landing ramp",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20bmx%20landing%20ramp/1.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20bmx%20landing%20ramp/2.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20bmx%20landing%20ramp/3.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20bmx%20landing%20ramp/4.webp",
+        "/assets/product/Inflatable%20Games/5x3x1.8m%20%20%20%20%20%20%20%20inflatable%20bmx%20landing%20ramp/5.webp"
+      ],
+      "dimensions": "5x3x1.8m        ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-foam-party-pit-54",
       "productSlug": "inflatable-foam-party-pit",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3180,7 +3260,7 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--commercial-inflatable-foam-pit-51",
+      "slug": "inflatable-games--commercial-inflatable-foam-pit-55",
       "productSlug": "commercial-inflatable-foam-pit",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3198,7 +3278,43 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--3-in-1-inflatable-carnival-game-52",
+      "slug": "inflatable-games--airbag-landing-ramp-for-sale-56",
+      "productSlug": "airbag-landing-ramp-for-sale",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "airbag landing ramp for sale",
+      "sourceName": "6.1x3.7x1.8m        airbag landing ramp for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20%20airbag%20landing%20ramp%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20%20airbag%20landing%20ramp%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20%20airbag%20landing%20ramp%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20%20airbag%20landing%20ramp%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20%20airbag%20landing%20ramp%20for%20sale/5.webp"
+      ],
+      "dimensions": "6.1x3.7x1.8m        ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--fmx-landing-ramp-57",
+      "productSlug": "fmx-landing-ramp",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "fmx landing ramp",
+      "sourceName": "6.1x3.7x1.8m       fmx landing ramp",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20fmx%20landing%20ramp/1.webp",
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20fmx%20landing%20ramp/2.webp",
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20fmx%20landing%20ramp/3.webp",
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20fmx%20landing%20ramp/4.webp",
+        "/assets/product/Inflatable%20Games/6.1x3.7x1.8m%20%20%20%20%20%20%20fmx%20landing%20ramp/5.webp"
+      ],
+      "dimensions": "6.1x3.7x1.8m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--3-in-1-inflatable-carnival-game-58",
       "productSlug": "3-in-1-inflatable-carnival-game",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3216,7 +3332,7 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--commercial-inflatable-batting-cage-53",
+      "slug": "inflatable-games--commercial-inflatable-batting-cage-59",
       "productSlug": "commercial-inflatable-batting-cage-for-sale",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3234,7 +3350,7 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--inflatable-gladiator-jousting-54",
+      "slug": "inflatable-games--inflatable-gladiator-jousting-60",
       "productSlug": "inflatable-gladiator-jousting",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3252,7 +3368,7 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--commercial-inflatable-gaga-ball-pit-55",
+      "slug": "inflatable-games--commercial-inflatable-gaga-ball-pit-61",
       "productSlug": "commercial-inflatable-gaga-ball-pit",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3270,7 +3386,7 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--human-billiards-inflatable-56",
+      "slug": "inflatable-games--human-billiards-inflatable-62",
       "productSlug": "human-billiards-inflatable",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3288,7 +3404,7 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--inflatable-foam-party-pit-rental-57",
+      "slug": "inflatable-games--inflatable-foam-party-pit-rental-63",
       "productSlug": "inflatable-foam-party-pit-rental",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3306,7 +3422,7 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--commercial-rock-climbing-wall-for-sale-58",
+      "slug": "inflatable-games--commercial-rock-climbing-wall-for-sale-64",
       "productSlug": "commercial-rock-climbing-wall-for-sale",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3324,7 +3440,7 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
-      "slug": "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-59",
+      "slug": "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-65",
       "productSlug": "commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale",
       "category": "Inflatable Games",
       "categorySlug": "inflatable-games",
@@ -3339,6 +3455,42 @@
         "/assets/product/Inflatable%20Games/9.5%C3%977.5m%C3%976.5m%20%20%20%20commercial%20mario%20kart%20theme%20inflatable%20slide%20and%20climb%20for%20sale/5.webp"
       ],
       "dimensions": "9.5×7.5m×6.5m    ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--fmx-airbag-landing-66",
+      "productSlug": "fmx-airbag-landing",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "fmx airbag landing",
+      "sourceName": "尺寸定制           fmx airbag landing",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-landing-ramp-67",
+      "productSlug": "inflatable-landing-ramp",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable landing ramp",
+      "sourceName": "尺寸定制         inflatable landing ramp",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20landing%20ramp/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20landing%20ramp/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20landing%20ramp/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20landing%20ramp/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20landing%20ramp/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
