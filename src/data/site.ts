@@ -527,6 +527,11 @@ const volleyballKeywordSets: Record<string, string[]> = {
   'inflatable-volleyball-field': ['inflatable volleyball field', 'big inflatable volleyball court', 'giant inflatable volleyball court', 'inflatable beach volleyball court'],
 };
 
+const bungeeRunKeywordSets: Record<string, string[]> = {
+  'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
+  '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
+};
+
 function landingKeywordSet(product: Product) {
   return landingKeywordSets[product.productSlug] ?? [];
 }
@@ -543,11 +548,16 @@ function volleyballKeywordSet(product: Product) {
   return volleyballKeywordSets[product.productSlug] ?? [];
 }
 
+function bungeeRunKeywordSet(product: Product) {
+  return bungeeRunKeywordSets[product.productSlug] ?? [];
+}
+
 function productSearchTerms(product: Product) {
   if (landingKeywordSet(product).length) return landingKeywordSet(product);
   if (climbingKeywordSet(product).length) return climbingKeywordSet(product);
   if (foamKeywordSet(product).length) return foamKeywordSet(product);
-  return volleyballKeywordSet(product);
+  if (volleyballKeywordSet(product).length) return volleyballKeywordSet(product);
+  return bungeeRunKeywordSet(product);
 }
 
 function truncateMeta(value: string, maxLength: number, punctuation = '.') {
@@ -623,6 +633,12 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /bungee run/.test(searchable)) {
+    const isTwoLane = /2 lane/.test(searchable);
+    return isTwoLane
+      ? ['Two-lane head-to-head bungee race format', 'Commercial elastic-line and lane layout planning', 'Custom colors, logos, race graphics, and dimensions', 'Rental-friendly packing, anchoring, and repair support']
+      : ['Competitive bungee fun-run layout for group events', 'Clear start, finish, lane, and spectator zones', 'Custom branding, colors, artwork, and lane configuration', 'Commercial setup, storage, and repeat-rental planning'];
+  }
   if (product.category === 'Inflatable Games' && /volleyball/.test(searchable)) {
     const isWater = /water|pool/.test(searchable);
     const isField = /field/.test(searchable);
@@ -706,6 +722,11 @@ export function productKeywordVariants(product: Product) {
   if (/volleyball/.test(searchable)) {
     add(...volleyballKeywordSet(product));
     add(`${base} for rental`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+  if (/bungee run/.test(searchable)) {
+    add(...bungeeRunKeywordSet(product));
+    add(`${base} for events`, `commercial ${base}`);
     return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
   }
 
@@ -971,6 +992,39 @@ export function productDetailContent(product: Product): DetailContent {
       ],
     };
   }
+  if (product.category === 'Inflatable Games' && /bungee run/.test(searchable)) {
+    const isTwoLane = /2 lane/.test(searchable);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: isTwoLane ? 'two-lane commercial bungee run race attraction' : 'commercial inflatable bungee run and fun-run attraction',
+      primaryBuyer: 'party rental businesses, family entertainment centers, event operators, schools, camps, and team-building providers',
+      purpose: isTwoLane ? 'It creates a head-to-head elastic-line race that gives venues a clear, competitive activity for supervised group play.' : 'It creates a high-energy bungee race and fun-run attraction that encourages repeat play, team challenges, and memorable event participation.',
+      applications: [
+        { title: 'Party rental and FEC programs', text: 'Add a simple-to-explain competitive attraction to birthday packages, indoor play zones, and repeat rental inventories.' },
+        { title: 'Schools, camps, and team events', text: 'Use the lanes for relay challenges, field days, camps, corporate team building, and supervised group competitions.' },
+        { title: 'Festivals and event activations', text: 'Build a visible activity station around clear start and finish points, participant rotation, queue flow, and sponsor branding.' },
+      ],
+      planningPoints: [
+        'Available footprint, lane length, height clearance, access route, surface, anchoring, and spectator separation',
+        'Number of lanes, elastic-line arrangement, participant age range, race rules, staffing, and queue or rotation flow',
+        'Inflation, cleaning, drying, storage, transport, event schedule, and indoor or outdoor operating conditions',
+      ],
+      customization: [
+        'Overall dimensions, lane count, start and finish layout, elastic-line position, participant zones, and entry points',
+        'Colors, printed race graphics, team branding, sponsor logos, themed artwork, and event messaging',
+        'Anchoring, blower package, carry bag, repair kit, packing format, accessories, and custom commercial specifications',
+      ],
+      operationNote: 'A commercial bungee run should be operated with defined race rules, trained supervision, secure anchoring, clear participant and spectator zones, inflation checks, and a practical cleaning and storage routine.',
+      quoteItems: [
+        'Venue type, available footprint, lane length, participant age range, expected capacity, and intended event format',
+        'Lane count, elastic-line requirements, artwork, colors, branding, anchoring, and accessory preferences',
+        'Quantity, target date, destination, packing needs, and whether the unit is for rental, FEC, school, or event use',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     const hasSlide = /slide/.test(searchable);
     const isBounce = /bounce|bouncy|castle/.test(searchable);
@@ -1119,6 +1173,12 @@ export function productCardDescription(product: Product) {
         : 'a commercial court layout for tournaments, team activities, and rental programs';
     return `${name} creates ${feature} with planned net, player, and spectator zones. ${reference}`;
   }
+  if (product.category === 'Inflatable Games' && /bungee run/.test(searchable)) {
+    const feature = /2 lane/.test(searchable)
+      ? 'a two-lane head-to-head bungee race format for FECs, rentals, and team events'
+      : 'a competitive bungee fun-run layout for parties, schools, camps, and event programs';
+    return `${name} creates ${feature} with defined start, finish, lane, and spectator zones. ${reference}`;
+  }
   const detectedFeatures: string[] = [];
   const addFeature = (pattern: RegExp, label: string) => { if (pattern.test(searchable) && !detectedFeatures.includes(label)) detectedFeatures.push(label); };
   addFeature(/double slide|dual lane|double lane/, 'dual-lane slide');
@@ -1231,6 +1291,12 @@ export function productCardLabel(product: Product) {
         : 'Court and net planning · Sports and rental use';
     return `${material} · ${label}`;
   }
+  if (product.category === 'Inflatable Games' && /bungee run/.test(searchable)) {
+    const label = /2 lane/.test(searchable)
+      ? 'Two-lane race format · FEC and rental use'
+      : 'Bungee fun-run format · Event and team use';
+    return `${material} · ${label}`;
+  }
   const labels = categoryLabels[product.category] ?? ['Custom OEM/ODM'];
   return `${material} · ${labels[cardVariantIndex(product, labels.length)]}`;
 }
@@ -1291,6 +1357,18 @@ export function productFaqs(product: Product) {
       { question: `Can the volleyball court size, colors, logos, and branding be customized?`, answer: `Yes. Custom court dimensions, boundary height, net arrangement, team colors, printed graphics, sponsor logos, event artwork, anchoring, accessories, packing, and ${isWater ? 'pool or water-venue' : 'ground-venue'} details can be specified.` },
       { question: `What anchoring, cleaning, storage, and supervision details matter?`, answer: `${content.operationNote} Plan inflation checks, net tension, player rules, cleaning, drying where applicable, dry storage, repair-kit access, transport, and a documented supervision routine for repeated operation.` },
       { question: `What should I include in a volleyball court quotation request?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, ground or water-area plan, target dimensions, net requirements, player capacity, branding, quantity, destination, target date, anchoring, and storage or packing requirements.` },
+    ];
+  }
+  if (product.category === 'Inflatable Games' && /bungee run/.test(searchable)) {
+    const terms = bungeeRunKeywordSet(product);
+    const isTwoLane = /2 lane/.test(searchable);
+    return [
+      { question: `What is the ${name} bungee run designed for?`, answer: `${isTwoLane ? 'This two-lane format is designed for head-to-head races, FEC programs, party rentals, school field days, camps, and team-building events.' : 'This inflatable bungee run is designed for supervised fun runs, party packages, festival challenges, school activities, and repeat event rentals.'} ${dimensions}` },
+      { question: `How much space and clearance should I allow for the bungee run?`, answer: `Confirm the listed footprint plus access, anchoring, blower position, participant recovery space, queue area, spectator separation, and height clearance. Share the site plan so YIC can review the final lane arrangement.` },
+      { question: `How should the elastic lines, lanes, and race rules be planned?`, answer: `Define the lane count, elastic-line attachment points, start and finish markers, participant age range, race distance, release rules, staffing position, and rotation flow before approving production.` },
+      { question: `Can the bungee run be customized with colors, logos, or event artwork?`, answer: `Yes. YIC can customize the footprint, lane arrangement, start and finish graphics, colors, sponsor logos, team branding, printed artwork, entry points, anchoring, accessories, and packing details.` },
+      { question: `What safety, cleaning, and storage details matter for repeat use?`, answer: `${content.operationNote} Plan participant rules, line and anchor checks, inflation checks, cleaning, drying, repair-kit access, dry storage, transport, and a documented supervisor routine for each rental or event.` },
+      { question: `What should I include in a bungee run quotation request?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, usable footprint, lane count, participant age range, expected capacity, event format, artwork, quantity, destination, target date, anchoring, and storage or packing requirements.` },
     ];
   }
   const categoryQuestions: Record<string, Array<{ question: string; answer: string }>> = {

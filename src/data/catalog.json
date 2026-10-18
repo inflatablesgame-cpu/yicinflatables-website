@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T15:55:41.353Z",
+  "generatedAt": "2026-10-18T02:54:10.805Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 85,
+      "count": 87,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -196,6 +196,8 @@
         "inflatable-games--double-axe-throwing-inflatable-40",
         "inflatable-games--double-lane-axe-throw-41",
         "inflatable-games--dual-axe-throwing-inflatable-42",
+        "inflatable-games--2-lane-bungee-run-86",
+        "inflatable-games--inflatable-bungee-run-87",
         "inflatable-games--giant-inflatable-dart-board-game-43",
         "inflatable-games--inflatable-dart-board-soccer-44",
         "inflatable-games--inflatable-basketball-connect-four-45",
@@ -3185,6 +3187,42 @@
         "/assets/product/Inflatable%20Games/4.6x3x2.6m%20%20%20%20dual%20axe%20throwing%20inflatable/5.webp"
       ],
       "dimensions": "4.6x3x2.6m    ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--2-lane-bungee-run-86",
+      "productSlug": "2-lane-bungee-run",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "2 lane bungee run",
+      "sourceName": "4.6x9x2m       2 lane bungee run",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%202%20lane%20bungee%20run/1.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%202%20lane%20bungee%20run/2.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%202%20lane%20bungee%20run/3.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%202%20lane%20bungee%20run/4.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%202%20lane%20bungee%20run/5.webp"
+      ],
+      "dimensions": "4.6x9x2m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-bungee-run-87",
+      "productSlug": "inflatable-bungee-run",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable bungee run",
+      "sourceName": "4.6x9x2m       inflatable bungee run",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%20inflatable%20bungee%20run/1.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%20inflatable%20bungee%20run/2.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%20inflatable%20bungee%20run/3.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%20inflatable%20bungee%20run/4.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%20inflatable%20bungee%20run/5.webp"
+      ],
+      "dimensions": "4.6x9x2m       ",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
