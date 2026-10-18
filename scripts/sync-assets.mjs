@@ -111,9 +111,9 @@ async function buildCatalog() {
   const previousCatalog = await readFile(path.join(dataRoot, 'catalog.json'), 'utf8')
     .then((value) => JSON.parse(value))
     .catch(() => ({ products: [] }));
-  const previousSlugs = new Map((previousCatalog.products ?? []).map((product) => [
+  const previousProducts = new Map((previousCatalog.products ?? []).map((product) => [
     `${product.categorySlug}|${product.sourceName}`,
-    product.slug,
+    product,
   ]));
 
   for (const categoryEntry of categoryEntries.filter((entry) => entry.isDirectory()).sort((left, right) => left.name.localeCompare(right.name))) {
@@ -134,13 +134,18 @@ async function buildCatalog() {
 
       const title = cleanProductName(productEntry.name) || `${categoryName} Product ${index + 1}`;
       const key = `${categorySlug}|${productEntry.name}`;
+      const previousProduct = previousProducts.get(key);
       const relativeDirectory = path.join('product', categoryEntry.name, productEntry.name);
       const images = imageEntries.map((imageName) => assetUrl(path.join(relativeDirectory, imageName)));
       const parsedDimensions = productEntry.name.match(/^\s*([^\s]+(?:\s*[x×]\s*[^\s]+)*\s*(?:m|Dia)?)/i)?.[1] ?? '';
       const dimensions = /尺寸定制/u.test(parsedDimensions) ? 'Custom dimensions available' : parsedDimensions;
       const product = {
-        slug: previousSlugs.get(key) ?? '',
-        productSlug: slugify(title),
+        slug: previousProduct?.slug ?? '',
+        // Preserve public product URLs when a later upload introduces another
+        // item with the same normalized title. New duplicates receive a clear
+        // commercial-intent suffix instead of silently changing an old URL.
+        productSlug: previousProduct?.productSlug ?? slugify(title),
+        preservePublicSlug: Boolean(previousProduct?.productSlug),
         category: categoryName,
         categorySlug,
         title,
@@ -165,7 +170,7 @@ async function buildCatalog() {
       const baseSlug = product.productSlug;
       const variantBase = stripIntentVariants(baseSlug) || baseSlug;
       let publicSlug = baseSlug;
-      if ((slugCounts.get(baseSlug) ?? 0) > 1) {
+      if (!product.preservePublicSlug && (slugCounts.get(variantBase) ?? slugCounts.get(baseSlug) ?? 0) > 1) {
         const duplicateIndex = duplicateIndexes.get(baseSlug) ?? 0;
         publicSlug = `${variantBase}-${duplicateVariant(variantBase, duplicateIndex, usedSlugs)}`;
         duplicateIndexes.set(baseSlug, duplicateIndex + 1);
@@ -209,7 +214,11 @@ async function buildCatalog() {
     });
   }
 
-  return { generatedAt: new Date().toISOString(), categories, products };
+  return {
+    generatedAt: new Date().toISOString(),
+    categories,
+    products: products.map(({ preservePublicSlug, ...product }) => product),
+  };
 }
 
 await mkdir(publicAssetsRoot, { recursive: true });

@@ -508,6 +508,7 @@ const climbingKeywordSets: Record<string, string[]> = {
   'bounce-house-climbing-wall': ['bounce house climbing wall', 'bouncy castle climbing wall'],
   'inflatable-rock-climbing-wall': ['inflatable rock climbing wall', 'inflatable rock climbing wall for water'],
   'inflatable-climbing-tower': ['inflatable climbing tower', 'blow up climbing wall'],
+  'inflatable-climbing-tower-commercial': ['commercial inflatable climbing tower', 'inflatable climbing tower for sale', 'portable inflatable climbing tower', 'custom inflatable climbing tower'],
 };
 
 const foamKeywordSets: Record<string, string[]> = {

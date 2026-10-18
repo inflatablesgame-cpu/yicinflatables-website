@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T03:24:47.781Z",
+  "generatedAt": "2026-10-18T08:25:11.633Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 94,
+      "count": 95,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -221,6 +221,7 @@
         "inflatable-games--3-in-1-inflatable-carnival-game-58",
         "inflatable-games--commercial-inflatable-batting-cage-59",
         "inflatable-games--inflatable-gladiator-jousting-60",
+        "inflatable-games--inflatable-climbing-tower-95",
         "inflatable-games--commercial-inflatable-gaga-ball-pit-61",
         "inflatable-games--human-billiards-inflatable-62",
         "inflatable-games--inflatable-foam-party-pit-rental-63",
@@ -3644,6 +3645,24 @@
         "/assets/product/Inflatable%20Games/6x4mx1.7m%20%20%20%20inflatable%20gladiator%20jousting/5.webp"
       ],
       "dimensions": "6x4mx1.7m    ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-climbing-tower-95",
+      "productSlug": "inflatable-climbing-tower-commercial",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable climbing tower",
+      "sourceName": "6x6x4.8m    inflatable climbing tower",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/6x6x4.8m%20%20%20%20inflatable%20climbing%20tower/1.webp",
+        "/assets/product/Inflatable%20Games/6x6x4.8m%20%20%20%20inflatable%20climbing%20tower/2.webp",
+        "/assets/product/Inflatable%20Games/6x6x4.8m%20%20%20%20inflatable%20climbing%20tower/3.webp",
+        "/assets/product/Inflatable%20Games/6x6x4.8m%20%20%20%20inflatable%20climbing%20tower/4.webp",
+        "/assets/product/Inflatable%20Games/6x6x4.8m%20%20%20%20inflatable%20climbing%20tower/5.webp"
+      ],
+      "dimensions": "6x6x4.8m    ",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
