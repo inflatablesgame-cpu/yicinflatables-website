@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T02:54:10.805Z",
+  "generatedAt": "2026-10-18T03:06:51.295Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 87,
+      "count": 90,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -202,6 +202,7 @@
         "inflatable-games--inflatable-dart-board-soccer-44",
         "inflatable-games--inflatable-basketball-connect-four-45",
         "inflatable-games--inflatable-human-billiards-game-for-sale-46",
+        "inflatable-games--inflatable-boxing-ring-rental-88",
         "inflatable-games--inflatable-boxing-ring-for-sale-47",
         "inflatable-games--batter-up-inflatable-game-48",
         "inflatable-games--inflatable-axe-throwing-for-sale-49",
@@ -227,7 +228,9 @@
         "inflatable-games--inflatable-climbing-wall-and-slide-71",
         "inflatable-games--rock-climbing-wall-inflatable-72",
         "inflatable-games--bounce-house-climbing-wall-73",
+        "inflatable-games--boxing-ring-inflatable-rentals-89",
         "inflatable-games--fmx-airbag-landing-66",
+        "inflatable-games--inflatable-boxing-area-90",
         "inflatable-games--inflatable-foam-pit-rental-81",
         "inflatable-games--inflatable-rock-climbing-wall-74",
         "inflatable-games--inflatable-volleyball-field-85",
@@ -3298,6 +3301,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-boxing-ring-rental-88",
+      "productSlug": "inflatable-boxing-ring-rental",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable boxing ring rental",
+      "sourceName": "4x4x2.5m       inflatable boxing ring rental",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/4x4x2.5m%20%20%20%20%20%20%20inflatable%20boxing%20ring%20rental/1.webp",
+        "/assets/product/Inflatable%20Games/4x4x2.5m%20%20%20%20%20%20%20inflatable%20boxing%20ring%20rental/2.webp",
+        "/assets/product/Inflatable%20Games/4x4x2.5m%20%20%20%20%20%20%20inflatable%20boxing%20ring%20rental/3.webp",
+        "/assets/product/Inflatable%20Games/4x4x2.5m%20%20%20%20%20%20%20inflatable%20boxing%20ring%20rental/4.webp",
+        "/assets/product/Inflatable%20Games/4x4x2.5m%20%20%20%20%20%20%20inflatable%20boxing%20ring%20rental/5.webp"
+      ],
+      "dimensions": "4x4x2.5m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-boxing-ring-for-sale-47",
       "productSlug": "inflatable-boxing-ring-for-sale",
       "category": "Inflatable Games",
@@ -3748,6 +3769,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--boxing-ring-inflatable-rentals-89",
+      "productSlug": "boxing-ring-inflatable-rentals",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "boxing ring inflatable rentals",
+      "sourceName": "尺寸定制           boxing ring inflatable rentals",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20boxing%20ring%20inflatable%20rentals/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20boxing%20ring%20inflatable%20rentals/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20boxing%20ring%20inflatable%20rentals/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20boxing%20ring%20inflatable%20rentals/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20boxing%20ring%20inflatable%20rentals/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--fmx-airbag-landing-66",
       "productSlug": "fmx-airbag-landing",
       "category": "Inflatable Games",
@@ -3761,6 +3800,24 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-boxing-area-90",
+      "productSlug": "inflatable-boxing-area",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable boxing area",
+      "sourceName": "尺寸定制           inflatable boxing area",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20boxing%20area/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20boxing%20area/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20boxing%20area/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20boxing%20area/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20boxing%20area/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."

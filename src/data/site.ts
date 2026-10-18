@@ -532,6 +532,13 @@ const bungeeRunKeywordSets: Record<string, string[]> = {
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
 };
 
+const boxingRingKeywordSets: Record<string, string[]> = {
+  'inflatable-boxing-ring-rental': ['inflatable boxing ring rental', 'inflatable boxing ring rental near me', 'blow up boxing ring rental', 'boxing inflatable rentals'],
+  'inflatable-boxing-ring-for-sale': ['inflatable boxing ring for sale', 'inflatable boxing ring for adults', 'inflatable boxing ring and gloves', 'boxing ring bounce house for sale'],
+  'boxing-ring-inflatable-rentals': ['boxing ring inflatable rentals', 'bouncy boxing ring rental', 'boxing ring with giant gloves', 'inflatable boxing ring for adults rental'],
+  'inflatable-boxing-area': ['inflatable boxing arena', 'inflatable fighting ring', 'blow up fighting ring', 'boxing ring bouncer'],
+};
+
 function landingKeywordSet(product: Product) {
   return landingKeywordSets[product.productSlug] ?? [];
 }
@@ -552,12 +559,17 @@ function bungeeRunKeywordSet(product: Product) {
   return bungeeRunKeywordSets[product.productSlug] ?? [];
 }
 
+function boxingRingKeywordSet(product: Product) {
+  return boxingRingKeywordSets[product.productSlug] ?? [];
+}
+
 function productSearchTerms(product: Product) {
   if (landingKeywordSet(product).length) return landingKeywordSet(product);
   if (climbingKeywordSet(product).length) return climbingKeywordSet(product);
   if (foamKeywordSet(product).length) return foamKeywordSet(product);
   if (volleyballKeywordSet(product).length) return volleyballKeywordSet(product);
-  return bungeeRunKeywordSet(product);
+  if (bungeeRunKeywordSet(product).length) return bungeeRunKeywordSet(product);
+  return boxingRingKeywordSet(product);
 }
 
 function truncateMeta(value: string, maxLength: number, punctuation = '.') {
@@ -633,6 +645,15 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /boxing ring|boxing area|boxing arena|fighting ring/.test(searchable)) {
+    const isArena = /arena|area|fighting/.test(searchable);
+    const isSale = /for sale/.test(searchable);
+    return isArena
+      ? ['Open boxing and fighting-ring layout for supervised events', 'Clear ropes, corner, entry, and spectator-zone planning', 'Custom dimensions, branding, graphics, and venue artwork', 'Commercial setup, anchoring, storage, and repair support']
+      : isSale
+        ? ['Commercial boxing ring format for purchase and repeat use', 'Ropes, corner posts, entry, and glove-zone planning', 'Custom colors, logos, gloves, and promotional artwork', 'Export packing, inspection, accessories, and storage coordination']
+        : ['Rental-ready inflatable boxing ring layout', 'Defined ropes, corners, entry, and participant zones', 'Custom dimensions, colors, logos, and giant-glove accessories', 'Setup, cleaning, storage, and repeat-event planning'];
+  }
   if (product.category === 'Inflatable Games' && /bungee run/.test(searchable)) {
     const isTwoLane = /2 lane/.test(searchable);
     return isTwoLane
@@ -726,6 +747,11 @@ export function productKeywordVariants(product: Product) {
   }
   if (/bungee run/.test(searchable)) {
     add(...bungeeRunKeywordSet(product));
+    add(`${base} for events`, `commercial ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+  if (/boxing ring|boxing area|boxing arena|fighting ring/.test(searchable)) {
+    add(...boxingRingKeywordSet(product));
     add(`${base} for events`, `commercial ${base}`);
     return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
   }
@@ -1025,6 +1051,40 @@ export function productDetailContent(product: Product): DetailContent {
       ],
     };
   }
+  if (product.category === 'Inflatable Games' && /boxing ring|boxing area|boxing arena|fighting ring/.test(searchable)) {
+    const isArena = /arena|area|fighting/.test(searchable);
+    const isSale = /for sale/.test(searchable);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: isArena ? 'inflatable boxing arena and fighting-ring attraction' : 'commercial inflatable boxing ring',
+      primaryBuyer: 'party rental businesses, family entertainment centers, sports clubs, event operators, schools, and team-building providers',
+      purpose: isArena ? 'It creates a visible, supervised boxing and sparring activity zone for events, training programs, and competitive entertainment.' : isSale ? 'It gives buyers a commercial boxing ring format for purchase, repeat operation, promotional events, and supervised sports activities.' : 'It adds a recognizable boxing-ring attraction to rental fleets, FEC programs, team events, and supervised activity packages.',
+      applications: [
+        { title: 'Party rental and FEC programs', text: 'Offer a memorable boxing-themed activity with clear participant zones, staff supervision, queue flow, and repeat booking potential.' },
+        { title: 'Sports clubs and training events', text: 'Use the ring format for controlled drills, demonstrations, school activities, team challenges, and promotional sports programs.' },
+        { title: 'Brand activations and festivals', text: 'Build an eye-catching boxing attraction around sponsor graphics, event messaging, participant rotation, and spectator visibility.' },
+      ],
+      planningPoints: [
+        'Available footprint, rope and corner layout, height clearance, access route, surface, anchoring, and spectator separation',
+        'Participant age range, activity rules, glove or accessory requirements, staffing, queue or rotation flow, and event capacity',
+        'Inflation, cleaning, drying, storage, transport, indoor or outdoor exposure, and local venue operating requirements',
+      ],
+      customization: [
+        'Ring dimensions, rope height, corner posts, entry points, mat or interior layout, and participant-zone configuration',
+        'Team colors, printed graphics, sponsor logos, event artwork, boxing themes, and venue branding',
+        'Giant gloves, blower package, anchoring, carry bag, repair kit, packing format, accessories, and custom specifications',
+      ],
+      operationNote: 'A commercial inflatable boxing ring should be operated with clear participant rules, trained supervision, safe spacing, secure anchoring, inflation checks, cleaning, and a documented inspection routine.',
+      quoteItems: [
+        'Venue type, usable footprint, participant age range, expected capacity, activity format, and operating schedule',
+        'Ring dimensions, rope and corner requirements, gloves or accessories, artwork, colors, branding, and anchoring',
+        'Quantity, target date, destination, packing needs, and whether the unit is for rental, training, FEC, or event use',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     const hasSlide = /slide/.test(searchable);
     const isBounce = /bounce|bouncy|castle/.test(searchable);
@@ -1179,6 +1239,14 @@ export function productCardDescription(product: Product) {
       : 'a competitive bungee fun-run layout for parties, schools, camps, and event programs';
     return `${name} creates ${feature} with defined start, finish, lane, and spectator zones. ${reference}`;
   }
+  if (product.category === 'Inflatable Games' && /boxing ring|boxing area|boxing arena|fighting ring/.test(searchable)) {
+    const feature = /arena|area|fighting/.test(searchable)
+      ? 'a supervised boxing arena for sports events, team challenges, and brand activations'
+      : /for sale/.test(searchable)
+        ? 'a commercial boxing ring for purchase, repeat rentals, and promotional events'
+        : 'a rental-ready boxing ring for FECs, party packages, and supervised sports activities';
+    return `${name} creates ${feature} with planned ropes, corners, participant, and spectator zones. ${reference}`;
+  }
   const detectedFeatures: string[] = [];
   const addFeature = (pattern: RegExp, label: string) => { if (pattern.test(searchable) && !detectedFeatures.includes(label)) detectedFeatures.push(label); };
   addFeature(/double slide|dual lane|double lane/, 'dual-lane slide');
@@ -1297,6 +1365,14 @@ export function productCardLabel(product: Product) {
       : 'Bungee fun-run format · Event and team use';
     return `${material} · ${label}`;
   }
+  if (product.category === 'Inflatable Games' && /boxing ring|boxing area|boxing arena|fighting ring/.test(searchable)) {
+    const label = /arena|area|fighting/.test(searchable)
+      ? 'Boxing arena layout · Event and sports use'
+      : /for sale/.test(searchable)
+        ? 'Commercial ring format · Purchase and rental use'
+        : 'Rental-ready ring · Boxing and FEC use';
+    return `${material} · ${label}`;
+  }
   const labels = categoryLabels[product.category] ?? ['Custom OEM/ODM'];
   return `${material} · ${labels[cardVariantIndex(product, labels.length)]}`;
 }
@@ -1369,6 +1445,19 @@ export function productFaqs(product: Product) {
       { question: `Can the bungee run be customized with colors, logos, or event artwork?`, answer: `Yes. YIC can customize the footprint, lane arrangement, start and finish graphics, colors, sponsor logos, team branding, printed artwork, entry points, anchoring, accessories, and packing details.` },
       { question: `What safety, cleaning, and storage details matter for repeat use?`, answer: `${content.operationNote} Plan participant rules, line and anchor checks, inflation checks, cleaning, drying, repair-kit access, dry storage, transport, and a documented supervisor routine for each rental or event.` },
       { question: `What should I include in a bungee run quotation request?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, usable footprint, lane count, participant age range, expected capacity, event format, artwork, quantity, destination, target date, anchoring, and storage or packing requirements.` },
+    ];
+  }
+  if (product.category === 'Inflatable Games' && /boxing ring|boxing area|boxing arena|fighting ring/.test(searchable)) {
+    const terms = boxingRingKeywordSet(product);
+    const isArena = /arena|area|fighting/.test(searchable);
+    const isSale = /for sale/.test(searchable);
+    return [
+      { question: `What is the ${name} inflatable boxing ring designed for?`, answer: `${isArena ? 'This boxing arena format is designed for supervised sports demonstrations, team events, brand activations, and activity programs.' : isSale ? 'This commercial boxing ring is designed for purchase, repeat rental operation, FEC programs, sports clubs, and promotional events.' : 'This rental-ready boxing ring is designed for party packages, FEC activity zones, schools, team challenges, and supervised event use.'} ${dimensions}` },
+      { question: `How much space and clearance should I allow for the boxing ring?`, answer: `Confirm the listed footprint plus rope and corner clearance, access route, entry area, anchoring, blower position, participant recovery space, queue area, spectator separation, and height clearance. A venue plan helps YIC review the final layout.` },
+      { question: `How should the ropes, corners, gloves, and participant zones be planned?`, answer: `Define rope height, corner posts, entry points, mat or interior area, glove or accessory needs, participant rules, staff position, rotation flow, and spectator boundaries before approving production.` },
+      { question: `Can the boxing ring be customized with colors, logos, or giant gloves?`, answer: `Yes. YIC can customize ring dimensions, rope and corner details, colors, printed graphics, sponsor logos, event artwork, giant gloves, entry points, anchoring, accessories, and packing details.` },
+      { question: `What safety, cleaning, and storage details matter for repeat use?`, answer: `${content.operationNote} Plan participant rules, rope and anchor checks, inflation checks, cleaning, drying, repair-kit access, dry storage, transport, and a documented supervisor routine for each rental or event.` },
+      { question: `What should I include in an inflatable boxing ring quotation request?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, usable footprint, ring dimensions, participant age range, expected capacity, activity format, glove or accessory requirements, artwork, quantity, destination, target date, anchoring, and storage or packing requirements.` },
     ];
   }
   const categoryQuestions: Record<string, Array<{ question: string; answer: string }>> = {
