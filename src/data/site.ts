@@ -556,6 +556,10 @@ const axeThrowingKeywordSets: Record<string, string[]> = {
   'inflatable-axe-throwing-game': ['inflatable axe throwing game', 'inflatable axe throwing for sale', 'inflatable ax throwing', 'blow up axe throwing game'],
 };
 
+const waterWalkingBallKeywordSets: Record<string, string[]> = {
+  'inflatable-water-walking-ball': ['inflatable water walking ball', 'water walking roll ball', 'water walking zorb', 'water zorbing price'],
+};
+
 const bungeeRunKeywordSets: Record<string, string[]> = {
   'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
@@ -612,6 +616,10 @@ function axeThrowingKeywordSet(product: Product) {
   return axeThrowingKeywordSets[product.productSlug] ?? [];
 }
 
+function waterWalkingBallKeywordSet(product: Product) {
+  return waterWalkingBallKeywordSets[product.productSlug] ?? [];
+}
+
 function isNewBilliardsProduct(product: Product) {
   return /^(?:4x7x1\.25m\s+human billiards inflatable|4x7x1\.25m\s+inflatable billiards pool table|尺寸定制\s+inflatable billiards table)$/iu.test(product.sourceName);
 }
@@ -637,6 +645,7 @@ function productSearchTerms(product: Product) {
   if (billiardsKeywordSet(product).length) return billiardsKeywordSet(product);
   if (soccerFieldKeywordSet(product).length) return soccerFieldKeywordSet(product);
   if (axeThrowingKeywordSet(product).length) return axeThrowingKeywordSet(product);
+  if (waterWalkingBallKeywordSet(product).length) return waterWalkingBallKeywordSet(product);
   if (boxingRingKeywordSet(product).length) return boxingRingKeywordSet(product);
   return soccerDartKeywordSet(product);
 }
@@ -714,6 +723,12 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (waterWalkingBallKeywordSet(product).length) return [
+    'Enclosed, water-based walking-ball format for supervised aquatic recreation',
+    '2 m diameter reference size for venue footprint and water-area planning',
+    `${product.material} construction listed for this model`,
+    'Confirm water depth, access, supervision, session capacity, and local operating requirements before use',
+  ];
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) return [
     /dual target/.test(searchable) ? 'Dual target faces for head-to-head throwing turns' : 'Inflatable target wall designed for supervised axe-style throwing games',
     'Custom footprint, target layout, scoring zones, and event artwork',
@@ -824,6 +839,12 @@ export function productKeywordVariants(product: Product) {
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
+
+  if (waterWalkingBallKeywordSet(product).length) {
+    add(...waterWalkingBallKeywordSet(product));
+    add('commercial inflatable water walking ball', 'custom water walking ball', 'water walking ball for events');
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   if (axeThrowingKeywordSet(product).length) {
     add(...axeThrowingKeywordSet(product));
@@ -1063,6 +1084,38 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: 'commercial inflatable water walking ball',
+      primaryBuyer: 'water parks, resorts, aquatic recreation operators, family entertainment centers, event companies, and inflatable-equipment distributors',
+      purpose: 'This enclosed 2 m water-walking ball is intended for supervised aquatic recreation, where a participant walks or rolls inside the ball on a managed water surface. Venue depth, operating area, capacity, staffing, and emergency procedures should be reviewed before purchase.',
+      applications: [
+        { title: 'Water parks and resorts', text: 'Add a time-based water activity after confirming water depth, participant access, supervision, and venue operating procedures.' },
+        { title: 'Aquatic events and festivals', text: 'Create a visible recreation station with a controlled queue, trained staff, clear participant briefing, and defined water-area boundaries.' },
+        { title: 'Commercial rental programs', text: 'Evaluate transport, inflation equipment, session turnover, cleaning, inspection, and dry storage before adding the attraction to a rental fleet.' },
+      ],
+      planningPoints: [
+        '2 m ball diameter, operating water area, water depth, access and exit method, clear perimeter, and participant recovery space',
+        'Participant age and capacity, session duration, trained supervision, rescue access, and venue emergency procedures',
+        'TPU specification, inflation equipment, inspection routine, cleaning, drying, transport, and storage conditions',
+      ],
+      customization: [
+        'Ball diameter, color, printed branding, and visibility details',
+        'Inflation valve, blower or pump compatibility, accessory package, and carry or packing format',
+        'Quantity, replacement parts, repair kit, and project-specific labeling requirements',
+      ],
+      operationNote: 'Water walking balls require active, trained supervision and a venue-approved aquatic operating plan. Confirm participant eligibility, session limits, water depth, access and rescue procedures, equipment inspection, inflation, and local regulations with the site operator. Do not treat the product as a life-saving device.',
+      quoteItems: [
+        'Water venue type, usable water area, depth, access and rescue plan, and operating schedule',
+        'Participant eligibility and capacity, session format, supervision plan, and 2 m reference diameter',
+        'Quantity, branding, inflation equipment, destination, target delivery date, and storage requirements',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
     const isDualTarget = /dual target/.test(searchable);
     const isGame = /throwing game/.test(searchable);
@@ -1526,6 +1579,7 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) return `A 2 m TPU water-walking ball for supervised aquatic recreation, planned around water depth, access, participant limits, rescue procedures, and venue rules. ${reference}`;
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
     const targetCount = /dual target/.test(searchable) ? 'Dual-target' : 'Custom inflatable';
     return `${targetCount} axe-throwing game planned around soft-play projectile compatibility, a clear throwing line, supervised turns, and branded target artwork. ${reference}`;
@@ -1732,6 +1786,17 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) {
+    const terms = waterWalkingBallKeywordSet(product);
+    return [
+      { question: `What is this inflatable water walking ball used for?`, answer: `${content.purpose} It is a supervised recreation product, not a life-saving device.` },
+      { question: `What water depth and operating area are needed for the 2 m ball?`, answer: `Plan the ball diameter plus clearance, water depth, access, exit or recovery space, and boundaries. The venue operator must confirm that the water conditions suit the participant group and the operating plan before use.` },
+      { question: `How many participants can use a water walking ball at one time?`, answer: `The capacity and session duration must be defined by the venue's operating procedure and the product's approved specification. Plan trained supervision, participant screening, a controlled queue, and immediate access to the water for assistance.` },
+      { question: `What safety procedures should the venue prepare?`, answer: `${content.operationNote} Staff should brief participants, monitor each session continuously, control access, and follow the site's emergency and rescue procedures.` },
+      { question: `Which material and customization options are available?`, answer: `The catalog lists ${product.material}. Confirm the exact TPU grade, thickness, seams, valve, inflation equipment, colors, graphics, repair kit, and packing details with YIC for the ordered specification.` },
+      { question: `What information is needed for a water zorbing ball price quotation?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, water-area dimensions and depth, participant and supervision plan, quantity, branding, inflation-equipment preference, destination, and target delivery date for a project quotation.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
     const terms = axeThrowingKeywordSet(product);
     const isDualTarget = /dual target/.test(searchable);

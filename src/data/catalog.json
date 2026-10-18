@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T09:56:19.941Z",
+  "generatedAt": "2026-10-18T10:59:32.703Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 115,
+      "count": 116,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -192,6 +192,7 @@
         "inflatable-games--human-foosball-inflatable-for-sale-25",
         "inflatable-games--portable-inflatable-soccer-field-26",
         "inflatable-games--inflatable-dart-board-soccer-27",
+        "inflatable-games--tpu-inflatable-water-walking-ball-116",
         "inflatable-games--inflatable-dart-board-rental-28",
         "inflatable-games--inflatable-soccer-dart-board-for-sale-29",
         "inflatable-games--small-inflatable-soccer-goal-30",
@@ -1908,7 +1909,7 @@
       "productSlug": "tpu-soccer-balls",
       "category": "Bumper Ball",
       "categorySlug": "bumper-ball",
-      "title": "tpu soccer balls",
+      "title": "soccer balls",
       "sourceName": "1.25m Dia    tpu soccer balls",
       "material": "Commercial TPU",
       "images": [
@@ -3143,6 +3144,24 @@
         "/assets/product/Inflatable%20Games/2m%20%20%E6%9D%90%E6%96%990.6mm%20PVC%20%20%20%20inflatable%20dart%20board%20soccer/5.webp"
       ],
       "dimensions": "2m  ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--tpu-inflatable-water-walking-ball-116",
+      "productSlug": "inflatable-water-walking-ball",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable water walking ball",
+      "sourceName": "2m Dia 材料tpu         inflatable water walking ball",
+      "material": "Commercial TPU",
+      "images": [
+        "/assets/product/Inflatable%20Games/2m%20Dia%20%E6%9D%90%E6%96%99tpu%20%20%20%20%20%20%20%20%20inflatable%20water%20walking%20ball/1.webp",
+        "/assets/product/Inflatable%20Games/2m%20Dia%20%E6%9D%90%E6%96%99tpu%20%20%20%20%20%20%20%20%20inflatable%20water%20walking%20ball/2.webp",
+        "/assets/product/Inflatable%20Games/2m%20Dia%20%E6%9D%90%E6%96%99tpu%20%20%20%20%20%20%20%20%20inflatable%20water%20walking%20ball/3.webp",
+        "/assets/product/Inflatable%20Games/2m%20Dia%20%E6%9D%90%E6%96%99tpu%20%20%20%20%20%20%20%20%20inflatable%20water%20walking%20ball/4.webp",
+        "/assets/product/Inflatable%20Games/2m%20Dia%20%E6%9D%90%E6%96%99tpu%20%20%20%20%20%20%20%20%20inflatable%20water%20walking%20ball/5.webp"
+      ],
+      "dimensions": "2m Dia",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {

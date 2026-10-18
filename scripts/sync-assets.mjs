@@ -44,6 +44,7 @@ function cleanProductName(value) {
     .replace(/^\s*[\d.]+(?:\s*[x×]\s*[\d.]+)+(?:\s*m)?\s+/i, '')
     .replace(/^\s*[\d.]+\s*m\s+/i, '')
     .replace(/[\u4e00-\u9fff]+/gu, ' ')
+    .replace(/^\s*tpu\s+/i, '')
     .replace(/\s{2,}/g, ' ')
     .trim();
 }
@@ -55,7 +56,7 @@ function sortImages(left, right) {
 }
 
 function materialFor(categoryName, productName) {
-  if (/bumper ball/i.test(categoryName)) return 'Commercial TPU';
+  if (/bumper ball/i.test(categoryName) || /\btpu\b/i.test(productName)) return 'Commercial TPU';
   const thicknessMatch = productName.match(/(0)\.\s*(\d+)\s*mm/i);
   if (thicknessMatch) return `${thicknessMatch[1]}.${thicknessMatch[2]}mm commercial PVC`;
   return 'Commercial grade 0.55mm (1000D, 18 OZ) PVC';
