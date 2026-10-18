@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T11:11:05.873Z",
+  "generatedAt": "2026-10-18T11:16:16.073Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 120,
+      "count": 121,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -242,6 +242,7 @@
         "inflatable-games--commercial-inflatable-gaga-ball-pit-61",
         "inflatable-games--human-billiards-inflatable-62",
         "inflatable-games--inflatable-foam-party-pit-rental-63",
+        "inflatable-games--human-hungry-hippo-inflatable-121",
         "inflatable-games--commercial-rock-climbing-wall-for-sale-64",
         "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-65",
         "inflatable-games--inflatable-climbing-wall-70",
@@ -4048,6 +4049,24 @@
         "/assets/product/Inflatable%20Games/7x5x0.64m%20%20%20inflatable%20foam%20party%20pit%20rental/5.webp"
       ],
       "dimensions": "7x5x0.64m   ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--human-hungry-hippo-inflatable-121",
+      "productSlug": "human-hungry-hippo-inflatable",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "human hungry hippo inflatable",
+      "sourceName": "8m Dia        human hungry hippo inflatable",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/8m%20Dia%20%20%20%20%20%20%20%20human%20hungry%20hippo%20inflatable/1.webp",
+        "/assets/product/Inflatable%20Games/8m%20Dia%20%20%20%20%20%20%20%20human%20hungry%20hippo%20inflatable/2.webp",
+        "/assets/product/Inflatable%20Games/8m%20Dia%20%20%20%20%20%20%20%20human%20hungry%20hippo%20inflatable/3.webp",
+        "/assets/product/Inflatable%20Games/8m%20Dia%20%20%20%20%20%20%20%20human%20hungry%20hippo%20inflatable/4.webp",
+        "/assets/product/Inflatable%20Games/8m%20Dia%20%20%20%20%20%20%20%20human%20hungry%20hippo%20inflatable/5.webp"
+      ],
+      "dimensions": "8m Dia",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {

@@ -570,6 +570,10 @@ const airHockeyKeywordSets: Record<string, string[]> = {
   'inflatable-air-hockey-table': ['inflatable air hockey table', 'inflatable air hockey table for sale', 'portable inflatable air hockey', 'inflatable air hockey game rental'],
 };
 
+const hungryHippoKeywordSets: Record<string, string[]> = {
+  'human-hungry-hippo-inflatable': ['human hungry hippo inflatable', 'hungry hippo party game', 'giant hungry hippo game', 'hungry hippo inflatable rental'],
+};
+
 const bungeeRunKeywordSets: Record<string, string[]> = {
   'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
@@ -638,6 +642,10 @@ function airHockeyKeywordSet(product: Product) {
   return airHockeyKeywordSets[product.productSlug] ?? [];
 }
 
+function hungryHippoKeywordSet(product: Product) {
+  return hungryHippoKeywordSets[product.productSlug] ?? [];
+}
+
 function isNewBilliardsProduct(product: Product) {
   return /^(?:4x7x1\.25m\s+human billiards inflatable|4x7x1\.25m\s+inflatable billiards pool table|尺寸定制\s+inflatable billiards table)$/iu.test(product.sourceName);
 }
@@ -666,6 +674,7 @@ function productSearchTerms(product: Product) {
   if (waterWalkingBallKeywordSet(product).length) return waterWalkingBallKeywordSet(product);
   if (connectFourBasketballKeywordSet(product).length) return connectFourBasketballKeywordSet(product);
   if (airHockeyKeywordSet(product).length) return airHockeyKeywordSet(product);
+  if (hungryHippoKeywordSet(product).length) return hungryHippoKeywordSet(product);
   if (boxingRingKeywordSet(product).length) return boxingRingKeywordSet(product);
   return soccerDartKeywordSet(product);
 }
@@ -743,6 +752,12 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) return [
+    `Reference diameter: ${product.dimensions.trim()}`,
+    'Human-scale team game built around a central play area and fast participant turns',
+    'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
+    'Confirm player format, harness or attachment details, staffing, anchoring, and clear operating area before production',
+  ];
   if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) return [
     /air hockey table/.test(searchable) ? `Reference footprint: ${product.dimensions.trim()}` : 'Compact inflatable air hockey game format for event and rental programs',
     'Two-player puck game with table-style play surface and visible side rails',
@@ -871,6 +886,12 @@ export function productKeywordVariants(product: Product) {
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
+
+  if (hungryHippoKeywordSet(product).length) {
+    add(...hungryHippoKeywordSet(product));
+    add(`${base} for events`, `commercial ${base}`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   if (airHockeyKeywordSet(product).length) {
     add(...airHockeyKeywordSet(product));
@@ -1128,6 +1149,38 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: 'human-scale inflatable Hungry Hippo team game',
+      primaryBuyer: 'party rental operators, family entertainment centers, schools, corporate event planners, festivals, and interactive-game distributors',
+      purpose: 'This 8 m diameter attraction translates a familiar hungry-hippo-style game into a human-scale team challenge. Players enter the defined play area and compete to collect or retrieve game pieces under staff direction; confirm the exact play mechanism, participant arrangement, and included accessories in the approved specification.',
+      applications: [
+        { title: 'Party rental and FEC programs', text: 'Offer a recognizable team activity with short rounds, clear turn-taking, and an engaging central play area.' },
+        { title: 'Schools and youth events', text: 'Use the group format for field days, camps, recreation programs, and supervised team competitions.' },
+        { title: 'Corporate events and festivals', text: 'Build a high-participation station around team rotation, a staffed play zone, queue flow, and event branding.' },
+      ],
+      planningPoints: [
+        `8 m reference diameter, clear perimeter, entrance and exit, queue, spectator buffer, and access route`,
+        'Participant count, team arrangement, age group, game-piece handling, round duration, and operator position',
+        'Playing surface, anchoring, blower placement, inflation checks, cleaning, transport, and dry storage',
+      ],
+      customization: [
+        'Overall diameter, wall or boundary height, entry points, and central play-area arrangement',
+        'Team colors, game-piece design, printed graphics, logos, and event theme artwork',
+        'Blower package, anchoring, repair kit, carry bags, packing format, and project-specific accessories',
+      ],
+      operationNote: 'Operate this human-scale group game with a documented play format, trained supervision, defined participant limits, clear entry and exit, secure anchoring, inflation checks, and separated spectator and queue areas. Confirm all player-contact or game-piece mechanisms in the approved specification and follow venue rules.',
+      quoteItems: [
+        'Venue type, usable footprint, access route, and clearance around the 8 m diameter reference size',
+        'Participant and team format, age group, game-piece mechanism, round duration, and supervision plan',
+        'Quantity, branding, destination, target delivery date, blower or accessory needs, packing, and storage',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) {
     const isTable = /air hockey table/.test(searchable);
     const isCustom = /custom dimensions available/.test(product.dimensions);
@@ -1694,6 +1747,7 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) return `An 8 m human-scale Hungry Hippo party game for supervised team play, rental events, schools, and FEC programs. Confirm the play mechanism and included accessories in the product specification. ${reference}`;
   if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) return `A commercial inflatable air hockey game for supervised head-to-head play at rental events, FECs, schools, and branded activations. ${reference}`;
   if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return `A basketball Connect Four target game for supervised shooting contests, team rotation, school activities, rentals, and branded events. ${reference}`;
   if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) return `A 2 m TPU water-walking ball for supervised aquatic recreation, planned around water depth, access, participant limits, rescue procedures, and venue rules. ${reference}`;
@@ -1903,6 +1957,17 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) {
+    const terms = hungryHippoKeywordSet(product);
+    return [
+      { question: `What is the human Hungry Hippo inflatable designed for?`, answer: `${content.purpose} The listed reference diameter is ${product.dimensions.trim()}. Confirm the final gameplay and supplied components before ordering.` },
+      { question: `How much room should I allow around the 8 m game?`, answer: `${content.planningPoints[0]}. Include the entrance and exit, queue, operator position, and spectator buffer when checking the venue plan.` },
+      { question: `How many players can take part in each round?`, answer: `Player capacity depends on the approved game mechanism, age group, staffing, and venue operating rules. Share the intended participant count and team format so the layout and play instructions can be confirmed before production.` },
+      { question: `Which game pieces and accessories are included?`, answer: `The source listing does not define the exact game-piece mechanism or accessory package. Confirm the pieces, player attachments if any, blower, repair kit, and packing list in the quotation and approved specification.` },
+      { question: `Can the diameter, theme, and team branding be customized?`, answer: `Yes. YIC can review ${content.customization.join('; ').toLowerCase()}. Provide the target footprint, preferred colors, event theme, and logo files for design review.` },
+      { question: `What should I send to request a quote?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, available footprint, participant and team format, target age group, game-mechanism brief, quantity, branding, destination, delivery date, and storage needs.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) {
     const terms = airHockeyKeywordSet(product);
     const isCustom = /custom dimensions available/.test(product.dimensions);
