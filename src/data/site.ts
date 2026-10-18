@@ -565,6 +565,11 @@ const connectFourBasketballKeywordSets: Record<string, string[]> = {
   'connect-four-basketball-inflatable': ['connect four basketball inflatable', 'connect 4 basketball game for events', 'commercial basketball connect four', 'custom basketball connect four'],
 };
 
+const airHockeyKeywordSets: Record<string, string[]> = {
+  'inflatable-air-hockey': ['inflatable air hockey', 'inflatable air hockey game', 'commercial inflatable air hockey', 'inflatable air hockey for events'],
+  'inflatable-air-hockey-table': ['inflatable air hockey table', 'inflatable air hockey table for sale', 'portable inflatable air hockey', 'inflatable air hockey game rental'],
+};
+
 const bungeeRunKeywordSets: Record<string, string[]> = {
   'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
@@ -629,6 +634,10 @@ function connectFourBasketballKeywordSet(product: Product) {
   return connectFourBasketballKeywordSets[product.productSlug] ?? [];
 }
 
+function airHockeyKeywordSet(product: Product) {
+  return airHockeyKeywordSets[product.productSlug] ?? [];
+}
+
 function isNewBilliardsProduct(product: Product) {
   return /^(?:4x7x1\.25m\s+human billiards inflatable|4x7x1\.25m\s+inflatable billiards pool table|尺寸定制\s+inflatable billiards table)$/iu.test(product.sourceName);
 }
@@ -656,6 +665,7 @@ function productSearchTerms(product: Product) {
   if (axeThrowingKeywordSet(product).length) return axeThrowingKeywordSet(product);
   if (waterWalkingBallKeywordSet(product).length) return waterWalkingBallKeywordSet(product);
   if (connectFourBasketballKeywordSet(product).length) return connectFourBasketballKeywordSet(product);
+  if (airHockeyKeywordSet(product).length) return airHockeyKeywordSet(product);
   if (boxingRingKeywordSet(product).length) return boxingRingKeywordSet(product);
   return soccerDartKeywordSet(product);
 }
@@ -733,6 +743,12 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) return [
+    /air hockey table/.test(searchable) ? `Reference footprint: ${product.dimensions.trim()}` : 'Compact inflatable air hockey game format for event and rental programs',
+    'Two-player puck game with table-style play surface and visible side rails',
+    'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
+    'Confirm blower, puck compatibility, power, operator position, queue, and anchoring before production',
+  ];
   if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return [
     /custom dimensions available/.test(product.dimensions) ? 'Made-to-order Connect Four basketball layout for venue projects' : `Reference footprint: ${product.dimensions.trim()}`,
     'Oversized Connect Four target grid combined with basketball shooting play',
@@ -855,6 +871,12 @@ export function productKeywordVariants(product: Product) {
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
+
+  if (airHockeyKeywordSet(product).length) {
+    add(...airHockeyKeywordSet(product));
+    add(`${base} for events`, `commercial ${base}`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   if (connectFourBasketballKeywordSet(product).length) {
     add(...connectFourBasketballKeywordSet(product));
@@ -1106,6 +1128,42 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) {
+    const isTable = /air hockey table/.test(searchable);
+    const isCustom = /custom dimensions available/.test(product.dimensions);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: isTable ? 'inflatable air hockey table game' : 'commercial inflatable air hockey attraction',
+      primaryBuyer: 'party rental businesses, family entertainment centers, schools, corporate event planners, festivals, and interactive-game distributors',
+      purpose: isTable
+        ? 'This table-style inflatable air hockey attraction brings a familiar head-to-head puck game into a portable event format. Confirm the playing surface, puck behavior, blower arrangement, and operating rules during specification review.'
+        : 'This compact inflatable air hockey game creates a recognizable two-player challenge for supervised event play, rental packages, and family entertainment programs, with setup and equipment details confirmed for the venue.',
+      applications: [
+        { title: 'Party rentals and FECs', text: 'Offer a familiar, fast-turn game that fits alongside other interactive attractions and supports repeat play.' },
+        { title: 'Schools and youth programs', text: 'Use short head-to-head rounds for camps, field days, recreation programs, and supervised indoor events.' },
+        { title: 'Corporate events and festivals', text: 'Build a branded competition around match rules, player rotation, queue space, and a staffed game station.' },
+      ],
+      planningPoints: [
+        isCustom ? 'Target playing-surface dimensions, rail height, player access, blower space, queue, and spectator clearance' : `Reference size ${product.dimensions.trim()}, plus access, blower placement, queue, and spectator clearance`,
+        'Puck and striker material, surface finish, play speed, match rules, player age range, and operator position',
+        'Ground or floor surface, anchoring, power supply, inflation checks, cleaning, transport, and storage',
+      ],
+      customization: [
+        'Overall footprint, playing area, rail height, player positions, and entry or access layout',
+        'Team colors, printed graphics, logo placement, sponsor panels, and event branding',
+        'Puck and striker package, blower requirements, anchoring, repair kit, carry bag, and packing format',
+      ],
+      operationNote: 'Before operation, confirm the game is used with compatible soft-play pucks and strikers specified for the product. Establish clear participant rules, stable placement, anchoring where required, supervised turns, blower and power arrangements, cleaning, inflation checks, and dry storage.',
+      quoteItems: [
+        'Venue type, usable floor area, access route, expected player throughput, and indoor or outdoor use',
+        'Reference or custom size, playing-surface layout, puck and striker requirements, artwork, and colors',
+        'Quantity, destination, required delivery date, blower and accessory needs, packing, and storage',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) {
     const isCustom = /custom dimensions available/.test(product.dimensions);
     const position = productCategoryPosition(product);
@@ -1636,6 +1694,7 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) return `A commercial inflatable air hockey game for supervised head-to-head play at rental events, FECs, schools, and branded activations. ${reference}`;
   if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return `A basketball Connect Four target game for supervised shooting contests, team rotation, school activities, rentals, and branded events. ${reference}`;
   if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) return `A 2 m TPU water-walking ball for supervised aquatic recreation, planned around water depth, access, participant limits, rescue procedures, and venue rules. ${reference}`;
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
@@ -1844,6 +1903,18 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) {
+    const terms = airHockeyKeywordSet(product);
+    const isCustom = /custom dimensions available/.test(product.dimensions);
+    return [
+      { question: `How is the ${name} inflatable air hockey game played?`, answer: `It is designed for supervised head-to-head puck play on an inflatable table-style surface. Confirm the approved puck, striker, scoring rules, and game setup in the final product specification.` },
+      { question: `How much floor space should I plan for the game?`, answer: `${isCustom ? 'For the made-to-order model, provide the desired playing area, overall footprint, access, and ceiling clearance.' : `Start with the ${product.dimensions.trim()} reference footprint and add room for player access, blower placement, queues, and spectators.`} Share a site plan before confirming production.` },
+      { question: `Which pucks and strikers are compatible?`, answer: `Compatibility depends on the final playing-surface construction. Specify the preferred puck and striker material, size, quantity, and expected play style so YIC can confirm a suitable package; do not assume standard hard pucks are appropriate.` },
+      { question: `Can the table size, rails, and graphics be customized?`, answer: `Yes. YIC can review ${content.customization.join('; ').toLowerCase()}. Send the footprint, player access preference, colors, logo files, and venue use for layout approval.` },
+      { question: `What should I prepare for safe operation and repeat events?`, answer: `${content.operationNote} Also plan the blower and power source, trained staffing, player rotation, inspection, cleaning, repair kit, transport, and dry storage.` },
+      { question: `What details are needed for an inflatable air hockey quotation?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, floor area, reference or custom dimensions, puck and striker preference, quantity, branding, destination, target date, and packing needs.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) {
     const terms = connectFourBasketballKeywordSet(product);
     const isCustom = /custom dimensions available/.test(product.dimensions);

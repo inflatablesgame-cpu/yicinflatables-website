@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T11:03:53.167Z",
+  "generatedAt": "2026-10-18T11:11:05.873Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 118,
+      "count": 120,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -217,6 +217,7 @@
         "inflatable-games--giant-inflatable-dart-board-game-43",
         "inflatable-games--inflatable-dart-board-soccer-44",
         "inflatable-games--inflatable-basketball-connect-four-45",
+        "inflatable-games--inflatable-air-hockey-119",
         "inflatable-games--inflatable-human-billiards-game-for-sale-46",
         "inflatable-games--inflatable-boxing-ring-rental-88",
         "inflatable-games--inflatable-boxing-ring-for-sale-47",
@@ -256,6 +257,7 @@
         "inflatable-games--boxing-ring-inflatable-rentals-89",
         "inflatable-games--connect-four-basketball-inflatable-118",
         "inflatable-games--fmx-airbag-landing-66",
+        "inflatable-games--inflatable-air-hockey-table-120",
         "inflatable-games--inflatable-boxing-area-90",
         "inflatable-games--inflatable-foam-pit-rental-81",
         "inflatable-games--inflatable-rock-climbing-wall-74",
@@ -3599,6 +3601,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-air-hockey-119",
+      "productSlug": "inflatable-air-hockey",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable air hockey",
+      "sourceName": "4x2m      inflatable air hockey",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/4x2m%20%20%20%20%20%20inflatable%20air%20hockey/1.webp",
+        "/assets/product/Inflatable%20Games/4x2m%20%20%20%20%20%20inflatable%20air%20hockey/2.webp",
+        "/assets/product/Inflatable%20Games/4x2m%20%20%20%20%20%20inflatable%20air%20hockey/3.webp",
+        "/assets/product/Inflatable%20Games/4x2m%20%20%20%20%20%20inflatable%20air%20hockey/4.webp",
+        "/assets/product/Inflatable%20Games/4x2m%20%20%20%20%20%20inflatable%20air%20hockey/5.webp"
+      ],
+      "dimensions": "4x2m      ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-human-billiards-game-for-sale-46",
       "productSlug": "inflatable-human-billiards-game-for-sale",
       "category": "Inflatable Games",
@@ -4296,6 +4316,24 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20fmx%20airbag%20landing/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-air-hockey-table-120",
+      "productSlug": "inflatable-air-hockey-table",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable air hockey table",
+      "sourceName": "尺寸定制           inflatable air hockey table",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20air%20hockey%20table/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20air%20hockey%20table/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20air%20hockey%20table/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20air%20hockey%20table/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20air%20hockey%20table/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
