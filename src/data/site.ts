@@ -531,6 +531,7 @@ const volleyballKeywordSets: Record<string, string[]> = {
 const bungeeRunKeywordSets: Record<string, string[]> = {
   'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
+  'blow-up-bungee-run': ['blow up bungee run', 'bungee run', 'bounce house bungee run', 'bouncy castle bungee run'],
 };
 
 const boxingRingKeywordSets: Record<string, string[]> = {

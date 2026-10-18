@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T08:25:11.633Z",
+  "generatedAt": "2026-10-18T08:27:04.130Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 95,
+      "count": 96,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -200,6 +200,7 @@
         "inflatable-games--dual-axe-throwing-inflatable-42",
         "inflatable-games--2-lane-bungee-run-86",
         "inflatable-games--inflatable-bungee-run-87",
+        "inflatable-games--blow-up-bungee-run-96",
         "inflatable-games--giant-inflatable-dart-board-game-43",
         "inflatable-games--inflatable-dart-board-soccer-44",
         "inflatable-games--inflatable-basketball-connect-four-45",
@@ -3267,6 +3268,24 @@
         "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20%20%20%20inflatable%20bungee%20run/5.webp"
       ],
       "dimensions": "4.6x9x2m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--blow-up-bungee-run-96",
+      "productSlug": "blow-up-bungee-run",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "blow up bungee run",
+      "sourceName": "4.6x9x2m    blow up bungee run",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20blow%20up%20bungee%20run/1.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20blow%20up%20bungee%20run/2.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20blow%20up%20bungee%20run/3.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20blow%20up%20bungee%20run/4.webp",
+        "/assets/product/Inflatable%20Games/4.6x9x2m%20%20%20%20blow%20up%20bungee%20run/5.webp"
+      ],
+      "dimensions": "4.6x9x2m    ",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
