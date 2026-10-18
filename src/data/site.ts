@@ -560,6 +560,11 @@ const waterWalkingBallKeywordSets: Record<string, string[]> = {
   'inflatable-water-walking-ball': ['inflatable water walking ball', 'water walking roll ball', 'water walking zorb', 'water zorbing price'],
 };
 
+const connectFourBasketballKeywordSets: Record<string, string[]> = {
+  'inflatable-connect-4-basketball': ['inflatable connect 4 basketball', 'basketball connect 4 inflatable', 'connect 4 basketball inflatable', 'inflatable basketball connect 4'],
+  'connect-four-basketball-inflatable': ['connect four basketball inflatable', 'connect 4 basketball game for events', 'commercial basketball connect four', 'custom basketball connect four'],
+};
+
 const bungeeRunKeywordSets: Record<string, string[]> = {
   'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
@@ -620,6 +625,10 @@ function waterWalkingBallKeywordSet(product: Product) {
   return waterWalkingBallKeywordSets[product.productSlug] ?? [];
 }
 
+function connectFourBasketballKeywordSet(product: Product) {
+  return connectFourBasketballKeywordSets[product.productSlug] ?? [];
+}
+
 function isNewBilliardsProduct(product: Product) {
   return /^(?:4x7x1\.25m\s+human billiards inflatable|4x7x1\.25m\s+inflatable billiards pool table|尺寸定制\s+inflatable billiards table)$/iu.test(product.sourceName);
 }
@@ -646,6 +655,7 @@ function productSearchTerms(product: Product) {
   if (soccerFieldKeywordSet(product).length) return soccerFieldKeywordSet(product);
   if (axeThrowingKeywordSet(product).length) return axeThrowingKeywordSet(product);
   if (waterWalkingBallKeywordSet(product).length) return waterWalkingBallKeywordSet(product);
+  if (connectFourBasketballKeywordSet(product).length) return connectFourBasketballKeywordSet(product);
   if (boxingRingKeywordSet(product).length) return boxingRingKeywordSet(product);
   return soccerDartKeywordSet(product);
 }
@@ -723,6 +733,12 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return [
+    /custom dimensions available/.test(product.dimensions) ? 'Made-to-order Connect Four basketball layout for venue projects' : `Reference footprint: ${product.dimensions.trim()}`,
+    'Oversized Connect Four target grid combined with basketball shooting play',
+    'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
+    'Confirm ball size, hoop height, scoring rules, player rotation, anchoring, and queue layout before production',
+  ];
   if (waterWalkingBallKeywordSet(product).length) return [
     'Enclosed, water-based walking-ball format for supervised aquatic recreation',
     '2 m diameter reference size for venue footprint and water-area planning',
@@ -839,6 +855,12 @@ export function productKeywordVariants(product: Product) {
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
+
+  if (connectFourBasketballKeywordSet(product).length) {
+    add(...connectFourBasketballKeywordSet(product));
+    add(`${base} for events`, `commercial ${base}`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   if (waterWalkingBallKeywordSet(product).length) {
     add(...waterWalkingBallKeywordSet(product));
@@ -1084,6 +1106,41 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) {
+    const isCustom = /custom dimensions available/.test(product.dimensions);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: 'inflatable Connect Four basketball game',
+      primaryBuyer: 'party rental businesses, family entertainment centers, schools, festivals, corporate event planners, and interactive-game distributors',
+      purpose: isCustom
+        ? 'It gives venues a made-to-order basketball target game that combines shooting accuracy with a giant Connect Four grid, sized around the available footprint and event format.'
+        : 'It combines basketball shooting with an oversized Connect Four target grid, creating a quick-to-understand competitive game for supervised events and repeat rental programs.',
+      applications: [
+        { title: 'Party rental and FEC programs', text: 'Add a visually clear shooting game with short turns, easy team rotation, and strong repeat-play potential.' },
+        { title: 'Schools and sports events', text: 'Use the grid-and-shot format for field days, camps, basketball skills activities, and supervised group challenges.' },
+        { title: 'Corporate events and festivals', text: 'Create a branded competition around team colors, score rules, queue flow, and sponsor artwork.' },
+      ],
+      planningPoints: [
+        isCustom ? 'Target width and height, hoop position, grid layout, throwing or shooting line, access, queue, and spectator clearance' : `Reference size ${product.dimensions.trim()}, plus shooting distance, access route, queue, and spectator clearance`,
+        'Basketball size, hoop height, scoring rules, player age range, turn duration, team rotation, and operator position',
+        'Surface, anchoring, blower placement, weather exposure, cleaning, transport, and dry storage',
+      ],
+      customization: [
+        'Overall dimensions, grid size, hoop count and height, shooting line, entry points, and player flow',
+        'Team colors, printed grid graphics, logos, sponsor panels, and event artwork',
+        'Basketball specification, blower package, anchoring, repair kit, carry bag, packing, and custom venue details',
+      ],
+      operationNote: 'Operate the game with a marked shooting line, compatible basketballs, secure anchoring, clear participant and spectator zones, supervised turns, regular inflation checks, and a cleaning and dry-storage routine.',
+      quoteItems: [
+        'Venue type, available footprint, height clearance, shooting distance, and intended player capacity',
+        'Fixed or custom dimensions, grid and hoop layout, ball size, scoring rules, artwork, and team colors',
+        'Quantity, destination, target delivery date, blower and accessory needs, packing, and storage requirements',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) {
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
@@ -1579,6 +1636,7 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return `A basketball Connect Four target game for supervised shooting contests, team rotation, school activities, rentals, and branded events. ${reference}`;
   if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) return `A 2 m TPU water-walking ball for supervised aquatic recreation, planned around water depth, access, participant limits, rescue procedures, and venue rules. ${reference}`;
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
     const targetCount = /dual target/.test(searchable) ? 'Dual-target' : 'Custom inflatable';
@@ -1786,6 +1844,18 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) {
+    const terms = connectFourBasketballKeywordSet(product);
+    const isCustom = /custom dimensions available/.test(product.dimensions);
+    return [
+      { question: `How does the ${name} Connect Four basketball game work?`, answer: `Players shoot compatible basketballs toward the target grid and follow the agreed scoring rules to build a Connect Four line. Confirm the final target and scoring layout in the approved specification.` },
+      { question: `How much space is required for the game and shooting line?`, answer: `${isCustom ? 'For this custom-size model, provide the intended footprint, target height, shooting distance, access route, and clearance.' : `Start with the ${product.dimensions.trim()} reference footprint, then add a marked shooting distance, side access, queue, operator position, and separated spectator area.`} Review the complete layout against the venue plan before production.` },
+      { question: `Which basketballs, hoop heights, and scoring rules should I specify?`, answer: `Confirm ball size and quantity, hoop height, grid-cell layout, scoring or win conditions, shooting distance, player age group, turn duration, and team rotation so the equipment and game rules work together.` },
+      { question: `Can the Connect Four grid and branding be customized?`, answer: `Yes. YIC can review ${content.customization.join('; ').toLowerCase()}. Provide a venue plan, brand files, preferred colors, and event format for artwork and layout approval.` },
+      { question: `What setup and operating details matter for repeated use?`, answer: `${content.operationNote} Also confirm blower access, power, packing, cleaning, inspection, repair-kit availability, and dry storage for your rental or venue program.` },
+      { question: `What information should I send for a quotation?`, answer: `This model is positioned around ${terms.join(', ')}. Send the footprint, shooting distance, target layout, ball specification, scoring rules, participant profile, quantity, branding, destination, and required delivery date.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) {
     const terms = waterWalkingBallKeywordSet(product);
     return [

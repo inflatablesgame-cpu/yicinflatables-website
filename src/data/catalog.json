@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T10:59:32.703Z",
+  "generatedAt": "2026-10-18T11:03:53.167Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 116,
+      "count": 118,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -196,6 +196,7 @@
         "inflatable-games--inflatable-dart-board-rental-28",
         "inflatable-games--inflatable-soccer-dart-board-for-sale-29",
         "inflatable-games--small-inflatable-soccer-goal-30",
+        "inflatable-games--inflatable-connect-4-basketball-117",
         "inflatable-games--inflatable-basketball-connect-4-game-31",
         "inflatable-games--large-inflatable-soccer-field-107",
         "inflatable-games--soccer-blow-up-field-108",
@@ -253,6 +254,7 @@
         "inflatable-games--blow-up-soccer-field-109",
         "inflatable-games--bounce-house-climbing-wall-73",
         "inflatable-games--boxing-ring-inflatable-rentals-89",
+        "inflatable-games--connect-four-basketball-inflatable-118",
         "inflatable-games--fmx-airbag-landing-66",
         "inflatable-games--inflatable-boxing-area-90",
         "inflatable-games--inflatable-foam-pit-rental-81",
@@ -3219,6 +3221,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-connect-4-basketball-117",
+      "productSlug": "inflatable-connect-4-basketball",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable connect 4 basketball",
+      "sourceName": "3.6x3x3.6m       inflatable connect 4 basketball",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/3.6x3x3.6m%20%20%20%20%20%20%20inflatable%20connect%204%20basketball/1.webp",
+        "/assets/product/Inflatable%20Games/3.6x3x3.6m%20%20%20%20%20%20%20inflatable%20connect%204%20basketball/2.webp",
+        "/assets/product/Inflatable%20Games/3.6x3x3.6m%20%20%20%20%20%20%20inflatable%20connect%204%20basketball/3.webp",
+        "/assets/product/Inflatable%20Games/3.6x3x3.6m%20%20%20%20%20%20%20inflatable%20connect%204%20basketball/4.webp",
+        "/assets/product/Inflatable%20Games/3.6x3x3.6m%20%20%20%20%20%20%20inflatable%20connect%204%20basketball/5.webp"
+      ],
+      "dimensions": "3.6x3x3.6m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-basketball-connect-4-game-31",
       "productSlug": "inflatable-basketball-connect-4-game",
       "category": "Inflatable Games",
@@ -4240,6 +4260,24 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20boxing%20ring%20inflatable%20rentals/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20boxing%20ring%20inflatable%20rentals/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20boxing%20ring%20inflatable%20rentals/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--connect-four-basketball-inflatable-118",
+      "productSlug": "connect-four-basketball-inflatable",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "connect four basketball inflatable",
+      "sourceName": "尺寸定制           connect four basketball inflatable",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20connect%20four%20basketball%20inflatable/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20connect%20four%20basketball%20inflatable/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20connect%20four%20basketball%20inflatable/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20connect%20four%20basketball%20inflatable/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20connect%20four%20basketball%20inflatable/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
