@@ -539,6 +539,17 @@ const boxingRingKeywordSets: Record<string, string[]> = {
   'inflatable-boxing-area': ['inflatable boxing arena', 'inflatable fighting ring', 'blow up fighting ring', 'boxing ring bouncer'],
 };
 
+const soccerDartKeywordSets: Record<string, string[]> = {
+  'inflatable-soccer-dart-board': ['inflatable soccer dart board', 'soccer dart board', 'soccer dart game', 'blow up soccer dart board'],
+  'inflatable-football-dart-game': ['football darts', 'football dart board', 'inflatable football darts', 'inflatable football dartboard'],
+  'velcro-football-dart-board': ['football velcro darts', 'velcro football dart board', 'giant velcro darts', 'velcro soccer ball dart board'],
+  'inflatable-soccer-dart-board-for-sale': ['inflatable soccer dart board rental', 'soccer dart board rental', 'inflatable dart board rental', 'inflatable dart board rental near me'],
+  'giant-soccer-dart-board-for-sale': ['giant soccer dart board', 'giant soccer darts', 'giant inflatable soccer dart board', 'giant inflatable dart board football'],
+  'velcro-soccer-darts-for-sale': ['giant velcro soccer dart board', 'soccer velcro dart board', 'inflatable velcro soccer dart board', 'giant inflatable darts'],
+  'inflatable-soccer-dart-game': ['inflatable soccer dart game', 'soccer darts inflatable game', 'inflatable dart soccer', 'soccer dartboard'],
+  'inflatable-football-darts-for-sale': ['inflatable football darts for sale', 'football darts for sale', 'inflatable dart board football', 'football dart board inflatable'],
+};
+
 function landingKeywordSet(product: Product) {
   return landingKeywordSets[product.productSlug] ?? [];
 }
@@ -563,13 +574,18 @@ function boxingRingKeywordSet(product: Product) {
   return boxingRingKeywordSets[product.productSlug] ?? [];
 }
 
+function soccerDartKeywordSet(product: Product) {
+  return soccerDartKeywordSets[product.productSlug] ?? [];
+}
+
 function productSearchTerms(product: Product) {
   if (landingKeywordSet(product).length) return landingKeywordSet(product);
   if (climbingKeywordSet(product).length) return climbingKeywordSet(product);
   if (foamKeywordSet(product).length) return foamKeywordSet(product);
   if (volleyballKeywordSet(product).length) return volleyballKeywordSet(product);
   if (bungeeRunKeywordSet(product).length) return bungeeRunKeywordSet(product);
-  return boxingRingKeywordSet(product);
+  if (boxingRingKeywordSet(product).length) return boxingRingKeywordSet(product);
+  return soccerDartKeywordSet(product);
 }
 
 function truncateMeta(value: string, maxLength: number, punctuation = '.') {
@@ -645,6 +661,16 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && /soccer dart|football dart|football darts|soccer darts|velcro soccer/.test(searchable)) {
+    const isVelcro = /velcro/.test(searchable);
+    const isFootball = /football/.test(searchable);
+    return [
+      `${isVelcro ? 'Hook-and-loop target face' : 'Numbered inflatable dartboard target'} for ${isFootball ? 'football' : 'soccer'}-ball kicking games`,
+      'Defined kicking line, player turn, scoring, and spectator zones',
+      'Custom target size, colors, scoring layout, logos, and event artwork',
+      'Commercial blower, anchoring, ball/accessory, packing, and storage coordination',
+    ];
+  }
   if (product.category === 'Inflatable Games' && /boxing ring|boxing area|boxing arena|fighting ring/.test(searchable)) {
     const isArena = /arena|area|fighting/.test(searchable);
     const isSale = /for sale/.test(searchable);
@@ -752,6 +778,11 @@ export function productKeywordVariants(product: Product) {
   }
   if (/boxing ring|boxing area|boxing arena|fighting ring/.test(searchable)) {
     add(...boxingRingKeywordSet(product));
+    add(`${base} for events`, `commercial ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+  if (/soccer dart|football dart|football darts|soccer darts|velcro soccer/.test(searchable)) {
+    add(...soccerDartKeywordSet(product));
     add(`${base} for events`, `commercial ${base}`);
     return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
   }
@@ -1085,6 +1116,41 @@ export function productDetailContent(product: Product): DetailContent {
       ],
     };
   }
+  if (product.category === 'Inflatable Games' && /soccer dart|football dart|football darts|soccer darts|velcro soccer/.test(searchable)) {
+    const isVelcro = /velcro/.test(searchable);
+    const sport = /football/.test(searchable) ? 'football' : 'soccer';
+    const isCustom = /custom dimensions available/i.test(product.dimensions);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: isVelcro ? `inflatable ${sport} dartboard with hook-and-loop target` : `inflatable ${sport} dartboard kicking game`,
+      primaryBuyer: 'party rental businesses, family entertainment centers, schools, sports clubs, event operators, and brand activation teams',
+      purpose: isVelcro ? `It turns a familiar ${sport} kick into a scored target challenge, using hook-and-loop ball contact for supervised events and repeat-play programs.` : `It gives players a large, visible dartboard target to aim at with a ${sport} ball, creating an easy-to-understand activity for rentals, sports events, and group entertainment.`,
+      applications: [
+        { title: 'Party rental and FEC programs', text: 'Add a quick-turn target game to birthdays, family activity zones, rental packages, and indoor entertainment schedules.' },
+        { title: 'Schools and sports clubs', text: 'Use the target for skill challenges, team rotations, field days, camps, and supervised football or soccer activities.' },
+        { title: 'Festivals and brand activations', text: 'Create a visible branded game station with a kicking line, simple scoring, queue flow, and sponsor graphics.' },
+      ],
+      planningPoints: [
+        'Target height and width, available footprint, kicking distance, clear approach, access route, and spectator boundary',
+        'Target-face format, ball compatibility, scoring zones, user age range, turn duration, staffing, and player rotation',
+        'Indoor or outdoor surface, anchoring, blower position, weather exposure, setup crew, cleaning, transport, and storage',
+      ],
+      customization: [
+        `Target dimensions${isCustom ? ' and project-specific footprint' : ''}, scoring sections, target-face colors, and kicking-line layout`,
+        'Hook-and-loop face or compatible target treatment, ball options, logos, sponsor graphics, and custom artwork',
+        'Blower package, anchoring, repair kit, carry bag, packing format, and venue or event branding',
+      ],
+      operationNote: 'A soccer or football dart game should be set up with a marked kicking line, compatible balls, secure anchoring, clear spectator separation, supervised turn-taking, and a routine for checking the target face and inflation.',
+      quoteItems: [
+        'Venue type, indoor or outdoor surface, available footprint, target height, kicking distance, and expected player capacity',
+        'Soccer or football ball format, hook-and-loop target preference, scoring layout, artwork, colors, and accessories',
+        'Quantity, destination, target date, rental or event schedule, packing needs, and any custom-size requirements',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     const hasSlide = /slide/.test(searchable);
     const isBounce = /bounce|bouncy|castle/.test(searchable);
@@ -1247,6 +1313,13 @@ export function productCardDescription(product: Product) {
         : 'a rental-ready boxing ring for FECs, party packages, and supervised sports activities';
     return `${name} creates ${feature} with planned ropes, corners, participant, and spectator zones. ${reference}`;
   }
+  if (product.category === 'Inflatable Games' && /soccer dart|football dart|football darts|soccer darts|velcro soccer/.test(searchable)) {
+    const sport = /football/.test(searchable) ? 'football' : 'soccer';
+    const feature = /velcro/.test(searchable)
+      ? `a hook-and-loop target challenge for ${sport} balls`
+      : `a large numbered dartboard target for ${sport}-ball kicking games`;
+    return `${name} creates ${feature} for party rentals, FECs, schools, sports events, and brand activations, with a defined kicking line and player rotation. ${reference}`;
+  }
   const detectedFeatures: string[] = [];
   const addFeature = (pattern: RegExp, label: string) => { if (pattern.test(searchable) && !detectedFeatures.includes(label)) detectedFeatures.push(label); };
   addFeature(/double slide|dual lane|double lane/, 'dual-lane slide');
@@ -1373,6 +1446,12 @@ export function productCardLabel(product: Product) {
         : 'Rental-ready ring · Boxing and FEC use';
     return `${material} · ${label}`;
   }
+  if (product.category === 'Inflatable Games' && /soccer dart|football dart|football darts|soccer darts|velcro soccer/.test(searchable)) {
+    const label = /velcro/.test(searchable)
+      ? 'Hook-and-loop target · Soccer and football play'
+      : 'Numbered dartboard target · Kicking game format';
+    return `${material} · ${label}`;
+  }
   const labels = categoryLabels[product.category] ?? ['Custom OEM/ODM'];
   return `${material} · ${labels[cardVariantIndex(product, labels.length)]}`;
 }
@@ -1458,6 +1537,19 @@ export function productFaqs(product: Product) {
       { question: `Can the boxing ring be customized with colors, logos, or giant gloves?`, answer: `Yes. YIC can customize ring dimensions, rope and corner details, colors, printed graphics, sponsor logos, event artwork, giant gloves, entry points, anchoring, accessories, and packing details.` },
       { question: `What safety, cleaning, and storage details matter for repeat use?`, answer: `${content.operationNote} Plan participant rules, rope and anchor checks, inflation checks, cleaning, drying, repair-kit access, dry storage, transport, and a documented supervisor routine for each rental or event.` },
       { question: `What should I include in an inflatable boxing ring quotation request?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, usable footprint, ring dimensions, participant age range, expected capacity, activity format, glove or accessory requirements, artwork, quantity, destination, target date, anchoring, and storage or packing requirements.` },
+    ];
+  }
+  if (product.category === 'Inflatable Games' && /soccer dart|football dart|football darts|soccer darts|velcro soccer/.test(searchable)) {
+    const terms = soccerDartKeywordSet(product);
+    const sport = /football/.test(searchable) ? 'football' : 'soccer';
+    const isVelcro = /velcro/.test(searchable);
+    return [
+      { question: `What is the ${name} inflatable ${sport} dart game designed for?`, answer: `It is designed as a supervised kicking and target game for party rentals, FECs, schools, camps, sports clubs, festivals, and branded event programs. ${dimensions} ${isVelcro ? 'The product name indicates a hook-and-loop target format; confirm the compatible ball construction in the final specification.' : 'The numbered target supports score-based play; confirm ball compatibility in the final specification.'}` },
+      { question: `How much space and kicking clearance should I plan?`, answer: `Allow the product footprint plus the approach and kicking distance, side clearance, entry route, blower position, anchoring, player waiting area, and spectator boundary. Share the site dimensions and intended kicking line so the layout can be checked before production.` },
+      { question: `Which ball and target-face details need confirmation?`, answer: `Confirm ball size and surface, target-face material, hook-and-loop compatibility where applicable, scoring zones, target height, kicking distance, and the age group. These details determine whether the game behaves as expected for your event.` },
+      { question: `Can the dartboard target and artwork be customized?`, answer: `Yes. YIC can review overall dimensions, target layout, scoring colors, branding, logos, sponsor panels, event artwork, compatible ball options, anchoring, blower package, and packing requirements.` },
+      { question: `How should the game be operated and maintained between sessions?`, answer: `${content.operationNote} Include supervised turn-taking, target-face inspection, cleaning, drying, inflation checks, repair-kit access, and dry storage in the operating routine.` },
+      { question: `What should I send for an inflatable soccer dart quotation?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, available footprint, target height, kicking distance, ball and target-face preference, player capacity, artwork, quantity, destination, target date, and packing or storage requirements.` },
     ];
   }
   const categoryQuestions: Record<string, Array<{ question: string; answer: string }>> = {
