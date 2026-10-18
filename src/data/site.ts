@@ -534,6 +534,22 @@ const billiardsKeywordSets: Record<string, string[]> = {
   'inflatable-billiards-table': ['inflatable billiards table', 'inflatable outdoor pool table', 'outdoor inflatable pool table', 'inflatable snooker table'],
 };
 
+const soccerFieldKeywordSets: Record<string, string[]> = {
+  'inflatable-soccer-field-for-rent': ['inflatable soccer field to rent', 'inflatable soccer field for rent', 'rent inflatable soccer field', 'inflatable soccer field hire'],
+  'human-foosball-game-for-sale': ['human foosball game for sale', 'human foosball game', 'human foosball table', 'inflatable foosball game'],
+  'inflatable-soccer-arena': ['inflatable soccer arena', 'inflatable soccer field', 'inflatable soccer court', 'soccer field inflatable'],
+  'inflatable-soap-football-field': ['inflatable soap football field', 'inflatable soap soccer field', 'soap soccer field', 'inflatable soap soccer field for events'],
+  'inflatable-human-foosball-court': ['inflatable human foosball court', 'human foosball field game', 'human foosball inflatable court', 'human foosball court for sale'],
+  'inflatable-soccer-field-slip-and-slide': ['inflatable soccer field slip and slide', 'inflatable soccer field slip and slide rental', 'inflatable slip soccer field', 'soccer slide field inflatable'],
+  'inflatable-water-soccer-field': ['inflatable water soccer field', 'water inflatable soccer field', 'inflatable soccer field water', 'inflatable water soccer field for rent'],
+  'slip-and-slide-soccer-field-rent': ['slip and slide soccer field rent', 'soccer field slip and slide rental', 'inflatable wet soccer field', 'slip and slide soccer field rental'],
+  'human-foosball-inflatable-rental': ['human foosball inflatable rental', 'human foosball game rental', 'large human foosball rental attraction', 'commercial human foosball inflatable'],
+  'large-inflatable-soccer-field': ['large inflatable soccer field', 'large soccer pitch inflatable', 'commercial large inflatable soccer field', 'portable large soccer field inflatable'],
+  'soccer-blow-up-field': ['soccer blow up field', 'soccer field blow up', 'blow up soccer field', 'inflatable soccer field for sale'],
+  'blow-up-soccer-field': ['custom-size inflatable soccer field', 'portable inflatable soccer field', 'commercial inflatable soccer field', 'modular inflatable soccer pitch'],
+  'giant-inflatable-soccer-field': ['giant inflatable soccer field', 'inflatable soccer field for adults', 'inflatable soccer pitch', 'inflatable indoor soccer field'],
+};
+
 const bungeeRunKeywordSets: Record<string, string[]> = {
   'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
@@ -582,6 +598,10 @@ function billiardsKeywordSet(product: Product) {
   return billiardsKeywordSets[product.productSlug] ?? [];
 }
 
+function soccerFieldKeywordSet(product: Product) {
+  return soccerFieldKeywordSets[product.productSlug] ?? [];
+}
+
 function isNewBilliardsProduct(product: Product) {
   return /^(?:4x7x1\.25m\s+human billiards inflatable|4x7x1\.25m\s+inflatable billiards pool table|尺寸定制\s+inflatable billiards table)$/iu.test(product.sourceName);
 }
@@ -605,6 +625,7 @@ function productSearchTerms(product: Product) {
   if (volleyballKeywordSet(product).length) return volleyballKeywordSet(product);
   if (bungeeRunKeywordSet(product).length) return bungeeRunKeywordSet(product);
   if (billiardsKeywordSet(product).length) return billiardsKeywordSet(product);
+  if (soccerFieldKeywordSet(product).length) return soccerFieldKeywordSet(product);
   if (boxingRingKeywordSet(product).length) return boxingRingKeywordSet(product);
   return soccerDartKeywordSet(product);
 }
@@ -682,6 +703,15 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && soccerFieldKeywordSet(product).length) {
+    if (/human foosball/.test(searchable)) return ['Human-player foosball format with fixed play lanes', `Reference footprint: ${product.dimensions.trim()}`, 'Team, lane, goal, color, and branded-graphic options', 'Commercial PVC with anchoring, blower, packing, and accessory planning'];
+    if (/soap|slip and slide/.test(searchable)) return ['Wet-play soccer layout with a defined field boundary', `Reference footprint: ${product.dimensions.trim()}`, 'Wet-use material specification and water-flow setup confirmation', 'Drainage, anchoring, supervision, cleaning, and dry-storage planning'];
+    if (/water soccer/.test(searchable)) return ['Water-based soccer play area with perimeter boundaries and goals', `Reference footprint: ${product.dimensions.trim()}`, '0.65 mm PVC specification listed for this model', 'Water-area, depth, anchoring, access, and supervision review'];
+    if (/arena/.test(searchable)) return ['Enclosed soccer arena with goals and a contained play area', `Reference footprint: ${product.dimensions.trim()}`, 'Custom colors, goals, markings, and venue branding', 'Surface, anchoring, access, and participant-flow planning'];
+    if (/(?:large|giant) inflatable soccer field/.test(searchable) && !/custom dimensions available/.test(product.dimensions)) return ['Large-format field boundary for organized group play', `Reference footprint: ${product.dimensions.trim()}`, 'Commercial PVC specification listed for this model', 'Site access, anchoring, ground preparation, and installation review'];
+    if (/custom dimensions available/.test(product.dimensions)) return ['Made-to-order field dimensions based on a venue plan', 'Custom boundary, goal, entry, and field-marking configuration', 'Brand colors, logos, and event graphics available for review', 'Commercial material, blower, anchoring, packing, and accessories confirmed by quote'];
+    return ['Portable inflatable soccer field with defined perimeter boundaries', `Reference footprint: ${product.dimensions.trim()}`, 'Custom field markings, colors, goals, and branding', 'Commercial setup, anchoring, packing, and storage planning'];
+  }
   if (product.category === 'Inflatable Games' && isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
     const isHuman = /human billiards|soccer billiards/.test(searchable);
     const isCustom = /尺寸定制|custom dimensions available/.test(searchable);
@@ -777,6 +807,12 @@ export function productKeywordVariants(product: Product) {
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
+
+  if (soccerFieldKeywordSet(product).length) {
+    add(...soccerFieldKeywordSet(product));
+    add(`${base} for events`, `commercial ${base}`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   if (isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
     add(...billiardsKeywordSet(product));
@@ -1004,6 +1040,75 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && soccerFieldKeywordSet(product).length) {
+    const isFoosball = /human foosball/.test(searchable);
+    const isSoap = /soap/.test(searchable);
+    const isSlipSlide = /slip and slide/.test(searchable);
+    const isWater = /water soccer/.test(searchable);
+    const isArena = /arena/.test(searchable);
+    const isLarge = /(?:large|giant) inflatable soccer field/.test(searchable);
+    const isCustom = /custom dimensions available/.test(product.dimensions);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const fieldType = isFoosball ? 'human foosball inflatable field' : isSoap ? 'soap soccer field' : isSlipSlide ? 'slip-and-slide soccer field' : isWater ? 'water soccer field' : isArena ? 'inflatable soccer arena' : isLarge && !isCustom ? 'large inflatable soccer field' : isCustom ? 'custom-size inflatable soccer field' : 'inflatable soccer field';
+    const buyers = isFoosball
+      ? 'party rental companies, team-building providers, family entertainment centers, schools, corporate event planners, and sports venues'
+      : isWater || isSlipSlide || isSoap
+        ? 'water parks, resorts, summer-event operators, party rental businesses, camps, and family entertainment centers'
+        : 'sports clubs, schools, event operators, party rental businesses, recreation venues, and inflatable-equipment distributors';
+    return {
+      template,
+      productType: fieldType,
+      primaryBuyer: buyers,
+      purpose: isFoosball
+        ? 'It turns soccer into a human-scale foosball match, with players assigned to lanes so the activity is easy to explain, spectate, and run as a team event.'
+        : isSoap
+          ? 'It creates a contained soap-football activity area for supervised wet-play events, where surface treatment, water supply, drainage, and operating rules must be planned together.'
+          : isSlipSlide
+            ? 'It combines soccer play with a wet, slippery field surface for seasonal events that need a high-energy group activity and a defined water-management plan.'
+            : isWater
+              ? 'It provides a bounded soccer play area intended for water-based recreation, with site depth, anchoring, access, and supervision confirmed before production.'
+              : isArena
+                ? 'It creates a contained soccer play zone with goals and visible boundaries for small-sided matches, event activations, and supervised recreation.'
+                : isLarge && !isCustom
+                  ? 'It provides a large-format inflatable soccer boundary for organized play, temporary sports events, and recreation projects that need a portable field perimeter.'
+                  : isCustom
+                    ? 'It gives buyers a made-to-order inflatable soccer field that can be sized and configured around a venue plan, intended format, and access conditions.'
+                    : 'It creates a portable, clearly bounded soccer play area for events, school programs, clubs, and rental packages that need a field with defined edges and goals.',
+      applications: isFoosball ? [
+        { title: 'Team-building and corporate events', text: 'Use fixed player lanes to create a cooperative, spectator-friendly match format for company events and group challenges.' },
+        { title: 'Party rental and FEC programs', text: 'Offer a recognizable team game for birthdays, festivals, school events, and repeat rental packages.' },
+        { title: 'Schools and sports clubs', text: 'Add a supervised activity for field days, camps, club socials, and community programs.' },
+      ] : isWater || isSlipSlide || isSoap ? [
+        { title: 'Water parks and resort programs', text: 'Plan a seasonal soccer activity around water depth or supply, drainage, anchoring, supervision, and guest circulation.' },
+        { title: 'Summer events and festivals', text: 'Create a high-visibility wet-play station with a defined queue, operator position, water-management plan, and spectator boundary.' },
+        { title: 'Rental and camp activities', text: 'Build a wet-play package around transport, setup, cleaning, drying, storage, and participant rules.' },
+      ] : [
+        { title: 'Schools and sports clubs', text: 'Use a contained pitch for small-sided matches, training games, sports days, camps, and supervised club activities.' },
+        { title: 'Party rental and event operators', text: 'Add a simple-to-understand soccer activity to festivals, corporate events, family days, and repeat rental inventory.' },
+        { title: 'Recreation venues and distributors', text: 'Specify field dimensions, goals, access, branding, packing, and project quantities for a venue or resale program.' },
+      ],
+      planningPoints: [
+        isCustom ? 'Target field length and width, perimeter height, goal openings, access gates, surface, and clearance from nearby structures' : `Reference size ${product.dimensions.trim()}, plus perimeter clearance, entry points, access route, queue, and spectator space`,
+        isFoosball ? 'Player count, lane arrangement, team zones, match rules, ball size, supervision, and participant rotation' : 'Intended soccer format, age group, goal dimensions, player capacity, ball choice, and operator or supervision position',
+        isWater || isSlipSlide || isSoap ? 'Water source or water depth, drainage, non-slip operating rules, surface, anchoring, cleaning, drying, and local wet-play requirements' : 'Ground preparation, anchoring, blower position, inflation checks, weather exposure, transport, and dry storage',
+      ],
+      customization: [
+        'Field dimensions, wall height, goal count and size, entry openings, lane configuration, and perimeter layout',
+        'Field markings, team colors, printed artwork, sponsor logos, and event or venue branding',
+        'Wet-use details where applicable, blower package, anchoring, repair kit, carry bags, packing, and accessory list',
+      ],
+      operationNote: isWater || isSlipSlide || isSoap
+        ? 'Wet-play soccer products require a confirmed water plan, drainage, suitable surface, anchoring, clear player rules, trained supervision, regular checks, cleaning, complete drying, and compliance with local venue requirements.'
+        : 'A commercial inflatable soccer field should be operated with a suitable surface, secure anchoring, clear entry and exit, defined player and spectator zones, inflation checks, supervised play, and a documented cleaning and storage routine.',
+      quoteItems: [
+        'Venue type, ground or water setting, site plan, available footprint, and target player capacity',
+        'Field format, dimensions, goal and entry layout, markings, branding, material, and accessory requirements',
+        'Quantity, destination, target delivery date, season or event schedule, packing, and storage needs',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
     const isHuman = /human billiards|soccer billiards/.test(searchable);
     const isCustom = /尺寸定制|custom dimensions available/.test(searchable);
@@ -1360,6 +1465,16 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && soccerFieldKeywordSet(product).length) {
+    if (/human foosball/.test(searchable)) return `A human-scale foosball match format with fixed player lanes for team-building, school events, and rental programs. ${reference}`;
+    if (/soap/.test(searchable)) return `A bounded soap-football play area for supervised wet-play events, planned around water supply, drainage, surface, and operator flow. ${reference}`;
+    if (/slip and slide/.test(searchable)) return `A wet-play soccer field that combines match activity with a slip-and-slide surface for seasonal events and rental packages. ${reference}`;
+    if (/water soccer/.test(searchable)) return `A water-based soccer field with perimeter boundaries and goals, subject to site-depth, anchoring, and supervision review. ${reference}`;
+    if (/arena/.test(searchable)) return `A contained small-sided soccer arena with goals and visible play boundaries for events, schools, and recreation venues. ${reference}`;
+    if (/(?:large|giant) inflatable soccer field/.test(searchable) && !/custom dimensions available/.test(product.dimensions)) return `A large-format soccer field boundary for organized matches and sports events. ${reference}`;
+    if (/custom dimensions available/.test(product.dimensions)) return `A made-to-order inflatable soccer field developed around your venue plan, match format, access, colors, and branding. ${reference}`;
+    return `A portable inflatable soccer pitch with a defined perimeter for clubs, school programs, events, and commercial rental packages. ${reference}`;
+  }
   if (product.category === 'Inflatable Games' && isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
     const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
     if (/human billiards|soccer billiards/.test(searchable)) return `Human-scale soccer billiards turns a familiar table game into an active group challenge for FECs, event rentals, sports bars, and resorts. ${reference}`;
@@ -1552,6 +1667,27 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && soccerFieldKeywordSet(product).length) {
+    const terms = soccerFieldKeywordSet(product);
+    const isFoosball = /human foosball/.test(searchable);
+    const isSoap = /soap/.test(searchable);
+    const isSlipSlide = /slip and slide/.test(searchable);
+    const isWater = /water soccer/.test(searchable);
+    const isArena = /arena/.test(searchable);
+    const isLarge = /large inflatable soccer field/.test(searchable);
+    const isCustom = /custom dimensions available/.test(product.dimensions);
+    const wetUse = isSoap || isSlipSlide || isWater;
+    const dimensionText = isCustom ? 'No fixed reference size is listed. Provide your target dimensions and site plan.' : `The listed reference size is ${product.dimensions.trim()}.`;
+    const modelType = isFoosball ? 'human-scale foosball' : isSoap ? 'soap-football' : isSlipSlide ? 'slip-and-slide soccer' : isWater ? 'water soccer' : isArena ? 'small-sided soccer arena' : isLarge ? 'large-format soccer field' : isCustom ? 'custom-size soccer field' : 'portable soccer field';
+    return [
+      { question: isFoosball ? `How does ${name} differ from a regular inflatable soccer field?` : isSoap ? `What makes this soap football field suitable for wet-play events?` : isSlipSlide ? `How does the slip-and-slide soccer layout combine soccer and wet play?` : isWater ? `What water-site conditions are needed for this soccer field?` : isArena ? `What match format fits this inflatable soccer arena?` : isCustom ? `How is this made-to-order soccer field sized?` : isLarge ? `Which projects should consider this large inflatable soccer field?` : `What match formats can use this inflatable soccer field?`, answer: `${content.purpose} ${dimensionText}` },
+      { question: isFoosball ? `How many players and lanes should I specify for the human foosball game?` : isCustom ? `What site measurements are needed before custom production?` : isLarge ? `How much clearance is needed around the ${product.dimensions.trim()} field?` : `How much space and access clearance should I plan?`, answer: `${content.planningPoints[0]}. Also confirm player capacity, access and exit routes, blower placement, setup access, queuing, and spectator separation against a site plan before production.` },
+      { question: isFoosball ? `Which team rules and player restraints should be confirmed?` : wetUse ? `How should water supply, drainage, and wet-play supervision be planned?` : isArena ? `How should goals, entry points, and player flow be configured?` : `Which goals, field markings, and game details can be specified?`, answer: `${content.planningPoints[1]}. Confirm the game rules, age group, ball compatibility, operator position, rotation, and any venue-specific procedures in the approved specification.` },
+      { question: isFoosball ? `Can team colors and sponsor graphics be added to the foosball court?` : isCustom ? `Can the field be customized to my venue footprint and brand?` : `Can the field dimensions, goals, and printed graphics be customized?`, answer: `Yes. YIC can review ${content.customization.join('; ').toLowerCase()}. Provide a floor plan, target dimensions, logo files, and required quantity for specification review.` },
+      { question: wetUse ? `Which material and drying checks matter after wet operation?` : isLarge ? `Which material specification is listed for the large field?` : `Which material and maintenance details should be confirmed?`, answer: `The catalog lists ${product.material}. Confirm the exact material, reinforcement, seams, accessories, and destination-market requirements for the selected model. ${content.operationNote}` },
+      { question: isFoosball ? `What should I include when requesting a human foosball quote?` : isWater ? `What information does the factory need to quote a water soccer field?` : isSlipSlide || isSoap ? `What details should I send for a wet-play soccer field quotation?` : isCustom ? `What should I send for a custom inflatable soccer pitch quote?` : `What should I include in a commercial soccer-field RFQ?`, answer: `This model is relevant to ${terms.join(', ')}. Send the venue type, site plan, intended play format, quantity, destination, target delivery date, customization brief, and packing or accessory needs so YIC can confirm the specification and quote.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
     const terms = billiardsKeywordSet(product);
     const isHuman = /human billiards|soccer billiards/.test(searchable);

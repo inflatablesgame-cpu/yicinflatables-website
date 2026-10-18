@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T08:38:02.704Z",
+  "generatedAt": "2026-10-18T09:15:39.795Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 99,
+      "count": 112,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -158,17 +158,25 @@
         "inflatable-games--blow-up-rock-climbing-wall-68",
         "inflatable-games--inflatable-rock-climbing-wall-for-sale-69",
         "inflatable-games--commercial-inflatable-batting-cage-6",
+        "inflatable-games--inflatable-soccer-field-for-rent-110",
+        "inflatable-games--human-foosball-game-for-sale-111",
         "inflatable-games--inflatable-water-volleyball-court-82",
         "inflatable-games--inflatable-volleyball-court-for-sale-7",
         "inflatable-games--inflatable-volleyball-court-83",
         "inflatable-games--water-inflatable-volleyball-court-84",
+        "inflatable-games--inflatable-soccer-arena-100",
         "inflatable-games--inflatable-batting-tunnels-8",
         "inflatable-games--inflatable-hungry-hippo-game-for-sale-9",
         "inflatable-games--commercial-bungee-trampoline-10",
         "inflatable-games--baseball-inflatable-batting-cage-11",
+        "inflatable-games--inflatable-soap-football-field-101",
         "inflatable-games--inflatable-soccer-field-for-kids-12",
+        "inflatable-games--inflatable-human-foosball-court-102",
         "inflatable-games--inflatable-human-foosball-game-13",
         "inflatable-games--inflatable-soccer-field-for-sale-14",
+        "inflatable-games--inflatable-soccer-field-slip-and-slide-103",
+        "inflatable-games--inflatable-water-soccer-field-104",
+        "inflatable-games--slip-and-slide-soccer-field-rent-105",
         "inflatable-games--inflatable-human-foosball-game-15",
         "inflatable-games--inflatable-soccer-pit-16",
         "inflatable-games--outdoor-inflatable-soccer-field-17",
@@ -180,6 +188,7 @@
         "inflatable-games--inflatable-axe-throwing-game-for-sale-22",
         "inflatable-games--inflatable-water-roller-ball-23",
         "inflatable-games--inflatable-soccer-field-for-sale-24",
+        "inflatable-games--human-foosball-inflatable-rental-106",
         "inflatable-games--human-foosball-inflatable-for-sale-25",
         "inflatable-games--portable-inflatable-soccer-field-26",
         "inflatable-games--inflatable-dart-board-soccer-27",
@@ -187,6 +196,8 @@
         "inflatable-games--inflatable-soccer-dart-board-for-sale-29",
         "inflatable-games--small-inflatable-soccer-goal-30",
         "inflatable-games--inflatable-basketball-connect-4-game-31",
+        "inflatable-games--large-inflatable-soccer-field-107",
+        "inflatable-games--soccer-blow-up-field-108",
         "inflatable-games--inflatable-soccer-football-field-32",
         "inflatable-games--giant-soccer-dart-board-for-sale-33",
         "inflatable-games--velcro-soccer-darts-for-sale-34",
@@ -231,9 +242,11 @@
         "inflatable-games--commercial-rock-climbing-wall-for-sale-64",
         "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-65",
         "inflatable-games--inflatable-climbing-wall-70",
+        "inflatable-games--giant-inflatable-soccer-field-112",
         "inflatable-games--inflatable-billiards-table-99",
         "inflatable-games--inflatable-climbing-wall-and-slide-71",
         "inflatable-games--rock-climbing-wall-inflatable-72",
+        "inflatable-games--blow-up-soccer-field-109",
         "inflatable-games--bounce-house-climbing-wall-73",
         "inflatable-games--boxing-ring-inflatable-rentals-89",
         "inflatable-games--fmx-airbag-landing-66",
@@ -2518,6 +2531,42 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-soccer-field-for-rent-110",
+      "productSlug": "inflatable-soccer-field-for-rent",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable soccer field for rent",
+      "sourceName": "10x5.6m     inflatable soccer field for rent",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20%20inflatable%20soccer%20field%20for%20rent/1.webp",
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20%20inflatable%20soccer%20field%20for%20rent/2.webp",
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20%20inflatable%20soccer%20field%20for%20rent/3.webp",
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20%20inflatable%20soccer%20field%20for%20rent/4.webp",
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20%20inflatable%20soccer%20field%20for%20rent/5.webp"
+      ],
+      "dimensions": "10x5.6m     ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--human-foosball-game-for-sale-111",
+      "productSlug": "human-foosball-game-for-sale",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "human foosball game for sale",
+      "sourceName": "10x5.6m    human foosball game for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20human%20foosball%20game%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20human%20foosball%20game%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20human%20foosball%20game%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20human%20foosball%20game%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Games/10x5.6m%20%20%20%20human%20foosball%20game%20for%20sale/5.webp"
+      ],
+      "dimensions": "10x5.6m    ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-water-volleyball-court-82",
       "productSlug": "inflatable-water-volleyball-court",
       "category": "Inflatable Games",
@@ -2587,6 +2636,24 @@
         "/assets/product/Inflatable%20Games/10x5x2.1m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20%20water%20inflatable%20volleyball%20court/5.webp"
       ],
       "dimensions": "10x5x2.1m ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-soccer-arena-100",
+      "productSlug": "inflatable-soccer-arena",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable soccer arena",
+      "sourceName": "10x8m       inflatable soccer arena",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/10x8m%20%20%20%20%20%20%20inflatable%20soccer%20arena/1.webp",
+        "/assets/product/Inflatable%20Games/10x8m%20%20%20%20%20%20%20inflatable%20soccer%20arena/2.webp",
+        "/assets/product/Inflatable%20Games/10x8m%20%20%20%20%20%20%20inflatable%20soccer%20arena/3.webp",
+        "/assets/product/Inflatable%20Games/10x8m%20%20%20%20%20%20%20inflatable%20soccer%20arena/4.webp",
+        "/assets/product/Inflatable%20Games/10x8m%20%20%20%20%20%20%20inflatable%20soccer%20arena/5.webp"
+      ],
+      "dimensions": "10x8m       ",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
@@ -2662,6 +2729,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-soap-football-field-101",
+      "productSlug": "inflatable-soap-football-field",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable soap football field",
+      "sourceName": "12x6x3.2m         inflatable soap football field",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/12x6x3.2m%20%20%20%20%20%20%20%20%20inflatable%20soap%20football%20field/1.webp",
+        "/assets/product/Inflatable%20Games/12x6x3.2m%20%20%20%20%20%20%20%20%20inflatable%20soap%20football%20field/2.webp",
+        "/assets/product/Inflatable%20Games/12x6x3.2m%20%20%20%20%20%20%20%20%20inflatable%20soap%20football%20field/3.webp",
+        "/assets/product/Inflatable%20Games/12x6x3.2m%20%20%20%20%20%20%20%20%20inflatable%20soap%20football%20field/4.webp",
+        "/assets/product/Inflatable%20Games/12x6x3.2m%20%20%20%20%20%20%20%20%20inflatable%20soap%20football%20field/5.webp"
+      ],
+      "dimensions": "12x6x3.2m         ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-soccer-field-for-kids-12",
       "productSlug": "inflatable-soccer-field-for-kids",
       "category": "Inflatable Games",
@@ -2677,6 +2762,24 @@
         "/assets/product/Inflatable%20Games/12x6x3.2m%20%20inflatable%20soccer%20field%20for%20kids/5.webp"
       ],
       "dimensions": "12x6x3.2m  ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-human-foosball-court-102",
+      "productSlug": "inflatable-human-foosball-court",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable human foosball court",
+      "sourceName": "12x8m         inflatable human foosball court",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/12x8m%20%20%20%20%20%20%20%20%20inflatable%20human%20foosball%20court/1.webp",
+        "/assets/product/Inflatable%20Games/12x8m%20%20%20%20%20%20%20%20%20inflatable%20human%20foosball%20court/2.webp",
+        "/assets/product/Inflatable%20Games/12x8m%20%20%20%20%20%20%20%20%20inflatable%20human%20foosball%20court/3.webp",
+        "/assets/product/Inflatable%20Games/12x8m%20%20%20%20%20%20%20%20%20inflatable%20human%20foosball%20court/4.webp",
+        "/assets/product/Inflatable%20Games/12x8m%20%20%20%20%20%20%20%20%20inflatable%20human%20foosball%20court/5.webp"
+      ],
+      "dimensions": "12x8m         ",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
@@ -2713,6 +2816,60 @@
         "/assets/product/Inflatable%20Games/12x8x2.3m%20%20%20inflatable%20soccer%20field%20for%20sale/5.webp"
       ],
       "dimensions": "12x8x2.3m   ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-soccer-field-slip-and-slide-103",
+      "productSlug": "inflatable-soccer-field-slip-and-slide",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable soccer field slip and slide",
+      "sourceName": "12x8x2.3m 材料0. 65mmPVC         inflatable soccer field slip and slide",
+      "material": "0.65mm commercial PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20soccer%20field%20slip%20and%20slide/1.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20soccer%20field%20slip%20and%20slide/2.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20soccer%20field%20slip%20and%20slide/3.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20soccer%20field%20slip%20and%20slide/4.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20soccer%20field%20slip%20and%20slide/5.webp"
+      ],
+      "dimensions": "12x8x2.3m ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-water-soccer-field-104",
+      "productSlug": "inflatable-water-soccer-field",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable water soccer field",
+      "sourceName": "12x8x2.3m 材料0. 65mmPVC         inflatable water soccer field",
+      "material": "0.65mm commercial PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20water%20soccer%20field/1.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20water%20soccer%20field/2.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20water%20soccer%20field/3.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20water%20soccer%20field/4.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20inflatable%20water%20soccer%20field/5.webp"
+      ],
+      "dimensions": "12x8x2.3m ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--slip-and-slide-soccer-field-rent-105",
+      "productSlug": "slip-and-slide-soccer-field-rent",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "slip and slide soccer field rent",
+      "sourceName": "12x8x2.3m 材料0. 65mmPVC         slip and slide soccer field rent",
+      "material": "0.65mm commercial PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20slip%20and%20slide%20soccer%20field%20rent/1.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20slip%20and%20slide%20soccer%20field%20rent/2.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20slip%20and%20slide%20soccer%20field%20rent/3.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20slip%20and%20slide%20soccer%20field%20rent/4.webp",
+        "/assets/product/Inflatable%20Games/12x8x2.3m%20%E6%9D%90%E6%96%990.%2065mmPVC%20%20%20%20%20%20%20%20%20slip%20and%20slide%20soccer%20field%20rent/5.webp"
+      ],
+      "dimensions": "12x8x2.3m ",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
@@ -2914,6 +3071,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--human-foosball-inflatable-rental-106",
+      "productSlug": "human-foosball-inflatable-rental",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "human foosball inflatable rental",
+      "sourceName": "20x12x3m         human foosball inflatable rental",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/20x12x3m%20%20%20%20%20%20%20%20%20human%20foosball%20inflatable%20rental/1.webp",
+        "/assets/product/Inflatable%20Games/20x12x3m%20%20%20%20%20%20%20%20%20human%20foosball%20inflatable%20rental/2.webp",
+        "/assets/product/Inflatable%20Games/20x12x3m%20%20%20%20%20%20%20%20%20human%20foosball%20inflatable%20rental/3.webp",
+        "/assets/product/Inflatable%20Games/20x12x3m%20%20%20%20%20%20%20%20%20human%20foosball%20inflatable%20rental/4.webp",
+        "/assets/product/Inflatable%20Games/20x12x3m%20%20%20%20%20%20%20%20%20human%20foosball%20inflatable%20rental/5.webp"
+      ],
+      "dimensions": "20x12x3m         ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--human-foosball-inflatable-for-sale-25",
       "productSlug": "human-foosball-inflatable-for-sale",
       "category": "Inflatable Games",
@@ -3037,6 +3212,42 @@
         "/assets/product/Inflatable%20Games/3.6x3x3.6m%20%20%20%20inflatable%20basketball%20connect%204%20game/5.webp"
       ],
       "dimensions": "3.6x3x3.6m    ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--large-inflatable-soccer-field-107",
+      "productSlug": "large-inflatable-soccer-field",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "large inflatable soccer field",
+      "sourceName": "30x20mx0.6m  材料0.7mm PVC          large inflatable soccer field",
+      "material": "0.7mm commercial PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/30x20mx0.6m%20%20%E6%9D%90%E6%96%990.7mm%20PVC%20%20%20%20%20%20%20%20%20%20large%20inflatable%20soccer%20field/1.webp",
+        "/assets/product/Inflatable%20Games/30x20mx0.6m%20%20%E6%9D%90%E6%96%990.7mm%20PVC%20%20%20%20%20%20%20%20%20%20large%20inflatable%20soccer%20field/2.webp",
+        "/assets/product/Inflatable%20Games/30x20mx0.6m%20%20%E6%9D%90%E6%96%990.7mm%20PVC%20%20%20%20%20%20%20%20%20%20large%20inflatable%20soccer%20field/3.webp",
+        "/assets/product/Inflatable%20Games/30x20mx0.6m%20%20%E6%9D%90%E6%96%990.7mm%20PVC%20%20%20%20%20%20%20%20%20%20large%20inflatable%20soccer%20field/4.webp",
+        "/assets/product/Inflatable%20Games/30x20mx0.6m%20%20%E6%9D%90%E6%96%990.7mm%20PVC%20%20%20%20%20%20%20%20%20%20large%20inflatable%20soccer%20field/5.webp"
+      ],
+      "dimensions": "30x20mx0.6m  ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--soccer-blow-up-field-108",
+      "productSlug": "soccer-blow-up-field",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "soccer blow up field",
+      "sourceName": "30x22x2m         soccer blow up field",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/30x22x2m%20%20%20%20%20%20%20%20%20soccer%20blow%20up%20field/1.webp",
+        "/assets/product/Inflatable%20Games/30x22x2m%20%20%20%20%20%20%20%20%20soccer%20blow%20up%20field/2.webp",
+        "/assets/product/Inflatable%20Games/30x22x2m%20%20%20%20%20%20%20%20%20soccer%20blow%20up%20field/3.webp",
+        "/assets/product/Inflatable%20Games/30x22x2m%20%20%20%20%20%20%20%20%20soccer%20blow%20up%20field/4.webp",
+        "/assets/product/Inflatable%20Games/30x22x2m%20%20%20%20%20%20%20%20%20soccer%20blow%20up%20field/5.webp"
+      ],
+      "dimensions": "30x22x2m         ",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
@@ -3832,6 +4043,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--giant-inflatable-soccer-field-112",
+      "productSlug": "giant-inflatable-soccer-field",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "giant inflatable soccer field",
+      "sourceName": "尺寸定制            giant inflatable soccer field",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20giant%20inflatable%20soccer%20field/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20giant%20inflatable%20soccer%20field/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20giant%20inflatable%20soccer%20field/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20giant%20inflatable%20soccer%20field/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20giant%20inflatable%20soccer%20field/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-billiards-table-99",
       "productSlug": "inflatable-billiards-table",
       "category": "Inflatable Games",
@@ -3881,6 +4110,24 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20rock%20climbing%20wall%20inflatable/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20rock%20climbing%20wall%20inflatable/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20rock%20climbing%20wall%20inflatable/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--blow-up-soccer-field-109",
+      "productSlug": "blow-up-soccer-field",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "blow up soccer field",
+      "sourceName": "尺寸定制           blow up soccer field",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20field/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20field/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20field/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20field/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20field/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
