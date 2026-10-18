@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T08:27:04.130Z",
+  "generatedAt": "2026-10-18T08:38:02.704Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 96,
+      "count": 99,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -207,6 +207,8 @@
         "inflatable-games--inflatable-human-billiards-game-for-sale-46",
         "inflatable-games--inflatable-boxing-ring-rental-88",
         "inflatable-games--inflatable-boxing-ring-for-sale-47",
+        "inflatable-games--human-billiards-inflatable-97",
+        "inflatable-games--inflatable-billiards-pool-table-98",
         "inflatable-games--batter-up-inflatable-game-48",
         "inflatable-games--inflatable-axe-throwing-for-sale-49",
         "inflatable-games--bmx-airbag-landing-50",
@@ -229,6 +231,7 @@
         "inflatable-games--commercial-rock-climbing-wall-for-sale-64",
         "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-65",
         "inflatable-games--inflatable-climbing-wall-70",
+        "inflatable-games--inflatable-billiards-table-99",
         "inflatable-games--inflatable-climbing-wall-and-slide-71",
         "inflatable-games--rock-climbing-wall-inflatable-72",
         "inflatable-games--bounce-house-climbing-wall-73",
@@ -3397,6 +3400,42 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--human-billiards-inflatable-97",
+      "productSlug": "human-billiards-inflatable-commercial",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "human billiards inflatable",
+      "sourceName": "4x7x1.25m       human billiards inflatable",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20human%20billiards%20inflatable/1.webp",
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20human%20billiards%20inflatable/2.webp",
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20human%20billiards%20inflatable/3.webp",
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20human%20billiards%20inflatable/4.webp",
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20human%20billiards%20inflatable/5.webp"
+      ],
+      "dimensions": "4x7x1.25m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-billiards-pool-table-98",
+      "productSlug": "inflatable-billiards-pool-table",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable billiards pool table",
+      "sourceName": "4x7x1.25m       inflatable billiards pool table",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20inflatable%20billiards%20pool%20table/1.webp",
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20inflatable%20billiards%20pool%20table/2.webp",
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20inflatable%20billiards%20pool%20table/3.webp",
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20inflatable%20billiards%20pool%20table/4.webp",
+        "/assets/product/Inflatable%20Games/4x7x1.25m%20%20%20%20%20%20%20inflatable%20billiards%20pool%20table/5.webp"
+      ],
+      "dimensions": "4x7x1.25m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--batter-up-inflatable-game-48",
       "productSlug": "batter-up-inflatable-game",
       "category": "Inflatable Games",
@@ -3790,6 +3829,24 @@
         "/assets/product/Inflatable%20Games/9.5x7.5x6.5m%20%20%20%20%20%20%20inflatable%20climbing%20wall/5.webp"
       ],
       "dimensions": "9.5x7.5x6.5m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-billiards-table-99",
+      "productSlug": "inflatable-billiards-table",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable billiards table",
+      "sourceName": "尺寸定制            inflatable billiards table",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20billiards%20table/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20billiards%20table/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20billiards%20table/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20billiards%20table/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20billiards%20table/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {

@@ -528,6 +528,12 @@ const volleyballKeywordSets: Record<string, string[]> = {
   'inflatable-volleyball-field': ['inflatable volleyball field', 'big inflatable volleyball court', 'giant inflatable volleyball court', 'inflatable beach volleyball court'],
 };
 
+const billiardsKeywordSets: Record<string, string[]> = {
+  'human-billiards-inflatable-commercial': ['human billiards inflatable', 'inflatable soccer billiards', 'inflatable soccer pool table', 'inflatable billiards'],
+  'inflatable-billiards-pool-table': ['inflatable billiards pool table', 'inflatable pool table', 'blow up pool table', 'giant inflatable pool table'],
+  'inflatable-billiards-table': ['inflatable billiards table', 'inflatable outdoor pool table', 'outdoor inflatable pool table', 'inflatable snooker table'],
+};
+
 const bungeeRunKeywordSets: Record<string, string[]> = {
   'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
@@ -568,6 +574,18 @@ function volleyballKeywordSet(product: Product) {
   return volleyballKeywordSets[product.productSlug] ?? [];
 }
 
+function billiardsKeywordSet(product: Product) {
+  const source = product.sourceName.toLowerCase();
+  if (/4x7x1\.25m.*human billiards inflatable/.test(source)) return billiardsKeywordSets['human-billiards-inflatable-commercial'];
+  if (/4x7x1\.25m.*inflatable billiards pool table/.test(source)) return billiardsKeywordSets['inflatable-billiards-pool-table'];
+  if (/尺寸定制.*inflatable billiards table/u.test(source)) return billiardsKeywordSets['inflatable-billiards-table'];
+  return billiardsKeywordSets[product.productSlug] ?? [];
+}
+
+function isNewBilliardsProduct(product: Product) {
+  return /^(?:4x7x1\.25m\s+human billiards inflatable|4x7x1\.25m\s+inflatable billiards pool table|尺寸定制\s+inflatable billiards table)$/iu.test(product.sourceName);
+}
+
 function bungeeRunKeywordSet(product: Product) {
   return bungeeRunKeywordSets[product.productSlug] ?? [];
 }
@@ -586,6 +604,7 @@ function productSearchTerms(product: Product) {
   if (foamKeywordSet(product).length) return foamKeywordSet(product);
   if (volleyballKeywordSet(product).length) return volleyballKeywordSet(product);
   if (bungeeRunKeywordSet(product).length) return bungeeRunKeywordSet(product);
+  if (billiardsKeywordSet(product).length) return billiardsKeywordSet(product);
   if (boxingRingKeywordSet(product).length) return boxingRingKeywordSet(product);
   return soccerDartKeywordSet(product);
 }
@@ -663,6 +682,15 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
+    const isHuman = /human billiards|soccer billiards/.test(searchable);
+    const isCustom = /尺寸定制|custom dimensions available/.test(searchable);
+    return isHuman
+      ? ['Human-scale soccer-billiards play format with an enclosed field', '4 x 7 x 1.25 m reference footprint for event and FEC planning', 'Custom colors, play layout, branding, and project dimensions', 'Commercial PVC construction with packing and accessory coordination']
+      : isCustom
+        ? ['Made-to-order inflatable billiards layout without a fixed listed size', 'Color and table-zone planning around the venue footprint', 'Custom artwork, branding, and pool or snooker-style play details', 'Commercial material, packing, and accessory options confirmed by quote']
+        : ['4 x 7 x 1.25 m inflatable billiards pool-table format', 'Open play area with raised inflatable perimeter walls', 'Outdoor or indoor event configuration subject to site review', 'Custom colors, logo, packing, and commercial order options'];
+  }
   if (product.category === 'Inflatable Games' && /soccer dart|football dart|football darts|soccer darts|velcro soccer/.test(searchable)) {
     const isVelcro = /velcro/.test(searchable);
     const isFootball = /football/.test(searchable);
@@ -749,6 +777,12 @@ export function productKeywordVariants(product: Product) {
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
+
+  if (isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
+    add(...billiardsKeywordSet(product));
+    add(`${base} for events`, `commercial ${base}`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   // Landing airbags are a distinct action-sports product family. Keep their
   // search language specific to BMX/FMX/freestyle use instead of applying the
@@ -970,6 +1004,52 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
+    const isHuman = /human billiards|soccer billiards/.test(searchable);
+    const isCustom = /尺寸定制|custom dimensions available/.test(searchable);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: isHuman ? 'human-scale inflatable soccer-billiards game' : isCustom ? 'custom-size inflatable billiards table attraction' : 'inflatable billiards pool-table game',
+      primaryBuyer: 'party rental businesses, family entertainment centers, sports bars, resorts, event operators, and activity venues',
+      purpose: isHuman
+        ? 'It turns a familiar billiards concept into a full-body soccer challenge, giving participants room to move, aim, and play inside a bounded inflatable arena.'
+        : isCustom
+          ? 'It provides a configurable inflatable billiards play zone that can be planned around a venue footprint, event theme, and preferred pool-style game layout.'
+          : 'It creates a large-format pool-table-inspired activity for events and venues that need a visually clear, group-friendly game with a defined play boundary.',
+      applications: isHuman ? [
+        { title: 'Interactive event rentals', text: 'Package the human-scale game for festivals, corporate events, school activities, and team challenges where spectators can follow each turn.' },
+        { title: 'FEC and sports-bar attractions', text: 'Add a distinctive active-play alternative to conventional table games, subject to the available floor area and operating plan.' },
+        { title: 'Resort and seasonal programs', text: 'Use the oversized format as a supervised group activity for guest programs, camps, and temporary event installations.' },
+      ] : isCustom ? [
+        { title: 'Custom venue projects', text: 'Share the floor plan and intended game rules so the inflatable perimeter and play area can be reviewed before production.' },
+        { title: 'Rental and event packages', text: 'Develop a branded activity around the event footprint, participant flow, transport plan, and setup crew.' },
+        { title: 'FEC and hospitality venues', text: 'Plan a billiards-inspired attraction for a defined activity zone, with the final footprint and play configuration approved against the venue.' },
+      ] : [
+        { title: 'Party rental and event operators', text: 'Offer a large-format game for festivals, company events, school activities, and group entertainment packages.' },
+        { title: 'FECs and hospitality venues', text: 'Create a recognizable activity zone with a bounded play area and straightforward participant rotation.' },
+        { title: 'Outdoor activations', text: 'The reference layout can be considered for outdoor programs when the surface, anchoring, weather plan, and site rules are suitable.' },
+      ],
+      planningPoints: [
+        isCustom ? 'Required external footprint, clear access, play-area dimensions, wall height, and any height restrictions' : `Reference dimensions ${product.dimensions.trim()}, plus access, perimeter clearance, queue space, and spectator area`,
+        'Game format, player age range, ball size and quantity, turn-taking rules, operator position, and expected session capacity',
+        'Indoor or outdoor surface, anchoring, blower location, cleaning, dry storage, transport, and local venue requirements',
+      ],
+      customization: [
+        'Overall footprint, perimeter height, entry position, corner or goal details, and player circulation',
+        'Table colors, pool-ball graphics, event theme, logos, sponsor panels, and printed artwork',
+        'Ball/accessory package, anchoring, blower, repair kit, carry bag, packing, and custom dimensions',
+      ],
+      operationNote: 'Plan this inflatable game with clear player rules, compatible balls, supervised turns, a suitable surface, secure anchoring, blower access, inflation checks, cleaning, and dry storage. Confirm local venue requirements before operation.',
+      quoteItems: [
+        'Venue type, indoor or outdoor surface, available footprint, expected player age range, and participant capacity',
+        'Preferred game layout, ball or accessory requirements, colors, logo files, artwork, and custom-size needs',
+        'Quantity, destination, target delivery date, event or rental schedule, packing, and storage requirements',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
     const isBubble = /bubble/.test(searchable);
     const isRainbow = /rainbow/.test(searchable);
@@ -1280,6 +1360,12 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
+    const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
+    if (/human billiards|soccer billiards/.test(searchable)) return `Human-scale soccer billiards turns a familiar table game into an active group challenge for FECs, event rentals, sports bars, and resorts. ${reference}`;
+    if (/尺寸定制|custom dimensions available/.test(searchable)) return `A made-to-order inflatable billiards layout planned around your floor plan, game format, colors, and event branding. ${reference}`;
+    return `A 4 x 7 x 1.25 m inflatable billiards pool-table game with raised perimeter walls for supervised events, rental packages, and venue play. ${reference}`;
+  }
   if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
     const sport = /fmx|motocross/.test(searchable) ? 'FMX and motocross' : /bmx/.test(searchable) ? 'BMX and bike' : /freestyle/.test(searchable) ? 'freestyle action-sports' : 'bike training';
     const feature = /ramp/.test(searchable) ? 'inflatable landing ramp' : 'airbag landing zone';
@@ -1466,6 +1552,20 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && isNewBilliardsProduct(product) && /billiard|pool table|snooker/.test(searchable)) {
+    const terms = billiardsKeywordSet(product);
+    const isHuman = /human billiards|soccer billiards/.test(searchable);
+    const isCustom = /尺寸定制|custom dimensions available/.test(searchable);
+    const dimensionNote = isCustom ? 'No fixed reference size is listed for this made-to-order model.' : dimensions;
+    return [
+      { question: isHuman ? `What is the ${name} format used for at commercial events?` : isCustom ? `How can this custom inflatable billiards table be configured for a venue?` : `Which venues can use this inflatable billiards pool table?`, answer: `${isHuman ? 'This human-scale soccer-billiards format is designed for supervised event rentals, FEC programs, sports-bar activities, resort guest programs, and team challenges.' : isCustom ? 'This made-to-order format is designed for venues that need an inflatable billiards activity planned around a particular footprint, game brief, and event identity.' : 'This pool-table-inspired inflatable is designed for group activities at rental events, FECs, hospitality venues, and supervised outdoor programs.'} ${dimensionNote}` },
+      { question: isHuman ? `What clearance should I allow around the 4 x 7 x 1.25 m game?` : isCustom ? `Which measurements should I provide for a made-to-order game?` : `How much floor space and player clearance should I plan?`, answer: `${isCustom ? 'Provide the target length, width, wall height, access route, ceiling clearance, and available queue area.' : `Start with the ${product.dimensions.trim()} reference footprint, then allow space for access, player movement, anchoring, blower placement, and spectators.`} Share a venue plan and intended participant capacity before confirming the production layout.` },
+      { question: isHuman ? `How does the human-scale soccer-billiards play format work?` : isCustom ? `Can I specify a pool- or snooker-inspired play layout?` : `Which balls and accessories should I specify for the pool-table game?`, answer: `Confirm the game format, number and size of balls, play rules, player age range, turn rotation, operator position, and any accessory package. For a custom model, provide the preferred play layout; the approved specification should state what is included with the unit.` },
+      { question: isHuman ? `Can the arena graphics and team branding be customized?` : isCustom ? `Can the custom table match my floor plan and brand artwork?` : `Can the billiards table colors and perimeter be customized?`, answer: `Yes. YIC can review ${content.customization.join('; ').toLowerCase()}. For a custom-size order, send a floor plan or target footprint; for branded production, provide print-ready logo and artwork files for approval.` },
+      { question: isHuman ? `What setup and supervision checks matter for active play?` : isCustom ? `Which material and construction details are confirmed before production?` : `Can this inflatable pool-table format be used outdoors?`, answer: `The catalog lists ${product.material}. Confirm the final material and construction details for the selected model. Plan a suitable surface, anchoring, blower access, supervised play, cleaning, inflation checks, and dry storage; outdoor use also depends on site and weather conditions.` },
+      { question: isHuman ? `What details help quote a human billiards rental or event unit?` : isCustom ? `What should I send for a custom billiards-table quotation?` : `What should I include in a commercial pool-table order request?`, answer: `This model is positioned around ${terms.length ? terms.join(', ') : name.toLowerCase()}. Send the venue type, available footprint, intended game format, player age range, quantity, customization brief, destination, target date, and packing needs so the factory can confirm the specification and quote.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
     const terms = foamKeywordSet(product);
     const isBubble = /bubble/.test(searchable);
