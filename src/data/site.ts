@@ -574,6 +574,10 @@ const hungryHippoKeywordSets: Record<string, string[]> = {
   'human-hungry-hippo-inflatable': ['human hungry hippo inflatable', 'hungry hippo party game', 'giant hungry hippo game', 'hungry hippo inflatable rental'],
 };
 
+const halloweenMazeKeywordSets: Record<string, string[]> = {
+  'inflatable-halloween-maze': ['inflatable halloween maze', 'inflatable haunted house maze', 'halloween maze bounce house', 'haunted maze inflatable'],
+};
+
 const bungeeRunKeywordSets: Record<string, string[]> = {
   'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
@@ -646,6 +650,10 @@ function hungryHippoKeywordSet(product: Product) {
   return hungryHippoKeywordSets[product.productSlug] ?? [];
 }
 
+function halloweenMazeKeywordSet(product: Product) {
+  return halloweenMazeKeywordSets[product.productSlug] ?? [];
+}
+
 function isNewBilliardsProduct(product: Product) {
   return /^(?:4x7x1\.25m\s+human billiards inflatable|4x7x1\.25m\s+inflatable billiards pool table|尺寸定制\s+inflatable billiards table)$/iu.test(product.sourceName);
 }
@@ -675,6 +683,7 @@ function productSearchTerms(product: Product) {
   if (connectFourBasketballKeywordSet(product).length) return connectFourBasketballKeywordSet(product);
   if (airHockeyKeywordSet(product).length) return airHockeyKeywordSet(product);
   if (hungryHippoKeywordSet(product).length) return hungryHippoKeywordSet(product);
+  if (halloweenMazeKeywordSet(product).length) return halloweenMazeKeywordSet(product);
   if (boxingRingKeywordSet(product).length) return boxingRingKeywordSet(product);
   return soccerDartKeywordSet(product);
 }
@@ -752,6 +761,12 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) return [
+    'Made-to-order inflatable maze footprint and route layout',
+    'Halloween or haunted-house theme with custom graphics and wayfinding',
+    'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
+    'Plan entrance, exit, capacity, queue, staffing, anchoring, and emergency access before production',
+  ];
   if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) return [
     `Reference diameter: ${product.dimensions.trim()}`,
     'Human-scale team game built around a central play area and fast participant turns',
@@ -886,6 +901,12 @@ export function productKeywordVariants(product: Product) {
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
+
+  if (halloweenMazeKeywordSet(product).length) {
+    add(...halloweenMazeKeywordSet(product));
+    add('commercial inflatable haunted maze', 'custom inflatable Halloween maze', 'inflatable maze for events');
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   if (hungryHippoKeywordSet(product).length) {
     add(...hungryHippoKeywordSet(product));
@@ -1149,6 +1170,38 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: 'custom inflatable Halloween maze and haunted-house attraction',
+      primaryBuyer: 'haunted attractions, family entertainment centers, seasonal event operators, party rental companies, festivals, and themed-attraction distributors',
+      purpose: 'This made-to-order inflatable maze creates a walk-through Halloween attraction with an enclosed route, themed visual treatment, and configurable entrance and exit. The layout should be designed around the venue footprint, visitor flow, age group, staffing, and emergency access rather than treated as a fixed-size product.',
+      applications: [
+        { title: 'Haunted attractions and Halloween events', text: 'Build a seasonal walk-through route with themed scenes, controlled entry, managed throughput, and clear staff positions.' },
+        { title: 'FECs and family venues', text: 'Add a family-oriented maze experience with sight lines, age-appropriate theming, and predictable visitor circulation.' },
+        { title: 'Festivals and temporary activations', text: 'Create a branded attraction planned around loading access, queue footprint, event dates, power, and strike or storage requirements.' },
+      ],
+      planningPoints: [
+        'Available footprint, maze route length, corridor width, overall height, entrance and exit, queue, and accessible circulation',
+        'Target age group, visitor capacity, throughput, staffing positions, lighting or sound needs, and emergency egress',
+        'Indoor or outdoor surface, anchoring, blower position, power, weather exposure, cleaning, and storage',
+      ],
+      customization: [
+        'Maze footprint, route configuration, corridor width, wall height, entrances, exits, and scene openings',
+        'Halloween, haunted-house, or family-friendly theme, colors, printed artwork, logos, and sponsor panels',
+        'Lighting or sound provisions, blower package, anchoring, repair kit, carry bags, and packing format',
+      ],
+      operationNote: 'Before opening, review the maze route for unobstructed emergency egress, accessible circulation, appropriate visibility, visitor capacity, fire and venue rules, staffing, anchoring, inflation checks, and queue control. Final operating procedures and occupancy limits must be set by the venue operator and local authorities.',
+      quoteItems: [
+        'Venue plan, usable footprint, ceiling height, access route, and indoor or outdoor installation conditions',
+        'Maze route concept, corridor widths, visitor age group, throughput target, entrances, exits, and egress plan',
+        'Theme references, artwork, quantity, destination, opening date, lighting or sound, packing, and storage needs',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) {
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
@@ -1747,6 +1800,7 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) return `A made-to-order Halloween maze inflatable for haunted attractions, seasonal events, FECs, and festivals, with a custom route, themed artwork, and venue-specific visitor flow. ${reference}`;
   if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) return `An 8 m human-scale Hungry Hippo party game for supervised team play, rental events, schools, and FEC programs. Confirm the play mechanism and included accessories in the product specification. ${reference}`;
   if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) return `A commercial inflatable air hockey game for supervised head-to-head play at rental events, FECs, schools, and branded activations. ${reference}`;
   if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return `A basketball Connect Four target game for supervised shooting contests, team rotation, school activities, rentals, and branded events. ${reference}`;
@@ -1957,6 +2011,17 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) {
+    const terms = halloweenMazeKeywordSet(product);
+    return [
+      { question: `What is this inflatable Halloween maze designed for?`, answer: `${content.purpose} The size and route are custom-configured from a venue plan.` },
+      { question: `What site information is needed to design the maze?`, answer: `Provide the usable floor area, ceiling height, access route, intended corridor widths, queue footprint, target audience, and desired visitor throughput. The design review should also identify staff positions and emergency exits.` },
+      { question: `How should visitor capacity and emergency exits be planned?`, answer: `The venue operator must set occupancy and throughput with local authorities and applicable venue rules. Keep exits and emergency routes unobstructed, establish staff positions, and review visibility and accessible circulation before approving the maze layout.` },
+      { question: `Can the maze use a haunted-house or family Halloween theme?`, answer: `Yes. YIC can review the route, scene openings, colors, Halloween or haunted-house artwork, logos, sponsor panels, and family-appropriate visual treatment. Send reference images and brand files for design approval.` },
+      { question: `Can this inflatable maze be used indoors or outdoors?`, answer: `The installation depends on the venue surface, ceiling or height clearance, access, power, anchoring, weather exposure, and local requirements. Confirm the intended setting before production so the layout and operating plan can be reviewed.` },
+      { question: `What should I include in an inflatable haunted maze quotation request?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue plan, footprint, route concept, target audience, visitor capacity, egress requirements, theme, quantity, destination, opening date, and any lighting, sound, packing, or storage needs.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) {
     const terms = hungryHippoKeywordSet(product);
     return [

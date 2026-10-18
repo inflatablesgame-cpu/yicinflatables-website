@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T11:16:16.073Z",
+  "generatedAt": "2026-10-18T11:25:33.627Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 121,
+      "count": 122,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -261,6 +261,7 @@
         "inflatable-games--inflatable-air-hockey-table-120",
         "inflatable-games--inflatable-boxing-area-90",
         "inflatable-games--inflatable-foam-pit-rental-81",
+        "inflatable-games--inflatable-halloween-maze-122",
         "inflatable-games--inflatable-rock-climbing-wall-74",
         "inflatable-games--inflatable-soccer-dart-game-93",
         "inflatable-games--inflatable-volleyball-field-85",
@@ -4389,6 +4390,24 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit%20rental/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit%20rental/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20foam%20pit%20rental/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-halloween-maze-122",
+      "productSlug": "inflatable-halloween-maze",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable halloween maze",
+      "sourceName": "尺寸定制           inflatable halloween maze",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20halloween%20maze/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20halloween%20maze/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20halloween%20maze/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20halloween%20maze/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20halloween%20maze/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
