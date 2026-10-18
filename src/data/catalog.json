@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T09:15:39.795Z",
+  "generatedAt": "2026-10-18T09:56:19.941Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 112,
+      "count": 115,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -242,7 +242,10 @@
         "inflatable-games--commercial-rock-climbing-wall-for-sale-64",
         "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-65",
         "inflatable-games--inflatable-climbing-wall-70",
+        "inflatable-games--dual-target-axe-throwing-inflatable-113",
         "inflatable-games--giant-inflatable-soccer-field-112",
+        "inflatable-games--inflatable-axe-throw-114",
+        "inflatable-games--inflatable-axe-throwing-game-115",
         "inflatable-games--inflatable-billiards-table-99",
         "inflatable-games--inflatable-climbing-wall-and-slide-71",
         "inflatable-games--rock-climbing-wall-inflatable-72",
@@ -4043,6 +4046,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--dual-target-axe-throwing-inflatable-113",
+      "productSlug": "dual-target-axe-throwing-inflatable",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "dual target axe throwing inflatable",
+      "sourceName": "尺寸定制            dual target axe throwing inflatable",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20dual%20target%20axe%20throwing%20inflatable/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20dual%20target%20axe%20throwing%20inflatable/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20dual%20target%20axe%20throwing%20inflatable/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20dual%20target%20axe%20throwing%20inflatable/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20dual%20target%20axe%20throwing%20inflatable/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--giant-inflatable-soccer-field-112",
       "productSlug": "giant-inflatable-soccer-field",
       "category": "Inflatable Games",
@@ -4056,6 +4077,42 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20giant%20inflatable%20soccer%20field/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20giant%20inflatable%20soccer%20field/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20giant%20inflatable%20soccer%20field/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-axe-throw-114",
+      "productSlug": "inflatable-axe-throw",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable axe throw",
+      "sourceName": "尺寸定制            inflatable axe throw",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throw/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throw/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throw/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throw/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throw/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-axe-throwing-game-115",
+      "productSlug": "inflatable-axe-throwing-game",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable axe throwing game",
+      "sourceName": "尺寸定制            inflatable axe throwing game",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20game/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20game/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20game/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20game/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20game/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."

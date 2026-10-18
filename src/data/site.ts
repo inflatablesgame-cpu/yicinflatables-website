@@ -550,6 +550,12 @@ const soccerFieldKeywordSets: Record<string, string[]> = {
   'giant-inflatable-soccer-field': ['giant inflatable soccer field', 'inflatable soccer field for adults', 'inflatable soccer pitch', 'inflatable indoor soccer field'],
 };
 
+const axeThrowingKeywordSets: Record<string, string[]> = {
+  'dual-target-axe-throwing-inflatable': ['inflatable axe throw', 'inflatable lumberjack', 'lumberjack throw inflatable', 'blow up axe'],
+  'inflatable-axe-throw': ['inflatable axe throwing rental', 'axe throwing inflatable', 'inflatable ax throwing game', 'axe throwing blow up'],
+  'inflatable-axe-throwing-game': ['inflatable axe throwing game', 'inflatable axe throwing for sale', 'inflatable ax throwing', 'blow up axe throwing game'],
+};
+
 const bungeeRunKeywordSets: Record<string, string[]> = {
   'inflatable-bungee-run': ['inflatable bungee run', 'bungee run inflatable rental', 'bungee fun run', 'bungee race'],
   '2-lane-bungee-run': ['2 lane bungee run', 'bungee run for sale', 'bungee run inflatable for sale', 'bungee run rental'],
@@ -602,6 +608,10 @@ function soccerFieldKeywordSet(product: Product) {
   return soccerFieldKeywordSets[product.productSlug] ?? [];
 }
 
+function axeThrowingKeywordSet(product: Product) {
+  return axeThrowingKeywordSets[product.productSlug] ?? [];
+}
+
 function isNewBilliardsProduct(product: Product) {
   return /^(?:4x7x1\.25m\s+human billiards inflatable|4x7x1\.25m\s+inflatable billiards pool table|尺寸定制\s+inflatable billiards table)$/iu.test(product.sourceName);
 }
@@ -626,6 +636,7 @@ function productSearchTerms(product: Product) {
   if (bungeeRunKeywordSet(product).length) return bungeeRunKeywordSet(product);
   if (billiardsKeywordSet(product).length) return billiardsKeywordSet(product);
   if (soccerFieldKeywordSet(product).length) return soccerFieldKeywordSet(product);
+  if (axeThrowingKeywordSet(product).length) return axeThrowingKeywordSet(product);
   if (boxingRingKeywordSet(product).length) return boxingRingKeywordSet(product);
   return soccerDartKeywordSet(product);
 }
@@ -703,6 +714,12 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) return [
+    /dual target/.test(searchable) ? 'Dual target faces for head-to-head throwing turns' : 'Inflatable target wall designed for supervised axe-style throwing games',
+    'Custom footprint, target layout, scoring zones, and event artwork',
+    'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
+    'Plan compatible soft-play projectiles, throwing line, anchoring, blower, and operator position before production',
+  ];
   if (product.category === 'Inflatable Games' && soccerFieldKeywordSet(product).length) {
     if (/human foosball/.test(searchable)) return ['Human-player foosball format with fixed play lanes', `Reference footprint: ${product.dimensions.trim()}`, 'Team, lane, goal, color, and branded-graphic options', 'Commercial PVC with anchoring, blower, packing, and accessory planning'];
     if (/soap|slip and slide/.test(searchable)) return ['Wet-play soccer layout with a defined field boundary', `Reference footprint: ${product.dimensions.trim()}`, 'Wet-use material specification and water-flow setup confirmation', 'Drainage, anchoring, supervision, cleaning, and dry-storage planning'];
@@ -807,6 +824,12 @@ export function productKeywordVariants(product: Product) {
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
+
+  if (axeThrowingKeywordSet(product).length) {
+    add(...axeThrowingKeywordSet(product));
+    add(`${base} for events`, `commercial ${base}`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   if (soccerFieldKeywordSet(product).length) {
     add(...soccerFieldKeywordSet(product));
@@ -1040,6 +1063,44 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
+    const isDualTarget = /dual target/.test(searchable);
+    const isGame = /throwing game/.test(searchable);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: isDualTarget ? 'dual-target inflatable axe-throwing attraction' : isGame ? 'custom inflatable axe-throwing target game' : 'custom inflatable axe-throw target game',
+      primaryBuyer: 'party rental operators, family entertainment centers, festivals, corporate event planners, schools, and interactive game suppliers',
+      purpose: isDualTarget
+        ? 'It creates a head-to-head target challenge with two throwing faces, helping event operators keep turns visible and organize participant rotation around a shared activity station.'
+        : isGame
+          ? 'It provides a customizable target-game format for commercial events, with scoring, throwing distance, projectile compatibility, and operator flow specified for the intended audience.'
+          : 'It turns axe-throwing into a supervised inflatable target activity that can be branded and configured around the venue footprint, participant flow, and event format.',
+      applications: [
+        { title: 'Party rental and FEC programs', text: 'Add a distinctive target challenge to game packages, indoor activity zones, festivals, and repeat event inventory.' },
+        { title: 'Corporate events and team challenges', text: 'Use turn-based scoring and clear target visibility for facilitated team competitions, subject to the chosen soft-play equipment and operating rules.' },
+        { title: 'Festivals and branded activations', text: 'Plan a visible game station around sponsor artwork, a marked throwing line, queue flow, and a staffed participant area.' },
+      ],
+      planningPoints: [
+        'Custom footprint, overall height, access opening, throwing-line distance, clear approach, queue, and spectator boundary',
+        'Target count, scoring layout, age group, approved soft-play projectile type, turn rules, and operator position',
+        'Ground surface, anchoring, blower placement, power access, indoor or outdoor conditions, cleaning, and storage',
+      ],
+      customization: [
+        'Target count, face layout, scoring zones, target height, throwing-line distance, and entry or return arrangement',
+        'Lumberjack theme, colors, printed graphics, logos, sponsor panels, and event-specific artwork',
+        'Compatible soft-play projectiles, blower package, anchoring, repair kit, carry bag, packing, and custom dimensions',
+      ],
+      operationNote: 'This is a supervised target-game concept, not a substitute for a hard-axe venue. Confirm soft-play projectile compatibility, participant age and rules, throwing-line distance, trained staffing, anchoring, clear zones, inflation checks, cleaning, and local venue requirements before operation.',
+      quoteItems: [
+        'Venue type, intended audience, available footprint, ceiling or height clearance, and throwing-line distance',
+        'Single or dual target, scoring layout, compatible soft-play projectile, artwork, colors, and accessory needs',
+        'Quantity, destination, target delivery date, event or rental use, packing, and storage requirements',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && soccerFieldKeywordSet(product).length) {
     const isFoosball = /human foosball/.test(searchable);
     const isSoap = /soap/.test(searchable);
@@ -1465,6 +1526,10 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
+    const targetCount = /dual target/.test(searchable) ? 'Dual-target' : 'Custom inflatable';
+    return `${targetCount} axe-throwing game planned around soft-play projectile compatibility, a clear throwing line, supervised turns, and branded target artwork. ${reference}`;
+  }
   if (product.category === 'Inflatable Games' && soccerFieldKeywordSet(product).length) {
     if (/human foosball/.test(searchable)) return `A human-scale foosball match format with fixed player lanes for team-building, school events, and rental programs. ${reference}`;
     if (/soap/.test(searchable)) return `A bounded soap-football play area for supervised wet-play events, planned around water supply, drainage, surface, and operator flow. ${reference}`;
@@ -1667,6 +1732,19 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
+    const terms = axeThrowingKeywordSet(product);
+    const isDualTarget = /dual target/.test(searchable);
+    const isGame = /throwing game/.test(searchable);
+    return [
+      { question: `What is the ${name} designed to do?`, answer: `${content.purpose} ${dimensions} The final specification should identify compatible soft-play projectiles and game rules.` },
+      { question: `How much room should I allow for the target and throwing line?`, answer: `${content.planningPoints[0]}. Include the marked throwing line, approach, waiting area, operator position, and a separated spectator zone in the site plan.` },
+      { question: `Does this inflatable use real axes?`, answer: `The product is intended as a supervised inflatable target game, not a hard-axe throwing facility. Confirm the compatible soft-play projectile and target attachment before production; do not operate with real axes unless a separate venue-approved system explicitly specifies that use.` },
+      { question: isDualTarget ? `How does the dual-target layout support event play?` : isGame ? `Which scoring and projectile details should be specified?` : `Which target layout and participant rules can be customized?`, answer: `${content.planningPoints[1]}. Confirm the number of targets, scoring zones, projectile type, age group, turn sequence, and staff position in the approved artwork and specification.` },
+      { question: `Can the target artwork and dimensions be customized?`, answer: `Yes. YIC can review ${content.customization.join('; ').toLowerCase()}. Provide a venue plan, preferred theme, logo files, quantity, and target audience for a production review.` },
+      { question: `What should I send to request a quotation?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, usable footprint, throwing-line distance, target layout, soft-play projectile preference, participant age range, artwork, quantity, destination, target date, and packing needs.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && soccerFieldKeywordSet(product).length) {
     const terms = soccerFieldKeywordSet(product);
     const isFoosball = /human foosball/.test(searchable);
