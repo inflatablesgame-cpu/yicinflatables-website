@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T11:25:33.627Z",
+  "generatedAt": "2026-10-19T04:15:22.148Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,7 +144,7 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 122,
+      "count": 123,
       "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
       "products": [
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
@@ -168,6 +168,7 @@
         "inflatable-games--inflatable-batting-tunnels-8",
         "inflatable-games--inflatable-hungry-hippo-game-for-sale-9",
         "inflatable-games--commercial-bungee-trampoline-10",
+        "inflatable-games--inflatable-batting-cages-for-sale-123",
         "inflatable-games--baseball-inflatable-batting-cage-11",
         "inflatable-games--inflatable-soap-football-field-101",
         "inflatable-games--inflatable-soccer-field-for-kids-12",
@@ -2718,6 +2719,24 @@
         "/assets/product/Inflatable%20Games/12x3.5x2.5m%20%20%20%20commercial%20bungee%20trampoline/5.webp"
       ],
       "dimensions": "12x3.5x2.5m    ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-batting-cages-for-sale-123",
+      "productSlug": "inflatable-batting-cages-for-sale",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable batting cages for sale",
+      "sourceName": "12x3.6x3.2m        inflatable batting cages for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/12x3.6x3.2m%20%20%20%20%20%20%20%20inflatable%20batting%20cages%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Games/12x3.6x3.2m%20%20%20%20%20%20%20%20inflatable%20batting%20cages%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Games/12x3.6x3.2m%20%20%20%20%20%20%20%20inflatable%20batting%20cages%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Games/12x3.6x3.2m%20%20%20%20%20%20%20%20inflatable%20batting%20cages%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Games/12x3.6x3.2m%20%20%20%20%20%20%20%20inflatable%20batting%20cages%20for%20sale/5.webp"
+      ],
+      "dimensions": "12x3.6x3.2m        ",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
