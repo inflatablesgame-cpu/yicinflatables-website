@@ -563,7 +563,57 @@ const axeThrowingKeywordSets: Record<string, string[]> = {
 };
 
 const battingCageKeywordSets: Record<string, string[]> = {
+  'commercial-inflatable-batting-cage-commercial': ['inflatable batting cage', 'blow up hitting cage', 'commercial baseball batting tunnel', 'netted inflatable batting lane'],
+  'inflatable-batting-tunnels': ['blow up batting cage', 'inflatable batting turtle', 'portable baseball hitting tunnel', 'enclosed inflatable practice lane'],
+  'baseball-inflatable-batting-cage': ['inflatable hitting cage', 'blow up baseball cage', 'indoor inflatable baseball cage', 'commercial softball hitting tunnel'],
+  'commercial-inflatable-batting-cage-for-sale': ['inflatable baseball batting cage', 'commercial baseball batting cage for sale', 'inflatable pitching practice cage', 'black netted baseball enclosure'],
   'inflatable-batting-cages-for-sale': ['inflatable batting cages for sale', 'portable inflatable batting cage', 'inflatable batting tunnel', 'inflatable batting cage for baseball'],
+};
+
+type BattingCageProfile = {
+  productType: string;
+  visibleLayout: string;
+  trainingUse: string;
+  planningFocus: string;
+  customizationFocus: string;
+};
+
+const battingCageProfiles: Record<string, BattingCageProfile> = {
+  'commercial-inflatable-batting-cage-commercial': {
+    productType: 'tall arched inflatable batting cage',
+    visibleLayout: 'a 10 m arched black enclosure with a broad side-mesh practice lane',
+    trainingUse: 'batting-practice rentals, school baseball sessions, and club skill stations',
+    planningFocus: 'the tall arched profile, wide side mesh, batter entry, pitching end, and a separated queue line',
+    customizationFocus: 'the arched shell, side-net layout, striking position, baseball graphics, and sponsor panels',
+  },
+  'inflatable-batting-tunnels': {
+    productType: 'long inflatable batting tunnel',
+    visibleLayout: 'an 11 m exterior-facing black netted lane with an extended tunnel run',
+    trainingUse: 'portable baseball practice, coach-led hitting sessions, and mobile sports events',
+    planningFocus: 'the longer tunnel run, end clearance, exterior-facing netting, pitching-machine position, and player circulation',
+    customizationFocus: 'tunnel length, exterior mesh panels, entry direction, pitching end, and training-station branding',
+  },
+  'baseball-inflatable-batting-cage': {
+    productType: 'full-length inflatable hitting cage',
+    visibleLayout: 'a 12 m enclosed black training lane with repeated side openings and an end-net zone',
+    trainingUse: 'baseball and softball drills, indoor sports programs, and supervised event challenges',
+    planningFocus: 'the full-length lane, repeated side openings, batting end, equipment zone, and indoor ceiling clearance',
+    customizationFocus: 'the side-opening pattern, ball-return or target arrangement, indoor layout, and baseball or softball graphics',
+  },
+  'commercial-inflatable-batting-cage-for-sale': {
+    productType: 'compact arched inflatable baseball batting cage',
+    visibleLayout: 'a compact 6 m black netted enclosure with a taller arched training profile',
+    trainingUse: 'compact venue training, sports activations, and commercial rental packages',
+    planningFocus: 'the compact footprint, taller arch, batter access, staff position, and clear buffer around the enclosure',
+    customizationFocus: 'the compact enclosure dimensions, arched entrance, netting configuration, logo panels, and packing package',
+  },
+  'inflatable-batting-cages-for-sale': {
+    productType: 'enclosed inflatable batting tunnel',
+    visibleLayout: 'a 12 m black mesh tunnel with a contained practice lane and end-net structure',
+    trainingUse: 'baseball and softball facility training, rental fleets, and branded skills challenges',
+    planningFocus: 'the tunnel footprint, equipment end, side clearance, entry-exit flow, and spectator separation',
+    customizationFocus: 'the tunnel dimensions, entry placement, netting arrangement, branded graphics, and accessory package',
+  },
 };
 
 const waterWalkingBallKeywordSets: Record<string, string[]> = {
@@ -683,6 +733,10 @@ function axeThrowingKeywordSet(product: Product) {
 
 function battingCageKeywordSet(product: Product) {
   return battingCageKeywordSets[product.productSlug] ?? [];
+}
+
+function battingCageProfile(product: Product): BattingCageProfile | undefined {
+  return battingCageProfiles[product.productSlug];
 }
 
 function waterWalkingBallKeywordSet(product: Product) {
@@ -806,7 +860,7 @@ export function productSeoTitle(product: Product) {
     return seoTitle(`${primary} | ${truncateMeta(name, 34, '')}`);
   }
   if (battingCageKeywordSet(product).length) {
-    return seoTitle(`Inflatable Batting Cages for Sale | ${truncateMeta(name, 24, '')}`);
+    return seoTitle(`${battingCageKeywordSet(product)[0]} | Commercial Baseball Training`);
   }
   const intent = productIntentLabel(product);
   const categoryLabel = product.category.replace(/^Inflatable\s+/i, '');
@@ -835,8 +889,8 @@ export function productKeyFeatures(product: Product) {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) return [
     `Reference training enclosure: ${product.dimensions.trim()}`,
-    'Enclosed batting tunnel with a protected striking lane and end-net structure',
-    'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
+    `${battingCageProfile(product)?.visibleLayout ?? 'Enclosed batting tunnel with a protected striking lane and end-net structure'}`,
+    `${product.material} listed for this model`,
     'Confirm ball, bat, pitching-machine compatibility, anchoring, clearances, and supervised operation before production',
   ];
   if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) return [
@@ -982,8 +1036,7 @@ export function productKeywordVariants(product: Product) {
 
   if (battingCageKeywordSet(product).length) {
     add(...battingCageKeywordSet(product));
-    add('commercial inflatable batting cage', 'custom baseball batting tunnel', 'softball inflatable batting cage');
-    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+    return [...new Set(variants)].filter((value) => value.length > 2);
   }
 
   if (halloweenMazeKeywordSet(product).length) {
@@ -1294,26 +1347,27 @@ export function productDetailContent(product: Product): DetailContent {
     };
   }
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) {
+    const profile = battingCageProfile(product)!;
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
     const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
     return {
       template,
-      productType: 'commercial inflatable batting cage and enclosed baseball training tunnel',
+      productType: profile.productType,
       primaryBuyer: 'baseball and softball training facilities, schools, sports clubs, event-rental companies, family entertainment centers, and sports-equipment distributors',
-      purpose: `This ${product.dimensions.trim()} inflatable batting cage creates a portable enclosed practice lane for baseball or softball training and supervised event stations. The black netted enclosure shown should be configured around the approved ball, bat, pitching-machine arrangement, player flow, and venue operating plan.`,
+      purpose: `This ${product.dimensions.trim()} ${profile.productType} is configured around ${profile.visibleLayout}. It supports ${profile.trainingUse} when the approved ball, bat, pitching-machine arrangement, player flow, and venue operating plan are confirmed.`,
       applications: [
-        { title: 'Baseball and softball training', text: 'Create a contained batting or pitching-practice lane for clubs, academies, schools, and sports programs after equipment compatibility and operating space are confirmed.' },
-        { title: 'Event and rental programs', text: 'Add a visible baseball challenge or supervised practice station to sports days, festivals, FECs, and mobile event packages with clear queue and staff positions.' },
-        { title: 'Venue activations', text: 'Use the enclosed tunnel format for branded sports activations, skills challenges, and sponsor events where the site plan defines access, player rotation, and spectator separation.' },
+        { title: 'Baseball and softball training', text: `Plan ${profile.trainingUse} around the approved ball, bat, pitching equipment, player group, and clear operating space.` },
+        { title: 'Event and rental programs', text: `Use ${profile.visibleLayout} for a supervised baseball challenge or practice station with defined entry, queue, staff, and spectator positions.` },
+        { title: 'Venue activations', text: `Configure ${profile.customizationFocus} for branded skills challenges, sponsor events, clubs, academies, or mobile sports programs.` },
       ],
       planningPoints: [
-        `Reference footprint ${product.dimensions.trim()}, plus batter entry, pitching or pitching-machine end, side clearance, queue, blower position, and spectator buffer`,
+        `Reference footprint ${product.dimensions.trim()}, plus ${profile.planningFocus}`,
         'Approved baseball or softball, bat, pitching-machine setup, netting specification, player age group, staff position, and session format',
         'Level site, anchoring plan, power, weather exposure, lighting, inflation checks, cleaning, transport, repair kit, and dry storage',
       ],
       customization: [
-        'Tunnel length, width, height, entry opening, batter position, pitching end, and netted enclosure configuration',
+        profile.customizationFocus,
         'Color scheme, printed logos, baseball or softball graphics, sponsor panels, and branded training-station artwork',
         'Blower package, anchoring, ball or target accessories, pitching-machine interface, repair kit, carry bags, and export packing',
       ],
@@ -1959,7 +2013,10 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
-  if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) return `A commercial enclosed baseball and softball practice lane for training facilities, sports clubs, mobile events, and rental programs. Plan the batting area, pitching end, netting, equipment compatibility, and supervised player flow. ${reference}`;
+  if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) {
+    const profile = battingCageProfile(product)!;
+    return `A ${profile.productType} for ${profile.trainingUse}. The listed format shows ${profile.visibleLayout}; confirm ${profile.planningFocus} before production. ${reference}`;
+  }
   if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) return `A made-to-order Halloween maze inflatable for haunted attractions, seasonal events, FECs, and festivals, with a custom route, themed artwork, and venue-specific visitor flow. ${reference}`;
   if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) return `An 8 m human-scale Hungry Hippo party game for supervised team play, rental events, schools, and FEC programs. Confirm the play mechanism and included accessories in the product specification. ${reference}`;
   if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) return `A commercial inflatable air hockey game for supervised head-to-head play at rental events, FECs, schools, and branded activations. ${reference}`;
@@ -1991,7 +2048,7 @@ export function productCardDescription(product: Product) {
     return `${name} provides a ${feature} for ${sport} training, bike parks, and supervised stunt events. ${reference}`;
   }
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) {
-    return `${material} · Enclosed batting tunnel · Training and event use`;
+    return `${material} · ${battingCageProfile(product)?.productType ?? 'Enclosed batting tunnel'} · Training and event use`;
   }
   if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     const feature = /slide/.test(searchable) ? 'climbing and slide play' : /bounce|bouncy|castle/.test(searchable) ? 'bounce-house climbing play' : 'vertical rock-wall challenge';
@@ -2187,13 +2244,14 @@ export function productFaqs(product: Product) {
   }
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) {
     const terms = battingCageKeywordSet(product);
+    const profile = battingCageProfile(product)!;
     return [
-      { question: `What is this ${name} designed for?`, answer: `${content.purpose} It is intended for a managed baseball or softball training or event program, not unsupervised batting.` },
-      { question: `How much site space is required for the 12 x 3.6 x 3.2 m cage?`, answer: `Start with the listed ${product.dimensions.trim()} footprint, then add room for entry and exit, the pitching or pitching-machine end, blower placement, anchoring, staff, queues, and a separated spectator zone. Confirm the final clearances from a venue plan.` },
-      { question: `Which balls, bats, and pitching machines are compatible?`, answer: `Specify the baseball or softball size, ball type, bat type, pitching-machine model and speed range, target arrangement, and intended participant group in the quotation. Compatibility must be confirmed in the approved product specification before operation.` },
-      { question: `Can the batting tunnel and netted enclosure be customized?`, answer: `Yes. YIC can review tunnel dimensions, entrance direction, batter and pitching ends, enclosure or netting arrangement, colors, baseball graphics, logo panels, blower package, anchoring, and packing requirements.` },
-      { question: `What should operators plan for outdoor or repeat event use?`, answer: `${content.operationNote} Build inspection, inflation, anchoring, cleaning, drying, repair-kit access, transport, and storage into every operating routine.` },
-      { question: `What is needed for an inflatable batting cage quotation?`, answer: `This model is positioned around ${terms.join(', ')}. Send the training or event use, site plan, clearance, equipment specification, custom dimensions, branding, quantity, destination, target delivery date, and required accessory or packing configuration.` },
+      { question: `What is the ${terms[0]} format designed for?`, answer: `${content.purpose} It is intended for a managed baseball or softball program, not unsupervised batting.` },
+      { question: `How should I plan space for this ${product.dimensions.trim()} enclosure?`, answer: `Start with the listed footprint and add clearance for ${profile.planningFocus}, blower placement, anchoring, staff, and a separated spectator area. Confirm the final layout from the venue plan.` },
+      { question: `Can this model work with a pitching machine or coach-fed balls?`, answer: `Specify the baseball or softball type, bat type, pitching-machine model and speed range, target setup, and participant group. Compatibility must be confirmed in the approved specification before operation.` },
+      { question: `Which parts of this ${profile.productType} can be customized?`, answer: `YIC can review ${profile.customizationFocus}, colors, baseball or softball graphics, blower package, anchoring, accessories, repair kit, carry bags, and export packing.` },
+      { question: `What does repeat rental or outdoor operation require?`, answer: `${content.operationNote} Include inspection, inflation, anchoring, cleaning, drying, repair-kit access, transport, and dry storage in the operating routine.` },
+      { question: `What should I include in a ${terms[0]} quote request?`, answer: `This page covers ${terms.join(', ')}. Send the training or event use, site plan, clearance, equipment specification, custom dimensions, branding, quantity, destination, target delivery date, and required accessory or packing configuration.` },
     ];
   }
   if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) {
