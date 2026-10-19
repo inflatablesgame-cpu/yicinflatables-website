@@ -98,6 +98,7 @@ export function categorySummary(category: string) {
 export type CategorySeoProfile = {
   title: string;
   description: string;
+  keywords?: string;
   h1: string;
   intro: string;
   options: string[];
@@ -328,13 +329,14 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Bounce House', 'Inflatable Slide', 'Inflatable Games'],
   },
   'Bumper Ball': {
-    title: 'Commercial Bumper Balls | Bubble Soccer OEM Supplier | YIC',
-    description: 'Commercial bumper balls and bubble soccer inflatables from YIC for sports operators, schools, events and rental businesses. Custom colors and branding available.',
-    h1: 'Commercial Bumper Balls for Bubble Soccer and Group Events',
-    intro: 'YIC supplies bumper balls and bubble soccer equipment for sports operators, schools, team-building companies, festivals, and rental businesses. Select a ball format and quantity, then confirm participant age, playing surface, storage, transport, team colors, and logo requirements. Custom commercial bumper balls can be prepared for recurring activity programs and organized group play.',
-    options: ['Bubble soccer bumper balls', 'Team-color bumper ball sets', 'Youth and adult activity formats', 'Custom logo and repair-kit packages'],
+    title: 'Inflatable Bumper Balls & Human Bubble Balls | YIC',
+    description: 'Commercial inflatable bumper balls, human bubble balls, and zorb equipment from YIC for bubble soccer operators, schools, events, and rental fleets. Custom TPU sizes, colors, and branding.',
+    keywords: 'inflatable bumper balls, human bubble balls, inflatable bubble soccer balls, commercial zorb balls, TPU bumper ball supplier',
+    h1: 'Inflatable Bumper Balls for Bubble Soccer and Zorb Activities',
+    intro: 'YIC supplies commercial inflatable bumper balls, human bubble balls, and zorb equipment for bubble soccer operators, schools, team-building companies, festivals, and rental businesses. Choose a youth, adult, soccer, or zorb format, then confirm diameter, participant group, playing surface, quantity, storage, transport, team colors, and logo requirements. Custom TPU ball sets can be prepared for repeat sessions and organized group play.',
+    options: ['Inflatable bumper ball sets', 'Human bubble balls for adults and kids', 'Zorb soccer and bubble-soccer formats', 'Custom TPU colors, logos, and accessories'],
     buyers: [{ title: 'Sports and activity operators', text: 'Create a portable group attraction for timed sessions, leagues, camps, and supervised recreational play.' }, { title: 'Schools and team events', text: 'Use a clear, social activity format for field days, company events, and community programs.' }, { title: 'Rental businesses', text: 'Package multiple balls with transport, storage, and accessory planning for repeat bookings.' }],
-    oem: 'YIC can review ball diameter, quantity, colors, printed logos, accessories, packaging, and intended user group for a custom bumper ball set.',
+    oem: 'YIC can review ball diameter, quantity, TPU construction, colors, printed logos, accessories, packaging, and intended user group for a custom inflatable bumper ball or human bubble ball set.',
     faq: [{ question: 'How many bumper balls should I order?', answer: 'The quantity depends on the activity format, participant count, session size, storage capacity, and whether the set is for rentals, schools, or an operator-led venue.' }, { question: 'Can the bumper balls carry team colors or a logo?', answer: 'Yes. Color combinations and suitable logo or graphic placement can be reviewed as part of the production brief.' }, { question: 'What surface is suitable for bubble soccer?', answer: 'Use a clear, suitable playing surface with enough run-off and supervision space. Confirm the venue surface and operating rules before ordering.' }],
     related: ['Inflatable Games', 'Inflatable Mechanical Games', 'Inflatable Obstacle Course'],
   },
@@ -480,7 +482,11 @@ export function productDescription(product: Product) {
   const intent = productIntentKeyword(product);
   const intentSentence = intent ? ` This listing is positioned for buyers searching for ${intent}.` : '';
   const name = productDisplayTitle(product);
-  const focusedSentence = focusedTerms.length ? ` This page covers the ${focusedTerms.join(' and ')} search intent; final dimensions and construction are confirmed against the intended application.` : '';
+  const focusedSentence = focusedTerms.length
+    ? product.category === 'Bumper Ball'
+      ? ` Related product searches include ${focusedTerms.join(', ')}. This model is listed at ${product.dimensions.trim()} and uses ${product.material}; confirm participant fit, intended activity, accessories, and destination-market requirements against the approved specification.`
+      : ` This page covers the ${focusedTerms.join(' and ')} search intent; final dimensions and construction are confirmed against the intended application.`
+    : '';
   return `YIC Inflatable Sports manufactures commercial inflatables for ${details.primaryBuyer}. This listing features the “${name}” model. ${details.purpose} Custom artwork, colors, layout, and functional details can be developed around your venue, brand, and destination-market requirements.${intentSentence}${focusedSentence || ` Buyers researching this format may also compare terms such as ${searchVariants}.`}`;
 }
 
@@ -584,6 +590,43 @@ const bungeeRunKeywordSets: Record<string, string[]> = {
   'blow-up-bungee-run': ['blow up bungee run', 'bungee run', 'bounce house bungee run', 'bouncy castle bungee run'],
 };
 
+// Bumper Ball keywords are assigned at product level so closely related
+// youth, adult, soccer, suit, and zorb listings do not compete with the same
+// exact phrases. High-volume generic terms are used where they match the
+// product, while low-competition long-tail terms are reserved for the most
+// specific listing or supporting copy.
+const bumperBallKeywordSets: Record<string, string[]> = {
+  'best-bumper-balls-for-kids': ['small bubble ball', 'mini zorb ball', 'bubble ball set', 'fun bubble ball'],
+  'inflatable-kids-bumper-balls': ['inflatable bumper ball', 'buddy bumper balls', 'bouncy bubble ball', 'bubble ball party'],
+  'best-inflatable-bumper-balls-for-kids': ['best bumper balls', 'inflatable bubble ball', 'bounce bubble ball', 'bubble ball inflatable fun'],
+  'human-bubble-ball-for-kids': ['human bubble ball', 'body bubble ball', 'bubble ball you can get inside', 'human inside bubble'],
+  'kids-blow-up-bumper-balls': ['inflatable bumper', 'inflatable bubbles for humans', 'bubble ball to go inside', 'bubble ball for people'],
+  'tpu-soccer-balls': ['human soccer ball', 'zorb ball football', 'bubble ball football', 'bumper ball football'],
+  'zorb-balls-for-kids': ['zorb ball party', 'zorb bubble ball', 'small zorb ball', 'zorb ball sport'],
+  'inflatable-bubble-soccer-ball-manufacturer': ['inflatable bubble soccer ball', 'inflatable ball suits', 'bubble soccer purchase', 'bubble soccer balls for sale'],
+  'buy-human-bubble-ball': ['buy zorb ball', 'human bubble for sale', 'bubble football to buy', 'body bubble suit'],
+  'human-bubble-ball-for-adults': ['bumper balls for adults', 'adult bubble ball', 'adult inflatable bubble', 'adult zorb ball'],
+  'human-bubble-ball-rental': ['rent zorb balls', 'zorb ball hire', 'bubble ball price', 'zorb ball purchase'],
+  'inflatable-bumper-balls-for-adults-rental': ['inflatable bumper ball for adults', 'adult inflatable bumper ball', 'body bumper ball for adults', 'bumper balls adults'],
+  'inflatable-human-bubble-balls': ['human bumper ball', 'human ball bubble', 'human inflatable bubble ball', 'human sized bubble'],
+  'large-human-bubble-ball-for-adults': ['large bubble ball', 'big bubble ball for humans', 'giant bubble for human', 'large inflatable bubble ball'],
+  'inflatable-bumper-balls-for-adults': ['bumper suits for adults', 'inflatable bumper ball for adults rental', 'body bumper ball', 'adult zorb'],
+  'bubble-soccer-football-inflatable': ['inflatable soccer bubble', 'bumper soccer', 'bumper ball soccer', 'zorb ball soccer'],
+  'commercial-bumper-balls': ['bumper ball inflatable', 'bumper bubble soccer', 'bubble soccer suit', 'bumper ball set'],
+  'inflatable-bumper-ball-human': ['inflatable body bumper ball', 'body balls bumper', 'full body bubble ball', 'body bumper bubble'],
+  'soccer-inflatable-bubble': ['soccer inflatable bubble', 'air bubble soccer', 'giant bubble soccer', 'soccer bubble ball'],
+  'bubble-soccer-suits-for-sale': ['bubble soccer suits for sale', 'bubble suit soccer', 'inflatable bumper suits', 'bubble bumper suit'],
+  'commercial-zorb-balls': ['inflatable zorb balls', 'zorb ball', 'zorb ball inflatable', 'zorb bumper balls'],
+  'inflatable-bubble-suit-for-adults': ['human bubble suit', 'bubble ball suit', 'inflatable bubble ball for adults', 'full body bubble suit'],
+  'inflatable-soccer-ball-suit': ['inflatable soccer ball suit', 'inflatable ball suit soccer', 'inflatable ball soccer', 'soccer suit bubble'],
+  'inflatable-soccer-bubbles': ['inflatable soccer bubbles', 'inflatable bumper soccer', 'bumper bubble soccer balls', 'indoor soccer bubble ball'],
+  'inflatable-soccer-bumper': ['bubble football for sale', 'bumper soccer near me', 'inflatable bumper soccer ball', 'football bubble ball'],
+  'inflatable-zorb-ball': ['inflatable zorb', 'inflatable zorb ball for sale', 'blow up zorb ball', 'giant zorb ball'],
+  'kid-inflatable-soccer-ball': ['best inflatable bumper ball', 'human soccer ball bubble', 'bubble soccer cost', 'soccer ball bubble'],
+  'inflatable-bumper-ball-cheap': ['cheap bumper balls', 'cheap zorb ball', 'human bubble ball cheap', 'cheap bubble soccer balls'],
+  'inflatable-bumper-balls-for-sale': ['inflatable bumper balls for sale', 'bumper balls for sale', 'bubble ball for sale', 'zorbs for sale'],
+};
+
 const boxingRingKeywordSets: Record<string, string[]> = {
   'inflatable-boxing-ring-rental': ['inflatable boxing ring rental', 'inflatable boxing ring rental near me', 'blow up boxing ring rental', 'boxing inflatable rentals'],
   'inflatable-boxing-ring-for-sale': ['inflatable boxing ring for sale', 'inflatable boxing ring for adults', 'inflatable boxing ring and gloves', 'boxing ring bounce house for sale'],
@@ -670,7 +713,12 @@ function soccerDartKeywordSet(product: Product) {
   return soccerDartKeywordSets[product.productSlug] ?? [];
 }
 
+function bumperBallKeywordSet(product: Product) {
+  return bumperBallKeywordSets[product.productSlug] ?? [];
+}
+
 function productSearchTerms(product: Product) {
+  if (product.category === 'Bumper Ball') return bumperBallKeywordSet(product);
   if (landingKeywordSet(product).length) return landingKeywordSet(product);
   if (climbingKeywordSet(product).length) return climbingKeywordSet(product);
   if (foamKeywordSet(product).length) return foamKeywordSet(product);
@@ -744,6 +792,10 @@ function productIntentKeyword(product: Product) {
 
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  if (product.category === 'Bumper Ball') {
+    const primary = bumperBallKeywordSet(product)[0] || 'inflatable bumper ball';
+    return seoTitle(`${primary} | ${truncateMeta(name, 34, '')}`);
+  }
   const intent = productIntentLabel(product);
   const categoryLabel = product.category.replace(/^Inflatable\s+/i, '');
   const suffix = intent || categoryLabel;
@@ -753,6 +805,10 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  if (product.category === 'Bumper Ball') {
+    const terms = bumperBallKeywordSet(product).slice(0, 2).join(' and ');
+    return truncateMeta(`YIC supplies ${terms} in ${product.dimensions.trim()} ${product.material} for bubble-soccer operators, schools, events, and rental fleets. Request OEM colors, logos, accessories, and factory pricing.`, 158);
+  }
   const variant = productIntentKeyword(product) || productKeywordVariants(product)[0] || `commercial ${product.category.toLowerCase()}`;
   const buyer = detail.primaryBuyer.split(',')[0];
   return truncateMeta(`YIC manufactures commercial inflatables for ${buyer}. Ask about the ${variant} model, OEM/ODM options, and factory pricing.`, 158);
@@ -1170,6 +1226,45 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Bumper Ball') {
+    const isYouth = /kid|kids|child/.test(searchable) || /1\.25m/.test(product.dimensions);
+    const isZorb = /zorb/.test(searchable);
+    const isSuit = /suit/.test(searchable);
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: isZorb ? 'commercial inflatable zorb ball' : isSuit ? 'inflatable bubble-soccer suit' : 'commercial inflatable bumper ball',
+      primaryBuyer: 'bubble-soccer operators, sports venues, schools, event companies, rental businesses, and inflatable-equipment distributors',
+      purpose: isYouth
+        ? `The ${product.dimensions.trim()} ${product.material} model is listed for youth-oriented group activities. Confirm participant fit, game format, playing surface, and supervision requirements before selecting a set.`
+        : isZorb
+          ? `The ${product.dimensions.trim()} ${product.material} model is listed as a zorb-style ball for operator-led recreation and event programs. Confirm the intended activity, user fit, venue conditions, and operating plan before ordering.`
+          : `The ${product.dimensions.trim()} ${product.material} model is listed for adult or mixed-group bubble-soccer activities. Confirm participant fit, playing area, supervision, and local operating rules before use.`,
+      applications: [
+        { title: 'Bubble-soccer programs', text: 'Plan team sessions around ball diameter, participant group, suitable surface, session length, and supervised player rotation.' },
+        { title: isYouth ? 'Youth sports and school events' : 'Adult group events', text: 'Confirm participant fit, available space, event format, and supervision before adding the product to a school, venue, or event program.' },
+        { title: 'Rental and entertainment venues', text: 'Review quantity, transport, cleaning, inspection, storage, and accessory requirements for repeat commercial sessions.' },
+      ],
+      planningPoints: [
+        `Reference diameter ${product.dimensions.trim()}, participant age and fit, and intended activity format`,
+        'Clear playing area, surface suitability, access, participant rotation, supervision, and venue rules',
+        'Commercial TPU specification, quantity, inflation equipment, cleaning, dry storage, and transport plan',
+      ],
+      customization: [
+        'Ball diameter and participant-group configuration',
+        'Color combinations, team identification, and suitable printed branding',
+        'Quantity, accessory package, repair support, carrying and packing requirements',
+      ],
+      operationNote: 'Use bumper or bubble balls only in an appropriate supervised activity with a suitable surface, clear play area, participant instructions, inspection routine, and venue-approved operating rules.',
+      quoteItems: [
+        'Participant age range, intended activity, reference diameter, and expected quantity',
+        'Playing surface, venue dimensions, session format, and supervision plan',
+        'Color or logo brief, accessory preference, destination, and target delivery date',
+      ],
+    };
+  }
   if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) {
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
@@ -1759,6 +1854,10 @@ export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
   const primaryBuyer = productTargetBuyers(product)[0] || 'commercial buyers';
+  if (product.category === 'Bumper Ball') {
+    const terms = bumperBallKeywordSet(product);
+    return [...new Set([terms[0], name, `commercial ${content.productType}`, primaryBuyer, 'bubble soccer equipment', 'YIC Inflatable Sports'])].filter(Boolean).join(', ');
+  }
   const core = [
     name,
     `${name} for ${primaryBuyer}`,
@@ -2011,6 +2110,17 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Bumper Ball') {
+    const terms = bumperBallKeywordSet(product);
+    return [
+      { question: `What is the ${name} model designed for?`, answer: `${content.purpose} Related buyer searches include ${terms[0]}, ${terms[1]}, ${terms[2]}, and ${terms[3]}.` },
+      { question: `How do I choose the right bumper-ball size?`, answer: `Use the listed ${product.dimensions.trim()} as the starting reference, then confirm participant age, body fit, activity format, playing surface, and local venue rules before ordering.` },
+      { question: `Can this model be used for bubble soccer or zorb activities?`, answer: `The product format is intended for supervised group recreation. Confirm whether the approved application is bubble soccer, zorb-style play, youth activity, or another format, along with the required surface and operating procedures.` },
+      { question: `Can YIC customize colors, logos, or quantities?`, answer: `Yes. YIC can review color combinations, team identification, printed branding, ball diameter, quantity, accessories, repair support, and packing requirements for a commercial program.` },
+      { question: `What should a rental operator plan for repeat sessions?`, answer: `Plan a suitable clear surface, participant briefing, supervision, inflation checks, cleaning and drying, inspection, transport, repair-kit access, and dry storage between sessions.` },
+      { question: `What information should I send for a bumper-ball quotation?`, answer: `Send the participant group, intended activity, diameter and quantity, venue dimensions and surface, color or logo brief, destination, target delivery date, and preferred accessory or packing configuration.` },
+    ];
+  }
   if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) {
     const terms = halloweenMazeKeywordSet(product);
     return [
