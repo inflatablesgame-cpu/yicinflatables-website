@@ -857,7 +857,7 @@ export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
   if (product.category === 'Bumper Ball') {
     const primary = bumperBallKeywordSet(product)[0] || 'inflatable bumper ball';
-    return seoTitle(`${primary} | ${truncateMeta(name, 34, '')}`);
+    return seoTitle(`${primary} | Commercial Bubble Soccer`);
   }
   if (battingCageKeywordSet(product).length) {
     return seoTitle(`${battingCageKeywordSet(product)[0]} | Commercial Baseball Training`);
@@ -1166,6 +1166,8 @@ export function productDisplayTitle(product: Product) {
   title = title.replace(/^(?:best|used|buy)\s+/i, '');
   title = title.replace(/\s+(?:for sale|for rent|rental|manufacturer)\b/gi, '');
   title = title.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g, ' ');
+  const primaryBumperKeyword = product.category === 'Bumper Ball' ? bumperBallKeywordSet(product)[0] : '';
+  if (primaryBumperKeyword) return primaryBumperKeyword.charAt(0).toUpperCase() + primaryBumperKeyword.slice(1);
   return title ? title.charAt(0).toUpperCase() + title.slice(1) : product.title;
 }
 
@@ -2013,6 +2015,15 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Bumper Ball') {
+    const terms = bumperBallKeywordSet(product);
+    const audience = /kid|kids|child/.test(searchable) || /1\.25m/.test(product.dimensions)
+      ? 'youth group activities, schools, and supervised party rentals'
+      : /zorb/.test(searchable)
+        ? 'zorb-style recreation, team events, and sports operators'
+        : 'adult bubble-soccer programs, events, and commercial rental fleets';
+    return `Commercial TPU ${terms[0] || 'inflatable bumper ball'} for ${audience}. Explore ${terms[1] || 'custom team colors'} and ${terms[2] || 'OEM logo options'} in the product specification. ${reference}`;
+  }
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) {
     const profile = battingCageProfile(product)!;
     return `A ${profile.productType} for ${profile.trainingUse}. The listed format shows ${profile.visibleLayout}; confirm ${profile.planningFocus} before production. ${reference}`;
@@ -2182,6 +2193,14 @@ export function productCardLabel(product: Product) {
     'Inflatable Water Park': ['Floating water play', 'Modular water attraction', 'Anchoring & site planning'],
   };
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.category === 'Bumper Ball') {
+    const format = /zorb/.test(searchable)
+      ? 'Zorb activity format'
+      : /kid|kids|child/.test(searchable) || /1\.25m/.test(product.dimensions)
+        ? 'Youth group-play format'
+        : 'Adult bubble-soccer format';
+    return `${material} · ${format} · Custom colors & logos`;
+  }
   if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
     return `${material} · ${/ramp/.test(searchable) ? 'Landing ramp interface' : 'Impact-zone airbag'} · Custom sports use`;
   }
