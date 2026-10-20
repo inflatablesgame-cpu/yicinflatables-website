@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T09:17:47.063Z",
+  "generatedAt": "2026-10-20T09:36:33.727Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -144,9 +144,10 @@
     {
       "name": "Inflatable Games",
       "slug": "inflatable-games",
-      "count": 124,
-      "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%204%20in%201%20inflatable%20carnival%20games/1.webp",
+      "count": 140,
+      "heroImage": "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%20%20inflatable%20carnival%20game/1.webp",
       "products": [
+        "inflatable-games--inflatable-carnival-game-125",
         "inflatable-games--4-in-1-inflatable-carnival-games-1",
         "inflatable-games--commercial-inflatable-carnival-games-2",
         "inflatable-games--used-commercial-carnival-games-for-sale-3",
@@ -205,6 +206,7 @@
         "inflatable-games--giant-soccer-dart-board-for-sale-33",
         "inflatable-games--velcro-soccer-darts-for-sale-34",
         "inflatable-games--axe-throwing-inflatable-game-35",
+        "inflatable-games--4-in-1-inflatable-interactive-sports-game-with-blower-126",
         "inflatable-games--human-sized-whac-a-mole-36",
         "inflatable-games--human-whack-a-mole-team-building-game-37",
         "inflatable-games--inflatable-whack-a-mole-game-for-adults-38",
@@ -238,6 +240,7 @@
         "inflatable-games--airbag-landing-ramp-for-sale-56",
         "inflatable-games--fmx-landing-ramp-57",
         "inflatable-games--3-in-1-inflatable-carnival-game-58",
+        "inflatable-games--heavy-duty-4-in-1-sports-interactive-game-127",
         "inflatable-games--commercial-inflatable-batting-cage-59",
         "inflatable-games--inflatable-gladiator-jousting-60",
         "inflatable-games--inflatable-climbing-tower-95",
@@ -248,12 +251,19 @@
         "inflatable-games--commercial-rock-climbing-wall-for-sale-64",
         "inflatable-games--commercial-mario-kart-theme-inflatable-slide-and-climb-for-sale-65",
         "inflatable-games--inflatable-climbing-wall-70",
+        "inflatable-games--blow-up-soccer-dart-board-128",
+        "inflatable-games--commercial-inflatable-human-whack-a-mole-arena-129",
         "inflatable-games--dual-target-axe-throwing-inflatable-113",
         "inflatable-games--giant-inflatable-soccer-field-112",
         "inflatable-games--inflatable-axe-throw-114",
+        "inflatable-games--inflatable-axe-throwing-for-sale-130",
         "inflatable-games--inflatable-axe-throwing-game-115",
         "inflatable-games--inflatable-billiards-table-99",
+        "inflatable-games--inflatable-carnival-games-for-sale-131",
         "inflatable-games--inflatable-climbing-wall-and-slide-71",
+        "inflatable-games--inflatable-electronic-target-toss-game-132",
+        "inflatable-games--inflatable-horse-racing-game-133",
+        "inflatable-games--interactive-whack-a-mole-challenge-134",
         "inflatable-games--rock-climbing-wall-inflatable-72",
         "inflatable-games--blow-up-soccer-field-109",
         "inflatable-games--bounce-house-climbing-wall-73",
@@ -262,13 +272,19 @@
         "inflatable-games--fmx-airbag-landing-66",
         "inflatable-games--inflatable-air-hockey-table-120",
         "inflatable-games--inflatable-boxing-area-90",
+        "inflatable-games--inflatable-bumper-car-track-135",
         "inflatable-games--inflatable-foam-pit-rental-81",
         "inflatable-games--inflatable-halloween-maze-122",
+        "inflatable-games--inflatable-hover-ball-floating-air-transfer-game-136",
+        "inflatable-games--inflatable-jousting-arena-137",
         "inflatable-games--inflatable-rock-climbing-wall-74",
         "inflatable-games--inflatable-soccer-dart-game-93",
+        "inflatable-games--inflatable-sports-dome-138",
         "inflatable-games--inflatable-volleyball-field-85",
+        "inflatable-games--inflatable-wonder-challenge-tyre-obstacle-run-139",
         "inflatable-games--inflatable-candy-land-bubble-foam-pit-rental-80",
         "inflatable-games--inflatable-football-darts-for-sale-94",
+        "inflatable-games--inflatable-interactive-game-140",
         "inflatable-games--inflatable-climbing-tower-75",
         "inflatable-games--inflatable-landing-ramp-67"
       ]
@@ -2345,6 +2361,24 @@
       "excerpt": "Commercial bumper ball built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-carnival-game-125",
+      "productSlug": "inflatable-carnival-game",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable carnival game",
+      "sourceName": "1.5x1.5x2m     inflatable carnival game",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%20%20inflatable%20carnival%20game/1.webp",
+        "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%20%20inflatable%20carnival%20game/2.webp",
+        "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%20%20inflatable%20carnival%20game/3.webp",
+        "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%20%20inflatable%20carnival%20game/4.webp",
+        "/assets/product/Inflatable%20Games/1.5x1.5x2m%20%20%20%20%20inflatable%20carnival%20game/5.webp"
+      ],
+      "dimensions": "1.5x1.5x2m     ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--4-in-1-inflatable-carnival-games-1",
       "productSlug": "4-in-1-inflatable-carnival-games",
       "category": "Inflatable Games",
@@ -3389,6 +3423,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--4-in-1-inflatable-interactive-sports-game-with-blower-126",
+      "productSlug": "4-in-1-inflatable-interactive-sports-game-with-blower",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "4 in 1 inflatable interactive sports game with blower",
+      "sourceName": "3x3x3m        4 in 1 inflatable interactive sports game with blower",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/3x3x3m%20%20%20%20%20%20%20%204%20in%201%20inflatable%20interactive%20sports%20game%20with%20blower/1.webp",
+        "/assets/product/Inflatable%20Games/3x3x3m%20%20%20%20%20%20%20%204%20in%201%20inflatable%20interactive%20sports%20game%20with%20blower/2.webp",
+        "/assets/product/Inflatable%20Games/3x3x3m%20%20%20%20%20%20%20%204%20in%201%20inflatable%20interactive%20sports%20game%20with%20blower/3.webp",
+        "/assets/product/Inflatable%20Games/3x3x3m%20%20%20%20%20%20%20%204%20in%201%20inflatable%20interactive%20sports%20game%20with%20blower/4.webp",
+        "/assets/product/Inflatable%20Games/3x3x3m%20%20%20%20%20%20%20%204%20in%201%20inflatable%20interactive%20sports%20game%20with%20blower/5.webp"
+      ],
+      "dimensions": "3x3x3m        ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--human-sized-whac-a-mole-36",
       "productSlug": "human-sized-whac-a-mole",
       "category": "Inflatable Games",
@@ -3983,6 +4035,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--heavy-duty-4-in-1-sports-interactive-game-127",
+      "productSlug": "heavy-duty-4-in-1-sports-interactive-game",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "heavy duty 4-in-1 sports interactive game",
+      "sourceName": "6x2.6x2.6m       heavy duty 4-in-1 sports interactive game",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/6x2.6x2.6m%20%20%20%20%20%20%20heavy%20duty%204-in-1%20sports%20interactive%20game/1.webp",
+        "/assets/product/Inflatable%20Games/6x2.6x2.6m%20%20%20%20%20%20%20heavy%20duty%204-in-1%20sports%20interactive%20game/2.webp",
+        "/assets/product/Inflatable%20Games/6x2.6x2.6m%20%20%20%20%20%20%20heavy%20duty%204-in-1%20sports%20interactive%20game/3.webp",
+        "/assets/product/Inflatable%20Games/6x2.6x2.6m%20%20%20%20%20%20%20heavy%20duty%204-in-1%20sports%20interactive%20game/4.webp",
+        "/assets/product/Inflatable%20Games/6x2.6x2.6m%20%20%20%20%20%20%20heavy%20duty%204-in-1%20sports%20interactive%20game/5.webp"
+      ],
+      "dimensions": "6x2.6x2.6m       ",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--commercial-inflatable-batting-cage-59",
       "productSlug": "commercial-inflatable-batting-cage-for-sale",
       "category": "Inflatable Games",
@@ -4163,6 +4233,42 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--blow-up-soccer-dart-board-128",
+      "productSlug": "blow-up-soccer-dart-board",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "blow up soccer dart board",
+      "sourceName": "尺寸定制            blow up soccer dart board",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20dart%20board/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20dart%20board/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20dart%20board/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20dart%20board/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20soccer%20dart%20board/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--commercial-inflatable-human-whack-a-mole-arena-129",
+      "productSlug": "commercial-inflatable-human-whack-a-mole-arena",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "commercial inflatable human whack-a-mole arena",
+      "sourceName": "尺寸定制            commercial inflatable human whack-a-mole arena",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20human%20whack-a-mole%20arena/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20human%20whack-a-mole%20arena/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20human%20whack-a-mole%20arena/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20human%20whack-a-mole%20arena/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20human%20whack-a-mole%20arena/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--dual-target-axe-throwing-inflatable-113",
       "productSlug": "dual-target-axe-throwing-inflatable",
       "category": "Inflatable Games",
@@ -4217,6 +4323,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-axe-throwing-for-sale-130",
+      "productSlug": "inflatable-axe-throwing-commercial",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable axe throwing for sale",
+      "sourceName": "尺寸定制            inflatable axe throwing for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20axe%20throwing%20for%20sale/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-axe-throwing-game-115",
       "productSlug": "inflatable-axe-throwing-game",
       "category": "Inflatable Games",
@@ -4253,6 +4377,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-carnival-games-for-sale-131",
+      "productSlug": "inflatable-carnival-games-for-sale",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable carnival games for sale",
+      "sourceName": "尺寸定制            inflatable carnival games for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20carnival%20games%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20carnival%20games%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20carnival%20games%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20carnival%20games%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20carnival%20games%20for%20sale/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-climbing-wall-and-slide-71",
       "productSlug": "inflatable-climbing-wall-and-slide",
       "category": "Inflatable Games",
@@ -4266,6 +4408,60 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20climbing%20wall%20and%20slide/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20climbing%20wall%20and%20slide/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20climbing%20wall%20and%20slide/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-electronic-target-toss-game-132",
+      "productSlug": "inflatable-electronic-target-toss-game",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable electronic target toss game",
+      "sourceName": "尺寸定制            inflatable electronic target toss game",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20electronic%20target%20toss%20game/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20electronic%20target%20toss%20game/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20electronic%20target%20toss%20game/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20electronic%20target%20toss%20game/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20electronic%20target%20toss%20game/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-horse-racing-game-133",
+      "productSlug": "inflatable-horse-racing-game",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable horse racing game",
+      "sourceName": "尺寸定制            inflatable horse racing game",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20horse%20racing%20game/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20horse%20racing%20game/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20horse%20racing%20game/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20horse%20racing%20game/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20horse%20racing%20game/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--interactive-whack-a-mole-challenge-134",
+      "productSlug": "interactive-whack-a-mole-challenge",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "interactive whack a mole challenge",
+      "sourceName": "尺寸定制            interactive whack a mole challenge",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20interactive%20whack%20a%20mole%20challenge/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20interactive%20whack%20a%20mole%20challenge/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20interactive%20whack%20a%20mole%20challenge/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20interactive%20whack%20a%20mole%20challenge/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20interactive%20whack%20a%20mole%20challenge/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
@@ -4415,6 +4611,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-bumper-car-track-135",
+      "productSlug": "inflatable-bumper-car-track",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable bumper car track",
+      "sourceName": "尺寸定制           inflatable bumper car track",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20bumper%20car%20track/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20bumper%20car%20track/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20bumper%20car%20track/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20bumper%20car%20track/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20bumper%20car%20track/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-foam-pit-rental-81",
       "productSlug": "inflatable-foam-pit-rental",
       "category": "Inflatable Games",
@@ -4446,6 +4660,42 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20halloween%20maze/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20halloween%20maze/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20halloween%20maze/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-hover-ball-floating-air-transfer-game-136",
+      "productSlug": "inflatable-hover-ball-floating-air-transfer-game",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable hover ball floating air transfer game",
+      "sourceName": "尺寸定制           inflatable hover ball floating air transfer game",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20hover%20ball%20floating%20air%20transfer%20game/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20hover%20ball%20floating%20air%20transfer%20game/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20hover%20ball%20floating%20air%20transfer%20game/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20hover%20ball%20floating%20air%20transfer%20game/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20hover%20ball%20floating%20air%20transfer%20game/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-jousting-arena-137",
+      "productSlug": "inflatable-jousting-arena",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable jousting arena",
+      "sourceName": "尺寸定制           inflatable jousting arena",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20jousting%20arena/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20jousting%20arena/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20jousting%20arena/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20jousting%20arena/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20jousting%20arena/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
@@ -4487,6 +4737,24 @@
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-games--inflatable-sports-dome-138",
+      "productSlug": "inflatable-sports-dome",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable sports dome",
+      "sourceName": "尺寸定制           inflatable sports dome",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20sports%20dome/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20sports%20dome/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20sports%20dome/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20sports%20dome/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20sports%20dome/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-games--inflatable-volleyball-field-85",
       "productSlug": "inflatable-volleyball-field",
       "category": "Inflatable Games",
@@ -4500,6 +4768,24 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20volleyball%20field/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20volleyball%20field/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20inflatable%20volleyball%20field/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-wonder-challenge-tyre-obstacle-run-139",
+      "productSlug": "inflatable-wonder-challenge-tyre-obstacle-run",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "Inflatable Wonder Challenge Tyre Obstacle Run",
+      "sourceName": "尺寸定制           Inflatable Wonder Challenge Tyre Obstacle Run",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20Inflatable%20Wonder%20Challenge%20Tyre%20Obstacle%20Run/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20Inflatable%20Wonder%20Challenge%20Tyre%20Obstacle%20Run/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20Inflatable%20Wonder%20Challenge%20Tyre%20Obstacle%20Run/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20Inflatable%20Wonder%20Challenge%20Tyre%20Obstacle%20Run/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20Inflatable%20Wonder%20Challenge%20Tyre%20Obstacle%20Run/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
@@ -4536,6 +4822,24 @@
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20football%20darts%20for%20sale/3.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20football%20darts%20for%20sale/4.webp",
         "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20football%20darts%20for%20sale/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-games--inflatable-interactive-game-140",
+      "productSlug": "inflatable-interactive-game",
+      "category": "Inflatable Games",
+      "categorySlug": "inflatable-games",
+      "title": "inflatable interactive game",
+      "sourceName": "尺寸定制          inflatable interactive game",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20interactive%20game/1.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20interactive%20game/2.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20interactive%20game/3.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20interactive%20game/4.webp",
+        "/assets/product/Inflatable%20Games/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20interactive%20game/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable games built for party rental operators, family entertainment centers, and event venues."

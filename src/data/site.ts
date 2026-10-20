@@ -703,6 +703,166 @@ const soccerDartKeywordSets: Record<string, string[]> = {
   'inflatable-football-darts-for-sale': ['inflatable football darts for sale', 'football darts for sale', 'inflatable dart board football', 'football dart board inflatable'],
 };
 
+type InteractiveGameProfile = {
+  keywords: string[];
+  productType: string;
+  visibleLayout: string;
+  gameMechanic: string;
+  primaryBuyer: string;
+  application: string;
+  customizationFocus: string;
+};
+
+// These newly added Inflatable Games each use a product-specific profile. The
+// profiles keep similar attractions from competing for the same wording while
+// making their visible play mechanism explicit for search and AI answers.
+const interactiveGameProfiles: Record<string, InteractiveGameProfile> = {
+  'inflatable-carnival-game': {
+    keywords: ['inflatable carnival game', 'mini carnival booth inflatable', 'compact target game rental', 'inflatable fair game for sale'],
+    productType: 'compact inflatable carnival target game',
+    visibleLayout: 'a compact 1.5 x 1.5 x 2 m game booth with a front target panel and a covered inflatable frame',
+    gameMechanic: 'a quick, score-based target challenge with a defined throwing or shooting line',
+    primaryBuyer: 'party-rental companies, schools, carnival operators, event agencies, and family entertainment venues',
+    application: 'small carnival stations, school fundraisers, prize booths, and compact event activity zones',
+    customizationFocus: 'target artwork, scoring zones, colors, sponsor panels, game accessories, and event messaging',
+  },
+  '4-in-1-inflatable-interactive-sports-game-with-blower': {
+    keywords: ['4 in 1 inflatable interactive sports game', 'inflatable baseball basketball dart game', 'multi sport inflatable challenge', 'sports carnival game rental'],
+    productType: 'four-station inflatable sports challenge',
+    visibleLayout: 'a 3 x 3 x 3 m open sports booth with baseball, basketball, football, and dart-style target panels',
+    gameMechanic: 'four visible skill stations that can run as rotating attempts, timed challenges, or head-to-head scoring',
+    primaryBuyer: 'sports-event operators, rental fleets, schools, camps, malls, and family entertainment centers',
+    application: 'sports days, team events, fan zones, school programs, and multi-activity rental packages',
+    customizationFocus: 'sport-panel selection, target faces, ball or projectile set, score rules, team colors, and sponsor graphics',
+  },
+  'heavy-duty-4-in-1-sports-interactive-game': {
+    keywords: ['heavy duty 4-in-1 sports interactive game', 'commercial inflatable sports booth', 'four station sports challenge', 'all-in-one inflatable skill game'],
+    productType: 'heavy-duty four-in-one inflatable sports booth',
+    visibleLayout: 'a long 6 x 2.6 x 2.6 m commercial game structure with multiple illustrated sports targets and separate participant stations',
+    gameMechanic: 'parallel throwing, kicking, or shooting stations that support individual scores and quick event rotation',
+    primaryBuyer: 'commercial rental operators, sports marketers, schools, event companies, and indoor entertainment venues',
+    application: 'sports promotions, larger school events, branded fan experiences, and repeat-use rental programs',
+    customizationFocus: 'station count, sport graphics, ball set, target layout, score display, logo panels, and packing package',
+  },
+  'blow-up-soccer-dart-board': {
+    keywords: ['blow up soccer dart board', 'inflatable football dart target', 'kick dart board rental', 'soccer scoring inflatable for sale'],
+    productType: 'inflatable football dart target game',
+    visibleLayout: 'a freestanding inflatable target format designed around a large dartboard-style kicking face',
+    gameMechanic: 'players kick compatible balls from a marked line toward scored dartboard zones',
+    primaryBuyer: 'soccer clubs, party-rental businesses, schools, fan-zone operators, and event agencies',
+    application: 'football fan zones, school sports days, soccer camps, festival games, and rental event packages',
+    customizationFocus: 'target face, scoring rings, ball compatibility, kicking line, team colors, sponsor logos, and artwork',
+  },
+  'commercial-inflatable-human-whack-a-mole-arena': {
+    keywords: ['commercial inflatable human whack-a-mole arena', 'human whack a mole game', 'inflatable mole team challenge', 'whack a mole rental attraction'],
+    productType: 'commercial human whack-a-mole arena',
+    visibleLayout: 'a round black-and-yellow hazard-style arena with several participant openings and a central padded player zone',
+    gameMechanic: 'a supervised team challenge in which participants pop up through openings while the central player follows approved soft-play rules',
+    primaryBuyer: 'team-building providers, event companies, rental fleets, family entertainment centers, and schools',
+    application: 'team challenges, corporate days, indoor event programs, festivals, and supervised group entertainment',
+    customizationFocus: 'arena diameter, opening count, central play zone, soft-play accessories, colors, branding, and rule signage',
+  },
+  'inflatable-axe-throwing-commercial': {
+    keywords: ['inflatable axe throwing for sale', 'commercial axe throw game', 'soft axe target rental', 'lumberjack inflatable challenge'],
+    productType: 'commercial inflatable axe-throwing target game',
+    visibleLayout: 'an inflatable target-game format with a visible throwing lane and soft-play target arrangement',
+    gameMechanic: 'supervised score play using compatible soft projectiles rather than real axes',
+    primaryBuyer: 'rental operators, bars and entertainment venues, event agencies, team-building providers, and festivals',
+    application: 'lumberjack themes, corporate challenges, festival booths, party rentals, and branded event programs',
+    customizationFocus: 'target artwork, scoring zones, soft projectile type, throwing distance, theme graphics, logos, and accessory set',
+  },
+  'inflatable-carnival-games-for-sale': {
+    keywords: ['inflatable carnival games for sale', 'commercial fairground game package', 'event target game supplier', 'carnival booth inflatable wholesale'],
+    productType: 'commercial inflatable carnival game station',
+    visibleLayout: 'a made-to-order carnival-style activity setup configured around visible target or score-play elements',
+    gameMechanic: 'short, easy-to-explain skill rounds that support prizes, event queues, and repeat player turns',
+    primaryBuyer: 'carnival operators, rental companies, schools, community-event organizers, and entertainment venues',
+    application: 'fairgrounds, school carnivals, community events, prize booths, and rental equipment packages',
+    customizationFocus: 'game modules, target panels, scoring rules, prize integration, colors, logo printing, and packed configuration',
+  },
+  'inflatable-electronic-target-toss-game': {
+    keywords: ['inflatable electronic target toss game', 'digital score target game', 'interactive ball toss attraction', 'electronic carnival game rental'],
+    productType: 'inflatable electronic target toss attraction',
+    visibleLayout: 'a black enclosed target booth with a multi-target face and a separate electronic score-console position',
+    gameMechanic: 'players throw compatible balls at illuminated or scored targets while the specified electronic system records the result',
+    primaryBuyer: 'event agencies, rental businesses, sports-marketing teams, shopping venues, and family entertainment centers',
+    application: 'brand activations, competitive event stations, sports promotions, indoor entertainment, and prize games',
+    customizationFocus: 'target-face layout, compatible ball set, score display, game timer, colors, sponsor artwork, and electrical specification',
+  },
+  'inflatable-horse-racing-game': {
+    keywords: ['inflatable horse racing game', 'fun derby inflatable race', 'four lane horse derby game', 'inflatable pony race rental'],
+    productType: 'four-lane inflatable horse-racing game',
+    visibleLayout: 'a Fun Derby race lane with a large entry arch, four marked lanes, and inflatable ride-on horse figures',
+    gameMechanic: 'a supervised multi-player derby race with defined lanes, a start line, and event-approved finish rules',
+    primaryBuyer: 'party-rental companies, schools, fairs, family entertainment venues, and team-event operators',
+    application: 'fun fairs, school field days, western themes, family events, and multi-player rental packages',
+    customizationFocus: 'lane count, horse figures, start-finish graphics, colors, sponsor panels, race rules, and accessory package',
+  },
+  'interactive-whack-a-mole-challenge': {
+    keywords: ['interactive whack a mole challenge', 'giant inflatable mole game', 'team pop up challenge', 'inflatable hole game rental'],
+    productType: 'large interactive inflatable mole challenge',
+    visibleLayout: 'a wide pink-and-purple multi-opening game field with individual player holes and a central challenge area',
+    gameMechanic: 'a fast-turn group activity built around pop-up positions, team coordination, and approved soft-play rules',
+    primaryBuyer: 'corporate-event planners, team-building providers, schools, festivals, and commercial rental operators',
+    application: 'large team-building games, company family days, school activities, festivals, and high-throughput event play',
+    customizationFocus: 'opening grid, player count, colorway, soft-play pieces, score rules, sponsor graphics, and carrying configuration',
+  },
+  'inflatable-bumper-car-track': {
+    keywords: ['inflatable bumper car track', 'portable bumper car arena', 'inflatable dodgem track', 'electric bumper car event enclosure'],
+    productType: 'portable inflatable bumper-car track enclosure',
+    visibleLayout: 'a large rounded inflatable boundary that defines a contained driving arena for compatible bumper cars',
+    gameMechanic: 'a managed driving attraction where the track boundary, entry, operator position, vehicle count, and ride rules are planned together',
+    primaryBuyer: 'mall operators, amusement providers, event companies, rental fleets, and family entertainment centers',
+    application: 'shopping-mall promotions, indoor entertainment, fairs, temporary amusement zones, and operator-led events',
+    customizationFocus: 'track footprint, wall height, entry gate, colors, logo panels, vehicle capacity, flooring interface, and packed layout',
+  },
+  'inflatable-hover-ball-floating-air-transfer-game': {
+    keywords: ['inflatable hover ball game', 'floating ball air game', 'inflatable air transfer challenge', 'cone target hover game'],
+    productType: 'inflatable hover-ball transfer game',
+    visibleLayout: 'a long game table with colorful upright cone targets, two end collection rings, and a central ball-transfer lane',
+    gameMechanic: 'players guide lightweight balls through the lane toward targets or collection zones using the approved air-transfer format',
+    primaryBuyer: 'schools, science-event organizers, rental businesses, family entertainment centers, and team-event agencies',
+    application: 'STEM activity zones, school carnivals, indoor family events, skill challenges, and rental game packages',
+    customizationFocus: 'cone layout, lane length, ball set, target rings, game rules, color palette, branded panels, and accessory package',
+  },
+  'inflatable-jousting-arena': {
+    keywords: ['inflatable jousting arena', 'gladiator joust inflatable', 'pedestal jousting challenge', 'pugil stick arena rental'],
+    productType: 'inflatable gladiator jousting arena',
+    visibleLayout: 'a square enclosed arena with opposing raised pedestals, an inflatable landing floor, and padded boundary rails',
+    gameMechanic: 'two participants use approved soft-play accessories in a supervised balance-and-challenge format',
+    primaryBuyer: 'rental companies, event operators, team-building providers, schools, and family entertainment centers',
+    application: 'gladiator challenges, company events, sports days, party rentals, and supervised festival attractions',
+    customizationFocus: 'pedestal placement, arena size, soft-play accessories, colors, logos, rule panels, and packing accessories',
+  },
+  'inflatable-sports-dome': {
+    keywords: ['inflatable sports dome', 'inflatable football training dome', 'portable soccer dome', 'covered inflatable sports hall'],
+    productType: 'covered inflatable sports training dome',
+    visibleLayout: 'a large green arched enclosure with a covered roof, side openings, and a football-training field environment',
+    gameMechanic: 'a covered space for managed sports practice, skills stations, or event activity rather than an unsupervised play device',
+    primaryBuyer: 'football clubs, schools, sports academies, event operators, municipalities, and recreation venues',
+    application: 'soccer practice, weather-protected training, youth sports programs, temporary sports halls, and club events',
+    customizationFocus: 'dome footprint, roof height, door and side openings, sports markings, colors, branding, anchoring, and ventilation details',
+  },
+  'inflatable-wonder-challenge-tyre-obstacle-run': {
+    keywords: ['inflatable tyre obstacle run', 'wonder challenge team game', 'giant tire toss challenge', 'inflatable group puzzle arena'],
+    productType: 'large inflatable tyre obstacle challenge',
+    visibleLayout: 'a wide multi-opening challenge field with a grid of large tyre-style holes for group play and team movement',
+    gameMechanic: 'participants navigate or use the opening grid under event-approved challenge rules with controlled player rotation',
+    primaryBuyer: 'team-building companies, schools, festivals, corporate-event planners, and rental operators',
+    application: 'team competitions, obstacle challenges, company days, school events, and interactive festival zones',
+    customizationFocus: 'opening pattern, game rules, target balls or props, colors, team branding, instruction panels, and packing layout',
+  },
+  'inflatable-interactive-game': {
+    keywords: ['inflatable interactive game', 'four lane carnival skill game', 'inflatable baseball toss booth', 'multi player target challenge'],
+    productType: 'four-lane inflatable interactive target game',
+    visibleLayout: 'a row of four illustrated baseball-style target booths with individual throwing lanes and front collection areas',
+    gameMechanic: 'simultaneous player lanes for ball-toss scores, timed rounds, or prize-based carnival play',
+    primaryBuyer: 'carnival operators, rental businesses, schools, sports-event agencies, and family entertainment venues',
+    application: 'baseball themes, fairs, school carnivals, player-versus-player events, and event-rental lineups',
+    customizationFocus: 'lane count, printed target panels, ball set, score rules, baseball graphics, sponsor logos, and prize integration',
+  },
+};
+
 function landingKeywordSet(product: Product) {
   return landingKeywordSets[product.productSlug] ?? [];
 }
@@ -737,6 +897,10 @@ function axeThrowingKeywordSet(product: Product) {
 
 function ringTossKeywordSet(product: Product) {
   return ringTossKeywordSets[product.productSlug] ?? [];
+}
+
+function interactiveGameProfile(product: Product) {
+  return interactiveGameProfiles[product.productSlug];
 }
 
 function battingCageKeywordSet(product: Product) {
@@ -798,6 +962,7 @@ function productSearchTerms(product: Product) {
   if (soccerFieldKeywordSet(product).length) return soccerFieldKeywordSet(product);
   if (axeThrowingKeywordSet(product).length) return axeThrowingKeywordSet(product);
   if (ringTossKeywordSet(product).length) return ringTossKeywordSet(product);
+  if (interactiveGameProfile(product)) return interactiveGameProfile(product)!.keywords;
   if (battingCageKeywordSet(product).length) return battingCageKeywordSet(product);
   if (waterWalkingBallKeywordSet(product).length) return waterWalkingBallKeywordSet(product);
   if (connectFourBasketballKeywordSet(product).length) return connectFourBasketballKeywordSet(product);
@@ -864,6 +1029,8 @@ function productIntentKeyword(product: Product) {
 
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  const interactiveProfile = interactiveGameProfile(product);
+  if (interactiveProfile) return seoTitle(`${interactiveProfile.keywords[0]} | Commercial Inflatable Game`);
   if (product.category === 'Bumper Ball') {
     const primary = bumperBallKeywordSet(product)[0] || 'inflatable bumper ball';
     return seoTitle(`${primary} | Commercial Bubble Soccer`);
@@ -883,6 +1050,10 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  const interactiveProfile = interactiveGameProfile(product);
+  if (interactiveProfile) {
+    return truncateMeta(`Commercial ${interactiveProfile.keywords[0]} for ${interactiveProfile.application}. Confirm ${interactiveProfile.keywords[1]}, OEM branding, layout, and factory quote.`, 158);
+  }
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product).slice(0, 2).join(' and ');
     return truncateMeta(`YIC supplies ${terms} in ${product.dimensions.trim()} ${product.material} for bubble-soccer operators, schools, events, and rental fleets. Request OEM colors, logos, accessories, and factory pricing.`, 158);
@@ -903,6 +1074,13 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const interactiveProfile = interactiveGameProfile(product);
+  if (interactiveProfile) return [
+    `Format shown: ${interactiveProfile.visibleLayout}`,
+    `Play concept: ${interactiveProfile.gameMechanic}`,
+    'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
+    `Specify ${interactiveProfile.customizationFocus} before production`,
+  ];
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) return [
     `Reference training enclosure: ${product.dimensions.trim()}`,
     `${battingCageProfile(product)?.visibleLayout ?? 'Enclosed batting tunnel with a protected striking lane and end-net structure'}`,
@@ -1056,6 +1234,12 @@ export function productKeywordVariants(product: Product) {
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
 
+  if (interactiveGameProfile(product)) {
+    add(...interactiveGameProfile(product)!.keywords);
+    add(`commercial ${base}`, `${base} for events`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+
   if (battingCageKeywordSet(product).length) {
     add(...battingCageKeywordSet(product));
     return [...new Set(variants)].filter((value) => value.length > 2);
@@ -1194,6 +1378,8 @@ export function productDisplayTitle(product: Product) {
   title = title.replace(/^(?:best|used|buy)\s+/i, '');
   title = title.replace(/\s+(?:for sale|for rent|rental|manufacturer)\b/gi, '');
   title = title.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g, ' ');
+  const primaryInteractiveKeyword = interactiveGameProfile(product)?.keywords[0];
+  if (primaryInteractiveKeyword) return primaryInteractiveKeyword.charAt(0).toUpperCase() + primaryInteractiveKeyword.slice(1);
   const primaryRingTossKeyword = ringTossKeywordSet(product)[0];
   if (primaryRingTossKeyword) return primaryRingTossKeyword.charAt(0).toUpperCase() + primaryRingTossKeyword.slice(1);
   const primaryBumperKeyword = product.category === 'Bumper Ball' ? bumperBallKeywordSet(product)[0] : '';
@@ -1339,6 +1525,40 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const interactiveProfile = interactiveGameProfile(product);
+  if (interactiveProfile) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const footprint = /custom dimensions available/i.test(product.dimensions) ? 'a made-to-order footprint based on the venue plan' : `the listed ${product.dimensions.trim()} footprint`;
+    return {
+      template,
+      productType: interactiveProfile.productType,
+      primaryBuyer: interactiveProfile.primaryBuyer,
+      purpose: `This ${interactiveProfile.productType} is shown as ${interactiveProfile.visibleLayout}. It supports ${interactiveProfile.gameMechanic} for ${interactiveProfile.application}.`,
+      applications: [
+        { title: 'Commercial event play', text: `Use the format for ${interactiveProfile.application}, with a clear operator position, guest queue, and approved participation rules.` },
+        { title: 'Rental and venue programs', text: `Plan ${footprint}, access, setup, turnover, and storage around the expected audience and repeat-use schedule.` },
+        { title: 'Branded challenges', text: `Build the visible game format around sponsor artwork, score or prize rules, and a player flow that fits the event brief.` },
+      ],
+      planningPoints: [
+        `${footprint}, plus player approach, entry and exit, blower placement, anchoring, queue space, operator position, and spectator separation`,
+        `${interactiveProfile.gameMechanic}; confirm compatible accessories, participant age range, game duration, scoring, rotation, and supervised operating rules`,
+        'Level surface, power, access route, weather exposure where relevant, setup procedure, cleaning, repair kit, transport, and dry storage',
+      ],
+      customization: [
+        interactiveProfile.customizationFocus,
+        'Commercial color scheme, printed logo panels, sponsor artwork, event instructions, and branded player-facing graphics',
+        'Blower package, anchoring, compatible game accessories, repair kit, carry bags, export packing, and project-specific requirements',
+      ],
+      operationNote: `Operate the ${interactiveProfile.productType} only with the compatible accessories, participant rules, staffing, inflation checks, anchoring, and site conditions confirmed in the approved specification. The venue operator must assess weather, power, surface, access, supervision, and local requirements before each session.`,
+      quoteItems: [
+        'Venue type, usable footprint, indoor or outdoor setting, participant age range, expected throughput, and planned game format',
+        'Requested target, lane, opening, score, vehicle, ball, soft-play, or accessory specification as applicable to the selected game',
+        'Artwork, logo files, quantity, destination, target delivery date, blower and anchoring needs, packing, and storage requirements',
+      ],
+    };
+  }
   if (product.category === 'Bumper Ball') {
     const isYouth = /kid|kids|child/.test(searchable) || /1\.25m/.test(product.dimensions);
     const isZorb = /zorb/.test(searchable);
@@ -2077,6 +2297,10 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const interactiveProfile = interactiveGameProfile(product);
+  if (interactiveProfile) {
+    return `Commercial ${interactiveProfile.keywords[0]} with ${interactiveProfile.visibleLayout}. Plan ${interactiveProfile.keywords[1]}, game rules, OEM graphics, and supervised event use. ${reference}`;
+  }
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product);
     const audience = /kid|kids|child/.test(searchable) || /1\.25m/.test(product.dimensions)
@@ -2259,6 +2483,8 @@ export function productCardLabel(product: Product) {
     'Inflatable Water Park': ['Floating water play', 'Modular water attraction', 'Anchoring & site planning'],
   };
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const interactiveProfile = interactiveGameProfile(product);
+  if (interactiveProfile) return `${material} · ${interactiveProfile.productType} · Event and rental use`;
   if (product.category === 'Bumper Ball') {
     const format = /zorb/.test(searchable)
       ? 'Zorb activity format'
@@ -2319,6 +2545,19 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const interactiveProfile = interactiveGameProfile(product);
+  if (interactiveProfile) {
+    const terms = interactiveProfile.keywords;
+    const customSize = /custom dimensions available/i.test(product.dimensions);
+    return [
+      { question: `What is this ${terms[0]} designed for?`, answer: `${content.purpose} It should be operated as a managed activity station, with game rules, participant flow, and staffing matched to the venue.` },
+      { question: customSize ? `Which measurements should I provide for a custom ${interactiveProfile.productType}?` : `How much space should I allow for the ${product.dimensions.trim()} game?`, answer: `${customSize ? 'Provide the usable length, width, height clearance, access route, player approach, queue zone, operator position, blower location, anchoring surface, and spectator buffer.' : `Start with the listed ${product.dimensions.trim()} footprint, then add space for the player approach, entry and exit, blower, anchoring, queue, operator, and a separated spectator area.`} Confirm the final layout from a venue plan before production.` },
+      { question: `How should I specify the ${terms[1]} game format?`, answer: `${interactiveProfile.gameMechanic} Confirm the compatible ball, soft-play piece, target, vehicle, or other accessory; player age range; turn duration; scoring or prize rules; capacity; and staff position in the approved specification.` },
+      { question: `Can the ${terms[2]} be customized for a commercial event?`, answer: `Yes. YIC can review ${interactiveProfile.customizationFocus}, overall dimensions, colors, printed logos, sponsor graphics, player instructions, accessory package, and export packing for the event or rental program.` },
+      { question: `What operational checks matter for a ${terms[3]}?`, answer: `${content.operationNote} Include pre-use inflation, anchor and accessory checks, supervised turns, cleaning, drying, repair-kit access, transport, and dry storage in the repeat-use routine.` },
+      { question: `What should I include in a ${terms[0]} quotation request?`, answer: `Send the venue type, site plan, target footprint, game mechanism and accessory preference, participant age range, expected throughput, branding files, quantity, destination, target delivery date, and blower, anchoring, packing, or storage requirements.` },
+    ];
+  }
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product);
     return [
