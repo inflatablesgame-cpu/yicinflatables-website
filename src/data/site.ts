@@ -562,6 +562,10 @@ const axeThrowingKeywordSets: Record<string, string[]> = {
   'inflatable-axe-throwing-game': ['inflatable axe throwing game', 'inflatable axe throwing for sale', 'inflatable ax throwing', 'blow up axe throwing game'],
 };
 
+const ringTossKeywordSets: Record<string, string[]> = {
+  'commercial-inflatable-ring-toss-games': ['inflatable ring toss', 'blow up ring toss', 'inflatable toss game', 'ring toss inflatable', 'target inflatable ring'],
+};
+
 const battingCageKeywordSets: Record<string, string[]> = {
   'commercial-inflatable-batting-cage-commercial': ['inflatable batting cage', 'blow up hitting cage', 'commercial baseball batting tunnel', 'netted inflatable batting lane'],
   'inflatable-batting-tunnels': ['blow up batting cage', 'inflatable batting turtle', 'portable baseball hitting tunnel', 'enclosed inflatable practice lane'],
@@ -731,6 +735,10 @@ function axeThrowingKeywordSet(product: Product) {
   return axeThrowingKeywordSets[product.productSlug] ?? [];
 }
 
+function ringTossKeywordSet(product: Product) {
+  return ringTossKeywordSets[product.productSlug] ?? [];
+}
+
 function battingCageKeywordSet(product: Product) {
   return battingCageKeywordSets[product.productSlug] ?? [];
 }
@@ -789,6 +797,7 @@ function productSearchTerms(product: Product) {
   if (billiardsKeywordSet(product).length) return billiardsKeywordSet(product);
   if (soccerFieldKeywordSet(product).length) return soccerFieldKeywordSet(product);
   if (axeThrowingKeywordSet(product).length) return axeThrowingKeywordSet(product);
+  if (ringTossKeywordSet(product).length) return ringTossKeywordSet(product);
   if (battingCageKeywordSet(product).length) return battingCageKeywordSet(product);
   if (waterWalkingBallKeywordSet(product).length) return waterWalkingBallKeywordSet(product);
   if (connectFourBasketballKeywordSet(product).length) return connectFourBasketballKeywordSet(product);
@@ -862,6 +871,9 @@ export function productSeoTitle(product: Product) {
   if (battingCageKeywordSet(product).length) {
     return seoTitle(`${battingCageKeywordSet(product)[0]} | Commercial Baseball Training`);
   }
+  if (ringTossKeywordSet(product).length) {
+    return seoTitle(`${ringTossKeywordSet(product)[0]} | Commercial Carnival Game`);
+  }
   const intent = productIntentLabel(product);
   const categoryLabel = product.category.replace(/^Inflatable\s+/i, '');
   const suffix = intent || categoryLabel;
@@ -879,6 +891,10 @@ export function productMetaDescription(product: Product) {
     const terms = battingCageKeywordSet(product);
     return truncateMeta(`YIC manufactures ${terms[0]} for baseball and softball training. Specify the ${terms[1]} layout, netting, OEM branding, and factory quote.`, 158);
   }
+  if (ringTossKeywordSet(product).length) {
+    const terms = ringTossKeywordSet(product);
+    return truncateMeta(`Commercial ${terms[0]} for carnivals, school events, rentals, and branded activations. Plan the ${terms[1]} layout, scoring targets, OEM colors, and factory quote.`, 158);
+  }
   const variant = productIntentKeyword(product) || productKeywordVariants(product)[0] || `commercial ${product.category.toLowerCase()}`;
   const buyer = detail.primaryBuyer.split(',')[0];
   return truncateMeta(`YIC manufactures commercial inflatables for ${buyer}. Ask about the ${variant} model, OEM/ODM options, and factory pricing.`, 158);
@@ -892,6 +908,12 @@ export function productKeyFeatures(product: Product) {
     `${battingCageProfile(product)?.visibleLayout ?? 'Enclosed batting tunnel with a protected striking lane and end-net structure'}`,
     `${product.material} listed for this model`,
     'Confirm ball, bat, pitching-machine compatibility, anchoring, clearances, and supervised operation before production',
+  ];
+  if (product.category === 'Inflatable Games' && ringTossKeywordSet(product).length) return [
+    `Reference footprint: ${product.dimensions.trim()}`,
+    'Multi-target ring-toss layout with numbered scoring columns and throwing rings',
+    'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
+    'Confirm throwing line, rings, scoring rules, player rotation, anchoring, and supervised event use before production',
   ];
   if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) return [
     'Made-to-order inflatable maze footprint and route layout',
@@ -1039,6 +1061,12 @@ export function productKeywordVariants(product: Product) {
     return [...new Set(variants)].filter((value) => value.length > 2);
   }
 
+  if (ringTossKeywordSet(product).length) {
+    add(...ringTossKeywordSet(product));
+    add('commercial inflatable ring game', 'carnival ring toss game', 'inflatable target game for events');
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+
   if (halloweenMazeKeywordSet(product).length) {
     add(...halloweenMazeKeywordSet(product));
     add('commercial inflatable haunted maze', 'custom inflatable Halloween maze', 'inflatable maze for events');
@@ -1166,6 +1194,8 @@ export function productDisplayTitle(product: Product) {
   title = title.replace(/^(?:best|used|buy)\s+/i, '');
   title = title.replace(/\s+(?:for sale|for rent|rental|manufacturer)\b/gi, '');
   title = title.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g, ' ');
+  const primaryRingTossKeyword = ringTossKeywordSet(product)[0];
+  if (primaryRingTossKeyword) return primaryRingTossKeyword.charAt(0).toUpperCase() + primaryRingTossKeyword.slice(1);
   const primaryBumperKeyword = product.category === 'Bumper Ball' ? bumperBallKeywordSet(product)[0] : '';
   if (primaryBumperKeyword) return primaryBumperKeyword.charAt(0).toUpperCase() + primaryBumperKeyword.slice(1);
   return title ? title.charAt(0).toUpperCase() + title.slice(1) : product.title;
@@ -1345,6 +1375,38 @@ export function productDetailContent(product: Product): DetailContent {
         'Participant age range, intended activity, reference diameter, and expected quantity',
         'Playing surface, venue dimensions, session format, and supervision plan',
         'Color or logo brief, accessory preference, destination, and target delivery date',
+      ],
+    };
+  }
+  if (product.category === 'Inflatable Games' && ringTossKeywordSet(product).length) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: 'commercial inflatable ring toss target game',
+      primaryBuyer: 'party rental businesses, carnival operators, family entertainment centers, schools, event agencies, and branded-activation teams',
+      purpose: `This ${product.dimensions.trim()} inflatable ring toss combines a bright multi-column target, numbered scoring zones, and throw rings in one supervised carnival game station. It is designed for quick player turns, visible spectator appeal, and repeat play at events or commercial venues.`,
+      applications: [
+        { title: 'Carnivals and family events', text: 'Create a familiar ring-toss challenge with simple turn-taking, visible scores, and a compact activity footprint.' },
+        { title: 'School, camp, and team programs', text: 'Use the numbered targets for skill challenges, team rotations, field days, and supervised group activities.' },
+        { title: 'Rental and branded activations', text: 'Build a colorful game station around queue flow, prize rules, sponsor graphics, and fast event changeovers.' },
+      ],
+      planningPoints: [
+        `Reference footprint ${product.dimensions.trim()}, plus a marked throwing line, player approach, access route, blower position, and clear spectator buffer`,
+        'Ring quantity and diameter, scoring values, prize or game rules, participant age range, staffing, turn duration, and player rotation',
+        'Level surface, anchoring, power, weather exposure, inflation checks, cleaning, repair kit, transport, and dry storage plan',
+      ],
+      customization: [
+        'Target-column count, height, scoring values, ring quantity, throwing-line distance, and overall game footprint',
+        'Colors, logo panels, sponsor graphics, carnival artwork, themed scoring zones, and printed event messaging',
+        'Blower package, anchoring, rings and accessory set, repair kit, carry bags, export packing, and project-specific requirements',
+      ],
+      operationNote: 'Operate the inflatable ring toss with compatible soft rings, a clearly marked throwing line, secured anchoring, supervised turns, separated spectators, routine inflation checks, and venue-approved game and prize rules.',
+      quoteItems: [
+        'Venue type, usable footprint, indoor or outdoor surface, throwing distance, participant age range, and expected throughput',
+        'Target layout, scoring values, ring quantity and material, colors, branding, prizes or event rules, and accessory preferences',
+        'Quantity, destination, target delivery date, blower or anchoring needs, packing, storage, and rental or activation requirements',
       ],
     };
   }
@@ -2024,6 +2086,10 @@ export function productCardDescription(product: Product) {
         : 'adult bubble-soccer programs, events, and commercial rental fleets';
     return `Commercial TPU ${terms[0] || 'inflatable bumper ball'} for ${audience}. Explore ${terms[1] || 'custom team colors'} and ${terms[2] || 'OEM logo options'} in the product specification. ${reference}`;
   }
+  if (product.category === 'Inflatable Games' && ringTossKeywordSet(product).length) {
+    const terms = ringTossKeywordSet(product);
+    return `Commercial ${terms[0]} with multi-height numbered targets and soft throwing rings for carnivals, school programs, rentals, and branded events. Specify the ${terms[1]}, ${terms[2]}, scoring layout, and OEM graphics for your event program. ${reference}`;
+  }
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) {
     const profile = battingCageProfile(product)!;
     return `A ${profile.productType} for ${profile.trainingUse}. The listed format shows ${profile.visibleLayout}; confirm ${profile.planningFocus} before production. ${reference}`;
@@ -2201,6 +2267,9 @@ export function productCardLabel(product: Product) {
         : 'Adult bubble-soccer format';
     return `${material} · ${format} · Custom colors & logos`;
   }
+  if (product.category === 'Inflatable Games' && ringTossKeywordSet(product).length) {
+    return `${material} · Numbered target toss game · Carnival and event use`;
+  }
   if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
     return `${material} · ${/ramp/.test(searchable) ? 'Landing ramp interface' : 'Impact-zone airbag'} · Custom sports use`;
   }
@@ -2259,6 +2328,17 @@ export function productFaqs(product: Product) {
       { question: `Can YIC customize colors, logos, or quantities?`, answer: `Yes. YIC can review color combinations, team identification, printed branding, ball diameter, quantity, accessories, repair support, and packing requirements for a commercial program.` },
       { question: `What should a rental operator plan for repeat sessions?`, answer: `Plan a suitable clear surface, participant briefing, supervision, inflation checks, cleaning and drying, inspection, transport, repair-kit access, and dry storage between sessions.` },
       { question: `What information should I send for a bumper-ball quotation?`, answer: `Send the participant group, intended activity, diameter and quantity, venue dimensions and surface, color or logo brief, destination, target delivery date, and preferred accessory or packing configuration.` },
+    ];
+  }
+  if (product.category === 'Inflatable Games' && ringTossKeywordSet(product).length) {
+    const terms = ringTossKeywordSet(product);
+    return [
+      { question: `What events is this ${terms[0]} designed for?`, answer: `${content.purpose} Its visible, score-based format suits carnivals, school fundraisers, family days, rental packages, festival booths, and branded activations when supervised by the event operator.` },
+      { question: `How much space should I allow for the ${product.dimensions.trim()} ring toss game?`, answer: `Start with the listed reference footprint, then reserve room for the throwing line, player approach, side access, blower placement, anchoring, a queue, and a separated spectator area. Confirm the complete layout against the venue plan before production.` },
+      { question: `How does the ${terms[1]} scoring layout work?`, answer: `The multi-height numbered columns support a simple score-and-prize format. Confirm the throwing-ring quantity and material, target numbers, throwing distance, age group, turn length, scoring rules, and prize mechanism in the approved game specification.` },
+      { question: `Can the ${terms[2]} be customized for a branded event?`, answer: `Yes. YIC can review target heights, number layout, ring colors, overall size, sponsor panels, printed logos, event artwork, blower package, anchoring, repair kit, carry bags, and export packing for the project.` },
+      { question: `What does repeated rental operation require for a ${terms[3]}?`, answer: `${content.operationNote} Include a pre-use inflation and anchor check, controlled turn-taking, cleaning, drying, target and ring inspection, repair-kit access, transport, and dry storage in the operating routine.` },
+      { question: `What should I include in a ${terms[4]} quotation request?`, answer: `Send the venue type, usable footprint, desired throwing distance, target and scoring format, participant age range, expected throughput, branding files, quantity, destination, target delivery date, and required accessories or packing configuration.` },
     ];
   }
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) {
