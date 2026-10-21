@@ -740,6 +740,15 @@ type NightclubTentProfile = {
   customizationFocus: string;
 };
 
+type WeddingTentProfile = {
+  keywords: string[];
+  productType: string;
+  visibleLayout: string;
+  primaryBuyer: string;
+  application: string;
+  customizationFocus: string;
+};
+
 // Transparent tent uploads are deliberately profiled one by one. Their
 // individual keywords, visible form, and buyer intent stay distinct instead
 // of competing with a single generic bubble-tent page.
@@ -855,6 +864,49 @@ const nightclubTentProfiles: Record<string, NightclubTentProfile> = {
     primaryBuyer: 'festival organizers, club promoters, event-rental fleets, resorts, exhibition contractors, and corporate event agencies',
     application: 'dance events, festival nightlife, mobile club programs, sponsor lounges, exhibition after-parties, and temporary hospitality spaces',
     customizationFocus: '9 x 6 m floor plan, entrance and egress, dance-floor or bar zoning, lighting and sound interfaces, colors, sponsor graphics, anchoring, ventilation, and export packing',
+  },
+};
+
+const weddingTentProfiles: Record<string, WeddingTentProfile> = {
+  'white-tents-for-parties': {
+    keywords: ['white tents for parties', 'white canopy tent wedding', 'white wedding canopy', 'outdoor white tent wedding'],
+    productType: 'commercial 14 x 6 x 4.7 m white inflatable party tent',
+    visibleLayout: 'a long white peaked event tent with repeated arch windows, wide sidewall panels, and interior-ready open space shown in a production setting',
+    primaryBuyer: 'party-rental companies, wedding planners, catering venues, resorts, event agencies, and hospitality operators',
+    application: 'garden parties, wedding ceremonies, receptions, catered celebrations, VIP lounges, and temporary event shelter',
+    customizationFocus: '14 x 6 x 4.7 m layout, sidewall and window panels, entrance position, white or custom color treatment, branding, lighting interfaces, anchoring, and packing',
+  },
+  'large-white-tents-for-weddings': {
+    keywords: ['large white tents for weddings', 'white wedding tent', 'large white wedding tent', 'white tents for wedding receptions'],
+    productType: 'commercial 14 x 6 x 5 m large white wedding tent',
+    visibleLayout: 'a white peaked inflatable reception tent with illuminated structural columns, arch windows, and a wedding-ready entrance shown in an outdoor garden setting',
+    primaryBuyer: 'wedding-rental companies, bridal venues, event planners, resorts, caterers, and outdoor-hospitality operators',
+    application: 'wedding receptions, ceremony overflow, banquet service, bridal lounges, garden celebrations, and managed outdoor hospitality',
+    customizationFocus: '14 x 6 x 5 m footprint, wedding entrance, window configuration, interior reception layout, lighting interfaces, color accents, logo panels, anchoring, and export packing',
+  },
+  'large-white-event-tent': {
+    keywords: ['large white event tent', 'large inflatable marquee', 'white outdoor tent wedding', 'big white tents for weddings'],
+    productType: 'commercial 17 x 8.5 x 5 m large white event tent',
+    visibleLayout: 'an extended white marquee-style inflatable tent with a long rectangular footprint, repeated arch windows, broad sidewalls, and multiple event zones',
+    primaryBuyer: 'large-event contractors, wedding-rental fleets, festival suppliers, exhibition teams, catering companies, and hospitality venues',
+    application: 'large wedding receptions, festivals, exhibitions, corporate hospitality, banquets, and multi-zone outdoor events',
+    customizationFocus: '17 x 8.5 x 5 m footprint, zone layout, entrances and egress, window and sidewall arrangement, lighting interfaces, branding, anchoring, and transport packing',
+  },
+  'night-party-wedding-inflatable-tent': {
+    keywords: ['wedding inflatable tent', 'white wedding tents for sale', 'wedding white tent', 'white tent wedding reception'],
+    productType: 'commercial 6 x 6 m illuminated wedding inflatable tent',
+    visibleLayout: 'a compact white peaked inflatable tent with arched windows, a central entrance, and colored night lighting shown as a hosted outdoor party space',
+    primaryBuyer: 'wedding planners, party-rental companies, mobile-bar suppliers, resorts, event stylists, and hospitality venues',
+    application: 'night weddings, private receptions, after-parties, intimate garden events, illuminated lounges, and rental packages',
+    customizationFocus: '6 x 6 m footprint, lighting treatment, entry and window positions, color accents, interior lounge or dining layout, logo panels, anchoring, and packing',
+  },
+  'led-inflatable-marquee-for-sale': {
+    keywords: ['inflatable marquee for sale', 'inflatable cube marquee', 'inflatable dome marquee', 'inflatable party marquee'],
+    productType: 'commercial 8 x 6 m LED inflatable marquee',
+    visibleLayout: 'a broad white cube-style inflatable marquee with a peaked roof, side entry, and LED-lit exterior shown as a festival VIP lounge at night',
+    primaryBuyer: 'festival organizers, event-rental fleets, brand-activation agencies, resorts, exhibition contractors, and hospitality operators',
+    application: 'festival VIP lounges, LED-lit parties, product launches, branded activations, mobile bars, and temporary event spaces',
+    customizationFocus: '8 x 6 m layout, LED color treatment, entry and egress, interior bar or lounge zoning, sponsor graphics, lighting interfaces, anchoring, and export packing',
   },
 };
 
@@ -1132,6 +1184,10 @@ function nightclubTentProfile(product: Product) {
   return nightclubTentProfiles[product.productSlug];
 }
 
+function weddingTentProfile(product: Product) {
+  return weddingTentProfiles[product.productSlug];
+}
+
 function battingCageKeywordSet(product: Product) {
   return battingCageKeywordSets[product.productSlug] ?? [];
 }
@@ -1266,6 +1322,8 @@ export function productSeoTitle(product: Product) {
   if (campingTent) return seoTitle(`${campingTent.keywords[0]} | Commercial Air Tent`);
   const nightclubTent = nightclubTentProfile(product);
   if (nightclubTent) return seoTitle(`${nightclubTent.keywords[0]} | Commercial Event Tent`);
+  const weddingTent = weddingTentProfile(product);
+  if (weddingTent) return seoTitle(`${weddingTent.keywords[0]} | Commercial Wedding Tent`);
   if (product.category === 'Bumper Ball') {
     const primary = bumperBallKeywordSet(product)[0] || 'inflatable bumper ball';
     return seoTitle(`${primary} | Commercial Bubble Soccer`);
@@ -1289,6 +1347,7 @@ export function productMetaDescription(product: Product) {
   const bubbleTent = bubbleTentProfile(product);
   const campingTent = campingTentProfile(product);
   const nightclubTent = nightclubTentProfile(product);
+  const weddingTent = weddingTentProfile(product);
   if (interactiveProfile) {
     return truncateMeta(`Commercial ${interactiveProfile.keywords[0]} for ${interactiveProfile.application}. Confirm ${interactiveProfile.keywords[1]}, OEM branding, layout, and factory quote.`, 158);
   }
@@ -1300,6 +1359,9 @@ export function productMetaDescription(product: Product) {
   }
   if (nightclubTent) {
     return truncateMeta(`YIC makes ${nightclubTent.keywords[0]} for events, nightlife, rentals, and hospitality. OEM floor plan, branding, lighting, anchoring, and factory quotes.`, 158);
+  }
+  if (weddingTent) {
+    return truncateMeta(`YIC makes ${weddingTent.keywords[0]} for weddings, events, rentals, and hospitality. OEM layout, lighting, branding, anchoring, and factory quotes.`, 158);
   }
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product).slice(0, 2).join(' and ');
@@ -1348,6 +1410,13 @@ export function productKeyFeatures(product: Product) {
     `${product.material} listed for this model`,
     `Commercial applications: ${nightclubTent.application}`,
     `Specify ${nightclubTent.customizationFocus} before production`,
+  ];
+  const weddingTent = weddingTentProfile(product);
+  if (weddingTent) return [
+    `Format shown: ${weddingTent.visibleLayout}`,
+    `${product.material} listed for this model`,
+    `Commercial applications: ${weddingTent.application}`,
+    `Specify ${weddingTent.customizationFocus} before production`,
   ];
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) return [
     `Reference training enclosure: ${product.dimensions.trim()}`,
@@ -1526,6 +1595,12 @@ export function productKeywordVariants(product: Product) {
     return [...new Set(variants)].filter((value) => value.length > 2);
   }
 
+  if (weddingTentProfile(product)) {
+    add(...weddingTentProfile(product)!.keywords);
+    add(`commercial ${base}`, `${base} for sale`, `custom ${base}`);
+    return [...new Set(variants)].filter((value) => value.length > 2);
+  }
+
   if (battingCageKeywordSet(product).length) {
     add(...battingCageKeywordSet(product));
     return [...new Set(variants)].filter((value) => value.length > 2);
@@ -1672,6 +1747,8 @@ export function productDisplayTitle(product: Product) {
   if (primaryCampingTentKeyword) return primaryCampingTentKeyword.charAt(0).toUpperCase() + primaryCampingTentKeyword.slice(1);
   const primaryNightclubKeyword = nightclubTentProfile(product)?.keywords[0];
   if (primaryNightclubKeyword) return primaryNightclubKeyword.charAt(0).toUpperCase() + primaryNightclubKeyword.slice(1);
+  const primaryWeddingKeyword = weddingTentProfile(product)?.keywords[0];
+  if (primaryWeddingKeyword) return primaryWeddingKeyword.charAt(0).toUpperCase() + primaryWeddingKeyword.slice(1);
   const primaryRingTossKeyword = ringTossKeywordSet(product)[0];
   if (primaryRingTossKeyword) return primaryRingTossKeyword.charAt(0).toUpperCase() + primaryRingTossKeyword.slice(1);
   const primaryBumperKeyword = product.category === 'Bumper Ball' ? bumperBallKeywordSet(product)[0] : '';
@@ -1821,6 +1898,7 @@ export function productDetailContent(product: Product): DetailContent {
   const bubbleTent = bubbleTentProfile(product);
   const campingTent = campingTentProfile(product);
   const nightclubTent = nightclubTentProfile(product);
+  const weddingTent = weddingTentProfile(product);
   if (interactiveProfile) {
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
@@ -1951,6 +2029,39 @@ export function productDetailContent(product: Product): DetailContent {
       quoteItems: [
         'Venue type, usable footprint, height clearance, access route, floor or ground surface, installation duration, and expected guest flow',
         'Required entrance and egress, bar or dance-floor zoning, lighting or sound interfaces, artwork, sponsor graphics, and event brief',
+        'Quantity, destination, target delivery date, blower and anchoring requirements, packing, storage, and custom layout needs',
+      ],
+    };
+  }
+  if (weddingTent) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const footprint = `the listed ${product.dimensions.trim()} footprint`;
+    return {
+      template,
+      productType: weddingTent.productType,
+      primaryBuyer: weddingTent.primaryBuyer,
+      purpose: `This ${weddingTent.productType} is shown as ${weddingTent.visibleLayout}. It is planned for ${weddingTent.application}.`,
+      applications: [
+        { title: 'Weddings and hosted celebrations', text: `Use ${footprint} for ${weddingTent.application}, with a confirmed entrance, egress, ceremony or reception layout, catering route, and guest circulation plan.` },
+        { title: 'Rental and seasonal event programs', text: 'Review the ground or floor condition, anchoring, power, lighting, weather exposure, setup crew, cleaning, drying, transport, and dry storage before repeat events.' },
+        { title: 'Branded hospitality', text: 'Plan the enclosure around decor, floral or furniture placement, sponsor visibility, lighting, signage, guest flow, ventilation, and the approved venue brief.' },
+      ],
+      planningPoints: [
+        `${footprint}, height clearance, entrance and egress direction, anchoring surface, ceremony or reception zoning, service route, and guest circulation`,
+        'Venue weather plan, ventilation, occupancy, event duration, operating supervision, power, lighting, fire or venue rules, and access for setup and packing',
+        `${product.material} specification, cleaning and drying procedure, repair-kit access, transport, and dry storage between installations`,
+      ],
+      customization: [
+        weddingTent.customizationFocus,
+        'Commercial white or custom color scheme, print-ready logo panels, event or sponsor graphics, lighting treatment, and guest-facing interior decor',
+        'Blower, anchoring, lighting interfaces, repair kit, carry bags, export packing, and destination-specific requirements',
+      ],
+      operationNote: `Use the ${weddingTent.productType} only on a suitable site with the specified anchoring, access, ventilation, power, and event-equipment arrangement. The operator must assess weather, occupancy, supervision, cleaning, drying, fire or venue rules, and local requirements before each installation.`,
+      quoteItems: [
+        'Venue type, usable footprint, height clearance, access route, floor or ground surface, installation duration, and expected guest flow',
+        'Required entrance and egress, ceremony or reception zoning, catering route, lighting treatment, decor, artwork, and event brief',
         'Quantity, destination, target delivery date, blower and anchoring requirements, packing, storage, and custom layout needs',
       ],
     };
@@ -2945,6 +3056,7 @@ export function productFaqs(product: Product) {
   const bubbleTent = bubbleTentProfile(product);
   const campingTent = campingTentProfile(product);
   const nightclubTent = nightclubTentProfile(product);
+  const weddingTent = weddingTentProfile(product);
   if (interactiveProfile) {
     const terms = interactiveProfile.keywords;
     const customSize = /custom dimensions available/i.test(product.dimensions);
@@ -2989,6 +3101,17 @@ export function productFaqs(product: Product) {
       { question: `How should I plan ventilation and guest flow inside the ${terms[2]}?`, answer: `Plan entry and egress, accessible circulation, ventilation, power and equipment routes, bar or dance-floor layout, expected occupancy, event staffing, emergency access, and venue rules. The operator must set capacity and operating procedures for the actual site.` },
       { question: `Can this ${terms[3]} be installed outdoors?`, answer: `Outdoor installation depends on the approved structure, surface, anchoring method, weather plan, power, lighting and sound equipment, supervision, and local venue requirements. Confirm these conditions before ordering; do not assume weather performance beyond the approved specification.` },
       { question: `What should I include in a quotation request for this ${terms[0]}?`, answer: `Send the venue type, site plan, target footprint, height clearance, floor or ground surface, entrance and egress requirements, bar or dance-floor zoning, equipment interfaces, branding files, quantity, destination, target delivery date, and anchoring, packing, or storage needs.` },
+    ];
+  }
+  if (weddingTent) {
+    const terms = weddingTent.keywords;
+    return [
+      { question: `What is this ${terms[0]} designed for?`, answer: `${content.purpose} It is intended as a managed temporary event enclosure with a confirmed ceremony, reception, catering, decor, and guest-flow plan.` },
+      { question: `How much site clearance should I plan for this ${weddingTent.productType}?`, answer: `Start with the listed ${product.dimensions.trim()} reference and add room for the entrance and egress, anchoring, decor installation, catering or service access, guest circulation, equipment, and packing. Confirm the final layout from the venue plan before production.` },
+      { question: `Can the ${terms[1]} be customized for a wedding or commercial rental program?`, answer: `Yes. YIC can review ${weddingTent.customizationFocus}, commercial colors, printed logo panels, event graphics, interior decor interfaces, lighting, anchoring, and export packing.` },
+      { question: `How should I plan ventilation and guest flow for the ${terms[2]}?`, answer: `Plan the entry and exit, accessible circulation, ventilation, power and equipment routes, ceremony or reception seating, catering access, expected occupancy, staffing, emergency access, and venue rules. The operator must set capacity and operating procedures for the actual site.` },
+      { question: `Can this ${terms[3]} be installed outdoors?`, answer: `Outdoor installation depends on the approved structure, ground surface, anchoring method, weather plan, power and lighting arrangement, supervision, and local venue requirements. Confirm these conditions before ordering; do not assume weather performance beyond the approved specification.` },
+      { question: `What should I include in a quotation request for this ${terms[0]}?`, answer: `Send the venue type, site plan, target footprint, height clearance, floor or ground surface, entrance and egress requirements, ceremony or reception layout, catering and decor needs, branding files, quantity, destination, target delivery date, and anchoring, packing, or storage requirements.` },
     ];
   }
   if (product.category === 'Bumper Ball') {

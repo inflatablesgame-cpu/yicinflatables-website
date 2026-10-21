@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T03:34:16.795Z",
+  "generatedAt": "2026-10-21T03:59:13.253Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -357,10 +357,13 @@
     {
       "name": "Inflatable Tent",
       "slug": "inflatable-tent",
-      "count": 19,
+      "count": 24,
       "heroImage": "/assets/product/Inflatable%20Tent/10x10m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club%20tent/1.webp",
       "products": [
         "inflatable-tent--oxford-inflatable-night-club-tent-17",
+        "inflatable-tent--white-tents-for-parties-20",
+        "inflatable-tent--large-white-tents-for-weddings-21",
+        "inflatable-tent--large-white-event-tent-22",
         "inflatable-tent--heavy-duty-outdoor-event-marquee-1",
         "inflatable-tent--tunnel-inflatable-transparent-dome-tent-7",
         "inflatable-tent--inflatable-bubble-tent-with-balloons-2",
@@ -369,7 +372,9 @@
         "inflatable-tent--heavy-duty-portable-shelter-4",
         "inflatable-tent--blowup-camping-tent-15",
         "inflatable-tent--yellow-and-blue-inflatable-camping-tent-16",
+        "inflatable-tent--night-party-wedding-inflatable-tent-23",
         "inflatable-tent--commercial-inflatable-black-honeycomb-tent-5",
+        "inflatable-tent--led-inflatable-marquee-for-sale-24",
         "inflatable-tent--outdoor-exhibition-tents-6",
         "inflatable-tent--oxford-inflatable-night-club-19",
         "inflatable-tent--commercial-pink-inflatable-bubble-house-8",
@@ -5658,6 +5663,60 @@
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-tent--white-tents-for-parties-20",
+      "productSlug": "white-tents-for-parties",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "white tents for parties",
+      "sourceName": "14x6x4.7m            white tents for parties",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/14x6x4.7m%20%20%20%20%20%20%20%20%20%20%20%20white%20tents%20for%20parties/1.webp",
+        "/assets/product/Inflatable%20Tent/14x6x4.7m%20%20%20%20%20%20%20%20%20%20%20%20white%20tents%20for%20parties/2.webp",
+        "/assets/product/Inflatable%20Tent/14x6x4.7m%20%20%20%20%20%20%20%20%20%20%20%20white%20tents%20for%20parties/3.webp",
+        "/assets/product/Inflatable%20Tent/14x6x4.7m%20%20%20%20%20%20%20%20%20%20%20%20white%20tents%20for%20parties/4.webp",
+        "/assets/product/Inflatable%20Tent/14x6x4.7m%20%20%20%20%20%20%20%20%20%20%20%20white%20tents%20for%20parties/5.webp"
+      ],
+      "dimensions": "14x6x4.7m            ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--large-white-tents-for-weddings-21",
+      "productSlug": "large-white-tents-for-weddings",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "large white tents for weddings",
+      "sourceName": "14x6x5m           large white tents for weddings",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/14x6x5m%20%20%20%20%20%20%20%20%20%20%20large%20white%20tents%20for%20weddings/1.webp",
+        "/assets/product/Inflatable%20Tent/14x6x5m%20%20%20%20%20%20%20%20%20%20%20large%20white%20tents%20for%20weddings/2.webp",
+        "/assets/product/Inflatable%20Tent/14x6x5m%20%20%20%20%20%20%20%20%20%20%20large%20white%20tents%20for%20weddings/3.webp",
+        "/assets/product/Inflatable%20Tent/14x6x5m%20%20%20%20%20%20%20%20%20%20%20large%20white%20tents%20for%20weddings/4.webp",
+        "/assets/product/Inflatable%20Tent/14x6x5m%20%20%20%20%20%20%20%20%20%20%20large%20white%20tents%20for%20weddings/5.webp"
+      ],
+      "dimensions": "14x6x5m           ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--large-white-event-tent-22",
+      "productSlug": "large-white-event-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "large white event tent",
+      "sourceName": "17x8.5x5m            large white event tent",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/17x8.5x5m%20%20%20%20%20%20%20%20%20%20%20%20large%20white%20event%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/17x8.5x5m%20%20%20%20%20%20%20%20%20%20%20%20large%20white%20event%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/17x8.5x5m%20%20%20%20%20%20%20%20%20%20%20%20large%20white%20event%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/17x8.5x5m%20%20%20%20%20%20%20%20%20%20%20%20large%20white%20event%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/17x8.5x5m%20%20%20%20%20%20%20%20%20%20%20%20large%20white%20event%20tent/5.webp"
+      ],
+      "dimensions": "17x8.5x5m            ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-tent--heavy-duty-outdoor-event-marquee-1",
       "productSlug": "heavy-duty-outdoor-event-marquee",
       "category": "Inflatable Tent",
@@ -5802,6 +5861,24 @@
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-tent--night-party-wedding-inflatable-tent-23",
+      "productSlug": "night-party-wedding-inflatable-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "night party wedding inflatable tent",
+      "sourceName": "6x6m  材料Oxford           night party wedding inflatable tent",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/6x6m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20night%20party%20wedding%20inflatable%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/6x6m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20night%20party%20wedding%20inflatable%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/6x6m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20night%20party%20wedding%20inflatable%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/6x6m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20night%20party%20wedding%20inflatable%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/6x6m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20night%20party%20wedding%20inflatable%20tent/5.webp"
+      ],
+      "dimensions": "6x6m  ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-tent--commercial-inflatable-black-honeycomb-tent-5",
       "productSlug": "commercial-inflatable-black-honeycomb-tent",
       "category": "Inflatable Tent",
@@ -5817,6 +5894,24 @@
         "/assets/product/Inflatable%20Tent/6x6x4m%20%20%20%20commercial%20inflatable%20black%20honeycomb%20tent/5.webp"
       ],
       "dimensions": "6x6x4m    ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--led-inflatable-marquee-for-sale-24",
+      "productSlug": "led-inflatable-marquee-for-sale",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "led inflatable marquee for sale",
+      "sourceName": "8x6m 材料Oxford           led inflatable marquee for sale",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/8x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20led%20inflatable%20marquee%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Tent/8x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20led%20inflatable%20marquee%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Tent/8x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20led%20inflatable%20marquee%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Tent/8x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20led%20inflatable%20marquee%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Tent/8x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20led%20inflatable%20marquee%20for%20sale/5.webp"
+      ],
+      "dimensions": "8x6m ",
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
