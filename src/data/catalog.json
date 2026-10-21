@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T14:13:33.489Z",
+  "generatedAt": "2026-10-21T01:21:45.531Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -357,15 +357,23 @@
     {
       "name": "Inflatable Tent",
       "slug": "inflatable-tent",
-      "count": 6,
+      "count": 14,
       "heroImage": "/assets/product/Inflatable%20Tent/17x8.5x5m%20%E6%9D%90%E6%96%990.65mm%20PVC%20%20%20%20heavy%20duty%20outdoor%20event%20marquee/1.webp",
       "products": [
         "inflatable-tent--heavy-duty-outdoor-event-marquee-1",
+        "inflatable-tent--tunnel-inflatable-transparent-dome-tent-7",
         "inflatable-tent--inflatable-bubble-tent-with-balloons-2",
         "inflatable-tent--inflatable-canopy-for-sale-3",
         "inflatable-tent--heavy-duty-portable-shelter-4",
         "inflatable-tent--commercial-inflatable-black-honeycomb-tent-5",
-        "inflatable-tent--outdoor-exhibition-tents-6"
+        "inflatable-tent--outdoor-exhibition-tents-6",
+        "inflatable-tent--commercial-pink-inflatable-bubble-house-8",
+        "inflatable-tent--bubble-house-inflatable-9",
+        "inflatable-tent--blow-up-bubble-tent-10",
+        "inflatable-tent--commercial-inflatable-bubble-dome-11",
+        "inflatable-tent--inflatable-bubble-balloon-house-12",
+        "inflatable-tent--inflatable-bubble-tent-for-sale-13",
+        "inflatable-tent--blow-up-bubble-house-14"
       ]
     },
     {
@@ -5645,6 +5653,24 @@
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-tent--tunnel-inflatable-transparent-dome-tent-7",
+      "productSlug": "tunnel-inflatable-transparent-dome-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "tunnel inflatable transparent dome tent",
+      "sourceName": "3m dia 2.6m tunnel           inflatable transparent dome tent",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/3m%20dia%202.6m%20tunnel%20%20%20%20%20%20%20%20%20%20%20inflatable%20transparent%20dome%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/3m%20dia%202.6m%20tunnel%20%20%20%20%20%20%20%20%20%20%20inflatable%20transparent%20dome%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/3m%20dia%202.6m%20tunnel%20%20%20%20%20%20%20%20%20%20%20inflatable%20transparent%20dome%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/3m%20dia%202.6m%20tunnel%20%20%20%20%20%20%20%20%20%20%20inflatable%20transparent%20dome%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/3m%20dia%202.6m%20tunnel%20%20%20%20%20%20%20%20%20%20%20inflatable%20transparent%20dome%20tent/5.webp"
+      ],
+      "dimensions": "3m dia",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-tent--inflatable-bubble-tent-with-balloons-2",
       "productSlug": "inflatable-bubble-tent-with-balloons",
       "category": "Inflatable Tent",
@@ -5732,6 +5758,132 @@
         "/assets/product/Inflatable%20Tent/8x6x3m%20%20%20%20outdoor%20exhibition%20tents/5.webp"
       ],
       "dimensions": "8x6x3m    ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--commercial-pink-inflatable-bubble-house-8",
+      "productSlug": "commercial-pink-inflatable-bubble-house",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "commercial pink inflatable bubble house",
+      "sourceName": "尺寸定制                 commercial pink inflatable bubble house",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20pink%20inflatable%20bubble%20house/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20pink%20inflatable%20bubble%20house/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20pink%20inflatable%20bubble%20house/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20pink%20inflatable%20bubble%20house/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20pink%20inflatable%20bubble%20house/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--bubble-house-inflatable-9",
+      "productSlug": "bubble-house-inflatable",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "bubble house inflatable",
+      "sourceName": "尺寸定制               bubble house inflatable",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bubble%20house%20inflatable/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bubble%20house%20inflatable/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bubble%20house%20inflatable/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bubble%20house%20inflatable/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bubble%20house%20inflatable/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--blow-up-bubble-tent-10",
+      "productSlug": "blow-up-bubble-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "blow up bubble tent",
+      "sourceName": "尺寸定制              blow up bubble tent",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20tent/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--commercial-inflatable-bubble-dome-11",
+      "productSlug": "commercial-inflatable-bubble-dome",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "commercial inflatable bubble dome",
+      "sourceName": "尺寸定制              commercial inflatable bubble dome",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20bubble%20dome/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20bubble%20dome/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20bubble%20dome/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20bubble%20dome/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20commercial%20inflatable%20bubble%20dome/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--inflatable-bubble-balloon-house-12",
+      "productSlug": "inflatable-bubble-balloon-house",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable bubble balloon house",
+      "sourceName": "尺寸定制              inflatable bubble balloon house",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20balloon%20house/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20balloon%20house/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20balloon%20house/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20balloon%20house/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20balloon%20house/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--inflatable-bubble-tent-for-sale-13",
+      "productSlug": "inflatable-bubble-tent-for-sale",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable bubble tent for sale",
+      "sourceName": "尺寸定制              inflatable bubble tent for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20tent%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20tent%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20tent%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20tent%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20bubble%20tent%20for%20sale/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--blow-up-bubble-house-14",
+      "productSlug": "blow-up-bubble-house",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "blow up bubble house",
+      "sourceName": "尺寸定制             blow up bubble house",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20house/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20house/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20house/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20house/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20house/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {

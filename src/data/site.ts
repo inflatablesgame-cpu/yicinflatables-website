@@ -1,4 +1,4 @@
-import catalogData from './catalog.json';
+import catalogData from './catalog.json' with { type: 'json' };
 
 export type Product = {
   slug: string;
@@ -713,6 +713,85 @@ type InteractiveGameProfile = {
   customizationFocus: string;
 };
 
+type BubbleTentProfile = {
+  keywords: string[];
+  productType: string;
+  visibleLayout: string;
+  primaryBuyer: string;
+  application: string;
+  customizationFocus: string;
+};
+
+// Transparent tent uploads are deliberately profiled one by one. Their
+// individual keywords, visible form, and buyer intent stay distinct instead
+// of competing with a single generic bubble-tent page.
+const bubbleTentProfiles: Record<string, BubbleTentProfile> = {
+  'tunnel-inflatable-transparent-dome-tent': {
+    keywords: ['inflatable transparent dome tent', 'clear inflatable dome tent', '3m bubble tent', 'inflatable clear dome'],
+    productType: 'transparent tunnel-entry inflatable dome tent',
+    visibleLayout: 'a clear 3 m dome with a 2.6 m tunnel-style entrance for a defined guest approach and enclosed display area',
+    primaryBuyer: 'event agencies, exhibition contractors, hospitality venues, glamping operators, and branded-activation teams',
+    application: 'compact exhibitions, VIP lounges, product displays, photo moments, and outdoor hospitality installations',
+    customizationFocus: 'dome and tunnel dimensions, door position, clear-panel arrangement, printed graphics, lighting points, anchoring, and accessory package',
+  },
+  'commercial-pink-inflatable-bubble-house': {
+    keywords: ['bubble house inflatable', 'pink inflatable bubble house', 'bubble tent party', 'inflatable bubble house tent'],
+    productType: 'commercial pink inflatable bubble house',
+    visibleLayout: 'a clear round party enclosure framed by a pink inflatable base and arch structure, with room for balloons and themed interior decor',
+    primaryBuyer: 'party-rental companies, event stylists, balloon decorators, family venues, and celebration planners',
+    application: 'birthday parties, baby showers, wedding displays, retail photo areas, and styled rental packages',
+    customizationFocus: 'pink or custom colorway, balloon-entry arrangement, diameter, door layout, printed logo panels, interior decor attachment points, anchoring, and packing',
+  },
+  'bubble-house-inflatable': {
+    keywords: ['inflatable bubble house', 'bubble balloon house', 'bubble house inflatable tent', 'clear inflatable bubble house'],
+    productType: 'clear commercial inflatable bubble house',
+    visibleLayout: 'a transparent round event enclosure with an inflatable perimeter frame and a clear interior designed for balloon-filled or styled displays',
+    primaryBuyer: 'party-rental fleets, balloon businesses, event agencies, family entertainment venues, and retail marketers',
+    application: 'balloon installations, celebration photo areas, mall promotions, product launches, and event-rental inventory',
+    customizationFocus: 'overall diameter, clear-wall layout, balloon access, entrance position, colors, logo printing, lighting coordination, anchoring, and export packing',
+  },
+  'blow-up-bubble-tent': {
+    keywords: ['blow up bubble tent', 'clear blow up tent', 'blow up clear bubble tent', 'outdoor inflatable bubble tent'],
+    productType: 'clear outdoor blow-up bubble tent',
+    visibleLayout: 'a transparent inflatable tent enclosure with a clear curved shell and a protected entry for temporary event use',
+    primaryBuyer: 'event rental companies, resort operators, exhibition teams, glamping businesses, and outdoor hospitality planners',
+    application: 'outdoor events, compact display spaces, seasonal hospitality, branded pop-ups, and guest photo installations',
+    customizationFocus: 'footprint, doorway style, clear-shell configuration, ventilation arrangement, lighting access, branding, anchoring, blower specification, and transport packing',
+  },
+  'commercial-inflatable-bubble-dome': {
+    keywords: ['inflatable bubble dome', 'clear inflatable bubble dome', 'outdoor inflatable bubble dome', 'inflatable bubble dome tent'],
+    productType: 'commercial clear inflatable bubble dome',
+    visibleLayout: 'a clear igloo-style dome with a reinforced inflatable base, a rounded viewing profile, and a configurable event entrance',
+    primaryBuyer: 'exhibition builders, event agencies, resorts, hospitality venues, and commercial rental operators',
+    application: 'brand activations, exhibition lounges, venue hospitality, outdoor displays, and temporary event shelters',
+    customizationFocus: 'dome diameter, entrance or tunnel, clear-panel configuration, brand graphics, lighting points, anchoring, blower, weather-planning accessories, and packing',
+  },
+  'inflatable-bubble-balloon-house': {
+    keywords: ['inflatable bubble balloon house', 'bubble bounce house', 'bounce house with bubbles', 'blow up bubble ball house'],
+    productType: 'balloon-ready inflatable bubble event house',
+    visibleLayout: 'a clear inflatable house-style enclosure with a rounded transparent chamber and a decorated balloon-display interior',
+    primaryBuyer: 'balloon stylists, party-rental operators, event planners, family venues, and retail activation teams',
+    application: 'balloon backdrops, celebration displays, party rental packages, family-event photo zones, and promotional installations',
+    customizationFocus: 'balloon-access point, interior layout, overall size, color accents, door placement, custom branding, decor interfaces, anchoring, and accessory packing',
+  },
+  'inflatable-bubble-tent-for-sale': {
+    keywords: ['inflatable bubble tent for sale', 'bubble tent for sale', 'best inflatable bubble tent', 'portable bubble tent'],
+    productType: 'portable commercial inflatable bubble tent',
+    visibleLayout: 'a transparent portable event tent with a rounded clear enclosure and a compact inflatable support structure for temporary installations',
+    primaryBuyer: 'commercial rental businesses, event operators, glamping providers, hospitality venues, and inflatable-equipment distributors',
+    application: 'rental fleets, outdoor guest experiences, promotional displays, pop-up lounges, and mobile event programs',
+    customizationFocus: 'portable footprint, entry arrangement, clear-panel layout, branding, lighting access, blower and anchoring package, carry bags, repair kit, and export packing',
+  },
+  'blow-up-bubble-house': {
+    keywords: ['blow up bubble house', 'outdoor inflatable bubble', 'clear inflatable tent', 'waterproof bubble tent'],
+    productType: 'commercial blow-up clear bubble house',
+    visibleLayout: 'a clear house-style inflatable enclosure with a rounded viewing chamber, colored base details, and an event-ready entrance',
+    primaryBuyer: 'party-rental companies, outdoor event agencies, resorts, retail venues, and commercial display operators',
+    application: 'outdoor party displays, branded event enclosures, photo installations, hospitality lounges, and seasonal activations',
+    customizationFocus: 'clear-shell structure, entrance, footprint, color accents, logo panels, lighting setup, anchoring, blower package, packed configuration, and destination requirements',
+  },
+};
+
 // These newly added Inflatable Games each use a product-specific profile. The
 // profiles keep similar attractions from competing for the same wording while
 // making their visible play mechanism explicit for search and AI answers.
@@ -975,6 +1054,10 @@ function interactiveGameProfile(product: Product) {
   return interactiveGameProfiles[product.productSlug];
 }
 
+function bubbleTentProfile(product: Product) {
+  return bubbleTentProfiles[product.productSlug];
+}
+
 function battingCageKeywordSet(product: Product) {
   return battingCageKeywordSets[product.productSlug] ?? [];
 }
@@ -1103,6 +1186,8 @@ export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) return seoTitle(`${interactiveProfile.keywords[0]} | Commercial Inflatable Game`);
+  const bubbleTent = bubbleTentProfile(product);
+  if (bubbleTent) return seoTitle(`${bubbleTent.keywords[0]} | Commercial Event Tent`);
   if (product.category === 'Bumper Ball') {
     const primary = bumperBallKeywordSet(product)[0] || 'inflatable bumper ball';
     return seoTitle(`${primary} | Commercial Bubble Soccer`);
@@ -1123,8 +1208,12 @@ export function productSeoTitle(product: Product) {
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
   const interactiveProfile = interactiveGameProfile(product);
+  const bubbleTent = bubbleTentProfile(product);
   if (interactiveProfile) {
     return truncateMeta(`Commercial ${interactiveProfile.keywords[0]} for ${interactiveProfile.application}. Confirm ${interactiveProfile.keywords[1]}, OEM branding, layout, and factory quote.`, 158);
+  }
+  if (bubbleTent) {
+    return truncateMeta(`YIC makes ${bubbleTent.keywords[0]} with OEM size, clear layout, branding, blower, and anchoring for commercial events, rentals, and hospitality.`, 158);
   }
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product).slice(0, 2).join(' and ');
@@ -1152,6 +1241,13 @@ export function productKeyFeatures(product: Product) {
     `Play concept: ${interactiveProfile.gameMechanic}`,
     'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
     `Specify ${interactiveProfile.customizationFocus} before production`,
+  ];
+  const bubbleTent = bubbleTentProfile(product);
+  if (bubbleTent) return [
+    `Format shown: ${bubbleTent.visibleLayout}`,
+    `${product.material} listed for this model`,
+    `Commercial applications: ${bubbleTent.application}`,
+    `Specify ${bubbleTent.customizationFocus} before production`,
   ];
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) return [
     `Reference training enclosure: ${product.dimensions.trim()}`,
@@ -1312,6 +1408,12 @@ export function productKeywordVariants(product: Product) {
     return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
   }
 
+  if (bubbleTentProfile(product)) {
+    add(...bubbleTentProfile(product)!.keywords);
+    add(`commercial ${base}`, `${base} for events`, `custom ${base}`);
+    return [...new Set(variants)].filter((value) => value.length > 2);
+  }
+
   if (battingCageKeywordSet(product).length) {
     add(...battingCageKeywordSet(product));
     return [...new Set(variants)].filter((value) => value.length > 2);
@@ -1452,6 +1554,8 @@ export function productDisplayTitle(product: Product) {
   title = title.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g, ' ');
   const primaryInteractiveKeyword = interactiveGameProfile(product)?.keywords[0];
   if (primaryInteractiveKeyword) return primaryInteractiveKeyword.charAt(0).toUpperCase() + primaryInteractiveKeyword.slice(1);
+  const primaryBubbleTentKeyword = bubbleTentProfile(product)?.keywords[0];
+  if (primaryBubbleTentKeyword) return primaryBubbleTentKeyword.charAt(0).toUpperCase() + primaryBubbleTentKeyword.slice(1);
   const primaryRingTossKeyword = ringTossKeywordSet(product)[0];
   if (primaryRingTossKeyword) return primaryRingTossKeyword.charAt(0).toUpperCase() + primaryRingTossKeyword.slice(1);
   const primaryBumperKeyword = product.category === 'Bumper Ball' ? bumperBallKeywordSet(product)[0] : '';
@@ -1598,6 +1702,7 @@ function productCategoryPosition(product: Product) {
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const interactiveProfile = interactiveGameProfile(product);
+  const bubbleTent = bubbleTentProfile(product);
   if (interactiveProfile) {
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
@@ -1628,6 +1733,41 @@ export function productDetailContent(product: Product): DetailContent {
         'Venue type, usable footprint, indoor or outdoor setting, participant age range, expected throughput, and planned game format',
         'Requested target, lane, opening, score, vehicle, ball, soft-play, or accessory specification as applicable to the selected game',
         'Artwork, logo files, quantity, destination, target delivery date, blower and anchoring needs, packing, and storage requirements',
+      ],
+    };
+  }
+  if (bubbleTent) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const footprint = /custom dimensions available/i.test(product.dimensions)
+      ? 'a made-to-order footprint based on the venue plan'
+      : `the listed ${product.dimensions.trim()} footprint`;
+    return {
+      template,
+      productType: bubbleTent.productType,
+      primaryBuyer: bubbleTent.primaryBuyer,
+      purpose: `This ${bubbleTent.productType} is shown as ${bubbleTent.visibleLayout}. It is planned for ${bubbleTent.application}.`,
+      applications: [
+        { title: 'Event displays and hospitality', text: `Use ${footprint} for ${bubbleTent.application}, with an approved access route, blower position, and guest circulation plan.` },
+        { title: 'Rental and temporary installations', text: 'Review the surface, anchoring, power, weather exposure, setup crew, cleaning, drying, and packed storage before operating on repeat events.' },
+        { title: 'Branded projects', text: 'Plan the transparent enclosure around artwork, lighting, decor, sponsor visibility, entry flow, and the intended interior use.' },
+      ],
+      planningPoints: [
+        `${footprint}, height clearance, entry and exit direction, blower position, power route, anchoring surface, and guest circulation`,
+        'Venue weather plan, ventilation, event duration, operating supervision, access for setup and packing, and local site requirements',
+        'Commercial PVC specification, cleaning and drying procedure, repair-kit access, transport, and dry storage between installations',
+      ],
+      customization: [
+        bubbleTent.customizationFocus,
+        'Commercial colors, print-ready logo panels, sponsor graphics, interior display treatment, and event messaging',
+        'Blower, anchoring, lighting interfaces, repair kit, carry bags, export packing, and destination-specific requirements',
+      ],
+      operationNote: `Use the ${bubbleTent.productType} only on a suitable site with the specified blower, anchoring, access, and ventilation arrangement. The venue operator must assess weather, occupancy, power, supervision, cleaning, drying, and local requirements before each installation.`,
+      quoteItems: [
+        'Venue type, usable footprint, ceiling or outdoor height clearance, access route, surface, installation duration, and expected guest flow',
+        'Required entrance, tunnel, clear-panel, balloon or decor layout, lighting preference, artwork files, and branding brief',
+        'Quantity, destination, target delivery date, blower and anchoring requirements, packing, storage, and custom dimensions if needed',
       ],
     };
   }
@@ -2618,6 +2758,7 @@ export function productFaqs(product: Product) {
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const interactiveProfile = interactiveGameProfile(product);
+  const bubbleTent = bubbleTentProfile(product);
   if (interactiveProfile) {
     const terms = interactiveProfile.keywords;
     const customSize = /custom dimensions available/i.test(product.dimensions);
@@ -2628,6 +2769,18 @@ export function productFaqs(product: Product) {
       { question: `Can the ${terms[2]} be customized for a commercial event?`, answer: `Yes. YIC can review ${interactiveProfile.customizationFocus}, overall dimensions, colors, printed logos, sponsor graphics, player instructions, accessory package, and export packing for the event or rental program.` },
       { question: `What operational checks matter for a ${terms[3]}?`, answer: `${content.operationNote} Include pre-use inflation, anchor and accessory checks, supervised turns, cleaning, drying, repair-kit access, transport, and dry storage in the repeat-use routine.` },
       { question: `What should I include in a ${terms[0]} quotation request?`, answer: `Send the venue type, site plan, target footprint, game mechanism and accessory preference, participant age range, expected throughput, branding files, quantity, destination, target delivery date, and blower, anchoring, packing, or storage requirements.` },
+    ];
+  }
+  if (bubbleTent) {
+    const terms = bubbleTent.keywords;
+    const customSize = /custom dimensions available/i.test(product.dimensions);
+    return [
+      { question: `What is this ${terms[0]} designed for?`, answer: `${content.purpose} It is intended as a managed temporary enclosure for the planned event, display, or hospitality use rather than an unattended structure.` },
+      { question: customSize ? `Which measurements should I provide for a custom ${bubbleTent.productType}?` : `How much site clearance should I allow for this ${bubbleTent.productType}?`, answer: `${customSize ? 'Provide usable length, width, height clearance, access route, entrance direction, blower location, anchoring surface, and the guest or display area.' : `Start with ${product.dimensions.trim()} as the reference and add room for the entrance, blower, anchoring, access, guest circulation, and packing area.`} Confirm the final layout from the venue plan before production.` },
+      { question: `Can the ${terms[1]} be customized for an event or brand activation?`, answer: `Yes. YIC can review ${bubbleTent.customizationFocus}, commercial colors, printed logos, lighting interfaces, interior decor, event graphics, blower package, anchoring, and export packing.` },
+      { question: `How should I plan ventilation and guest flow when using the ${terms[2]}?`, answer: `Plan the entry and exit, accessible circulation, blower and power route, ventilation arrangement, interior use, event staffing, expected occupancy, and any venue requirements. The operator must set capacity and operating procedures for the actual site.` },
+      { question: `Can this ${terms[3]} be installed outdoors?`, answer: `Outdoor installation depends on the approved structure, site surface, anchoring method, power, wind and weather plan, supervision, and local venue requirements. Confirm these conditions before ordering; do not assume weather performance beyond the approved specification.` },
+      { question: `What should I include in a quotation request for this ${terms[0]}?`, answer: `Send the venue type, site plan, indoor or outdoor setting, target footprint, height clearance, intended display or guest use, entrance and decor requirements, branding files, quantity, destination, target delivery date, and blower, anchoring, packing, and storage needs.` },
     ];
   }
   if (product.category === 'Bumper Ball') {
