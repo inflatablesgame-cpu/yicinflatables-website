@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T01:21:45.531Z",
+  "generatedAt": "2026-10-21T02:45:14.470Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -357,7 +357,7 @@
     {
       "name": "Inflatable Tent",
       "slug": "inflatable-tent",
-      "count": 14,
+      "count": 16,
       "heroImage": "/assets/product/Inflatable%20Tent/17x8.5x5m%20%E6%9D%90%E6%96%990.65mm%20PVC%20%20%20%20heavy%20duty%20outdoor%20event%20marquee/1.webp",
       "products": [
         "inflatable-tent--heavy-duty-outdoor-event-marquee-1",
@@ -365,6 +365,8 @@
         "inflatable-tent--inflatable-bubble-tent-with-balloons-2",
         "inflatable-tent--inflatable-canopy-for-sale-3",
         "inflatable-tent--heavy-duty-portable-shelter-4",
+        "inflatable-tent--blowup-camping-tent-15",
+        "inflatable-tent--yellow-and-blue-inflatable-camping-tent-16",
         "inflatable-tent--commercial-inflatable-black-honeycomb-tent-5",
         "inflatable-tent--outdoor-exhibition-tents-6",
         "inflatable-tent--commercial-pink-inflatable-bubble-house-8",
@@ -5722,6 +5724,42 @@
         "/assets/product/Inflatable%20Tent/5.2z4.7x3.5m%20%20%E6%9D%90%E6%96%99%E6%98%AF%E7%89%9B%E6%B4%A5%E5%B8%83%20%20%20%20heavy%20duty%20portable%20shelter/5.webp"
       ],
       "dimensions": "5.2z4.7x3.5m  ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--blowup-camping-tent-15",
+      "productSlug": "blowup-camping-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "blowup camping tent",
+      "sourceName": "6m Dia         blowup camping tent",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20blowup%20camping%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20blowup%20camping%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20blowup%20camping%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20blowup%20camping%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20blowup%20camping%20tent/5.webp"
+      ],
+      "dimensions": "6m Dia",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--yellow-and-blue-inflatable-camping-tent-16",
+      "productSlug": "yellow-and-blue-inflatable-camping-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "yellow and blue inflatable camping tent",
+      "sourceName": "6m Dia         yellow and blue inflatable camping tent",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20yellow%20and%20blue%20inflatable%20camping%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20yellow%20and%20blue%20inflatable%20camping%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20yellow%20and%20blue%20inflatable%20camping%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20yellow%20and%20blue%20inflatable%20camping%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%20%20%20%20%20%20%20yellow%20and%20blue%20inflatable%20camping%20tent/5.webp"
+      ],
+      "dimensions": "6m Dia",
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {

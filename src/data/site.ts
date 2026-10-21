@@ -722,6 +722,15 @@ type BubbleTentProfile = {
   customizationFocus: string;
 };
 
+type CampingTentProfile = {
+  keywords: string[];
+  productType: string;
+  visibleLayout: string;
+  primaryBuyer: string;
+  application: string;
+  customizationFocus: string;
+};
+
 // Transparent tent uploads are deliberately profiled one by one. Their
 // individual keywords, visible form, and buyer intent stay distinct instead
 // of competing with a single generic bubble-tent page.
@@ -789,6 +798,27 @@ const bubbleTentProfiles: Record<string, BubbleTentProfile> = {
     primaryBuyer: 'party-rental companies, outdoor event agencies, resorts, retail venues, and commercial display operators',
     application: 'outdoor party displays, branded event enclosures, photo installations, hospitality lounges, and seasonal activations',
     customizationFocus: 'clear-shell structure, entrance, footprint, color accents, logo panels, lighting setup, anchoring, blower package, packed configuration, and destination requirements',
+  },
+};
+
+// Camping-tent uploads use distinct purchase-intent terms and visible layouts
+// so nearby products do not compete for the same search answer.
+const campingTentProfiles: Record<string, CampingTentProfile> = {
+  'blowup-camping-tent': {
+    keywords: ['inflatable camping tent', 'blow up camping tent', 'air tent for camping', 'inflatable camping shelter'],
+    productType: 'commercial black inflatable camping tent',
+    visibleLayout: 'a 6 m diameter black dome shelter with a wide zip entry, window panel, and inflated structural tubes shown in a mountain campsite setting',
+    primaryBuyer: 'glamping operators, outdoor-event suppliers, commercial rental fleets, resorts, campsites, and expedition-support providers',
+    application: 'glamping camps, outdoor hospitality, equipment rental, base-camp shelter, branded overnight programs, and managed outdoor events',
+    customizationFocus: 'dome diameter, door and window layout, color, printed logo panels, ventilation, floor configuration, anchoring, blower or pump package, and export packing',
+  },
+  'yellow-and-blue-inflatable-camping-tent': {
+    keywords: ['inflatable family tent', 'inflatable camping house', 'air beam tent', 'outdoor inflatable tent'],
+    productType: 'commercial yellow-and-blue inflatable family tent',
+    visibleLayout: 'a 6 m diameter yellow-and-blue round camping shelter with a front door, side window, inflated air-beam frame, and family campsite arrangement',
+    primaryBuyer: 'family-camp operators, holiday parks, outdoor-rental suppliers, youth-camp organizers, resorts, and glamping businesses',
+    application: 'family glamping, campsite accommodation, outdoor hospitality, youth-camp programs, rental inventory, and seasonal event shelter',
+    customizationFocus: 'color blocking, diameter, air-beam arrangement, doorway and window positions, logo panels, floor and interior layout, ventilation, anchoring, inflation package, and export packing',
   },
 };
 
@@ -1058,6 +1088,10 @@ function bubbleTentProfile(product: Product) {
   return bubbleTentProfiles[product.productSlug];
 }
 
+function campingTentProfile(product: Product) {
+  return campingTentProfiles[product.productSlug];
+}
+
 function battingCageKeywordSet(product: Product) {
   return battingCageKeywordSets[product.productSlug] ?? [];
 }
@@ -1188,6 +1222,8 @@ export function productSeoTitle(product: Product) {
   if (interactiveProfile) return seoTitle(`${interactiveProfile.keywords[0]} | Commercial Inflatable Game`);
   const bubbleTent = bubbleTentProfile(product);
   if (bubbleTent) return seoTitle(`${bubbleTent.keywords[0]} | Commercial Event Tent`);
+  const campingTent = campingTentProfile(product);
+  if (campingTent) return seoTitle(`${campingTent.keywords[0]} | Commercial Air Tent`);
   if (product.category === 'Bumper Ball') {
     const primary = bumperBallKeywordSet(product)[0] || 'inflatable bumper ball';
     return seoTitle(`${primary} | Commercial Bubble Soccer`);
@@ -1209,11 +1245,15 @@ export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
   const interactiveProfile = interactiveGameProfile(product);
   const bubbleTent = bubbleTentProfile(product);
+  const campingTent = campingTentProfile(product);
   if (interactiveProfile) {
     return truncateMeta(`Commercial ${interactiveProfile.keywords[0]} for ${interactiveProfile.application}. Confirm ${interactiveProfile.keywords[1]}, OEM branding, layout, and factory quote.`, 158);
   }
   if (bubbleTent) {
     return truncateMeta(`YIC makes ${bubbleTent.keywords[0]} with OEM size, clear layout, branding, blower, and anchoring for commercial events, rentals, and hospitality.`, 158);
+  }
+  if (campingTent) {
+    return truncateMeta(`YIC makes ${campingTent.keywords[0]} for commercial camping, glamping, rentals, and outdoor hospitality. OEM layout, branding, anchoring, and inflation packages.`, 158);
   }
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product).slice(0, 2).join(' and ');
@@ -1248,6 +1288,13 @@ export function productKeyFeatures(product: Product) {
     `${product.material} listed for this model`,
     `Commercial applications: ${bubbleTent.application}`,
     `Specify ${bubbleTent.customizationFocus} before production`,
+  ];
+  const campingTent = campingTentProfile(product);
+  if (campingTent) return [
+    `Format shown: ${campingTent.visibleLayout}`,
+    `${product.material} listed for this model`,
+    `Commercial applications: ${campingTent.application}`,
+    `Specify ${campingTent.customizationFocus} before production`,
   ];
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) return [
     `Reference training enclosure: ${product.dimensions.trim()}`,
@@ -1414,6 +1461,12 @@ export function productKeywordVariants(product: Product) {
     return [...new Set(variants)].filter((value) => value.length > 2);
   }
 
+  if (campingTentProfile(product)) {
+    add(...campingTentProfile(product)!.keywords);
+    add(`commercial ${base}`, `${base} for sale`, `custom ${base}`);
+    return [...new Set(variants)].filter((value) => value.length > 2);
+  }
+
   if (battingCageKeywordSet(product).length) {
     add(...battingCageKeywordSet(product));
     return [...new Set(variants)].filter((value) => value.length > 2);
@@ -1556,6 +1609,8 @@ export function productDisplayTitle(product: Product) {
   if (primaryInteractiveKeyword) return primaryInteractiveKeyword.charAt(0).toUpperCase() + primaryInteractiveKeyword.slice(1);
   const primaryBubbleTentKeyword = bubbleTentProfile(product)?.keywords[0];
   if (primaryBubbleTentKeyword) return primaryBubbleTentKeyword.charAt(0).toUpperCase() + primaryBubbleTentKeyword.slice(1);
+  const primaryCampingTentKeyword = campingTentProfile(product)?.keywords[0];
+  if (primaryCampingTentKeyword) return primaryCampingTentKeyword.charAt(0).toUpperCase() + primaryCampingTentKeyword.slice(1);
   const primaryRingTossKeyword = ringTossKeywordSet(product)[0];
   if (primaryRingTossKeyword) return primaryRingTossKeyword.charAt(0).toUpperCase() + primaryRingTossKeyword.slice(1);
   const primaryBumperKeyword = product.category === 'Bumper Ball' ? bumperBallKeywordSet(product)[0] : '';
@@ -1703,6 +1758,7 @@ export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const interactiveProfile = interactiveGameProfile(product);
   const bubbleTent = bubbleTentProfile(product);
+  const campingTent = campingTentProfile(product);
   if (interactiveProfile) {
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
@@ -1768,6 +1824,39 @@ export function productDetailContent(product: Product): DetailContent {
         'Venue type, usable footprint, ceiling or outdoor height clearance, access route, surface, installation duration, and expected guest flow',
         'Required entrance, tunnel, clear-panel, balloon or decor layout, lighting preference, artwork files, and branding brief',
         'Quantity, destination, target delivery date, blower and anchoring requirements, packing, storage, and custom dimensions if needed',
+      ],
+    };
+  }
+  if (campingTent) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const footprint = `the listed ${product.dimensions.trim()} footprint`;
+    return {
+      template,
+      productType: campingTent.productType,
+      primaryBuyer: campingTent.primaryBuyer,
+      purpose: `This ${campingTent.productType} is shown as ${campingTent.visibleLayout}. It is planned for ${campingTent.application}.`,
+      applications: [
+        { title: 'Commercial camping and glamping', text: `Use ${footprint} for ${campingTent.application}, with a confirmed access route, installation area, inflation equipment, anchoring plan, and guest circulation.` },
+        { title: 'Rental and seasonal programs', text: 'Review the ground condition, power or inflation equipment, weather plan, setup crew, cleaning, drying, repair-kit access, transport, and dry storage before repeat use.' },
+        { title: 'Branded outdoor hospitality', text: 'Plan the shelter around the intended interior use, entrance flow, sleeping or lounge layout, lighting, artwork, logo visibility, ventilation, and approved site requirements.' },
+      ],
+      planningPoints: [
+        `${footprint}, height clearance, entrance direction, inflation position, anchoring surface, interior layout, access route, and guest circulation`,
+        'Venue weather plan, ventilation, occupancy, overnight or event duration, operating supervision, campsite rules, and local site requirements',
+        'Commercial PVC specification, cleaning and drying procedure, repair-kit access, transport, and dry storage between installations',
+      ],
+      customization: [
+        campingTent.customizationFocus,
+        'Commercial color scheme, print-ready logo panels, branded entry graphics, interior treatment, and event messaging',
+        'Blower or pump package, anchoring, repair kit, carry bags, export packing, and destination-specific requirements',
+      ],
+      operationNote: `Use the ${campingTent.productType} only on a suitable site with the specified inflation equipment, anchoring, access, and ventilation arrangement. The operator must assess weather, occupancy, power, supervision, cleaning, drying, and local requirements before each installation.`,
+      quoteItems: [
+        'Campsite, resort, rental, or event use; usable footprint; height clearance; access route; surface; installation duration; and expected occupancy',
+        'Required entrance, window, ventilation, interior layout, floor, lighting, color, logo, and branding brief',
+        'Quantity, destination, target delivery date, blower or pump, anchoring, packing, storage, and custom-size requirements',
       ],
     };
   }
@@ -2759,6 +2848,7 @@ export function productFaqs(product: Product) {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const interactiveProfile = interactiveGameProfile(product);
   const bubbleTent = bubbleTentProfile(product);
+  const campingTent = campingTentProfile(product);
   if (interactiveProfile) {
     const terms = interactiveProfile.keywords;
     const customSize = /custom dimensions available/i.test(product.dimensions);
@@ -2781,6 +2871,17 @@ export function productFaqs(product: Product) {
       { question: `How should I plan ventilation and guest flow when using the ${terms[2]}?`, answer: `Plan the entry and exit, accessible circulation, blower and power route, ventilation arrangement, interior use, event staffing, expected occupancy, and any venue requirements. The operator must set capacity and operating procedures for the actual site.` },
       { question: `Can this ${terms[3]} be installed outdoors?`, answer: `Outdoor installation depends on the approved structure, site surface, anchoring method, power, wind and weather plan, supervision, and local venue requirements. Confirm these conditions before ordering; do not assume weather performance beyond the approved specification.` },
       { question: `What should I include in a quotation request for this ${terms[0]}?`, answer: `Send the venue type, site plan, indoor or outdoor setting, target footprint, height clearance, intended display or guest use, entrance and decor requirements, branding files, quantity, destination, target delivery date, and blower, anchoring, packing, and storage needs.` },
+    ];
+  }
+  if (campingTent) {
+    const terms = campingTent.keywords;
+    return [
+      { question: `What is this ${terms[0]} designed for?`, answer: `${content.purpose} It is intended for a managed campsite, glamping, rental, or outdoor-hospitality installation rather than an unattended structure.` },
+      { question: `How much clearance should I plan for this 6 m ${campingTent.productType}?`, answer: `Start with the listed ${product.dimensions.trim()} reference and add room for the entrance, inflation equipment, anchoring, access route, guest circulation, interior use, and packing area. Confirm the final layout from the site plan before production.` },
+      { question: `Can the ${terms[1]} be customized for a commercial camp or rental fleet?`, answer: `Yes. YIC can review ${campingTent.customizationFocus}, commercial colors, printed logos, entry and window arrangement, interior treatment, inflation package, anchoring, and export packing.` },
+      { question: `How should I plan ventilation and overnight use for the ${terms[2]}?`, answer: `Plan the entry and exit, ventilation arrangement, interior sleeping or lounge layout, inflation equipment and power route where applicable, weather plan, staff supervision, occupancy, and local campsite requirements. The operator must set safe capacity and operating procedures for the actual site.` },
+      { question: `Can this ${terms[3]} be used at an outdoor campsite?`, answer: `Outdoor use depends on the approved structure, site surface, anchoring method, weather plan, inflation equipment, supervision, and local rules. Confirm these conditions before ordering; do not assume weather performance beyond the approved specification.` },
+      { question: `What should I include in a quotation request for this ${terms[0]}?`, answer: `Send the campsite, resort, rental, or event use; site plan; target footprint; height clearance; ground surface; entrance, window, and interior requirements; branding files; quantity; destination; target delivery date; and inflation, anchoring, packing, and storage needs.` },
     ];
   }
   if (product.category === 'Bumper Ball') {
