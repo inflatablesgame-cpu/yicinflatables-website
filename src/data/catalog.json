@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T03:59:13.253Z",
+  "generatedAt": "2026-10-21T05:20:13.208Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -357,10 +357,13 @@
     {
       "name": "Inflatable Tent",
       "slug": "inflatable-tent",
-      "count": 24,
-      "heroImage": "/assets/product/Inflatable%20Tent/10x10m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club%20tent/1.webp",
+      "count": 38,
+      "heroImage": "/assets/product/Inflatable%20Tent/10m%20Dia%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20white%20large%20inflatable%20igloo%20tent/1.webp",
       "products": [
+        "inflatable-tent--white-large-inflatable-igloo-tent-25",
         "inflatable-tent--oxford-inflatable-night-club-tent-17",
+        "inflatable-tent--inflatable-maze-for-sale-26",
+        "inflatable-tent--commercial-inflatable-tent-for-party-27",
         "inflatable-tent--white-tents-for-parties-20",
         "inflatable-tent--large-white-tents-for-weddings-21",
         "inflatable-tent--large-white-event-tent-22",
@@ -372,18 +375,29 @@
         "inflatable-tent--heavy-duty-portable-shelter-4",
         "inflatable-tent--blowup-camping-tent-15",
         "inflatable-tent--yellow-and-blue-inflatable-camping-tent-16",
+        "inflatable-tent--white-inflatable-dome-tent-28",
         "inflatable-tent--night-party-wedding-inflatable-tent-23",
+        "inflatable-tent--white-inflatable-air-cube-tent-29",
         "inflatable-tent--commercial-inflatable-black-honeycomb-tent-5",
         "inflatable-tent--led-inflatable-marquee-for-sale-24",
         "inflatable-tent--outdoor-exhibition-tents-6",
         "inflatable-tent--oxford-inflatable-night-club-19",
         "inflatable-tent--commercial-pink-inflatable-bubble-house-8",
         "inflatable-tent--bubble-house-inflatable-9",
+        "inflatable-tent--inflatable-glamping-tent-for-sale-30",
         "inflatable-tent--blow-up-bubble-tent-10",
+        "inflatable-tent--christmas-inflatable-gingerbread-house-31",
         "inflatable-tent--commercial-inflatable-bubble-dome-11",
         "inflatable-tent--inflatable-bubble-balloon-house-12",
         "inflatable-tent--inflatable-bubble-tent-for-sale-13",
-        "inflatable-tent--blow-up-bubble-house-14"
+        "inflatable-tent--winter-inflatable-gingerbread-house-32",
+        "inflatable-tent--blow-up-bubble-house-14",
+        "inflatable-tent--inflatable-emergency-tent-33",
+        "inflatable-tent--inflatable-geodesic-dome-34",
+        "inflatable-tent--inflatable-dome-shelter-35",
+        "inflatable-tent--inflatable-igloo-dome-tent-36",
+        "inflatable-tent--inflatable-igloo-party-tent-37",
+        "inflatable-tent--silver-airdome-inflatable-tents-38"
       ]
     },
     {
@@ -5645,6 +5659,24 @@
       "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-tent--white-large-inflatable-igloo-tent-25",
+      "productSlug": "white-large-inflatable-igloo-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "white large inflatable igloo tent",
+      "sourceName": "10m Dia 材料Oxford      white large inflatable igloo tent",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/10m%20Dia%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20white%20large%20inflatable%20igloo%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/10m%20Dia%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20white%20large%20inflatable%20igloo%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/10m%20Dia%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20white%20large%20inflatable%20igloo%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/10m%20Dia%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20white%20large%20inflatable%20igloo%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/10m%20Dia%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20white%20large%20inflatable%20igloo%20tent/5.webp"
+      ],
+      "dimensions": "10m Dia",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-tent--oxford-inflatable-night-club-tent-17",
       "productSlug": "inflatable-night-club-tent",
       "category": "Inflatable Tent",
@@ -5660,6 +5692,42 @@
         "/assets/product/Inflatable%20Tent/10x10m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club%20tent/5.webp"
       ],
       "dimensions": "10x10m ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--inflatable-maze-for-sale-26",
+      "productSlug": "inflatable-maze-for-sale",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable maze for sale",
+      "sourceName": "10x10x2m    inflatable maze for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/10x10x2m%20%20%20%20inflatable%20maze%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Tent/10x10x2m%20%20%20%20inflatable%20maze%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Tent/10x10x2m%20%20%20%20inflatable%20maze%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Tent/10x10x2m%20%20%20%20inflatable%20maze%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Tent/10x10x2m%20%20%20%20inflatable%20maze%20for%20sale/5.webp"
+      ],
+      "dimensions": "10x10x2m    ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--commercial-inflatable-tent-for-party-27",
+      "productSlug": "commercial-inflatable-tent-for-party",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "commercial inflatable tent for party",
+      "sourceName": "14x6x3.8m    commercial inflatable tent for party",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/14x6x3.8m%20%20%20%20commercial%20inflatable%20tent%20for%20party/1.webp",
+        "/assets/product/Inflatable%20Tent/14x6x3.8m%20%20%20%20commercial%20inflatable%20tent%20for%20party/2.webp",
+        "/assets/product/Inflatable%20Tent/14x6x3.8m%20%20%20%20commercial%20inflatable%20tent%20for%20party/3.webp",
+        "/assets/product/Inflatable%20Tent/14x6x3.8m%20%20%20%20commercial%20inflatable%20tent%20for%20party/4.webp",
+        "/assets/product/Inflatable%20Tent/14x6x3.8m%20%20%20%20commercial%20inflatable%20tent%20for%20party/5.webp"
+      ],
+      "dimensions": "14x6x3.8m    ",
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
@@ -5861,6 +5929,24 @@
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-tent--white-inflatable-dome-tent-28",
+      "productSlug": "white-inflatable-dome-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "white inflatable dome tent",
+      "sourceName": "6m Dia  材料Oxford           white inflatable dome tent",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20dome%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20dome%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20dome%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20dome%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/6m%20Dia%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20dome%20tent/5.webp"
+      ],
+      "dimensions": "6m Dia",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-tent--night-party-wedding-inflatable-tent-23",
       "productSlug": "night-party-wedding-inflatable-tent",
       "category": "Inflatable Tent",
@@ -5876,6 +5962,24 @@
         "/assets/product/Inflatable%20Tent/6x6m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20night%20party%20wedding%20inflatable%20tent/5.webp"
       ],
       "dimensions": "6x6m  ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--white-inflatable-air-cube-tent-29",
+      "productSlug": "white-inflatable-air-cube-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "white inflatable air cube tent",
+      "sourceName": "6x6m 材料Oxford           white inflatable air cube tent",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/6x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20air%20cube%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/6x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20air%20cube%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/6x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20air%20cube%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/6x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20air%20cube%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/6x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20white%20inflatable%20air%20cube%20tent/5.webp"
+      ],
+      "dimensions": "6x6m ",
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
@@ -5987,6 +6091,24 @@
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-tent--inflatable-glamping-tent-for-sale-30",
+      "productSlug": "inflatable-glamping-tent-for-sale",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable glamping tent for sale",
+      "sourceName": "尺寸定制               inflatable glamping tent for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20glamping%20tent%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20glamping%20tent%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20glamping%20tent%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20glamping%20tent%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20glamping%20tent%20for%20sale/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-tent--blow-up-bubble-tent-10",
       "productSlug": "blow-up-bubble-tent",
       "category": "Inflatable Tent",
@@ -6000,6 +6122,24 @@
         "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20tent/3.webp",
         "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20tent/4.webp",
         "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20tent/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--christmas-inflatable-gingerbread-house-31",
+      "productSlug": "christmas-inflatable-gingerbread-house",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "christmas inflatable gingerbread house",
+      "sourceName": "尺寸定制              christmas inflatable gingerbread house",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20christmas%20inflatable%20gingerbread%20house/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20christmas%20inflatable%20gingerbread%20house/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20christmas%20inflatable%20gingerbread%20house/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20christmas%20inflatable%20gingerbread%20house/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20christmas%20inflatable%20gingerbread%20house/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
@@ -6059,6 +6199,24 @@
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-tent--winter-inflatable-gingerbread-house-32",
+      "productSlug": "winter-inflatable-gingerbread-house",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "winter inflatable gingerbread house",
+      "sourceName": "尺寸定制              winter inflatable gingerbread house",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20winter%20inflatable%20gingerbread%20house/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20winter%20inflatable%20gingerbread%20house/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20winter%20inflatable%20gingerbread%20house/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20winter%20inflatable%20gingerbread%20house/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20%20winter%20inflatable%20gingerbread%20house/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-tent--blow-up-bubble-house-14",
       "productSlug": "blow-up-bubble-house",
       "category": "Inflatable Tent",
@@ -6072,6 +6230,114 @@
         "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20house/3.webp",
         "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20house/4.webp",
         "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20%20%20%20blow%20up%20bubble%20house/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--inflatable-emergency-tent-33",
+      "productSlug": "inflatable-emergency-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable emergency tent",
+      "sourceName": "尺寸定制          inflatable emergency tent",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20emergency%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20emergency%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20emergency%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20emergency%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20%20inflatable%20emergency%20tent/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--inflatable-geodesic-dome-34",
+      "productSlug": "inflatable-geodesic-dome",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable geodesic dome",
+      "sourceName": "尺寸定制         inflatable geodesic dome",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20geodesic%20dome/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20geodesic%20dome/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20geodesic%20dome/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20geodesic%20dome/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20%20%20%20inflatable%20geodesic%20dome/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--inflatable-dome-shelter-35",
+      "productSlug": "inflatable-dome-shelter",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable dome shelter",
+      "sourceName": "尺寸定制  材料Oxford             inflatable dome shelter",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20dome%20shelter/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20dome%20shelter/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20dome%20shelter/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20dome%20shelter/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20%20%20inflatable%20dome%20shelter/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--inflatable-igloo-dome-tent-36",
+      "productSlug": "inflatable-igloo-dome-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable igloo dome tent",
+      "sourceName": "尺寸定制  材料Oxford           inflatable igloo dome tent",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20dome%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20dome%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20dome%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20dome%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20dome%20tent/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--inflatable-igloo-party-tent-37",
+      "productSlug": "inflatable-igloo-party-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable igloo party tent",
+      "sourceName": "尺寸定制  材料Oxford           inflatable igloo party tent",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20party%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20party%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20party%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20party%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20igloo%20party%20tent/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--silver-airdome-inflatable-tents-38",
+      "productSlug": "silver-airdome-inflatable-tents",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "silver airdome inflatable tents",
+      "sourceName": "尺寸定制 材料Oxford      silver airdome inflatable tents",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20silver%20airdome%20inflatable%20tents/1.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20silver%20airdome%20inflatable%20tents/2.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20silver%20airdome%20inflatable%20tents/3.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20silver%20airdome%20inflatable%20tents/4.webp",
+        "/assets/product/Inflatable%20Tent/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20silver%20airdome%20inflatable%20tents/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."

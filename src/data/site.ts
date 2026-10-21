@@ -476,6 +476,11 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 }
 
 export function productDescription(product: Product) {
+  const newTent = newInflatableTentProfile(product);
+  if (newTent) {
+    const detail = productDetailContent(product);
+    return `YIC manufactures ${newTent.keywords[0]} for ${detail.primaryBuyer}. This ${product.dimensions.trim()} design is presented as ${newTent.visual}. ${newTent.purpose} The product is specified in ${product.material}; buyers can discuss dimensions, layout, branding, access, anchoring, and packing for their project. Related searches include ${newTent.keywords.slice(1).join(', ')}. Confirm the final site plan, materials, equipment, and operating requirements before production.`;
+  }
   const details = productDetailContent(product);
   const focusedTerms = productSearchTerms(product);
   const searchVariants = (focusedTerms.length ? focusedTerms : productKeywordVariants(product).slice(0, 4)).join(', ');
@@ -488,6 +493,28 @@ export function productDescription(product: Product) {
       : ` This page covers the ${focusedTerms.join(' and ')} search intent; final dimensions and construction are confirmed against the intended application.`
     : '';
   return `YIC Inflatable Sports manufactures commercial inflatables for ${details.primaryBuyer}. This listing features the “${name}” model. ${details.purpose} Custom artwork, colors, layout, and functional details can be developed around your venue, brand, and destination-market requirements.${intentSentence}${focusedSentence || ` Buyers researching this format may also compare terms such as ${searchVariants}.`}`;
+}
+
+type NewInflatableTentProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; options: string; use: string };
+const newInflatableTentProfiles: Record<string, NewInflatableTentProfile> = {
+  'white-large-inflatable-igloo-tent': { keywords: ['large inflatable igloo tent', 'inflatable igloo tent for events', 'commercial dome event shelter', 'white inflatable event dome'], visual: 'a white 10 m igloo-style dome with an extended entry tunnel', purpose: 'The generous dome-and-tunnel arrangement creates a recognizable covered destination for exhibitions, festivals, hospitality, and branded guest experiences.', buyer: 'event producers, exhibition teams, hospitality operators, and activation agencies', options: 'entry-tunnel configuration, interior layout, lighting coordination, artwork, anchoring, and packed format', use: 'large-format event hospitality and visitor reception' },
+  'inflatable-maze-for-sale': { keywords: ['inflatable maze for sale', 'commercial inflatable maze', 'portable event maze attraction', 'inflatable maze game for festivals'], visual: 'a 10 × 10 m walk-through maze with contrasting route markers', purpose: 'The marked maze layout gives attractions and event operators a hands-on visitor challenge with a clear footprint to plan around.', buyer: 'family entertainment venues, festival organizers, attraction operators, and rental businesses', options: 'maze route, wall layout, color coding, entrance and exit positions, branded graphics, and supervised guest flow', use: 'interactive walk-through challenges and event entertainment' },
+  'commercial-inflatable-tent-for-party': { keywords: ['commercial inflatable party tent', 'inflatable event tent for parties', 'large inflatable party shelter', 'inflatable party marquee for sale'], visual: 'a long white 14 × 6 m event shelter with arched openings and colored structural accents', purpose: 'Its elongated footprint supports guest gathering, event hospitality, and branded party layouts while the openings help organize entry and circulation.', buyer: 'event rental companies, party planners, venue operators, and brand activation teams', options: 'opening positions, interior zoning, event colors, logo placement, lighting coordination, and anchoring', use: 'large parties, receptions, and temporary hospitality spaces' },
+  'white-inflatable-dome-tent': { keywords: ['white inflatable dome tent', 'commercial inflatable dome shelter', 'inflatable dome tent with tunnel', 'event dome tent for sale'], visual: 'a 6 m white illuminated dome with a tunnel-style entrance', purpose: 'The rounded profile and defined entrance create a compact focal space for branded displays, guest welcome points, and temporary event use.', buyer: 'event producers, exhibition contractors, hospitality teams, and rental operators', options: 'entrance direction, interior finish, lighting plan, branding, anchoring, and transport configuration', use: 'compact event reception and branded display areas' },
+  'white-inflatable-air-cube-tent': { keywords: ['white inflatable air cube tent', 'inflatable cube event tent', 'commercial inflatable exhibition shelter', 'square inflatable event tent for sale'], visual: 'a 6 × 6 m white cube-style shelter with circular windows and a contrasting entrance', purpose: 'The square plan provides a defined exhibition or hospitality footprint, while windows and a distinctive entry give the exterior a clean display-ready appearance.', buyer: 'exhibitors, trade-show teams, event agencies, and branded activation operators', options: 'window and entrance placement, interior plan, logo panels, color accents, lighting, and anchoring', use: 'exhibition booths and square-format branded event spaces' },
+  'inflatable-glamping-tent-for-sale': { keywords: ['inflatable glamping tent for sale', 'commercial inflatable glamping shelter', 'inflatable camping tent for hospitality', 'inflatable outdoor accommodation tent'], visual: 'a red-and-silver arched glamping shelter with defined door and window areas', purpose: 'The arched profile and visible openings support a distinctive temporary outdoor-hospitality setup; confirm interior layout, ventilation, and site conditions for the intended guest use.', buyer: 'glamping sites, outdoor hospitality operators, campsite developers, and rental businesses', options: 'sleeping or lounge layout, door and window arrangement, colors, branding, ventilation plan, anchoring, and packing', use: 'glamping displays and managed outdoor hospitality projects' },
+  'christmas-inflatable-gingerbread-house': { keywords: ['Christmas inflatable gingerbread house', 'inflatable gingerbread event house', 'holiday inflatable attraction for events', 'commercial Christmas inflatable display'], visual: 'a colorful gingerbread-house themed holiday structure with an adjacent play area shown in the reference imagery', purpose: 'The seasonal confectionery theme creates a photo-friendly focal point for Christmas markets, family events, and holiday attraction zones.', buyer: 'holiday event producers, malls, family venues, and seasonal rental operators', options: 'holiday artwork, color palette, entrance details, adjacent activity zoning, branding, and venue-specific footprint', use: 'Christmas markets, seasonal displays, and family holiday programming' },
+  'winter-inflatable-gingerbread-house': { keywords: ['winter inflatable gingerbread house', 'winter themed inflatable event house', 'inflatable holiday cottage attraction', 'commercial winter event inflatable'], visual: 'a snow-themed cottage-style inflatable shown in a winter setting', purpose: 'The cozy winter-house appearance can anchor seasonal photo opportunities, visitor reception, and themed event programming; specify the final decorative treatment to match the approved artwork.', buyer: 'winter festival organizers, shopping centers, family attractions, and seasonal event contractors', options: 'winter or gingerbread artwork, color treatment, entrance layout, interior use, branding, and installation footprint', use: 'winter festivals and seasonal themed visitor experiences' },
+  'inflatable-emergency-tent': { keywords: ['inflatable emergency tent', 'rapid-deployment inflatable shelter', 'commercial emergency response tent', 'inflatable relief shelter for sale'], visual: 'a blue-and-white response shelter marked with a medical cross in the supplied image', purpose: 'The visible layout is suited to planning a temporary response, triage, or field-support space; actual emergency, medical, fire, and weather suitability must be verified against the final specification and applicable standards.', buyer: 'emergency-response planners, humanitarian organizations, field teams, and public-sector procurement groups', options: 'interior zones, entry points, identification graphics, power and ventilation planning, anchoring, and transport package', use: 'temporary field support and response-site planning' },
+  'inflatable-geodesic-dome': { keywords: ['inflatable geodesic dome', 'geodesic inflatable event dome', 'commercial dome shelter for events', 'inflatable dome venue structure'], visual: 'a cluster of transparent geometric domes in a lakeside hospitality setting', purpose: 'The faceted transparent appearance lends itself to distinctive event, dining, or glamping concepts where visibility and guest experience are central to the site plan.', buyer: 'hospitality venues, glamping developers, event producers, and experiential agencies', options: 'dome diameter, access, transparent panels, connected layout, interior fit-out, anchoring, and branding', use: 'destination hospitality, pop-up dining, and immersive event environments' },
+  'inflatable-dome-shelter': { keywords: ['inflatable dome shelter', 'open inflatable dome event shelter', 'commercial inflatable reception shelter', 'inflatable outdoor event pavilion'], visual: 'an open-sided white arched shelter with a spacious covered interior', purpose: 'The open entrance and covered central area create a welcoming transition or gathering space for outdoor events and brand experiences.', buyer: 'event agencies, outdoor venues, exhibition teams, and rental operators', options: 'opening width, side treatment, interior plan, logo placement, lighting, anchoring, and footprint', use: 'open-air reception, hospitality, and event wayfinding' },
+  'inflatable-igloo-dome-tent': { keywords: ['inflatable igloo dome tent', 'white inflatable igloo shelter', 'commercial dome tent for events', 'inflatable winter event dome'], visual: 'a white Oxford-fabric igloo dome staged as an outdoor refreshment and rest area', purpose: 'The igloo silhouette creates a memorable sheltered stop for winter festivals, outdoor hospitality, and branded guest areas.', buyer: 'festival producers, hospitality operators, event rental businesses, and destination venues', options: 'service or guest entrance, counter placement, interior furnishings, branded panels, lighting, and anchoring', use: 'festival refreshment points and winter event hospitality' },
+  'inflatable-igloo-party-tent': { keywords: ['inflatable igloo party tent', 'commercial inflatable igloo event tent', 'winter party dome tent', 'white inflatable party dome for sale'], visual: 'a white Oxford-fabric igloo dome arranged for a winter market or seasonal gathering', purpose: 'The rounded enclosure offers a distinct visual setting for seasonal gatherings, pop-up hospitality, and photo-ready event programming.', buyer: 'seasonal event organizers, hospitality brands, party rental operators, and festival venues', options: 'entry layout, seasonal graphics, interior seating plan, lighting, logo placement, and anchoring', use: 'winter markets, private parties, and seasonal brand activations' },
+  'silver-airdome-inflatable-tents': { keywords: ['silver airdome inflatable tent', 'silver inflatable event dome', 'commercial inflatable exhibition dome', 'branded inflatable airdome shelter'], visual: 'a silver exterior and blue interior arched dome used as a branded exhibition space', purpose: 'The metallic exterior and contrasting interior help create a high-visibility event destination with room to coordinate branded visitor flow.', buyer: 'exhibition contractors, event producers, sports activations, and brand experience agencies', options: 'interior color, access points, logo and graphic placement, lighting, anchoring, and packing', use: 'exhibitions, sponsor activations, and branded event hospitality' },
+};
+
+function newInflatableTentProfile(product: Product) {
+  return product.category === 'Inflatable Tent' ? newInflatableTentProfiles[product.productSlug] : undefined;
 }
 
 // Each newly published action-sports product owns a separate keyword set. This
@@ -1314,6 +1341,8 @@ function productIntentKeyword(product: Product) {
 
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  const newTent = newInflatableTentProfile(product);
+  if (newTent) return seoTitle(`${newTent.keywords[0]} | Commercial Inflatable Tent`);
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) return seoTitle(`${interactiveProfile.keywords[0]} | Commercial Inflatable Game`);
   const bubbleTent = bubbleTentProfile(product);
@@ -1343,6 +1372,8 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  const newTent = newInflatableTentProfile(product);
+  if (newTent) return truncateMeta(`YIC manufactures ${newTent.keywords[0]} for ${newTent.use}. ${product.dimensions.trim()}, ${product.material}. OEM layout, branding, anchoring, and project quote.`, 158);
   const interactiveProfile = interactiveGameProfile(product);
   const bubbleTent = bubbleTentProfile(product);
   const campingTent = campingTentProfile(product);
@@ -1383,6 +1414,13 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const newTent = newInflatableTentProfile(product);
+  if (newTent) return [
+    `Visual format: ${newTent.visual}`,
+    `Reference dimensions: ${product.dimensions.trim()}`,
+    `Listed construction: ${product.material}`,
+    `Project planning: ${newTent.options}`,
+  ];
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) return [
     `Format shown: ${interactiveProfile.visibleLayout}`,
@@ -1894,6 +1932,31 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const newTent = newInflatableTentProfile(product);
+  if (newTent) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: newTent.keywords[0],
+      primaryBuyer: newTent.buyer,
+      purpose: newTent.purpose,
+      applications: [
+        { title: newTent.use, text: `${newTent.purpose} Plan visitor flow, access, staffing, and the operating footprint around the event brief.` },
+        { title: 'Branded event environments', text: `Develop ${newTent.keywords[0]} around the audience journey, venue plan, approved visual identity, and intended event schedule.` },
+        { title: 'Rental and temporary installations', text: 'Review setup crew, power or blower location, anchoring, packing, cleaning, storage, and repeat-use procedures before deployment.' },
+      ],
+      planningPoints: [
+        `Confirm the ${product.dimensions.trim()} reference, site footprint, height clearance, access route, entrance and exit, and guest circulation`,
+        'Review installation surface, anchoring method, power and blower placement, weather exposure, occupancy plan, and local venue requirements',
+        `Align the final material and project configuration with ${product.material}, the intended use, and destination-market requirements`,
+      ],
+      customization: [newTent.options, 'Colors, printed graphics, logo files, interior treatment, accessories, and export packing', 'Final size, material, seams, blower or inflation arrangement, anchoring, and operating details confirmed in the approved specification'],
+      operationNote: `Before operation, follow the final manufacturer specification and venue procedures for inflation, access, occupancy, anchoring, weather monitoring, supervision, inspection, and shutdown. The pictured concept does not by itself establish a safety rating or weather certification.`,
+      quoteItems: [`Project use: ${newTent.use}; share the site plan, surface, indoor or outdoor setting, and target dates`, `Requested footprint, height, access layout, material, branding artwork, options, and operating requirements`, 'Quantity, destination country, installation or packing needs, and requested delivery schedule'],
+    };
+  }
   const interactiveProfile = interactiveGameProfile(product);
   const bubbleTent = bubbleTentProfile(product);
   const campingTent = campingTentProfile(product);
@@ -2758,6 +2821,8 @@ export function productDetailContent(product: Product): DetailContent {
 export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
+  const newTent = newInflatableTentProfile(product);
+  if (newTent) return [...newTent.keywords, `${newTent.keywords[0]} manufacturer`, `custom ${newTent.keywords[0]}`, 'YIC Inflatable Sports'].join(', ');
   const primaryBuyer = productTargetBuyers(product)[0] || 'commercial buyers';
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product);
@@ -3052,6 +3117,17 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const newTent = newInflatableTentProfile(product);
+  if (newTent) {
+    return [
+      { question: `What is the ${newTent.keywords[0]} designed for?`, answer: `${newTent.purpose} Typical project contexts include ${newTent.use}; final occupancy and operating scope should be matched to the venue.` },
+      { question: `What dimensions are listed for this ${newTent.keywords[0]}?`, answer: `The current reference is ${product.dimensions.trim()}. Confirm the required footprint, height clearance, access route, and usable interior area against the installation plan before production.` },
+      { question: `Which material is specified for this model?`, answer: `The listing specifies ${product.material}. Confirm the final fabric or PVC grade, reinforcement, seams, and components on the approved production specification; do not infer unlisted certifications.` },
+      { question: `Can the layout and branding be customized?`, answer: `Yes. The project can be reviewed for ${newTent.options}. Send reference artwork, logo files, venue drawings, quantity, and required delivery timing for a tailored quotation.` },
+      { question: `What site and setup details should I prepare?`, answer: `Share the installation surface, indoor or outdoor setting, access and exit direction, blower or power location, anchoring method, weather exposure, event duration, and local venue requirements. Final setup must follow the approved instructions.` },
+      { question: `What information is needed for a factory quote?`, answer: `Provide the intended use (${newTent.use}), target dimensions, material preference, artwork, options, quantity, destination country, packing or installation needs, and target delivery date. YIC can then review the project specification and quotation.` },
+    ];
+  }
   const interactiveProfile = interactiveGameProfile(product);
   const bubbleTent = bubbleTentProfile(product);
   const campingTent = campingTentProfile(product);
