@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T02:45:14.470Z",
+  "generatedAt": "2026-10-21T03:34:16.795Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -357,18 +357,21 @@
     {
       "name": "Inflatable Tent",
       "slug": "inflatable-tent",
-      "count": 16,
-      "heroImage": "/assets/product/Inflatable%20Tent/17x8.5x5m%20%E6%9D%90%E6%96%990.65mm%20PVC%20%20%20%20heavy%20duty%20outdoor%20event%20marquee/1.webp",
+      "count": 19,
+      "heroImage": "/assets/product/Inflatable%20Tent/10x10m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club%20tent/1.webp",
       "products": [
+        "inflatable-tent--oxford-inflatable-night-club-tent-17",
         "inflatable-tent--heavy-duty-outdoor-event-marquee-1",
         "inflatable-tent--tunnel-inflatable-transparent-dome-tent-7",
         "inflatable-tent--inflatable-bubble-tent-with-balloons-2",
+        "inflatable-tent--oxford-black-inflatable-party-tent-18",
         "inflatable-tent--inflatable-canopy-for-sale-3",
         "inflatable-tent--heavy-duty-portable-shelter-4",
         "inflatable-tent--blowup-camping-tent-15",
         "inflatable-tent--yellow-and-blue-inflatable-camping-tent-16",
         "inflatable-tent--commercial-inflatable-black-honeycomb-tent-5",
         "inflatable-tent--outdoor-exhibition-tents-6",
+        "inflatable-tent--oxford-inflatable-night-club-19",
         "inflatable-tent--commercial-pink-inflatable-bubble-house-8",
         "inflatable-tent--bubble-house-inflatable-9",
         "inflatable-tent--blow-up-bubble-tent-10",
@@ -5637,6 +5640,24 @@
       "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-tent--oxford-inflatable-night-club-tent-17",
+      "productSlug": "inflatable-night-club-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable night club tent",
+      "sourceName": "10x10m 材料Oxford           inflatable night club tent",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/10x10m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/10x10m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/10x10m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/10x10m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/10x10m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club%20tent/5.webp"
+      ],
+      "dimensions": "10x10m ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-tent--heavy-duty-outdoor-event-marquee-1",
       "productSlug": "heavy-duty-outdoor-event-marquee",
       "category": "Inflatable Tent",
@@ -5691,6 +5712,24 @@
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {
+      "slug": "inflatable-tent--oxford-black-inflatable-party-tent-18",
+      "productSlug": "black-inflatable-party-tent",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "black inflatable party tent",
+      "sourceName": "4.5x4.5x3.5m 材料Oxford           black inflatable party tent",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/4.5x4.5x3.5m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20black%20inflatable%20party%20tent/1.webp",
+        "/assets/product/Inflatable%20Tent/4.5x4.5x3.5m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20black%20inflatable%20party%20tent/2.webp",
+        "/assets/product/Inflatable%20Tent/4.5x4.5x3.5m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20black%20inflatable%20party%20tent/3.webp",
+        "/assets/product/Inflatable%20Tent/4.5x4.5x3.5m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20black%20inflatable%20party%20tent/4.webp",
+        "/assets/product/Inflatable%20Tent/4.5x4.5x3.5m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20black%20inflatable%20party%20tent/5.webp"
+      ],
+      "dimensions": "4.5x4.5x3.5m ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
       "slug": "inflatable-tent--inflatable-canopy-for-sale-3",
       "productSlug": "inflatable-canopy-for-sale",
       "category": "Inflatable Tent",
@@ -5715,7 +5754,7 @@
       "categorySlug": "inflatable-tent",
       "title": "heavy duty portable shelter",
       "sourceName": "5.2z4.7x3.5m  材料是牛津布    heavy duty portable shelter",
-      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "material": "Oxford fabric",
       "images": [
         "/assets/product/Inflatable%20Tent/5.2z4.7x3.5m%20%20%E6%9D%90%E6%96%99%E6%98%AF%E7%89%9B%E6%B4%A5%E5%B8%83%20%20%20%20heavy%20duty%20portable%20shelter/1.webp",
         "/assets/product/Inflatable%20Tent/5.2z4.7x3.5m%20%20%E6%9D%90%E6%96%99%E6%98%AF%E7%89%9B%E6%B4%A5%E5%B8%83%20%20%20%20heavy%20duty%20portable%20shelter/2.webp",
@@ -5796,6 +5835,24 @@
         "/assets/product/Inflatable%20Tent/8x6x3m%20%20%20%20outdoor%20exhibition%20tents/5.webp"
       ],
       "dimensions": "8x6x3m    ",
+      "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-tent--oxford-inflatable-night-club-19",
+      "productSlug": "inflatable-night-club",
+      "category": "Inflatable Tent",
+      "categorySlug": "inflatable-tent",
+      "title": "inflatable night club",
+      "sourceName": "9x6m 材料Oxford           inflatable night club",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Inflatable%20Tent/9x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club/1.webp",
+        "/assets/product/Inflatable%20Tent/9x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club/2.webp",
+        "/assets/product/Inflatable%20Tent/9x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club/3.webp",
+        "/assets/product/Inflatable%20Tent/9x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club/4.webp",
+        "/assets/product/Inflatable%20Tent/9x6m%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20%20%20%20%20%20%20inflatable%20night%20club/5.webp"
+      ],
+      "dimensions": "9x6m ",
       "excerpt": "Commercial inflatable tent built for party rental operators, family entertainment centers, and event venues."
     },
     {

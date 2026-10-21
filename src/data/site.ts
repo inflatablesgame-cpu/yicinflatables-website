@@ -731,6 +731,15 @@ type CampingTentProfile = {
   customizationFocus: string;
 };
 
+type NightclubTentProfile = {
+  keywords: string[];
+  productType: string;
+  visibleLayout: string;
+  primaryBuyer: string;
+  application: string;
+  customizationFocus: string;
+};
+
 // Transparent tent uploads are deliberately profiled one by one. Their
 // individual keywords, visible form, and buyer intent stay distinct instead
 // of competing with a single generic bubble-tent page.
@@ -819,6 +828,33 @@ const campingTentProfiles: Record<string, CampingTentProfile> = {
     primaryBuyer: 'family-camp operators, holiday parks, outdoor-rental suppliers, youth-camp organizers, resorts, and glamping businesses',
     application: 'family glamping, campsite accommodation, outdoor hospitality, youth-camp programs, rental inventory, and seasonal event shelter',
     customizationFocus: 'color blocking, diameter, air-beam arrangement, doorway and window positions, logo panels, floor and interior layout, ventilation, anchoring, inflation package, and export packing',
+  },
+};
+
+const nightclubTentProfiles: Record<string, NightclubTentProfile> = {
+  'inflatable-night-club-tent': {
+    keywords: ['inflatable nightclub', 'inflatable nightclub tent', 'inflatable nightclub for sale', 'inflatable nightclub rental'],
+    productType: 'commercial 10 x 10 m inflatable nightclub tent',
+    visibleLayout: 'a black quilted 10 x 10 m event tent with a peaked roof, illuminated interior, serving window, and wide entrance shown in a garden party setting',
+    primaryBuyer: 'event-rental companies, nightclub promoters, festivals, resorts, wedding planners, and branded activation agencies',
+    application: 'night events, VIP lounges, pop-up bars, wedding receptions, festivals, corporate parties, and hospitality programs',
+    customizationFocus: '10 x 10 m layout, entrance and window positions, bar or lounge configuration, lighting interfaces, black or custom colors, printed branding, anchoring, ventilation, and export packing',
+  },
+  'black-inflatable-party-tent': {
+    keywords: ['black inflatable party tent', 'black party tent', 'vip inflatable nightclub', 'party tent black'],
+    productType: 'commercial black inflatable party tent',
+    visibleLayout: 'a compact black quilted event tent with a peaked roof, front entry, side window, and dark interior shown in a warehouse setup',
+    primaryBuyer: 'party-rental operators, wedding suppliers, event planners, hospitality venues, product-launch teams, and mobile bar businesses',
+    application: 'private parties, VIP receptions, wedding lounges, product launches, pop-up bars, photo areas, and indoor or outdoor event packages',
+    customizationFocus: '4.5 x 4.5 x 3.5 m footprint, entry and window layout, interior service plan, color, logo panels, lighting, anchoring, ventilation, blower package, and transport packing',
+  },
+  'inflatable-night-club': {
+    keywords: ['inflatable night club', 'inflatable dance club', 'portable inflatable nightclub', 'inflatable nightclub inside'],
+    productType: 'commercial 9 x 6 m inflatable night club',
+    visibleLayout: 'a long black 9 x 6 m inflatable event enclosure with quilted walls, a side entry, and a spacious interior footprint for programmed nightlife use',
+    primaryBuyer: 'festival organizers, club promoters, event-rental fleets, resorts, exhibition contractors, and corporate event agencies',
+    application: 'dance events, festival nightlife, mobile club programs, sponsor lounges, exhibition after-parties, and temporary hospitality spaces',
+    customizationFocus: '9 x 6 m floor plan, entrance and egress, dance-floor or bar zoning, lighting and sound interfaces, colors, sponsor graphics, anchoring, ventilation, and export packing',
   },
 };
 
@@ -1092,6 +1128,10 @@ function campingTentProfile(product: Product) {
   return campingTentProfiles[product.productSlug];
 }
 
+function nightclubTentProfile(product: Product) {
+  return nightclubTentProfiles[product.productSlug];
+}
+
 function battingCageKeywordSet(product: Product) {
   return battingCageKeywordSets[product.productSlug] ?? [];
 }
@@ -1224,6 +1264,8 @@ export function productSeoTitle(product: Product) {
   if (bubbleTent) return seoTitle(`${bubbleTent.keywords[0]} | Commercial Event Tent`);
   const campingTent = campingTentProfile(product);
   if (campingTent) return seoTitle(`${campingTent.keywords[0]} | Commercial Air Tent`);
+  const nightclubTent = nightclubTentProfile(product);
+  if (nightclubTent) return seoTitle(`${nightclubTent.keywords[0]} | Commercial Event Tent`);
   if (product.category === 'Bumper Ball') {
     const primary = bumperBallKeywordSet(product)[0] || 'inflatable bumper ball';
     return seoTitle(`${primary} | Commercial Bubble Soccer`);
@@ -1246,6 +1288,7 @@ export function productMetaDescription(product: Product) {
   const interactiveProfile = interactiveGameProfile(product);
   const bubbleTent = bubbleTentProfile(product);
   const campingTent = campingTentProfile(product);
+  const nightclubTent = nightclubTentProfile(product);
   if (interactiveProfile) {
     return truncateMeta(`Commercial ${interactiveProfile.keywords[0]} for ${interactiveProfile.application}. Confirm ${interactiveProfile.keywords[1]}, OEM branding, layout, and factory quote.`, 158);
   }
@@ -1254,6 +1297,9 @@ export function productMetaDescription(product: Product) {
   }
   if (campingTent) {
     return truncateMeta(`YIC makes ${campingTent.keywords[0]} for commercial camping, glamping, rentals, and outdoor hospitality. OEM layout, branding, anchoring, and inflation packages.`, 158);
+  }
+  if (nightclubTent) {
+    return truncateMeta(`YIC makes ${nightclubTent.keywords[0]} for events, nightlife, rentals, and hospitality. OEM floor plan, branding, lighting, anchoring, and factory quotes.`, 158);
   }
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product).slice(0, 2).join(' and ');
@@ -1295,6 +1341,13 @@ export function productKeyFeatures(product: Product) {
     `${product.material} listed for this model`,
     `Commercial applications: ${campingTent.application}`,
     `Specify ${campingTent.customizationFocus} before production`,
+  ];
+  const nightclubTent = nightclubTentProfile(product);
+  if (nightclubTent) return [
+    `Format shown: ${nightclubTent.visibleLayout}`,
+    `${product.material} listed for this model`,
+    `Commercial applications: ${nightclubTent.application}`,
+    `Specify ${nightclubTent.customizationFocus} before production`,
   ];
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) return [
     `Reference training enclosure: ${product.dimensions.trim()}`,
@@ -1467,6 +1520,12 @@ export function productKeywordVariants(product: Product) {
     return [...new Set(variants)].filter((value) => value.length > 2);
   }
 
+  if (nightclubTentProfile(product)) {
+    add(...nightclubTentProfile(product)!.keywords);
+    add(`commercial ${base}`, `${base} for rental`, `custom ${base}`);
+    return [...new Set(variants)].filter((value) => value.length > 2);
+  }
+
   if (battingCageKeywordSet(product).length) {
     add(...battingCageKeywordSet(product));
     return [...new Set(variants)].filter((value) => value.length > 2);
@@ -1611,6 +1670,8 @@ export function productDisplayTitle(product: Product) {
   if (primaryBubbleTentKeyword) return primaryBubbleTentKeyword.charAt(0).toUpperCase() + primaryBubbleTentKeyword.slice(1);
   const primaryCampingTentKeyword = campingTentProfile(product)?.keywords[0];
   if (primaryCampingTentKeyword) return primaryCampingTentKeyword.charAt(0).toUpperCase() + primaryCampingTentKeyword.slice(1);
+  const primaryNightclubKeyword = nightclubTentProfile(product)?.keywords[0];
+  if (primaryNightclubKeyword) return primaryNightclubKeyword.charAt(0).toUpperCase() + primaryNightclubKeyword.slice(1);
   const primaryRingTossKeyword = ringTossKeywordSet(product)[0];
   if (primaryRingTossKeyword) return primaryRingTossKeyword.charAt(0).toUpperCase() + primaryRingTossKeyword.slice(1);
   const primaryBumperKeyword = product.category === 'Bumper Ball' ? bumperBallKeywordSet(product)[0] : '';
@@ -1759,6 +1820,7 @@ export function productDetailContent(product: Product): DetailContent {
   const interactiveProfile = interactiveGameProfile(product);
   const bubbleTent = bubbleTentProfile(product);
   const campingTent = campingTentProfile(product);
+  const nightclubTent = nightclubTentProfile(product);
   if (interactiveProfile) {
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
@@ -1857,6 +1919,39 @@ export function productDetailContent(product: Product): DetailContent {
         'Campsite, resort, rental, or event use; usable footprint; height clearance; access route; surface; installation duration; and expected occupancy',
         'Required entrance, window, ventilation, interior layout, floor, lighting, color, logo, and branding brief',
         'Quantity, destination, target delivery date, blower or pump, anchoring, packing, storage, and custom-size requirements',
+      ],
+    };
+  }
+  if (nightclubTent) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const footprint = `the listed ${product.dimensions.trim()} footprint`;
+    return {
+      template,
+      productType: nightclubTent.productType,
+      primaryBuyer: nightclubTent.primaryBuyer,
+      purpose: `This ${nightclubTent.productType} is shown as ${nightclubTent.visibleLayout}. It is planned for ${nightclubTent.application}.`,
+      applications: [
+        { title: 'Nightlife and event programs', text: `Use ${footprint} for ${nightclubTent.application}, with a planned entrance, egress, lighting or sound route, service position, and guest circulation.` },
+        { title: 'Rental and temporary venues', text: 'Review the ground or floor condition, anchoring, power, lighting, sound, weather exposure, setup crew, cleaning, drying, transport, and dry storage before repeat events.' },
+        { title: 'Branded hospitality', text: 'Plan the enclosure around bar or lounge zoning, sponsor visibility, artwork, lighting, signage, queue flow, ventilation, and the approved venue brief.' },
+      ],
+      planningPoints: [
+        `${footprint}, height clearance, entry and egress direction, anchoring surface, service route, lighting and sound interfaces, and guest circulation`,
+        'Venue weather plan, ventilation, occupancy, event duration, operating supervision, power, fire or local venue rules, and access for setup and packing',
+        `${product.material} specification, cleaning and drying procedure, repair-kit access, transport, and dry storage between installations`,
+      ],
+      customization: [
+        nightclubTent.customizationFocus,
+        'Commercial color scheme, print-ready logo panels, sponsor graphics, menu or event signage, and guest-facing interior treatment',
+        'Blower, anchoring, lighting and sound interfaces, repair kit, carry bags, export packing, and destination-specific requirements',
+      ],
+      operationNote: `Use the ${nightclubTent.productType} only on a suitable site with the specified anchoring, access, ventilation, power, and event equipment arrangement. The operator must assess weather, occupancy, supervision, cleaning, drying, fire or venue rules, and local requirements before each installation.`,
+      quoteItems: [
+        'Venue type, usable footprint, height clearance, access route, floor or ground surface, installation duration, and expected guest flow',
+        'Required entrance and egress, bar or dance-floor zoning, lighting or sound interfaces, artwork, sponsor graphics, and event brief',
+        'Quantity, destination, target delivery date, blower and anchoring requirements, packing, storage, and custom layout needs',
       ],
     };
   }
@@ -2849,6 +2944,7 @@ export function productFaqs(product: Product) {
   const interactiveProfile = interactiveGameProfile(product);
   const bubbleTent = bubbleTentProfile(product);
   const campingTent = campingTentProfile(product);
+  const nightclubTent = nightclubTentProfile(product);
   if (interactiveProfile) {
     const terms = interactiveProfile.keywords;
     const customSize = /custom dimensions available/i.test(product.dimensions);
@@ -2882,6 +2978,17 @@ export function productFaqs(product: Product) {
       { question: `How should I plan ventilation and overnight use for the ${terms[2]}?`, answer: `Plan the entry and exit, ventilation arrangement, interior sleeping or lounge layout, inflation equipment and power route where applicable, weather plan, staff supervision, occupancy, and local campsite requirements. The operator must set safe capacity and operating procedures for the actual site.` },
       { question: `Can this ${terms[3]} be used at an outdoor campsite?`, answer: `Outdoor use depends on the approved structure, site surface, anchoring method, weather plan, inflation equipment, supervision, and local rules. Confirm these conditions before ordering; do not assume weather performance beyond the approved specification.` },
       { question: `What should I include in a quotation request for this ${terms[0]}?`, answer: `Send the campsite, resort, rental, or event use; site plan; target footprint; height clearance; ground surface; entrance, window, and interior requirements; branding files; quantity; destination; target delivery date; and inflation, anchoring, packing, and storage needs.` },
+    ];
+  }
+  if (nightclubTent) {
+    const terms = nightclubTent.keywords;
+    return [
+      { question: `What is this ${terms[0]} designed for?`, answer: `${content.purpose} It is intended as a managed temporary event enclosure with defined guest flow, equipment placement, and venue supervision.` },
+      { question: `How much clearance should I plan for this ${nightclubTent.productType}?`, answer: `Start with the listed ${product.dimensions.trim()} reference and add room for entrance and egress, anchoring, service access, lighting or sound equipment, guest circulation, queue space, and packing. Confirm the final layout from the venue plan before production.` },
+      { question: `Can the ${terms[1]} be customized for a commercial event or rental fleet?`, answer: `Yes. YIC can review ${nightclubTent.customizationFocus}, commercial colors, printed logos, sponsor graphics, bar or dance-floor zoning, lighting and sound interfaces, anchoring, and export packing.` },
+      { question: `How should I plan ventilation and guest flow inside the ${terms[2]}?`, answer: `Plan entry and egress, accessible circulation, ventilation, power and equipment routes, bar or dance-floor layout, expected occupancy, event staffing, emergency access, and venue rules. The operator must set capacity and operating procedures for the actual site.` },
+      { question: `Can this ${terms[3]} be installed outdoors?`, answer: `Outdoor installation depends on the approved structure, surface, anchoring method, weather plan, power, lighting and sound equipment, supervision, and local venue requirements. Confirm these conditions before ordering; do not assume weather performance beyond the approved specification.` },
+      { question: `What should I include in a quotation request for this ${terms[0]}?`, answer: `Send the venue type, site plan, target footprint, height clearance, floor or ground surface, entrance and egress requirements, bar or dance-floor zoning, equipment interfaces, branding files, quantity, destination, target delivery date, and anchoring, packing, or storage needs.` },
     ];
   }
   if (product.category === 'Bumper Ball') {

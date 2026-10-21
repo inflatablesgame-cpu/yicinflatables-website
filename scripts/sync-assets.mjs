@@ -32,6 +32,7 @@ function cleanCategoryName(value) {
 function cleanProductName(value) {
   const withoutMaterialNotes = value
     .replace(/材料.*?PVC/iu, ' ')
+    .replace(/材料\s*Oxford/iu, ' ')
     .replace(/材料是牛津布/iu, ' ')
     .replace(/所有材料.*$/u, ' ');
   return withoutMaterialNotes
@@ -57,6 +58,7 @@ function sortImages(left, right) {
 
 function materialFor(categoryName, productName) {
   if (/bumper ball/i.test(categoryName) || /\btpu\b/i.test(productName)) return 'Commercial TPU';
+  if (/牛津布|oxford/i.test(productName)) return 'Oxford fabric';
   const thicknessMatch = productName.match(/(0)\.\s*(\d+)\s*mm/i);
   if (thicknessMatch) return `${thicknessMatch[1]}.${thicknessMatch[2]}mm commercial PVC`;
   return 'Commercial grade 0.55mm (1000D, 18 OZ) PVC';
