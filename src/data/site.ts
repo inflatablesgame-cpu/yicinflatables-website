@@ -1560,8 +1560,8 @@ export function productKeyFeatures(product: Product) {
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) return [
     `Visible layout: ${newWaterPark.visual}`,
-    `Reference dimensions: ${product.dimensions.trim()}`,
-    `Listed material: ${product.material}`,
+    `Commercial application: ${newWaterPark.application}`,
+    `Typical project buyers: ${newWaterPark.buyer}`,
     `Customization: ${newWaterPark.options}`,
   ];
   const newTent = newInflatableTentProfile(product);
@@ -1643,10 +1643,10 @@ export function productKeyFeatures(product: Product) {
     'Confirm ball size, hoop height, scoring rules, player rotation, anchoring, and queue layout before production',
   ];
   if (waterWalkingBallKeywordSet(product).length) return [
-    `Product format: ${waterWalkingBallKeywordSet(product)[0]} for supervised aquatic recreation`,
-    '2 m diameter reference size for venue footprint, access, and water-area planning',
-    `${product.material} construction listed for this model`,
-    'Plan water depth, access, participant turns, rescue procedures, and venue operating requirements before use',
+    `Activity format: ${waterWalkingBallKeywordSet(product)[0]} for a managed water session`,
+    'Transparent spherical design lets operators monitor the participant during a supervised turn',
+    `Commercial use: ${waterWalkingBallProfile(product)!.application}`,
+    'Plan participant flow, access, recovery procedures, and venue rules before operation',
   ];
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) return [
     /dual target/.test(searchable) ? 'Dual target faces for head-to-head throwing turns' : 'Inflatable target wall designed for supervised axe-style throwing games',
