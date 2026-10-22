@@ -592,6 +592,7 @@ const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
     buyer: 'resorts, water-play venues, holiday parks, event operators, rental businesses, and recreation-project buyers',
     application: 'supervised splash-play programs, seasonal resort activities, family event zones, and temporary water-play installations',
     options: 'pool colorway, slide and entry arrangement, decorative theme, printed branding, overall footprint, blower package, anchoring approach, packing, and accessory set',
+    faqQuestions: ['What features are included in this aqua inflatable water park?', 'How much space should I plan for the 16 × 4 m pool layout?', 'Which material is listed for this inflatable water park pool?', 'Can the slides, bear theme, and splash-pool colors be customized?', 'What water, access, and supervision conditions must be confirmed before setup?', 'What project details are needed for a factory quote on this splash and slide water park?'],
   },
   'outdoor-inflatable-water-park': {
     keywords: ['outdoor inflatable water park', 'commercial inflatable water park', 'dual slide inflatable water park', 'water park with slide jump'],
@@ -600,6 +601,7 @@ const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
     buyer: 'outdoor recreation venues, water parks, resorts, campsite operators, municipal event teams, and commercial rental fleets',
     application: 'outdoor water-play zones, resort recreation, summer events, campsite programming, and commercial rental packages',
     options: 'slide count and orientation, entrance and exit flow, color palette, printed artwork, water-play layout, branding, anchors, accessories, and export packing',
+    faqQuestions: ['What does the outdoor inflatable water park configuration include?', 'How should operators plan the footprint and access around this pool?', 'Which PVC material specification is listed for this commercial inflatable water park?', 'Can the slide arrangement, colors, or exterior artwork be changed?', 'What site and operating checks are needed for outdoor use?', 'What should I send to request a quote for a dual slide inflatable water park?'],
   },
 };
 
