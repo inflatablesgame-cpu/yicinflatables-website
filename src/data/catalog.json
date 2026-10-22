@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T05:20:13.208Z",
+  "generatedAt": "2026-10-22T08:57:58.059Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -416,10 +416,12 @@
     {
       "name": "Inflatable Water Park",
       "slug": "inflatable-water-park",
-      "count": 2,
+      "count": 4,
       "heroImage": "/assets/product/Inflatable%20Water%20Park/10x8x0.6m%20%20%E6%9D%90%E6%96%990.6mm%20PVC%20%20%20%20commercial%20inflatable%20paddle%20boat%20pool%20for%20sale/1.webp",
       "products": [
         "inflatable-water-park--commercial-inflatable-paddle-boat-pool-for-sale-1",
+        "inflatable-water-park--aqua-inflatable-water-park-3",
+        "inflatable-water-park--outdoor-inflatable-water-park-4",
         "inflatable-water-park--floating-island-inflatable-water-park-2"
       ]
     },
@@ -6448,6 +6450,42 @@
         "/assets/product/Inflatable%20Water%20Park/10x8x0.6m%20%20%E6%9D%90%E6%96%990.6mm%20PVC%20%20%20%20commercial%20inflatable%20paddle%20boat%20pool%20for%20sale/5.webp"
       ],
       "dimensions": "10x8x0.6m  ",
+      "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-park--aqua-inflatable-water-park-3",
+      "productSlug": "aqua-inflatable-water-park",
+      "category": "Inflatable Water Park",
+      "categorySlug": "inflatable-water-park",
+      "title": "aqua inflatable water park",
+      "sourceName": "16x4m      aqua inflatable water park",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20aqua%20inflatable%20water%20park/1.webp",
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20aqua%20inflatable%20water%20park/2.webp",
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20aqua%20inflatable%20water%20park/3.webp",
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20aqua%20inflatable%20water%20park/4.webp",
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20aqua%20inflatable%20water%20park/5.webp"
+      ],
+      "dimensions": "16x4m      ",
+      "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-park--outdoor-inflatable-water-park-4",
+      "productSlug": "outdoor-inflatable-water-park",
+      "category": "Inflatable Water Park",
+      "categorySlug": "inflatable-water-park",
+      "title": "outdoor inflatable water park",
+      "sourceName": "16x4m      outdoor inflatable water park",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20outdoor%20inflatable%20water%20park/1.webp",
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20outdoor%20inflatable%20water%20park/2.webp",
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20outdoor%20inflatable%20water%20park/3.webp",
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20outdoor%20inflatable%20water%20park/4.webp",
+        "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20outdoor%20inflatable%20water%20park/5.webp"
+      ],
+      "dimensions": "16x4m      ",
       "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
     },
     {

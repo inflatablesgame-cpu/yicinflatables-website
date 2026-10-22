@@ -172,10 +172,10 @@ const categoryOptionDetails: Record<string, Record<string, string>> = {
     'Custom multi-zone entertainment projects': 'A venue plan can guide the theme, modules, entry and exit routes, capacity, and installation sequence.',
   },
   'Inflatable Water Park': {
-    'Floating water parks': 'Connected floating modules create an active guest attraction for managed water venues and resorts.',
-    'Inflatable water playgrounds': 'Water-play modules can be selected around age groups, water conditions, access, and expected capacity.',
-    'Water obstacle courses': 'Climbing, balancing, and sliding challenges can create a high-energy aquatic route for group visitors.',
-    'Custom modular aquatic attractions': 'A water-area plan can guide module selection, branding, anchoring, guest flow, and seasonal storage.',
+    'Floating aqua parks for lakes and resorts': 'A floating aqua park or floating water park combines connected modules into a visible destination attraction for lakes, resorts, and managed recreation venues. Confirm depth, shore access, anchoring, guest capacity, and supervision before finalizing the module plan.',
+    'Commercial inflatable water parks on water': 'A commercial inflatable water park on water can be arranged around slides, climbing, balance, jump, and rest modules. The final layout should match the water area, operating model, local requirements, and approved installation specification.',
+    'Inflatable water park slides and challenge modules': 'Inflatable water park slides, water-play connections, and challenge modules let operators build a higher-energy route. Plan entry, exit, circulation, queueing, staff positions, water depth, and compatible modules for the intended audience.',
+    'Custom lake, pool, beach, and destination water-park layouts': 'A lake inflatable water park, inflatable water park pool, beach inflatable water park, or destination project can be engineered around the available water site, modules, branding, anchoring, transport, seasonal storage, and operating procedures.',
   },
   'Inflatable Water Slide': {
     'Commercial single-lane water slides': 'A focused wet-use attraction for resorts, pool venues, seasonal rentals, and supervised family recreation.',
@@ -247,10 +247,10 @@ const categoryBuyingGuides: Record<string, CategoryGuide[]> = {
     { title: 'Plan installation and growth', text: 'Review modules, phased expansion, access, packing, installation schedule, storage, and target opening date.' },
   ],
   'Inflatable Water Park': [
-    { title: 'Survey the water site', text: 'Confirm water area, depth, conditions, access, anchoring locations, weather, and operating season.' },
-    { title: 'Plan capacity and flow', text: 'Define guest numbers, entry and exit, module circulation, supervision, rescue planning, and age groups.' },
-    { title: 'Choose the module mix', text: 'Combine slides, climbing, balancing, jumping, resting, and obstacle modules for the intended experience.' },
-    { title: 'Prepare seasonal handling', text: 'Plan installation, inspection, cleaning, drying, repair, removal, packing, transport, and storage.' },
+    { title: 'Survey the water site', text: 'For an inflatable water park on water, a lake inflatable water park, or a floating aqua park, confirm water area, verified depth, conditions, shore or dock access, anchoring locations, weather exposure, and operating season.' },
+    { title: 'Plan capacity and flow', text: 'Define guest numbers, entry and exit, module circulation, rescue planning, supervision, age groups, spectator separation, and how the floating water park will be controlled during busy sessions.' },
+    { title: 'Choose the module mix', text: 'Build a commercial inflatable water park with water park slides, climbing, balancing, jumping, resting, and obstacle modules. Select compatible connections and a route that fits the intended audience and water site.' },
+    { title: 'Prepare seasonal handling', text: 'Plan installation, inspection, cleaning, drying, repair, removal, packing, transport, and storage. These details affect both inflatable water park price and whether a project can operate efficiently across seasons.' },
   ],
   'Inflatable Water Slide': [
     { title: 'Confirm wet-use conditions', text: 'Share water depth, supply, drainage, surface, access, and the planned landing or splash-pool area before selecting a model.' },
@@ -407,14 +407,22 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Inflatable Games', 'Inflatable Obstacle Course', 'Inflatable Water Park'],
   },
   'Inflatable Water Park': {
-    title: 'Commercial Inflatable Water Parks | OEM Manufacturer | YIC',
-    description: 'Commercial inflatable water parks and floating water attractions from YIC for resorts, parks, rental fleets and recreation venues. Custom modules and OEM production.',
-    h1: 'Commercial Inflatable Water Parks for Resorts and Recreation Venues',
-    intro: 'YIC manufactures commercial inflatable water parks, floating obstacle courses, water-play modules, and aquatic attractions for resorts, water parks, recreation businesses, and seasonal rental operators. Water depth, anchoring, access, guest capacity, storage, and local operating conditions should be confirmed early. Use the available concepts as a starting point for a custom water attraction brief.',
-    options: ['Floating water parks', 'Inflatable water playgrounds', 'Water obstacle courses', 'Custom modular aquatic attractions'],
-    buyers: [{ title: 'Water parks and resorts', text: 'Create a high-visibility aquatic attraction with modules planned around water depth, guest flow, and capacity.' }, { title: 'Recreation operators', text: 'Build a seasonal or permanent water activity program with storage, transport, anchoring, and maintenance planning.' }, { title: 'Distributors and project buyers', text: 'Coordinate a custom module range, branding, packaging, and documentation for a destination-market project.' }],
-    oem: 'Share the water area, depth, module concept, target capacity, season, artwork, quantity, and destination. YIC can support layout, custom modules, material review, inspection, packing, and export coordination.',
-    faq: [{ question: 'What site details are essential for a floating water park?', answer: 'Confirm water depth, area, access, anchoring points, expected capacity, weather and season, rescue or supervision plan, storage, and local operating requirements.' }, { question: 'Can the water park modules be arranged to fit our site?', answer: 'Yes. YIC can review the water area and create a modular arrangement with custom colors, branding, obstacle features, and project dimensions.' }, { question: 'How should a water attraction be stored between seasons?', answer: 'Confirm cleaning, drying, deflation, repair, packed volume, protection, and storage conditions as part of the product and operating plan.' }],
+    title: 'Commercial Inflatable Water Parks & Floating Aqua Parks | YIC',
+    description: 'Commercial inflatable water parks, floating aqua parks and lake water attractions from YIC. OEM modules for resorts, water venues and project buyers.',
+    keywords: 'inflatable water park, inflatable water park on water, water park with inflatables, floating water park, floating aqua park, commercial inflatable water park, inflatable water park for sale, buy inflatable water park, inflatable aqua park for sale, lake inflatable water park, lakeside inflatable water park, floating water park for sale, inflatable water park price, wipeout water park, giant floating water park, inflatable water park on the water, inflatable water park pool, beach inflatable water park, indoor inflatable water park, outdoor floating water park, commercial water park slides, water park with slide jump',
+    h1: 'Commercial Inflatable Water Parks and Floating Aqua Parks',
+    intro: 'YIC manufactures commercial inflatable water parks, floating water parks, and modular aqua parks for resorts, lakes, water venues, recreation operators, and destination projects. The collection covers an inflatable water park on water, a lake inflatable water park, floating obstacle modules, climbing and slide sections, water-play routes, and custom connected layouts. Buyers sourcing an inflatable water park for sale can begin with the water area, depth, access route, anchoring locations, guest capacity, operating season, and local requirements; YIC then develops the module mix, colors, branded graphics, packing, and project quotation around the real site.',
+    options: ['Floating aqua parks for lakes and resorts', 'Commercial inflatable water parks on water', 'Inflatable water park slides and challenge modules', 'Custom lake, pool, beach, and destination water-park layouts'],
+    buyers: [{ title: 'Water parks and resorts', text: 'Build a floating water park or large inflatable water park around water depth, guest circulation, capacity, visibility, rescue planning, and seasonal operations.' }, { title: 'Lake and beach recreation operators', text: 'Plan a lake inflatable water park, beach inflatable water park, or inflatable water park on the water with access, anchoring, entry control, transport, and storage confirmed first.' }, { title: 'Distributors and project buyers', text: 'Source an inflatable water park for sale, commercial water park slides, and a custom module range with private-label colors, packing, documentation, and destination-market planning.' }, { title: 'Pool and indoor water venues', text: 'Review an inflatable water park pool or indoor inflatable water park concept against usable water area, height, access, supervision, local rules, and the approved operating procedure.' }],
+    oem: 'For a commercial inflatable water park, share the water-area drawing, depth, water conditions, access point, anchoring approach, desired modules, target guest capacity, operating season, branding, quantity, and destination. YIC can develop a floating aqua park, lake inflatable water park, or custom water-park layout with slides, climbing, balance, jump, rest, and obstacle modules, then coordinate materials, inspection, packing, and export requirements.',
+    faq: [
+      { question: 'How do I plan a commercial inflatable water park for a lake or resort?', answer: 'Start with the water area, verified depth, shore or dock access, anchoring locations, expected guest capacity, entry and exit route, rescue and supervision plan, weather exposure, operating season, and local rules. These details allow YIC to propose a commercial inflatable water park and connected module layout that suits the actual site.' },
+      { question: 'What is the difference between a floating water park and a floating aqua park?', answer: 'Both terms commonly describe a connected inflatable attraction installed on water. A floating water park may emphasize the overall visitor destination, while a floating aqua park often describes the modular water-play layout. For procurement, the key decisions are module mix, water conditions, access, anchoring, capacity, supervision, and the final approved specification.' },
+      { question: 'Can I buy an inflatable water park for sale with a custom layout?', answer: 'Yes. Buyers looking to buy an inflatable water park or an inflatable water park for sale can specify slides, climbing, balance, jumping, resting, and obstacle modules; overall footprint; colors; logos; and packed configuration. Send a site plan and target capacity so the layout is matched to the water area rather than selected as a generic package.' },
+      { question: 'What affects inflatable water park price?', answer: 'Inflatable water park price depends on the selected modules, overall layout, material and construction specification, accessories, anchoring requirements, branding, quantity, packing, destination, and shipping requirements. A water-area drawing and project brief are more useful for quotation than a price estimate without site details.' },
+      { question: 'Can a lake inflatable water park or beach inflatable water park be installed outdoors?', answer: 'A lake inflatable water park, beach inflatable water park, or inflatable water park on the water must be reviewed for water conditions, access, anchoring, weather plan, operating season, supervision, rescue procedures, and local authority or venue requirements. Outdoor use should follow the approved product and site specification, not assumptions based on images alone.' },
+      { question: 'Which modules work well in a large inflatable water park or wipeout water park concept?', answer: 'A large inflatable water park can combine water park slides, climbing walls, balance routes, jumping features, obstacle modules, rest areas, and connection sections. A wipeout water park concept should be planned around user flow, staffing, water depth, clear access, supervised activity rules, module compatibility, inspection, cleaning, drying, and seasonal storage.' },
+    ],
     related: ['Inflatable Slide', 'Inflatable Theme Park', 'Inflatable Obstacle Course'],
   },
 };
@@ -476,6 +484,10 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 }
 
 export function productDescription(product: Product) {
+  const newWaterPark = newWaterParkProfile(product);
+  if (newWaterPark) {
+    return `YIC manufactures ${newWaterPark.keywords[0]} for ${newWaterPark.buyer}. This ${product.dimensions.trim()} concept is shown as ${newWaterPark.visual}. ${newWaterPark.purpose} The listing specifies ${product.material}. Project options include ${newWaterPark.options}. Related buying searches include ${newWaterPark.keywords.slice(1).join(', ')}. Confirm water depth, site access, supervision, anchoring, operating conditions, and the final configuration before ordering.`;
+  }
   const newTent = newInflatableTentProfile(product);
   if (newTent) {
     const detail = productDetailContent(product);
@@ -515,6 +527,30 @@ const newInflatableTentProfiles: Record<string, NewInflatableTentProfile> = {
 
 function newInflatableTentProfile(product: Product) {
   return product.category === 'Inflatable Tent' ? newInflatableTentProfiles[product.productSlug] : undefined;
+}
+
+type NewWaterParkProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; application: string; options: string };
+const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
+  'aqua-inflatable-water-park': {
+    keywords: ['aqua inflatable water park', 'inflatable water park pool', 'splash and slide water park', 'inflatable water park with slide'],
+    visual: 'a pink-and-white 16 × 4 m round splash-pool layout with raised perimeter walls, multiple slide stations, and bear-themed visual details',
+    purpose: 'The shallow pool-style layout creates a bright, self-contained water-play focal point for managed summer events, resort programs, and venue activity areas.',
+    buyer: 'resorts, water-play venues, holiday parks, event operators, rental businesses, and recreation-project buyers',
+    application: 'supervised splash-play programs, seasonal resort activities, family event zones, and temporary water-play installations',
+    options: 'pool colorway, slide and entry arrangement, decorative theme, printed branding, overall footprint, blower package, anchoring approach, packing, and accessory set',
+  },
+  'outdoor-inflatable-water-park': {
+    keywords: ['outdoor inflatable water park', 'commercial inflatable water park', 'dual slide inflatable water park', 'water park with slide jump'],
+    visual: 'a blue-and-white 16 × 4 m round outdoor water-play pool with multiple slide entries, raised splash walls, and bear-themed exterior artwork',
+    purpose: 'The multi-entry pool format gives operators a visible outdoor water attraction that can be planned around guest circulation, timed sessions, and a supervised seasonal program.',
+    buyer: 'outdoor recreation venues, water parks, resorts, campsite operators, municipal event teams, and commercial rental fleets',
+    application: 'outdoor water-play zones, resort recreation, summer events, campsite programming, and commercial rental packages',
+    options: 'slide count and orientation, entrance and exit flow, color palette, printed artwork, water-play layout, branding, anchors, accessories, and export packing',
+  },
+};
+
+function newWaterParkProfile(product: Product) {
+  return product.category === 'Inflatable Water Park' ? newWaterParkProfiles[product.productSlug] : undefined;
 }
 
 // Each newly published action-sports product owns a separate keyword set. This
@@ -1341,6 +1377,8 @@ function productIntentKeyword(product: Product) {
 
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  const newWaterPark = newWaterParkProfile(product);
+  if (newWaterPark) return seoTitle(`${newWaterPark.keywords[0]} | Commercial Water Park`);
   const newTent = newInflatableTentProfile(product);
   if (newTent) return seoTitle(`${newTent.keywords[0]} | Commercial Inflatable Tent`);
   const interactiveProfile = interactiveGameProfile(product);
@@ -1372,6 +1410,8 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  const newWaterPark = newWaterParkProfile(product);
+  if (newWaterPark) return truncateMeta(`YIC makes ${newWaterPark.keywords[0]} for ${newWaterPark.application}. ${product.dimensions.trim()} · ${product.material}. Custom slides, colors, branding, and factory quotation.`, 158);
   const newTent = newInflatableTentProfile(product);
   if (newTent) return truncateMeta(`YIC manufactures ${newTent.keywords[0]} for ${newTent.use}. ${product.dimensions.trim()}, ${product.material}. OEM layout, branding, anchoring, and project quote.`, 158);
   const interactiveProfile = interactiveGameProfile(product);
@@ -1414,6 +1454,13 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const newWaterPark = newWaterParkProfile(product);
+  if (newWaterPark) return [
+    `Visible layout: ${newWaterPark.visual}`,
+    `Reference dimensions: ${product.dimensions.trim()}`,
+    `Listed material: ${product.material}`,
+    `Customization: ${newWaterPark.options}`,
+  ];
   const newTent = newInflatableTentProfile(product);
   if (newTent) return [
     `Visual format: ${newTent.visual}`,
@@ -1932,6 +1979,31 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const newWaterPark = newWaterParkProfile(product);
+  if (newWaterPark) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: newWaterPark.keywords[0],
+      primaryBuyer: newWaterPark.buyer,
+      purpose: newWaterPark.purpose,
+      applications: [
+        { title: newWaterPark.application, text: `${newWaterPark.purpose} Match sessions, guest movement, and supervision to the actual venue plan.` },
+        { title: 'Seasonal aquatic events', text: `Position this ${newWaterPark.keywords[0]} for a managed seasonal program after confirming the site, water conditions, access, and operating dates.` },
+        { title: 'Commercial venue and rental planning', text: 'Review setup crew, compatible inflation equipment, anchoring, cleaning, drying, storage, and repeat-use needs before adding the unit to a venue or rental program.' },
+      ],
+      planningPoints: [
+        `Confirm the ${product.dimensions.trim()} reference footprint, available water area, depth, access, entry and exit, and surrounding clear zone`,
+        'Plan user group, session capacity, supervision, rescue arrangements, water quality, anchoring, weather limits, and local operating rules',
+        `Review the final slide and pool configuration, accessories, material, and packing against the approved project specification (${product.material})`,
+      ],
+      customization: [newWaterPark.options, 'Theme, color palette, logo placement, printed graphics, and coordinated product-family artwork', 'Approved inflation equipment, anchoring, repair kit, carrying or storage bags, accessories, and export packing'],
+      operationNote: 'Operate only after the site and water conditions, anchoring plan, supervision and rescue procedures, participant rules, inspection, and local requirements are approved. Images do not establish a certified capacity, water-depth range, or weather rating.',
+      quoteItems: [`Intended application: ${newWaterPark.application}; share the venue type, water area, depth, and target season`, `Required footprint, slide and entry layout, theme, branding, material, anchoring, and accessories`, 'Quantity, destination, packing requirements, and requested delivery schedule'],
+    };
+  }
   const newTent = newInflatableTentProfile(product);
   if (newTent) {
     const position = productCategoryPosition(product);
@@ -2821,6 +2893,8 @@ export function productDetailContent(product: Product): DetailContent {
 export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
+  const newWaterPark = newWaterParkProfile(product);
+  if (newWaterPark) return [...newWaterPark.keywords, `${newWaterPark.keywords[0]} manufacturer`, `custom ${newWaterPark.keywords[0]}`, 'YIC Inflatable Sports'].join(', ');
   const newTent = newInflatableTentProfile(product);
   if (newTent) return [...newTent.keywords, `${newTent.keywords[0]} manufacturer`, `custom ${newTent.keywords[0]}`, 'YIC Inflatable Sports'].join(', ');
   const primaryBuyer = productTargetBuyers(product)[0] || 'commercial buyers';
@@ -3117,6 +3191,18 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const newWaterPark = newWaterParkProfile(product);
+  if (newWaterPark) {
+    const customDimensions = /custom dimensions available/i.test(product.dimensions);
+    return [
+      { question: `What does this ${newWaterPark.keywords[0]} layout include?`, answer: `The reference imagery shows ${newWaterPark.visual}. The quoted scope should confirm the exact included sections, accessories, and final configuration.` },
+      { question: `What are the listed dimensions for the ${newWaterPark.keywords[0]}?`, answer: `${customDimensions ? 'Custom dimensions are available.' : `The listed reference size is ${product.dimensions.trim()}.`} Confirm the total footprint, clear area around the pool, access route, water depth, and installation surface in the site drawing.` },
+      { question: `Which material is specified for this inflatable water park?`, answer: `The current catalog lists ${product.material}. Confirm fabric grade, thickness, reinforcement, seams, and component details in the approved production specification before ordering.` },
+      { question: `Can the slides, colors, or theme of this ${newWaterPark.keywords[0]} be customized?`, answer: `YIC can review ${newWaterPark.options}. Send reference artwork, preferred colors, logo files, target footprint, and quantity for a project-specific proposal.` },
+      { question: `What site and operating details are needed before setup?`, answer: `Provide water depth and conditions, usable area, entry and exit access, anchoring points, power and inflation equipment, participant group, supervision and rescue plan, weather exposure, event duration, and local venue requirements. Final operation must follow the approved specification and site procedures.` },
+      { question: `What information should I send to get a factory quote?`, answer: `Share the intended use (${newWaterPark.application}), site plan, water area and depth, target dimensions, chosen options, branding files, quantity, destination, packing needs, and delivery date. The final quotation can then confirm the product configuration, accessories, and project terms.` },
+    ];
+  }
   const newTent = newInflatableTentProfile(product);
   if (newTent) {
     return [
