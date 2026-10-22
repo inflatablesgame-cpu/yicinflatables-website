@@ -529,8 +529,62 @@ function newInflatableTentProfile(product: Product) {
   return product.category === 'Inflatable Tent' ? newInflatableTentProfiles[product.productSlug] : undefined;
 }
 
-type NewWaterParkProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; application: string; options: string };
+type NewWaterParkProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; application: string; options: string; faqQuestions: string[] };
 const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
+  'inflatable-obstacle-course-in-water': {
+    keywords: ['inflatable obstacle course in water', 'water obstacle course', 'obstacle course water park', 'floating obstacle course rental'],
+    visual: 'a blue-and-white beach-themed floating lane with a wave arch, palm details, a small slide, and a character-shaped play station inside an indoor lap pool',
+    purpose: 'The linear pool arrangement combines recognizable beach graphics with a short sequence of pass-through and slide activities, making the concept easy to position as a supervised pool-session attraction.',
+    buyer: 'indoor pool operators, aquatic centers, resorts, swim schools, and event or rental providers',
+    application: 'supervised pool events, aquatic-center activity sessions, resort recreation, and temporary water obstacle course rental programs',
+    options: 'course length, wave arch and slide placement, beach graphics, colors, pool entry and exit, logo panels, anchoring, and included accessories',
+    faqQuestions: ['What obstacles are included in the beach-style inflatable obstacle course in water?', 'How should I plan this water obstacle course for an indoor lap pool?', 'Which PVC specification is listed for this floating course?', 'Can the wave arch, slide, and beach graphics be changed?', 'What pool access and supervision details are needed before installation?', 'What should I provide to request a water obstacle course rental or factory quote?'],
+  },
+  'pool-inflatable-obstacle-course': {
+    keywords: ['pool inflatable obstacle course', 'pool obstacle course', 'obstacle course in pool', 'home pool obstacle course'],
+    visual: 'a compact blue-and-white floating pool course with a raised center arch, side rails, palm accents, a two-lane front slide, and a character play island',
+    purpose: 'Its clearly defined pool footprint and short play sequence help an aquatic venue plan timed, supervised turns without presenting the unit as a large lake-based aqua park.',
+    buyer: 'public and private pool operators, hotel recreation teams, family activity venues, and commercial pool-event planners',
+    application: 'indoor swimming pool sessions, hotel pool entertainment, supervised family events, and small-format pool attractions',
+    options: 'overall pool footprint, arch clearance, slide count and orientation, character details, pool-edge access, colors, branding, and anchor points',
+    faqQuestions: ['What play sequence does this pool inflatable obstacle course show?', 'How can I size the layout for a pool obstacle course?', 'Is this pool obstacle course specified for a particular material?', 'Can the slides and character play island be repositioned?', 'How should operators organize entry, turns, and supervision in a swimming pool?', 'Which project details help price a home pool obstacle course or commercial version?'],
+  },
+  'swimming-pool-inflatable-obstacle-course': {
+    keywords: ['swimming pool inflatable obstacle course', 'swimming pool inflatable course', 'pool obstacle course rentals', 'inflatable swimming pool obstacle course'],
+    visual: 'a green, yellow, and brown floating balance-and-crawl obstacle shaped with overhead crossbars, rounded side challenges, and a crocodile head at the finish',
+    purpose: 'The jungle-animal silhouette and low-profile sequence make this model a themed swimming-pool challenge where operators can organize supervised turns and control participant flow.',
+    buyer: 'swimming pool venues, leisure centers, camps, school activity programs, and commercial aquatic-event operators',
+    application: 'pool obstacle sessions, camp recreation, school water days, family leisure programs, and swimming pool inflatable course events',
+    options: 'jungle colors, crocodile or animal artwork, obstacle spacing, course length, entry and finish zones, branding, anchors, and packing',
+    faqQuestions: ['What challenge features appear on this swimming pool inflatable obstacle course?', 'Can this inflatable swimming pool obstacle course be configured for a venue pool?', 'What material does the catalog list for this aquatic course?', 'Can the crocodile finish and jungle color scheme be customized?', 'What participant flow and supervision plan should a pool operator prepare?', 'What information is needed for pool obstacle course rentals or a purchase quote?'],
+  },
+  'obstacle-course-swimming-pool': {
+    keywords: ['lake obstacle course', 'floating inflatable obstacle course', 'floating lake obstacle course', 'inflatable course on lake'],
+    visual: 'a large connected lake-style aqua course with a blue, coral, and white palette, multiple inflatable platforms, arches, climbing and slide stations, and a central unicorn feature',
+    purpose: 'The linked modular layout is intended as a destination-scale floating attraction whose routes and components need to be planned against the actual water area, access, anchoring, and supervised operating model.',
+    buyer: 'lake operators, destination resorts, beach recreation businesses, aqua parks, and inflatable water-course project buyers',
+    application: 'lake recreation, resort aqua parks, beach attractions, seasonal floating obstacle course rental, and destination water activities',
+    options: 'module sequence, connection points, floating course footprint, color blocks, themed centerpiece, route and entry design, anchoring, and transport packing',
+    faqQuestions: ['What modules are visible in this lake obstacle course concept?', 'How do I plan a floating inflatable obstacle course for a lake site?', 'Which material specification is listed for this modular course?', 'Can the aqua modules and themed centerpiece be rearranged?', 'What water-area, anchoring, and access details should a lake operator confirm?', 'What information should I send when sourcing a floating obstacle course rental or custom build?'],
+  },
+  'jungle-splash-waterpark': {
+    keywords: ['jungle splash waterpark', 'water park with obstacle course', 'water play obstacle course', 'obstacle course aqua park'],
+    visual: 'a bright yellow-and-green pool obstacle featuring illustrated aquatic characters, two contrasting overhead arches, a crawl-through section, and a sloped slide',
+    purpose: 'Character artwork, color-coded arches, and a compact slide create a story-led splash attraction for aquatic venues that want a defined play sequence rather than a generic floating route.',
+    buyer: 'family aquatic centers, hotel and resort pools, leisure clubs, children’s activity venues, and event organizers',
+    application: 'jungle-themed splash sessions, resort pool programs, supervised family events, and themed water park activity areas',
+    options: 'character artwork, jungle palette, arch and crawl layout, slide orientation, printed panels, dimensions, anchoring, and branded graphics',
+    faqQuestions: ['What makes this jungle splash waterpark different from a generic pool course?', 'Where can a water park with obstacle course layout be used?', 'What PVC material is listed for the jungle splash attraction?', 'Can the jungle characters, arches, and slide layout be customized?', 'How should a venue plan supervised use of this water play obstacle course?', 'What should I include in a quote request for a themed aqua park course?'],
+  },
+  'obstacle-course-in-the-water': {
+    keywords: ['obstacle course in the water', 'obstacle courses on water', 'aqua obstacle course', 'floating water obstacle course'],
+    visual: 'a pirate-themed pool course with yellow and brown side platforms, a central mast-shaped obstacle, themed character artwork, and opposing sloped climb-and-slide ends',
+    purpose: 'The themed end platforms and central mast create a recognizable traverse challenge, while the linear pool configuration supports one-way turns and managed participant flow.',
+    buyer: 'aquatic centers, resort and hotel pools, camp operators, water-event organizers, and commercial inflatable attraction buyers',
+    application: 'pirate-themed pool sessions, supervised camp activities, resort recreation, event programming, and obstacle courses on water',
+    options: 'pirate artwork, mast and side-feature positions, course length, end ramps, colors, entry and exit flow, logo panels, and anchoring',
+    faqQuestions: ['What pirate-themed challenges are shown on this obstacle course in the water?', 'Can the linear course fit different pool or water-area layouts?', 'What material is specified for this floating water obstacle course?', 'Can the central mast, end ramps, and artwork be modified?', 'Which entry, exit, and supervision procedures should operators plan?', 'What details are required for an aqua obstacle course project quotation?'],
+  },
   'aqua-inflatable-water-park': {
     keywords: ['aqua inflatable water park', 'inflatable water park pool', 'splash and slide water park', 'inflatable water park with slide'],
     visual: 'a pink-and-white 16 × 4 m round splash-pool layout with raised perimeter walls, multiple slide stations, and bear-themed visual details',
@@ -1378,7 +1432,7 @@ function productIntentKeyword(product: Product) {
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
   const newWaterPark = newWaterParkProfile(product);
-  if (newWaterPark) return seoTitle(`${newWaterPark.keywords[0]} | Commercial Water Park`);
+  if (newWaterPark) return seoTitle(`${newWaterPark.keywords[0]} | Water Park`);
   const newTent = newInflatableTentProfile(product);
   if (newTent) return seoTitle(`${newTent.keywords[0]} | Commercial Inflatable Tent`);
   const interactiveProfile = interactiveGameProfile(product);
@@ -3195,12 +3249,12 @@ export function productFaqs(product: Product) {
   if (newWaterPark) {
     const customDimensions = /custom dimensions available/i.test(product.dimensions);
     return [
-      { question: `What does this ${newWaterPark.keywords[0]} layout include?`, answer: `The reference imagery shows ${newWaterPark.visual}. The quoted scope should confirm the exact included sections, accessories, and final configuration.` },
-      { question: `What are the listed dimensions for the ${newWaterPark.keywords[0]}?`, answer: `${customDimensions ? 'Custom dimensions are available.' : `The listed reference size is ${product.dimensions.trim()}.`} Confirm the total footprint, clear area around the pool, access route, water depth, and installation surface in the site drawing.` },
-      { question: `Which material is specified for this inflatable water park?`, answer: `The current catalog lists ${product.material}. Confirm fabric grade, thickness, reinforcement, seams, and component details in the approved production specification before ordering.` },
-      { question: `Can the slides, colors, or theme of this ${newWaterPark.keywords[0]} be customized?`, answer: `YIC can review ${newWaterPark.options}. Send reference artwork, preferred colors, logo files, target footprint, and quantity for a project-specific proposal.` },
-      { question: `What site and operating details are needed before setup?`, answer: `Provide water depth and conditions, usable area, entry and exit access, anchoring points, power and inflation equipment, participant group, supervision and rescue plan, weather exposure, event duration, and local venue requirements. Final operation must follow the approved specification and site procedures.` },
-      { question: `What information should I send to get a factory quote?`, answer: `Share the intended use (${newWaterPark.application}), site plan, water area and depth, target dimensions, chosen options, branding files, quantity, destination, packing needs, and delivery date. The final quotation can then confirm the product configuration, accessories, and project terms.` },
+      { question: newWaterPark.faqQuestions[0], answer: `The reference imagery shows ${newWaterPark.visual}. Related buying searches for this configuration include ${newWaterPark.keywords.slice(1).join(', ')}. The quoted scope should confirm the exact included sections, accessories, and final configuration.` },
+      { question: newWaterPark.faqQuestions[1], answer: `${customDimensions ? 'Custom dimensions are available.' : `The listed reference size is ${product.dimensions.trim()}.`} Confirm the total footprint, clear area around the pool, access route, water depth, and installation surface in the site drawing.` },
+      { question: newWaterPark.faqQuestions[2], answer: `The current catalog lists ${product.material}. Confirm fabric grade, thickness, reinforcement, seams, and component details in the approved production specification before ordering.` },
+      { question: newWaterPark.faqQuestions[3], answer: `YIC can review ${newWaterPark.options}. Send reference artwork, preferred colors, logo files, target footprint, and quantity for a project-specific proposal.` },
+      { question: newWaterPark.faqQuestions[4], answer: `Provide water depth and conditions, usable area, entry and exit access, anchoring points, power and inflation equipment, participant group, supervision and rescue plan, weather exposure, event duration, and local venue requirements. Final operation must follow the approved specification and site procedures.` },
+      { question: newWaterPark.faqQuestions[5], answer: `Share the intended use (${newWaterPark.application}), site plan, water area and depth, target dimensions, chosen options, branding files, quantity, destination, packing needs, and delivery date. The final quotation can then confirm the product configuration, accessories, and project terms.` },
     ];
   }
   const newTent = newInflatableTentProfile(product);
