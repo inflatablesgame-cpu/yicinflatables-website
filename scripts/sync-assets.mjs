@@ -32,6 +32,7 @@ function cleanCategoryName(value) {
 function cleanProductName(value) {
   const withoutMaterialNotes = value
     .replace(/材料.*?PVC/iu, ' ')
+    .replace(/材料\s*\d+(?:\.\d+)?\s*TPU/iu, ' ')
     .replace(/材料\s*Oxford/iu, ' ')
     .replace(/材料是牛津布/iu, ' ')
     .replace(/所有材料.*$/u, ' ');
@@ -57,6 +58,8 @@ function sortImages(left, right) {
 }
 
 function materialFor(categoryName, productName) {
+  const tpuMatch = productName.match(/材料\s*(\d+(?:\.\d+)?)\s*TPU/i);
+  if (tpuMatch) return `${tpuMatch[1]} TPU`;
   if (/bumper ball/i.test(categoryName) || /\btpu\b/i.test(productName)) return 'Commercial TPU';
   if (/牛津布|oxford/i.test(productName)) return 'Oxford fabric';
   const thicknessMatch = productName.match(/(0)\.\s*(\d+)\s*mm/i);

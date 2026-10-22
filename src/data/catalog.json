@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T11:05:48.280Z",
+  "generatedAt": "2026-10-22T14:09:00.154Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -416,12 +416,16 @@
     {
       "name": "Inflatable Water Park",
       "slug": "inflatable-water-park",
-      "count": 10,
+      "count": 14,
       "heroImage": "/assets/product/Inflatable%20Water%20Park/10x8x0.6m%20%20%E6%9D%90%E6%96%990.6mm%20PVC%20%20%20%20commercial%20inflatable%20paddle%20boat%20pool%20for%20sale/1.webp",
       "products": [
         "inflatable-water-park--commercial-inflatable-paddle-boat-pool-for-sale-1",
         "inflatable-water-park--aqua-inflatable-water-park-3",
         "inflatable-water-park--outdoor-inflatable-water-park-4",
+        "inflatable-water-park--1-0tpu-2m-water-walking-ball-11",
+        "inflatable-water-park--1-0tpu-human-water-walking-ball-12",
+        "inflatable-water-park--1-0tpu-inflatable-walking-water-ball-13",
+        "inflatable-water-park--1-0tpu-zorb-water-ball-14",
         "inflatable-water-park--floating-island-inflatable-water-park-2",
         "inflatable-water-park--inflatable-obstacle-course-in-water-5",
         "inflatable-water-park--pool-inflatable-obstacle-course-6",
@@ -6492,6 +6496,78 @@
         "/assets/product/Inflatable%20Water%20Park/16x4m%20%20%20%20%20%20outdoor%20inflatable%20water%20park/5.webp"
       ],
       "dimensions": "16x4m      ",
+      "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-park--1-0tpu-2m-water-walking-ball-11",
+      "productSlug": "water-walking-ball",
+      "category": "Inflatable Water Park",
+      "categorySlug": "inflatable-water-park",
+      "title": "water walking ball",
+      "sourceName": "2m Dia   材料1.0TPU    2m water walking ball",
+      "material": "1.0 TPU",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%202m%20water%20walking%20ball/1.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%202m%20water%20walking%20ball/2.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%202m%20water%20walking%20ball/3.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%202m%20water%20walking%20ball/4.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%202m%20water%20walking%20ball/5.webp"
+      ],
+      "dimensions": "2m Dia",
+      "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-park--1-0tpu-human-water-walking-ball-12",
+      "productSlug": "human-water-walking-ball",
+      "category": "Inflatable Water Park",
+      "categorySlug": "inflatable-water-park",
+      "title": "human water walking ball",
+      "sourceName": "2m Dia   材料1.0TPU    human water walking ball",
+      "material": "1.0 TPU",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20human%20water%20walking%20ball/1.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20human%20water%20walking%20ball/2.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20human%20water%20walking%20ball/3.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20human%20water%20walking%20ball/4.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20human%20water%20walking%20ball/5.webp"
+      ],
+      "dimensions": "2m Dia",
+      "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-park--1-0tpu-inflatable-walking-water-ball-13",
+      "productSlug": "inflatable-walking-water-ball",
+      "category": "Inflatable Water Park",
+      "categorySlug": "inflatable-water-park",
+      "title": "inflatable walking water ball",
+      "sourceName": "2m Dia   材料1.0TPU    inflatable walking water ball",
+      "material": "1.0 TPU",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20inflatable%20walking%20water%20ball/1.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20inflatable%20walking%20water%20ball/2.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20inflatable%20walking%20water%20ball/3.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20inflatable%20walking%20water%20ball/4.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20inflatable%20walking%20water%20ball/5.webp"
+      ],
+      "dimensions": "2m Dia",
+      "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-park--1-0tpu-zorb-water-ball-14",
+      "productSlug": "zorb-water-ball",
+      "category": "Inflatable Water Park",
+      "categorySlug": "inflatable-water-park",
+      "title": "zorb water ball",
+      "sourceName": "2m Dia   材料1.0TPU    zorb water ball",
+      "material": "1.0 TPU",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20zorb%20water%20ball/1.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20zorb%20water%20ball/2.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20zorb%20water%20ball/3.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20zorb%20water%20ball/4.webp",
+        "/assets/product/Inflatable%20Water%20Park/2m%20Dia%20%20%20%E6%9D%90%E6%96%991.0TPU%20%20%20%20zorb%20water%20ball/5.webp"
+      ],
+      "dimensions": "2m Dia",
       "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
     },
     {

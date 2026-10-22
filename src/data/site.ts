@@ -741,7 +741,49 @@ const battingCageProfiles: Record<string, BattingCageProfile> = {
 
 const waterWalkingBallKeywordSets: Record<string, string[]> = {
   'inflatable-water-walking-ball': ['inflatable water walking ball', 'water walking roll ball', 'water walking zorb', 'water zorbing price'],
+  'water-walking-ball': ['2m water walking ball', 'walking ball', 'human hamster ball pool', 'water walking roll ball'],
+  'human-water-walking-ball': ['human water walking ball', 'human hamster ball water', 'human sized hamster ball for water', 'water walking ball for humans'],
+  'inflatable-walking-water-ball': ['inflatable walking water ball', 'walking water ball', 'water walking zorb', 'water walking ball inflatable'],
+  'zorb-water-ball': ['zorb water ball', 'giant water hamster ball', 'water walking zorb ball', 'water zorbing price'],
 };
+
+type WaterWalkingBallProfile = { purpose: string; buyer: string; application: string; faqQuestions: string[] };
+const waterWalkingBallProfiles: Record<string, WaterWalkingBallProfile> = {
+  'inflatable-water-walking-ball': {
+    purpose: 'This inflatable water walking ball is a transparent TPU sphere for supervised walking or rolling on a managed water surface. Confirm the operating area, water conditions, participant format, and emergency access with the venue before use.',
+    buyer: 'water parks, aquatic recreation centers, resorts, event operators, and commercial inflatable rental businesses',
+    application: 'a supervised water-walking activity for aquatic venues, events, and commercial rental programs',
+    faqQuestions: ['What is an inflatable water walking ball used for?', 'How should an operator plan the water area for a walking ball?', 'Which material and size are listed for this model?', 'Can the inflatable water walking ball be customized?', 'What supervision and rescue procedures should a venue prepare?', 'What information should I send for a water walking ball quote?'],
+  },
+  'water-walking-ball': {
+    purpose: 'This 2 m water walking ball lets one participant walk or roll inside a transparent TPU sphere on a managed water surface. Plan the water area, session flow, access, and recovery procedures with the venue before purchase.',
+    buyer: 'water parks, aquatic centers, resort activity teams, family entertainment venues, and commercial rental operators',
+    application: 'a timed water-walking attraction for supervised pool events, resort recreation, and seasonal rental programs',
+    faqQuestions: ['What is the 2m water walking ball designed for?', 'How much pool clearance should I plan around a 2 m walking ball?', 'Which TPU specification is listed for this walking ball?', 'Can I order a 2m water walking ball for a rental or water park?', 'What operating and rescue plan should a venue prepare?', 'What details are needed for a factory quote on a water walking roll ball?'],
+  },
+  'human-water-walking-ball': {
+    purpose: 'This human water walking ball is a transparent, 2 m TPU sphere for a participant to walk or roll inside during a controlled aquatic session. Operators should define participant eligibility, water conditions, staffing, and emergency access before use.',
+    buyer: 'aquatic recreation venues, family entertainment centers, resort pools, event companies, and inflatable-equipment distributors',
+    application: 'a human-scale water activity for supervised aquatic events, venue programs, and commercial rental inventories',
+    faqQuestions: ['How does a human water walking ball activity work?', 'Is this human-sized hamster ball intended for a pool or open water?', 'What material and diameter are specified for the human water walking ball?', 'Can the TPU ball be branded for an aquatic venue?', 'How should staff manage participant turns and emergency access?', 'What should buyers include when requesting a human water walking ball quotation?'],
+  },
+  'inflatable-walking-water-ball': {
+    purpose: 'The inflatable walking water ball creates a contained, single-participant rolling activity on a managed water surface. Its listed 2 m diameter and 1.0 TPU material should be reviewed alongside venue access, inflation equipment, water conditions, and session procedures.',
+    buyer: 'water-play operators, leisure resorts, pool venues, party and event rental companies, and aquatic attraction suppliers',
+    application: 'a portable inflatable water activity for supervised pool sessions, summer events, and rental packages',
+    faqQuestions: ['Where can an inflatable walking water ball be used?', 'What site measurements matter for a water walking zorb?', 'Does the catalog specify TPU for this inflatable water ball?', 'Can I customize the ball color, branding, or packing?', 'What inspection and supervision steps belong in each session?', 'How can a buyer request pricing for an inflatable walking water ball?'],
+  },
+  'zorb-water-ball': {
+    purpose: 'This 2 m zorb water ball is a transparent TPU sphere for supervised walking or rolling on a managed water area. It can be considered for aquatic recreation programs after the operator confirms the participant format, water conditions, supervision, and rescue plan.',
+    buyer: 'water parks, resort recreation departments, aquatic event organizers, rental fleets, and commercial inflatable distributors',
+    application: 'a water-zorbing session attraction for managed pool events, resort activities, and seasonal commercial rentals',
+    faqQuestions: ['What makes this zorb water ball different from a land zorb?', 'What water-space and access checks are needed for a giant water hamster ball?', 'What material is used for the 2 m zorb water ball?', 'Can this water zorbing ball be customized for a rental fleet?', 'What safety procedures should operators confirm before each session?', 'Which project information affects a water zorbing price quotation?'],
+  },
+};
+
+function waterWalkingBallProfile(product: Product) {
+  return waterWalkingBallProfiles[product.productSlug];
+}
 
 const connectFourBasketballKeywordSets: Record<string, string[]> = {
   'inflatable-connect-4-basketball': ['inflatable connect 4 basketball', 'basketball connect 4 inflatable', 'connect 4 basketball inflatable', 'inflatable basketball connect 4'],
@@ -1466,6 +1508,11 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  const waterWalkingKeywords = waterWalkingBallKeywordSet(product);
+  if (waterWalkingKeywords.length) {
+    const profile = waterWalkingBallProfile(product)!;
+    return truncateMeta(`YIC supplies ${waterWalkingKeywords[0]} for ${profile.application}. 2 m diameter, ${product.material}. OEM branding and factory quotes for aquatic venues and rental operators.`, 158);
+  }
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) return truncateMeta(`YIC makes ${newWaterPark.keywords[0]} for ${newWaterPark.application}. ${product.dimensions.trim()} · ${product.material}. Custom slides, colors, branding, and factory quotation.`, 158);
   const newTent = newInflatableTentProfile(product);
@@ -1596,10 +1643,10 @@ export function productKeyFeatures(product: Product) {
     'Confirm ball size, hoop height, scoring rules, player rotation, anchoring, and queue layout before production',
   ];
   if (waterWalkingBallKeywordSet(product).length) return [
-    'Enclosed, water-based walking-ball format for supervised aquatic recreation',
-    '2 m diameter reference size for venue footprint and water-area planning',
+    `Product format: ${waterWalkingBallKeywordSet(product)[0]} for supervised aquatic recreation`,
+    '2 m diameter reference size for venue footprint, access, and water-area planning',
     `${product.material} construction listed for this model`,
-    'Confirm water depth, access, supervision, session capacity, and local operating requirements before use',
+    'Plan water depth, access, participant turns, rescue procedures, and venue operating requirements before use',
   ];
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) return [
     /dual target/.test(searchable) ? 'Dual target faces for head-to-head throwing turns' : 'Inflatable target wall designed for supervised axe-style throwing games',
@@ -2496,18 +2543,19 @@ export function productDetailContent(product: Product): DetailContent {
       ],
     };
   }
-  if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) {
+  if (waterWalkingBallKeywordSet(product).length) {
+    const ballProfile = waterWalkingBallProfile(product)!;
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
     const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
     return {
       template,
-      productType: 'commercial inflatable water walking ball',
-      primaryBuyer: 'water parks, resorts, aquatic recreation operators, family entertainment centers, event companies, and inflatable-equipment distributors',
-      purpose: 'This enclosed 2 m water-walking ball is intended for supervised aquatic recreation, where a participant walks or rolls inside the ball on a managed water surface. Venue depth, operating area, capacity, staffing, and emergency procedures should be reviewed before purchase.',
+      productType: waterWalkingBallKeywordSet(product)[0],
+      primaryBuyer: ballProfile.buyer,
+      purpose: ballProfile.purpose,
       applications: [
-        { title: 'Water parks and resorts', text: 'Add a time-based water activity after confirming water depth, participant access, supervision, and venue operating procedures.' },
-        { title: 'Aquatic events and festivals', text: 'Create a visible recreation station with a controlled queue, trained staff, clear participant briefing, and defined water-area boundaries.' },
+        { title: ballProfile.application, text: `${ballProfile.purpose} Confirm water conditions, access, session flow, and supervision with the venue operator.` },
+        { title: 'Aquatic events and festivals', text: `Use ${waterWalkingBallKeywordSet(product)[1]} as a managed session activity with a controlled queue, trained staff, participant briefing, and defined water-area boundaries.` },
         { title: 'Commercial rental programs', text: 'Evaluate transport, inflation equipment, session turnover, cleaning, inspection, and dry storage before adding the attraction to a rental fleet.' },
       ],
       planningPoints: [
@@ -3024,7 +3072,7 @@ export function productCardDescription(product: Product) {
   if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) return `An 8 m human-scale Hungry Hippo party game for supervised team play, rental events, schools, and FEC programs. Confirm the play mechanism and included accessories in the product specification. ${reference}`;
   if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) return `A commercial inflatable air hockey game for supervised head-to-head play at rental events, FECs, schools, and branded activations. ${reference}`;
   if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return `A basketball Connect Four target game for supervised shooting contests, team rotation, school activities, rentals, and branded events. ${reference}`;
-  if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) return `A 2 m TPU water-walking ball for supervised aquatic recreation, planned around water depth, access, participant limits, rescue procedures, and venue rules. ${reference}`;
+  if (waterWalkingBallKeywordSet(product).length) return `${waterWalkingBallProfile(product)!.purpose} Catalog specification: 2 m diameter and ${product.material}. Confirm operating limits and venue procedures before use. ${reference}`;
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
     const targetCount = /dual target/.test(searchable) ? 'Dual-target' : 'Custom inflatable';
     return `${targetCount} axe-throwing game planned around soft-play projectile compatibility, a clear throwing line, supervised turns, and branded target artwork. ${reference}`;
@@ -3412,15 +3460,16 @@ export function productFaqs(product: Product) {
       { question: `What information should I send for a quotation?`, answer: `This model is positioned around ${terms.join(', ')}. Send the footprint, shooting distance, target layout, ball specification, scoring rules, participant profile, quantity, branding, destination, and required delivery date.` },
     ];
   }
-  if (product.category === 'Inflatable Games' && waterWalkingBallKeywordSet(product).length) {
+  if (waterWalkingBallKeywordSet(product).length) {
     const terms = waterWalkingBallKeywordSet(product);
+    const ballProfile = waterWalkingBallProfile(product)!;
     return [
-      { question: `What is this inflatable water walking ball used for?`, answer: `${content.purpose} It is a supervised recreation product, not a life-saving device.` },
-      { question: `What water depth and operating area are needed for the 2 m ball?`, answer: `Plan the ball diameter plus clearance, water depth, access, exit or recovery space, and boundaries. The venue operator must confirm that the water conditions suit the participant group and the operating plan before use.` },
-      { question: `How many participants can use a water walking ball at one time?`, answer: `The capacity and session duration must be defined by the venue's operating procedure and the product's approved specification. Plan trained supervision, participant screening, a controlled queue, and immediate access to the water for assistance.` },
-      { question: `What safety procedures should the venue prepare?`, answer: `${content.operationNote} Staff should brief participants, monitor each session continuously, control access, and follow the site's emergency and rescue procedures.` },
-      { question: `Which material and customization options are available?`, answer: `The catalog lists ${product.material}. Confirm the exact TPU grade, thickness, seams, valve, inflation equipment, colors, graphics, repair kit, and packing details with YIC for the ordered specification.` },
-      { question: `What information is needed for a water zorbing ball price quotation?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, water-area dimensions and depth, participant and supervision plan, quantity, branding, inflation-equipment preference, destination, and target delivery date for a project quotation.` },
+      { question: ballProfile.faqQuestions[0], answer: `${content.purpose} It is a supervised recreation product, not a life-saving device.` },
+      { question: ballProfile.faqQuestions[1], answer: `Plan the 2 m ball diameter plus operating clearance, water depth, access, exit or recovery space, and boundaries. The venue operator must confirm the water conditions suit the participant group and operating plan.` },
+      { question: ballProfile.faqQuestions[2], answer: `The catalog lists ${product.material}. Confirm the exact TPU grade, thickness, seams, valve, and inflation equipment in the approved order specification.` },
+      { question: ballProfile.faqQuestions[3], answer: `YIC can review practical options such as ball diameter, color, printed branding, valve and inflation compatibility, repair kit, and packing. Confirm final specifications before production.` },
+      { question: ballProfile.faqQuestions[4], answer: `${content.operationNote} Staff should brief participants, monitor each session continuously, control access, and follow the site's emergency and rescue procedures.` },
+      { question: ballProfile.faqQuestions[5], answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, water-area dimensions and depth, participant and supervision plan, quantity, branding, inflation-equipment preference, destination, and target delivery date for a project quotation.` },
     ];
   }
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
