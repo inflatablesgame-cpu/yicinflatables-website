@@ -484,6 +484,13 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 }
 
 export function productDescription(product: Product) {
+  const flyingFish = flyingFishProfile(product);
+  if (flyingFish) {
+    const planning = flyingFish.isTowable
+      ? 'Confirm tow-boat compatibility, water conditions, supervision, tow-point details, and the final configuration before ordering.'
+      : 'Confirm the launch area, water conditions, participant access, supervision, equipment details, and final configuration before ordering.';
+    return `YIC manufactures ${flyingFish.keywords[0]} for ${flyingFish.buyer}. This ${product.dimensions.trim()} model is shown as ${flyingFish.visual}. ${flyingFish.purpose} The listing specifies ${product.material}. Related searches include ${flyingFish.keywords.slice(1).join(', ')}. ${planning}`;
+  }
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) {
     return `YIC manufactures ${newWaterPark.keywords[0]} for ${newWaterPark.buyer}. This ${product.dimensions.trim()} concept is shown as ${newWaterPark.visual}. ${newWaterPark.purpose} The listing specifies ${product.material}. Project options include ${newWaterPark.options}. Related buying searches include ${newWaterPark.keywords.slice(1).join(', ')}. Confirm water depth, site access, supervision, anchoring, operating conditions, and the final configuration before ordering.`;
@@ -607,6 +614,125 @@ const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
 
 function newWaterParkProfile(product: Product) {
   return product.category === 'Inflatable Water Park' ? newWaterParkProfiles[product.productSlug] : undefined;
+}
+
+type FlyingFishProfile = {
+  keywords: string[];
+  seoSuffix: string;
+  isTowable: boolean;
+  visual: string;
+  purpose: string;
+  buyer: string;
+  application: string;
+  options: string;
+  customizationFocus: string;
+  faqQuestions: string[];
+};
+
+// The source folder names contain several "fly fishing" phrases, but the
+// supplied images show two different product intents: a true belly boat and
+// flying-fish towables. Keep the search language aligned with the visible form.
+const flyingFishProfiles: Record<string, FlyingFishProfile> = {
+  'fly-fishing-belly-boat': {
+    keywords: ['fly fishing belly boat', 'fly fishing inflatable boat', 'fly fishing boat for sale', 'fly fishing kick boat', 'fly fishing rod holder boat'],
+    seoSuffix: 'Commercial Fly Fishing Boat',
+    isTowable: false,
+    visual: 'a red two-pontoon belly boat with a low central seat, footwell, backrest, grab lines, and black anti-slip panels',
+    purpose: 'The compact belly-boat layout is intended for controlled angling sessions where the operator needs a stable, portable fishing platform rather than a towable amusement ride.',
+    buyer: 'fly-fishing outfitters, fishing guides, outdoor retailers, lake operators, and commercial inflatable distributors',
+    application: 'fly-fishing programs, guided lake sessions, fishing-gear rental, and specialty outdoor retail',
+    options: 'pontoon length, seat and backrest layout, fin or kick position, rod-holder details, color, logo panels, repair kit, and carrying package',
+    customizationFocus: 'seat position, pontoon geometry, storage or rod-holder details, colors, branding, valves, and transport accessories',
+    faqQuestions: ['What is this fly fishing belly boat designed for?', 'How should a buyer plan the water and access area for the belly boat?', 'Which material and reference size are listed for this fly fishing inflatable boat?', 'Can the seat, rod-holder layout, and branding be customized?', 'What inspection and operating checks matter for guided fishing sessions?', 'What information should I send for a fly fishing boat quotation?'],
+  },
+  'inflatable-flying-fish-commercial': {
+    keywords: ['inflatable flying fish', 'flying fish towable', 'inflatable flying fish towable', 'flying fish boat', 'banana boat flying fish'],
+    seoSuffix: 'Commercial Water Towable',
+    isTowable: true,
+    visual: 'an orange flying-fish towable with two longitudinal rider pontoons, grab handles, and a raised wing-shaped nose',
+    purpose: 'The flying-fish silhouette is built for supervised boat-towed recreation, with multiple rider positions and a high-visibility shape for commercial water-activity programs.',
+    buyer: 'water parks, beach activity operators, resorts, tow-sports rental businesses, and inflatable attraction distributors',
+    application: 'boat-towed rides, resort water activities, beach rentals, and seasonal recreation programs',
+    options: 'rider capacity, tow point, handle layout, color blocks, printed graphics, dimensions, repair kit, and packing configuration',
+    customizationFocus: 'tow-point reinforcement, rider positions, grab-handle spacing, colorway, logo printing, and accessory package',
+    faqQuestions: ['What is this inflatable flying fish used for?', 'How should an operator plan the tow boat, water area, and rider flow?', 'Which PVC specification and size are listed for this flying fish towable?', 'Can the tow point, handles, colors, and artwork be customized?', 'What pre-ride inspection and supervision procedures should be used?', 'What details are needed for an inflatable flying fish quotation?'],
+  },
+  'fly-fishing-inflatable-boat': {
+    keywords: ['flying fish towable', 'flying fish boat', 'inflatable flying fish boat', 'flying fish yacht', 'inflatable flying fish towable'],
+    seoSuffix: 'Commercial Water Towable',
+    isTowable: true,
+    visual: 'a large orange-and-black wing-shaped flying-fish towable with two internal rider tubes and a central raised nose',
+    purpose: 'Despite the legacy folder name, the image shows a flying-fish towable rather than a fishing boat. Its broad wing profile is suited to supervised boat-towed group play.',
+    buyer: 'resort water-sports teams, beach recreation operators, towable-rental fleets, and commercial water-attraction suppliers',
+    application: 'high-visibility towable rides, resort activity schedules, beach clubs, and seasonal water-sports rentals',
+    options: 'tow point, rider tube arrangement, handles, color graphics, overall footprint, reinforcement, repair kit, and export packing',
+    customizationFocus: 'rider layout, tow hardware reinforcement, handle positions, graphic panels, colors, and commercial accessory package',
+    faqQuestions: ['Is this fly fishing inflatable boat a fishing platform or a flying-fish towable?', 'What water area and tow-boat details should be checked before use?', 'What material and reference dimensions are listed for this flying fish boat?', 'Can the rider positions and towable artwork be customized?', 'How should staff inspect and supervise a flying fish towable session?', 'What information helps quote this inflatable flying fish boat?'],
+  },
+  'boat-fishing-fly': {
+    keywords: ['flying fish boat', 'flying fish towable', 'banana boat flying fish', 'inflatable flying fish towable', 'towable banana boat'],
+    seoSuffix: 'Commercial Water Towable',
+    isTowable: true,
+    visual: 'a yellow-and-blue three-rider flying-fish towable with individual front pontoons, grip handles, and a broad wing-shaped top tube',
+    purpose: 'The visible three-rider towable format is designed for boat-led group recreation and a clear, colorful attraction profile at managed water venues.',
+    buyer: 'water-sports centers, resort beaches, lake attractions, towable-rental fleets, and wholesale inflatable suppliers',
+    application: 'three-person towable rides, family water activities, beach clubs, and commercial summer-rental programs',
+    options: 'rider count, tow point, handle pattern, color combination, printed branding, footprint, repair kit, and storage bag',
+    customizationFocus: 'rider capacity, tow-point reinforcement, handle spacing, color scheme, logo panels, and packing accessories',
+    faqQuestions: ['What type of attraction is this flying fish boat?', 'How should a venue plan the tow boat, water lane, and participant access?', 'Which material and size are listed for this flying fish towable?', 'Can the three-rider layout and yellow-blue artwork be changed?', 'What operating checks are needed before each towable session?', 'What should a buyer include in a flying fish boat quote request?'],
+  },
+  'flying-fish-towable': {
+    keywords: ['flying fish towable', 'towable banana boat', 'towable banana boat tube', 'flying fish boat', 'banana towable tube'],
+    seoSuffix: 'Commercial Water Towable',
+    isTowable: true,
+    visual: 'a yellow-and-blue three-rider flying-fish towable with raised nose tubes, blue rider pads, and multiple grab handles',
+    purpose: 'This commercial towable creates a recognizable group ride for supervised boat operations, beach activity centers, and resort recreation programs.',
+    buyer: 'tow-sports operators, resorts, water parks, beach clubs, rental companies, and inflatable-equipment distributors',
+    application: 'group towable rides, resort water recreation, beach attractions, and repeat summer rental sessions',
+    options: 'tow point, rider positions, handle layout, colorway, printed graphics, dimensions, reinforcement, and packing',
+    customizationFocus: 'tow hardware, passenger arrangement, grip layout, color and logo artwork, repair kit, and carrying bags',
+    faqQuestions: ['What makes this flying fish towable suitable for commercial water activities?', 'How should the tow boat and riding lane be planned?', 'What PVC and reference size are specified for this towable banana boat?', 'Can the rider layout, handles, colors, and logos be customized?', 'Which inspection and supervision steps should operators follow?', 'What details are needed for a towable banana boat quotation?'],
+  },
+  'inflatable-flying-fish-for-sale': {
+    keywords: ['inflatable flying fish', 'flying fish towable', 'inflatable flying fish boat', 'flying fish boat', 'inflatable flying fish for sale'],
+    seoSuffix: 'Commercial Water Towable',
+    isTowable: true,
+    visual: 'a black-and-red three-rider flying-fish towable with contrasting grip pads, individual rider tubes, and a raised wing-shaped front tube',
+    purpose: 'The bold three-rider flying-fish form gives water-sports operators a visible towable attraction for supervised sessions and commercial rental inventory.',
+    buyer: 'water parks, beach clubs, resort activity teams, towable-rental businesses, and wholesale water-toy suppliers',
+    application: 'commercial flying-fish rides, boat-towed recreation, resort programs, and inflatable towable rental fleets',
+    options: 'rider capacity, tow point, handle configuration, color palette, printed graphics, dimensions, valves, and packing',
+    customizationFocus: 'rider positions, tow-point reinforcement, handle spacing, black-red artwork, logos, and accessory package',
+    faqQuestions: ['What is this inflatable flying fish for sale intended to do?', 'How should a rental operator plan boat compatibility and water access?', 'Which material and dimensions are listed for this flying fish towable?', 'Can the rider count, handles, colors, and branding be customized?', 'What inspection, inflation, and supervision checks are required?', 'What information should I send to price an inflatable flying fish boat?'],
+  },
+  'inflatable-flying-fish-boat': {
+    keywords: ['inflatable flying fish boat', 'flying fish boat', 'flying fish towable', 'banana boat flying fish', 'giant inflatable flying fish'],
+    seoSuffix: 'Commercial Water Towable',
+    isTowable: true,
+    visual: 'an orange-and-blue three-rider flying-fish towable with three front pontoons, grab handles, and a broad raised top tube',
+    purpose: 'The image shows a three-rider flying-fish towable, not a fishing craft. It is planned for supervised boat-towed recreation and high-visibility water-activity packages.',
+    buyer: 'resort water-sports operators, beach activity businesses, water parks, towable-rental fleets, and commercial distributors',
+    application: 'group towable rides, family water recreation, beach-club programs, and seasonal rental packages',
+    options: 'rider layout, tow point, handle positions, color and print treatment, footprint, reinforcement, repair kit, and export packing',
+    customizationFocus: 'three-rider configuration, tow hardware, grip handles, color blocks, brand graphics, and commercial accessories',
+    faqQuestions: ['Is this inflatable flying fish boat designed for fishing?', 'What water-site and tow-boat information should be confirmed?', 'Which PVC grade and reference size are listed for this flying fish towable?', 'Can the three-rider arrangement and printed artwork be customized?', 'How should an operator inspect and supervise this towable?', 'What should a buyer provide for an inflatable flying fish boat quote?'],
+  },
+  'blow-up-banana': {
+    keywords: ['blow up banana', 'inflatable banana boat', 'giant inflatable banana', 'big inflatable banana', 'banana towable tube', 'towable banana boat'],
+    seoSuffix: 'Commercial Water Towable',
+    isTowable: true,
+    visual: 'a long yellow banana-shaped towable with blue rider pads, repeated grab handles, side pontoons, and a pointed front nose',
+    purpose: 'The elongated banana-boat layout is made for multiple riders behind a tow boat, giving resorts and rental operators a familiar group water attraction.',
+    buyer: 'banana-boat operators, resorts, beach clubs, water parks, tow-sports rental fleets, and commercial inflatable suppliers',
+    application: 'banana boat rides, resort recreation, beach attractions, group water activities, and seasonal towable rentals',
+    options: 'rider capacity, tow point, seat and handle spacing, banana length, colorway, logo panels, reinforcement, and packing accessories',
+    customizationFocus: 'rider count, tow-point reinforcement, grip spacing, banana profile, color and logo artwork, repair kit, and carrying bags',
+    faqQuestions: ['What is this blow up banana designed for?', 'How should a venue plan the tow boat, riding lane, and rider access?', 'Which PVC specification and reference size are listed for this inflatable banana boat?', 'Can the rider capacity, handle spacing, colors, and branding be customized?', 'What inspection and supervision procedures belong in each banana-boat session?', 'What details should I send for a giant inflatable banana quotation?'],
+  },
+};
+
+function flyingFishProfile(product: Product) {
+  return product.category === 'Inflatable Water Park' ? flyingFishProfiles[product.productSlug] : undefined;
 }
 
 // Each newly published action-sports product owns a separate keyword set. This
@@ -1411,6 +1537,7 @@ function productSearchTerms(product: Product) {
   if (interactiveGameProfile(product)) return interactiveGameProfile(product)!.keywords;
   if (battingCageKeywordSet(product).length) return battingCageKeywordSet(product);
   if (waterWalkingBallKeywordSet(product).length) return waterWalkingBallKeywordSet(product);
+  if (flyingFishProfile(product)) return flyingFishProfile(product)!.keywords;
   if (connectFourBasketballKeywordSet(product).length) return connectFourBasketballKeywordSet(product);
   if (airHockeyKeywordSet(product).length) return airHockeyKeywordSet(product);
   if (hungryHippoKeywordSet(product).length) return hungryHippoKeywordSet(product);
@@ -1475,6 +1602,8 @@ function productIntentKeyword(product: Product) {
 
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  const flyingFish = flyingFishProfile(product);
+  if (flyingFish) return seoTitle(`${flyingFish.keywords[0]} | ${flyingFish.seoSuffix}`);
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) return seoTitle(`${newWaterPark.keywords[0]} | Water Park`);
   const newTent = newInflatableTentProfile(product);
@@ -1508,6 +1637,8 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  const flyingFish = flyingFishProfile(product);
+  if (flyingFish) return truncateMeta(`YIC makes ${flyingFish.keywords[0]} for ${flyingFish.application}. ${product.dimensions.trim()}, ${product.material}. Custom ${flyingFish.customizationFocus} and factory quote.`, 158);
   const waterWalkingKeywords = waterWalkingBallKeywordSet(product);
   if (waterWalkingKeywords.length) {
     const profile = waterWalkingBallProfile(product)!;
@@ -1557,6 +1688,13 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const flyingFish = flyingFishProfile(product);
+  if (flyingFish) return [
+    `Visible format: ${flyingFish.visual}`,
+    `Reference construction: ${product.dimensions.trim()} · ${product.material}`,
+    `Commercial use: ${flyingFish.application}`,
+    `Customize ${flyingFish.customizationFocus} before production`,
+  ];
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) return [
     `Visible layout: ${newWaterPark.visual}`,
@@ -1759,6 +1897,12 @@ export function productKeywordVariants(product: Product) {
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
 
+  if (flyingFishProfile(product)) {
+    add(...flyingFishProfile(product)!.keywords);
+    add(`${base} for sale`, `${base} rental`, `commercial ${base}`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+
   if (interactiveGameProfile(product)) {
     add(...interactiveGameProfile(product)!.keywords);
     add(`commercial ${base}`, `${base} for events`, `custom ${base}`);
@@ -1927,6 +2071,8 @@ export function productDisplayTitle(product: Product) {
   title = title.replace(/^(?:best|used|buy)\s+/i, '');
   title = title.replace(/\s+(?:for sale|for rent|rental|manufacturer)\b/gi, '');
   title = title.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g, ' ');
+  const primaryFlyingFishKeyword = flyingFishProfile(product)?.keywords[0];
+  if (primaryFlyingFishKeyword) return primaryFlyingFishKeyword.charAt(0).toUpperCase() + primaryFlyingFishKeyword.slice(1);
   const primaryInteractiveKeyword = interactiveGameProfile(product)?.keywords[0];
   if (primaryInteractiveKeyword) return primaryInteractiveKeyword.charAt(0).toUpperCase() + primaryInteractiveKeyword.slice(1);
   const primaryBubbleTentKeyword = bubbleTentProfile(product)?.keywords[0];
@@ -2082,6 +2228,41 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const flyingFish = flyingFishProfile(product);
+  if (flyingFish) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const footprint = /custom dimensions available/i.test(product.dimensions) ? 'a made-to-order footprint based on the water-site plan' : `the listed ${product.dimensions.trim()} footprint`;
+    const siteInterface = flyingFish.isTowable
+      ? 'tow-boat interface, water lane, launch and recovery access, rider queue, and spectator clearance'
+      : 'launch and recovery access, shoreline entry, the controlled fishing area, participant briefing, and rescue access';
+    const accessoryFocus = flyingFish.isTowable
+      ? 'Tow-point reinforcement, handles, repair kit, carry or storage bags, accessories, and export packing'
+      : 'Seat, rod-holder, repair kit, carry or storage bag, accessories, and export packing';
+    const operationNote = flyingFish.isTowable
+      ? 'Operate only with a compatible tow boat, approved tow point, trained staff, participant briefing, pre-use inspection, suitable water conditions, and the final manufacturer instructions. The image does not establish a certified capacity, speed, or weather rating.'
+      : 'Use only in a suitable controlled water area with trained supervision, participant briefing, pre-use inspection, suitable conditions, and the final manufacturer instructions. The image does not establish a certified load, weather, or operating rating.';
+    return {
+      template,
+      productType: flyingFish.keywords[0],
+      primaryBuyer: flyingFish.buyer,
+      purpose: flyingFish.purpose,
+      applications: [
+        { title: flyingFish.application, text: `Plan ${footprint} around ${flyingFish.isTowable ? 'tow-boat compatibility, rider access, water conditions, and supervised session flow' : 'shoreline access, participant use, water conditions, and supervised session flow'}.` },
+        { title: flyingFish.isTowable ? 'Resort and beach recreation' : 'Guided fishing and outdoor recreation', text: `Use the ${flyingFish.keywords[0]} format for managed activity sessions after reviewing the water area, staff position, rescue access, and operating schedule.` },
+        { title: 'Commercial rental inventory', text: `Review inflation, ${flyingFish.isTowable ? 'tow-point hardware' : 'seat and pontoon hardware'}, cleaning, drying, inspection, transport, repair support, and storage for repeat bookings.` },
+      ],
+      planningPoints: [
+        `${footprint}, ${siteInterface}`,
+        flyingFish.isTowable ? 'Participant count, age or ability rules, tow speed limits, supervision, rescue plan, weather conditions, and local water-activity requirements' : 'Participant ability rules, water-entry practice, supervision, rescue plan, weather conditions, and local water-access requirements',
+        `Final ${flyingFish.isTowable ? 'rider layout' : 'seat and storage layout'}, valves, reinforcement, accessories, material, and packing against the approved specification (${product.material})`,
+      ],
+      customization: [flyingFish.options, `Colors, printed graphics, logos, ${flyingFish.isTowable ? 'rider instructions and coordinated towable product-family artwork' : 'equipment details and outdoor-product-family artwork'}`, accessoryFocus],
+      operationNote,
+      quoteItems: [flyingFish.isTowable ? `Intended use: ${flyingFish.application}; share the water venue, tow boat, operating season, and target rider group` : `Intended use: ${flyingFish.application}; share the water venue, access plan, operating season, and target user group`, flyingFish.isTowable ? 'Required footprint, rider capacity, tow-point and handle layout, colors, branding, material, and accessories' : 'Required footprint, seat and rod-holder layout, colors, branding, material, and accessories', 'Quantity, destination, packing requirements, and requested delivery schedule'],
+    };
+  }
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) {
     const position = productCategoryPosition(product);
@@ -2997,6 +3178,8 @@ export function productDetailContent(product: Product): DetailContent {
 export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
+  const flyingFish = flyingFishProfile(product);
+  if (flyingFish) return [...flyingFish.keywords, `${flyingFish.keywords[0]} manufacturer`, `custom ${flyingFish.keywords[0]}`, `${flyingFish.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) return [...newWaterPark.keywords, `${newWaterPark.keywords[0]} manufacturer`, `custom ${newWaterPark.keywords[0]}`, 'YIC Inflatable Sports'].join(', ');
   const newTent = newInflatableTentProfile(product);
@@ -3047,6 +3230,10 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const flyingFish = flyingFishProfile(product);
+  if (flyingFish) {
+    return `${flyingFish.keywords[0]} for ${flyingFish.application}. ${flyingFish.visual}; listed at ${product.dimensions.trim()} in ${product.material}. Discuss ${flyingFish.customizationFocus} for your commercial program.`;
+  }
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) {
     return `Commercial ${interactiveProfile.keywords[0]} with ${interactiveProfile.visibleLayout}. Plan ${interactiveProfile.keywords[1]}, game rules, OEM graphics, and supervised event use. ${reference}`;
@@ -3295,6 +3482,28 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const flyingFish = flyingFishProfile(product);
+  if (flyingFish) {
+    const terms = flyingFish.keywords;
+    const customSize = /custom dimensions available/i.test(product.dimensions);
+    const siteChecks = flyingFish.isTowable
+      ? 'Confirm the tow boat, tow lane, water depth and conditions, launch and recovery access, queue, spectator separation, and rescue route in the site plan.'
+      : 'Confirm the shoreline or launch point, controlled fishing area, water conditions, participant access, safety support, and rescue route in the site plan.';
+    const operatingChecks = flyingFish.isTowable
+      ? 'Staff should check inflation, tow hardware, handles, seams, valves, rider positions, water conditions, participant briefing, and continuous supervision before and during each session.'
+      : 'Staff should check inflation, pontoons, seat and backrest attachment, grab lines, seams, valves, water conditions, participant briefing, and continuous supervision before and during each session.';
+    const quoteContext = flyingFish.isTowable
+      ? 'tow boat, water area, rider capacity, operating plan'
+      : 'water access plan, target user group, intended fishing equipment, operating plan';
+    return [
+      { question: flyingFish.faqQuestions[0], answer: `${flyingFish.purpose} The image-based classification is ${terms[0]}, not a generic fishing boat unless the approved specification says otherwise.` },
+      { question: flyingFish.faqQuestions[1], answer: `${customSize ? 'Custom dimensions are available.' : `Start with the listed ${product.dimensions.trim()} reference.`} ${siteChecks}` },
+      { question: flyingFish.faqQuestions[2], answer: `The catalog lists ${product.material}${product.dimensions ? ` and ${product.dimensions.trim()}` : ''}. Confirm the exact PVC grade, thickness, seams, valves, reinforcement, and included accessories in the approved order specification.` },
+      { question: flyingFish.faqQuestions[3], answer: `Yes. YIC can review ${flyingFish.customizationFocus}. Send the ${flyingFish.isTowable ? 'target rider count' : 'target user and equipment requirements'}, reference artwork, preferred colors, logo files, water-site plan, quantity, and destination for a project-specific proposal.` },
+      { question: flyingFish.faqQuestions[4], answer: `${content.operationNote} ${operatingChecks}` },
+      { question: flyingFish.faqQuestions[5], answer: `This model is positioned around ${terms.join(', ')}. Share the venue type, ${quoteContext}, dimensions, branding, quantity, destination, packing needs, and delivery date for a factory quotation.` },
+    ];
+  }
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) {
     const customDimensions = /custom dimensions available/i.test(product.dimensions);
