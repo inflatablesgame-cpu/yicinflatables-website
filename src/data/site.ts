@@ -610,6 +610,33 @@ const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
     options: 'slide count and orientation, entrance and exit flow, color palette, printed artwork, water-play layout, branding, anchors, accessories, and export packing',
     faqQuestions: ['What does the outdoor inflatable water park configuration include?', 'How should operators plan the footprint and access around this pool?', 'Which PVC material specification is listed for this commercial inflatable water park?', 'Can the slide arrangement, colors, or exterior artwork be changed?', 'What site and operating checks are needed for outdoor use?', 'What should I send to request a quote for a dual slide inflatable water park?'],
   },
+  'inflatable-water-pyramid-slide': {
+    keywords: ['inflatable water pyramid slide', 'water pyramid inflatable', 'inflatable water slide pyramid', 'floating water slide', 'water park pyramid slide'],
+    visual: 'a 6.5 × 6.5 × 4 m blue-and-orange pyramid water attraction with opposing climb lanes, a central elevated platform, handrails, a slide descent, and a striped floating landing pad',
+    purpose: 'The multi-level pyramid layout combines climbing, a high platform, slide descent, and a separate landing section, giving aquatic venues a focal water challenge instead of a simple flat obstacle.',
+    buyer: 'aqua parks, lake and resort operators, beach activity businesses, water-sports rental fleets, and commercial floating-attraction buyers',
+    application: 'managed floating water-slide sessions, resort water recreation, lake activity zones, beach attractions, and commercial water park programs',
+    options: 'climb and slide orientation, platform access, landing-pad arrangement, color blocks, printed branding, connection points, anchoring plan, accessories, and export packing',
+    faqQuestions: ['What activities are shown on this inflatable water pyramid slide?', 'How should an operator plan the 6.5 × 6.5 × 4 m water pyramid inflatable footprint?', 'Which material is listed for this floating water slide?', 'Can the climbing lanes, slide direction, landing pad, and colors be customized?', 'What anchoring, access, and supervision arrangements are needed for a water park pyramid slide?', 'What details should I send for an inflatable water slide pyramid factory quote?'],
+  },
+  'inflatable-water-iceberg': {
+    keywords: ['inflatable water iceberg', 'inflatable iceberg water park', 'iceberg inflatable climbing wall', 'floating iceberg inflatable', 'water iceberg for sale'],
+    visual: 'a 6 × 4 × 3 m floating iceberg-style climbing attraction with four stacked red-and-yellow cylindrical steps, side climbing frames, grab handles, and green top rails',
+    purpose: 'The stepped iceberg silhouette creates a clear climb-and-traverse challenge for supervised water recreation, with multiple visible handhold zones rather than a slide-only activity.',
+    buyer: 'water parks, resort pools, lake activity operators, camps, aquatic-event companies, and floating-attraction distributors',
+    application: 'supervised iceberg climbing sessions, lake and pool recreation, resort activity schedules, summer camps, and floating water-park programs',
+    options: 'step layout, side-frame angle, handle placement, top-rail treatment, colors, printed graphics, anchor points, repair kit, and transport packing',
+    faqQuestions: ['What climbing features are visible on this inflatable water iceberg?', 'How can a venue plan the 6 × 4 × 3 m floating iceberg inflatable?', 'What PVC material specification is listed for this iceberg inflatable climbing wall?', 'Can the steps, side climbing frames, handles, and colors be customized?', 'What water-area, anchoring, and supervision checks should operators prepare?', 'What information is needed to quote an inflatable iceberg water park attraction?'],
+  },
+  'inflatable-water-blob-for-sale': {
+    keywords: ['inflatable water blob for sale', 'inflatable water blob', 'giant water blob', 'water blob inflatable', 'inflatable blob water toy'],
+    visual: 'a 7 × 3 m striped red, yellow, and blue inflatable water blob with a rounded wedge profile, broad buoyant body, and visible perimeter attachment points',
+    purpose: 'The oversized rounded blob format is a stand-alone floating water-play element for a managed aquatic setup. It should be planned around the final anchoring, entry method, water conditions, and approved operating procedure rather than treated as a generic land inflatable.',
+    buyer: 'lake recreation operators, resorts, camps, water-activity rental businesses, floating-play suppliers, and commercial aquatic-project buyers',
+    application: 'managed water-play zones, resort recreation, camp activity programs, lake attractions, and commercial floating-inflatable rental fleets',
+    options: 'blob length and profile, color bands, printed logos, entry or connection details, attachment points, anchoring plan, accessory package, and packing configuration',
+    faqQuestions: ['What is this inflatable water blob for sale designed for?', 'How should operators plan the 7 × 3 m giant water blob at a water site?', 'Which material is listed for this water blob inflatable?', 'Can the water blob profile, colors, graphics, and attachment details be customized?', 'What anchoring, water-condition, and supervision procedures should be prepared?', 'What should I include when requesting an inflatable blob water toy factory quotation?'],
+  },
 };
 
 function newWaterParkProfile(product: Product) {

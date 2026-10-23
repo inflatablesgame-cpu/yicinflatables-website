@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T04:24:40.872Z",
+  "generatedAt": "2026-10-23T04:37:55.308Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -416,7 +416,7 @@
     {
       "name": "Inflatable Water Park",
       "slug": "inflatable-water-park",
-      "count": 22,
+      "count": 25,
       "heroImage": "/assets/product/Inflatable%20Water%20Park/10x8x0.6m%20%20%E6%9D%90%E6%96%990.6mm%20PVC%20%20%20%20commercial%20inflatable%20paddle%20boat%20pool%20for%20sale/1.webp",
       "products": [
         "inflatable-water-park--commercial-inflatable-paddle-boat-pool-for-sale-1",
@@ -434,6 +434,9 @@
         "inflatable-water-park--inflatable-flying-fish-20",
         "inflatable-water-park--inflatable-flying-fish-boat-21",
         "inflatable-water-park--blow-up-banana-22",
+        "inflatable-water-park--inflatable-water-pyramid-slide-23",
+        "inflatable-water-park--inflatable-water-iceberg-24",
+        "inflatable-water-park--inflatable-water-blob-for-sale-25",
         "inflatable-water-park--floating-island-inflatable-water-park-2",
         "inflatable-water-park--inflatable-obstacle-course-in-water-5",
         "inflatable-water-park--pool-inflatable-obstacle-course-6",
@@ -6720,6 +6723,60 @@
         "/assets/product/Inflatable%20Water%20Park/6.2x1.2%20m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20%20blow%20up%20banana/5.webp"
       ],
       "dimensions": "6.2x1.2 m",
+      "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-park--inflatable-water-pyramid-slide-23",
+      "productSlug": "inflatable-water-pyramid-slide",
+      "category": "Inflatable Water Park",
+      "categorySlug": "inflatable-water-park",
+      "title": "inflatable water pyramid slide",
+      "sourceName": "6.5x6.5x4m   材料0.9mm PVC    inflatable water pyramid slide",
+      "material": "0.9mm commercial PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Park/6.5x6.5x4m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20pyramid%20slide/1.webp",
+        "/assets/product/Inflatable%20Water%20Park/6.5x6.5x4m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20pyramid%20slide/2.webp",
+        "/assets/product/Inflatable%20Water%20Park/6.5x6.5x4m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20pyramid%20slide/3.webp",
+        "/assets/product/Inflatable%20Water%20Park/6.5x6.5x4m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20pyramid%20slide/4.webp",
+        "/assets/product/Inflatable%20Water%20Park/6.5x6.5x4m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20pyramid%20slide/5.webp"
+      ],
+      "dimensions": "6.5x6.5x4m   ",
+      "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-park--inflatable-water-iceberg-24",
+      "productSlug": "inflatable-water-iceberg",
+      "category": "Inflatable Water Park",
+      "categorySlug": "inflatable-water-park",
+      "title": "inflatable water iceberg",
+      "sourceName": "6x4x3m   材料0.9mm PVC     inflatable water iceberg",
+      "material": "0.9mm commercial PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Park/6x4x3m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20%20inflatable%20water%20iceberg/1.webp",
+        "/assets/product/Inflatable%20Water%20Park/6x4x3m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20%20inflatable%20water%20iceberg/2.webp",
+        "/assets/product/Inflatable%20Water%20Park/6x4x3m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20%20inflatable%20water%20iceberg/3.webp",
+        "/assets/product/Inflatable%20Water%20Park/6x4x3m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20%20inflatable%20water%20iceberg/4.webp",
+        "/assets/product/Inflatable%20Water%20Park/6x4x3m%20%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20%20inflatable%20water%20iceberg/5.webp"
+      ],
+      "dimensions": "6x4x3m   ",
+      "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-water-park--inflatable-water-blob-for-sale-25",
+      "productSlug": "inflatable-water-blob-for-sale",
+      "category": "Inflatable Water Park",
+      "categorySlug": "inflatable-water-park",
+      "title": "inflatable water blob for sale",
+      "sourceName": "7x3m  材料0.9mm PVC    inflatable water blob for sale",
+      "material": "0.9mm commercial PVC",
+      "images": [
+        "/assets/product/Inflatable%20Water%20Park/7x3m%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20blob%20for%20sale/1.webp",
+        "/assets/product/Inflatable%20Water%20Park/7x3m%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20blob%20for%20sale/2.webp",
+        "/assets/product/Inflatable%20Water%20Park/7x3m%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20blob%20for%20sale/3.webp",
+        "/assets/product/Inflatable%20Water%20Park/7x3m%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20blob%20for%20sale/4.webp",
+        "/assets/product/Inflatable%20Water%20Park/7x3m%20%20%E6%9D%90%E6%96%990.9mm%20PVC%20%20%20%20inflatable%20water%20blob%20for%20sale/5.webp"
+      ],
+      "dimensions": "7x3m  ",
       "excerpt": "Commercial inflatable water park built for party rental operators, family entertainment centers, and event venues."
     },
     {
