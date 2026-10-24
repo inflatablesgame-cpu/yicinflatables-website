@@ -536,7 +536,7 @@ function newInflatableTentProfile(product: Product) {
   return product.category === 'Inflatable Tent' ? newInflatableTentProfiles[product.productSlug] : undefined;
 }
 
-type NewWaterParkProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; application: string; options: string; faqQuestions: string[] };
+type NewWaterParkProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; application: string; options: string; faqQuestions: string[]; cardSummary?: string };
 const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
   'inflatable-obstacle-course-in-water': {
     keywords: ['inflatable obstacle course in water', 'water obstacle course', 'obstacle course water park', 'floating obstacle course rental'],
@@ -612,6 +612,7 @@ const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
   },
   'inflatable-water-pyramid-slide': {
     keywords: ['inflatable water pyramid slide', 'water pyramid inflatable', 'inflatable water slide pyramid', 'floating water slide', 'water park pyramid slide'],
+    cardSummary: 'Pyramid climb-and-slide attraction for supervised lake, resort, and aqua-park sessions. Custom landing layout available.',
     visual: 'a 6.5 × 6.5 × 4 m blue-and-orange pyramid water attraction with opposing climb lanes, a central elevated platform, handrails, a slide descent, and a striped floating landing pad',
     purpose: 'The multi-level pyramid layout combines climbing, a high platform, slide descent, and a separate landing section, giving aquatic venues a focal water challenge instead of a simple flat obstacle.',
     buyer: 'aqua parks, lake and resort operators, beach activity businesses, water-sports rental fleets, and commercial floating-attraction buyers',
@@ -621,6 +622,7 @@ const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
   },
   'inflatable-water-iceberg': {
     keywords: ['inflatable water iceberg', 'inflatable iceberg water park', 'iceberg inflatable climbing wall', 'floating iceberg inflatable', 'water iceberg for sale'],
+    cardSummary: 'Stepped floating iceberg for supervised climbing and water-park play. Configure colors, handholds, and anchor points.',
     visual: 'a 6 × 4 × 3 m floating iceberg-style climbing attraction with four stacked red-and-yellow cylindrical steps, side climbing frames, grab handles, and green top rails',
     purpose: 'The stepped iceberg silhouette creates a clear climb-and-traverse challenge for supervised water recreation, with multiple visible handhold zones rather than a slide-only activity.',
     buyer: 'water parks, resort pools, lake activity operators, camps, aquatic-event companies, and floating-attraction distributors',
@@ -630,6 +632,7 @@ const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
   },
   'inflatable-water-blob-for-sale': {
     keywords: ['inflatable water blob for sale', 'inflatable water blob', 'giant water blob', 'water blob inflatable', 'inflatable blob water toy'],
+    cardSummary: 'Oversized floating water blob for supervised lake, resort, and camp recreation. Custom colors and attachment points.',
     visual: 'a 7 × 3 m striped red, yellow, and blue inflatable water blob with a rounded wedge profile, broad buoyant body, and visible perimeter attachment points',
     purpose: 'The oversized rounded blob format is a stand-alone floating water-play element for a managed aquatic setup. It should be planned around the final anchoring, entry method, water conditions, and approved operating procedure rather than treated as a generic land inflatable.',
     buyer: 'lake recreation operators, resorts, camps, water-activity rental businesses, floating-play suppliers, and commercial aquatic-project buyers',
@@ -3259,7 +3262,10 @@ export function productCardDescription(product: Product) {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) {
-    return `${flyingFish.keywords[0]} for ${flyingFish.application}. ${flyingFish.visual}; listed at ${product.dimensions.trim()} in ${product.material}. Discuss ${flyingFish.customizationFocus} for your commercial program.`;
+    const use = flyingFish.isTowable
+      ? `Commercial ${flyingFish.keywords[0]} for supervised resort, beach, and rental rides`
+      : 'Fly-fishing belly boat for guided lake sessions and fishing-gear rental';
+    return `${use}. Reference size: ${product.dimensions.trim()}.`;
   }
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) {
@@ -3286,7 +3292,11 @@ export function productCardDescription(product: Product) {
   if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) return `An 8 m human-scale Hungry Hippo party game for supervised team play, rental events, schools, and FEC programs. Confirm the play mechanism and included accessories in the product specification. ${reference}`;
   if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) return `A commercial inflatable air hockey game for supervised head-to-head play at rental events, FECs, schools, and branded activations. ${reference}`;
   if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return `A basketball Connect Four target game for supervised shooting contests, team rotation, school activities, rentals, and branded events. ${reference}`;
-  if (waterWalkingBallKeywordSet(product).length) return `${waterWalkingBallProfile(product)!.purpose} Catalog specification: 2 m diameter and ${product.material}. Confirm operating limits and venue procedures before use. ${reference}`;
+  if (waterWalkingBallKeywordSet(product).length) {
+    return `Transparent 2 m TPU water-walking ball for supervised pool, resort, and event sessions. Confirm venue procedures before use.`;
+  }
+  const newWaterPark = newWaterParkProfile(product);
+  if (newWaterPark?.cardSummary) return `${newWaterPark.cardSummary} ${reference}`;
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
     const targetCount = /dual target/.test(searchable) ? 'Dual-target' : 'Custom inflatable';
     return `${targetCount} axe-throwing game planned around soft-play projectile compatibility, a clear throwing line, supervised turns, and branded target artwork. ${reference}`;
