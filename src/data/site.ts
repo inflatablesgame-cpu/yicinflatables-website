@@ -428,21 +428,25 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
 };
 
 categorySeoProfiles['Inflatable Water Slide'] = {
-  title: 'Commercial Inflatable Water Slides | OEM Manufacturer | YIC',
-  description: 'Commercial inflatable water slides for resorts, water parks, party rental businesses and events. YIC offers themed, multi-lane and custom OEM water slides.',
-  h1: 'Commercial Inflatable Water Slides for Resorts, Rentals and Water Parks',
-  intro: 'YIC manufactures commercial inflatable water slides for resorts, water parks, party rental fleets, pool venues, events, and seasonal recreation operators. The range includes single-lane, multi-lane, themed, pool-finish, and custom water-slide formats. Compare the models below, then send the site dimensions, water conditions, landing plan, artwork, quantity, and destination for a factory quotation.',
-  options: ['Commercial single-lane water slides', 'Multi-lane racing water slides', 'Themed water slides with pools', 'Custom water-slide layouts for venues'],
+  title: 'Commercial Inflatable Water Slides | OEM Factory | YIC',
+  description: 'Commercial inflatable water slides for sale: tropical, jungle, princess, wet-dry, pool-finish and dual-lane formats for rentals, resorts and water venues.',
+  h1: 'Commercial Inflatable Water Slides for Sale, Rentals and Water Venues',
+  intro: 'YIC manufactures commercial inflatable water slides for party-rental fleets, resorts, pool venues, events, and seasonal recreation operators. Browse tropical water slides, palm tree water slides, jungle water slides, princess water slides, wet dry water slides, pool-finish slides, and dual-lane racing formats. Every project should be matched to the usable footprint, height clearance, water supply, drainage, landing or splash-pool plan, access route, supervision, artwork, quantity, and destination before a factory quotation is confirmed.',
+  options: ['Commercial water slides for sale', 'Tropical, palm tree, jungle, and princess water-slide themes', 'Wet dry water slides with splash-pool or landing options', 'Double and dual-lane inflatable water-slide layouts'],
   buyers: [
-    { title: 'Water parks and resorts', text: 'Plan a high-visibility wet-use attraction around water depth, guest capacity, queue flow, anchoring, and seasonal operation.' },
-    { title: 'Party rental companies', text: 'Add a water-slide format to summer rental packages with practical setup, transport, drying, storage, and repair planning.' },
-    { title: 'Pool and event operators', text: 'Coordinate landing, drainage, supervision, access, and branded artwork for temporary or permanent water activities.' },
+    { title: 'Water parks and resorts', text: 'Plan a commercial water slide around the landing or pool area, water supply, drainage, guest capacity, queue flow, anchoring, and seasonal operation.' },
+    { title: 'Party rental companies', text: 'Build summer rental packages around themed inflatable water slides, wet dry water slides, practical transport, drying, storage, and repair planning.' },
+    { title: 'Pool and event operators', text: 'Coordinate pool-finish layout, landing, drainage, supervision, access, and branded artwork for temporary water-slide programs.' },
+    { title: 'Distributors and project buyers', text: 'Source commercial water slides for sale with a clear theme, material specification, artwork, packing, destination, and factory-quotation brief.' },
   ],
-  oem: 'Send the water-area plan, depth, desired height, lane count, landing or splash-pool format, theme references, quantity, and destination. YIC can support custom layout, artwork approval, production inspection, packing, and export coordination.',
+  oem: 'Send the site plan, usable footprint, height clearance, water supply and drainage details, desired height, lane count, landing or splash-pool format, theme references, logo artwork, quantity, and destination. YIC can review tropical, jungle, princess, palm tree, wet-dry, single-lane, and dual-lane water-slide concepts, then coordinate layout approval, production inspection, packing, and export requirements.',
   faq: [
-    { question: 'What is the difference between a commercial water slide and a dry inflatable slide?', answer: 'A commercial water slide is designed around wet-use water flow, landing, drainage, anchoring, supervision, and site conditions. A dry slide uses a dry landing and does not require the same water infrastructure.' },
-    { question: 'How do I choose the right water-slide size and lane count?', answer: 'Review the available footprint, height clearance, access route, expected guest throughput, target age group, queue area, landing space, and whether single-, dual-, or triple-lane racing is appropriate.' },
-    { question: 'Can YIC make a themed inflatable water slide with a pool?', answer: 'Yes. YIC can review theme artwork, colors, characters, slide height, lane count, splash-pool or landing arrangement, logos, and accessories for a custom OEM project.' },
+    { question: 'What is the difference between a commercial water slide and a dry inflatable slide?', answer: 'A commercial water slide is planned around wet-use water flow, landing or splash-pool layout, drainage, anchoring, supervision, and site conditions. A dry inflatable slide uses a dry landing and does not require the same water infrastructure.' },
+    { question: 'How do I choose single-lane, double water slide, or dual lane water slide formats?', answer: 'Review the usable footprint, height clearance, target age group, guest throughput, queue area, landing space, water supply, drainage, and staffing plan. A double water slide or dual lane water slide should be selected only when the real site supports the wider landing and participant flow.' },
+    { question: 'Can YIC make a tropical, jungle, palm tree, or princess water slide?', answer: 'Yes. YIC can review themed inflatable water slide artwork, colors, decorative elements, slide height, lane count, splash-pool or landing arrangement, logos, and accessories for a custom OEM project.' },
+    { question: 'What is a wet dry water slide?', answer: 'A wet dry water slide is a format discussed for both water-use and dry-use project planning. Confirm the approved slide surface, water-flow arrangement, landing configuration, accessories, and operating procedure for the exact model rather than assuming both uses from a product image.' },
+    { question: 'What should rental companies check before buying inflatable water slides for sale?', answer: 'Confirm the route from vehicle to setup area, usable footprint, height clearance, water supply, drainage, landing or pool area, anchoring, blower requirements, cleaning and drying routine, storage, repair-kit access, staffing, and local venue rules.' },
+    { question: 'What details are needed for a commercial inflatable water slide quotation?', answer: 'Send the preferred model or theme, usable site plan, target dimensions, lane count, water and drainage plan, landing or pool format, artwork, quantity, destination, and requested delivery date. The factory quotation can then reflect the final configuration and packing requirements.' },
   ],
   related: ['Inflatable Slide', 'Inflatable Water Park', 'Bounce House Combo'],
 };
@@ -484,6 +488,10 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 }
 
 export function productDescription(product: Product) {
+  const waterSlide = waterSlideProfile(product);
+  if (waterSlide) {
+    return `YIC manufactures ${waterSlide.keywords[0]} for ${waterSlide.buyer}. This ${product.dimensions.trim()} model is shown as ${waterSlide.visual}. ${waterSlide.purpose} The listing specifies ${product.material}. Buyers can review ${waterSlide.options}. Related buying searches include ${waterSlide.keywords.slice(1).join(', ')}. Confirm the site footprint, water supply, drainage, landing or pool plan, anchoring, supervision, and final configuration before ordering.`;
+  }
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) {
     const planning = flyingFish.isTowable
@@ -644,6 +652,139 @@ const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
 
 function newWaterParkProfile(product: Product) {
   return product.category === 'Inflatable Water Park' ? newWaterParkProfiles[product.productSlug] : undefined;
+}
+
+type WaterSlideProfile = {
+  keywords: string[];
+  visual: string;
+  purpose: string;
+  buyer: string;
+  application: string;
+  options: string;
+  customizationFocus: string;
+  faqQuestions: string[];
+  cardSummary: string;
+};
+
+// These profiles follow the supplied image set rather than the legacy folder
+// wording. Each page receives one distinct core keyword and a topic-specific
+// supporting set so tropical, princess, jungle, pool, and lane intent do not
+// collapse into one repeated water-slide page.
+const waterSlideProfiles: Record<string, WaterSlideProfile> = {
+  'patriotic-water-slide': {
+    keywords: ['patriotic water slide', 'commercial water slide', 'inflatable water slide for sale', 'red white blue water slide', 'summer inflatable water slides'],
+    visual: 'a long red, white, and blue single-lane slide with a patriotic stars-and-stripes style finish and a defined run-out lane',
+    purpose: 'The long patriotic colorway creates a high-visibility wet-play attraction for seasonal U.S.-themed events, resort programs, and supervised rental inventory.',
+    buyer: 'party-rental businesses, holiday-event organizers, resorts, parks, and commercial inflatable distributors',
+    application: 'Fourth of July programming, summer community events, resort recreation, and supervised wet-slide rental packages',
+    options: 'slide length, red-white-blue artwork, logo panels, water-flow connection, landing treatment, access direction, anchoring, repair kit, and export packing',
+    customizationFocus: 'patriotic color blocking, star graphics, logo placement, slide length, landing or pool treatment, and accessory package',
+    faqQuestions: ['What is this patriotic water slide designed for?', 'How should a venue plan the 15 × 3 × 7 m patriotic slide footprint?', 'Which material is listed for this commercial water slide?', 'Can the red, white, and blue artwork be customized?', 'What wet-use and event-operation checks should be prepared?', 'What should I send for a patriotic water slide factory quotation?'],
+    cardSummary: 'Patriotic red, white, and blue water slide for summer events and commercial rental fleets.',
+  },
+  'inflatable-tropical-wet-dry-slide-manufacturer': {
+    keywords: ['wet dry water slide', 'tropical water slide', 'inflatable water slide with pool', 'commercial water slide', 'wet dry inflatable slide'],
+    visual: 'a compact tropical slide with palm-tree artwork, a single slide lane, and a small integrated pool finish',
+    purpose: 'The compact palm-tree format gives rental businesses and venue operators a theme-led slide-and-pool attraction for managed seasonal recreation.',
+    buyer: 'party-rental fleets, hotels, pool venues, family entertainment operators, and inflatable wholesalers',
+    application: 'backyard-scale rental packages, hotel activity areas, poolside events, and supervised summer play',
+    options: 'wet or dry project configuration, palm artwork, splash-pool layout, colors, printed logos, water inlet, anchoring, blower package, and packing',
+    customizationFocus: 'tropical palm graphics, pool-finish geometry, water-flow connection, colors, logo panels, and transport accessories',
+    faqQuestions: ['What is this wet dry water slide designed for?', 'How should buyers use the 6.2 × 2.8 × 4 m reference size when planning a site?', 'Which material is listed for this tropical water slide?', 'Can the palm-tree artwork and splash-pool layout be customized?', 'What should operators confirm for wet-use and dry-use planning?', 'What information is needed for a wet dry inflatable slide quotation?'],
+    cardSummary: 'Compact tropical wet dry water slide with palm artwork and an integrated pool finish.',
+  },
+  'inflatable-frozen-princess-slide-combo': {
+    keywords: ['princess water slide', 'inflatable princess water slide', 'frozen princess slide combo', 'commercial water slides for sale', 'inflatable water slide with pool'],
+    visual: 'an ice-blue princess castle slide combo with a central slide, enclosed play structure, and pool-finish area',
+    purpose: 'The ice-princess castle appearance combines a recognizable themed attraction with a slide-and-pool layout for supervised family entertainment and rental programs.',
+    buyer: 'party-rental companies, family entertainment centers, resorts, event planners, and commercial inflatable dealers',
+    application: 'princess parties, family events, summer rentals, resort kids programs, and supervised venue play',
+    options: 'approved princess artwork, castle towers, slide and pool arrangement, colors, logo panels, entry layout, accessories, and packing',
+    customizationFocus: 'princess theme artwork, castle details, color palette, logo printing, entry and slide layout, and pool treatment',
+    faqQuestions: ['What is this princess water slide combo designed for?', 'How should a venue plan the 6.3 × 5.7 × 5 m princess slide footprint?', 'Which material is listed for this inflatable princess water slide?', 'Can the ice-princess artwork and castle layout be customized?', 'What supervision and wet-play checks should be considered?', 'What should buyers include in a frozen princess slide combo quotation request?'],
+    cardSummary: 'Ice-princess water slide combo with castle styling, enclosed play space, and pool finish.',
+  },
+  'commercial-grade-inflatable-jungle-waterslide': {
+    keywords: ['inflatable jungle water slide', 'jungle water slide', 'commercial water slide', 'palm tree inflatable water slide', 'inflatable water slide with pool'],
+    visual: 'a green jungle-themed single-lane water slide with palm-tree details, leafy side artwork, and a pool finish',
+    purpose: 'The jungle-and-palm visual treatment creates a nature-themed water-slide option for buyers who need a distinct alternative to generic bright-color rental units.',
+    buyer: 'commercial rental companies, resorts, jungle-themed event planners, family venues, and inflatable distributors',
+    application: 'jungle parties, resort children’s activities, seasonal rental packages, poolside events, and family entertainment venues',
+    options: 'jungle graphics, palm-tree details, slide height, pool or landing finish, colors, logo panels, water inlet, anchoring, and export packing',
+    customizationFocus: 'jungle leaves, palm details, green color treatment, printed branding, slide configuration, pool finish, and accessories',
+    faqQuestions: ['What is this inflatable jungle water slide designed for?', 'How should buyers plan the 6.4 × 3 × 4 m jungle water-slide layout?', 'Which material is listed for this commercial jungle water slide?', 'Can the palm-tree and jungle artwork be customized?', 'What water, drainage, and inspection details should be checked?', 'What should I include in an inflatable jungle water slide quote request?'],
+    cardSummary: 'Commercial jungle water slide with palm-tree artwork, single lane, and pool finish.',
+  },
+  'summer-water-park-inflatable': {
+    keywords: ['summer inflatable water slides', 'dual lane water slide', 'double water slide', 'commercial water slide', 'inflatable water slide with pool'],
+    visual: 'a tall blue-and-gray dual-slide attraction with two parallel lanes and a round pool landing area',
+    purpose: 'The two-lane configuration is designed for visible side-by-side slide sessions where the actual site can support separate rider flow and a shared pool landing.',
+    buyer: 'resorts, event operators, commercial rental fleets, water-activity suppliers, and seasonal recreation venues',
+    application: 'summer event programs, resort recreation, dual-lane rental packages, and supervised poolside attractions',
+    options: 'lane count, slide height, pool geometry, colors, logo panels, water-flow routing, access stairs, anchoring, and export packing',
+    customizationFocus: 'dual-lane layout, pool finish, blue-gray colorway, logo graphics, access route, and operational accessory package',
+    faqQuestions: ['What is this summer inflatable water slide designed for?', 'Does the 8 × 4.3 × 6 m layout suit a dual lane water slide site?', 'Which material is listed for this double water slide?', 'Can the two slide lanes and pool finish be customized?', 'What guest-flow and wet-operation planning is needed?', 'What should a buyer provide for a summer inflatable water slide quotation?'],
+    cardSummary: 'Tall dual-lane summer water slide with two racing lanes and a round pool landing.',
+  },
+  'inflatable-tropical-multi-lane-water-slide-for-sale': {
+    keywords: ['tropical multi-lane water slide', 'double water slide', 'tropical water slide', 'commercial water slides for sale', 'inflatable water slide with pool'],
+    visual: 'a wide tropical palm-tree slide with multiple visible lanes, bright blue-and-yellow accents, and a pool-finish area',
+    purpose: 'The wide tropical layout is intended for operators that want a multi-lane water-slide focal point and have enough site width for managed participant flow.',
+    buyer: 'commercial water-slide rental businesses, resorts, water venues, event operators, and wholesale inflatable buyers',
+    application: 'tropical event packages, multi-lane summer rentals, resort activity zones, and supervised outdoor water recreation',
+    options: 'lane configuration, palm-tree artwork, colors, pool or landing geometry, logo printing, water routing, stair position, anchoring, and packing',
+    customizationFocus: 'multi-lane race format, tropical palms, color palette, pool finish, branded panels, and commercial accessories',
+    faqQuestions: ['What is this tropical multi-lane water slide designed for?', 'How should buyers assess the 8 × 5.1 × 5 m footprint for a double water slide?', 'Which material is listed for this tropical water slide?', 'Can the palm-tree graphics and lane configuration be customized?', 'What should operators plan for multi-lane participant flow?', 'What information is needed to quote tropical commercial water slides for sale?'],
+    cardSummary: 'Wide tropical multi-lane water slide with palm artwork and a pool-finish layout.',
+  },
+  'blue-tropical-theme-water-slide-with-pool': {
+    keywords: ['blue inflatable water slide', 'inflatable water slide with pool', 'tropical water slide', 'commercial water slide', 'blue tropical water slide with pool'],
+    visual: 'a blue tropical single-lane water slide with palm accents, a raised climbing entry, and a pool finish',
+    purpose: 'The blue tropical format is a compact themed wet-play attraction for operators looking for a low-competition blue inflatable water slide search focus without losing pool and palm relevance.',
+    buyer: 'party-rental operators, resorts, pool venues, event companies, and commercial inflatable suppliers',
+    application: 'poolside rentals, blue tropical party packages, resort kids activities, and supervised seasonal events',
+    options: 'blue colorway, tropical palms, pool finish, slide height, printed logos, water inlet, anchoring, repair kit, and packing',
+    customizationFocus: 'blue tropical artwork, palm accents, pool layout, logo panels, access geometry, and water-flow interface',
+    faqQuestions: ['What is this blue inflatable water slide designed for?', 'How should a venue plan the 9 × 3 × 5.5 m blue tropical slide footprint?', 'Which material is listed for this inflatable water slide with pool?', 'Can the blue tropical artwork and pool finish be customized?', 'What water supply, drainage, and supervision checks matter?', 'What should I send for a blue inflatable water slide factory quote?'],
+    cardSummary: 'Blue tropical water slide with palm accents, raised entry, and integrated pool finish.',
+  },
+  'palm-tree-inflatable-water-slide-with-pool': {
+    keywords: ['palm tree water slide', 'palm tree inflatable water slide', 'inflatable water slide with pool', 'commercial water slides for sale', 'tropical water slide'],
+    visual: 'a palm-tree themed single-lane slide with tropical decorative panels, a tall central climb, and a pool finish',
+    purpose: 'The palm-tree theme provides a clear tropical visual for rental catalogs, resort activity areas, and buyers seeking a recognizable themed water-slide format.',
+    buyer: 'party-rental fleets, beach and resort operators, pool venues, tropical-event planners, and commercial distributors',
+    application: 'tropical party rentals, resort recreation, beach-club programs, poolside events, and seasonal family entertainment',
+    options: 'palm-tree styling, tropical colors, pool layout, slide height, printed logos, water-flow connection, anchoring, and export packing',
+    customizationFocus: 'palm-tree decorations, tropical colors, logo treatment, slide and pool layout, water inlet, and accessory selection',
+    faqQuestions: ['What is this palm tree water slide designed for?', 'How should operators plan the 9 × 3 × 5.5 m palm-tree slide footprint?', 'Which material is listed for this palm tree inflatable water slide?', 'Can the palm-tree decorations and tropical artwork be customized?', 'What wet-use setup and storage checks should rental fleets make?', 'What information is needed for a palm tree water slide quotation?'],
+    cardSummary: 'Palm tree water slide with tropical panels, tall climb, and a pool-finish layout.',
+  },
+  'tropical-blow-up-water-slide': {
+    keywords: ['tropical blow up water slide', 'blow up water slide', 'commercial water slide', 'inflatable water slide with pool', 'tropical water slide'],
+    visual: 'a blue-and-green tropical slide with a long single lane, palm-inspired side decoration, and a defined pool finish',
+    purpose: 'The elongated tropical configuration gives commercial buyers a recognizable blow up water slide format for managed rental, resort, and event use.',
+    buyer: 'water-slide rental businesses, resorts, event companies, pool operators, and inflatable wholesale buyers',
+    application: 'summer rentals, tropical-themed events, resort recreation, poolside activity programs, and supervised outdoor play',
+    options: 'tropical color scheme, pool finish, slide profile, palm details, logo printing, water connection, anchoring, repair kit, and packing',
+    customizationFocus: 'blue-green tropical artwork, slide profile, pool or landing design, logos, water inlet, and commercial accessory package',
+    faqQuestions: ['What is this tropical blow up water slide designed for?', 'How should buyers use the 9 × 4 × 5 m reference footprint when planning?', 'Which material is listed for this commercial blow up water slide?', 'Can the tropical colors, palm details, and pool finish be customized?', 'What wet-use operation and maintenance checks are important?', 'What should I include in a tropical blow up water slide quotation request?'],
+    cardSummary: 'Blue-green tropical blow up water slide with a long lane and pool finish.',
+  },
+  'tropical-theme-inflatable-water-slide': {
+    keywords: ['tropical water slide', 'tropical theme inflatable water slide', 'commercial water slide', 'inflatable water slide with pool', 'blow up water slide'],
+    visual: 'a red-and-yellow tropical single-lane slide with palm-inspired accents, a tall slide face, and a pool finish',
+    purpose: 'The red-and-yellow tropical format gives a rental or venue catalog a warm-color alternative with a distinct theme-led visual identity.',
+    buyer: 'commercial rental companies, resorts, pool venues, themed-event planners, and inflatable equipment distributors',
+    application: 'tropical party packages, resort recreation, summer event rentals, poolside attractions, and supervised family play',
+    options: 'red-yellow tropical artwork, palm accents, slide height, pool finish, logo panels, water routing, anchoring, and export packing',
+    customizationFocus: 'warm tropical palette, palm artwork, logo panels, slide and pool treatment, water-flow layout, and accessories',
+    faqQuestions: ['What is this tropical water slide designed for?', 'How should a buyer plan the 9 × 4 × 5 m tropical theme slide footprint?', 'Which material is listed for this tropical theme inflatable water slide?', 'Can the red-yellow tropical artwork and pool finish be customized?', 'What site, drainage, and operating details should be confirmed?', 'What information is needed for a tropical water slide factory quotation?'],
+    cardSummary: 'Red-yellow tropical water slide with palm-inspired accents and integrated pool finish.',
+  },
+};
+
+function waterSlideProfile(product: Product) {
+  return product.category === 'Inflatable Water Slide' ? waterSlideProfiles[product.productSlug] : undefined;
 }
 
 type FlyingFishProfile = {
@@ -1554,6 +1695,7 @@ function bumperBallKeywordSet(product: Product) {
 }
 
 function productSearchTerms(product: Product) {
+  if (waterSlideProfile(product)) return waterSlideProfile(product)!.keywords;
   if (product.category === 'Bumper Ball') return bumperBallKeywordSet(product);
   if (landingKeywordSet(product).length) return landingKeywordSet(product);
   if (climbingKeywordSet(product).length) return climbingKeywordSet(product);
@@ -1583,7 +1725,7 @@ function truncateMeta(value: string, maxLength: number, punctuation = '.') {
   const shortened = value.slice(0, maxLength - 1)
     .replace(/\s+\S*$/, '')
     .replace(/\s+(and|or|with|for|from|to|the|a|an|of|in)$/i, '')
-    .replace(/[,:;\-–—]+$/, '')
+    .replace(/[,:;\-–—.]+$/, '')
     .trim();
   return `${shortened}${punctuation}`;
 }
@@ -1632,6 +1774,8 @@ function productIntentKeyword(product: Product) {
 
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  const waterSlide = waterSlideProfile(product);
+  if (waterSlide) return seoTitle(`${waterSlide.keywords[0]} | Commercial Water Slide`);
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) return seoTitle(`${flyingFish.keywords[0]} | ${flyingFish.seoSuffix}`);
   const newWaterPark = newWaterParkProfile(product);
@@ -1667,6 +1811,8 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  const waterSlide = waterSlideProfile(product);
+  if (waterSlide) return truncateMeta(`YIC makes ${waterSlide.keywords[0]} for ${waterSlide.application}. ${product.dimensions.trim()}, ${product.material}. Custom ${waterSlide.customizationFocus} and factory quote.`, 158);
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) return truncateMeta(`YIC makes ${flyingFish.keywords[0]} for ${flyingFish.application}. ${product.dimensions.trim()}, ${product.material}. Custom ${flyingFish.customizationFocus} and factory quote.`, 158);
   const waterWalkingKeywords = waterWalkingBallKeywordSet(product);
@@ -1718,6 +1864,13 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const waterSlide = waterSlideProfile(product);
+  if (waterSlide) return [
+    `Visible layout: ${waterSlide.visual}`,
+    `Reference construction: ${product.dimensions.trim()} · ${product.material}`,
+    `Commercial application: ${waterSlide.application}`,
+    `Customize ${waterSlide.customizationFocus} before production`,
+  ];
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) return [
     `Visible format: ${flyingFish.visual}`,
@@ -1927,6 +2080,12 @@ export function productKeywordVariants(product: Product) {
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
 
+  if (waterSlideProfile(product)) {
+    add(...waterSlideProfile(product)!.keywords);
+    add(`commercial ${base}`, `${base} for sale`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+
   if (flyingFishProfile(product)) {
     add(...flyingFishProfile(product)!.keywords);
     add(`${base} for sale`, `${base} rental`, `commercial ${base}`, `custom ${base}`);
@@ -2103,6 +2262,8 @@ export function productDisplayTitle(product: Product) {
   title = title.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g, ' ');
   const primaryFlyingFishKeyword = flyingFishProfile(product)?.keywords[0];
   if (primaryFlyingFishKeyword) return primaryFlyingFishKeyword.charAt(0).toUpperCase() + primaryFlyingFishKeyword.slice(1);
+  const primaryWaterSlideKeyword = waterSlideProfile(product)?.keywords[0];
+  if (primaryWaterSlideKeyword) return primaryWaterSlideKeyword.charAt(0).toUpperCase() + primaryWaterSlideKeyword.slice(1);
   const primaryInteractiveKeyword = interactiveGameProfile(product)?.keywords[0];
   if (primaryInteractiveKeyword) return primaryInteractiveKeyword.charAt(0).toUpperCase() + primaryInteractiveKeyword.slice(1);
   const primaryBubbleTentKeyword = bubbleTentProfile(product)?.keywords[0];
@@ -2258,6 +2419,40 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const waterSlide = waterSlideProfile(product);
+  if (waterSlide) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const footprint = `the listed ${product.dimensions.trim()} reference footprint`;
+    return {
+      template,
+      productType: waterSlide.keywords[0],
+      primaryBuyer: waterSlide.buyer,
+      purpose: waterSlide.purpose,
+      applications: [
+        { title: waterSlide.application, text: `${waterSlide.purpose} Plan ${footprint}, guest access, staffing, and a supervised wet-play flow around the actual venue.` },
+        { title: 'Rental and seasonal recreation', text: `Use the ${waterSlide.keywords[0]} format for a managed rental or recreation program after confirming water supply, drainage, transport, setup, drying, and storage.` },
+        { title: 'Custom commercial projects', text: `Develop the slide around approved artwork, lane and landing treatment, brand visibility, access direction, venue logistics, and the final operating plan.` },
+      ],
+      planningPoints: [
+        `${footprint}, plus height clearance, entry and exit, queue space, landing or pool area, blower position, anchoring surface, and surrounding clear zone`,
+        'Water supply, water-flow routing, drainage, user group, expected throughput, supervision, cleaning and drying procedure, weather plan, and local venue requirements',
+        `Final slide, lane, landing or pool configuration, artwork, accessories, material, and packing against the approved specification (${product.material})`,
+      ],
+      customization: [
+        waterSlide.options,
+        `Theme-specific artwork, colors, printed logo panels, and coordinated ${waterSlide.keywords[0]} product-family graphics`,
+        'Approved blower or inflation equipment, anchoring, water connection, repair kit, carry or storage bags, accessories, and export packing',
+      ],
+      operationNote: 'Operate only after the site, water supply and drainage, landing or pool layout, anchoring, participant rules, inspection routine, supervision, and local requirements are approved. Images do not establish a certified capacity, water-depth range, or weather rating.',
+      quoteItems: [
+        `Intended use: ${waterSlide.application}; share the site plan, operating season, target user group, and venue type`,
+        'Required footprint, height, lane count, water and drainage plan, landing or pool format, theme artwork, branding, material, and accessories',
+        'Quantity, destination, packing requirements, and requested delivery schedule',
+      ],
+    };
+  }
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) {
     const position = productCategoryPosition(product);
@@ -3208,6 +3403,8 @@ export function productDetailContent(product: Product): DetailContent {
 export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
+  const waterSlide = waterSlideProfile(product);
+  if (waterSlide) return [...waterSlide.keywords, `${waterSlide.keywords[0]} manufacturer`, `custom ${waterSlide.keywords[0]}`, `${waterSlide.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) return [...flyingFish.keywords, `${flyingFish.keywords[0]} manufacturer`, `custom ${flyingFish.keywords[0]}`, `${flyingFish.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
   const newWaterPark = newWaterParkProfile(product);
@@ -3260,6 +3457,8 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const waterSlide = waterSlideProfile(product);
+  if (waterSlide) return `${waterSlide.cardSummary} Reference size: ${product.dimensions.trim()}.`;
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) {
     const use = flyingFish.isTowable
@@ -3519,6 +3718,18 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const waterSlide = waterSlideProfile(product);
+  if (waterSlide) {
+    const terms = waterSlide.keywords;
+    return [
+      { question: waterSlide.faqQuestions[0], answer: `${waterSlide.purpose} Related buying searches for this image-led configuration include ${terms.slice(1).join(', ')}. The approved specification should confirm the exact slide, pool, and accessory scope.` },
+      { question: waterSlide.faqQuestions[1], answer: `Start with the listed ${product.dimensions.trim()} reference, then allow practical clearance for the entry, exit, queue, landing or pool area, blower, anchoring, water supply, drainage, operator position, and spectator separation. Confirm the final layout from the actual site plan.` },
+      { question: waterSlide.faqQuestions[2], answer: `The catalog lists ${product.material}. Confirm the final PVC grade, thickness, reinforcement, seams, slide surface, valves, water connection, accessories, and included equipment in the approved production specification.` },
+      { question: waterSlide.faqQuestions[3], answer: `Yes. YIC can review ${waterSlide.customizationFocus}. Send reference artwork, preferred colors, logo files, site footprint, water and drainage plan, quantity, and destination for a project-specific proposal.` },
+      { question: waterSlide.faqQuestions[4], answer: `${content.operationNote} Staff should include pre-use inflation, anchoring, water-flow, seams, surface, access, landing or pool, supervision, cleaning, drying, repair-kit access, and storage in the operating routine.` },
+      { question: waterSlide.faqQuestions[5], answer: `Share the venue type, intended use (${waterSlide.application}), site plan, target dimensions, lane and landing preference, water supply and drainage details, branding, quantity, destination, packing needs, and delivery date. The factory quotation can then confirm the final ${terms[0]} configuration.` },
+    ];
+  }
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) {
     const terms = flyingFish.keywords;
