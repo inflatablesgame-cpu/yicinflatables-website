@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import ProductCard from '../../../components/ProductCard.astro';
-import { products, company, productAbsoluteUrl, productBatch, productCategoryTemplate, productDescription, productDetailContent, productDisplayTitle, productFaqs, productKeyFeatures, productKeywordVariants, productPath, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers } from '../../../data/site';
+import { products, company, productAbsoluteUrl, productBatch, productCategoryTemplate, productDescription, productDetailContent, productDisplayTitle, productFaqs, productKeyFeatures, productKeywordVariants, productPath, productPrimaryKeyword, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers } from '../../../data/site';
 import type { Product } from '../../../data/site';
 
 export function getStaticPaths() {
@@ -10,6 +10,10 @@ export function getStaticPaths() {
 
 const { product } = Astro.props as { product: Product };
 const displayTitle = productDisplayTitle(product);
+const primaryKeyword = productPrimaryKeyword(product);
+const headingTitle = product.category === 'Bounce House' || product.category === 'Bounce House Combo'
+  ? primaryKeyword.charAt(0).toUpperCase() + primaryKeyword.slice(1)
+  : displayTitle;
 const detail = productDetailContent(product);
 const categoryTemplate = productCategoryTemplate(product);
 const batchTemplate = productBatch(product);
@@ -20,7 +24,7 @@ const keyFeatures = productKeyFeatures(product);
 const targetBuyers = productTargetBuyers(product);
 const keywordVariants = productKeywordVariants(product);
 const relatedProducts = products.filter((item) => item.categorySlug === product.categorySlug && item.slug !== product.slug).slice(0, 4);
-const imageAlt = `${displayTitle}, a commercial ${detail.productType} by YIC Inflatable Sports`;
+const imageAlt = `${headingTitle}, a commercial ${detail.productType} by YIC Inflatable Sports`;
 const seoKeywords = productSeoKeywords(product);
 const accessoryLabel = /0\.55\s*mm/i.test(product.material) ? 'Blower / Repair Kits / Carry Bag' : 'Pump / Repair Kits / Carry Bag';
 const templateLabels = {
@@ -31,7 +35,7 @@ const templateLabels = {
 const pageUrl = productAbsoluteUrl(product);
 const schema = {
   '@context': 'https://schema.org', '@type': 'Product', '@id': `${pageUrl}#product`,
-  name: displayTitle, category: product.category, url: pageUrl, sku: product.slug, keywords: seoKeywords,
+  name: headingTitle, category: product.category, url: pageUrl, sku: product.slug, keywords: seoKeywords,
   image: product.images.map((image) => new URL(image, `https://${company.domain}`).href), description,
   brand: { '@type': 'Brand', name: 'YIC Inflatable Sports' }, manufacturer: { '@id': `https://${company.domain}/#organization` },
   audience: { '@type': 'Audience', audienceType: detail.primaryBuyer },
@@ -69,11 +73,11 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
           <img class="detail-main-image" data-main-image src={product.images[0]} alt={imageAlt} title={imageAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
           <span class="detail-certification-badge" aria-label="EN14960, ASTM, and CE information">EN14960 / ASTM / CE</span>
         </div>
-        <div class="detail-thumbs">{product.images.map((image, index) => <button class:list:active={index === 0} type="button" data-image={image} aria-label={`View ${displayTitle} photo ${index + 1}`}><img src={image} alt={`${displayTitle} product photo ${index + 1}`} title={`${displayTitle} product photo ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width="240" height="180" /></button>)}</div>
+        <div class="detail-thumbs">{product.images.map((image, index) => <button class:list:active={index === 0} type="button" data-image={image} aria-label={`View ${headingTitle} photo ${index + 1}`}><img src={image} alt={`${headingTitle} product photo ${index + 1}`} title={`${headingTitle} product photo ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width="240" height="180" /></button>)}</div>
       </div>
       <div class="detail-copy">
         <p class="eyebrow">{product.category} · Custom OEM/ODM manufacturer · Factory direct</p>
-        <h1>{displayTitle}</h1>
+        <h1>{headingTitle}</h1>
         <p>{description}</p>
         <div class="detail-meta"><div><span>Material</span><strong>{product.material}</strong></div><div><span>Best for</span><strong>{detail.primaryBuyer}</strong></div><div><span>Reference size</span><strong>{product.dimensions || 'Custom dimensions available'}</strong></div><div><span>Customization</span><strong>OEM / ODM supported</strong></div><div><span>Warranty</span><strong>3 years</strong></div><div><span>Accessories</span><strong>{accessoryLabel}</strong></div><div><span>Lead Time</span><strong>7-10 Work Days</strong></div><div><span>Compliance</span><strong>EN14960 / ASTM / CE / NFPA 701</strong></div></div>
         <div class="detail-actions"><a class="button" href={`/contact/?product=${encodeURIComponent(displayTitle)}&source=${encodeURIComponent(pageUrl)}`}>Request a quote</a><a class="button button-secondary" href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(`Hello YIC, I would like a quotation for ${displayTitle}. Product URL: ${pageUrl}. Please confirm specifications, customization options, lead time, and shipping details.`)}`} target="_blank" rel="noopener">WhatsApp us</a></div>

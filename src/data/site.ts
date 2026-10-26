@@ -2461,6 +2461,14 @@ function bounceHouseCoreKeyword(product: Product) {
   return source.includes('bounce') || source.includes('castle') ? source : `${source} ${suffix}`;
 }
 
+// Keep the canonical phrase consistent across visible headings and image labels.
+export function productPrimaryKeyword(product: Product) {
+  if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
+    return bounceHouseCoreKeyword(product);
+  }
+  return productKeywordVariants(product)[0] ?? productDisplayTitle(product);
+}
+
 export function productKeywordVariants(product: Product) {
   const name = productDisplayTitle(product);
   const lowerName = name.toLowerCase();
