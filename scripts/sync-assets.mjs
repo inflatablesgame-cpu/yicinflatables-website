@@ -117,6 +117,7 @@ async function buildCatalog() {
   const previousCatalog = await readFile(path.join(dataRoot, 'catalog.json'), 'utf8')
     .then((value) => JSON.parse(value))
     .catch(() => ({ products: [] }));
+  const previousCategories = new Map((previousCatalog.categories ?? []).map((category) => [category.slug, category]));
   const previousProducts = new Map((previousCatalog.products ?? []).map((product) => [
     `${product.categorySlug}|${product.sourceName}`,
     product,
@@ -209,13 +210,31 @@ async function buildCatalog() {
       usedInternalSlugs.add(candidate);
       nextInternalIndex += 1;
     }
+
+    // Keep existing products in their established catalog order so adding a
+    // new folder does not shift the ten-product template batches for older
+    // pages. New products are appended after the existing category catalog.
+    const previousOrder = new Map(
+      (previousCatalog.products ?? [])
+        .filter((product) => product.categorySlug === categorySlug)
+        .map((product, index) => [product.sourceName, index]),
+    );
+    categoryProducts.sort((left, right) => {
+      const leftIndex = previousOrder.get(left.sourceName);
+      const rightIndex = previousOrder.get(right.sourceName);
+      if (leftIndex !== undefined && rightIndex !== undefined) return leftIndex - rightIndex;
+      if (leftIndex !== undefined) return -1;
+      if (rightIndex !== undefined) return 1;
+      return left.sourceName.localeCompare(right.sourceName);
+    });
     products.push(...categoryProducts);
 
+    const previousCategory = previousCategories.get(categorySlug);
     categories.push({
       name: categoryName,
       slug: categorySlug,
       count: categoryProducts.length,
-      heroImage: categoryProducts[0]?.images[0] ?? '',
+      heroImage: previousCategory?.heroImage ?? categoryProducts[0]?.images[0] ?? '',
       products: categoryProducts.map((product) => product.slug),
     });
   }
