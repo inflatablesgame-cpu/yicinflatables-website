@@ -1,11 +1,11 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import ProductCard from '../../../components/ProductCard.astro';
-import { products, company, productAbsoluteUrl, productBatch, productCategoryTemplate, productDescription, productDetailContent, productDisplayTitle, productFaqs, productKeyFeatures, productKeywordVariants, productPath, productPrimaryKeyword, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers } from '../../../data/site';
+import { products, company, categoryPath, publicCategorySlug, productAbsoluteUrl, productBatch, productCategoryTemplate, productDescription, productDetailContent, productDisplayTitle, productFaqs, productKeyFeatures, productKeywordVariants, productPath, productPrimaryKeyword, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers } from '../../../data/site';
 import type { Product } from '../../../data/site';
 
 export function getStaticPaths() {
-  return products.map((product) => ({ params: { category: product.categorySlug, product: product.productSlug }, props: { product } }));
+  return products.map((product) => ({ params: { category: publicCategorySlug(product.categorySlug), product: product.productSlug }, props: { product } }));
 }
 
 const { product } = Astro.props as { product: Product };
@@ -58,7 +58,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${company.domain}/` },
     { '@type': 'ListItem', position: 2, name: 'Products', item: `https://${company.domain}/products/` },
-    { '@type': 'ListItem', position: 3, name: product.category, item: `https://${company.domain}/products/${product.categorySlug}/` },
+    { '@type': 'ListItem', position: 3, name: product.category, item: `https://${company.domain}${categoryPath(product.categorySlug)}` },
     { '@type': 'ListItem', position: 4, name: displayTitle },
   ],
 };
@@ -67,7 +67,7 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
 
 <SiteLayout title={productSeoTitle(product)} description={metaDescription} image={product.images[0]} imageAlt={imageAlt} keywords={seoKeywords}>
   <article class:list={['product-detail-page', `product-template-${detail.template}`, `category-template-${categoryTemplate}`, `batch-template-${batchTemplate}`]}>
-    <section class="detail-wrap"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / <a href={`/products/${product.categorySlug}/`}>{product.category}</a> / {displayTitle}</div><div class="detail-grid">
+    <section class="detail-wrap"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / <a href={categoryPath(product.categorySlug)}>{product.category}</a> / {displayTitle}</div><div class="detail-grid">
       <div class="detail-gallery" data-gallery>
         <div class="detail-main-frame">
           <img class="detail-main-image" data-main-image src={product.images[0]} alt={imageAlt} title={imageAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
@@ -96,7 +96,7 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
     <section class="detail-section section-muted product-proof-section"><div class="container"><div class="detail-template-heading"><p class="eyebrow">Factory proof</p><h2>Why source this product from YIC?</h2><p>YIC connects product-specific design support with repeatable production, inspection, export packing, and communication for international buyers.</p></div><div class="detail-proof-grid"><article><strong>15+ years</strong><span>Manufacturing and export experience</span></article><article><strong>Artwork approval</strong><span>Review the visual and structural brief before production</span></article><article><strong>Multi-stage QC</strong><span>Material, construction, inflation or operation checks</span></article><article><strong>OEM / ODM</strong><span>Custom colors, dimensions, layouts, and branding</span></article><article><strong>Global delivery</strong><span>Packing and destination coordination for repeat orders</span></article></div></div></section>
 
     <section class="detail-section section-muted"><div class="container"><div class="detail-template-heading"><p class="eyebrow">Buyer questions</p><h2>{displayTitle} FAQ</h2><p>Six product-specific questions covering specifications, applications, customization, quality, delivery, and commercial planning.</p></div><div class="faq-list">{faqs.map((faq) => <article class="faq-item"><h3>{faq.question}</h3><p>{faq.answer}</p></article>)}</div></div></section>
-    {relatedProducts.length > 0 && <section class="section related-products"><div class="container"><div class="section-heading"><div><p class="eyebrow">More from this category</p><h2>Compare related {product.category} models</h2></div><a class="text-link" href={`/products/${product.categorySlug}/`}>View all {product.category} →</a></div><div class="product-grid">{relatedProducts.map((item) => <ProductCard product={item} />)}</div></div></section>}
+    {relatedProducts.length > 0 && <section class="section related-products"><div class="container"><div class="section-heading"><div><p class="eyebrow">More from this category</p><h2>Compare related {product.category} models</h2></div><a class="text-link" href={categoryPath(product.categorySlug)}>View all {product.category} →</a></div><div class="product-grid">{relatedProducts.map((item) => <ProductCard product={item} />)}</div></div></section>}
     <section class="cta-band"><div class="container cta-band-inner"><div><p class="eyebrow">Factory quotation</p><h2>Need {displayTitle} for your market?</h2><p>Send YIC your quantity, destination, product requirements, and branding brief for a practical factory quotation.</p></div><a class="button button-secondary" href={`/contact/?product=${encodeURIComponent(displayTitle)}&source=${encodeURIComponent(pageUrl)}`}>Talk to the factory</a></div></section>
   </article>
   <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>

@@ -1,4 +1,4 @@
-import { categories, products, company, productPath } from '../data/site';
+import { categories, products, categoryPath, company, productPath } from '../data/site';
 import { blogArticles } from '../data/blog';
 
 export function GET() {
@@ -16,10 +16,10 @@ export function GET() {
     '/shipping/',
     ...blogArticles.map((article) => `/blog/${article.slug}/`),
     ...Array.from({ length: totalPages - 1 }, (_, index) => `/products/page/${index + 2}/`),
-    ...categories.map((category) => `/products/${category.slug}/`),
+    ...categories.map((category) => categoryPath(category)),
     ...categories.flatMap((category) => {
       const categoryPageCount = Math.ceil(products.filter((product) => product.categorySlug === category.slug).length / pageSize);
-      return Array.from({ length: categoryPageCount - 1 }, (_, index) => `/products/${category.slug}/page/${index + 2}/`);
+      return Array.from({ length: categoryPageCount - 1 }, (_, index) => `${categoryPath(category)}page/${index + 2}/`);
     }),
     ...products.map((product) => productPath(product)),
   ];

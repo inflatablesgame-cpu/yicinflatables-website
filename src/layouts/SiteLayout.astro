@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { categories, company, policyLinks } from '../data/site';
+import { categories, categoryPath, company, policyLinks } from '../data/site';
 import { blogArticles } from '../data/blog';
 
 interface Props {
@@ -115,7 +115,7 @@ const organizationSchema = {
             <a class:list:active={currentPath.startsWith('/products')} class="nav-products-toggle" href="/products/" aria-current={currentPath.startsWith('/products') ? 'page' : undefined} aria-haspopup="true" aria-expanded="false">Products <span class="nav-chevron" aria-hidden="true">⌄</span></a>
             <div class="nav-dropdown-menu" aria-label="Product categories">
               <a class="nav-all-products" href="/products/">All products</a>
-              {categories.map((category) => <a href={`/products/${category.slug}/`}>{category.name}</a>)}
+              {categories.map((category) => <a href={categoryPath(category)}>{category.name}</a>)}
             </div>
           </div>
           <a class:list:active={currentPath.startsWith('/about')} aria-current={currentPath.startsWith('/about') ? 'page' : undefined} href="/about/">About</a>

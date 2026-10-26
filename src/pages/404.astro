@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { categories } from '../data/site';
+import { categories, categoryPath } from '../data/site';
 
 const usefulCategories = categories.slice(0, 4);
 ---
@@ -25,7 +25,7 @@ const usefulCategories = categories.slice(0, 4);
   <section class="section">
     <div class="container">
       <div class="section-heading"><div><p class="eyebrow">Explore the catalog</p><h2>Popular product categories</h2></div></div>
-      <div class="error-category-grid">{usefulCategories.map((category) => <a class="error-category" href={`/products/${category.slug}/`}><strong>{category.name}</strong><span>{category.count} models <span aria-hidden="true">→</span></span></a>)}</div>
+      <div class="error-category-grid">{usefulCategories.map((category) => <a class="error-category" href={categoryPath(category)}><strong>{category.name}</strong><span>{category.count} models <span aria-hidden="true">→</span></span></a>)}</div>
     </div>
   </section>
 </SiteLayout>

@@ -29,8 +29,17 @@ export const products = rawProducts.map((product) => /bubble tent with balloons/
   ? { ...product, images: product.images.map((image) => image.replace(bubbleTentSource, bubbleTentSafe)) }
   : product);
 
+export function publicCategorySlug(slug: string) {
+  return slug === 'bounce-house-combo' ? 'bounce-house-combos' : slug;
+}
+
+export function categoryPath(category: Pick<Category, 'slug'> | string) {
+  const slug = typeof category === 'string' ? category : category.slug;
+  return `/products/${publicCategorySlug(slug)}/`;
+}
+
 export function productPath(product: Pick<Product, 'categorySlug' | 'productSlug'>) {
-  return `/products/${product.categorySlug}/${product.productSlug}/`;
+  return `${categoryPath(product.categorySlug)}${product.productSlug}/`;
 }
 
 // Compact product cards use generated WebP thumbnails; product pages retain
@@ -56,7 +65,7 @@ export function getProduct(slug: string, category?: string) {
 }
 
 export function getCategory(slug: string) {
-  return categories.find((category) => category.slug === slug);
+  return categories.find((category) => category.slug === slug || publicCategorySlug(category.slug) === slug);
 }
 
 export const company = {
