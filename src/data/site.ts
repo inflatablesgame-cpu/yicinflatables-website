@@ -789,7 +789,7 @@ const waterSlideProfiles: Record<string, WaterSlideProfile> = {
 // theme and factory/OEM purchase context.
 const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
   'commercial-inflatable-pools-for-sale': {
-    keywords: ['commercial inflatable pool for water slides', 'commercial water slide pool', 'inflatable water slide with pool', 'water slide splash pool', 'water slide pool for sale'],
+    keywords: ['commercial water slide pool', 'inflatable water slide with pool', 'water slide splash pool', 'water slide pool for sale', 'commercial inflatable pool for water slides'],
     visual: 'a low-profile white rectangular inflatable pool with wide perimeter walls and a shallow open interior',
     purpose: 'The visible product is a commercial inflatable pool component for a water-slide landing, supervised splash area, or custom water-play layout rather than a stand-alone slide.',
     buyer: 'water-slide rental companies, resorts, pool-event operators, commercial water-play suppliers, and OEM buyers',
@@ -819,7 +819,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     cardSummary: 'Tropical inflatable water slide with palm styling, single lane, and broad pool finish.',
   },
   'tropical-inflatable-water-slide-for-sale': {
-    keywords: ['tropical double lane water slide', 'dual water slide', 'commercial water slides for sale', 'tropical splash water slide', 'inflatable water slide with pool'],
+    keywords: ['dual water slide', 'commercial water slides for sale', 'tropical splash water slide', 'inflatable water slide with pool', 'tropical double lane water slide'],
     visual: 'a green tropical slide with two parallel slide lanes, palm-tree details, and a shared pool landing',
     purpose: 'The image shows a tropical dual-lane attraction for sites that can support side-by-side rider flow, a wider landing area, and supervised wet operation.',
     buyer: 'resorts, commercial water-slide rental businesses, event operators, pool venues, and wholesale buyers',
@@ -829,7 +829,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     cardSummary: 'Tropical double-lane water slide with palm details and shared pool landing.',
   },
   'water-slide-red-and-yellow': {
-    keywords: ['red and yellow inflatable water slide', 'commercial water slide', 'water slide splash pool', 'blow up water slide for sale', 'inflatable water slide with pool'],
+    keywords: ['blow up water slide for sale', 'commercial water slide', 'water slide splash pool', 'inflatable water slide with pool', 'red and yellow inflatable water slide'],
     visual: 'a red-and-yellow slide with a tall central climb, curved bright-color sidewalls, and a front pool finish',
     purpose: 'The warm red-and-yellow visual creates a distinct bright-color water-slide choice for commercial summer rentals and supervised event play.',
     buyer: 'party-rental operators, water venues, resorts, event companies, and commercial inflatable dealers',
@@ -899,7 +899,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     cardSummary: 'White dry-and-wet project slide with neutral styling and paired slide lanes.',
   },
   'princess-inflatable-water-slide': {
-    keywords: ['pink princess water slide', 'princess water slide', 'pink inflatable water slide', 'inflatable water slide with pool', 'commercial water slides for sale'],
+    keywords: ['princess water slide', 'pink inflatable water slide', 'inflatable water slide with pool', 'commercial water slides for sale', 'pink princess water slide'],
     visual: 'a bright pink princess-style slide with castle-like peaks, a tall central lane, and a pool-finish base',
     purpose: 'The visible pink castle form supports princess-themed rental and family-event programs, with the final decorative treatment confirmed from approved artwork.',
     buyer: 'party-rental operators, princess-event planners, resorts, family venues, and commercial inflatable distributors',
@@ -909,7 +909,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     cardSummary: 'Pink princess water slide with castle-style peaks and pool-finish base.',
   },
   'white-bounce-house-double-slide': {
-    keywords: ['white bounce house water slide', 'white double water slide', 'bounce house with water slide', 'commercial water slide', 'inflatable water slide with pool'],
+    keywords: ['bounce house with water slide and air blower', 'commercial water slide', 'inflatable water slide with pool', 'white double water slide', 'white bounce house water slide'],
     visual: 'a white bounce-and-slide structure with two tall slide lanes, a broad central climbing entry, and a neutral event-ready finish',
     purpose: 'The all-white bounce-and-slide layout is suited to event-rental buyers seeking a neutral design that can be aligned with approved wet-use or dry-use specifications.',
     buyer: 'wedding-rental companies, event planners, premium party venues, resorts, and commercial inflatable distributors',
@@ -949,7 +949,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     cardSummary: 'Tropical splash water slide with palm visuals, twin slide surfaces, and blue pool finish.',
   },
   'tropical-inflatable-water-slide-rental': {
-    keywords: ['tropical rental water slide', 'tropical water slide rental', 'palm tree water slide rental', 'commercial water slide', 'inflatable water slide with pool'],
+    keywords: ['tropical water slide rental', 'palm tree water slide rental', 'commercial water slide', 'inflatable water slide with pool', 'tropical rental water slide'],
     visual: 'a tall green tropical water slide with a dark blue pool finish, palm accents, and a long central slide route',
     purpose: 'The tropical silhouette supports seasonal rental and resort water-play programs, while factory buyers can specify their own commercial graphics and packing requirements.',
     buyer: 'rental businesses, resorts, water venues, event operators, and commercial inflatable wholesalers',
@@ -959,7 +959,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     cardSummary: 'Tall tropical rental water slide with palm accents and blue pool finish.',
   },
   'inflatable-jungle-water-slide': {
-    keywords: ['jungle water slide commercial', 'inflatable jungle water slide', 'commercial water slide', 'inflatable water slide with pool', 'tropical splash water slide'],
+    keywords: ['inflatable jungle water slide', 'commercial water slide', 'inflatable water slide with pool', 'tropical splash water slide', 'jungle water slide commercial'],
     visual: 'a blue-and-green jungle-themed water slide with leafy decorative panels, an elevated slide route, and a large pool finish',
     purpose: 'The jungle visual delivers an image-specific commercial alternative for venues and rental fleets that want themed water-slide inventory instead of generic color-only units.',
     buyer: 'commercial rental companies, resorts, family venues, jungle-theme event planners, and inflatable distributors',
@@ -969,7 +969,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     cardSummary: 'Jungle-themed commercial water slide with leafy panels and large pool finish.',
   },
   'inflatable-wave-water-slide': {
-    keywords: ['wave theme inflatable water slide', 'tropical wave water slide', 'commercial water slide', 'inflatable water slide with pool', 'water slide splash pool'],
+    keywords: ['tropical wave water slide', 'commercial water slide', 'inflatable water slide with pool', 'water slide splash pool', 'wave theme inflatable water slide'],
     visual: 'a white-and-blue wave-themed slide with sculpted surf-style sidewalls and a large blue pool landing',
     purpose: 'The wave-shaped construction creates a distinct marine-surf visual for water venues, resort programs, and themed commercial rentals.',
     buyer: 'resorts, water venues, commercial rental fleets, beach-theme event operators, and inflatable wholesalers',
@@ -989,7 +989,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     cardSummary: 'Shark water slide with open-mouth entry, wave styling, and pool-finish layout.',
   },
   'backyard-water-slide-for-kids': {
-    keywords: ['backyard water slide for kids', 'backyard inflatable water slide', 'kids inflatable water slide', 'water slide for backyard pool', 'commercial water slide'],
+    keywords: ['backyard inflatable water slide', 'kids inflatable water slide', 'water slide for backyard pool', 'commercial water slide', 'backyard water slide for kids'],
     visual: 'a purple-and-white themed water slide with palm details, a tall single lane, and a pool-style front finish',
     purpose: 'The visible single-lane format can be positioned for managed family and backyard-style recreation, while commercial buyers should still confirm the approved footprint, operating conditions, and final specification.',
     buyer: 'party-rental operators, family venues, resorts, event companies, and commercial inflatable distributors',
@@ -1009,7 +1009,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     cardSummary: 'Rainbow water slide with cloud details, colorful arch, and rounded pool finish.',
   },
   'inflatable-water-slide-hawaii': {
-    keywords: ['Hawaii theme inflatable water slide', 'tropical water slide', 'tiki water slide', 'tropical splash water slide', 'commercial water slide'],
+    keywords: ['tiki water slide', 'tropical water slide', 'tropical splash water slide', 'commercial water slide', 'Hawaii theme inflatable water slide'],
     visual: 'a green-and-blue Hawaii-inspired multi-level water slide with palm-tree decoration, colorful tropical panels, and a wide pool finish',
     purpose: 'The visible Hawaii-inspired tropical treatment creates a theme-specific product page for commercial buyers, without relying on a generic non-themed water-slide description.',
     buyer: 'resorts, beach clubs, party-rental fleets, tropical-event operators, and commercial inflatable distributors',
