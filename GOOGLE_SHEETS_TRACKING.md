@@ -1,9 +1,11 @@
 # Google Sheets inquiry and click tracking
 
-The site records only these three event streams through Cloudflare Pages:
+The site records these event streams through Cloudflare Pages:
 
 - `Page Views`: one entry per page view.
 - `WhatsApp Clicks`: WhatsApp clicks only.
+- `Quote Clicks`: clicks on quote/request buttons before the form is opened.
+- `Email Clicks`: clicks on visible email links.
 - `Form Submissions`: confirmed quote-form submissions only (`form_submit_success`).
 
 ## 1. Deploy the Google Apps Script
@@ -19,6 +21,8 @@ The site records only these three event streams through Cloudflare Pages:
 9. Append the secret to the copied URL. Example:
 
    `https://script.google.com/macros/s/DEPLOYMENT_ID/exec?key=YOUR_LONG_RANDOM_SECRET`
+
+After changing `YICInquiryEvents.gs`, create a new version under **Deploy > Manage deployments > Edit > New version**. The existing deployed version does not update automatically.
 
 ## 2. Add the Cloudflare secret
 

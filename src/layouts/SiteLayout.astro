@@ -272,12 +272,14 @@ const organizationSchema = {
         const rawHref = link.getAttribute('href') || '';
         const linkUrl = new URL(rawHref, window.location.origin);
         const linkLabel = (link.getAttribute('aria-label') || link.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 160);
-        if (linkUrl.hostname !== 'wa.me' && !linkUrl.hostname.endsWith('whatsapp.com')) return;
-        sendAnalyticsEvent('whatsapp_click', {
-          linkLabel,
-          targetUrl: cleanTrackingUrl(linkUrl.href),
-          product: new URLSearchParams(window.location.search).get('product') || '',
-        });
+        const product = new URLSearchParams(window.location.search).get('product') || '';
+        if (linkUrl.hostname === 'wa.me' || linkUrl.hostname.endsWith('whatsapp.com')) {
+          sendAnalyticsEvent('whatsapp_click', { linkLabel, targetUrl: cleanTrackingUrl(linkUrl.href), product });
+        } else if (linkUrl.pathname === '/contact/' || linkUrl.href.includes('#quote-form')) {
+          sendAnalyticsEvent('quote_click', { linkLabel, targetUrl: cleanTrackingUrl(linkUrl.href), product });
+        } else if (linkUrl.protocol === 'mailto:') {
+          sendAnalyticsEvent('email_click', { linkLabel, targetUrl: cleanTrackingUrl(linkUrl.href), product });
+        }
       }, { capture: true });
 
       // Preserve the page that initiated a quote request, including buttons

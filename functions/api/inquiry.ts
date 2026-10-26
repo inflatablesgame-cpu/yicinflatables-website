@@ -5,7 +5,7 @@ interface Env {
   INQUIRY_BACKUP_EMAIL?: string;
 }
 
-const fields = ['Name', 'Company', 'Email', 'Country', 'Product', 'Requirements', 'Source page URL'];
+const fields = ['Name', 'Company', 'Email', 'Phone / WhatsApp', 'Country', 'Product', 'Quantity', 'Destination', 'Timeline', 'Requirements', 'Source page URL'];
 
 function cleanText(value: unknown, maxLength = 4000) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
@@ -33,11 +33,48 @@ async function deliverToSheet(payload: Record<string, unknown>, webhookUrl: stri
   return false;
 }
 
-export const onRequestPost: PagesFunction<Env> = async (context) => {
-  if (!context.env.GOOGLE_SHEETS_WEBHOOK_URL) {
-    return Response.json({ ok: false, error: 'The inquiry service is not configured.' }, { status: 503 });
+async function deliverToBackupEmail(payload: Record<string, unknown>, env: Env) {
+  if (!env.RESEND_API_KEY || !env.INQUIRY_FROM_EMAIL || !env.INQUIRY_BACKUP_EMAIL) return false;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: env.INQUIRY_FROM_EMAIL,
+        to: [env.INQUIRY_BACKUP_EMAIL],
+        reply_to: payload.email || undefined,
+        subject: `YIC inquiry: ${payload.product || 'Commercial inflatables'}`,
+        text: [
+          `Name: ${payload.name || ''}`,
+          `Email: ${payload.email || ''}`,
+          `Phone / WhatsApp: ${payload.phone || ''}`,
+          `Company: ${payload.company || ''}`,
+          `Country: ${payload.country || ''}`,
+          `Product: ${payload.product || ''}`,
+          `Quantity: ${payload.quantity || ''}`,
+          `Destination: ${payload.destination || ''}`,
+          `Timeline: ${payload.timeline || ''}`,
+          `Source page: ${payload.sourceUrl || ''}`,
+          '',
+          `Requirements:\n${payload.requirements || ''}`,
+        ].join('\n'),
+      }),
+      signal: controller.signal,
+    });
+    return response.ok;
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timeout);
   }
+}
 
+export const onRequestPost: PagesFunction<Env> = async (context) => {
   let formData: FormData;
   try {
     formData = await context.request.formData();
@@ -50,7 +87,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return Response.json({ ok: false, error: 'Name and email are required.' }, { status: 400 });
   }
 
-  const delivered = await deliverToSheet({
+  const payload = {
     eventType: 'form_submit_success',
     receivedAt: new Date().toISOString(),
     pageUrl: new URL(context.request.url).origin + '/contact/',
@@ -59,29 +96,24 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     name: inquiry.Name,
     company: inquiry.Company,
     email: inquiry.Email,
+    phone: inquiry['Phone / WhatsApp'],
     country: inquiry.Country,
+    quantity: inquiry.Quantity,
+    destination: inquiry.Destination,
+    timeline: inquiry.Timeline,
     requirements: inquiry.Requirements,
     countryCode: context.request.cf?.country || '',
-  }, context.env.GOOGLE_SHEETS_WEBHOOK_URL);
+  };
+  const deliveredToSheet = context.env.GOOGLE_SHEETS_WEBHOOK_URL
+    ? await deliverToSheet(payload, context.env.GOOGLE_SHEETS_WEBHOOK_URL)
+    : false;
 
-  // The lead is the priority. If Google Sheets is unreachable, still tell the
-  // visitor it worked, and email a backup copy so the lead is never lost.
-  if (!delivered) {
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        authorization: `Bearer ${context.env.RESEND_API_KEY}`,
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: context.env.INQUIRY_FROM_EMAIL || 'onboarding@resend.dev',
-        to: [context.env.INQUIRY_BACKUP_EMAIL || 'lanna@yicinflatables.com'],
-        reply_to: inquiry.Email || undefined,
-        subject: `YIC inquiry (backup): ${inquiry.Product || 'Commercial inflatables'}`,
-        text: `Name: ${inquiry.Name}\nEmail: ${inquiry.Email}\nCompany: ${inquiry.Company}\nCountry: ${inquiry.Country}\nProduct: ${inquiry.Product}\nSource page: ${inquiry['Source page URL']}\n\nRequirements:\n${inquiry.Requirements}`,
-      }),
-    }).catch(() => undefined);
+  // Try a verified email only when Sheets did not accept the lead. If neither
+  // channel is configured, return an error so the browser opens its mailto fallback.
+  const deliveredToEmail = deliveredToSheet ? false : await deliverToBackupEmail(payload, context.env);
+  if (!deliveredToSheet && !deliveredToEmail) {
+    return Response.json({ ok: false, error: 'The inquiry service is temporarily unavailable.' }, { status: 502 });
   }
 
-  return Response.json({ ok: true, recorded: delivered });
+  return Response.json({ ok: true, recorded: deliveredToSheet, channel: deliveredToSheet ? 'sheets' : 'email' });
 };

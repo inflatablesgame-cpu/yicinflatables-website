@@ -26,9 +26,10 @@ The site is fully static. Cloudflare Pages can serve it without a server or data
 
 ## Contact form configuration
 
-The quote form supports a real JSON-compatible form endpoint through the
-`PUBLIC_FORM_ENDPOINT` build variable. Set it in Cloudflare Pages before
-building, for example to a Formspree or Pages Function endpoint. The form
-sends the product, source page URL, customer details, and requirements as a
-POST request. When the variable is not set, the site keeps a visible `mailto:`
-fallback so a visitor can still prepare an email draft.
+The quote form posts to the first-party Cloudflare Pages Function at
+`/api/inquiry`. It sends the product, source page URL, customer details,
+quantity, destination, target timeline, and requirements. Configure
+`GOOGLE_SHEETS_WEBHOOK_URL` in Pages so confirmed submissions reach the lead
+register. Configure the three `RESEND`/`INQUIRY_*` variables as a backup when
+the Sheets webhook is unavailable. If both delivery channels are unavailable,
+the browser opens a `mailto:` draft instead of reporting a false success.

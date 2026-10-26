@@ -16,6 +16,8 @@ type AnalyticsEvent = {
 const allowedEvents = new Set([
   'page_view',
   'whatsapp_click',
+  'quote_click',
+  'email_click',
 ]);
 
 function cleanText(value: unknown, maxLength = 500) {

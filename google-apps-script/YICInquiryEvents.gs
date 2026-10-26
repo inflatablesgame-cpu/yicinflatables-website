@@ -10,7 +10,9 @@ const NOTIFICATION_EMAILS = 'lanna@yicinflatables.com';
 const HEADERS = {
   'Page Views': ['Timestamp', 'Page URL', 'Referrer', 'Session ID', 'Country'],
   'WhatsApp Clicks': ['Timestamp', 'Button or Link', 'Page URL', 'Source Page URL', 'Product', 'WhatsApp Destination', 'Session ID', 'Country'],
-  'Form Submissions': ['Timestamp', 'Name', 'Email', 'Company', 'Country', 'Product', 'Requirements', 'Source Page URL', 'Visitor Country'],
+  'Quote Clicks': ['Timestamp', 'Button or Link', 'Page URL', 'Source Page URL', 'Product', 'Target URL', 'Session ID', 'Country'],
+  'Email Clicks': ['Timestamp', 'Button or Link', 'Page URL', 'Source Page URL', 'Product', 'Target URL', 'Session ID', 'Country'],
+  'Form Submissions': ['Timestamp', 'Name', 'Email', 'Phone / WhatsApp', 'Company', 'Country', 'Product', 'Quantity', 'Destination', 'Timeline', 'Requirements', 'Source Page URL', 'Visitor Country'],
 };
 
 function doGet() {
@@ -33,8 +35,12 @@ function doPost(e) {
       append_('Page Views', [timestamp, data.pageUrl, data.referrer, data.sessionId, data.country]);
     } else if (data.eventType === 'whatsapp_click') {
       append_('WhatsApp Clicks', [timestamp, data.linkLabel, data.pageUrl, data.sourceUrl, data.product, data.targetUrl, data.sessionId, data.country]);
+    } else if (data.eventType === 'quote_click') {
+      append_('Quote Clicks', [timestamp, data.linkLabel, data.pageUrl, data.sourceUrl, data.product, data.targetUrl, data.sessionId, data.country]);
+    } else if (data.eventType === 'email_click') {
+      append_('Email Clicks', [timestamp, data.linkLabel, data.pageUrl, data.sourceUrl, data.product, data.targetUrl, data.sessionId, data.country]);
     } else if (data.eventType === 'form_submit_success') {
-      append_('Form Submissions', [timestamp, data.name, data.email, data.company, data.country, data.product, data.requirements, data.sourceUrl, data.countryCode]);
+      append_('Form Submissions', [timestamp, data.name, data.email, data.phone, data.company, data.country, data.product, data.quantity, data.destination, data.timeline, data.requirements, data.sourceUrl, data.countryCode]);
       notify_(data);
     }
     return reply_({ ok: true });
@@ -52,13 +58,15 @@ function append_(sheetName, row) {
 function getOrCreateSheet_(sheetName) {
   const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = spreadsheet.getSheetByName(sheetName);
+  const headers = HEADERS[sheetName];
   if (!sheet) {
     sheet = spreadsheet.insertSheet(sheetName);
-    sheet.getRange(1, 1, 1, HEADERS[sheetName].length).setValues([HEADERS[sheetName]]);
-    sheet.setFrozenRows(1);
-    sheet.getRange(1, 1, 1, HEADERS[sheetName].length).setFontWeight('bold').setBackground('#0b2946').setFontColor('#ffffff');
-    sheet.autoResizeColumns(1, HEADERS[sheetName].length);
   }
+  // Keep headers aligned when an existing sheet predates a new tracked field.
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  sheet.setFrozenRows(1);
+  sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold').setBackground('#0b2946').setFontColor('#ffffff');
+  sheet.autoResizeColumns(1, headers.length);
   return sheet;
 }
 
@@ -68,9 +76,13 @@ function notify_(data) {
   const body = [
     `Name: ${data.name || ''}`,
     `Email: ${data.email || ''}`,
+    `Phone / WhatsApp: ${data.phone || ''}`,
     `Company: ${data.company || ''}`,
     `Country: ${data.country || ''}`,
     `Product: ${data.product || ''}`,
+    `Quantity: ${data.quantity || ''}`,
+    `Destination: ${data.destination || ''}`,
+    `Timeline: ${data.timeline || ''}`,
     `Source page: ${data.sourceUrl || ''}`,
     '',
     `Requirements:`,

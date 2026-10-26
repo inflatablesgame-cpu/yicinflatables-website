@@ -26,7 +26,11 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
         <div class="form-field"><label for="company">Company <span>(optional)</span></label><input id="company" name="Company" autocomplete="organization" /></div>
         <div class="form-field"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required /></div>
         <div class="form-field"><label for="country">Country <span>(optional)</span></label><input id="country" name="Country" autocomplete="country-name" /></div>
+        <div class="form-field"><label for="phone">Phone / WhatsApp <span>(optional)</span></label><input id="phone" name="Phone / WhatsApp" type="tel" autocomplete="tel" /></div>
         <div class="form-field full"><label for="product">Product or category <span>(optional)</span></label><input id="product" name="Product" value={product} placeholder="For example: commercial bounce house" /></div>
+        <div class="form-field"><label for="quantity">Quantity <span>(optional)</span></label><input id="quantity" name="Quantity" inputmode="numeric" placeholder="For example: 5 units" /></div>
+        <div class="form-field"><label for="destination">Delivery destination <span>(optional)</span></label><input id="destination" name="Destination" placeholder="City and country" /></div>
+        <div class="form-field"><label for="timeline">Target timeline <span>(optional)</span></label><input id="timeline" name="Timeline" placeholder="For example: July 2027" /></div>
         <input type="hidden" name="Source page URL" value={sourceUrl} />
         <div class="form-field full"><label for="message">Requirements <span>(optional)</span></label><textarea id="message" name="Requirements" placeholder="Quantity, size, logo, colors, delivery date, and any other details">{prefillMessage}</textarea></div>
         <div class="form-field full"><div class="quote-actions"><button class="button" type="submit">Send by email <span aria-hidden="true">→</span></button><a class="button button-whatsapp" data-whatsapp-button href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(quickWhatsAppText)}`} target="_blank" rel="noopener">Quick WhatsApp <span aria-hidden="true">→</span></a></div></div>
@@ -59,7 +63,7 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
       const productName = String(data.get('Product') || queryProduct || 'Commercial inflatable products');
       const requirements = String(data.get('Requirements') || initialMessage);
       const pageUrlLine = /Page URL:/i.test(requirements) ? '' : `\n\nPage URL: ${activeSourceUrl}`;
-      return `${requirements}${pageUrlLine}\n\nProduct: ${productName}\nName: ${String(data.get('Name') || '')}\nEmail: ${String(data.get('Email') || '')}\nCompany: ${String(data.get('Company') || '')}\nCountry: ${String(data.get('Country') || '')}`;
+      return `${requirements}${pageUrlLine}\n\nProduct: ${productName}\nName: ${String(data.get('Name') || '')}\nEmail: ${String(data.get('Email') || '')}\nPhone / WhatsApp: ${String(data.get('Phone / WhatsApp') || '')}\nCompany: ${String(data.get('Company') || '')}\nCountry: ${String(data.get('Country') || '')}\nQuantity: ${String(data.get('Quantity') || '')}\nDestination: ${String(data.get('Destination') || '')}\nTimeline: ${String(data.get('Timeline') || '')}`;
     };
     whatsappButton?.addEventListener('click', (event) => {
       event.preventDefault();
