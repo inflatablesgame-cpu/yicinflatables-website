@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import ProductCard from '../../../components/ProductCard.astro';
-import { products, company, categoryPath, publicCategorySlug, productAbsoluteUrl, productBatch, productCategoryTemplate, productDescription, productDetailContent, productDisplayTitle, productFaqs, productKeyFeatures, productKeywordVariants, productPath, productPrimaryKeyword, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers } from '../../../data/site';
+import { products, company, categoryPath, publicCategorySlug, productAbsoluteUrl, productBatch, productCategoryTemplate, productDescription, productDetailContent, productDisplayTitle, productFaqs, productKeyFeatures, productKeywordVariants, productPath, productPrimaryKeyword, productRelatedProducts, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers } from '../../../data/site';
 import type { Product } from '../../../data/site';
 
 export function getStaticPaths() {
@@ -23,7 +23,7 @@ const faqs = productFaqs(product);
 const keyFeatures = productKeyFeatures(product);
 const targetBuyers = productTargetBuyers(product);
 const keywordVariants = productKeywordVariants(product);
-const relatedProducts = products.filter((item) => item.categorySlug === product.categorySlug && item.slug !== product.slug).slice(0, 4);
+const relatedProducts = productRelatedProducts(product);
 const imageAlt = `${headingTitle}, a commercial ${detail.productType} by YIC Inflatable Sports`;
 const seoKeywords = productSeoKeywords(product);
 const accessoryLabel = /0\.55\s*mm/i.test(product.material) ? 'Blower / Repair Kits / Carry Bag' : 'Pump / Repair Kits / Carry Bag';

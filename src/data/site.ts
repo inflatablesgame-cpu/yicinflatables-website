@@ -3876,6 +3876,39 @@ function cardVariantIndex(product: Product, count: number) {
   return value % count;
 }
 
+const relatedKeywordStopWords = new Set([
+  'a', 'and', 'an', 'bounce', 'castle', 'combo', 'commercial', 'for', 'house', 'inflatable', 'jumping',
+  'rental', 'sale', 'slide', 'the', 'theme', 'with', 'bouncy', 'manufacturer', 'custom', 'water',
+]);
+
+function relatedKeywordTokens(product: Product) {
+  return new Set(`${product.title} ${product.sourceName} ${productPrimaryKeyword(product)}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .split(' ')
+    .filter((token) => token.length > 2 && !relatedKeywordStopWords.has(token)));
+}
+
+/**
+ * Pick same-category products by theme overlap, then rotate stable ties so
+ * every detail page does not repeat the category's first four products.
+ */
+export function productRelatedProducts(product: Product, limit = 4) {
+  const candidates = products.filter((item) => item.categorySlug === product.categorySlug && item.slug !== product.slug);
+  if (candidates.length <= limit) return candidates;
+  const currentTokens = relatedKeywordTokens(product);
+  const rotation = cardVariantIndex(product, candidates.length);
+  return candidates
+    .map((item, index) => {
+      const overlap = [...currentTokens].filter((token) => relatedKeywordTokens(item).has(token)).length;
+      const rotatedIndex = (index - rotation + candidates.length) % candidates.length;
+      return { item, overlap, rotatedIndex };
+    })
+    .sort((left, right) => right.overlap - left.overlap || left.rotatedIndex - right.rotatedIndex)
+    .slice(0, limit)
+    .map(({ item }) => item);
+}
+
 export function productCardDescription(product: Product) {
   const name = cardNameVariant(product);
   const lowerName = name.replace(/^The /, 'the ');
