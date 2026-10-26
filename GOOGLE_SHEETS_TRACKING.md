@@ -26,6 +26,10 @@ In **Cloudflare Pages > yicinflatables-website > Settings > Environment variable
 
 ```
 GOOGLE_SHEETS_WEBHOOK_URL = full Google Apps Script URL including ?key=...
+RESEND_API_KEY = Resend API key, used only as the email fallback when the
+  Google Sheets webhook fails, so an inquiry is never silently lost.
+INQUIRY_FROM_EMAIL = verified sender address in Resend, e.g. quotes@yicinflatables.com
+INQUIRY_BACKUP_EMAIL = mailbox that receives the fallback copy, e.g. lanna@yicinflatables.com
 ```
 
 Save it, then use **Deployments > Retry deployment** (or push a new Git commit).

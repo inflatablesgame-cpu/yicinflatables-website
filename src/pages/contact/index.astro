@@ -79,6 +79,13 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
       fetch(formEndpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: payload })
         .then((response) => {
           if (!response.ok) throw new Error('Form submission failed');
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'generate_lead', {
+              currency: 'USD',
+              value: 1,
+              product: String(data.get('Product') || ''),
+            });
+          }
           if (toast) toast.textContent = 'Thanks. Your request has been sent.';
           toast?.classList.add('is-visible');
           form.reset();
