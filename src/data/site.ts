@@ -308,9 +308,10 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   },
   'Bounce House': {
     title: 'Commercial Bounce Houses | OEM Manufacturer | YIC',
-    description: 'Commercial bounce houses and bouncy castles from YIC for party rental businesses, FECs, schools and event operators. Custom themes and OEM production available.',
+    description: 'Commercial bounce houses, inflatable bounce houses, and bouncy castles from YIC for party rental businesses, FECs, schools, and event operators. Browse bounce house rental and bounce house for sale formats, then request custom OEM production.',
+    keywords: 'bounce house, inflatable bounce house, commercial bounce house, bounce house rental, bounce house for sale, bouncy castle, backyard bouncer, white bounce house, themed bounce house',
     h1: 'Commercial Bounce Houses for Party Rental Businesses',
-    intro: 'YIC supplies commercial bounce houses for party rental fleets, family entertainment centers, schools, community venues, and event operators. The range covers classic jump houses, white wedding bouncers, themed castles, sports designs, and custom layouts. Compare the models below, then send the preferred theme, footprint, quantity, destination, and artwork requirements for a factory quotation.',
+    intro: 'YIC supplies commercial bounce houses for party rental fleets, family entertainment centers, schools, community venues, and event operators. The range covers classic jump houses, white wedding bouncers, themed castles, sports designs, and custom layouts. Buyers comparing bounce house rental options or a bounce house for sale can review the models below, then send the preferred theme, footprint, quantity, destination, and artwork requirements for a factory quotation.',
     options: ['Classic commercial bounce houses', 'White wedding and luxury bouncers', 'Themed and character jump houses', 'Custom color and artwork designs'],
     buyers: [{ title: 'Party rental companies', text: 'Add a recognizable jumping attraction with a clear footprint and a theme that is easy to sell for birthdays and community events.' }, { title: 'Family entertainment centers', text: 'Plan a supervised play zone around guest age, venue clearance, access, and expected throughput.' }, { title: 'Schools and event operators', text: 'Use a simple, highly visible attraction for fairs, sports days, festivals, and seasonal programs.' }],
     oem: 'YIC supports custom bounce house OEM and ODM projects, including color palettes, banners, characters, basketball hoops, dimensions, accessories, and commercial packing.',
@@ -319,9 +320,10 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   },
   'Bounce House Combo': {
     title: 'Commercial Bounce House Combos | OEM Factory | YIC',
-    description: 'Commercial bounce house combos with slides, ball pits and play features from YIC. OEM and custom combo inflatables for rental fleets and FECs.',
+    description: 'Commercial bounce house combos with slides, ball pits, basketball, and themed play features from YIC. Compare bounce house and slide, combo bounce house rental, and custom commercial layouts for rental fleets and FECs.',
+    keywords: 'bounce house combo, bounce house and slide, combo bounce house rental, bounce house with slide, bouncy castle with slide, commercial bounce house with slide, themed bounce house combo, obstacle course bounce house',
     h1: 'Commercial Bounce House Combos for Party Rental & FEC Businesses',
-    intro: 'YIC manufactures bounce house combos that combine jumping, sliding, basketball, ball pits, and themed play in one commercial attraction. These multi-activity inflatables help party rental companies and family entertainment centers offer more value from a single footprint. Review the available layouts, then confirm the play sequence, target age group, dimensions, artwork, and quantity for a factory quote.',
+    intro: 'YIC manufactures bounce house combos that combine jumping, sliding, basketball, ball pits, and themed play in one commercial attraction. These multi-activity inflatables cover bounce house and slide formats, combo bounce house rental packages, and custom commercial layouts for party rental companies and family entertainment centers. Review the available layouts, then confirm the play sequence, target age group, dimensions, artwork, and quantity for a factory quote.',
     options: ['Bounce house and slide combos', 'Ball-pit and basketball combos', 'Themed multi-play inflatables', 'Custom combo layouts for venues'],
     buyers: [{ title: 'Party rental fleets', text: 'Offer more than one activity in a single rental package for birthdays, school events, and community celebrations.' }, { title: 'Family entertainment centers', text: 'Balance entry, exit, slide, bounce, and supervision zones for a busy indoor or outdoor venue.' }, { title: 'Distributors', text: 'Build a differentiated catalog with themed artwork, repeatable specifications, and private-label options.' }],
     oem: 'For a custom combo, send the required play features, venue footprint, reference artwork, target age, and preferred dimensions. YIC can develop the layout, confirm materials, and coordinate production and packing.',
@@ -507,6 +509,12 @@ export function productDescription(product: Product) {
   if (newTent) {
     const detail = productDetailContent(product);
     return `YIC manufactures ${newTent.keywords[0]} for ${detail.primaryBuyer}. This ${product.dimensions.trim()} design is presented as ${newTent.visual}. ${newTent.purpose} The product is specified in ${product.material}; buyers can discuss dimensions, layout, branding, access, anchoring, and packing for their project. Related searches include ${newTent.keywords.slice(1).join(', ')}. Confirm the final site plan, materials, equipment, and operating requirements before production.`;
+  }
+  if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
+    const core = bounceHouseCoreKeyword(product);
+    const detail = productDetailContent(product);
+    const variants = productKeywordVariants(product).filter((term) => term !== core).slice(0, 3).join(', ');
+    return `YIC manufactures ${core} for ${detail.primaryBuyer}. The product is shown at ${product.dimensions.trim()} in ${product.material}, with a layout matched to the visible theme and play features. Buyers can request OEM or ODM changes to colors, artwork, dimensions, access, feature arrangement, accessories, and packing. Related buyer terms include ${variants}. Confirm the final footprint, user group, anchoring, supervision, and destination requirements before production.`;
   }
   const details = productDetailContent(product);
   const focusedTerms = productSearchTerms(product);
@@ -2034,6 +2042,9 @@ export function productSeoTitle(product: Product) {
   if (nightclubTent) return seoTitle(`${nightclubTent.keywords[0]} | Commercial Event Tent`);
   const weddingTent = weddingTentProfile(product);
   if (weddingTent) return seoTitle(`${weddingTent.keywords[0]} | Commercial Wedding Tent`);
+  if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
+    return seoTitle(`${bounceHouseCoreKeyword(product)} | ${product.category}`);
+  }
   if (product.category === 'Bumper Ball') {
     const primary = bumperBallKeywordSet(product)[0] || 'inflatable bumper ball';
     return seoTitle(`${primary} | Commercial Bubble Soccer`);
@@ -2086,6 +2097,11 @@ export function productMetaDescription(product: Product) {
   if (weddingTent) {
     return truncateMeta(`YIC makes ${weddingTent.keywords[0]} for weddings, events, rentals, and hospitality. OEM layout, lighting, branding, anchoring, and factory quotes.`, 158);
   }
+  if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
+    const core = bounceHouseCoreKeyword(product);
+    const use = product.category === 'Bounce House Combo' ? 'party rental fleets and family entertainment centers' : 'party rental businesses, family venues, and community events';
+    return truncateMeta(`YIC manufactures ${core} for ${use}. ${product.dimensions.trim()}, ${product.material}. Custom artwork, layout, accessories, and factory quotation available.`, 158);
+  }
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product).slice(0, 2).join(' and ');
     return truncateMeta(`YIC supplies ${terms} in ${product.dimensions.trim()} ${product.material} for bubble-soccer operators, schools, events, and rental fleets. Request OEM colors, logos, accessories, and factory pricing.`, 158);
@@ -2134,6 +2150,15 @@ export function productKeyFeatures(product: Product) {
     `Listed construction: ${product.material}`,
     `Project planning: ${newTent.options}`,
   ];
+  if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
+    const core = bounceHouseCoreKeyword(product);
+    return [
+      `Core buyer search: ${core}`,
+      `Visible layout: ${product.dimensions.trim()} theme and play format`,
+      `Commercial use: ${product.category === 'Bounce House Combo' ? 'party rental fleets and family entertainment centers' : 'party rental businesses, family venues, and community events'}`,
+      `Customize ${core} with approved colors, artwork, dimensions, access, accessories, and packing`,
+    ];
+  }
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) return [
     `Format shown: ${interactiveProfile.visibleLayout}`,
@@ -2302,6 +2327,94 @@ export function productBatch(product: Product) {
   return Math.floor(Math.max(0, position) / 10) % 3;
 }
 
+// Core terms selected from the supplied bounce-house keyword research. Each
+// current model gets a distinct theme or buying-intent phrase so the catalog
+// does not make every product compete for the same generic query.
+const bounceHouseCoreKeywords: Record<string, string> = {
+  'modern-white-bounce-houses': 'white bounce house',
+  'backyard-jump-house': 'backyard bouncer',
+  'commercial-grade-white-bounce-house': 'commercial bounce house for sale',
+  'solid-blue-bounce-house': 'blue bounce house',
+  'palm-tree-bouncy-castle': 'palm tree bouncy castle',
+  'bounce-house-with-basketball-hoop-inside': 'bounce house with basketball hoop',
+  'disco-dome-bounce-house-for-sale': 'disco dome bounce house for sale',
+  'heavy-duty-inflatable-bounce-house': 'heavy duty inflatable bounce house',
+  'white-wedding-bounce-house': 'white wedding bounce house',
+  'pink-castle-bouncer': 'pink bounce house',
+  'commercial-white-bounce-house-for-sale': 'white bounce house for sale',
+  'shell-bounce-house': 'shell themed bounce house',
+  'poke-mon-bouncy-castle': 'pokemon bounce house',
+  'rooster-bounce-house': 'rooster themed bounce house',
+  'pastel-yellow-bounce-house': 'pastel bouncy castle',
+  'barbie-bounce-house-for-sale': 'barbie bounce house',
+  'minion-inflatable-bounce-house': 'minion bounce house',
+  'tiktok-bounce-house': 'tiktok bounce house',
+  'white-jumping-castle': 'white jumping castle for sale',
+  'intex-dinosaur-inflatable-play-center-with-slide': 'dinosaur bounce house with slide',
+  'blue-bounce-house-with-ball-pit-commercial': 'blue bounce house with ball pit',
+  'small-bounce-house-with-ball-pit': 'small bounce house with ball pit',
+  'small-white-bounce-house-with-ball-pit': 'small white bounce house with ball pit',
+  'black-bounce-house': 'black themed bounce house',
+  'small-backyard-bounce-house': 'small bounce house',
+  'blue-bounce-house-with-ball-pit-for-sale': 'blue bounce house for sale',
+  'pink-bounce-house-with-slide-and-ball-pit-commercial': 'pink bounce house with slide',
+  'all-white-bounce-house-with-slide': 'white bounce house with slide',
+  'paint-splatter-bounce-house-combo': 'paint splatter bounce house combo',
+  'spiderman-inflatable-bounce-house-with-slide': 'spiderman bounce house with slide',
+  'lion-king-bounce-house': 'lion king bounce house',
+  'pink-bounce-house-with-slide-and-ball-pit-for-sale': 'pink bounce house with slide and ball pit',
+  'graffiti-inflatable-bounce': 'graffiti bounce house',
+  'iron-man-bounce-house': 'iron man bounce house',
+  'inflatable-bouncer-slide-combo': 'bounce and slide',
+  'race-car-theme-bounce-house': 'racing bounce house',
+  'monkey-bounce-house-with-slide': 'monkey bounce house with slide',
+  'construction-bounce-house-for-sale': 'construction bounce house for sale',
+  'inflatable-medieval-castle': 'castle bounce house',
+  'white-jumping-castle-with-slide-and-ball-pit': 'bouncy castle with slide and ball pit',
+  'aloha-bounce-house': 'aloha bounce house',
+  'dragon-bounce-house-for-sale': 'dragon bounce house',
+  'rocket-bounce-house-rental': 'rocket bounce house rental',
+  'frozen-combo-bounce-house': 'frozen combo bounce house',
+  'commercial-frozen-bounce-house': 'commercial frozen bounce house',
+  'commercial-obstacle-course-bounce-house': 'obstacle course bounce house',
+  'pastel-bounce-house-slide': 'pastel bounce house slide',
+  'dinosaur-bounce-house-slide-combo': 'dinosaur bounce house slide',
+  'hot-air-balloon-slide-and-hoop-bouncer': 'hot air balloon slide and hoop bouncer',
+  'building-block-bounce-house': 'building block bounce house',
+  'hot-air-balloon-combo-bounce-house': 'hot air balloon bounce house',
+  'dual-lane-slide-bounce-house-commercial': 'dual lane slide bounce house',
+  'white-castle-bounce-house-with-slide-and-ball-pit': 'white castle bounce house with slide',
+  'white-luxury-bouncy-castle': 'luxury white bouncy castle',
+  'commercial-princess-bouncy-castle': 'princess bouncy castle',
+  'minion-bounce-house-with-slide': 'minion bounce house with slide',
+  'pink-and-purple-bounce-house-combo': 'pink and purple bounce house combo',
+  'white-bounce-house-with-double-slide': 'white bounce house with double slide',
+  'bouncer-slide-combo-for-sale': 'bouncer slide combo for sale',
+  'commercial-grade-bounce-house-and-slide': 'commercial bounce house with slide',
+  'slide-bounce-house-combo': 'slide bounce house combo',
+  'combo-commercial-bounce-house': 'commercial combo bounce house',
+  'beach-themed-bounce-house': 'beach themed bounce house',
+  'hulk-inflatable-bounce-house-with-slide': 'hulk bounce house with slide',
+  'unicorn-bouncer-with-slide': 'unicorn bounce house rental',
+  'tropical-themed-bounce-house': 'tropical bounce house',
+  'commercial-bouncy-castle-with-slide': 'bouncy castle with slide rental',
+  'inflatable-bounce-house-water-slide': 'bounce house with water slide',
+  'white-castle-wedding-bounce-house': 'wedding bounce house',
+  'castle-slide-combo-bounce-house': 'castle combo bounce house',
+  'inflatable-bounce-house-with-slide-and-basketball-hoop': 'bounce house with slide and basketball hoop',
+  'butterfly-bounce-house-combo': 'butterfly bounce house combo',
+  'inflatable-spiderman-bounce-house': 'spiderman inflatable bounce house',
+  'dual-lane-slide-bounce-house-for-sale': 'dual lane slide bounce house for sale',
+};
+
+function bounceHouseCoreKeyword(product: Product) {
+  const mapped = bounceHouseCoreKeywords[product.productSlug];
+  if (mapped) return mapped;
+  const source = product.sourceName.toLowerCase().replace(/^\d[\dx.\sxm]+/i, '').trim();
+  const suffix = product.category === 'Bounce House Combo' ? 'bounce house combo' : 'bounce house';
+  return source.includes('bounce') || source.includes('castle') ? source : `${source} ${suffix}`;
+}
+
 export function productKeywordVariants(product: Product) {
   const name = productDisplayTitle(product);
   const lowerName = name.toLowerCase();
@@ -2321,6 +2434,13 @@ export function productKeywordVariants(product: Product) {
   const theme = lowerName.match(/\b(tropical|hawaii|princess|dolphin|shark|jungle|pirate|dinosaur|rainbow|pastel|luxury|wedding|sport|soccer|mario|barbie|unicorn|dragon|construction|medieval|aloha|butterfly|teddy|tiki|honeycomb)\b/)?.[1];
   const base = lowerName.replace(/\b(commercial|for sale|rental|manufacturer|supplier|factory|custom|wholesale)\b/g, '').replace(/\s+/g, ' ').trim();
   const intentKeyword = productIntentKeyword(product);
+
+  if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
+    const core = bounceHouseCoreKeyword(product);
+    add(core, `${core} manufacturer`, `custom ${core}`, `${core} for rental`);
+    if (/for sale|commercial|supplier|factory/i.test(product.productSlug)) add(`${core} for sale`);
+    return [...new Set([core, intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
 
   if (waterSlideProfile(product)) {
     add(...waterSlideProfile(product)!.keywords);
@@ -3708,6 +3828,11 @@ export function productCardDescription(product: Product) {
       : 'Fly-fishing belly boat for guided lake sessions and fishing-gear rental';
     return `${use}. Reference size: ${product.dimensions.trim()}.`;
   }
+  if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
+    const core = bounceHouseCoreKeyword(product);
+    const audience = product.category === 'Bounce House Combo' ? 'party rental fleets and family entertainment centers' : 'party rental businesses, family venues, and community events';
+    return `${core} for ${audience}, with the visible theme and play features planned around supervised operation. Compare the reference size, artwork, access, anchoring, accessories, and OEM options before requesting a factory quotation. ${reference}`;
+  }
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) {
     return `Commercial ${interactiveProfile.keywords[0]} with ${interactiveProfile.visibleLayout}. Plan ${interactiveProfile.keywords[1]}, game rules, OEM graphics, and supervised event use. ${reference}`;
@@ -3960,6 +4085,8 @@ export function productFaqs(product: Product) {
   const planning = content.planningPoints.join('; ').toLowerCase();
   const customization = content.customization.join('; ').toLowerCase();
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const isBounceCategory = product.category === 'Bounce House' || product.category === 'Bounce House Combo';
+  const bounceCore = isBounceCategory ? bounceHouseCoreKeyword(product) : '';
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
     const terms = waterSlide.keywords;
@@ -4406,12 +4533,14 @@ export function productFaqs(product: Product) {
   const featuredApplication = content.applications[cardVariantIndex(product, content.applications.length)] ?? content.applications[0];
   const productSpecificFaqs = [
     {
-      question: [
-        `Would ${name} suit ${featuredApplication?.title.toLowerCase() || 'my venue'}?`,
-        `How can ${name} fit a ${featuredApplication?.title.toLowerCase() || 'commercial'} program?`,
-        `Is ${name} a practical choice for ${featuredApplication?.title.toLowerCase() || 'my business'}?`,
-      ][productBatch(product)],
-      answer: `${featuredApplication?.text ?? content.purpose} ${dimensions} Confirm the space, customer profile, and operating plan before selecting the final configuration.`,
+      question: isBounceCategory
+        ? `What is the ${bounceCore} format designed for?`
+        : [
+          `Would ${name} suit ${featuredApplication?.title.toLowerCase() || 'my venue'}?`,
+          `How can ${name} fit a ${featuredApplication?.title.toLowerCase() || 'commercial'} program?`,
+          `Is ${name} a practical choice for ${featuredApplication?.title.toLowerCase() || 'my business'}?`,
+        ][productBatch(product)],
+      answer: `${isBounceCategory ? `This ${bounceCore} is planned for ${content.primaryBuyer}.` : featuredApplication?.text ?? content.purpose} ${dimensions} Confirm the space, customer profile, and operating plan before selecting the final configuration.`,
     },
     {
       question: [
@@ -4419,7 +4548,7 @@ export function productFaqs(product: Product) {
         `Can YIC adapt ${name} to my artwork and operating needs?`,
         `How can ${name} be customized for my market?`,
       ][productBatch(product)],
-      answer: `YIC can review ${content.customization.join('; ').toLowerCase()}. Share your reference images, preferred dimensions, branding, quantity, and destination so the proposed specification fits your project.`,
+      answer: `YIC can review ${content.customization.join('; ').toLowerCase()}${isBounceCategory ? ` for the ${bounceCore} layout` : ''}. Share your reference images, preferred dimensions, branding, quantity, and destination so the proposed specification fits your project.`,
     },
     {
       question: [
