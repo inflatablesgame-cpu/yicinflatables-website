@@ -2081,8 +2081,76 @@ function ringTossKeywordSet(product: Product) {
   return ringTossKeywordSets[product.productSlug] ?? [];
 }
 
+const mechanicalGameProfiles: Record<string, InteractiveGameProfile> = {
+  'commercial-mechanical-bull-for-sale': mechanicalBullProfile('commercial mechanical bull for sale', 'commercial mechanical bull', 'inflatable bull ride', 'bucking bulls for sale'),
+  'commercial-mechanical-bull': mechanicalBullProfile('commercial mechanical bull', 'mechanical bull riding', 'bull ride machine', 'rodeo bull'),
+  'commercial-inflatable-mechanical-bull': mechanicalBullProfile('commercial inflatable mechanical bull', 'inflatable mechanical bull', 'mechanical bull riding machine', 'inflatable rodeo bull'),
+  'wipeout-game-inflatable-commercial': sweeperGameProfile('wipeout game inflatable for sale', 'inflatable wipeout game', 'rotating sweeper challenge', 'commercial wipeout arena'),
+  'inflatable-mechanical-meltdown-game': sweeperGameProfile('inflatable mechanical meltdown game', 'mechanical meltdown game', 'inflatable sweeper game', 'rotating arm challenge'),
+  'wipeout-game-inflatable-for-sale': sweeperGameProfile('large wipeout game inflatable for sale', 'inflatable wipeout game', 'commercial sweeper game', 'rotating obstacle challenge'),
+  'inflatable-wipeout-sweeper': sweeperGameProfile('inflatable wipeout sweeper', 'wipeout sweeper game', 'rotating inflatable sweeper', 'operator-led challenge game'),
+  'blow-up-bull-riding-machine': mechanicalBullProfile('blow up bull riding machine', 'inflatable bull ride', 'bull riding machine', 'mechanical bull riding'),
+  'blow-up-mechanical-bull': mechanicalBullProfile('blow up mechanical bull', 'inflatable mechanical bull', 'mechanical bull', 'blow up bull ride'),
+  'inflatable-mechanical-bull-for-sale': mechanicalBullProfile('inflatable mechanical bull for sale', 'commercial mechanical bull', 'electric bull for sale', 'mechanical bull riding machine'),
+  'blow-up-mechanical-bull-for-sale': mechanicalBullProfile('blow up mechanical bull for sale', 'inflatable rodeo bull', 'bucking bulls for sale', 'portable mechanical bull'),
+  'blow-up-riding-bull': mechanicalBullProfile('blow up riding bull', 'inflatable bull ride', 'rodeo bull riding', 'bull ride machine'),
+  'inflatable-pink-pig-mechanical-riding-ride': themedRideProfile('inflatable pink pig mechanical riding ride', 'pink pig mechanical ride', 'inflatable animal riding ride', 'commercial themed ride', 'a pink pig ride figure set inside a circular inflatable safety arena', 'a controlled mechanical-riding attraction with a playful farm-animal visual theme', 'party-rental companies, farm-theme event suppliers, family entertainment centers, and mall activation teams', 'birthday rentals, farm-themed parties, family entertainment programs, seasonal events, and indoor play sessions'),
+  'ride-a-bull-inflatable': mechanicalBullProfile('ride a bull inflatable', 'inflatable bull ride', 'rodeo bull', 'mechanical bull for parties'),
+  'commercial-mechanical-bull-commercial': mechanicalBullProfile('commercial mechanical bull riding inflatable', 'commercial bull ride machine', 'mechanical bull riding inflatable', 'inflatable mechanical bull'),
+  'inflatable-bull-ride-for-sale': mechanicalBullProfile('inflatable bull ride for sale', 'inflatable rodeo bull', 'mechanical bull riding', 'bull riding equipment'),
+  'inflatable-bull-riding-machine': mechanicalBullProfile('inflatable bull riding machine', 'bull ride machine', 'mechanical bull riding machine', 'electric bull riding'),
+  'inflatable-rodeo-bull-for-sale': mechanicalBullProfile('inflatable rodeo bull for sale', 'rodeo bull', 'inflatable bull ride', 'bucking bull machine'),
+  'mechanical-bull-blow-up': mechanicalBullProfile('mechanical bull blow up', 'blow up mechanical bull', 'mechanical rodeo bull', 'portable mechanical bull'),
+  'inflatable-mechanical-surfboard': themedRideProfile('inflatable mechanical surfboard', 'mechanical surfboard ride', 'surf simulator inflatable', 'commercial surfboard challenge', 'a surfboard-style ride platform surrounded by an inflatable safety bed', 'a balance-and-riding challenge that simulates changing surfboard movement for supervised participant turns', 'resort activity providers, surf-theme event operators, party-rental companies, FECs, and brand-activation agencies', 'beach parties, surf festivals, resort entertainment, corporate events, and supervised rental programs'),
+  'wipeout-inflatable-for-sale': sweeperGameProfile('wipeout inflatable for sale', 'commercial wipeout game', 'inflatable sweeper game', 'rotating obstacle challenge'),
+  'blow-up-wipeout-course': sweeperGameProfile('blow up wipeout course', 'inflatable wipeout course', 'sweeper obstacle course', 'rotating arm game'),
+  'inflatable-wipeout-obstacle-course-rental': sweeperGameProfile('inflatable wipeout obstacle course rental', 'commercial wipeout obstacle course', 'inflatable sweeper rental', 'rotating challenge arena'),
+  'inflatable-sweeper-game': sweeperGameProfile('inflatable sweeper game', 'inflatable wipeout sweeper', 'commercial sweeper game', 'rotating obstacle game'),
+  'inflatable-unicorn-mechanical-ride-manufacturer': themedRideProfile('inflatable unicorn mechanical ride manufacturer', 'unicorn mechanical ride', 'inflatable unicorn ride', 'commercial themed ride', 'a unicorn ride figure positioned inside a padded inflatable safety arena', 'a controlled riding attraction with a unicorn visual theme and an operator-led movement program', 'party-rental companies, unicorn-theme event suppliers, family entertainment centers, resorts, and mall activation teams', 'unicorn parties, family entertainment venues, seasonal events, birthday rentals, and resort activity programs'),
+  'commercial-grade-interactive-unicorn-challenge-game': themedRideProfile('commercial grade interactive unicorn challenge game', 'unicorn interactive challenge game', 'inflatable unicorn challenge', 'commercial themed game', 'a unicorn-themed interactive ride or challenge format with a protective inflatable perimeter', 'an operator-led unicorn challenge that can be configured around the approved ride or game mechanism', 'family entertainment centers, party-rental businesses, branded-event agencies, schools, and resorts', 'unicorn-themed events, family days, shopping-mall activations, birthday rentals, and supervised entertainment programs'),
+  'commercial-grade-interactive-shark-challenge-game': themedRideProfile('commercial grade interactive shark challenge game', 'shark mechanical ride', 'inflatable shark challenge game', 'commercial themed game', 'a shark-themed ride figure or challenge station inside a padded inflatable safety area', 'an operator-led shark challenge designed for themed event play and controlled participant turns', 'aquarium-themed venues, resort operators, party-rental businesses, family entertainment centers, and event agencies', 'beach themes, ocean-themed parties, resort activities, mall promotions, and supervised event entertainment'),
+  'inflatable-unicorn-mechanical-riding-ride': themedRideProfile('inflatable unicorn mechanical riding ride', 'unicorn mechanical riding ride', 'inflatable unicorn ride', 'commercial unicorn ride', 'a mechanical unicorn riding figure surrounded by an inflatable safety bed', 'a supervised mechanical-riding experience with a themed unicorn figure and controlled participant turns', 'party-rental companies, family entertainment centers, themed-event planners, resorts, and indoor play venues', 'birthday rentals, unicorn-theme parties, FEC programs, school events, and operator-led seasonal attractions'),
+  'mechanical-bull-riding-inflatable': mechanicalBullProfile('mechanical bull riding inflatable', 'inflatable mechanical bull', 'mechanical bull riding', 'portable mechanical bull'),
+};
+
+function mechanicalBullProfile(primary: string, second: string, third: string, fourth: string): InteractiveGameProfile {
+  return {
+    keywords: [primary, second, third, fourth],
+    productType: 'commercial mechanical bull riding attraction',
+    visibleLayout: 'a rodeo-style bull-riding figure centered in a circular inflatable safety arena',
+    gameMechanic: 'an operator-led riding cycle with the approved bull unit, control system, padded inflatable arena, participant rules, and controlled turn rotation',
+    primaryBuyer: 'party-rental companies, rodeo-event suppliers, family entertainment centers, resorts, festivals, and corporate-event agencies',
+    application: 'western-theme events, party rentals, rodeo activations, resort entertainment, festivals, and supervised corporate challenges',
+    customizationFocus: 'arena diameter, bull cover or theme, entry opening, control position, colors, printed branding, safety perimeter, blower package, packing, and export accessories',
+  };
+}
+
+function sweeperGameProfile(primary: string, second: string, third: string, fourth: string): InteractiveGameProfile {
+  return {
+    keywords: [primary, second, third, fourth],
+    productType: 'commercial rotating sweeper and wipeout challenge game',
+    visibleLayout: 'a circular inflatable player arena with a central rotating-arm mechanism and designated participant positions',
+    gameMechanic: 'participants time their jumps or ducking movements around an operator-controlled rotating arm in a supervised challenge format',
+    primaryBuyer: 'event-rental companies, team-building providers, family entertainment centers, schools, festivals, and resort activity operators',
+    application: 'team challenges, school events, festivals, family days, indoor entertainment, and high-throughput rental programs',
+    customizationFocus: 'arena diameter, player stations, arm configuration, operator position, colors, sponsor graphics, entrance layout, blower package, packing, and event branding',
+  };
+}
+
+function themedRideProfile(primary: string, second: string, third: string, fourth: string, visibleLayout: string, gameMechanic: string, primaryBuyer: string, application: string): InteractiveGameProfile {
+  return {
+    keywords: [primary, second, third, fourth],
+    productType: 'commercial themed mechanical riding attraction',
+    visibleLayout,
+    gameMechanic,
+    primaryBuyer,
+    application,
+    customizationFocus: 'theme figure, arena footprint, entry opening, ride or challenge settings, colors, printed artwork, logo panels, operator position, blower package, packing, and export accessories',
+  };
+}
+
 function interactiveGameProfile(product: Product) {
-  return interactiveGameProfiles[product.productSlug];
+  return mechanicalGameProfiles[product.productSlug] ?? interactiveGameProfiles[product.productSlug];
 }
 
 function bubbleTentProfile(product: Product) {
