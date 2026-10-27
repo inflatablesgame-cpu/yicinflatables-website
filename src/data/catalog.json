@@ -377,7 +377,7 @@
     {
       "name": "Inflatable Slide",
       "slug": "inflatable-slide",
-      "count": 15,
+      "count": 24,
       "heroImage": "/assets/product/Inflatable%20Slide/10x3x2.6m%20%20%20inflatable%20slip%20and%20slide%20with%20pool/1.webp",
       "products": [
         "inflatable-slide--inflatable-slip-and-slide-with-pool-1",
@@ -394,7 +394,16 @@
         "inflatable-slide--giant-inflatable-pirate-ship-slide-12",
         "inflatable-slide--inflatable-racing-car-slide-13",
         "inflatable-slide--spongebob-inflatable-slide-14",
-        "inflatable-slide--inflatable-jungle-slide-15"
+        "inflatable-slide--inflatable-jungle-slide-15",
+        "inflatable-slide--inflatable-pirate-ship-slide-16",
+        "inflatable-slide--pirate-ship-jumping-castle-17",
+        "inflatable-slide--giant-pirate-ship-inflatable-18",
+        "inflatable-slide--inflatable-soccer-slide-19",
+        "inflatable-slide--obstacle-course-bounce-house-with-slide-20",
+        "inflatable-slide--inflatable-jungle-slide-21",
+        "inflatable-slide--safari-bouncy-castle-22",
+        "inflatable-slide--candy-bounce-house-23",
+        "inflatable-slide--spiderman-inflatable-water-slide-24"
       ]
     },
     {
@@ -6506,6 +6515,168 @@
         "/assets/product/Inflatable%20Slide/9x5x6m%20inflatable%20jungle%20slide/5.webp"
       ],
       "dimensions": "9x5x6m ",
+      "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--inflatable-pirate-ship-slide-16",
+      "productSlug": "inflatable-pirate-ship-slide-commercial",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "inflatable pirate ship slide",
+      "sourceName": "10x4x5m    inflatable pirate ship slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20inflatable%20pirate%20ship%20slide/1.webp",
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20inflatable%20pirate%20ship%20slide/2.webp",
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20inflatable%20pirate%20ship%20slide/3.webp",
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20inflatable%20pirate%20ship%20slide/4.webp",
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20inflatable%20pirate%20ship%20slide/5.webp"
+      ],
+      "dimensions": "10x4x5m    ",
+      "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--pirate-ship-jumping-castle-17",
+      "productSlug": "pirate-ship-jumping-castle",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "pirate ship jumping castle",
+      "sourceName": "10x4x5m    pirate ship jumping castle",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20pirate%20ship%20jumping%20castle/1.webp",
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20pirate%20ship%20jumping%20castle/2.webp",
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20pirate%20ship%20jumping%20castle/3.webp",
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20pirate%20ship%20jumping%20castle/4.webp",
+        "/assets/product/Inflatable%20Slide/10x4x5m%20%20%20%20pirate%20ship%20jumping%20castle/5.webp"
+      ],
+      "dimensions": "10x4x5m    ",
+      "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--giant-pirate-ship-inflatable-18",
+      "productSlug": "giant-pirate-ship-inflatable",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "giant pirate ship inflatable",
+      "sourceName": "10x5x6.24m    giant pirate ship inflatable",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/10x5x6.24m%20%20%20%20giant%20pirate%20ship%20inflatable/1.webp",
+        "/assets/product/Inflatable%20Slide/10x5x6.24m%20%20%20%20giant%20pirate%20ship%20inflatable/2.webp",
+        "/assets/product/Inflatable%20Slide/10x5x6.24m%20%20%20%20giant%20pirate%20ship%20inflatable/3.webp",
+        "/assets/product/Inflatable%20Slide/10x5x6.24m%20%20%20%20giant%20pirate%20ship%20inflatable/4.webp",
+        "/assets/product/Inflatable%20Slide/10x5x6.24m%20%20%20%20giant%20pirate%20ship%20inflatable/5.webp"
+      ],
+      "dimensions": "10x5x6.24m    ",
+      "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--inflatable-soccer-slide-19",
+      "productSlug": "inflatable-soccer-slide",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "inflatable soccer slide",
+      "sourceName": "10x7x6.5m    inflatable soccer slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/10x7x6.5m%20%20%20%20inflatable%20soccer%20slide/1.webp",
+        "/assets/product/Inflatable%20Slide/10x7x6.5m%20%20%20%20inflatable%20soccer%20slide/2.webp",
+        "/assets/product/Inflatable%20Slide/10x7x6.5m%20%20%20%20inflatable%20soccer%20slide/3.webp",
+        "/assets/product/Inflatable%20Slide/10x7x6.5m%20%20%20%20inflatable%20soccer%20slide/4.webp",
+        "/assets/product/Inflatable%20Slide/10x7x6.5m%20%20%20%20inflatable%20soccer%20slide/5.webp"
+      ],
+      "dimensions": "10x7x6.5m    ",
+      "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--obstacle-course-bounce-house-with-slide-20",
+      "productSlug": "obstacle-course-bounce-house-with-slide",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "obstacle course bounce house with slide",
+      "sourceName": "12x3.4x5.8m    obstacle course bounce house with slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/12x3.4x5.8m%20%20%20%20obstacle%20course%20bounce%20house%20with%20slide/1.webp",
+        "/assets/product/Inflatable%20Slide/12x3.4x5.8m%20%20%20%20obstacle%20course%20bounce%20house%20with%20slide/2.webp",
+        "/assets/product/Inflatable%20Slide/12x3.4x5.8m%20%20%20%20obstacle%20course%20bounce%20house%20with%20slide/3.webp",
+        "/assets/product/Inflatable%20Slide/12x3.4x5.8m%20%20%20%20obstacle%20course%20bounce%20house%20with%20slide/4.webp",
+        "/assets/product/Inflatable%20Slide/12x3.4x5.8m%20%20%20%20obstacle%20course%20bounce%20house%20with%20slide/5.webp"
+      ],
+      "dimensions": "12x3.4x5.8m    ",
+      "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--inflatable-jungle-slide-21",
+      "productSlug": "inflatable-jungle-slide-commercial",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "inflatable jungle slide",
+      "sourceName": "17x6.5x10m    inflatable jungle slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/17x6.5x10m%20%20%20%20inflatable%20jungle%20slide/1.webp",
+        "/assets/product/Inflatable%20Slide/17x6.5x10m%20%20%20%20inflatable%20jungle%20slide/2.webp",
+        "/assets/product/Inflatable%20Slide/17x6.5x10m%20%20%20%20inflatable%20jungle%20slide/3.webp",
+        "/assets/product/Inflatable%20Slide/17x6.5x10m%20%20%20%20inflatable%20jungle%20slide/4.webp",
+        "/assets/product/Inflatable%20Slide/17x6.5x10m%20%20%20%20inflatable%20jungle%20slide/5.webp"
+      ],
+      "dimensions": "17x6.5x10m    ",
+      "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--safari-bouncy-castle-22",
+      "productSlug": "safari-bouncy-castle",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "safari bouncy castle",
+      "sourceName": "7x4x5.5m    safari bouncy castle",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/7x4x5.5m%20%20%20%20safari%20bouncy%20castle/1.webp",
+        "/assets/product/Inflatable%20Slide/7x4x5.5m%20%20%20%20safari%20bouncy%20castle/2.webp",
+        "/assets/product/Inflatable%20Slide/7x4x5.5m%20%20%20%20safari%20bouncy%20castle/3.webp",
+        "/assets/product/Inflatable%20Slide/7x4x5.5m%20%20%20%20safari%20bouncy%20castle/4.webp",
+        "/assets/product/Inflatable%20Slide/7x4x5.5m%20%20%20%20safari%20bouncy%20castle/5.webp"
+      ],
+      "dimensions": "7x4x5.5m    ",
+      "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--candy-bounce-house-23",
+      "productSlug": "candy-bounce-house",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "candy bounce house",
+      "sourceName": "7x4x6m     candy bounce house",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20candy%20bounce%20house/1.webp",
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20candy%20bounce%20house/2.webp",
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20candy%20bounce%20house/3.webp",
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20candy%20bounce%20house/4.webp",
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20candy%20bounce%20house/5.webp"
+      ],
+      "dimensions": "7x4x6m     ",
+      "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--spiderman-inflatable-water-slide-24",
+      "productSlug": "spiderman-inflatable-water-slide",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "spiderman inflatable water slide",
+      "sourceName": "7x4x6m     spiderman inflatable water slide",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20spiderman%20inflatable%20water%20slide/1.webp",
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20spiderman%20inflatable%20water%20slide/2.webp",
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20spiderman%20inflatable%20water%20slide/3.webp",
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20spiderman%20inflatable%20water%20slide/4.webp",
+        "/assets/product/Inflatable%20Slide/7x4x6m%20%20%20%20%20spiderman%20inflatable%20water%20slide/5.webp"
+      ],
+      "dimensions": "7x4x6m     ",
       "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
     },
     {

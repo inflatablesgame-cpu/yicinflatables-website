@@ -501,7 +501,10 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 export function productDescription(product: Product) {
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
-    return `YIC manufactures ${waterSlide.keywords[0]} for ${waterSlide.buyer}. This ${product.dimensions.trim()} model is shown as ${waterSlide.visual}. ${waterSlide.purpose} The listing specifies ${product.material}. Buyers can review ${waterSlide.options}. Related buying searches include ${waterSlide.keywords.slice(1).join(', ')}. Confirm the site footprint, water supply, drainage, landing or pool plan, anchoring, supervision, and final configuration before ordering.`;
+    const siteChecks = waterSlide.wetUse === false
+      ? 'Confirm the site footprint, access route, clear zones, anchoring, supervision, and final configuration before ordering.'
+      : 'Confirm the site footprint, water supply, drainage, landing or pool plan, anchoring, supervision, and final configuration before ordering.';
+    return `YIC manufactures ${waterSlide.keywords[0]} for ${waterSlide.buyer}. This ${product.dimensions.trim()} model is shown as ${waterSlide.visual}. ${waterSlide.purpose} The listing specifies ${product.material}. Buyers can review ${waterSlide.options}. Related buying searches include ${waterSlide.keywords.slice(1).join(', ')}. ${siteChecks}`;
   }
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) {
@@ -673,6 +676,7 @@ function newWaterParkProfile(product: Product) {
 
 type WaterSlideProfile = {
   keywords: string[];
+  wetUse?: boolean;
   visual: string;
   purpose: string;
   buyer: string;
@@ -688,6 +692,113 @@ type WaterSlideProfile = {
 // supporting set so tropical, princess, jungle, pool, and lane intent do not
 // collapse into one repeated water-slide page.
 const waterSlideProfiles: Record<string, WaterSlideProfile> = {
+  'inflatable-pirate-ship-slide-commercial': {
+    keywords: ['inflatable pirate ship slide', 'pirate ship slide', 'pirate slide', 'inflatable slide rental', 'jump and slide'],
+    wetUse: false,
+    visual: 'an orange pirate-ship slide with a raised mast, skull-and-crossbones artwork, ship windows, and a front slide lane',
+    purpose: 'The pirate-ship structure gives rental fleets and family venues a recognizable dry-slide attraction with strong visual merchandising and a clear climb-to-slide route.',
+    buyer: 'party-rental businesses, family entertainment centers, event operators, and commercial inflatable distributors',
+    application: 'pirate-themed birthday rentals, indoor play venues, community events, and supervised family recreation',
+    options: 'pirate artwork, mast and ship details, slide height, colors, logo panels, access route, anchoring, blower package, and export packing',
+    customizationFocus: 'pirate graphics, ship colors, mast details, slide profile, logo placement, access layout, and commercial accessories',
+    faqQuestions: ['What is this inflatable pirate ship slide designed for?', 'How should a venue plan the 10 x 4 x 5 m pirate slide footprint?', 'Which material is listed for this pirate ship slide?', 'Can the pirate artwork, ship details, and layout be customized?', 'What setup and supervision checks should operators prepare?', 'What information is needed for an inflatable pirate ship slide quotation?'],
+    cardSummary: 'Inflatable pirate ship slide with a raised mast, nautical artwork, and a commercial climb-to-slide route.',
+  },
+  'pirate-ship-jumping-castle': {
+    keywords: ['pirate ship jumping castle', 'pirate ship slide', 'jumping castle with slide', 'bounce house with slide', 'jump and slide'],
+    wetUse: false,
+    visual: 'a large orange pirate ship jumping castle with a climbing wall, yellow slide lanes, mast, pirate character, and ship bow artwork',
+    purpose: 'This pirate ship jumping castle combines enclosed bounce space with a climb-and-slide layout for themed rental inventory and family entertainment programs.',
+    buyer: 'bounce-house rental companies, family entertainment centers, event planners, and wholesale inflatable buyers',
+    application: 'pirate birthday parties, school fairs, indoor play programs, resort kids activities, and supervised event rentals',
+    options: 'bounce chamber, pirate ship artwork, climbing route, slide lanes, mast and bow details, colors, logos, anchoring, and packing',
+    customizationFocus: 'pirate ship graphics, jumping-castle layout, slide and climb arrangement, printed branding, color palette, and accessories',
+    faqQuestions: ['What is this pirate ship jumping castle designed for?', 'How should buyers plan the 10 x 4 x 5 m jumping castle footprint?', 'Which material is listed for this pirate ship jumping castle?', 'Can the pirate ship artwork, bounce area, and slide layout be customized?', 'What access, anchoring, and supervision details should be confirmed?', 'What should I send for a pirate ship jumping castle factory quote?'],
+    cardSummary: 'Pirate ship jumping castle with bounce space, climbing access, and bright yellow slide lanes.',
+  },
+  'giant-pirate-ship-inflatable': {
+    keywords: ['giant pirate ship inflatable', 'pirate ship slide', 'giant inflatable slide rental', 'inflatable slide rental', 'big inflatable slide rental'],
+    wetUse: false,
+    visual: 'a giant red, blue, and yellow pirate-ship inflatable with multiple slide lanes, cannons, ship windows, and a raised bow',
+    purpose: 'The giant pirate-ship format is a high-visibility commercial attraction for operators that need a larger themed footprint and multiple participant routes.',
+    buyer: 'large rental fleets, family entertainment centers, resorts, event operators, and commercial inflatable dealers',
+    application: 'large birthday events, family festivals, resort recreation, indoor play centers, and high-throughput rental packages',
+    options: 'lane count, ship silhouette, cannon and window details, climbing access, colors, logo panels, anchoring, blower package, and export packing',
+    customizationFocus: 'large-format pirate artwork, lane arrangement, ship details, branded panels, access direction, and commercial accessories',
+    faqQuestions: ['What is this giant pirate ship inflatable designed for?', 'How should a venue plan the 10 x 5 x 6.24 m giant slide footprint?', 'Which material is listed for this giant pirate ship inflatable?', 'Can the slide lanes, ship artwork, and branding be changed?', 'What installation, queue, and supervision planning is required?', 'What details help quote a giant inflatable slide rental project?'],
+    cardSummary: 'Giant pirate ship inflatable with multiple slide routes, ship details, and a high-visibility commercial footprint.',
+  },
+  'inflatable-soccer-slide': {
+    keywords: ['inflatable soccer slide', 'bounce and slide', 'inflatable slide rental', 'jump and slide', 'soccer theme inflatable slide'],
+    wetUse: false,
+    visual: 'a green soccer-themed inflatable with a tall climb-and-slide face, football graphics, goal-style panels, and a contained play base',
+    purpose: 'The soccer theme turns a standard inflatable slide into a sports-led attraction for clubs, schools, rental fleets, and event programs.',
+    buyer: 'party-rental businesses, sports clubs, schools, family venues, and commercial inflatable distributors',
+    application: 'soccer tournaments, school carnivals, sports festivals, birthday rentals, and supervised family events',
+    options: 'soccer artwork, ball graphics, climb and slide arrangement, color palette, logo panels, access route, anchoring, and packing',
+    customizationFocus: 'soccer graphics, team colors, goal or ball artwork, slide profile, sponsor panels, and event accessories',
+    faqQuestions: ['What is this inflatable soccer slide designed for?', 'How should buyers plan the 10 x 7 x 6.5 m soccer slide footprint?', 'Which material is listed for this soccer theme inflatable slide?', 'Can team colors, football artwork, and sponsor panels be customized?', 'What access, anchoring, and supervision checks matter for sports events?', 'What information is needed for an inflatable soccer slide quote?'],
+    cardSummary: 'Inflatable soccer slide with football graphics, a tall climb route, and a sports-event-ready layout.',
+  },
+  'obstacle-course-bounce-house-with-slide': {
+    keywords: ['obstacle course bounce house with slide', 'bounce house and slide', 'bounce house with slide', 'jump and slide', 'inflatable slide rental'],
+    wetUse: false,
+    visual: 'a black-and-yellow obstacle-style inflatable with a steep climb, safety netting, slide lane, and side challenge sections',
+    purpose: 'This obstacle course bounce house with slide combines challenge movement and a finishing slide for supervised rental sessions and active event programming.',
+    buyer: 'commercial rental fleets, family entertainment centers, school event planners, and inflatable wholesalers',
+    application: 'team challenges, school fairs, active birthday parties, indoor play programs, and commercial rental bookings',
+    options: 'obstacle sequence, climb angle, slide lane, netting, colors, printed branding, entry and exit, anchoring, and packing',
+    customizationFocus: 'obstacle layout, black-yellow artwork, slide finish, branded panels, participant flow, and commercial accessories',
+    faqQuestions: ['What is this obstacle course bounce house with slide designed for?', 'How should buyers plan the 12 x 3.4 x 5.8 m obstacle footprint?', 'Which material is listed for this obstacle course bounce house with slide?', 'Can the obstacles, slide, colors, and branding be customized?', 'What participant flow, anchoring, and supervision checks are needed?', 'What should I send for an obstacle course bounce house with slide quotation?'],
+    cardSummary: 'Obstacle course bounce house with slide, climbing challenge, safety netting, and commercial event flow.',
+  },
+  'inflatable-jungle-slide-commercial': {
+    keywords: ['inflatable jungle slide', 'giant inflatable slide rental', 'inflatable slide rental', 'bounce and slide', 'jungle theme inflatable slide'],
+    wetUse: false,
+    visual: 'a giant jungle inflatable with a leopard-themed slide face, palm details, monkey figures, and a large enclosed play base',
+    purpose: 'The giant jungle theme gives resorts, rental operators, and family venues a high-impact animal attraction with a clear climb-to-slide route.',
+    buyer: 'commercial rental businesses, resorts, family entertainment centers, event operators, and inflatable distributors',
+    application: 'jungle parties, resort children activities, family festivals, indoor play centers, and large rental packages',
+    options: 'jungle artwork, animal figures, palm details, slide height, play-base layout, logo panels, anchoring, and export packing',
+    customizationFocus: 'leopard and jungle graphics, animal sculptures, palm accents, slide profile, branded panels, and venue-specific layout',
+    faqQuestions: ['What is this inflatable jungle slide designed for?', 'How should a venue plan the 17 x 6.5 x 10 m jungle slide footprint?', 'Which material is listed for this giant inflatable slide?', 'Can the jungle animals, artwork, colors, and slide layout be customized?', 'What large-site access, anchoring, and supervision planning is required?', 'What information is needed for a giant inflatable slide rental quote?'],
+    cardSummary: 'Giant inflatable jungle slide with leopard artwork, animal figures, palm details, and a large play base.',
+  },
+  'safari-bouncy-castle': {
+    keywords: ['safari bouncy castle', 'jumping castle with slide', 'bounce house with slide', 'party slide', 'inflatable slide rental'],
+    wetUse: false,
+    visual: 'a green safari bouncy castle with elephant, giraffe, lion, palm-tree artwork, and bright yellow slide lanes',
+    purpose: 'The safari bouncy castle creates an animal-themed bounce-and-slide attraction for family events, rental catalogs, and supervised venue play.',
+    buyer: 'party-rental companies, schools, family entertainment centers, resorts, and commercial inflatable suppliers',
+    application: 'safari birthday parties, school fairs, community events, resort kids programs, and indoor family play',
+    options: 'safari animals, palm artwork, bounce chamber, slide lanes, colors, logo panels, access, anchoring, and packing',
+    customizationFocus: 'animal artwork, safari color palette, bounce and slide arrangement, printed branding, access layout, and accessories',
+    faqQuestions: ['What is this safari bouncy castle designed for?', 'How should buyers plan the 7 x 4 x 5.5 m safari footprint?', 'Which material is listed for this safari bouncy castle?', 'Can the safari animals, palm details, and slide layout be customized?', 'What indoor or outdoor access, anchoring, and supervision checks matter?', 'What should I include in a safari bouncy castle quotation request?'],
+    cardSummary: 'Safari bouncy castle with elephant, giraffe, lion, palm artwork, and bright slide lanes.',
+  },
+  'candy-bounce-house': {
+    keywords: ['candy bounce house', 'bounce and slide', 'jump and slide', 'party slide', 'inflatable slide rental'],
+    wetUse: false,
+    visual: 'a candy-themed inflatable with pastel pink, orange, and cream slide lanes, lollipop details, and a rounded front play area',
+    purpose: 'The candy theme provides a colorful, photo-friendly bounce-and-slide attraction for birthday rentals, family venues, and event packages.',
+    buyer: 'party-rental fleets, family entertainment centers, event planners, resorts, and commercial inflatable distributors',
+    application: 'candy-themed birthdays, dessert events, indoor play programs, family festivals, and supervised rental sessions',
+    options: 'candy graphics, lollipop and sweet details, slide lanes, bounce area, colors, branding, access, anchoring, and packing',
+    customizationFocus: 'candy artwork, pastel palette, slide and bounce layout, printed logos, photo points, and commercial accessories',
+    faqQuestions: ['What is this candy bounce house designed for?', 'How should a venue plan the 7 x 4 x 6 m candy bounce house footprint?', 'Which material is listed for this candy bounce house?', 'Can the candy artwork, colors, bounce area, and slide lanes be customized?', 'What event access, anchoring, and supervision checks should be prepared?', 'What information is needed for a candy bounce house factory quote?'],
+    cardSummary: 'Candy bounce house with pastel slide lanes, sweet-themed artwork, and a colorful event-ready play base.',
+  },
+  'spiderman-inflatable-water-slide': {
+    keywords: ['spiderman inflatable water slide', 'spiderman bounce house with slide', 'spiderman bouncy castle with slide', 'inflatable slide rental', 'bounce house with slide'],
+    visual: 'a red-and-blue superhero-themed inflatable with a Spider-Man figure, comic-style character panels, central climb, and slide lanes',
+    purpose: 'The superhero artwork gives rental fleets and family venues a recognizable character-led slide attraction; the final wet or dry configuration should follow the approved specification.',
+    buyer: 'party-rental businesses, family entertainment centers, resorts, event planners, and commercial inflatable dealers',
+    application: 'superhero birthday parties, comic-themed events, indoor play programs, resort kids activities, and supervised rentals',
+    options: 'superhero artwork, character panels, climb and slide arrangement, approved wet or dry finish, colors, logos, anchoring, and packing',
+    customizationFocus: 'superhero graphics, red-blue colorway, character panels, slide profile, branding, wet or dry specification, and accessories',
+    faqQuestions: ['What is this spiderman inflatable water slide designed for?', 'How should buyers plan the 7 x 4 x 6 m superhero slide footprint?', 'Which material is listed for this spiderman inflatable water slide?', 'Can the superhero artwork, character panels, and slide layout be customized?', 'What wet or dry setup, access, and supervision checks should be confirmed?', 'What should I send for a spiderman inflatable water slide quotation?'],
+    cardSummary: 'Spiderman inflatable water slide with red-blue superhero artwork, central climb, and slide lanes.',
+  },
   'patriotic-water-slide': {
     keywords: ['patriotic water slide', 'commercial water slide', 'inflatable water slide for sale', 'red white blue water slide', 'summer inflatable water slides'],
     visual: 'a long red, white, and blue single-lane slide with a patriotic stars-and-stripes style finish and a defined run-out lane',
@@ -1038,7 +1149,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
 };
 
 function waterSlideProfile(product: Product) {
-  return product.category === 'Inflatable Water Slide'
+  return product.category === 'Inflatable Water Slide' || product.category === 'Inflatable Slide'
     ? waterSlideProfiles[product.productSlug] ?? legacyWaterSlideProfiles[product.productSlug]
     : undefined;
 }
@@ -1989,7 +2100,7 @@ function truncateMeta(value: string, maxLength: number, punctuation = '.') {
 export function seoTitle(title: string, suffix = 'YIC') {
   // Search-result titles should end cleanly; a truncation period looks like
   // accidental copy and was appearing on a few long product titles.
-  return truncateMeta(`${title} | ${suffix}`, 62, '');
+  return truncateMeta(`${title} | ${suffix}`, 62, '').replace(/\s*\|\s*$/u, '').trim();
 }
 
 function productIntentLabel(product: Product) {
@@ -2033,7 +2144,8 @@ export function productSeoTitle(product: Product) {
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
     if (waterSlide.keywords[0] === 'commercial inflatable pool for water slides') return seoTitle('Commercial Inflatable Water Slide Pool');
-    return seoTitle(`${waterSlide.keywords[0]} | Water Slide`);
+    const slideLabel = product.category === 'Inflatable Slide' ? 'Inflatable Slide' : 'Water Slide';
+    return seoTitle(`${waterSlide.keywords[0]} | ${slideLabel}`);
   }
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) return seoTitle(`${flyingFish.keywords[0]} | ${flyingFish.seoSuffix}`);
@@ -2475,6 +2587,8 @@ export function productPrimaryKeyword(product: Product) {
   if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
     return bounceHouseCoreKeyword(product);
   }
+  const waterSlide = waterSlideProfile(product);
+  if (waterSlide) return waterSlide.keywords[0];
   return productKeywordVariants(product)[0] ?? productDisplayTitle(product);
 }
 
@@ -2850,19 +2964,20 @@ export function productDetailContent(product: Product): DetailContent {
     const templateIndex = Math.max(0, position) % 30;
     const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
     const footprint = `the listed ${product.dimensions.trim()} reference footprint`;
+    const isWetSlide = waterSlide.wetUse !== false;
     return {
       template,
       productType: waterSlide.keywords[0],
       primaryBuyer: waterSlide.buyer,
       purpose: waterSlide.purpose,
       applications: [
-        { title: waterSlide.application, text: `${waterSlide.purpose} Plan ${footprint}, guest access, staffing, and a supervised wet-play flow around the actual venue.` },
-        { title: 'Rental and seasonal recreation', text: `Use the ${waterSlide.keywords[0]} format for a managed rental or recreation program after confirming water supply, drainage, transport, setup, drying, and storage.` },
+        { title: waterSlide.application, text: `${waterSlide.purpose} Plan ${footprint}, guest access, staffing, and a supervised ${isWetSlide ? 'wet-play' : 'slide'} flow around the actual venue.` },
+        { title: 'Rental and seasonal recreation', text: `Use the ${waterSlide.keywords[0]} format for a managed rental or recreation program after confirming ${isWetSlide ? 'water supply, drainage, transport, setup, drying, and storage' : 'transport, setup, clear zones, cleaning, drying, and storage'}.` },
         { title: 'Custom commercial projects', text: `Develop the slide around approved artwork, lane and landing treatment, brand visibility, access direction, venue logistics, and the final operating plan.` },
       ],
       planningPoints: [
         `${footprint}, plus height clearance, entry and exit, queue space, landing or pool area, blower position, anchoring surface, and surrounding clear zone`,
-        'Water supply, water-flow routing, drainage, user group, expected throughput, supervision, cleaning and drying procedure, weather plan, and local venue requirements',
+        isWetSlide ? 'Water supply, water-flow routing, drainage, user group, expected throughput, supervision, cleaning and drying procedure, weather plan, and local venue requirements' : 'User group, expected throughput, access, anchoring, supervision, cleaning and drying procedure, weather plan, and local venue requirements',
         `Final slide, lane, landing or pool configuration, artwork, accessories, material, and packing against the approved specification (${product.material})`,
       ],
       customization: [
@@ -2870,10 +2985,10 @@ export function productDetailContent(product: Product): DetailContent {
         `Theme-specific artwork, colors, printed logo panels, and coordinated ${waterSlide.keywords[0]} product-family graphics`,
         'Approved blower or inflation equipment, anchoring, water connection, repair kit, carry or storage bags, accessories, and export packing',
       ],
-      operationNote: 'Operate only after the site, water supply and drainage, landing or pool layout, anchoring, participant rules, inspection routine, supervision, and local requirements are approved. Images do not establish a certified capacity, water-depth range, or weather rating.',
+      operationNote: isWetSlide ? 'Operate only after the site, water supply and drainage, landing or pool layout, anchoring, participant rules, inspection routine, supervision, and local requirements are approved. Images do not establish a certified capacity, water-depth range, or weather rating.' : 'Operate only after the site, access route, clear zones, anchoring, participant rules, inspection routine, supervision, and local requirements are approved. Images do not establish a certified capacity or weather rating.',
       quoteItems: [
         `Intended use: ${waterSlide.application}; share the site plan, operating season, target user group, and venue type`,
-        'Required footprint, height, lane count, water and drainage plan, landing or pool format, theme artwork, branding, material, and accessories',
+        isWetSlide ? 'Required footprint, height, lane count, water and drainage plan, landing or pool format, theme artwork, branding, material, and accessories' : 'Required footprint, height, lane count, access and clear-zone plan, theme artwork, branding, material, and accessories',
         'Quantity, destination, packing requirements, and requested delivery schedule',
       ],
     };
@@ -4186,6 +4301,7 @@ export function productFaqs(product: Product) {
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
     const terms = waterSlide.keywords;
+    const isWetSlide = waterSlide.wetUse !== false;
     const questions = waterSlide.faqQuestions ?? [
       `What is this ${terms[0]} designed for?`,
       `How should buyers plan the ${product.dimensions.trim()} reference footprint?`,
@@ -4196,11 +4312,11 @@ export function productFaqs(product: Product) {
     ];
     return [
       { question: questions[0], answer: `${waterSlide.purpose} Related buying searches for this image-led configuration include ${terms.slice(1).join(', ')}. The approved specification should confirm the exact slide, pool, and accessory scope.` },
-      { question: questions[1], answer: `Start with the listed ${product.dimensions.trim()} reference, then allow practical clearance for the entry, exit, queue, landing or pool area, blower, anchoring, water supply, drainage, operator position, and spectator separation. Confirm the final layout from the actual site plan.` },
+      { question: questions[1], answer: `Start with the listed ${product.dimensions.trim()} reference, then allow practical clearance for the entry, exit, queue, ${isWetSlide ? 'landing or pool area, blower, anchoring, water supply, drainage' : 'slide run-out, blower, anchoring, access route'}, operator position, and spectator separation. Confirm the final layout from the actual site plan.` },
       { question: questions[2], answer: `The catalog lists ${product.material}. Confirm the final PVC grade, thickness, reinforcement, seams, slide surface, valves, water connection, accessories, and included equipment in the approved production specification.` },
       { question: questions[3], answer: `Yes. YIC can review ${waterSlide.customizationFocus}. Send reference artwork, preferred colors, logo files, site footprint, water and drainage plan, quantity, and destination for a project-specific proposal.` },
-      { question: questions[4], answer: `${content.operationNote} Staff should include pre-use inflation, anchoring, water-flow, seams, surface, access, landing or pool, supervision, cleaning, drying, repair-kit access, and storage in the operating routine.` },
-      { question: questions[5], answer: `Share the venue type, intended use (${waterSlide.application}), site plan, target dimensions, lane and landing preference, water supply and drainage details, branding, quantity, destination, packing needs, and delivery date. The factory quotation can then confirm the final ${terms[0]} configuration.` },
+      { question: questions[4], answer: `${content.operationNote} Staff should include pre-use inflation, anchoring, seams, surface, access, ${isWetSlide ? 'water-flow, landing or pool, ' : ''}supervision, cleaning, drying, repair-kit access, and storage in the operating routine.` },
+      { question: questions[5], answer: `Share the venue type, intended use (${waterSlide.application}), site plan, target dimensions, lane and landing preference, ${isWetSlide ? 'water supply and drainage details, ' : ''}branding, quantity, destination, packing needs, and delivery date. The factory quotation can then confirm the final ${terms[0]} configuration.` },
     ];
   }
   const flyingFish = flyingFishProfile(product);
