@@ -517,6 +517,10 @@ export function productDescription(product: Product) {
   if (newWaterPark) {
     return `YIC manufactures ${newWaterPark.keywords[0]} for ${newWaterPark.buyer}. This ${product.dimensions.trim()} concept is shown as ${newWaterPark.visual}. ${newWaterPark.purpose} The listing specifies ${product.material}. Project options include ${newWaterPark.options}. Related buying searches include ${newWaterPark.keywords.slice(1).join(', ')}. Confirm water depth, site access, supervision, anchoring, operating conditions, and the final configuration before ordering.`;
   }
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) {
+    return `YIC manufactures ${newThemePark.coreKeyword} for ${newThemePark.buyer}. This ${product.dimensions.trim()} attraction is shown as ${newThemePark.visual}. ${newThemePark.purpose} The listing specifies ${product.material}. Custom project options include ${newThemePark.options}. Related buyer searches include ${newThemePark.keywords.slice(1).join(', ')}. Confirm the venue footprint, height clearance, access route, anchoring, staffing, supervision, and final specification before production.`;
+  }
   const newTent = newInflatableTentProfile(product);
   if (newTent) {
     const detail = productDetailContent(product);
@@ -672,6 +676,90 @@ const newWaterParkProfiles: Record<string, NewWaterParkProfile> = {
 
 function newWaterParkProfile(product: Product) {
   return product.category === 'Inflatable Water Park' ? newWaterParkProfiles[product.productSlug] : undefined;
+}
+
+type NewThemeParkProfile = {
+  coreKeyword: string;
+  displayTitle: string;
+  keywords: string[];
+  visual: string;
+  purpose: string;
+  buyer: string;
+  application: string;
+  options: string;
+  faqQuestions: string[];
+  cardSummary: string;
+};
+
+// These image-led profiles keep the folder-name phrase as the canonical
+// keyword while giving each new attraction its own factual use case, layout,
+// buyer language, and FAQ set. Supporting phrases are descriptive variants,
+// not replacement primary keywords.
+const newThemeParkProfiles: Record<string, NewThemeParkProfile> = {
+  'kids-inflatable-amusement-park': {
+    coreKeyword: 'kids inflatable amusement park',
+    displayTitle: 'Kids Inflatable Amusement Park',
+    keywords: ['kids inflatable amusement park', 'commercial inflatable play park', 'food truck themed inflatable playground', 'inflatable slide and climbing wall combo'],
+    visual: 'a 12 × 12 m fenced play park with a yellow food-truck facade, center climbing wall and slide, bounce enclosure, flower arch, and music-character landmark',
+    purpose: 'The multi-zone layout combines jumping, climbing, sliding, and open play in one themed footprint, giving venue operators a recognizable small amusement-park attraction rather than a single-feature bouncer.',
+    buyer: 'family entertainment centers, indoor playground operators, mall-event teams, parks, and commercial rental companies',
+    application: 'indoor play zones, mall promotions, family events, seasonal activity parks, and supervised rental programs',
+    options: 'food-truck artwork, climbing-wall and slide position, fence layout, character details, color palette, logo panels, footprint, and guest-flow plan',
+    faqQuestions: ['Which play zones are shown in this kids inflatable amusement park?', 'How should a venue plan the 12 × 12 m kids inflatable amusement park footprint?', 'What material is listed for this food-truck themed inflatable playground?', 'Can the food-truck facade, flower arch, and activity layout be customized?', 'How should entry, exit, and supervision be organized for a multi-zone play park?', 'What details are needed for a kids inflatable amusement park factory quote?'],
+    cardSummary: 'A commercial kids inflatable amusement park with food-truck artwork, climbing, slide, bounce, and fenced open-play zones.',
+  },
+  'ocean-bouncy-castle': {
+    coreKeyword: 'ocean bouncy castle',
+    displayTitle: 'Ocean Bouncy Castle',
+    keywords: ['ocean bouncy castle', 'shark inflatable bounce house', 'ocean themed bounce house with slide', 'commercial sea life inflatable playground'],
+    visual: 'a 6 × 12 × 5.5 m ocean-play combo with shark, dolphin, whale, and palm-tree details, a front play area, climbing access, and side slide lanes',
+    purpose: 'The sea-life scene gives rental and venue buyers an immersive ocean theme while the visible climb-and-slide arrangement adds more activity than a standard bounce-only castle.',
+    buyer: 'party rental fleets, family entertainment centers, resorts, aquariums, and seasonal event operators',
+    application: 'ocean-themed parties, family events, resort kids programs, indoor play sessions, and supervised commercial rentals',
+    options: 'shark and sea-life graphics, slide orientation, climbing route, palm details, colors, logo placement, size, and entrance treatment',
+    faqQuestions: ['What ocean features are included in this ocean bouncy castle?', 'How should I plan the 6 × 12 × 5.5 m shark inflatable bounce house footprint?', 'Which PVC construction is listed for this sea-life inflatable playground?', 'Can the shark, dolphin, whale, and palm artwork be changed for a custom project?', 'Is the ocean themed bounce house with slide suitable for rental fleets and venue programs?', 'What should buyers send to request an ocean bouncy castle quotation?'],
+    cardSummary: 'Ocean bouncy castle with shark and sea-life artwork, climb access, side slides, and a commercial multi-play layout.',
+  },
+  'superhero-bounce-house-for-sale': {
+    coreKeyword: 'superhero bounce house for sale',
+    displayTitle: 'Superhero Bounce House for Sale',
+    keywords: ['superhero bounce house for sale', 'hero themed inflatable bounce house', 'superhero bounce house with slide', 'commercial character bounce house combo'],
+    visual: 'a 6 × 5 × 3.8 m character-hero combo with illustrated comic-style panels, a front bounce chamber, a large arched entry, and a side climbing-and-slide section',
+    purpose: 'The bold comic-inspired visual treatment creates a clear hero-party attraction, while the bounce and slide functions support a higher-value commercial rental or venue package.',
+    buyer: 'party rental companies, family entertainment centers, birthday-event suppliers, and commercial play venues',
+    application: 'hero-themed parties, birthday rentals, school events, family entertainment zones, and supervised venue sessions',
+    options: 'approved character-inspired artwork, panel graphics, entry arch, slide and climb layout, colors, branded banners, dimensions, and accessories',
+    faqQuestions: ['What play features are shown on this superhero bounce house for sale?', 'How much room should I allow for the 6 × 5 × 3.8 m hero themed inflatable bounce house?', 'What material is specified for this superhero bounce house with slide?', 'Can I customize the artwork, hero color palette, and banner panels?', 'Which buyers commonly add a commercial character bounce house combo to their rental lineup?', 'What information is required for a superhero bounce house for sale quotation?'],
+    cardSummary: 'Superhero bounce house for sale with comic-style panels, bounce space, arched entry, climbing route, and slide.',
+  },
+  'super-mario-bounce-house': {
+    coreKeyword: 'super mario bounce house',
+    displayTitle: 'Super Mario Bounce House',
+    keywords: ['super mario bounce house', 'character themed bounce house with slide', 'cartoon inflatable bounce house combo', 'commercial kids bouncy castle'],
+    visual: 'a 6 × 7 × 5.5 m colorful character-themed combo with a front bounce chamber, animal artwork, a climbing wall, a broad slide, and raised character figures',
+    purpose: 'The bright character-led presentation gives operators a familiar game-inspired theme, while the bounce, climb, and slide sequence supports repeat play in commercial party and family-entertainment programs.',
+    buyer: 'party rental fleets, family entertainment centers, birthday-event businesses, and indoor play operators',
+    application: 'character-themed birthdays, indoor play programs, school celebrations, family events, and commercial rentals',
+    options: 'approved character-inspired graphics, climb-and-slide arrangement, animal side panels, colors, entrance design, logo placement, and custom dimensions',
+    faqQuestions: ['What activity sequence is shown on this super mario bounce house?', 'How should buyers use the 6 × 7 × 5.5 m reference size when planning a venue?', 'Which material is listed for this cartoon inflatable bounce house combo?', 'Can the character-inspired theme and animal artwork be adapted for a custom order?', 'What supervision and access details should be planned for the climbing wall and slide?', 'What should I send to request a super mario bounce house factory quote?'],
+    cardSummary: 'Super Mario bounce house with a character-themed bounce chamber, climbing wall, broad slide, and colorful multi-play facade.',
+  },
+  'outer-space-bounce-house': {
+    coreKeyword: 'outer space bounce house',
+    displayTitle: 'Outer Space Bounce House',
+    keywords: ['outer space bounce house', 'astronaut inflatable bounce house', 'space themed bouncy castle', 'commercial space obstacle course inflatable'],
+    visual: 'a 7 × 6 × 4 m outer-space obstacle play field with astronaut and rocket-tower details, a wide open bounce area, a central tunnel route, and inflated red barriers',
+    purpose: 'The astronaut-and-rocket setting creates a strong space destination for children, while the open field and tunnel-style obstacles support active supervised play rather than a basic enclosed bounce unit.',
+    buyer: 'party rental businesses, science-center event teams, family entertainment centers, schools, and attraction operators',
+    application: 'space-themed parties, STEM or school events, indoor activity zones, mall promotions, and supervised rental programs',
+    options: 'astronaut and rocket artwork, obstacle route, tunnel openings, barrier layout, colors, custom graphics, logo panels, and footprint',
+    faqQuestions: ['What obstacle features are shown in this outer space bounce house?', 'How should I plan the 7 × 6 × 4 m astronaut inflatable bounce house footprint?', 'What material is specified for this space themed bouncy castle?', 'Can the astronaut, rocket towers, and tunnel route be customized?', 'Which venues suit a commercial space obstacle course inflatable?', 'What project information is needed for an outer space bounce house quote?'],
+    cardSummary: 'Outer space bounce house with astronaut and rocket details, an open bounce field, tunnel route, and inflatable obstacle barriers.',
+  },
+};
+
+function newThemeParkProfile(product: Product) {
+  return product.category === 'Inflatable Theme Park' ? newThemeParkProfiles[product.productSlug] : undefined;
 }
 
 type WaterSlideProfile = {
@@ -2151,6 +2239,8 @@ export function productSeoTitle(product: Product) {
   if (flyingFish) return seoTitle(`${flyingFish.keywords[0]} | ${flyingFish.seoSuffix}`);
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) return seoTitle(`${newWaterPark.keywords[0]} | Water Park`);
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) return seoTitle(`${newThemePark.coreKeyword} | Commercial Theme Park`);
   const newTent = newInflatableTentProfile(product);
   if (newTent) return seoTitle(`${newTent.keywords[0]} | Commercial Inflatable Tent`);
   const interactiveProfile = interactiveGameProfile(product);
@@ -2196,6 +2286,8 @@ export function productMetaDescription(product: Product) {
   }
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) return truncateMeta(`YIC makes ${newWaterPark.keywords[0]} for ${newWaterPark.application}. ${product.dimensions.trim()} · ${product.material}. Custom slides, colors, branding, and factory quotation.`, 158);
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) return truncateMeta(`YIC makes ${newThemePark.coreKeyword} for ${newThemePark.application}. ${product.dimensions.trim()} · ${product.material}. OEM artwork, layout, branding, and factory quote.`, 158);
   const newTent = newInflatableTentProfile(product);
   if (newTent) return truncateMeta(`YIC manufactures ${newTent.keywords[0]} for ${newTent.use}. ${product.dimensions.trim()}, ${product.material}. OEM layout, branding, anchoring, and project quote.`, 158);
   const interactiveProfile = interactiveGameProfile(product);
@@ -2263,6 +2355,13 @@ export function productKeyFeatures(product: Product) {
     `Commercial application: ${newWaterPark.application}`,
     `Typical project buyers: ${newWaterPark.buyer}`,
     `Customization: ${newWaterPark.options}`,
+  ];
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) return [
+    `Core product: ${newThemePark.coreKeyword}`,
+    `Visible layout: ${newThemePark.visual}`,
+    `Commercial application: ${newThemePark.application}`,
+    `Customization: ${newThemePark.options}`,
   ];
   const newTent = newInflatableTentProfile(product);
   if (newTent) return [
@@ -2589,6 +2688,8 @@ export function productPrimaryKeyword(product: Product) {
   }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) return waterSlide.keywords[0];
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) return newThemePark.coreKeyword;
   return productKeywordVariants(product)[0] ?? productDisplayTitle(product);
 }
 
@@ -2622,6 +2723,13 @@ export function productKeywordVariants(product: Product) {
   if (waterSlideProfile(product)) {
     add(...waterSlideProfile(product)!.keywords);
     add(`commercial ${base}`, `${base} for sale`, `custom ${base}`);
+    return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+  }
+
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) {
+    add(...newThemePark.keywords);
+    add(`commercial ${newThemePark.coreKeyword}`, `${newThemePark.coreKeyword} for rental`, `custom ${newThemePark.coreKeyword}`);
     return [...new Set([intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
   }
 
@@ -2803,6 +2911,8 @@ export function productDisplayTitle(product: Product) {
   if (primaryFlyingFishKeyword) return primaryFlyingFishKeyword.charAt(0).toUpperCase() + primaryFlyingFishKeyword.slice(1);
   const primaryWaterSlideKeyword = waterSlideProfile(product)?.keywords[0];
   if (primaryWaterSlideKeyword) return primaryWaterSlideKeyword.charAt(0).toUpperCase() + primaryWaterSlideKeyword.slice(1);
+  const primaryThemeParkKeyword = newThemeParkProfile(product)?.displayTitle;
+  if (primaryThemeParkKeyword) return primaryThemeParkKeyword;
   const primaryInteractiveKeyword = interactiveGameProfile(product)?.keywords[0];
   if (primaryInteractiveKeyword) return primaryInteractiveKeyword.charAt(0).toUpperCase() + primaryInteractiveKeyword.slice(1);
   const primaryBubbleTentKeyword = bubbleTentProfile(product)?.keywords[0];
@@ -3051,6 +3161,40 @@ export function productDetailContent(product: Product): DetailContent {
       customization: [newWaterPark.options, 'Theme, color palette, logo placement, printed graphics, and coordinated product-family artwork', 'Approved inflation equipment, anchoring, repair kit, carrying or storage bags, accessories, and export packing'],
       operationNote: 'Operate only after the site and water conditions, anchoring plan, supervision and rescue procedures, participant rules, inspection, and local requirements are approved. Images do not establish a certified capacity, water-depth range, or weather rating.',
       quoteItems: [`Intended application: ${newWaterPark.application}; share the venue type, water area, depth, and target season`, `Required footprint, slide and entry layout, theme, branding, material, anchoring, and accessories`, 'Quantity, destination, packing requirements, and requested delivery schedule'],
+    };
+  }
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const footprint = `the listed ${product.dimensions.trim()} reference footprint`;
+    return {
+      template,
+      productType: newThemePark.coreKeyword,
+      primaryBuyer: newThemePark.buyer,
+      purpose: newThemePark.purpose,
+      applications: [
+        { title: 'Commercial themed play', text: `Use ${footprint} for ${newThemePark.application}, with a defined entry, exit, staff position, guest circulation, and supervision plan.` },
+        { title: 'Rental and venue programs', text: `Plan the themed attraction around the visible features, venue clearance, access route, setup schedule, inspection routine, cleaning, drying, transport, and storage.` },
+        { title: 'OEM/ODM theme projects', text: `Coordinate the final play layout, artwork, colors, branding, modules, dimensions, accessory package, and destination requirements before production.` },
+      ],
+      planningPoints: [
+        `${footprint}, height clearance, entry and exit direction, blower position, anchoring surface, operator position, queue, and spectator separation`,
+        'Target age group, expected throughput, venue type, indoor or outdoor setting, access route, staffing, supervision, cleaning, repair-kit access, transport, and dry storage',
+        `Final themed artwork, play features, material, accessories, dimensions, packing, and destination-market requirements against the approved specification (${product.material})`,
+      ],
+      customization: [
+        newThemePark.options,
+        'Commercial colors, custom theme panels, approved character-inspired artwork, printed logos, sponsor graphics, entry signage, and player-facing instructions',
+        'Blower package, anchoring, repair kit, carry bags, export packing, and project-specific accessories',
+      ],
+      operationNote: `Operate the ${newThemePark.coreKeyword} only after the site, access, clear areas, anchoring, inflation checks, participant rules, staffing, supervision, and local requirements are confirmed in the approved specification. Images do not establish an unlisted capacity, certification, or weather rating.`,
+      quoteItems: [
+        `Intended use: ${newThemePark.application}; share the venue type, usable footprint, height clearance, target age range, and planned operating schedule`,
+        'Preferred theme, visual references, activity layout, colors, logos, dimensions, accessories, packing, and any entry, exit, or guest-flow requirements',
+        'Quantity, destination, target delivery date, blower, anchoring, installation, storage, and project documentation needs',
+      ],
     };
   }
   const newTent = newInflatableTentProfile(product);
@@ -3949,6 +4093,8 @@ export function productSeoKeywords(product: Product) {
   if (flyingFish) return [...flyingFish.keywords, `${flyingFish.keywords[0]} manufacturer`, `custom ${flyingFish.keywords[0]}`, `${flyingFish.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) return [...newWaterPark.keywords, `${newWaterPark.keywords[0]} manufacturer`, `custom ${newWaterPark.keywords[0]}`, 'YIC Inflatable Sports'].join(', ');
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) return [...newThemePark.keywords, `${newThemePark.coreKeyword} manufacturer`, `custom ${newThemePark.coreKeyword}`, `${newThemePark.coreKeyword} for rental`, 'YIC Inflatable Sports'].join(', ');
   const newTent = newInflatableTentProfile(product);
   if (newTent) return [...newTent.keywords, `${newTent.keywords[0]} manufacturer`, `custom ${newTent.keywords[0]}`, 'YIC Inflatable Sports'].join(', ');
   const primaryBuyer = productTargetBuyers(product)[0] || 'commercial buyers';
@@ -4074,6 +4220,8 @@ export function productCardDescription(product: Product) {
   }
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark?.cardSummary) return `${newWaterPark.cardSummary} ${reference}`;
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) return `${newThemePark.cardSummary} ${reference}`;
   if (product.category === 'Inflatable Games' && axeThrowingKeywordSet(product).length) {
     const targetCount = /dual target/.test(searchable) ? 'Dual-target' : 'Custom inflatable';
     return `${targetCount} axe-throwing game planned around soft-play projectile compatibility, a clear throwing line, supervised turns, and branded target artwork. ${reference}`;
@@ -4351,6 +4499,18 @@ export function productFaqs(product: Product) {
       { question: newWaterPark.faqQuestions[3], answer: `YIC can review ${newWaterPark.options}. Send reference artwork, preferred colors, logo files, target footprint, and quantity for a project-specific proposal.` },
       { question: newWaterPark.faqQuestions[4], answer: `Provide water depth and conditions, usable area, entry and exit access, anchoring points, power and inflation equipment, participant group, supervision and rescue plan, weather exposure, event duration, and local venue requirements. Final operation must follow the approved specification and site procedures.` },
       { question: newWaterPark.faqQuestions[5], answer: `Share the intended use (${newWaterPark.application}), site plan, water area and depth, target dimensions, chosen options, branding files, quantity, destination, packing needs, and delivery date. The final quotation can then confirm the product configuration, accessories, and project terms.` },
+    ];
+  }
+  const newThemePark = newThemeParkProfile(product);
+  if (newThemePark) {
+    const customDimensions = /custom dimensions available/i.test(product.dimensions);
+    return [
+      { question: newThemePark.faqQuestions[0], answer: `The reference imagery shows ${newThemePark.visual}. It is positioned as a ${newThemePark.coreKeyword}, with supporting buyer searches such as ${newThemePark.keywords.slice(1).join(', ')}. Confirm the final feature list in the approved specification.` },
+      { question: newThemePark.faqQuestions[1], answer: `${customDimensions ? 'Custom dimensions are available.' : `Start with the listed ${product.dimensions.trim()} reference footprint.`} Also plan height clearance, entry and exit, blower space, anchoring, queue, operator position, and a separate spectator area from the actual venue drawing.` },
+      { question: newThemePark.faqQuestions[2], answer: `The catalog lists ${product.material}. Confirm the exact PVC grade, reinforcement, seams, valves, printed artwork, accessories, and included equipment in the final production specification.` },
+      { question: newThemePark.faqQuestions[3], answer: `Yes. YIC can review ${newThemePark.options}. Send reference artwork, preferred colors, logo files, target footprint, user group, quantity, destination, and delivery timing for a project-specific proposal.` },
+      { question: newThemePark.faqQuestions[4], answer: `${content.operationNote} The venue should also document pre-use inspection, access control, age-appropriate participation, cleaning, drying, repair-kit access, storage, and local operating procedures.` },
+      { question: newThemePark.faqQuestions[5], answer: `Share the intended use (${newThemePark.application}), site plan, target dimensions, preferred features, theme reference, branding, quantity, destination, packing, installation needs, and required delivery date. The factory quotation can then confirm the final ${newThemePark.coreKeyword} configuration.` },
     ];
   }
   const newTent = newInflatableTentProfile(product);
