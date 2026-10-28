@@ -1016,6 +1016,30 @@ type WaterSlideProfile = {
 // supporting set so tropical, princess, jungle, pool, and lane intent do not
 // collapse into one repeated water-slide page.
 const waterSlideProfiles: Record<string, WaterSlideProfile> = {
+  'super-mario-inflatable-slide': {
+    keywords: ['mario inflatable slide', 'inflatable dry slide', 'commercial inflatable slide', 'giant inflatable slide', 'bounce n slide'],
+    wetUse: false,
+    visual: 'a tall red-and-blue character-themed inflatable slide with three narrow slide lanes, a bright front activity area, a striped entry arch, and game-inspired character figures above the slide',
+    purpose: 'The tall three-lane format and colorful game-inspired facade create a high-visibility dry-slide attraction for commercial party rentals, family events, and supervised venue programs.',
+    buyer: 'party-rental companies, family entertainment centers, event agencies, schools, and commercial inflatable distributors',
+    application: 'character-themed birthday events, school activity days, family entertainment venues, outdoor celebrations, and commercial rental programs',
+    options: 'approved character-inspired artwork, slide-lane count, front activity area, color palette, entry arch, logo panels, access route, blower package, and export packing',
+    customizationFocus: 'approved character-inspired graphics, triple-slide layout, color treatment, front play area, branded panels, access direction, and commercial accessories',
+    faqQuestions: ['What features are included in this mario inflatable slide?', 'How should a venue plan the 13 x 5 x 9 m mario slide footprint and overhead clearance?', 'Which material is specified for this commercial inflatable slide?', 'Can the character-inspired artwork, three slide lanes, and front activity area be customized?', 'What dry-slide access, queue, anchoring, and supervision checks should operators prepare?', 'What information is needed for a mario inflatable slide factory quotation?'],
+    cardSummary: 'Mario inflatable slide with a tall three-lane dry slide, colorful game-inspired figures, striped entry arch, and front activity area.',
+  },
+  'giant-inflatable-pirate-ship-slide': {
+    keywords: ['pirate inflatable slide', 'pirate ship slide', 'pirate bounce house with slide', 'dual slide bounce house', 'jump n slide'],
+    wetUse: false,
+    visual: 'a pirate-themed inflatable with a large camouflage-print arch, pirate captain figure, ship-and-cannon artwork, a raised climb section, and two red slide lanes',
+    purpose: 'The ship, captain, cannon, and dual-slide details give rental fleets and event venues a recognizable pirate attraction with two visible descent lanes for supervised group play.',
+    buyer: 'party-rental businesses, family entertainment centers, event operators, schools, resorts, and commercial inflatable distributors',
+    application: 'pirate-themed parties, family festivals, school events, resort kids programs, indoor play venues, and rental packages',
+    options: 'pirate captain and ship artwork, camouflage arch treatment, dual-slide configuration, climb route, colors, logo panels, anchoring, accessories, and export packing',
+    customizationFocus: 'pirate ship graphics, captain and cannon details, dual-slide arrangement, branded artwork panels, colorway, climb route, and commercial accessories',
+    faqQuestions: ['What is included in this pirate inflatable slide?', 'How should buyers plan the 8 x 4.5 x 6 m pirate ship slide footprint?', 'Which material is specified for this pirate bounce house with slide?', 'Can the pirate captain, ship artwork, camouflage arch, and dual-slide layout be customized?', 'What entry, run-out, queue, anchoring, and supervision checks are needed for a dual slide bounce house?', 'What should buyers send for a pirate inflatable slide factory quote?'],
+    cardSummary: 'Pirate inflatable slide with captain and ship artwork, a camouflage arch, climbing access, and two red slide lanes.',
+  },
   'inflatable-pirate-ship-slide-commercial': {
     keywords: ['inflatable pirate ship slide', 'pirate ship slide', 'pirate slide', 'inflatable slide rental', 'jump and slide'],
     wetUse: false,
