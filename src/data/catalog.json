@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T04:40:46.036Z",
+  "generatedAt": "2026-10-28T04:57:59.568Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
@@ -169,7 +169,7 @@
     {
       "name": "Bumper Ball",
       "slug": "bumper-ball",
-      "count": 29,
+      "count": 30,
       "heroImage": "/assets/product/Bumper%20Ball%20%20%20%20%E6%89%80%E6%9C%89%E6%9D%90%E6%96%99%E9%83%BD%E6%98%AF%E5%95%86%E7%94%A8TPU/1.25m%20Dia%20%20%20%20%20best%20bumper%20balls%20for%20kids/1.webp",
       "products": [
         "bumper-ball--best-bumper-balls-for-kids-1",
@@ -200,7 +200,8 @@
         "bumper-ball--inflatable-zorb-ball-26",
         "bumper-ball--kid-inflatable-soccer-ball-27",
         "bumper-ball--inflatable-bumper-ball-cheap-28",
-        "bumper-ball--inflatable-bumper-balls-for-sale-29"
+        "bumper-ball--inflatable-bumper-balls-for-sale-29",
+        "bumper-ball--inflatable-bumper-balls-for-sale-30"
       ]
     },
     {
@@ -3645,6 +3646,24 @@
         "/assets/product/Bumper%20Ball%20%20%20%20%E6%89%80%E6%9C%89%E6%9D%90%E6%96%99%E9%83%BD%E6%98%AF%E5%95%86%E7%94%A8TPU/1.6m%20Dia%20%20%20%20%20inflatable%20bumper%20balls%20for%20sale/5.webp"
       ],
       "dimensions": "1.6m Dia",
+      "excerpt": "Commercial bumper ball built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "bumper-ball--inflatable-bumper-balls-for-sale-30",
+      "productSlug": "inflatable-bumper-balls-commercial",
+      "category": "Bumper Ball",
+      "categorySlug": "bumper-ball",
+      "title": "inflatable bumper balls for sale",
+      "sourceName": "1.25m Dia       inflatable bumper balls for sale",
+      "material": "Commercial TPU",
+      "images": [
+        "/assets/product/Bumper%20Ball%20%20%20%20%E6%89%80%E6%9C%89%E6%9D%90%E6%96%99%E9%83%BD%E6%98%AF%E5%95%86%E7%94%A8TPU/1.25m%20Dia%20%20%20%20%20%20%20inflatable%20bumper%20balls%20for%20sale/1.webp",
+        "/assets/product/Bumper%20Ball%20%20%20%20%E6%89%80%E6%9C%89%E6%9D%90%E6%96%99%E9%83%BD%E6%98%AF%E5%95%86%E7%94%A8TPU/1.25m%20Dia%20%20%20%20%20%20%20inflatable%20bumper%20balls%20for%20sale/2.webp",
+        "/assets/product/Bumper%20Ball%20%20%20%20%E6%89%80%E6%9C%89%E6%9D%90%E6%96%99%E9%83%BD%E6%98%AF%E5%95%86%E7%94%A8TPU/1.25m%20Dia%20%20%20%20%20%20%20inflatable%20bumper%20balls%20for%20sale/3.webp",
+        "/assets/product/Bumper%20Ball%20%20%20%20%E6%89%80%E6%9C%89%E6%9D%90%E6%96%99%E9%83%BD%E6%98%AF%E5%95%86%E7%94%A8TPU/1.25m%20Dia%20%20%20%20%20%20%20inflatable%20bumper%20balls%20for%20sale/4.webp",
+        "/assets/product/Bumper%20Ball%20%20%20%20%E6%89%80%E6%9C%89%E6%9D%90%E6%96%99%E9%83%BD%E6%98%AF%E5%95%86%E7%94%A8TPU/1.25m%20Dia%20%20%20%20%20%20%20inflatable%20bumper%20balls%20for%20sale/5.webp"
+      ],
+      "dimensions": "1.25m Dia",
       "excerpt": "Commercial bumper ball built for party rental operators, family entertainment centers, and event venues."
     },
     {

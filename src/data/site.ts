@@ -1827,6 +1827,7 @@ const bumperBallKeywordSets: Record<string, string[]> = {
   'kid-inflatable-soccer-ball': ['best inflatable bumper ball', 'human soccer ball bubble', 'bubble soccer cost', 'soccer ball bubble'],
   'inflatable-bumper-ball-cheap': ['cheap bumper balls', 'cheap zorb ball', 'human bubble ball cheap', 'cheap bubble soccer balls'],
   'inflatable-bumper-balls-for-sale': ['inflatable bumper balls for sale', 'bumper balls for sale', 'bubble ball for sale', 'zorbs for sale'],
+  'inflatable-bumper-balls-commercial': ['commercial inflatable bumper balls', 'inflatable bumper balls for sale', 'youth bubble soccer balls', 'TPU bumper ball set'],
 };
 
 const boxingRingKeywordSets: Record<string, string[]> = {
@@ -2566,6 +2567,7 @@ export function productSeoTitle(product: Product) {
     return seoTitle(`${bounceHouseCoreKeyword(product)} | ${product.category}`);
   }
   if (product.category === 'Bumper Ball') {
+    if (product.productSlug === 'inflatable-bumper-balls-commercial') return seoTitle('Commercial Inflatable Bumper Balls | Youth Sets');
     const primary = bumperBallKeywordSet(product)[0] || 'inflatable bumper ball';
     return seoTitle(`${primary} | Commercial Bubble Soccer`);
   }
@@ -2633,6 +2635,9 @@ export function productMetaDescription(product: Product) {
     return truncateMeta(`YIC manufactures ${core} for ${use}. ${product.dimensions.trim()}, ${product.material}. Custom artwork, layout, accessories, and factory quotation available.`, 158);
   }
   if (product.category === 'Bumper Ball') {
+    if (product.productSlug === 'inflatable-bumper-balls-commercial') {
+      return 'YIC manufactures commercial inflatable bumper balls for youth bubble-soccer programs. 1.25m commercial TPU, OEM colors, logos, accessories, and factory quote.';
+    }
     const terms = bumperBallKeywordSet(product).slice(0, 2).join(' and ');
     return truncateMeta(`YIC supplies ${terms} in ${product.dimensions.trim()} ${product.material} for bubble-soccer operators, schools, events, and rental fleets. Request OEM colors, logos, accessories, and factory pricing.`, 158);
   }
@@ -4559,7 +4564,8 @@ export function productSeoKeywords(product: Product) {
   const primaryBuyer = productTargetBuyers(product)[0] || 'commercial buyers';
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product);
-    return [...new Set([terms[0], name, `commercial ${content.productType}`, primaryBuyer, 'bubble soccer equipment', 'YIC Inflatable Sports'])].filter(Boolean).join(', ');
+    const commercialType = /^commercial\b/i.test(content.productType) ? content.productType : `commercial ${content.productType}`;
+    return [...new Set([...terms, name, commercialType, primaryBuyer, 'bubble soccer equipment', 'YIC Inflatable Sports'])].filter(Boolean).join(', ');
   }
   const core = [
     name,
@@ -4662,12 +4668,16 @@ export function productCardDescription(product: Product) {
   }
   if (product.category === 'Bumper Ball') {
     const terms = bumperBallKeywordSet(product);
+    if (product.productSlug === 'inflatable-bumper-balls-commercial') {
+      return `Commercial inflatable bumper balls in a 1.25 m TPU youth-set format for schools, supervised group activities, and party-rental programs. Compare inflatable bumper balls for sale, team colors, logos, accessories, and packing before requesting a factory quotation. ${reference}`;
+    }
     const audience = /kid|kids|child/.test(searchable) || /1\.25m/.test(product.dimensions)
       ? 'youth group activities, schools, and supervised party rentals'
       : /zorb/.test(searchable)
         ? 'zorb-style recreation, team events, and sports operators'
         : 'adult bubble-soccer programs, events, and commercial rental fleets';
-    return `Commercial TPU ${terms[0] || 'inflatable bumper ball'} for ${audience}. Explore ${terms[1] || 'custom team colors'} and ${terms[2] || 'OEM logo options'} in the product specification. ${reference}`;
+    const item = terms[0] || 'inflatable bumper ball';
+    return `${/^commercial\b/i.test(item) ? '' : 'Commercial '}TPU ${item} for ${audience}. Explore ${terms[1] || 'custom team colors'} and ${terms[2] || 'OEM logo options'} in the product specification. ${reference}`;
   }
   if (product.category === 'Inflatable Games' && ringTossKeywordSet(product).length) {
     const terms = ringTossKeywordSet(product);
