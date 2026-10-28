@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import ProductCard from '../../../components/ProductCard.astro';
-import { products, company, categoryPath, publicCategorySlug, productAbsoluteUrl, productBatch, productCategoryTemplate, productDescription, productDetailContent, productDisplayTitle, productFaqs, productKeyFeatures, productKeywordVariants, productPath, productPrimaryKeyword, productRelatedProducts, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers } from '../../../data/site';
+import { products, company, categoryPath, publicCategorySlug, productAbsoluteUrl, productBatch, productCategoryTemplate, productDescription, productDetailContent, productHeadingTitle, productFaqs, productKeyFeatures, productKeywordVariants, productRelatedProducts, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers } from '../../../data/site';
 import type { Product } from '../../../data/site';
 
 export function getStaticPaths() {
@@ -9,11 +9,8 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props as { product: Product };
-const displayTitle = productDisplayTitle(product);
-const primaryKeyword = productPrimaryKeyword(product);
-const headingTitle = product.category === 'Bounce House' || product.category === 'Bounce House Combo'
-  ? primaryKeyword.charAt(0).toUpperCase() + primaryKeyword.slice(1)
-  : displayTitle;
+const displayTitle = productHeadingTitle(product);
+const headingTitle = displayTitle;
 const detail = productDetailContent(product);
 const categoryTemplate = productCategoryTemplate(product);
 const batchTemplate = productBatch(product);

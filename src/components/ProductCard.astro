@@ -1,5 +1,5 @@
 ---
-import { company, productCardDescription, productCardImage, productCardLabel, productDetailContent, productDisplayTitle, productPath, productPrimaryKeyword } from '../data/site';
+import { company, productCardDescription, productCardImage, productCardLabel, productDetailContent, productHeadingTitle, productPath, productPrimaryKeyword } from '../data/site';
 import type { Product } from '../data/site';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { product, variant = 'default' } = Astro.props;
-const displayTitle = productDisplayTitle(product);
+const displayTitle = productHeadingTitle(product);
 const imageLabel = product.category === 'Bounce House' || product.category === 'Bounce House Combo'
   ? productPrimaryKeyword(product)
   : displayTitle;

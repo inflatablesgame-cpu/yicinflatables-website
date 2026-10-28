@@ -3496,6 +3496,28 @@ export function productDisplayTitle(product: Product) {
   return title ? title.charAt(0).toUpperCase() + title.slice(1) : product.title;
 }
 
+/**
+ * Shared visible title for product cards and detail pages.
+ * Keep the display/core phrase intact; only short labels receive a buying
+ * intent suffix so the visible title remains useful and unambiguous.
+ */
+export function productHeadingTitle(product: Product) {
+  const isBounceProduct = product.category === 'Bounce House' || product.category === 'Bounce House Combo';
+  const baseTitle = isBounceProduct
+    ? productPrimaryKeyword(product).replace(/^\s+|\s+$/g, '')
+    : productDisplayTitle(product).trim();
+  const title = baseTitle ? baseTitle.charAt(0).toUpperCase() + baseTitle.slice(1) : productDisplayTitle(product).trim();
+  const words = title.split(/\s+/).filter(Boolean);
+  if (words.length >= 3) return title;
+
+  const preferredIntent = productIntentLabel(product) || 'For Sale';
+  const intent = title.toLowerCase().includes(preferredIntent.toLowerCase())
+    || (preferredIntent === 'Commercial Grade' && /\bcommercial\b/i.test(title))
+    ? 'For Sale'
+    : preferredIntent;
+  return `${title} ${intent}`;
+}
+
 const productApplications: Record<string, string> = {
   'Advertising Inflatable': 'brand activations, promotions, and event displays',
   'Bounce House': 'party rental fleets, family events, and community venues',
