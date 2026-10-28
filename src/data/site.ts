@@ -305,14 +305,15 @@ export function categoryCustomization(category: string) {
 
 const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   'Advertising Inflatable': {
-    title: 'Custom Advertising Inflatables | OEM Manufacturer | YIC',
-    description: 'Custom advertising inflatables, branded displays, promotional bars and event structures from YIC for exhibitions, launches and global B2B campaigns.',
-    h1: 'Custom Advertising Inflatables for Brand Activations',
-    intro: 'YIC manufactures branded advertising inflatables for exhibitions, retail promotions, product launches, sports sponsorships, and outdoor campaigns. Choose a display format, then confirm your logo, artwork, footprint, viewing direction, and installation plan with the factory. Custom promotional inflatables are available for event agencies, exhibitors, distributors, and brand teams.',
-    options: ['Branded display inflatables', 'Promotional bars and counters', 'Inflatable tents and pop-up spaces', 'Custom logo and campaign structures'],
-    buyers: [{ title: 'Event and activation agencies', text: 'Create a high-visibility branded focal point that is easy for guests to recognize at public events.' }, { title: 'Exhibitors and distributors', text: 'Develop a repeatable display format with artwork and packing details suited to trade shows and campaigns.' }, { title: 'Retail and sports brands', text: 'Match colors, logos, scale, and viewing distance to a launch, sponsorship, or promotional site.' }],
-    oem: 'Send a logo, reference image, dimensions, and event brief. YIC can support 3D layout, printed artwork, custom shapes, accessories, production inspection, and export packing for a campaign-ready advertising inflatable.',
-    faq: [{ question: 'Can the inflatable be made to our exact brand shape?', answer: 'Yes. YIC can review a reference image or concept and develop the outline, dimensions, colors, printed artwork, entrances, display areas, and accessories for your campaign.' }, { question: 'What information is needed for a quotation?', answer: 'Share the artwork, intended venue, viewing direction, footprint, quantity, destination, and target event date so the factory can confirm a practical specification.' }, { question: 'Are advertising inflatables suitable for repeated events?', answer: 'They can be planned for repeated commercial use with appropriate material, reinforcement, packing, storage, anchoring, and operating instructions.' }],
+    title: 'Inflatable Food Truck & Concession Booths | OEM Manufacturer | YIC',
+    description: 'Inflatable food trucks, concession stands, vendor booths, kiosks, promotional bars, and branded displays from YIC for events, sampling, retail activations, and B2B campaigns.',
+    keywords: 'inflatable food truck, inflatable concession stand, inflatable concession booth, inflatable vendor booth, inflatable kiosk, blow up concession stand, inflatable food truck manufacturer',
+    h1: 'Inflatable Food Trucks, Concession Booths & Brand Activations',
+    intro: 'YIC manufactures commercial advertising inflatables for exhibitions, retail promotions, product launches, and food-service themed activations. The range includes inflatable food trucks, concession stands, candy-shop booths, snack kiosks, vendor booths, promotional bars, and custom campaign structures. Confirm your logo, artwork, service-window layout, footprint, intended workflow, and installation plan with the factory before production.',
+    options: ['Inflatable food trucks and concession stands', 'Inflatable vendor booths and kiosk counters', 'Promotional bars and sampling stations', 'Custom logo and campaign structures'],
+    buyers: [{ title: 'Event and activation agencies', text: 'Create a high-visibility serving, sampling, retail, or branded hospitality point with customer flow planned around the event footprint.' }, { title: 'Food and beverage brands', text: 'Develop a recognizable inflatable food truck, kiosk, or concession booth for sampling, seasonal promotions, launches, and campaign tours.' }, { title: 'Rental and venue operators', text: 'Add visible food-service themed structures to festivals, mall events, family days, hospitality zones, and repeat rental packages.' }],
+    oem: 'Send a logo, product theme, reference image, dimensions, service-window or counter brief, intended event use, quantity, and destination. YIC can support 3D layout, printed artwork, custom shapes, accessories, production inspection, and export packing for a campaign-ready advertising inflatable.',
+    faq: [{ question: 'Can YIC make an inflatable food truck or concession stand in our brand theme?', answer: 'Yes. YIC can review a reference image or concept and develop the vehicle-style outline, dimensions, colors, printed artwork, roof sign, service opening, display areas, and accessories for the campaign.' }, { question: 'Can an inflatable concession booth be used for food sampling or event service?', answer: 'It can be planned as a branded service, sampling, registration, merchandise, or hospitality frontage. The final scope should confirm included equipment, utility interfaces, hygiene workflow, and applicable venue requirements; imagery alone does not establish food-preparation approvals.' }, { question: 'What information is needed for an inflatable vendor booth quotation?', answer: 'Share the artwork, intended venue, service or display workflow, footprint, quantity, destination, target event date, and requirements for the service opening, counter, accessories, packing, or branding.' }],
     related: ['Inflatable Tent', 'Bounce House', 'Inflatable Games'],
   },
   'Bounce House': {
@@ -499,6 +500,10 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 }
 
 export function productDescription(product: Product) {
+  const foodService = foodServiceProfile(product);
+  if (foodService) {
+    return `YIC manufactures ${foodService.keywords[0]} for ${foodService.buyer}. This ${product.dimensions.trim()} model is shown as ${foodService.visual}. ${foodService.purpose} The listing specifies ${product.material}. Buyers can review ${foodService.options}. Related buyer searches include ${foodService.keywords.slice(1).join(', ')}. Confirm the final site plan, service workflow, branded artwork, included equipment, anchoring, and event requirements before production.`;
+  }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
     const siteChecks = waterSlide.wetUse === false
@@ -566,6 +571,90 @@ const newInflatableTentProfiles: Record<string, NewInflatableTentProfile> = {
 
 function newInflatableTentProfile(product: Product) {
   return product.category === 'Inflatable Tent' ? newInflatableTentProfiles[product.productSlug] : undefined;
+}
+
+// The seven food-service uploads share the Advertising Inflatable category,
+// but each page needs its own buyer language, visual interpretation, and
+// search intent. Keeping these profiles separate prevents the truck, kiosk,
+// booth, and concession keywords from collapsing into duplicate pages.
+type FoodServiceProfile = {
+  keywords: string[];
+  visual: string;
+  purpose: string;
+  buyer: string;
+  application: string;
+  options: string;
+  faqQuestions: string[];
+};
+
+const foodServiceProfiles: Record<string, FoodServiceProfile> = {
+  'inflatable-concession-stand': {
+    keywords: ['inflatable concession stand', 'inflatable food truck', 'inflatable vendor booth', 'commercial food service inflatable'],
+    visual: 'a compact blue-and-white service-truck facade with a striped serving awning, open counter, and a clearly defined front customer zone',
+    purpose: 'The compact truck-style frontage gives event operators a recognizable serving, sampling, registration, or branded hospitality point without presenting it as a certified food-preparation facility.',
+    buyer: 'event-rental companies, food and beverage brands, festival organizers, catering teams, malls, and promotional agencies',
+    application: 'food sampling, event service counters, ticketing, merchandise, registration, and branded hospitality activations',
+    options: 'service-window size, awning treatment, food-truck graphics, logo panels, colors, counter layout, entrance position, lighting provision, and packing',
+    faqQuestions: ['What is this inflatable concession stand designed for?', 'How should I plan the 3.73 x 2.5 m service footprint?', 'Can this inflatable food truck style stand be used for food sampling or ticketing?', 'Which elements of the inflatable vendor booth can be customized?', 'What operating and site checks should event teams prepare?', 'What should I include in an inflatable concession stand quotation request?'],
+  },
+  'inflatable-christmas-taco-truck': {
+    keywords: ['inflatable christmas taco truck', 'christmas taco truck inflatable', 'inflatable taco truck', 'seasonal inflatable concession stand'],
+    visual: 'a green-and-white truck-shaped service booth with a large pizza-style roof sign, striped awning, and front-facing serving counter',
+    purpose: 'The truck-shaped display creates a themed seasonal food-service or promotional focal point; final Christmas, taco, pizza, or other campaign artwork should be confirmed from the approved production drawing.',
+    buyer: 'Christmas market organizers, seasonal event producers, food-promotion teams, rental businesses, shopping centers, and hospitality agencies',
+    application: 'holiday markets, taco or pizza promotions, seasonal sampling, branded food-service counters, and festival activations',
+    options: 'seasonal roof sign, taco or pizza artwork, serving-window treatment, colors, printed holiday graphics, logo panels, counter arrangement, and packing',
+    faqQuestions: ['What is an inflatable Christmas taco truck intended for?', 'How should I plan the 4.5 x 3 x 3.6 m reference footprint?', 'Can the roof sign and food-service artwork be changed for a Christmas promotion?', 'Which details can be customized for a taco truck inflatable?', 'What should a holiday market operator prepare before installation?', 'What information is needed for an inflatable Christmas taco truck factory quote?'],
+  },
+  'inflatable-concession-booth': {
+    keywords: ['inflatable concession booth', 'inflatable vendor booth', 'inflatable candy shop', 'commercial concession stand'],
+    visual: 'a chocolate-and-white candy-shop truck facade with a striped awning, raised themed sign, and broad front service window',
+    purpose: 'The confectionery-style visual is suited to creating a memorable service, sampling, or product-display point at family events and branded activations, with the final operating scope matched to the approved layout.',
+    buyer: 'candy brands, dessert vendors, party-rental companies, family entertainment venues, malls, and experiential marketing teams',
+    application: 'candy sampling, dessert displays, pop-up sales counters, family events, retail promotions, and branded hospitality zones',
+    options: 'candy or dessert sign, color palette, striped awning, menu panel, logo graphics, service opening, counter treatment, and export packing',
+    faqQuestions: ['What is this inflatable concession booth designed for?', 'How much space should I allow for this 4.5 x 3 x 3.6 m booth?', 'Can the candy-shop artwork be replaced with my brand theme?', 'How can an inflatable vendor booth support sampling or display activity?', 'What repeat-event checks should be included in the operating plan?', 'What should buyers send for an inflatable concession booth quotation?'],
+  },
+  'blow-up-concession-stand': {
+    keywords: ['blow up concession stand', 'inflatable pizza truck', 'blow up food stand', 'inflatable concession booth'],
+    visual: 'a green-and-white pizza-truck style counter with a large pizza roof feature, striped serving awning, and an open customer-facing window',
+    purpose: 'The pizza-truck visual helps operators create a high-visibility branded serving or promotion station for supervised event use; it does not by itself establish food-safety, electrical, or cooking-equipment approvals.',
+    buyer: 'pizza promotions, food-event organizers, rental fleets, shopping centers, festival vendors, and brand-activation agencies',
+    application: 'pizza promotions, food festivals, sampling campaigns, outdoor markets, sponsor activations, and temporary service counters',
+    options: 'pizza sign or alternative roof feature, artwork, window placement, counter details, menu board area, colors, sponsor logos, and packing',
+    faqQuestions: ['What is a blow up concession stand used for?', 'How should I plan space around this pizza-truck style stand?', 'Can the pizza roof feature be changed to another product theme?', 'Which branded elements can be customized on an inflatable concession booth?', 'Does the image confirm cooking or food-safety equipment is included?', 'What should I include when requesting a blow up concession stand quote?'],
+  },
+  'inflatable-concession-stand-for-sale': {
+    keywords: ['inflatable concession stand for sale', 'inflatable snack corner', 'inflatable concession stand rental', 'commercial inflatable food truck'],
+    visual: 'a pink-and-white Snack Corner truck booth with a striped service awning, open counter, and bright family-event presentation',
+    purpose: 'The snack-counter format provides a recognizable selling, sampling, registration, or hospitality point for commercial events and rental programs, while final equipment and service procedures remain project-specific.',
+    buyer: 'party-rental businesses, snack brands, school-event suppliers, family entertainment centers, festival organizers, and event agencies',
+    application: 'snack service, family days, school fairs, branded sampling, pop-up hospitality, and commercial rental packages',
+    options: 'Snack Corner signage, colors, logo artwork, counter opening, menu-board area, entry layout, accessories, and export packing',
+    faqQuestions: ['What is this inflatable concession stand for sale designed for?', 'How much site clearance should I reserve for the Snack Corner format?', 'Can this inflatable concession stand be supplied for a rental program?', 'Can YIC customize the signage, colors, and counter layout?', 'What should a party-rental operator check before each event?', 'What details should I send for a commercial inflatable food truck quote?'],
+  },
+  'inflatable-kiosk-booth-for-sale': {
+    keywords: ['inflatable kiosk booth for sale', 'inflatable kiosk', 'inflatable ice cream truck', 'inflatable vendor booth'],
+    visual: 'a white-and-pink ice-cream-truck kiosk with a large ice-cream roof sign, striped serving awning, and open retail counter',
+    purpose: 'The ice-cream-truck concept creates a photogenic kiosk and serving focal point for seasonal retail, sampling, and hospitality programs, subject to the approved operating and equipment specification.',
+    buyer: 'ice cream brands, resort operators, mall-promotion teams, party-rental companies, food-event producers, and family venues',
+    application: 'ice cream promotions, resort kiosks, mall activations, sweet-treat sampling, outdoor events, and branded retail displays',
+    options: 'ice-cream roof sign, product graphics, color treatment, service window, menu-board area, brand logos, internal counter plan, and packing',
+    faqQuestions: ['What is this inflatable kiosk booth for sale designed for?', 'How should I plan the 4.5 x 3 x 3.6 m ice-cream kiosk footprint?', 'Can the ice-cream-truck theme be adapted for another retail product?', 'What can be customized on an inflatable kiosk?', 'Which site and supervision details should be reviewed before an event?', 'What should buyers provide for an inflatable kiosk booth factory quotation?'],
+  },
+  'inflatable-vendor-booth': {
+    keywords: ['inflatable vendor booth', 'inflatable concession booth', 'inflatable candy shop', 'inflatable food truck display'],
+    visual: 'a chocolate-and-white vendor truck with a candy-shop roof sign, striped awning, and a wide serving or display counter',
+    purpose: 'The dessert-themed vendor format gives brands and rental operators a visible counter-based display point for supervised customer interaction, sampling, and event hospitality.',
+    buyer: 'vendor-market operators, confectionery brands, event-rental companies, retail promoters, hospitality teams, and festival organizers',
+    application: 'vendor markets, candy displays, sampling counters, dessert promotions, brand launches, and event hospitality',
+    options: 'vendor signage, candy or dessert graphics, awning colors, logo panels, menu display, service opening, counter setup, and packing',
+    faqQuestions: ['What is an inflatable vendor booth designed for?', 'How should I plan the 4.5 x 3 x 3.6 m vendor-booth footprint?', 'Can this inflatable candy shop be branded for a different product line?', 'What service or display uses can an inflatable food truck display support?', 'What cleaning, storage, and inspection routine is needed for repeat events?', 'What information is needed for an inflatable vendor booth quotation?'],
+  },
+};
+
+function foodServiceProfile(product: Product) {
+  return product.category === 'Advertising Inflatable' ? foodServiceProfiles[product.productSlug] : undefined;
 }
 
 type NewWaterParkProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; application: string; options: string; faqQuestions: string[]; cardSummary?: string };
@@ -2218,6 +2307,7 @@ function bumperBallKeywordSet(product: Product) {
 }
 
 function productSearchTerms(product: Product) {
+  if (foodServiceProfile(product)) return foodServiceProfile(product)!.keywords;
   if (waterSlideProfile(product)) return waterSlideProfile(product)!.keywords;
   if (product.category === 'Bumper Ball') return bumperBallKeywordSet(product);
   if (landingKeywordSet(product).length) return landingKeywordSet(product);
@@ -2297,6 +2387,8 @@ function productIntentKeyword(product: Product) {
 
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  const foodService = foodServiceProfile(product);
+  if (foodService) return seoTitle(`${foodService.keywords[0]} | Commercial Food Booth`);
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
     if (waterSlide.keywords[0] === 'commercial inflatable pool for water slides') return seoTitle('Commercial Inflatable Water Slide Pool');
@@ -2343,6 +2435,8 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  const foodService = foodServiceProfile(product);
+  if (foodService) return truncateMeta(`YIC makes ${foodService.keywords[0]} for ${foodService.application}. ${product.dimensions.trim()}, ${product.material}. OEM branding and factory quote.`, 158);
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) return truncateMeta(`YIC makes ${waterSlide.keywords[0]} for ${waterSlide.application}. ${product.dimensions.trim()}, ${product.material}. Custom ${waterSlide.customizationFocus} and factory quote.`, 158);
   const flyingFish = flyingFishProfile(product);
@@ -2403,6 +2497,13 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const foodService = foodServiceProfile(product);
+  if (foodService) return [
+    `Visible format: ${foodService.visual}`,
+    `Reference construction: ${product.dimensions.trim()} · ${product.material}`,
+    `Commercial application: ${foodService.application}`,
+    `Customize ${foodService.options} before production`,
+  ];
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) return [
     `Visible layout: ${waterSlide.visual}`,
@@ -3136,6 +3237,39 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const foodService = foodServiceProfile(product);
+  if (foodService) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    return {
+      template,
+      productType: foodService.keywords[0],
+      primaryBuyer: foodService.buyer,
+      purpose: foodService.purpose,
+      applications: [
+        { title: foodService.application, text: `${foodService.purpose} Plan the customer approach, service window, staff position, branded presentation, and the final operating scope around the actual venue.` },
+        { title: 'Events and temporary retail', text: `Use this ${foodService.keywords[0]} for supervised event service or display after confirming the footprint, access, queue management, included equipment, and local venue requirements.` },
+        { title: 'Commercial rental and brand activations', text: `Review inflation, anchoring, cleaning, drying, inspection, transport, storage, artwork approval, and repeat-event handling before adding the unit to a rental or activation program.` },
+      ],
+      planningPoints: [
+        `Confirm the listed ${product.dimensions.trim()} reference footprint plus serving-side access, customer queue, staff space, entry and exit, blower position, anchoring surface, and spectator separation`,
+        'Define the intended role—sampling, display, registration, merchandise, or food-service frontage—along with compatible equipment, utility needs, hygiene workflow, staffing, weather plan, and local approvals',
+        `Review the final service opening, artwork, roof sign, counter arrangement, accessories, material, and packing against the approved specification (${product.material})`,
+      ],
+      customization: [
+        foodService.options,
+        `Theme-specific colors, printed logos, campaign panels, menu-display area, and coordinated ${foodService.keywords[0]} product-family graphics`,
+        'Approved blower or inflation equipment, anchoring, lighting provision, repair kit, carry or storage bags, accessories, and export packing',
+      ],
+      operationNote: 'Use only after the site, access and queue plan, anchoring, weather plan, staffing, cleaning routine, equipment interface, and local venue requirements have been reviewed. Product imagery does not establish food-safety certification, cooking equipment, electrical approval, capacity, or weather rating.',
+      quoteItems: [
+        `Intended use: ${foodService.application}; share the venue type, service or display workflow, target customer group, and event schedule`,
+        'Required footprint, service-window and counter preference, roof-sign or artwork concept, branding, material, accessories, and any required equipment interfaces',
+        'Quantity, destination, packing requirements, and requested delivery schedule',
+      ],
+    };
+  }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
     const position = productCategoryPosition(product);
@@ -4155,6 +4289,8 @@ export function productDetailContent(product: Product): DetailContent {
 export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
+  const foodService = foodServiceProfile(product);
+  if (foodService) return [...foodService.keywords, `${foodService.keywords[0]} manufacturer`, `custom ${foodService.keywords[0]}`, `${foodService.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) return [...waterSlide.keywords, `${waterSlide.keywords[0]} manufacturer`, `custom ${waterSlide.keywords[0]}`, `${waterSlide.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
   const flyingFish = flyingFishProfile(product);
@@ -4514,6 +4650,19 @@ export function productFaqs(product: Product) {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const isBounceCategory = product.category === 'Bounce House' || product.category === 'Bounce House Combo';
   const bounceCore = isBounceCategory ? bounceHouseCoreKeyword(product) : '';
+  const foodService = foodServiceProfile(product);
+  if (foodService) {
+    const terms = foodService.keywords;
+    const questions = foodService.faqQuestions;
+    return [
+      { question: questions[0], answer: `${foodService.purpose} The reference imagery shows ${foodService.visual}. Related buyer searches include ${terms.slice(1).join(', ')}; confirm the final service or display scope in the approved production specification.` },
+      { question: questions[1], answer: `Start with the listed ${product.dimensions.trim()} reference, then reserve additional room for the service side, customer queue, staff position, entrance and exit, blower, anchoring, packing, and a separated visitor area. Confirm the final layout from the actual venue plan.` },
+      { question: questions[2], answer: `It can be planned as a branded event frontage, sampling point, display counter, registration point, merchandise station, or other approved use. The image alone does not confirm food-preparation equipment, utilities, food-safety compliance, or included accessories; these must be defined in the final specification.` },
+      { question: questions[3], answer: `Yes. YIC can review ${foodService.options}. Send the reference artwork, preferred colors, logo files, service-window requirements, target footprint, quantity, destination, and delivery timing for a project-specific proposal.` },
+      { question: questions[4], answer: `${content.operationNote} Include pre-use inflation, anchoring, seams, access, counter and accessory checks, supervised guest flow, cleaning, drying, repair-kit access, transport, and dry storage in the repeat-event routine.` },
+      { question: questions[5], answer: `Send the intended use (${foodService.application}), site plan, target dimensions, service or display layout, branding files, equipment-interface requirements, quantity, destination, packing needs, and required delivery date. The factory quotation can then confirm the final ${terms[0]} configuration.` },
+    ];
+  }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
     const terms = waterSlide.keywords;

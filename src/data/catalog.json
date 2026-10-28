@@ -1,17 +1,24 @@
 {
-  "generatedAt": "2026-10-27T15:22:27.228Z",
+  "generatedAt": "2026-10-28T04:07:22.893Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
       "slug": "advertising-inflatable",
-      "count": 5,
+      "count": 12,
       "heroImage": "/assets/product/Advertising%20Inflatable/3x3x4m%20%20%20%20inflatable%20logo%20display/1.webp",
       "products": [
         "advertising-inflatable--inflatable-logo-display-1",
         "advertising-inflatable--inflatable-candy-shop-2",
         "advertising-inflatable--pop-up-tent-food-truck-3",
         "advertising-inflatable--inflatable-tiki-bar-for-sale-4",
-        "advertising-inflatable--inflatable-pool-bar-5"
+        "advertising-inflatable--inflatable-pool-bar-5",
+        "advertising-inflatable--inflatable-concession-stand-6",
+        "advertising-inflatable--inflatable-christmas-taco-truck-7",
+        "advertising-inflatable--inflatable-concession-booth-8",
+        "advertising-inflatable--blow-up-concession-stand-9",
+        "advertising-inflatable--inflatable-concession-stand-for-sale-10",
+        "advertising-inflatable--inflatable-kiosk-booth-for-sale-11",
+        "advertising-inflatable--inflatable-vendor-booth-12"
       ]
     },
     {
@@ -656,6 +663,132 @@
         "/assets/product/Advertising%20Inflatable/6x6x4.5m%20%20inflatable%20pool%20bar/5.webp"
       ],
       "dimensions": "6x6x4.5m  ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-concession-stand-6",
+      "productSlug": "inflatable-concession-stand",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable concession stand",
+      "sourceName": "3.73x2.5m     inflatable concession stand",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20concession%20stand/1.webp",
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20concession%20stand/2.webp",
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20concession%20stand/3.webp",
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20concession%20stand/4.webp",
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20concession%20stand/5.webp"
+      ],
+      "dimensions": "3.73x2.5m     ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-christmas-taco-truck-7",
+      "productSlug": "inflatable-christmas-taco-truck",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable christmas taco truck",
+      "sourceName": "4.5x3x3.6m     inflatable christmas taco truck",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20christmas%20taco%20truck/1.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20christmas%20taco%20truck/2.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20christmas%20taco%20truck/3.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20christmas%20taco%20truck/4.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20christmas%20taco%20truck/5.webp"
+      ],
+      "dimensions": "4.5x3x3.6m     ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-concession-booth-8",
+      "productSlug": "inflatable-concession-booth",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable concession booth",
+      "sourceName": "4.5x3x3.6m     inflatable concession booth",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20concession%20booth/1.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20concession%20booth/2.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20concession%20booth/3.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20concession%20booth/4.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20concession%20booth/5.webp"
+      ],
+      "dimensions": "4.5x3x3.6m     ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--blow-up-concession-stand-9",
+      "productSlug": "blow-up-concession-stand",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "blow up concession stand",
+      "sourceName": "4.5x3x3.6m    blow up concession stand",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20blow%20up%20concession%20stand/1.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20blow%20up%20concession%20stand/2.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20blow%20up%20concession%20stand/3.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20blow%20up%20concession%20stand/4.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20blow%20up%20concession%20stand/5.webp"
+      ],
+      "dimensions": "4.5x3x3.6m    ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-concession-stand-for-sale-10",
+      "productSlug": "inflatable-concession-stand-for-sale",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable concession stand for sale",
+      "sourceName": "4.5x3x3.6m    inflatable concession stand for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20concession%20stand%20for%20sale/1.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20concession%20stand%20for%20sale/2.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20concession%20stand%20for%20sale/3.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20concession%20stand%20for%20sale/4.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20concession%20stand%20for%20sale/5.webp"
+      ],
+      "dimensions": "4.5x3x3.6m    ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-kiosk-booth-for-sale-11",
+      "productSlug": "inflatable-kiosk-booth-for-sale",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable kiosk booth for sale",
+      "sourceName": "4.5x3x3.6m    inflatable kiosk booth for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20kiosk%20booth%20for%20sale/1.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20kiosk%20booth%20for%20sale/2.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20kiosk%20booth%20for%20sale/3.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20kiosk%20booth%20for%20sale/4.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20kiosk%20booth%20for%20sale/5.webp"
+      ],
+      "dimensions": "4.5x3x3.6m    ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-vendor-booth-12",
+      "productSlug": "inflatable-vendor-booth",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable vendor booth",
+      "sourceName": "4.5x3x3.6m    inflatable vendor booth",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20vendor%20booth/1.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20vendor%20booth/2.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20vendor%20booth/3.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20vendor%20booth/4.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20inflatable%20vendor%20booth/5.webp"
+      ],
+      "dimensions": "4.5x3x3.6m    ",
       "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
     },
     {
@@ -6289,7 +6422,7 @@
         "/assets/product/Inflatable%20Mechanical%20Games/5x5x3.6m%20%20%20%20mechanical%20bull%20blow%20up/4.webp",
         "/assets/product/Inflatable%20Mechanical%20Games/5x5x3.6m%20%20%20%20mechanical%20bull%20blow%20up/5.webp"
       ],
-      "dimensions": "5 x 5 x 3.6 m",
+      "dimensions": "5x5x3.6m    m",
       "excerpt": "Commercial inflatable mechanical games built for party rental operators, family entertainment centers, and event venues."
     },
     {
