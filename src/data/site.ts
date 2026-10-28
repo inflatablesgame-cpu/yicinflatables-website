@@ -305,12 +305,12 @@ export function categoryCustomization(category: string) {
 
 const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   'Advertising Inflatable': {
-    title: 'Inflatable Tiki Bars, Food Trucks & Event Displays | YIC',
-    description: 'Commercial inflatable tiki bars, cocktail bars, food trucks, concession booths, kiosks, air dancers, and branded event displays. OEM factory supply from YIC.',
-    keywords: 'inflatable tiki bar, inflatable cocktail bar, blow up tiki bar, blow up cocktail bar, inflatable air dancer, inflatable food truck, inflatable concession stand, inflatable vendor booth',
-    h1: 'Inflatable Tiki Bars, Food Trucks & Brand Activation Displays',
-    intro: 'YIC manufactures commercial advertising inflatables for exhibitions, retail promotions, resort events, product launches, sampling, and hospitality activations. The range includes inflatable tiki bars, cocktail bars, food trucks, concession stands, candy-shop booths, kiosks, vendor counters, air dancers, and custom campaign structures. Confirm your artwork, functional layout, footprint, intended workflow, material, and installation plan with the factory before production.',
-    options: ['Inflatable tiki bars and cocktail counters', 'Inflatable food trucks, concession stands, and kiosk booths', 'Inflatable air dancers and promotional displays', 'Custom logo and campaign structures'],
+    title: 'Inflatable Pool Bars, Mascots & Event Displays | YIC',
+    description: 'Commercial inflatable poolside bars, tiki bars, food trucks, event mascots, team tunnels, air dancers, and branded displays. OEM factory supply from YIC.',
+    keywords: 'inflatable pool bar, blow up pool bar, inflatable pool tiki bar, inflatable tiki bar, inflatable cocktail bar, inflatable dog mascot, inflatable cat mascot manufacturer, football team spirit inflatable tunnel, inflatable air dancer, inflatable food truck',
+    h1: 'Inflatable Pool Bars, Mascots & Brand Activation Displays',
+    intro: 'YIC manufactures commercial advertising inflatables for exhibitions, retail promotions, resort events, product launches, sampling, and hospitality activations. The range includes poolside inflatable bars, tiki and cocktail counters, food trucks, concession stands, kiosks, air dancers, custom mascots, and sports-team entry tunnels. Confirm your artwork, functional layout, footprint, intended workflow, material, and installation plan with the factory before production.',
+    options: ['Poolside inflatable bars, tiki bars, and cocktail counters', 'Inflatable food trucks, concession stands, and kiosk booths', 'Event mascots, team tunnels, air dancers, and promotional displays', 'Custom logo and campaign structures'],
     buyers: [{ title: 'Event and activation agencies', text: 'Create a high-visibility hospitality, sampling, retail, or branded interaction point with customer flow planned around the event footprint.' }, { title: 'Resort, food, and beverage brands', text: 'Develop recognizable tiki bars, cocktail counters, food trucks, kiosks, or air dancers for promotions, launches, seasonal events, and campaign tours.' }, { title: 'Rental and venue operators', text: 'Add visible themed bars, service counters, and promotional structures to festivals, mall events, pool parties, hospitality zones, and repeat rental packages.' }],
     oem: 'Send a logo, product theme, reference image, dimensions, functional brief, intended event use, quantity, and destination. YIC can support 3D layout, printed artwork, custom shapes, accessories, production inspection, and export packing for a campaign-ready advertising inflatable.',
     faq: [{ question: 'Can YIC make an inflatable food truck or concession stand in our brand theme?', answer: 'Yes. YIC can review a reference image or concept and develop the vehicle-style outline, dimensions, colors, printed artwork, roof sign, service opening, display areas, and accessories for the campaign.' }, { question: 'Can an inflatable concession booth be used for food sampling or event service?', answer: 'It can be planned as a branded service, sampling, registration, merchandise, or hospitality frontage. The final scope should confirm included equipment, utility interfaces, hygiene workflow, and applicable venue requirements; imagery alone does not establish food-preparation approvals.' }, { question: 'What information is needed for an inflatable vendor booth quotation?', answer: 'Share the artwork, intended venue, service or display workflow, footprint, quantity, destination, target event date, and requirements for the service opening, counter, accessories, packing, or branding.' }],
@@ -500,6 +500,10 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 }
 
 export function productDescription(product: Product) {
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) {
+    return `YIC manufactures ${advertisingDisplay.keywords[0]} for ${advertisingDisplay.buyer}. This ${product.dimensions.trim()} model is shown as ${advertisingDisplay.visual}. ${advertisingDisplay.purpose} The listing specifies ${product.material}. Buyers can review ${advertisingDisplay.options}. Related buyer searches include ${advertisingDisplay.keywords.slice(1).join(', ')}. Confirm the final site plan, artwork, accessories, anchoring, access, supervision, and event requirements before production.`;
+  }
   const foodService = foodServiceProfile(product);
   if (foodService && !isAirDancerProfile(product)) {
     return `YIC manufactures ${foodService.keywords[0]} for ${foodService.buyer}. This ${product.dimensions.trim()} model is shown as ${foodService.visual}. ${foodService.purpose} The listing specifies ${product.material}. Buyers can review ${foodService.options}. Related buyer searches include ${foodService.keywords.slice(1).join(', ')}. Confirm the final site plan, service workflow, branded artwork, included equipment, anchoring, and event requirements before production.`;
@@ -709,10 +713,86 @@ const foodServiceProfiles: Record<string, FoodServiceProfile> = {
     options: 'custom dimensions, roof profile, palm and tiki-mask details, color scheme, logo panels, counter length, service openings, accessories, and export packing',
     faqQuestions: ['What is a blow up cocktail bar designed for?', 'Can this inflatable cocktail bar be made to custom dimensions?', 'How can a custom inflatable bar be branded for a resort or sponsor?', 'Can this tropical counter support drinks display and guest hospitality?', 'What site, weather, and cleaning considerations should operators plan?', 'What should I provide for a custom blow up cocktail bar quotation?'],
   },
+  'inflatable-pool-tiki-bar': {
+    keywords: ['inflatable pool tiki bar', 'inflatable tiki bar for pool', 'inflatable pool bar', 'poolside tiki bar'],
+    visual: 'a yellow-and-white classical pavilion-style bar with red curtains, a raised roof sign, front steps, and a broad covered serving or hospitality counter positioned beside a pool',
+    purpose: 'The poolside pavilion format creates a prominent tropical or resort hospitality point for supervised beverage display, guest reception, sponsor service, and themed event use; the product is shown poolside rather than as a floating water unit.',
+    buyer: 'resorts, pool clubs, hotel event teams, beach venues, luxury-party planners, beverage brands, and commercial rental operators',
+    application: 'poolside hospitality, resort events, tropical parties, beverage sampling, VIP receptions, and branded event counters',
+    options: 'pavilion roof sign, curtain colors, column treatment, poolside bar graphics, logo panels, counter arrangement, entry steps, lighting provision, accessories, and export packing',
+    faqQuestions: ['What is this inflatable pool tiki bar designed for?', 'How should I plan the 6 x 6 m poolside tiki-bar footprint?', 'Is this inflatable tiki bar for pool use a floating water product?', 'Can the roof sign, curtains, and poolside bar graphics be customized?', 'What poolside installation and hospitality checks should operators prepare?', 'What is needed for an inflatable pool tiki bar factory quotation?'],
+  },
+  'blow-up-pool-bar': {
+    keywords: ['blow up pool bar', 'inflatable pool bar', 'inflatable swim up bar', 'poolside inflatable bar'],
+    visual: 'a pink-and-white open pavilion counter with a large BAR roof sign, red curtains, front steps, and a wide service frontage beside a swimming pool',
+    purpose: 'The pink poolside bar visual gives venues and event teams a recognizable hospitality, beverage-display, or sponsor-counter focal point without representing the unit as a floating pool float or confirming any included drink-making equipment.',
+    buyer: 'pool-party organizers, resorts, event-rental businesses, beverage promoters, hotel venues, birthday-event planners, and activation agencies',
+    application: 'pool parties, resort hospitality, beverage launches, branded drink displays, summer events, and rental counter packages',
+    options: 'BAR roof lettering, color scheme, curtain treatment, sponsor artwork, service counter, logo panels, entry layout, accessories, and export packing',
+    faqQuestions: ['What is a blow up pool bar used for?', 'How should I plan this 6 x 6 m inflatable pool bar at an event?', 'Is this inflatable swim up bar image a floating bar or a poolside structure?', 'Can the pink BAR roof sign and counter branding be changed?', 'What setup, weather, and service-flow checks should a pool-party team make?', 'What details should I send for a blow up pool bar quotation?'],
+  },
+  'inflatable-pool-bar-commercial': {
+    keywords: ['commercial inflatable pool bar', 'inflatable pool bar', 'poolside inflatable bar', 'inflatable cocktail bar for pool parties'],
+    visual: 'a white-and-red pavilion-style hospitality bar with a branded roof fascia, red curtains, an open counter, and a 6 x 6 m poolside event footprint',
+    purpose: 'This commercial inflatable pool bar provides a clean, architectural backdrop for hotel hospitality, sponsor service, beverage display, and controlled event reception beside a pool; it should not be described as a floating bar unless the final specification says so.',
+    buyer: 'hotel and resort operators, corporate-event teams, premium rental fleets, beverage brands, real-estate marketing teams, and destination venues',
+    application: 'hotel pool events, corporate receptions, poolside cocktail service, branded hospitality, summer launches, and commercial rental programs',
+    options: 'custom dimensions, roof fascia artwork, curtain colors, counter length, logo panels, service opening, branded columns, accessories, and export packing',
+    faqQuestions: ['What is a commercial inflatable pool bar designed for?', 'How much space should I reserve for this 6 x 6 m poolside event bar?', 'Can the roof fascia and red-curtain hospitality design be branded?', 'Does this inflatable pool bar float on water?', 'What operational checks matter for hotel and corporate pool events?', 'What information is required for a commercial inflatable pool bar quotation?'],
+  },
+};
+
+type AdvertisingDisplayProfile = FoodServiceProfile & {
+  displayTitle: string;
+  kind: 'mascot' | 'tunnel';
+  cardSummary: string;
+};
+
+const advertisingDisplayProfiles: Record<string, AdvertisingDisplayProfile> = {
+  'inflatable-dog-mascot': {
+    displayTitle: 'Inflatable Dog Mascot',
+    kind: 'mascot',
+    keywords: ['inflatable dog mascot', 'giant inflatable dog', 'custom dog mascot inflatable', 'pet event inflatable display'],
+    visual: 'a friendly tan-and-white dog mascot with oversized features, sitting paws, a printed collar, and a 3 m event-scale silhouette',
+    purpose: 'The dog character creates a memorable photo point, campaign landmark, or family-event display for pet adoption days, veterinary promotions, community events, and branded activations.',
+    buyer: 'animal shelters, veterinary brands, pet retailers, event agencies, shopping centers, family venues, and promotional rental companies',
+    application: 'pet adoption events, veterinary promotions, animal-brand activations, family days, photo opportunities, and retail displays',
+    options: 'dog breed styling, colors, collar, facial expression, logos, sponsor panels, height, base layout, accessories, and export packing',
+    faqQuestions: ['What is this inflatable dog mascot designed for?', 'How should I plan the 3 m dog mascot display at an event?', 'Can the dog character be customized for a pet brand or adoption campaign?', 'What material is listed for this giant inflatable dog?', 'What setup and supervision checks should event teams prepare?', 'What should I send for an inflatable dog mascot factory quotation?'],
+    cardSummary: '3 m inflatable dog mascot for pet events, adoption campaigns, retail promotions, family days, and branded photo opportunities.',
+  },
+  'inflatable-cat-mascot-manufacturer': {
+    displayTitle: 'Inflatable Cat Mascot Manufacturer',
+    kind: 'mascot',
+    keywords: ['inflatable cat mascot manufacturer', 'inflatable cat mascot', 'giant inflatable cat', 'custom cat mascot inflatable'],
+    visual: 'a large white-and-pink cartoon cat with bright eyes, a sitting pose, oversized paws, printed whiskers, and a 3 m family-event display scale',
+    purpose: 'The friendly cat character helps pet brands, retailers, charities, and event teams create an approachable landmark for photo traffic, awareness campaigns, launches, and themed public events.',
+    buyer: 'pet-product brands, cat shelters, veterinary groups, mall promoters, event agencies, retailers, and commercial display buyers',
+    application: 'cat-adoption campaigns, pet-store launches, retail displays, family events, charity promotions, and brand photo zones',
+    options: 'cat colors, breed-inspired markings, facial expression, neckwear, logo printing, sponsor panels, character height, base treatment, accessories, and packing',
+    faqQuestions: ['What does an inflatable cat mascot manufacturer supply?', 'How should I plan the 3 m cat mascot at a promotion site?', 'Can a giant inflatable cat be customized for a cat brand or charity?', 'What material is listed for this custom cat mascot inflatable?', 'How should teams manage installation, cleaning, and storage?', 'What details are needed for an inflatable cat mascot manufacturer quote?'],
+    cardSummary: '3 m giant inflatable cat mascot for pet retail, adoption campaigns, charity promotions, family events, and custom brand displays.',
+  },
+  'football-team-spirit-inflatable-tunnel': {
+    displayTitle: 'Football Team Spirit Inflatable Tunnel',
+    kind: 'tunnel',
+    keywords: ['football team spirit inflatable tunnel', 'bulldog inflatable tunnel', 'football team entrance tunnel', 'custom sports inflatable tunnel'],
+    visual: 'a blue team-entry tunnel with a large bulldog head, striped football jersey styling, a visible walk-through entrance, and sponsor-ready side panels',
+    purpose: 'The bulldog-themed walk-through structure gives teams, schools, stadium events, and sponsors a high-energy player entrance and fan photo landmark built around approved branding and venue access conditions.',
+    buyer: 'school athletic departments, football clubs, stadium-event teams, sports marketers, booster organizations, rental companies, and sponsor activation agencies',
+    application: 'football player entrances, school spirit events, stadium promotions, team introductions, sponsor activations, and sports photo zones',
+    options: 'team mascot, tunnel length, jersey colors, logo panels, sponsor graphics, entry shape, lighting provision, anchoring, accessories, and export packing',
+    faqQuestions: ['What is a football team spirit inflatable tunnel designed for?', 'Can this bulldog inflatable tunnel be made to custom dimensions?', 'Can the team mascot, jersey colors, and sponsor graphics be changed?', 'How should a football team entrance tunnel be planned at a stadium or school?', 'What anchoring, access, and supervision checks should teams prepare?', 'What should I send for a custom sports inflatable tunnel quotation?'],
+    cardSummary: 'Custom football team spirit inflatable tunnel with bulldog mascot styling for player entrances, school events, sponsor activations, and sports photo zones.',
+  },
 };
 
 function foodServiceProfile(product: Product) {
   return product.category === 'Advertising Inflatable' ? foodServiceProfiles[product.productSlug] : undefined;
+}
+
+function advertisingDisplayProfile(product: Product) {
+  return product.category === 'Advertising Inflatable' ? advertisingDisplayProfiles[product.productSlug] : undefined;
 }
 
 function isAirDancerProfile(product: Product) {
@@ -2369,6 +2449,7 @@ function bumperBallKeywordSet(product: Product) {
 }
 
 function productSearchTerms(product: Product) {
+  if (advertisingDisplayProfile(product)) return advertisingDisplayProfile(product)!.keywords;
   if (foodServiceProfile(product)) return foodServiceProfile(product)!.keywords;
   if (waterSlideProfile(product)) return waterSlideProfile(product)!.keywords;
   if (product.category === 'Bumper Ball') return bumperBallKeywordSet(product);
@@ -2449,6 +2530,11 @@ function productIntentKeyword(product: Product) {
 
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) {
+    const suffix = advertisingDisplay.kind === 'tunnel' ? 'Custom Sports Tunnel' : 'Custom Mascot Display';
+    return seoTitle(`${advertisingDisplay.keywords[0]} | ${suffix}`);
+  }
   const foodService = foodServiceProfile(product);
   if (foodService && !isAirDancerProfile(product)) return seoTitle(`${foodService.keywords[0]} | Commercial Event Bar`);
   if (isAirDancerProfile(product)) return seoTitle('Inflatable Air Dancer for Sale | Event Display');
@@ -2498,8 +2584,10 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) return truncateMeta(`YIC manufactures ${advertisingDisplay.keywords[0]} for commercial events. ${product.dimensions.trim()}. Custom artwork, branding, and factory quotation.`, 158);
   const foodService = foodServiceProfile(product);
-  if (foodService && !isAirDancerProfile(product)) return truncateMeta(`YIC makes ${foodService.keywords[0]} for ${foodService.application}. ${product.dimensions.trim()}, ${product.material}. OEM branding and factory quote.`, 158);
+  if (foodService && !isAirDancerProfile(product)) return truncateMeta(`YIC manufactures ${foodService.keywords[0]} for commercial poolside events. ${product.dimensions.trim()}. Custom branding and factory quotation.`, 158);
   if (isAirDancerProfile(product)) {
     const profile = foodServiceProfiles[product.productSlug];
     return truncateMeta('YIC makes ' + profile.keywords[0] + ' for ' + profile.application + '. ' + product.dimensions.trim() + ', ' + product.material + '. Custom artwork and factory quote.', 158);
@@ -2564,6 +2652,13 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) return [
+    `Visible format: ${advertisingDisplay.visual}`,
+    `Reference construction: ${product.dimensions.trim()} · ${product.material}`,
+    `Commercial application: ${advertisingDisplay.application}`,
+    `Customize ${advertisingDisplay.options} before production`,
+  ];
   const foodService = foodServiceProfile(product);
   if (foodService && !isAirDancerProfile(product)) return [
     `Visible format: ${foodService.visual}`,
@@ -3144,6 +3239,11 @@ export function productKeywordVariants(product: Product) {
 
 export function productDisplayTitle(product: Product) {
   if (isAirDancerProfile(product)) return 'Inflatable Air Dancer for Sale';
+  if (product.productSlug === 'inflatable-pool-tiki-bar') return 'Inflatable Pool Tiki Bar';
+  if (product.productSlug === 'blow-up-pool-bar') return 'Blow Up Pool Bar';
+  if (product.productSlug === 'inflatable-pool-bar-commercial') return 'Commercial Inflatable Pool Bar';
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) return advertisingDisplay.displayTitle;
   let title = product.title.trim();
   title = title.replace(/^diameter.*?(?=inflatable\b)/i, '');
   title = title.replace(/^\d+(?:\.\d+)?mH(?:\s+\d+(?:\.\d+)?mm\s*PVC)?\s*/i, '');
@@ -3314,6 +3414,45 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const isTunnel = advertisingDisplay.kind === 'tunnel';
+    const planningLead = isTunnel
+      ? 'Confirm the player entrance route, venue access, overhead clearance, spectator separation, blower position, anchoring surface, and emergency egress around the actual stadium or school site'
+      : 'Confirm the listed display footprint, viewing direction, access route, overhead clearance, blower position, anchoring surface, visitor separation, and photo-queue area';
+    return {
+      template,
+      productType: advertisingDisplay.keywords[0],
+      primaryBuyer: advertisingDisplay.buyer,
+      purpose: advertisingDisplay.purpose,
+      applications: [
+        { title: advertisingDisplay.application, text: `${advertisingDisplay.purpose} Match the final installation to the venue plan, approved artwork, and supervised guest or player flow.` },
+        { title: isTunnel ? 'Team entrances and sponsor activations' : 'Campaign visibility and photo traffic', text: isTunnel ? 'Plan the entry orientation, tunnel length, team timing, venue clearance, sponsor visibility, and controlled athlete and spectator access before each use.' : 'Use the character silhouette as an approachable landmark for photo traffic, retail visibility, campaigns, and family events after reviewing the actual site conditions.' },
+        { title: 'Commercial rental and repeat-event operations', text: `Review inflation, anchoring, inspection, cleaning, drying, transport, storage, artwork approval, and repeat-event handover before adding this ${advertisingDisplay.keywords[0]} to an operating fleet.` },
+      ],
+      planningPoints: [
+        planningLead,
+        `Define the intended campaign, event, or team use together with operating hours, weather plan, staff supervision, approved branding, local venue rules, and audience management`,
+        `Review the final artwork, fabric, seams, base treatment, blower interface, accessories, packing, and operating instructions against the approved specification (${product.material})`,
+      ],
+      customization: [
+        advertisingDisplay.options,
+        isTunnel ? 'Team-specific colors, mascot artwork, jersey or crest graphics, sponsor panels, entry orientation, and coordinated stadium-event graphics' : 'Campaign-specific colors, character details, printed logos, sponsor panels, photo-backdrop graphics, and coordinated promotional-display artwork',
+        'Approved blower or inflation equipment, anchoring, repair kit, carry or storage bags, accessories, and export packing',
+      ],
+      operationNote: isTunnel
+        ? 'Operate only after the player route, venue access, anchoring, blower and electrical arrangements, weather conditions, spectator separation, inspection routine, and local stadium or school requirements have been reviewed. Images do not establish a wind rating, capacity, blower inclusion, or unattended-operation permission.'
+        : 'Operate only after the installation site, viewing direction, weather conditions, compatible blower, secure positioning, access separation, inspection routine, and local event requirements have been reviewed. Images do not establish a wind rating, blower inclusion, electrical approval, or unattended-operation permission.',
+      quoteItems: [
+        `Intended use: ${advertisingDisplay.application}; share the event or venue type, audience, campaign or team objective, and required installation timing`,
+        'Target dimensions, reference artwork, logo files, preferred colors, branding, accessories, blower and anchoring requirements, and any venue restrictions',
+        'Quantity, destination, packing requirements, and requested delivery schedule',
+      ],
+    };
+  }
   const foodService = foodServiceProfile(product);
   if (foodService) {
     const position = productCategoryPosition(product);
@@ -4396,6 +4535,11 @@ export function productDetailContent(product: Product): DetailContent {
 export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) {
+    const core = advertisingDisplay.keywords[0].replace(/\s+manufacturer$/i, '');
+    return [...advertisingDisplay.keywords, `${core} manufacturer`, `custom ${core}`, `${core} for rental`, 'YIC Inflatable Sports'].join(', ');
+  }
   const foodService = foodServiceProfile(product);
   if (foodService && !isAirDancerProfile(product)) return [...foodService.keywords, `${foodService.keywords[0]} manufacturer`, `custom ${foodService.keywords[0]}`, `${foodService.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
   if (isAirDancerProfile(product)) {
@@ -4491,6 +4635,13 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) return `${advertisingDisplay.cardSummary} ${reference}`;
+  const foodService = foodServiceProfile(product);
+  if (foodService) {
+    const label = `${/^commercial\b/i.test(foodService.keywords[0]) ? '' : 'Commercial '}${foodService.keywords[0]}`;
+    return `${label.charAt(0).toUpperCase()}${label.slice(1)} for ${foodService.application}. ${reference}`;
+  }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) return `${waterSlide.cardSummary} Reference size: ${product.dimensions.trim()}.`;
   const flyingFish = flyingFishProfile(product);
@@ -4697,6 +4848,10 @@ export function productCardLabel(product: Product) {
     'Inflatable Water Park': ['Floating water play', 'Modular water attraction', 'Anchoring & site planning'],
   };
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) return `${material} · ${advertisingDisplay.kind === 'tunnel' ? 'Team entrance tunnel' : 'Custom event mascot'} · OEM artwork`;
+  const foodService = foodServiceProfile(product);
+  if (foodService) return `${material} · ${foodService.keywords[0]} · Custom branding`;
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) return `${material} · ${interactiveProfile.productType} · Event and rental use`;
   if (product.category === 'Bumper Ball') {
@@ -4761,6 +4916,20 @@ export function productFaqs(product: Product) {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const isBounceCategory = product.category === 'Bounce House' || product.category === 'Bounce House Combo';
   const bounceCore = isBounceCategory ? bounceHouseCoreKeyword(product) : '';
+  const advertisingDisplay = advertisingDisplayProfile(product);
+  if (advertisingDisplay) {
+    const terms = advertisingDisplay.keywords;
+    const questions = advertisingDisplay.faqQuestions;
+    const isTunnel = advertisingDisplay.kind === 'tunnel';
+    return [
+      { question: questions[0], answer: `${advertisingDisplay.purpose} The reference imagery shows ${advertisingDisplay.visual}. Related buyer searches include ${terms.slice(1).join(', ')}; confirm the approved artwork, accessories, and final operating scope in the production specification.` },
+      { question: questions[1], answer: `${/custom dimensions available/i.test(product.dimensions) ? 'Custom dimensions are available.' : `Start with the listed ${product.dimensions.trim()} reference.`} Reserve practical clearance for ${isTunnel ? 'the entry and exit route, athletes, spectators, blower, anchoring, and emergency access' : 'viewing, visitor photos, the blower, anchoring, staff access, and visitor separation'}. Confirm the final layout from the actual site plan.` },
+      { question: questions[2], answer: `Yes. YIC can review ${advertisingDisplay.options}. Send reference artwork, preferred colors, logo files, target height or footprint, venue conditions, quantity, destination, and delivery timing for a project-specific proposal.` },
+      { question: questions[3], answer: `The catalog lists ${product.material}${product.dimensions ? ` and ${product.dimensions.trim()}` : ''}. Confirm the final fabric grade, seams, printed graphics, base treatment, blower interface, accessories, and included equipment in the approved order specification.` },
+      { question: questions[4], answer: `${content.operationNote} Include pre-use inflation, anchoring, seams, blower and cable checks, ${isTunnel ? 'entry-route and spectator-flow checks, ' : 'access and photo-zone checks, '}weather monitoring, cleaning, drying, repair-kit access, transport, and dry storage in the operating routine.` },
+      { question: questions[5], answer: `Send the intended use (${advertisingDisplay.application}), venue or site plan, target dimensions, artwork and branding files, anchoring requirements, accessories, quantity, destination, packing needs, and requested delivery date. The factory quotation can then confirm the final ${terms[0]} configuration.` },
+    ];
+  }
   const foodService = foodServiceProfile(product);
   if (isAirDancerProfile(product)) {
     const profile = foodServiceProfiles[product.productSlug];

@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-28T04:29:34.819Z",
+  "generatedAt": "2026-10-28T04:40:46.036Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
       "slug": "advertising-inflatable",
-      "count": 18,
+      "count": 24,
       "heroImage": "/assets/product/Advertising%20Inflatable/3x3x4m%20%20%20%20inflatable%20logo%20display/1.webp",
       "products": [
         "advertising-inflatable--inflatable-logo-display-1",
@@ -24,7 +24,13 @@
         "advertising-inflatable--inflatable-cocktail-bar-15",
         "advertising-inflatable--blow-up-tiki-bar-16",
         "advertising-inflatable--inflatable-air-dancer-for-sale-17",
-        "advertising-inflatable--blow-up-cocktail-bar-18"
+        "advertising-inflatable--blow-up-cocktail-bar-18",
+        "advertising-inflatable--inflatable-dog-mascot-19",
+        "advertising-inflatable--inflatable-cat-mascot-manufacturer-20",
+        "advertising-inflatable--inflatable-pool-tiki-bar-21",
+        "advertising-inflatable--blow-up-pool-bar-22",
+        "advertising-inflatable--inflatable-pool-bar-23",
+        "advertising-inflatable--football-team-spirit-inflatable-tunnel-24"
       ]
     },
     {
@@ -874,7 +880,7 @@
       "productSlug": "inflatable-air-dancer-for-sale",
       "category": "Advertising Inflatable",
       "categorySlug": "advertising-inflatable",
-      "title": "inflatable air dancer for sale",
+      "title": "Cloth inflatable tiki bar for sale",
       "sourceName": "5mH    材料Oxford Cloth     inflatable tiki bar for sale",
       "material": "Oxford fabric",
       "images": [
@@ -885,7 +891,7 @@
         "/assets/product/Advertising%20Inflatable/5mH%20%20%20%20%E6%9D%90%E6%96%99Oxford%20Cloth%20%20%20%20%20inflatable%20tiki%20bar%20for%20sale/5.webp"
       ],
       "dimensions": "5mH    ",
-      "excerpt": "5 m Oxford-fabric inflatable air dancer for retail promotions, opening events, roadside visibility, and rental fleets."
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
     },
     {
       "slug": "advertising-inflatable--blow-up-cocktail-bar-18",
@@ -901,6 +907,114 @@
         "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20blow%20up%20cocktail%20bar/3.webp",
         "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20blow%20up%20cocktail%20bar/4.webp",
         "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20blow%20up%20cocktail%20bar/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-dog-mascot-19",
+      "productSlug": "inflatable-dog-mascot",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable dog mascot",
+      "sourceName": "3m     inflatable dog mascot",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20%20inflatable%20dog%20mascot/1.webp",
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20%20inflatable%20dog%20mascot/2.webp",
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20%20inflatable%20dog%20mascot/3.webp",
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20%20inflatable%20dog%20mascot/4.webp",
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20%20inflatable%20dog%20mascot/5.webp"
+      ],
+      "dimensions": "3m     ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-cat-mascot-manufacturer-20",
+      "productSlug": "inflatable-cat-mascot-manufacturer",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable cat mascot manufacturer",
+      "sourceName": "3m    inflatable cat mascot manufacturer",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20inflatable%20cat%20mascot%20manufacturer/1.webp",
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20inflatable%20cat%20mascot%20manufacturer/2.webp",
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20inflatable%20cat%20mascot%20manufacturer/3.webp",
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20inflatable%20cat%20mascot%20manufacturer/4.webp",
+        "/assets/product/Advertising%20Inflatable/3m%20%20%20%20inflatable%20cat%20mascot%20manufacturer/5.webp"
+      ],
+      "dimensions": "3m    ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-pool-tiki-bar-21",
+      "productSlug": "inflatable-pool-tiki-bar",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable pool tiki bar",
+      "sourceName": "6x6m      inflatable pool tiki bar",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20%20inflatable%20pool%20tiki%20bar/1.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20%20inflatable%20pool%20tiki%20bar/2.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20%20inflatable%20pool%20tiki%20bar/3.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20%20inflatable%20pool%20tiki%20bar/4.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20%20inflatable%20pool%20tiki%20bar/5.webp"
+      ],
+      "dimensions": "6x6m      ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--blow-up-pool-bar-22",
+      "productSlug": "blow-up-pool-bar",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "blow up pool bar",
+      "sourceName": "6x6m     blow up pool bar",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20blow%20up%20pool%20bar/1.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20blow%20up%20pool%20bar/2.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20blow%20up%20pool%20bar/3.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20blow%20up%20pool%20bar/4.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20blow%20up%20pool%20bar/5.webp"
+      ],
+      "dimensions": "6x6m     ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-pool-bar-23",
+      "productSlug": "inflatable-pool-bar-commercial",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable pool bar",
+      "sourceName": "6x6m     inflatable pool bar",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20inflatable%20pool%20bar/1.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20inflatable%20pool%20bar/2.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20inflatable%20pool%20bar/3.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20inflatable%20pool%20bar/4.webp",
+        "/assets/product/Advertising%20Inflatable/6x6m%20%20%20%20%20inflatable%20pool%20bar/5.webp"
+      ],
+      "dimensions": "6x6m     ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--football-team-spirit-inflatable-tunnel-24",
+      "productSlug": "football-team-spirit-inflatable-tunnel",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "football team spirit inflatable tunnel",
+      "sourceName": "尺寸定制      football team spirit inflatable tunnel",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20football%20team%20spirit%20inflatable%20tunnel/1.webp",
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20football%20team%20spirit%20inflatable%20tunnel/2.webp",
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20football%20team%20spirit%20inflatable%20tunnel/3.webp",
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20football%20team%20spirit%20inflatable%20tunnel/4.webp",
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20football%20team%20spirit%20inflatable%20tunnel/5.webp"
       ],
       "dimensions": "Custom dimensions available",
       "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
