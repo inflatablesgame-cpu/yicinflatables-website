@@ -3083,6 +3083,16 @@ const bounceComboSeoProfiles: Record<string, BounceComboSeoProfile> = {
     cardSummary: 'Hulk bounce house with a large green superhero-style facade, bounce area, and side slide for themed children’s events.',
     faqQuestions: ['What features are visible on this Hulk bounce house?', 'How should I plan site clearance for a superhero bounce house with slide?', 'Can the superhero-style colors, layout, or graphics be customized?', 'Does this product page claim an official Hulk license?', 'What supervision and maintenance checks are needed for themed rental use?', 'What should I provide for a Hulk bounce house factory quote?'],
   },
+  'blue-bounce-house-with-ball-pit-for-sale': {
+    displayTitle: 'Indoor Bounce House with Ball Pit',
+    keywords: ['indoor bounce house with ball pit', 'blue bounce house with ball pit', 'compact indoor bounce house', 'blue bounce house combo with slide'],
+    visual: 'a compact blue bounce house with a mesh-enclosed jumping area, a curved side slide, and a shallow front extension',
+    purpose: 'This compact blue combo can be evaluated for indoor entertainment venues when the usable footprint, ceiling clearance, access route, anchoring, and operating rules suit the site.',
+    buyer: 'indoor play centers, party-rental companies, family entertainment venues, and inflatable distributors',
+    application: 'indoor play areas, supervised birthday events, family entertainment venues, and commercial rental programs',
+    cardSummary: 'Indoor bounce house with ball pit search focus, shown as a compact blue bounce-and-slide combo for supervised venues and rentals.',
+    faqQuestions: ['What features are visible on this indoor bounce house with ball pit?', 'Can this blue bounce house with ball pit be installed indoors?', 'Does the pictured unit include play balls in the front extension?', 'What site measurements are needed before ordering this compact indoor bounce house?', 'Can the blue bounce house combo with slide be customized?', 'What information should I send for a factory quotation?'],
+  },
 };
 
 function bounceComboSeoProfile(product: Product) {
@@ -3118,7 +3128,7 @@ const bounceHouseCoreKeywords: Record<string, string> = {
   'small-white-bounce-house-with-ball-pit': 'small white bounce house with ball pit',
   'black-bounce-house': 'black themed bounce house',
   'small-backyard-bounce-house': 'small bounce house',
-  'blue-bounce-house-with-ball-pit-for-sale': 'blue bounce house for sale',
+  'blue-bounce-house-with-ball-pit-for-sale': 'indoor bounce house with ball pit',
   'pink-bounce-house-with-slide-and-ball-pit-commercial': 'pink bounce house with slide',
   'all-white-bounce-house-with-slide': 'white bounce house with slide',
   'paint-splatter-bounce-house-combo': 'paint splatter bounce house combo',
@@ -5178,16 +5188,27 @@ export function productFaqs(product: Product) {
     const [q1, q2, q3, q4, q5, q6] = comboProfile.faqQuestions;
     const ballPitNote = product.productSlug === 'white-bounce-house-with-double-slide'
       ? ' The supplied reference image visibly shows a central climb and two side slides; it does not independently verify a ball pit. If a ball pit is required, request it as a confirmed option in the approved specification.'
+      : product.productSlug === 'blue-bounce-house-with-ball-pit-for-sale'
+        ? ' The image shows a shallow front extension, but no loose play balls are visible; confirm whether balls and a defined ball-pit insert are included in the quoted package.'
+        : '';
+    const indoorUseNote = product.productSlug === 'blue-bounce-house-with-ball-pit-for-sale'
+      ? ' For indoor installation, verify the measured ceiling height, full footprint and clearances, access route, anchoring method, blower/power requirements, supervision plan, and venue rules before purchase.'
       : '';
     const rightsNote = /minion|hulk/.test(product.productSlug)
       ? ' The themed imagery is reference styling only; this listing does not claim official affiliation, authorization, or a license. Buyers must confirm artwork rights and the approved production artwork before ordering.'
       : '';
     return [
       { question: q1, answer: `${comboProfile.purpose} The supplied imagery shows ${comboProfile.visual}. Related buyer searches include ${comboProfile.keywords.slice(1).join(', ')}. Confirm the approved feature and accessory scope before production.${ballPitNote}` },
-      { question: q2, answer: `${/custom dimensions available/i.test(product.dimensions) ? 'Custom dimensions are available.' : `Start with the listed ${product.dimensions.trim()} reference.`} Reserve practical clearance for entry, exit, blower space, anchoring, supervision, queueing, spectators, and safe run-off. Confirm the final layout from the actual site plan.` },
-      { question: q3, answer: `Yes. YIC can review colors, theme treatment, printed artwork, logo panels, dimensions, bounce area, slide layout, access points, accessories, and packing. Send artwork, target footprint, quantity, destination, and delivery timing for a project-specific proposal.${rightsNote}` },
-      { question: q4, answer: `The catalog lists ${product.material}${product.dimensions ? ` and ${product.dimensions.trim()}` : ''}. Confirm the final PVC grade, reinforcement, seams, netting, slide surface, blower interface, anchors, repair kit, and included accessories in the approved order specification.` },
-      { question: q5, answer: `${content.operationNote} Include pre-use inflation, anchoring, seam and netting checks, blower and cable checks, entry and exit control, participant rules, weather monitoring, cleaning, drying, repair-kit access, transport, and dry storage in the operating routine.${rightsNote}` },
+      { question: q2, answer: `${/custom dimensions available/i.test(product.dimensions) ? 'Custom dimensions are available.' : `Start with the listed ${product.dimensions.trim()} reference.`} Reserve practical clearance for entry, exit, blower space, anchoring, supervision, queueing, spectators, and safe run-off. Confirm the final layout from the actual site plan.${indoorUseNote}` },
+      { question: q3, answer: product.productSlug === 'blue-bounce-house-with-ball-pit-for-sale'
+        ? 'The supplied image shows a shallow front extension, but does not show loose play balls or confirm a ball-pit insert. Ask YIC to list the pit configuration and whether balls are included in the written quotation and approved specification.'
+        : `Yes. YIC can review colors, theme treatment, printed artwork, logo panels, dimensions, bounce area, slide layout, access points, accessories, and packing. Send artwork, target footprint, quantity, destination, and delivery timing for a project-specific proposal.${rightsNote}` },
+      { question: q4, answer: product.productSlug === 'blue-bounce-house-with-ball-pit-for-sale'
+        ? `Use the listed ${product.dimensions.trim()} reference, then measure the clear floor area, ceiling height, doorways and access route, entry and exit clearance, blower position, and anchoring options. Confirm the venue plan and local operating requirements before ordering.`
+        : `The catalog lists ${product.material}${product.dimensions ? ` and ${product.dimensions.trim()}` : ''}. Confirm the final PVC grade, reinforcement, seams, netting, slide surface, blower interface, anchors, repair kit, and included accessories in the approved order specification.` },
+      { question: q5, answer: product.productSlug === 'blue-bounce-house-with-ball-pit-for-sale'
+        ? 'YIC can review blue color variations, printed artwork, logo panels, overall dimensions, the side-slide layout, and the front play-zone configuration. Specify whether a ball pit insert and play balls are required, then confirm those items in the written quotation.'
+        : `${content.operationNote} Include pre-use inflation, anchoring, seam and netting checks, blower and cable checks, entry and exit control, participant rules, weather monitoring, cleaning, drying, repair-kit access, transport, and dry storage in the operating routine.${rightsNote}` },
       { question: q6, answer: `Send the intended use (${comboProfile.application}), site plan, participant group, required footprint, artwork and rights confirmation where applicable, preferred colors, feature changes, quantity, destination, packing needs, and target delivery date. The factory quotation can then confirm the final ${comboProfile.keywords[0]} configuration.${ballPitNote}` },
     ];
   }
