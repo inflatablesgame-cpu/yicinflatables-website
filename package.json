@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "verify:images": "node scripts/verify-product-images.mjs",
+    "build": "npm run verify:images && astro build",
     "preview": "astro preview",
     "sync:assets": "node scripts/sync-assets.mjs",
     "optimize:images": "node scripts/optimize-page-images.mjs",
