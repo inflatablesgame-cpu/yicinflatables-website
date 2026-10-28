@@ -375,11 +375,12 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Inflatable Games', 'Bumper Ball', 'Inflatable Theme Park'],
   },
   'Inflatable Obstacle Course': {
-    title: 'Commercial Inflatable Obstacle Courses | OEM Manufacturer | YIC',
-    description: 'Commercial inflatable obstacle courses and fun-run attractions from YIC for rentals, FECs, schools, races and events. Custom lengths, themes and layouts available.',
-    h1: 'Commercial Inflatable Obstacle Courses for Races and FECs',
-    intro: 'YIC manufactures inflatable obstacle courses for party rental companies, family entertainment centers, schools, races, team events, festivals, and activity operators. Choose from compact challenge formats to larger race-ready layouts, then confirm the available footprint, participant flow, target age, theme, length, and quantity. Custom obstacle sequences and branded graphics are available for commercial projects.',
-    options: ['Compact obstacle courses', 'Race and fun-run inflatables', 'Ninja and challenge layouts', 'Custom modular obstacle sequences'],
+    title: 'Commercial Inflatable Obstacle Courses & Fun Runs | YIC',
+    description: 'Commercial inflatable obstacle courses for sale: 5K fun runs, Ninja, Army, Jungle, adult, themed, white wedding and race-ready layouts. Custom OEM factory production.',
+    keywords: 'inflatable obstacle course, adult inflatable obstacle course, 5k inflatable obstacle course, inflatable obstacle run, ninja inflatable obstacle course, army inflatable obstacle course, jungle obstacle course, white bounce house obstacle course',
+    h1: 'Commercial Inflatable Obstacle Courses, Fun Runs & Themed Challenges',
+    intro: 'YIC manufactures commercial inflatable obstacle courses for party rental companies, family entertainment centers, schools, races, team events, festivals, and activity operators. The range includes compact themed courses, Jungle and Beach layouts, Tractor and Panda designs, Ninja and Army challenges, adult inflatable obstacle courses, long fun runs, white wedding obstacle formats, and modular 5K-style race sections. Confirm the usable footprint, participant flow, target age, theme, length, quantity, and site conditions; custom obstacle sequences and branded graphics are available for commercial projects.',
+    options: ['Compact themed obstacle courses and bounce routes', 'Adult, Ninja, Army, Jungle, and race-ready inflatables', '5K-style fun-run and modular challenge sections', 'Custom modular obstacle sequences with OEM branding'],
     buyers: [{ title: 'Party rental businesses', text: 'Offer a larger-format challenge attraction for birthdays, school events, festivals, and team activities.' }, { title: 'FECs and activity venues', text: 'Plan lanes, obstacles, entry and exit around throughput, supervision, and the venue footprint.' }, { title: 'Race and event organizers', text: 'Create a branded course with clear participant flow, sponsor artwork, and event-specific dimensions.' }],
     oem: 'Send a site plan, target length, obstacle preferences, age group, artwork, and expected participants. YIC can develop a custom course layout and coordinate materials, inspection, packing, and shipment.',
     faq: [{ question: 'How do I choose the right obstacle course size?', answer: 'Start with the available footprint, height clearance, access route, participant age, desired throughput, supervision plan, and transport or storage limits.' }, { question: 'Can the obstacles and race layout be changed?', answer: 'Yes. YIC can review obstacle sequence, lane count, length, climbing or sliding features, theme artwork, and branded sections for an OEM design.' }, { question: 'Can an obstacle course be used for timed races?', answer: 'Many layouts can support timed or team challenges when the start, finish, supervision, queue, and participant flow are planned for the venue.' }],
@@ -500,6 +501,10 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 }
 
 export function productDescription(product: Product) {
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) {
+    return `YIC manufactures ${obstacleCourse.keywords[0]} for ${obstacleCourse.buyer}. This ${product.dimensions.trim()} model is shown as ${obstacleCourse.visual}. ${obstacleCourse.purpose} The listing specifies ${product.material}. Buyers can review ${obstacleCourse.customization}. Related buyer searches include ${obstacleCourse.keywords.slice(1).join(', ')}. Confirm the final site plan, access, anchoring, supervision, artwork, accessories, and event requirements before production.`;
+  }
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) {
     return `YIC manufactures ${advertisingDisplay.keywords[0]} for ${advertisingDisplay.buyer}. This ${product.dimensions.trim()} model is shown as ${advertisingDisplay.visual}. ${advertisingDisplay.purpose} The listing specifies ${product.material}. Buyers can review ${advertisingDisplay.options}. Related buyer searches include ${advertisingDisplay.keywords.slice(1).join(', ')}. Confirm the final site plan, artwork, accessories, anchoring, access, supervision, and event requirements before production.`;
@@ -1830,6 +1835,37 @@ const bumperBallKeywordSets: Record<string, string[]> = {
   'inflatable-bumper-balls-commercial': ['commercial inflatable bumper balls', 'inflatable bumper balls for sale', 'youth bubble soccer balls', 'TPU bumper ball set'],
 };
 
+type ObstacleCourseProfile = {
+  displayTitle: string;
+  keywords: string[];
+  visual: string;
+  purpose: string;
+  buyer: string;
+  application: string;
+  customization: string;
+  cardSummary: string;
+  faqQuestions: string[];
+};
+
+const obstacleCourseProfiles: Record<string, ObstacleCourseProfile> = {
+  'beach-themed-bouncy-castle': { displayTitle: 'Beach Themed Inflatable Obstacle Course', keywords: ['beach inflatable obstacle course', 'beach themed bouncy castle', 'tropical obstacle course', 'inflatable obstacle course with slide'], visual: 'a blue, yellow, and orange beach-style obstacle course with palm-tree columns, a front surfboard detail, climbing access, and a slide', purpose: 'The beach graphics and slide-led layout create a sunny themed attraction for resort events, seaside promotions, family days, and rental packages.', buyer: 'party-rental companies, resorts, family entertainment centers, beach-event organizers, and distributors', application: 'beach parties, resort recreation, tropical events, family days, and commercial rental programs', customization: 'palm or surf artwork, colors, slide treatment, logo panels, lane layout, dimensions, accessories, and export packing', cardSummary: 'Beach inflatable obstacle course with palms, surfboard styling, climbing play, and a slide for resort, party, and rental programs.', faqQuestions: ['What is this beach inflatable obstacle course designed for?', 'How should I plan the beach-themed bouncy castle footprint?', 'Can the palm, surfboard, and slide artwork be customized?', 'Which PVC specification is listed for this tropical obstacle course?', 'What setup and supervision checks are needed for beach or resort events?', 'What should I send for a beach inflatable obstacle course quotation?'] },
+  'jungle-island-obstacle-course': { displayTitle: 'Jungle Island Obstacle Course', keywords: ['jungle island obstacle course', 'jungle obstacle course', 'tropical obstacle course', 'inflatable obstacle course with slide'], visual: 'a compact jungle-island course with palm trees, a hut-style peak, crawl-through obstacles, and a short slide', purpose: 'The island theme combines recognizable jungle scenery with a compact run-and-slide sequence for family events and tropical rental packages.', buyer: 'party-rental operators, resorts, schools, family venues, and event companies', application: 'tropical parties, resort recreation, school events, family entertainment, and rental programs', customization: 'jungle graphics, palm details, hut peak, colors, logo panels, route elements, accessories, and packing', cardSummary: 'Jungle island obstacle course with palm details, hut styling, crawl-through challenges, and a compact slide.', faqQuestions: ['What features are shown on this jungle island obstacle course?', 'How much room should I allow for the listed jungle course?', 'Can the palm trees, hut design, and printed artwork be changed?', 'Is this jungle obstacle course suitable for commercial rental?', 'How should operators manage entry, exit, and child supervision?', 'What information is needed for a jungle island obstacle course factory quote?'] },
+  'jungle-inflatable-obstacle-course': { displayTitle: 'Jungle Inflatable Obstacle Course', keywords: ['jungle inflatable obstacle course', 'jungle obstacle course', 'inflatable obstacle course for sale', 'tropical inflatable obstacle course'], visual: 'a palm-tree jungle obstacle course with a central climbing section, bright striped pillars, and a green slide finish', purpose: 'The palm-tree structure gives rental fleets and family venues a recognizable tropical challenge route with climbing, passing, and sliding activity.', buyer: 'commercial rental fleets, family entertainment centers, resorts, schools, and event agencies', application: 'jungle parties, tropical events, school fun days, resort programs, and inflatable rentals', customization: 'palm-tree layout, animal or jungle graphics, colors, slide position, logo printing, route modules, and accessories', cardSummary: 'Jungle inflatable obstacle course with palm columns, climbing activity, pass-through challenges, and a slide finish.', faqQuestions: ['What is included in this jungle inflatable obstacle course?', 'How should buyers plan the 12 x 4 m jungle course footprint?', 'Can this tropical obstacle course be branded for a rental fleet?', 'What material is specified for the inflatable jungle course?', 'What operational checks matter for repeat jungle-course rentals?', 'What should buyers include in a jungle inflatable obstacle course inquiry?'] },
+  'western-bounce-obstacle-course': { displayTitle: 'Western Bounce Obstacle Course', keywords: ['western bounce obstacle course', 'cowboy inflatable obstacle course', 'western themed obstacle course', 'inflatable obstacle course for sale'], visual: 'a western-style bounce obstacle course with tall cowboy-themed decorative columns, a run-through route, and a slide', purpose: 'The western styling gives rodeo-themed parties, ranch events, and rental operators a recognizable themed challenge attraction with a clear entry-to-slide flow.', buyer: 'party-rental companies, rodeo-event organizers, family venues, schools, and themed-event agencies', application: 'western parties, rodeo events, school fairs, family days, and commercial rentals', customization: 'western or cowboy artwork, colors, route length, slide layout, logo panels, accessories, and export packing', cardSummary: 'Western bounce obstacle course with cowboy-themed details, run-through play, and a slide for rodeo and party events.', faqQuestions: ['What events suit this western bounce obstacle course?', 'How should I plan the western obstacle course footprint and slide exit?', 'Can cowboy graphics and brand panels be customized?', 'Does this course combine bounce, obstacles, and a slide?', 'What staffing and inspection routine is recommended for rental use?', 'What should I include in a western themed obstacle course quote request?'] },
+  'tractor-obstacle-course': { displayTitle: 'Tractor Inflatable Obstacle Course', keywords: ['tractor obstacle course', 'farm inflatable obstacle course', 'tractor themed inflatable', 'inflatable obstacle course for sale'], visual: 'a green tractor-style obstacle course with oversized tire arches, a tractor cab facade, a tunnel route, and a slide', purpose: 'The tractor silhouette turns a standard challenge course into a farm-theme attraction for harvest events, rural venues, family days, and themed rental packages.', buyer: 'party-rental fleets, farm attractions, schools, rural event organizers, and family entertainment venues', application: 'farm festivals, harvest events, tractor parties, school fun days, and rental programs', customization: 'tractor colors, tire or cab styling, farm graphics, logo panels, route layout, slide finish, and accessories', cardSummary: 'Tractor inflatable obstacle course with giant tire arches, cab styling, a tunnel route, and slide-led farm-theme play.', faqQuestions: ['What is the tractor obstacle course designed for?', 'How should I plan space for the tractor-themed inflatable?', 'Can the tractor cab, tires, and farm artwork be customized?', 'What material is listed for this farm inflatable obstacle course?', 'What setup checks should rental operators complete before use?', 'What details are needed for a tractor obstacle course factory quotation?'] },
+  'jungle-inflatable-obstacle-course-manufacturer': { displayTitle: 'Commercial Jungle Inflatable Obstacle Course', keywords: ['commercial jungle inflatable obstacle course', 'jungle obstacle course manufacturer', 'large jungle obstacle course', 'inflatable obstacle course for sale'], visual: 'a long palm-tree jungle course with multiple climbing and slide sections, striped columns, and animal-themed printed panels', purpose: 'This longer jungle layout is designed for commercial operators who need a prominent tropical challenge route with more visible climbing, passing, and slide activity.', buyer: 'rental businesses, resorts, parks, schools, family entertainment centers, and inflatable distributors', application: 'commercial rental fleets, tropical event zones, school field days, resort recreation, and family venues', customization: 'course length, palm or animal graphics, slide configuration, colors, logo panels, obstacle sequence, accessories, and packing', cardSummary: 'Commercial jungle obstacle course with a long palm-lined route, multiple challenges, and a slide configuration for rental fleets.', faqQuestions: ['Why is this a commercial jungle inflatable obstacle course?', 'How should buyers plan the long jungle route and clear zones?', 'Can the jungle graphics and obstacle sequence be customized?', 'Which material and construction points should be confirmed before production?', 'How should a rental fleet operate and store a large jungle course?', 'What should I send to a jungle obstacle course manufacturer for a quote?'] },
+  'extreme-inflatable-obstacle-course': { displayTitle: 'Extreme Inflatable Obstacle Course', keywords: ['extreme inflatable obstacle course', 'giant inflatable obstacle course', 'large inflatable obstacle course', 'adult inflatable obstacle course'], visual: 'a large red-and-blue multi-lane challenge layout with tall slides, climb walls, tunnels, and parallel obstacle sections', purpose: 'The wide multi-section format creates a high-visibility race attraction for larger event footprints, adult group challenges, and commercial rental programs.', buyer: 'event companies, large rental fleets, sports-day organizers, parks, corporate team-building providers, and FECs', application: 'large events, adult challenges, corporate team building, school field days, and commercial rentals', customization: 'lane count, obstacle modules, colors, logo panels, slide height, course length, start and finish details, and accessories', cardSummary: 'Extreme inflatable obstacle course with a wide red-and-blue race layout, multiple challenge zones, tall slides, and parallel lanes.', faqQuestions: ['What makes this an extreme inflatable obstacle course?', 'How much event space is required for the 23 m multi-lane course?', 'Can the lanes, slide sections, and logos be customized?', 'Is this large inflatable obstacle course suitable for adult challenges?', 'What supervision and player-flow plan should be used for a wide course?', 'What details are needed for an extreme obstacle course factory quotation?'] },
+  'army-inflatable-obstacle-course': { displayTitle: 'Army Inflatable Obstacle Course', keywords: ['army inflatable obstacle course', 'army obstacle course bouncy castle', 'military inflatable obstacle course', 'boot camp inflatable obstacle course'], visual: 'a camouflage obstacle course with a central climb-and-slide section, military-style graphics, and a long challenge route', purpose: 'The camouflage theme supports boot-camp, army-style, and team challenge events without making claims about military training or official use.', buyer: 'event companies, party-rental businesses, schools, team-building organizers, sports venues, and outdoor attractions', application: 'boot-camp events, team challenges, school field days, themed parties, and rental programs', customization: 'camouflage treatment, colors, challenge route, logo panels, slide layout, dimensions, accessories, and export packing', cardSummary: 'Army inflatable obstacle course with camouflage graphics, climb-and-slide action, and a long boot-camp-style challenge route.', faqQuestions: ['What events suit this army inflatable obstacle course?', 'How should I plan the 25 m boot-camp obstacle route?', 'Can the camouflage colors and challenge modules be customized?', 'Is this army obstacle course intended for official military training?', 'What operating checks matter for a long outdoor challenge course?', 'What should I include in an army inflatable obstacle course quotation?'] },
+  'adult-inflatable-obstacle-course': { displayTitle: 'Adult Inflatable Obstacle Course', keywords: ['adult inflatable obstacle course', 'adult size obstacle course', 'blow up obstacle course for adults', 'large inflatable obstacle course'], visual: 'a 28 m gray, black, and red obstacle course with repeated arches, climbing sections, crawl-through elements, and a slide finish', purpose: 'The extended 28 m route is positioned for adult-oriented event challenges, corporate activity days, and larger rental programs where a longer race sequence is required.', buyer: 'corporate event agencies, adult party-rental fleets, team-building providers, sports organizers, and large venues', application: 'corporate team building, adult parties, sports days, large rental events, and challenge programs', customization: 'course length, color accents, logo panels, route elements, arch sequence, slide layout, accessories, and packing', cardSummary: 'Adult inflatable obstacle course with a 28 m gray-and-red challenge route, repeated arches, climbing elements, and a slide finish.', faqQuestions: ['What is this adult inflatable obstacle course designed for?', 'How should I plan the 28 m adult challenge route?', 'Can the course colors, branded panels, and obstacle sequence be customized?', 'Is this large obstacle course appropriate for mixed adult event groups?', 'What player rotation and supervision checks should operators prepare?', 'What information is required for an adult inflatable obstacle course quote?'] },
+  'fun-obstacle-course-for-adults': { displayTitle: 'Fun Obstacle Course for Adults', keywords: ['fun obstacle course for adults', 'adult bouncy obstacle course', 'adult inflatable course', 'inflatable fun run'], visual: 'a 28 m pink, gray, and black adult challenge course with high arches, climbing elements, pass-through obstacles, and a slide', purpose: 'The bright color treatment gives adult events and rental fleets a more playful long-format challenge course for social races, team days, and mixed-age activity programs.', buyer: 'event agencies, adult rental operators, corporate team-building teams, schools, community venues, and entertainment parks', application: 'adult fun runs, corporate events, community festivals, team challenges, and rental programs', customization: 'color palette, arch design, route sequence, logo panels, slide treatment, accessories, and export packing', cardSummary: 'Fun obstacle course for adults with a playful pink-and-gray 28 m route, arches, climb-through challenges, and a slide.', faqQuestions: ['What is this fun obstacle course for adults designed for?', 'How should I use the 28 m course for a fun run or team event?', 'Can the bright colors and logo panels be customized?', 'What is the difference between this and a youth obstacle course?', 'How should operators manage races, queues, and supervision?', 'What should I provide for an adult fun obstacle course factory quote?'] },
+  'inflatable-obstacle-run': { displayTitle: 'Inflatable Obstacle Run', keywords: ['inflatable obstacle run', 'inflatable obstacle course run', 'fun run obstacle course', 'inflatable race course'], visual: 'a blue and green 28 m race-style obstacle course with repeated arches, climbing sections, barriers, and a slide finish', purpose: 'The repeating arch layout is designed around a clear start-to-finish obstacle-run format for event races, field days, rental fleets, and organized group challenges.', buyer: 'event organizers, school activity teams, rental companies, sports promoters, and corporate team-building providers', application: 'fun runs, field days, obstacle races, school programs, and commercial rental events', customization: 'course length, colors, start and finish graphics, obstacle sequence, logo panels, lane arrangement, accessories, and packing', cardSummary: 'Inflatable obstacle run with a blue-and-green 28 m race route, repeated arches, barriers, climbing activity, and a slide finish.', faqQuestions: ['What is an inflatable obstacle run used for?', 'How should I plan a start-to-finish inflatable race course?', 'Can the arch sequence, colors, and event branding be customized?', 'Is this inflatable obstacle run suitable for field days?', 'What safety and flow controls should be used for timed races?', 'What information is needed for an inflatable obstacle course run quotation?'] },
+  'ninja-challenge-obstacle-course-inflatable': { displayTitle: 'Ninja Challenge Inflatable Obstacle Course', keywords: ['ninja challenge obstacle course inflatable', 'inflatable ninja obstacle course', 'ninja warrior inflatable course', 'ninja inflatable obstacle course'], visual: 'a yellow, blue, and pink obstacle course with tall ninja-style arches, climbing sections, tunnel obstacles, and a slide', purpose: 'The colorful ninja challenge layout gives schools, party rentals, and event operators a recognizable climb, pass-through, and slide sequence without implying affiliation with any show or brand.', buyer: 'party-rental companies, schools, sports-day organizers, family entertainment centers, and event agencies', application: 'ninja challenges, school field days, birthday events, family venues, and rental programs', customization: 'ninja-style colors, obstacle route, arch layout, logo panels, slide configuration, dimensions, accessories, and packing', cardSummary: 'Ninja challenge inflatable obstacle course with tall arches, climb-through obstacles, tunnels, and a slide for school and rental events.', faqQuestions: ['What is included in this ninja challenge inflatable obstacle course?', 'How should I plan the 28 m ninja course footprint?', 'Can the ninja-style arches, colors, and course modules be customized?', 'Does the product claim affiliation with a ninja television program?', 'What supervision and player separation should be used for ninja challenges?', 'What should I send for a ninja inflatable obstacle course quotation?'] },
+  '5k-inflatable-obstacle-course': { displayTitle: '5K Inflatable Obstacle Course', keywords: ['5k inflatable obstacle course', '5k obstacle course', '5k inflatable run', 'inflatable 5k course'], visual: 'a long white obstacle-run course with multiple arches, climbing and slide sections, and a race-oriented linear layout', purpose: 'The long linear design supports organizers planning modular 5K-style inflatable race routes; the listed 38 m section is one obstacle-course unit rather than a complete 5 km event by itself.', buyer: 'race organizers, event agencies, sports promoters, municipal activity teams, large rental fleets, and corporate-event providers', application: '5K-style races, fun runs, obstacle events, sports days, and large group challenges', customization: 'route modules, colors, start and finish branding, obstacle sequence, sponsor panels, dimensions, accessories, and packing', cardSummary: '5K inflatable obstacle course module with a long white race layout, arches, climbing sections, and a slide; ideal for modular fun-run events.', faqQuestions: ['Is this 5K inflatable obstacle course a complete 5 km race?', 'How should organizers use the 38 m obstacle section in a 5K-style event?', 'Can the race route, colors, and sponsor graphics be customized?', 'What surface, access, and participant-flow plan is needed for an inflatable 5K run?', 'What operational checks matter for modular race-course installations?', 'What should I send for a 5K inflatable obstacle course quotation?'] },
+  'obstacle-course-car-parking': { displayTitle: 'Car Park Inflatable Obstacle Course', keywords: ['car park inflatable obstacle course', 'outdoor inflatable obstacle course', 'inflatable race course', 'commercial inflatable obstacle course'], visual: 'a long colorful obstacle course with arches, a climbing-and-slide section, and a compact linear footprint suited to open event surfaces', purpose: 'The supplied layout can be planned for open car-park event space, outdoor promotions, and temporary activity zones when surface, access, clearance, and venue permissions are confirmed.', buyer: 'event agencies, shopping centers, parking-lot event organizers, rental businesses, schools, and outdoor venues', application: 'car-park events, outdoor promotions, school activities, pop-up challenge zones, and rentals', customization: 'course length, colors, logo panels, obstacle route, slide design, entry and exit layout, accessories, and packing', cardSummary: 'Car park inflatable obstacle course with a compact colorful race layout for outdoor promotions, open event surfaces, and rental programs.', faqQuestions: ['What is a car park inflatable obstacle course designed for?', 'How should I plan an outdoor obstacle course on a car-park event site?', 'Can the course colors, branding, and route be customized?', 'What site permissions and surface checks should be completed before setup?', 'How should operators manage access, queues, and traffic separation?', 'What details are needed for a car park inflatable obstacle course quote?'] },
+  'white-bounce-house-obstacle-course': { displayTitle: 'White Bounce House Obstacle Course', keywords: ['white bounce house obstacle course', 'white inflatable obstacle course', 'wedding obstacle course inflatable', 'white bouncy castle obstacle course'], visual: 'a compact all-white obstacle course with a clean bounce-style entry, upright pillars, pass-through features, and a short slide', purpose: 'The neutral all-white finish gives event planners a refined obstacle format for weddings, luxury parties, brand activations, and upscale rental packages.', buyer: 'wedding-rental companies, event planners, luxury party operators, venues, and commercial rental fleets', application: 'weddings, white-party events, luxury rentals, brand activations, and family celebrations', customization: 'white or neutral palette, logo panels, route features, slide detail, dimensions, accessories, and packing', cardSummary: 'White bounce house obstacle course with a clean neutral finish, compact obstacles, and a slide for wedding and luxury-rental events.', faqQuestions: ['What events suit a white bounce house obstacle course?', 'How should I plan the compact white obstacle course footprint?', 'Can the white finish, logo panels, and slide details be customized?', 'Is this white inflatable obstacle course appropriate for wedding rentals?', 'What cleaning and presentation checks are important for white event inflatables?', 'What should I include in a white bouncy castle obstacle course inquiry?'] },
+  'panda-bounce-house-obstacle-course': { displayTitle: 'Panda Bounce House Obstacle Course', keywords: ['panda bounce house obstacle course', 'panda inflatable obstacle course', 'animal themed obstacle course', 'bounce house obstacle course'], visual: 'a compact green, black, and yellow panda-themed obstacle course with printed panda panels, a bounce-and-pass-through route, and a slide', purpose: 'The panda artwork provides a friendly animal theme for birthdays, school programs, zoo-style events, and rental packages with a short obstacle sequence.', buyer: 'party-rental businesses, schools, family entertainment centers, zoos, event companies, and distributors', application: 'panda parties, animal-themed events, school days, family venues, and commercial rentals', customization: 'panda or animal artwork, colors, logo panels, obstacle elements, slide treatment, accessories, and export packing', cardSummary: 'Panda bounce house obstacle course with animal artwork, a compact bounce-and-obstacle route, and a slide for family events.', faqQuestions: ['What is the panda bounce house obstacle course designed for?', 'How should I plan the compact panda obstacle-course footprint?', 'Can the panda artwork and animal-theme graphics be customized?', 'Does this model combine bounce play, obstacles, and a slide?', 'What supervision is recommended for children using a compact animal course?', 'What information is needed for a panda inflatable obstacle course quotation?'] },
+};
+
 const boxingRingKeywordSets: Record<string, string[]> = {
   'inflatable-boxing-ring-rental': ['inflatable boxing ring rental', 'inflatable boxing ring rental near me', 'blow up boxing ring rental', 'boxing inflatable rentals'],
   'inflatable-boxing-ring-for-sale': ['inflatable boxing ring for sale', 'inflatable boxing ring for adults', 'inflatable boxing ring and gloves', 'boxing ring bounce house for sale'],
@@ -2449,7 +2485,12 @@ function bumperBallKeywordSet(product: Product) {
   return bumperBallKeywordSets[product.productSlug] ?? [];
 }
 
+function obstacleCourseProfile(product: Product) {
+  return product.category === 'Inflatable Obstacle Course' ? obstacleCourseProfiles[product.productSlug] : undefined;
+}
+
 function productSearchTerms(product: Product) {
+  if (obstacleCourseProfile(product)) return obstacleCourseProfile(product)!.keywords;
   if (advertisingDisplayProfile(product)) return advertisingDisplayProfile(product)!.keywords;
   if (foodServiceProfile(product)) return foodServiceProfile(product)!.keywords;
   if (waterSlideProfile(product)) return waterSlideProfile(product)!.keywords;
@@ -2531,6 +2572,8 @@ function productIntentKeyword(product: Product) {
 
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) return seoTitle(`${obstacleCourse.keywords[0]} | Commercial Course`);
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) {
     const suffix = advertisingDisplay.kind === 'tunnel' ? 'Custom Sports Tunnel' : 'Custom Mascot Display';
@@ -2586,6 +2629,8 @@ export function productSeoTitle(product: Product) {
 
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) return truncateMeta(`YIC manufactures ${obstacleCourse.keywords[0]} for ${obstacleCourse.application}. ${product.dimensions.trim()}, ${product.material}. Custom artwork and factory quote.`, 158);
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) return truncateMeta(`YIC manufactures ${advertisingDisplay.keywords[0]} for commercial events. ${product.dimensions.trim()}. Custom artwork, branding, and factory quotation.`, 158);
   const foodService = foodServiceProfile(product);
@@ -2657,6 +2702,13 @@ export function productMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) return [
+    `Visible layout: ${obstacleCourse.visual}`,
+    `Reference construction: ${product.dimensions.trim()} · ${product.material}`,
+    `Commercial application: ${obstacleCourse.application}`,
+    `Customize ${obstacleCourse.customization} before production`,
+  ];
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) return [
     `Visible format: ${advertisingDisplay.visual}`,
@@ -3244,6 +3296,8 @@ export function productKeywordVariants(product: Product) {
 
 export function productDisplayTitle(product: Product) {
   if (isAirDancerProfile(product)) return 'Inflatable Air Dancer for Sale';
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) return obstacleCourse.displayTitle;
   if (product.productSlug === 'inflatable-pool-tiki-bar') return 'Inflatable Pool Tiki Bar';
   if (product.productSlug === 'blow-up-pool-bar') return 'Blow Up Pool Bar';
   if (product.productSlug === 'inflatable-pool-bar-commercial') return 'Commercial Inflatable Pool Bar';
@@ -3419,6 +3473,40 @@ function productCategoryPosition(product: Product) {
 
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) {
+    const position = productCategoryPosition(product);
+    const templateIndex = Math.max(0, position) % 30;
+    const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
+    const isRace = /5k|run|race|adult|extreme|army|ninja/.test(obstacleCourse.keywords.join(' '));
+    return {
+      template,
+      productType: obstacleCourse.keywords[0],
+      primaryBuyer: obstacleCourse.buyer,
+      purpose: obstacleCourse.purpose,
+      applications: [
+        { title: obstacleCourse.application, text: `${obstacleCourse.purpose} Match the final installation to the actual footprint, entry and exit direction, guest flow, and approved event plan.` },
+        { title: isRace ? 'Races, challenges, and organized group play' : 'Family events and themed rental programs', text: isRace ? 'Plan the starting order, lane or route flow, participant rotation, timing, clear zones, staff positions, and spectator separation for each session.' : 'Plan age-appropriate participant flow, entry and exit, queue control, clear zones, staff position, and supervised use around the actual venue.' },
+        { title: 'Commercial rental and repeat-event operation', text: `Review inflation, anchoring, seams, cleaning, drying, inspection, transport, storage, artwork approval, and repeat-event handover before adding this ${obstacleCourse.keywords[0]} to a commercial program.` },
+      ],
+      planningPoints: [
+        `Confirm the listed ${product.dimensions.trim()} reference footprint plus entrance, exit, queue, blower position, anchoring surface, clear run-off, operator position, and spectator separation`,
+        'Define the participant age and activity format, expected throughput, indoor or outdoor site, weather plan, access route, staffing, supervision, local venue rules, and emergency access',
+        `Review the final obstacle order, slide or climb layout, artwork, logo panels, material, accessories, packing, and operating instructions against the approved specification (${product.material})`,
+      ],
+      customization: [
+        obstacleCourse.customization,
+        'Theme-specific colors, printed sponsor or logo panels, start and finish graphics, event instructions, and coordinated campaign artwork',
+        'Approved blower, anchoring, repair kit, carry or storage bags, accessories, export packing, and destination-specific requirements',
+      ],
+      operationNote: 'Operate only after the site, access route, surface, anchoring, blower and electrical arrangements, weather conditions, inspection routine, participant rules, supervision plan, and local venue requirements have been reviewed. Images do not establish a wind rating, capacity, blower inclusion, or unattended-operation permission.',
+      quoteItems: [
+        `Intended use: ${obstacleCourse.application}; share the venue type, target participant group, event schedule, expected throughput, and site plan`,
+        'Target dimensions, reference artwork, preferred colors, logo files, obstacle sequence, slide or climb preference, anchoring and accessory requirements, and venue restrictions',
+        'Quantity, destination, packing needs, and requested delivery schedule',
+      ],
+    };
+  }
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) {
     const position = productCategoryPosition(product);
@@ -4540,6 +4628,8 @@ export function productDetailContent(product: Product): DetailContent {
 export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) return [...obstacleCourse.keywords, `${obstacleCourse.keywords[0]} manufacturer`, `custom ${obstacleCourse.keywords[0]}`, `${obstacleCourse.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) {
     const core = advertisingDisplay.keywords[0].replace(/\s+manufacturer$/i, '');
@@ -4641,6 +4731,8 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) return `${obstacleCourse.cardSummary} ${reference}`;
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) return `${advertisingDisplay.cardSummary} ${reference}`;
   const foodService = foodServiceProfile(product);
@@ -4858,6 +4950,8 @@ export function productCardLabel(product: Product) {
     'Inflatable Water Park': ['Floating water play', 'Modular water attraction', 'Anchoring & site planning'],
   };
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) return `${material} · ${obstacleCourse.keywords[0]} · Custom artwork`;
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) return `${material} · ${advertisingDisplay.kind === 'tunnel' ? 'Team entrance tunnel' : 'Custom event mascot'} · OEM artwork`;
   const foodService = foodServiceProfile(product);
@@ -4926,6 +5020,19 @@ export function productFaqs(product: Product) {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const isBounceCategory = product.category === 'Bounce House' || product.category === 'Bounce House Combo';
   const bounceCore = isBounceCategory ? bounceHouseCoreKeyword(product) : '';
+  const obstacleCourse = obstacleCourseProfile(product);
+  if (obstacleCourse) {
+    const terms = obstacleCourse.keywords;
+    const questions = obstacleCourse.faqQuestions;
+    return [
+      { question: questions[0], answer: `${obstacleCourse.purpose} The reference imagery shows ${obstacleCourse.visual}. Related buyer searches include ${terms.slice(1).join(', ')}; confirm the approved obstacle, slide, artwork, and accessory scope in the production specification.` },
+      { question: questions[1], answer: `${/custom dimensions available/i.test(product.dimensions) ? 'Custom dimensions are available.' : `Start with the listed ${product.dimensions.trim()} reference.`} Reserve practical clearance for the entrance, exit, queue, blower, anchoring, staff position, spectator separation, and safe run-off. Confirm the final layout from the actual site plan.` },
+      { question: questions[2], answer: `Yes. YIC can review ${obstacleCourse.customization}. Send reference artwork, colors, logo files, target footprint, participant group, venue conditions, quantity, destination, and delivery timing for a project-specific proposal.` },
+      { question: questions[3], answer: `The catalog lists ${product.material}${product.dimensions ? ` and ${product.dimensions.trim()}` : ''}. Confirm the final PVC grade, reinforcement, seams, slide surface, netting, blower interface, anchoring, accessories, and included equipment in the approved order specification.` },
+      { question: questions[4], answer: `${content.operationNote} Include pre-use inflation, anchoring, seams, blower and cable checks, entry and exit control, participant rules, weather monitoring, cleaning, drying, repair-kit access, transport, and dry storage in the operating routine.` },
+      { question: questions[5], answer: `Send the intended use (${obstacleCourse.application}), venue or site plan, target participant group, dimensions, artwork and branding files, obstacle and slide preferences, quantity, destination, packing needs, and requested delivery date. The factory quotation can then confirm the final ${terms[0]} configuration.` },
+    ];
+  }
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) {
     const terms = advertisingDisplay.keywords;
