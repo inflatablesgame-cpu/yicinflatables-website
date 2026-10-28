@@ -4,7 +4,7 @@
     {
       "name": "Advertising Inflatable",
       "slug": "advertising-inflatable",
-      "count": 12,
+      "count": 13,
       "heroImage": "/assets/product/Advertising%20Inflatable/3x3x4m%20%20%20%20inflatable%20logo%20display/1.webp",
       "products": [
         "advertising-inflatable--inflatable-logo-display-1",
@@ -18,7 +18,8 @@
         "advertising-inflatable--blow-up-concession-stand-9",
         "advertising-inflatable--inflatable-concession-stand-for-sale-10",
         "advertising-inflatable--inflatable-kiosk-booth-for-sale-11",
-        "advertising-inflatable--inflatable-vendor-booth-12"
+        "advertising-inflatable--inflatable-vendor-booth-12",
+        "advertising-inflatable--inflatable-food-truck-for-sale-13"
       ]
     },
     {
@@ -790,6 +791,24 @@
       ],
       "dimensions": "4.5x3x3.6m    ",
       "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-food-truck-for-sale-13",
+      "productSlug": "inflatable-food-truck-for-sale",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable food truck for sale",
+      "sourceName": "3.73x2.5m     inflatable food truck for sale",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20food%20truck%20for%20sale/1.webp",
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20food%20truck%20for%20sale/2.webp",
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20food%20truck%20for%20sale/3.webp",
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20food%20truck%20for%20sale/4.webp",
+        "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20food%20truck%20for%20sale/5.webp"
+      ],
+      "dimensions": "3.73x2.5m",
+      "excerpt": "Commercial inflatable food truck facade for branded sampling, rental fleets, event service counters, and promotional activations."
     },
     {
       "slug": "bounce-house--modern-white-bounce-houses-1",

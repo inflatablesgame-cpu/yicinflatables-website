@@ -651,6 +651,15 @@ const foodServiceProfiles: Record<string, FoodServiceProfile> = {
     options: 'vendor signage, candy or dessert graphics, awning colors, logo panels, menu display, service opening, counter setup, and packing',
     faqQuestions: ['What is an inflatable vendor booth designed for?', 'How should I plan the 4.5 x 3 x 3.6 m vendor-booth footprint?', 'Can this inflatable candy shop be branded for a different product line?', 'What service or display uses can an inflatable food truck display support?', 'What cleaning, storage, and inspection routine is needed for repeat events?', 'What information is needed for an inflatable vendor booth quotation?'],
   },
+  'inflatable-food-truck-for-sale': {
+    keywords: ['inflatable food truck for sale', 'inflatable food truck', 'inflatable concession stand', 'commercial inflatable food truck'],
+    visual: 'a blue-and-white truck-style event facade with a striped serving awning, front service counter, and a compact, recognizable mobile-food silhouette',
+    purpose: 'This purchase-focused inflatable food truck creates a portable branded frontage for supervised promotions, rentals, sampling, ticketing, merchandise, and hospitality, while food preparation equipment and regulatory requirements remain outside the inflatable structure specification.',
+    buyer: 'event-rental fleets, experiential marketing agencies, food and beverage brands, festival suppliers, shopping centers, hospitality teams, and commercial event operators',
+    application: 'brand sampling, festival service counters, retail launches, registration desks, ticketing, merchandise, sponsor activations, and food-themed promotional displays',
+    options: 'food-truck graphics, striped awning colors, logo panels, counter opening, menu or message boards, entrance position, internal layout, lighting provision, and export packing',
+    faqQuestions: ['What is this inflatable food truck for sale designed to support?', 'How should buyers plan the 3.73 x 2.5 m reference footprint?', 'Can the blue-and-white inflatable food truck be branded for my campaign?', 'Is food-preparation or cooking equipment included with an inflatable concession stand?', 'What should rental and event teams inspect before each use?', 'What project information helps YIC quote a commercial inflatable food truck?'],
+  },
 };
 
 function foodServiceProfile(product: Product) {
