@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-28T04:07:22.893Z",
+  "generatedAt": "2026-10-28T04:29:34.819Z",
   "categories": [
     {
       "name": "Advertising Inflatable",
       "slug": "advertising-inflatable",
-      "count": 13,
+      "count": 18,
       "heroImage": "/assets/product/Advertising%20Inflatable/3x3x4m%20%20%20%20inflatable%20logo%20display/1.webp",
       "products": [
         "advertising-inflatable--inflatable-logo-display-1",
@@ -19,7 +19,12 @@
         "advertising-inflatable--inflatable-concession-stand-for-sale-10",
         "advertising-inflatable--inflatable-kiosk-booth-for-sale-11",
         "advertising-inflatable--inflatable-vendor-booth-12",
-        "advertising-inflatable--inflatable-food-truck-for-sale-13"
+        "advertising-inflatable--inflatable-food-truck-for-sale-13",
+        "advertising-inflatable--inflatable-tiki-bar-14",
+        "advertising-inflatable--inflatable-cocktail-bar-15",
+        "advertising-inflatable--blow-up-tiki-bar-16",
+        "advertising-inflatable--inflatable-air-dancer-for-sale-17",
+        "advertising-inflatable--blow-up-cocktail-bar-18"
       ]
     },
     {
@@ -807,8 +812,98 @@
         "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20food%20truck%20for%20sale/4.webp",
         "/assets/product/Advertising%20Inflatable/3.73x2.5m%20%20%20%20%20inflatable%20food%20truck%20for%20sale/5.webp"
       ],
-      "dimensions": "3.73x2.5m",
-      "excerpt": "Commercial inflatable food truck facade for branded sampling, rental fleets, event service counters, and promotional activations."
+      "dimensions": "3.73x2.5m     ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-tiki-bar-14",
+      "productSlug": "inflatable-tiki-bar",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable tiki bar",
+      "sourceName": "4.5x3x3.6m     inflatable tiki bar",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20tiki%20bar/1.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20tiki%20bar/2.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20tiki%20bar/3.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20tiki%20bar/4.webp",
+        "/assets/product/Advertising%20Inflatable/4.5x3x3.6m%20%20%20%20%20inflatable%20tiki%20bar/5.webp"
+      ],
+      "dimensions": "4.5x3x3.6m     ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-cocktail-bar-15",
+      "productSlug": "inflatable-cocktail-bar",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable cocktail bar",
+      "sourceName": "4x3x3m       inflatable cocktail bar",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%20%20%20%20%20inflatable%20cocktail%20bar/1.webp",
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%20%20%20%20%20inflatable%20cocktail%20bar/2.webp",
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%20%20%20%20%20inflatable%20cocktail%20bar/3.webp",
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%20%20%20%20%20inflatable%20cocktail%20bar/4.webp",
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%20%20%20%20%20inflatable%20cocktail%20bar/5.webp"
+      ],
+      "dimensions": "4x3x3m       ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--blow-up-tiki-bar-16",
+      "productSlug": "blow-up-tiki-bar",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "blow up tiki bar",
+      "sourceName": "4x3x3m  材料Oxford     blow up tiki bar",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20blow%20up%20tiki%20bar/1.webp",
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20blow%20up%20tiki%20bar/2.webp",
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20blow%20up%20tiki%20bar/3.webp",
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20blow%20up%20tiki%20bar/4.webp",
+        "/assets/product/Advertising%20Inflatable/4x3x3m%20%20%E6%9D%90%E6%96%99Oxford%20%20%20%20%20blow%20up%20tiki%20bar/5.webp"
+      ],
+      "dimensions": "4x3x3m  ",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "advertising-inflatable--inflatable-air-dancer-for-sale-17",
+      "productSlug": "inflatable-air-dancer-for-sale",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "inflatable air dancer for sale",
+      "sourceName": "5mH    材料Oxford Cloth     inflatable tiki bar for sale",
+      "material": "Oxford fabric",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/5mH%20%20%20%20%E6%9D%90%E6%96%99Oxford%20Cloth%20%20%20%20%20inflatable%20tiki%20bar%20for%20sale/1.webp",
+        "/assets/product/Advertising%20Inflatable/5mH%20%20%20%20%E6%9D%90%E6%96%99Oxford%20Cloth%20%20%20%20%20inflatable%20tiki%20bar%20for%20sale/2.webp",
+        "/assets/product/Advertising%20Inflatable/5mH%20%20%20%20%E6%9D%90%E6%96%99Oxford%20Cloth%20%20%20%20%20inflatable%20tiki%20bar%20for%20sale/3.webp",
+        "/assets/product/Advertising%20Inflatable/5mH%20%20%20%20%E6%9D%90%E6%96%99Oxford%20Cloth%20%20%20%20%20inflatable%20tiki%20bar%20for%20sale/4.webp",
+        "/assets/product/Advertising%20Inflatable/5mH%20%20%20%20%E6%9D%90%E6%96%99Oxford%20Cloth%20%20%20%20%20inflatable%20tiki%20bar%20for%20sale/5.webp"
+      ],
+      "dimensions": "5mH    ",
+      "excerpt": "5 m Oxford-fabric inflatable air dancer for retail promotions, opening events, roadside visibility, and rental fleets."
+    },
+    {
+      "slug": "advertising-inflatable--blow-up-cocktail-bar-18",
+      "productSlug": "blow-up-cocktail-bar",
+      "category": "Advertising Inflatable",
+      "categorySlug": "advertising-inflatable",
+      "title": "blow up cocktail bar",
+      "sourceName": "尺寸定制      blow up cocktail bar",
+      "material": "Commercial grade 0.55mm (1000D, 18 OZ) PVC",
+      "images": [
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20blow%20up%20cocktail%20bar/1.webp",
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20blow%20up%20cocktail%20bar/2.webp",
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20blow%20up%20cocktail%20bar/3.webp",
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20blow%20up%20cocktail%20bar/4.webp",
+        "/assets/product/Advertising%20Inflatable/%E5%B0%BA%E5%AF%B8%E5%AE%9A%E5%88%B6%20%20%20%20%20%20blow%20up%20cocktail%20bar/5.webp"
+      ],
+      "dimensions": "Custom dimensions available",
+      "excerpt": "Commercial advertising inflatable built for party rental operators, family entertainment centers, and event venues."
     },
     {
       "slug": "bounce-house--modern-white-bounce-houses-1",

@@ -305,14 +305,14 @@ export function categoryCustomization(category: string) {
 
 const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   'Advertising Inflatable': {
-    title: 'Inflatable Food Truck & Concession Booths | OEM Manufacturer | YIC',
-    description: 'Inflatable food trucks, concession stands, vendor booths, kiosks, promotional bars, and branded displays from YIC for events, sampling, retail activations, and B2B campaigns.',
-    keywords: 'inflatable food truck, inflatable concession stand, inflatable concession booth, inflatable vendor booth, inflatable kiosk, blow up concession stand, inflatable food truck manufacturer',
-    h1: 'Inflatable Food Trucks, Concession Booths & Brand Activations',
-    intro: 'YIC manufactures commercial advertising inflatables for exhibitions, retail promotions, product launches, and food-service themed activations. The range includes inflatable food trucks, concession stands, candy-shop booths, snack kiosks, vendor booths, promotional bars, and custom campaign structures. Confirm your logo, artwork, service-window layout, footprint, intended workflow, and installation plan with the factory before production.',
-    options: ['Inflatable food trucks and concession stands', 'Inflatable vendor booths and kiosk counters', 'Promotional bars and sampling stations', 'Custom logo and campaign structures'],
-    buyers: [{ title: 'Event and activation agencies', text: 'Create a high-visibility serving, sampling, retail, or branded hospitality point with customer flow planned around the event footprint.' }, { title: 'Food and beverage brands', text: 'Develop a recognizable inflatable food truck, kiosk, or concession booth for sampling, seasonal promotions, launches, and campaign tours.' }, { title: 'Rental and venue operators', text: 'Add visible food-service themed structures to festivals, mall events, family days, hospitality zones, and repeat rental packages.' }],
-    oem: 'Send a logo, product theme, reference image, dimensions, service-window or counter brief, intended event use, quantity, and destination. YIC can support 3D layout, printed artwork, custom shapes, accessories, production inspection, and export packing for a campaign-ready advertising inflatable.',
+    title: 'Inflatable Tiki Bars, Food Trucks & Event Displays | YIC',
+    description: 'Commercial inflatable tiki bars, cocktail bars, food trucks, concession booths, kiosks, air dancers, and branded event displays. OEM factory supply from YIC.',
+    keywords: 'inflatable tiki bar, inflatable cocktail bar, blow up tiki bar, blow up cocktail bar, inflatable air dancer, inflatable food truck, inflatable concession stand, inflatable vendor booth',
+    h1: 'Inflatable Tiki Bars, Food Trucks & Brand Activation Displays',
+    intro: 'YIC manufactures commercial advertising inflatables for exhibitions, retail promotions, resort events, product launches, sampling, and hospitality activations. The range includes inflatable tiki bars, cocktail bars, food trucks, concession stands, candy-shop booths, kiosks, vendor counters, air dancers, and custom campaign structures. Confirm your artwork, functional layout, footprint, intended workflow, material, and installation plan with the factory before production.',
+    options: ['Inflatable tiki bars and cocktail counters', 'Inflatable food trucks, concession stands, and kiosk booths', 'Inflatable air dancers and promotional displays', 'Custom logo and campaign structures'],
+    buyers: [{ title: 'Event and activation agencies', text: 'Create a high-visibility hospitality, sampling, retail, or branded interaction point with customer flow planned around the event footprint.' }, { title: 'Resort, food, and beverage brands', text: 'Develop recognizable tiki bars, cocktail counters, food trucks, kiosks, or air dancers for promotions, launches, seasonal events, and campaign tours.' }, { title: 'Rental and venue operators', text: 'Add visible themed bars, service counters, and promotional structures to festivals, mall events, pool parties, hospitality zones, and repeat rental packages.' }],
+    oem: 'Send a logo, product theme, reference image, dimensions, functional brief, intended event use, quantity, and destination. YIC can support 3D layout, printed artwork, custom shapes, accessories, production inspection, and export packing for a campaign-ready advertising inflatable.',
     faq: [{ question: 'Can YIC make an inflatable food truck or concession stand in our brand theme?', answer: 'Yes. YIC can review a reference image or concept and develop the vehicle-style outline, dimensions, colors, printed artwork, roof sign, service opening, display areas, and accessories for the campaign.' }, { question: 'Can an inflatable concession booth be used for food sampling or event service?', answer: 'It can be planned as a branded service, sampling, registration, merchandise, or hospitality frontage. The final scope should confirm included equipment, utility interfaces, hygiene workflow, and applicable venue requirements; imagery alone does not establish food-preparation approvals.' }, { question: 'What information is needed for an inflatable vendor booth quotation?', answer: 'Share the artwork, intended venue, service or display workflow, footprint, quantity, destination, target event date, and requirements for the service opening, counter, accessories, packing, or branding.' }],
     related: ['Inflatable Tent', 'Bounce House', 'Inflatable Games'],
   },
@@ -501,8 +501,12 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
 
 export function productDescription(product: Product) {
   const foodService = foodServiceProfile(product);
-  if (foodService) {
+  if (foodService && !isAirDancerProfile(product)) {
     return `YIC manufactures ${foodService.keywords[0]} for ${foodService.buyer}. This ${product.dimensions.trim()} model is shown as ${foodService.visual}. ${foodService.purpose} The listing specifies ${product.material}. Buyers can review ${foodService.options}. Related buyer searches include ${foodService.keywords.slice(1).join(', ')}. Confirm the final site plan, service workflow, branded artwork, included equipment, anchoring, and event requirements before production.`;
+  }
+  if (isAirDancerProfile(product)) {
+    const profile = foodServiceProfiles[product.productSlug];
+    return 'YIC manufactures ' + profile.keywords[0] + ' for ' + profile.buyer + '. This ' + product.dimensions.trim() + ' model is shown as ' + profile.visual + '. ' + profile.purpose + ' The listing specifies ' + product.material + '. Buyers can review ' + profile.options + '. Related buyer searches include ' + profile.keywords.slice(1).join(', ') + '. Confirm the final site, blower compatibility, electrical setup, secure positioning, weather conditions, artwork, and event requirements before production.';
   }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
@@ -660,10 +664,59 @@ const foodServiceProfiles: Record<string, FoodServiceProfile> = {
     options: 'food-truck graphics, striped awning colors, logo panels, counter opening, menu or message boards, entrance position, internal layout, lighting provision, and export packing',
     faqQuestions: ['What is this inflatable food truck for sale designed to support?', 'How should buyers plan the 3.73 x 2.5 m reference footprint?', 'Can the blue-and-white inflatable food truck be branded for my campaign?', 'Is food-preparation or cooking equipment included with an inflatable concession stand?', 'What should rental and event teams inspect before each use?', 'What project information helps YIC quote a commercial inflatable food truck?'],
   },
+  'inflatable-tiki-bar': {
+    keywords: ['inflatable tiki bar', 'inflatable cocktail bar', 'tiki inflatable bar', 'commercial tropical bar'],
+    visual: 'a yellow tropical counter with two palm-tree columns, a striped front bar, and an open service window designed around a lively island-party look',
+    purpose: 'The palm-and-tropical design creates a recognizable hospitality, drinks-display, sampling, or sponsor counter for supervised resort, pool-party, festival, and event use; included equipment is defined only in the approved order specification.',
+    buyer: 'resorts, beach clubs, event-rental fleets, beverage brands, festival organizers, hospitality agencies, and pool-party operators',
+    application: 'resort hospitality, tropical parties, branded beverage sampling, festival bars, poolside activations, and themed rental packages',
+    options: 'palm-tree details, tropical colors, front-bar graphics, serving-window treatment, logo panels, counter configuration, lighting provision, accessories, and export packing',
+    faqQuestions: ['What is this inflatable tiki bar designed for?', 'How should I plan the 4.5 x 3 x 3.6 m tiki-bar footprint?', 'Can the tropical palm-bar graphics be customized for my brand?', 'Can this inflatable cocktail bar be used for beverage display or sampling?', 'What operating checks should a resort or rental team prepare?', 'What should I send for an inflatable tiki bar factory quotation?'],
+  },
+  'inflatable-cocktail-bar': {
+    keywords: ['inflatable cocktail bar', 'tiki inflatable bar', 'inflatable tiki bar', 'commercial cocktail counter'],
+    visual: 'a brown bamboo-look cocktail counter with a thatched canopy, three palm-tree features, colorful tiki-mask panels, and a wide front serving area',
+    purpose: 'The thatched tropical-bar format gives event teams a polished focal point for a non-cooking hospitality counter, drinks presentation, sampling, reception, or branded guest interaction.',
+    buyer: 'cocktail-event planners, resorts, beach venues, promotional agencies, wedding and party-rental companies, beverage brands, and festival operators',
+    application: 'cocktail receptions, beach events, tropical wedding parties, beverage launches, resort guest service, and premium event rentals',
+    options: 'canopy finish, tiki-mask artwork, bamboo-look panels, colors, logo placement, counter openings, branded menu area, accessories, and packing',
+    faqQuestions: ['What is an inflatable cocktail bar used for?', 'How much event space should I reserve for this 4 x 3 x 3 m bar?', 'Can the canopy, tiki masks, and front graphics carry my campaign branding?', 'Does this tiki inflatable bar include drink-making or electrical equipment?', 'How should an event team manage setup and guest flow around the counter?', 'What details are needed for an inflatable cocktail bar quote?'],
+  },
+  'blow-up-tiki-bar': {
+    keywords: ['blow up tiki bar', 'inflatable tiki bar', 'inflatable cocktail bar', 'Oxford fabric tiki bar'],
+    visual: 'an orange-canopy tropical bar with palm columns, a bamboo-look front counter, and a printed island-style front emblem',
+    purpose: 'The Oxford-fabric blow up tiki bar is positioned as a lightweight visual hospitality and promotional backdrop for temporary events, provided the final specification confirms the intended weather exposure, blower, accessories, and operating setup.',
+    buyer: 'party-rental businesses, beach-event organizers, pop-up hospitality teams, resorts, beverage promoters, and event-production companies',
+    application: 'temporary tiki bars, beach parties, indoor tropical events, sampling counters, sponsor hospitality, and promotional displays',
+    options: 'Oxford-fabric colors, canopy artwork, palm details, printed front emblem, logo panels, counter arrangement, blower interface, accessories, and carry packing',
+    faqQuestions: ['What is a blow up tiki bar designed for?', 'How should I use the 4 x 3 x 3 m reference size in an event layout?', 'What is the listed material for this Oxford fabric tiki bar?', 'Can the orange canopy and island-style graphics be changed?', 'Which weather, setup, and storage points should operators confirm?', 'What is needed for a blow up tiki bar factory quotation?'],
+  },
+  'inflatable-air-dancer-for-sale': {
+    keywords: ['inflatable air dancer for sale', 'yellow inflatable air dancer', 'custom air dancer', 'Oxford fabric advertising inflatables'],
+    visual: 'a tall yellow Oxford-fabric inflatable air dancer with two arms, a friendly printed face, and a blower-mounted base for high-visibility movement',
+    purpose: 'This 5 m promotional air dancer is designed to attract attention to a storefront, roadside event, exhibition, opening, or campaign location; its motion depends on the compatible blower and actual site conditions.',
+    buyer: 'retail stores, car dealerships, event-rental businesses, opening-event organizers, roadside promoters, exhibition teams, and advertising agencies',
+    application: 'store openings, roadside promotions, retail attention-getters, car-lot advertising, outdoor events, exhibition entrances, and rental inventory',
+    options: 'character colors, face artwork, logo printing, height, arm style, tube shape, blower compatibility, carry bag, replacement fabric, and export packing',
+    faqQuestions: ['What is this inflatable air dancer for sale designed to do?', 'How should I plan a 5 m air dancer at a retail or event site?', 'What material is listed for this yellow inflatable air dancer?', 'Can the face, colors, logo, and character artwork be customized?', 'Does the air dancer include a blower and what operating checks are needed?', 'What information is required for an inflatable air dancer factory quote?'],
+  },
+  'blow-up-cocktail-bar': {
+    keywords: ['blow up cocktail bar', 'inflatable cocktail bar', 'custom inflatable bar', 'tiki inflatable bar'],
+    visual: 'a bamboo-look tropical cocktail counter with a thatched roof, large palm-tree columns, colorful tiki-mask panels, and a broad front service zone',
+    purpose: 'The custom-size blow up cocktail bar provides a themed event counter for hospitality, beverage display, sponsor service, and guest interaction, with dimensions and operational details confirmed through the final project brief.',
+    buyer: 'custom-event producers, resorts, beach clubs, beverage brands, experiential agencies, rental fleets, and festival hospitality teams',
+    application: 'custom resort bars, beach-club activations, cocktail receptions, branded tasting stations, VIP hospitality, and large-format tropical event displays',
+    options: 'custom dimensions, roof profile, palm and tiki-mask details, color scheme, logo panels, counter length, service openings, accessories, and export packing',
+    faqQuestions: ['What is a blow up cocktail bar designed for?', 'Can this inflatable cocktail bar be made to custom dimensions?', 'How can a custom inflatable bar be branded for a resort or sponsor?', 'Can this tropical counter support drinks display and guest hospitality?', 'What site, weather, and cleaning considerations should operators plan?', 'What should I provide for a custom blow up cocktail bar quotation?'],
+  },
 };
 
 function foodServiceProfile(product: Product) {
   return product.category === 'Advertising Inflatable' ? foodServiceProfiles[product.productSlug] : undefined;
+}
+
+function isAirDancerProfile(product: Product) {
+  return product.productSlug === 'inflatable-air-dancer-for-sale';
 }
 
 type NewWaterParkProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; application: string; options: string; faqQuestions: string[]; cardSummary?: string };
@@ -2397,7 +2450,8 @@ function productIntentKeyword(product: Product) {
 export function productSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
   const foodService = foodServiceProfile(product);
-  if (foodService) return seoTitle(`${foodService.keywords[0]} | Commercial Food Booth`);
+  if (foodService && !isAirDancerProfile(product)) return seoTitle(`${foodService.keywords[0]} | Commercial Event Bar`);
+  if (isAirDancerProfile(product)) return seoTitle('Inflatable Air Dancer for Sale | Event Display');
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
     if (waterSlide.keywords[0] === 'commercial inflatable pool for water slides') return seoTitle('Commercial Inflatable Water Slide Pool');
@@ -2445,7 +2499,11 @@ export function productSeoTitle(product: Product) {
 export function productMetaDescription(product: Product) {
   const detail = productDetailContent(product);
   const foodService = foodServiceProfile(product);
-  if (foodService) return truncateMeta(`YIC makes ${foodService.keywords[0]} for ${foodService.application}. ${product.dimensions.trim()}, ${product.material}. OEM branding and factory quote.`, 158);
+  if (foodService && !isAirDancerProfile(product)) return truncateMeta(`YIC makes ${foodService.keywords[0]} for ${foodService.application}. ${product.dimensions.trim()}, ${product.material}. OEM branding and factory quote.`, 158);
+  if (isAirDancerProfile(product)) {
+    const profile = foodServiceProfiles[product.productSlug];
+    return truncateMeta('YIC makes ' + profile.keywords[0] + ' for ' + profile.application + '. ' + product.dimensions.trim() + ', ' + product.material + '. Custom artwork and factory quote.', 158);
+  }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) return truncateMeta(`YIC makes ${waterSlide.keywords[0]} for ${waterSlide.application}. ${product.dimensions.trim()}, ${product.material}. Custom ${waterSlide.customizationFocus} and factory quote.`, 158);
   const flyingFish = flyingFishProfile(product);
@@ -2507,12 +2565,21 @@ export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const foodService = foodServiceProfile(product);
-  if (foodService) return [
+  if (foodService && !isAirDancerProfile(product)) return [
     `Visible format: ${foodService.visual}`,
     `Reference construction: ${product.dimensions.trim()} · ${product.material}`,
     `Commercial application: ${foodService.application}`,
     `Customize ${foodService.options} before production`,
   ];
+  if (isAirDancerProfile(product)) {
+    const profile = foodServiceProfiles[product.productSlug];
+    return [
+      'Visible format: ' + profile.visual,
+      'Reference construction: ' + product.dimensions.trim() + ' · ' + product.material,
+      'Commercial application: ' + profile.application,
+      'Customize ' + profile.options + ' before production',
+    ];
+  }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) return [
     `Visible layout: ${waterSlide.visual}`,
@@ -3076,6 +3143,7 @@ export function productKeywordVariants(product: Product) {
 }
 
 export function productDisplayTitle(product: Product) {
+  if (isAirDancerProfile(product)) return 'Inflatable Air Dancer for Sale';
   let title = product.title.trim();
   title = title.replace(/^diameter.*?(?=inflatable\b)/i, '');
   title = title.replace(/^\d+(?:\.\d+)?mH(?:\s+\d+(?:\.\d+)?mm\s*PVC)?\s*/i, '');
@@ -3276,6 +3344,36 @@ export function productDetailContent(product: Product): DetailContent {
         `Intended use: ${foodService.application}; share the venue type, service or display workflow, target customer group, and event schedule`,
         'Required footprint, service-window and counter preference, roof-sign or artwork concept, branding, material, accessories, and any required equipment interfaces',
         'Quantity, destination, packing requirements, and requested delivery schedule',
+      ],
+    };
+  }
+  if (isAirDancerProfile(product)) {
+    const profile = foodServiceProfiles[product.productSlug];
+    return {
+      template: 'application',
+      productType: profile.keywords[0],
+      primaryBuyer: profile.buyer,
+      purpose: profile.purpose,
+      applications: [
+        { title: profile.application, text: 'Place this ' + profile.keywords[0] + ' where it can be seen safely from the intended approach. Confirm the viewing direction, blower position, access route, and local sign or event requirements.' },
+        { title: 'Retail and opening-event visibility', text: 'Use the tall moving display to call attention to a launch, roadside business, showroom, car lot, or campaign entrance after checking wind exposure, secure positioning, and supervision.' },
+        { title: 'Rental and campaign operations', text: 'Plan blower compatibility, inflation, inspection, cleaning, drying, transport, storage, artwork approval, and repeat-event handover for the commercial operating routine.' },
+      ],
+      planningPoints: [
+        'Confirm the listed ' + product.dimensions.trim() + ' reference height, overhead clearance, viewing direction, ground space, blower position, electrical source, cable protection, secure placement, and visitor separation',
+        'Define the campaign location, expected wind and weather exposure, operating hours, retail or event rules, staff supervision, emergency shutdown plan, and local advertising requirements',
+        'Review the final fabric, character artwork, printed logo, blower interface, accessories, packing, and operating instructions against the approved specification (' + product.material + ')',
+      ],
+      customization: [
+        profile.options,
+        'Campaign-specific colors, printed logos, mascot artwork, character features, sponsor panels, and coordinated promotional-display graphics',
+        'Compatible blower, cable and base arrangement, repair kit, carry or storage bag, accessories, replacement fabric options, and export packing',
+      ],
+      operationNote: 'Operate only after the site, viewing direction, weather conditions, compatible blower, electrical connection, cable protection, secure positioning, access separation, inspection routine, and local event or advertising requirements have been reviewed. Images do not establish a wind rating, blower inclusion, electrical approval, or unattended-operation permission.',
+      quoteItems: [
+        'Intended use: ' + profile.application + '; share the retail, roadside, exhibition, or event location and campaign timing',
+        'Required height, character or logo artwork, colors, blower preference, electrical details, site exposure, material, accessories, and packing requirements',
+        'Quantity, destination, packing needs, and requested delivery schedule',
       ],
     };
   }
@@ -4299,7 +4397,11 @@ export function productSeoKeywords(product: Product) {
   const content = productDetailContent(product);
   const name = productDisplayTitle(product);
   const foodService = foodServiceProfile(product);
-  if (foodService) return [...foodService.keywords, `${foodService.keywords[0]} manufacturer`, `custom ${foodService.keywords[0]}`, `${foodService.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
+  if (foodService && !isAirDancerProfile(product)) return [...foodService.keywords, `${foodService.keywords[0]} manufacturer`, `custom ${foodService.keywords[0]}`, `${foodService.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
+  if (isAirDancerProfile(product)) {
+    const profile = foodServiceProfiles[product.productSlug];
+    return [...profile.keywords, 'inflatable air dancer manufacturer', 'custom inflatable air dancer', 'inflatable air dancer rental', 'YIC Inflatable Sports'].join(', ');
+  }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) return [...waterSlide.keywords, `${waterSlide.keywords[0]} manufacturer`, `custom ${waterSlide.keywords[0]}`, `${waterSlide.keywords[0]} for rental`, 'YIC Inflatable Sports'].join(', ');
   const flyingFish = flyingFishProfile(product);
@@ -4660,6 +4762,18 @@ export function productFaqs(product: Product) {
   const isBounceCategory = product.category === 'Bounce House' || product.category === 'Bounce House Combo';
   const bounceCore = isBounceCategory ? bounceHouseCoreKeyword(product) : '';
   const foodService = foodServiceProfile(product);
+  if (isAirDancerProfile(product)) {
+    const profile = foodServiceProfiles[product.productSlug];
+    const questions = profile.faqQuestions;
+    return [
+      { question: questions[0], answer: profile.purpose + ' The reference imagery shows ' + profile.visual + '. Related buyer searches include ' + profile.keywords.slice(1).join(', ') + '; confirm the approved blower, artwork, and accessory scope in the final specification.' },
+      { question: questions[1], answer: 'Start with the listed ' + product.dimensions.trim() + ' reference height, then allow clearance for the base, blower, electrical cable protection, viewing direction, access route, secure positioning, and visitor separation. Confirm the final arrangement from the actual site plan.' },
+      { question: questions[2], answer: 'The catalog lists ' + product.material + '. Confirm the final fabric weight, stitching, printed artwork, base connection, compatible blower, repair material, and included accessories in the approved order specification.' },
+      { question: questions[3], answer: 'Yes. YIC can review ' + profile.options + '. Send the target height, character concept, logo files, preferred colors, intended display site, quantity, destination, and delivery timing for a project-specific proposal.' },
+      { question: questions[4], answer: content.operationNote + ' Include pre-use inflation, base and cable checks, secure positioning, fabric and seam inspection, weather monitoring, supervised operation, cleaning, drying, repair-kit access, transport, and dry storage in the repeat-event routine.' },
+      { question: questions[5], answer: 'Send the intended use (' + profile.application + '), installation location, target height, artwork, blower and electrical requirements, site exposure, quantity, destination, packing needs, and required delivery date. The factory quotation can then confirm the final ' + profile.keywords[0] + ' configuration.' },
+    ];
+  }
   if (foodService) {
     const terms = foodService.keywords;
     const questions = foodService.faqQuestions;
