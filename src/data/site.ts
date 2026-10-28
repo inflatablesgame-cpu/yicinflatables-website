@@ -545,6 +545,10 @@ export function productDescription(product: Product) {
     return `YIC manufactures ${newTent.keywords[0]} for ${detail.primaryBuyer}. This ${product.dimensions.trim()} design is presented as ${newTent.visual}. ${newTent.purpose} The product is specified in ${product.material}; buyers can discuss dimensions, layout, branding, access, anchoring, and packing for their project. Related searches include ${newTent.keywords.slice(1).join(', ')}. Confirm the final site plan, materials, equipment, and operating requirements before production.`;
   }
   if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
+    const comboProfile = bounceComboSeoProfile(product);
+    if (comboProfile) {
+      return `YIC manufactures ${comboProfile.keywords[0]} for ${comboProfile.buyer}. The reference imagery shows ${comboProfile.visual}. ${comboProfile.purpose} This listing specifies ${product.material}. Buyers can discuss OEM or ODM colors, artwork, dimensions, entry and exit layout, play features, accessories, and packing. Related buyer searches include ${comboProfile.keywords.slice(1).join(', ')}. Confirm the final footprint, access route, anchoring, supervision, approved graphic rights, and destination requirements before production.`;
+    }
     const core = bounceHouseCoreKeyword(product);
     const detail = productDetailContent(product);
     const variants = productKeywordVariants(product).filter((term) => term !== core).slice(0, 3).join(', ');
@@ -2707,6 +2711,8 @@ export function productMetaDescription(product: Product) {
   }
   if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
     const core = bounceHouseCoreKeyword(product);
+    const comboProfile = bounceComboSeoProfile(product);
+    if (comboProfile) return truncateMeta(`YIC manufactures ${comboProfile.keywords[0]} for ${comboProfile.application}. ${product.material}. OEM layout, artwork, and factory quote.`, 158);
     const use = product.category === 'Bounce House Combo' ? 'party rental fleets and family entertainment centers' : 'party rental businesses, family venues, and community events';
     return truncateMeta(`YIC manufactures ${core} for ${use}. ${product.dimensions.trim()}, ${product.material}. Custom artwork, layout, accessories, and factory quotation available.`, 158);
   }
@@ -2800,6 +2806,13 @@ export function productKeyFeatures(product: Product) {
   ];
   if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
     const core = bounceHouseCoreKeyword(product);
+    const comboProfile = bounceComboSeoProfile(product);
+    if (comboProfile) return [
+      `Core buyer search: ${comboProfile.keywords[0]}`,
+      `Visible layout: ${comboProfile.visual}`,
+      `Commercial application: ${comboProfile.application}`,
+      `Customize colors, artwork, layout, dimensions, accessories, and packing before production`,
+    ];
     return [
       `Core buyer search: ${core}`,
       `Visible layout: ${product.dimensions.trim()} theme and play format`,
@@ -2975,6 +2988,107 @@ export function productBatch(product: Product) {
   return Math.floor(Math.max(0, position) / 10) % 3;
 }
 
+type BounceComboSeoProfile = {
+  displayTitle: string;
+  keywords: string[];
+  visual: string;
+  purpose: string;
+  buyer: string;
+  application: string;
+  cardSummary: string;
+  faqQuestions: string[];
+};
+
+// These eight combo pages have user-selected core terms. The supporting terms
+// stay tied to what is visible in their supplied product images, so titles,
+// metadata, image alt text, body copy, cards, and FAQs do not drift apart.
+const bounceComboSeoProfiles: Record<string, BounceComboSeoProfile> = {
+  'dual-lane-slide-bounce-house-commercial': {
+    displayTitle: 'Dual Slide Bounce House',
+    keywords: ['dual slide bounce house', 'double slide bounce house', 'bounce house with two slides', 'commercial bounce house combo'],
+    visual: 'a castle-style commercial combo with two side slides, a central climb, and a front bounce entry',
+    purpose: 'Its two slide exits and central climbing route give rental fleets a high-visibility multi-activity attraction for supervised party and venue programs.',
+    buyer: 'party-rental companies, family entertainment centers, event operators, and inflatable distributors',
+    application: 'birthday rentals, school activity days, family venues, and commercial event packages',
+    cardSummary: 'Dual slide bounce house with two side slides, a central climb, and a front bounce zone for rental fleets and family venues.',
+    faqQuestions: ['What play features are visible on this dual slide bounce house?', 'How should I plan space for a bounce house with two slides?', 'Can the double slide bounce house colors and artwork be customized?', 'Which construction details should I confirm for this commercial bounce house combo?', 'What supervision checks matter for two-slide play?', 'What should I send for a dual slide bounce house factory quote?'],
+  },
+  'white-luxury-bouncy-castle': {
+    displayTitle: 'Luxury Bounce House for Sale',
+    keywords: ['luxury bounce house for sale', 'white luxury bouncy castle', 'white wedding bounce house', 'white event bounce house'],
+    visual: 'an all-white castle-style combo with tall turret details, an enclosed bounce area, and a side slide',
+    purpose: 'The all-white castle presentation supports premium wedding, celebration, and upscale-event rental packages where a neutral visual treatment matters.',
+    buyer: 'wedding-rental businesses, premium party-rental companies, event stylists, and family entertainment operators',
+    application: 'weddings, showers, luxury birthdays, event styling packages, and premium rental programs',
+    cardSummary: 'Luxury bounce house for sale with an all-white castle profile, enclosed bounce area, and side slide for premium event packages.',
+    faqQuestions: ['Why is this model positioned as a luxury bounce house for sale?', 'How should a white wedding bounce house be planned for an event site?', 'Can the white luxury bouncy castle be customized for an event brand?', 'Which materials and production details should be confirmed?', 'How should operators protect and maintain an all-white event bounce house?', 'What is needed for a luxury bounce house factory quotation?'],
+  },
+  'minion-bounce-house-with-slide': {
+    displayTitle: 'The Minions Playground Bounce House',
+    keywords: ['the minions playground bounce house', 'minion bounce house with slide', 'character themed bounce house', 'kids bounce house slide combo'],
+    visual: 'a yellow-and-blue character-inspired bounce house with a large front character facade and a side slide',
+    purpose: 'The large character-inspired frontage makes the unit easy to merchandise for children’s party rentals while combining bouncing and sliding in one compact attraction.',
+    buyer: 'children’s party-rental companies, family entertainment centers, event operators, and distributors',
+    application: 'children’s birthdays, themed party rentals, family entertainment programs, and supervised events',
+    cardSummary: 'The Minions playground bounce house features a bold yellow-and-blue character-style facade, bounce area, and side slide for kids’ party rentals.',
+    faqQuestions: ['What play features are shown on the Minions playground bounce house?', 'How should I plan clearance for the character-themed bounce house and slide?', 'Can artwork or colors be changed for a custom character-style bounce house?', 'Does this listing claim an official Minions license?', 'What supervision and inspection checks suit a kids bounce house slide combo?', 'What should I include in a Minions playground bounce house quotation?'],
+  },
+  'pink-and-purple-bounce-house-combo': {
+    displayTitle: 'Pink Castle Bounce House',
+    keywords: ['pink castle bounce house', 'pink and purple bounce house', 'princess bounce house combo', 'girls party bounce house'],
+    visual: 'a pink-and-purple castle bounce house with turret styling, printed princess-themed panels, and a rear slide section',
+    purpose: 'Its bright castle silhouette and pink-and-purple finish create a strong themed option for children’s celebrations and party-rental lineups.',
+    buyer: 'party-rental businesses, children’s event operators, family entertainment venues, and distributors',
+    application: 'princess-style birthdays, girls party rentals, school celebrations, and family entertainment events',
+    cardSummary: 'Pink castle bounce house in a pink-and-purple princess-style layout for children’s party rentals and family events.',
+    faqQuestions: ['What is included in the pink castle bounce house layout?', 'How should I plan the footprint for a pink and purple bounce house?', 'Can the princess-style artwork and colors be customized?', 'Which material details should be confirmed for a girls party bounce house?', 'How should a rental operator manage entry, exit, and supervision?', 'What information is needed for a pink castle bounce house quote?'],
+  },
+  'white-bounce-house-with-double-slide': {
+    displayTitle: 'White Bounce House with Slide and Ball Pit',
+    keywords: ['white bounce house with slide and ball pit', 'white bounce house with double slide', 'white ball pit bounce house', 'white wedding bounce house'],
+    visual: 'an all-white bounce house with a central climbing wall and two visible side slides',
+    purpose: 'The neutral white colorway and dual-slide layout give event and rental buyers a clean base for weddings, celebrations, and custom-branded programs.',
+    buyer: 'wedding-rental companies, party-rental fleets, event stylists, and family entertainment operators',
+    application: 'white-theme events, weddings, premium birthdays, rental packages, and family venues',
+    cardSummary: 'White bounce house with slide and ball pit search intent, shown as an all-white double-slide combo for premium event and rental programs.',
+    faqQuestions: ['What play features are visible on this white bounce house with slide and ball pit search listing?', 'Does the shown white bounce house include a ball pit?', 'How should I plan a white bounce house with double slide at an event site?', 'Can a ball pit, white finish, or custom branding be specified?', 'Which material and maintenance details should be confirmed for white event use?', 'What should I provide for a white bounce house with slide and ball pit quote?'],
+  },
+  'bouncer-slide-combo-for-sale': {
+    displayTitle: 'Bounce House Slide Combo for Sale',
+    keywords: ['bounce house slide combo for sale', 'commercial bounce house with slide', 'inflatable bouncer with slide', 'bounce house combo for rental'],
+    visual: 'a multicolor castle-style bouncer with an enclosed jump area and a tall front slide lane',
+    purpose: 'The straightforward bounce-and-slide arrangement gives commercial buyers a versatile model for rentals, school events, and family entertainment programs.',
+    buyer: 'party-rental companies, schools, family entertainment centers, event agencies, and distributors',
+    application: 'birthday packages, school events, commercial rentals, and family entertainment venues',
+    cardSummary: 'Bounce house slide combo for sale with a castle bounce zone and tall front slide for commercial rental and event programs.',
+    faqQuestions: ['What features are included in this bounce house slide combo for sale?', 'How should I plan the site for a commercial bounce house with slide?', 'Can the inflatable bouncer with slide be customized for a rental fleet?', 'Which construction details should I confirm before buying?', 'What supervision and maintenance checks matter for a bounce-and-slide combo?', 'What details are needed for a bounce house slide combo factory quote?'],
+  },
+  'beach-themed-bounce-house': {
+    displayTitle: 'Beach Bounce House',
+    keywords: ['beach bounce house', 'beach themed bounce house', 'tropical bounce house', 'palm tree bounce house with slide'],
+    visual: 'a tropical beach-style combo with palm trees, a sunglasses-wearing sun, two front sections, and internal slide-and-climb features',
+    purpose: 'The palm-tree and beach graphics create an instantly recognizable tropical attraction for summer events, resort programs, and party-rental menus.',
+    buyer: 'party-rental companies, resorts, family entertainment venues, event agencies, and distributors',
+    application: 'beach parties, tropical events, resort activity programs, summer festivals, and rental packages',
+    cardSummary: 'Beach bounce house with palm trees, tropical graphics, two front play sections, and internal slide-and-climb features for summer events.',
+    faqQuestions: ['What visual features make this a beach bounce house?', 'How should I plan the footprint for a tropical bounce house?', 'Can the palm tree graphics and beach colors be customized?', 'Which material and construction details should be confirmed?', 'How should operators manage a beach party bounce house at an event?', 'What should I send for a beach bounce house factory quote?'],
+  },
+  'hulk-inflatable-bounce-house-with-slide': {
+    displayTitle: 'Hulk Bounce House',
+    keywords: ['hulk bounce house', 'hulk bounce house with slide', 'superhero bounce house', 'superhero bounce house with slide'],
+    visual: 'a green-and-purple superhero-style bounce house with a large front character graphic, a bounce zone, and a side slide',
+    purpose: 'The bold superhero-style front graphic creates a headline kids attraction for themed rentals and supervised event programs.',
+    buyer: 'party-rental companies, children’s event operators, family entertainment centers, and distributors',
+    application: 'superhero parties, children’s birthdays, themed rental packages, and family entertainment events',
+    cardSummary: 'Hulk bounce house with a large green superhero-style facade, bounce area, and side slide for themed children’s events.',
+    faqQuestions: ['What features are visible on this Hulk bounce house?', 'How should I plan site clearance for a superhero bounce house with slide?', 'Can the superhero-style colors, layout, or graphics be customized?', 'Does this product page claim an official Hulk license?', 'What supervision and maintenance checks are needed for themed rental use?', 'What should I provide for a Hulk bounce house factory quote?'],
+  },
+};
+
+function bounceComboSeoProfile(product: Product) {
+  return bounceComboSeoProfiles[product.productSlug];
+}
+
 // Core terms selected from the supplied bounce-house keyword research. Each
 // current model gets a distinct theme or buying-intent phrase so the catalog
 // does not make every product compete for the same generic query.
@@ -3030,19 +3144,19 @@ const bounceHouseCoreKeywords: Record<string, string> = {
   'hot-air-balloon-slide-and-hoop-bouncer': 'hot air balloon slide and hoop bouncer',
   'building-block-bounce-house': 'building block bounce house',
   'hot-air-balloon-combo-bounce-house': 'hot air balloon bounce house',
-  'dual-lane-slide-bounce-house-commercial': 'dual lane slide bounce house',
+  'dual-lane-slide-bounce-house-commercial': 'dual slide bounce house',
   'white-castle-bounce-house-with-slide-and-ball-pit': 'white castle bounce house with slide',
-  'white-luxury-bouncy-castle': 'luxury white bouncy castle',
+  'white-luxury-bouncy-castle': 'luxury bounce house for sale',
   'commercial-princess-bouncy-castle': 'princess bouncy castle',
-  'minion-bounce-house-with-slide': 'minion bounce house with slide',
-  'pink-and-purple-bounce-house-combo': 'pink and purple bounce house combo',
-  'white-bounce-house-with-double-slide': 'white bounce house with double slide',
-  'bouncer-slide-combo-for-sale': 'bouncer slide combo for sale',
+  'minion-bounce-house-with-slide': 'the minions playground bounce house',
+  'pink-and-purple-bounce-house-combo': 'pink castle bounce house',
+  'white-bounce-house-with-double-slide': 'white bounce house with slide and ball pit',
+  'bouncer-slide-combo-for-sale': 'bounce house slide combo for sale',
   'commercial-grade-bounce-house-and-slide': 'commercial bounce house with slide',
   'slide-bounce-house-combo': 'slide bounce house combo',
   'combo-commercial-bounce-house': 'commercial combo bounce house',
-  'beach-themed-bounce-house': 'beach themed bounce house',
-  'hulk-inflatable-bounce-house-with-slide': 'hulk bounce house with slide',
+  'beach-themed-bounce-house': 'beach bounce house',
+  'hulk-inflatable-bounce-house-with-slide': 'hulk bounce house',
   'unicorn-bouncer-with-slide': 'unicorn bounce house rental',
   'tropical-themed-bounce-house': 'tropical bounce house',
   'commercial-bouncy-castle-with-slide': 'bouncy castle with slide rental',
@@ -3143,9 +3257,13 @@ export function productKeywordVariants(product: Product) {
 
   if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
     const core = bounceHouseCoreKeyword(product);
+    const comboProfile = bounceComboSeoProfile(product);
+    if (comboProfile) add(...comboProfile.keywords);
     add(core, `${core} manufacturer`, `custom ${core}`, `${core} for rental`);
-    if (/for sale|commercial|supplier|factory/i.test(product.productSlug)) add(`${core} for sale`);
-    return [...new Set([core, intentKeyword, ...variants, lowerName])].filter((value) => value.length > 2);
+    if (/commercial|supplier|factory/i.test(product.productSlug) && !/\bfor sale\b/i.test(core)) add(`${core} for sale`);
+    return [...new Set([core, intentKeyword, ...variants, lowerName])]
+      .filter((value) => value.length > 2)
+      .filter((value) => !/\bfor sale\b.*\bfor sale\b/i.test(value));
   }
 
   if (waterSlideProfile(product)) {
@@ -3334,6 +3452,8 @@ export function productDisplayTitle(product: Product) {
   if (product.productSlug === 'inflatable-pool-bar-commercial') return 'Commercial Inflatable Pool Bar';
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) return advertisingDisplay.displayTitle;
+  const comboProfile = bounceComboSeoProfile(product);
+  if (comboProfile) return comboProfile.displayTitle;
   let title = product.title.trim();
   title = title.replace(/^diameter.*?(?=inflatable\b)/i, '');
   title = title.replace(/^\d+(?:\.\d+)?mH(?:\s+\d+(?:\.\d+)?mm\s*PVC)?\s*/i, '');
@@ -4782,6 +4902,8 @@ export function productCardDescription(product: Product) {
   }
   if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
     const core = bounceHouseCoreKeyword(product);
+    const comboProfile = bounceComboSeoProfile(product);
+    if (comboProfile) return `${comboProfile.cardSummary} ${reference}`;
     const audience = product.category === 'Bounce House Combo' ? 'party rental fleets and family entertainment centers' : 'party rental businesses, family venues, and community events';
     return `${core} for ${audience}, with the visible theme and play features planned around supervised operation. Compare the reference size, artwork, access, anchoring, accessories, and OEM options before requesting a factory quotation. ${reference}`;
   }
@@ -5051,6 +5173,24 @@ export function productFaqs(product: Product) {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const isBounceCategory = product.category === 'Bounce House' || product.category === 'Bounce House Combo';
   const bounceCore = isBounceCategory ? bounceHouseCoreKeyword(product) : '';
+  const comboProfile = bounceComboSeoProfile(product);
+  if (comboProfile) {
+    const [q1, q2, q3, q4, q5, q6] = comboProfile.faqQuestions;
+    const ballPitNote = product.productSlug === 'white-bounce-house-with-double-slide'
+      ? ' The supplied reference image visibly shows a central climb and two side slides; it does not independently verify a ball pit. If a ball pit is required, request it as a confirmed option in the approved specification.'
+      : '';
+    const rightsNote = /minion|hulk/.test(product.productSlug)
+      ? ' The themed imagery is reference styling only; this listing does not claim official affiliation, authorization, or a license. Buyers must confirm artwork rights and the approved production artwork before ordering.'
+      : '';
+    return [
+      { question: q1, answer: `${comboProfile.purpose} The supplied imagery shows ${comboProfile.visual}. Related buyer searches include ${comboProfile.keywords.slice(1).join(', ')}. Confirm the approved feature and accessory scope before production.${ballPitNote}` },
+      { question: q2, answer: `${/custom dimensions available/i.test(product.dimensions) ? 'Custom dimensions are available.' : `Start with the listed ${product.dimensions.trim()} reference.`} Reserve practical clearance for entry, exit, blower space, anchoring, supervision, queueing, spectators, and safe run-off. Confirm the final layout from the actual site plan.` },
+      { question: q3, answer: `Yes. YIC can review colors, theme treatment, printed artwork, logo panels, dimensions, bounce area, slide layout, access points, accessories, and packing. Send artwork, target footprint, quantity, destination, and delivery timing for a project-specific proposal.${rightsNote}` },
+      { question: q4, answer: `The catalog lists ${product.material}${product.dimensions ? ` and ${product.dimensions.trim()}` : ''}. Confirm the final PVC grade, reinforcement, seams, netting, slide surface, blower interface, anchors, repair kit, and included accessories in the approved order specification.` },
+      { question: q5, answer: `${content.operationNote} Include pre-use inflation, anchoring, seam and netting checks, blower and cable checks, entry and exit control, participant rules, weather monitoring, cleaning, drying, repair-kit access, transport, and dry storage in the operating routine.${rightsNote}` },
+      { question: q6, answer: `Send the intended use (${comboProfile.application}), site plan, participant group, required footprint, artwork and rights confirmation where applicable, preferred colors, feature changes, quantity, destination, packing needs, and target delivery date. The factory quotation can then confirm the final ${comboProfile.keywords[0]} configuration.${ballPitNote}` },
+    ];
+  }
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) {
     const terms = obstacleCourse.keywords;
