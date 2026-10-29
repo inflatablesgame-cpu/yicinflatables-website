@@ -318,34 +318,34 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   },
   'Bounce House': {
     title: 'Commercial Bounce Houses | OEM Manufacturer | YIC',
-    description: 'Commercial bounce houses, inflatable bounce houses, and bouncy castles from YIC for party rental businesses, FECs, schools, and event operators. Browse bounce house rental and bounce house for sale formats, then request custom OEM production.',
+    description: 'Commercial bounce houses for importers, distributors, FECs, schools, and events. Factory-direct OEM/private label supply from YIC; rental buyers also served.',
     keywords: 'bounce house, inflatable bounce house, commercial bounce house, bounce house rental, bounce house for sale, bouncy castle, backyard bouncer, white bounce house, themed bounce house, monster truck bounce house, pink bounce house, princess bounce house, unicorn bounce house, wedding bounce house',
-    h1: 'Commercial Bounce Houses for Party Rental Businesses',
-    intro: 'YIC supplies commercial bounce houses for party rental fleets, family entertainment centers, schools, community venues, and event operators. The range covers classic jump houses, white wedding bouncers, themed castles, sports designs, and custom layouts. Buyers comparing bounce house rental options or a bounce house for sale can review the models below, then send the preferred theme, footprint, quantity, destination, and artwork requirements for a factory quotation.',
+    h1: 'Commercial Bounce Houses for Global B2B Buyers',
+    intro: 'YIC manufactures commercial bounce houses for importers, distributors, family entertainment centers, schools, community venues, and event operators. Party rental companies are also served as downstream commercial buyers. The range covers classic jump houses, white wedding bouncers, themed castles, sports designs, and custom layouts. Send the preferred theme, footprint, quantity, destination, and artwork requirements for a factory quotation.',
     options: ['Classic commercial bounce houses', 'White wedding and luxury bouncers', 'Themed and character jump houses', 'Custom color and artwork designs'],
-    buyers: [{ title: 'Party rental companies', text: 'Add a recognizable jumping attraction with a clear footprint and a theme that is easy to sell for birthdays and community events.' }, { title: 'Family entertainment centers', text: 'Plan a supervised play zone around guest age, venue clearance, access, and expected throughput.' }, { title: 'Schools and event operators', text: 'Use a simple, highly visible attraction for fairs, sports days, festivals, and seasonal programs.' }],
+    buyers: [{ title: 'Family entertainment centers', text: 'Plan a supervised play zone around guest age, venue clearance, access, and expected throughput.' }, { title: 'Importers and distributors', text: 'Build a commercial bounce-house range with defined model specifications, OEM artwork, private-label options, and export packing.' }, { title: 'Schools and event operators', text: 'Use a simple, highly visible attraction for fairs, sports days, festivals, and seasonal programs.' }],
     oem: 'YIC supports custom bounce house OEM and ODM projects, including color palettes, banners, characters, basketball hoops, dimensions, accessories, and commercial packing.',
     faq: [{ question: 'What makes a bounce house suitable for commercial rental?', answer: 'Commercial planning considers material selection, reinforced seams, anchoring, blower requirements, access, supervision, packing, and the expected frequency of setup and use.' }, { question: 'Can I order a white bounce house for weddings or luxury events?', answer: 'Yes. White and neutral designs can be developed with clean artwork, refined color accents, and dimensions suited to wedding venues, event planners, and premium rental packages.' }, { question: 'Can the bounce house be customized with our logo or theme?', answer: 'Yes. YIC can review brand colors, printed panels, themed artwork, size, entrance details, and optional play features before production.' }],
     related: ['Bounce House Combo', 'Inflatable Slide', 'Inflatable Obstacle Course'],
   },
   'Bounce House Combo': {
     title: 'Commercial Bounce House Combos | OEM Factory | YIC',
-    description: 'Commercial bounce house combos with slides, ball pits, basketball, and themed play features from YIC. Compare bounce house and slide, combo bounce house rental, and custom commercial layouts for rental fleets and FECs.',
+    description: 'Commercial bounce house combos for importers, distributors, FECs, and event venues. OEM/private label production and factory-direct export from YIC.',
     keywords: 'bounce house combo, bounce house combo for sale, commercial bounce house combo, bounce house and slide, combo bounce house rental, bounce house with slide, bouncy castle with slide, commercial bounce house with slide, themed bounce house combo, obstacle course bounce house, paw patrol bounce house, mermaid bounce house, pirate ship bounce house, princess bounce house, unicorn bounce house with slide, toy story bounce house',
-    h1: 'Commercial Bounce House Combos for Party Rental & FEC Businesses',
-    intro: 'YIC manufactures bounce house combos that combine jumping, sliding, basketball, ball pits, and themed play in one commercial attraction. These multi-activity inflatables cover bounce house and slide formats, combo bounce house rental packages, and custom commercial layouts for party rental companies and family entertainment centers. Review the available layouts, then confirm the play sequence, target age group, dimensions, artwork, and quantity for a factory quote.',
+    h1: 'Commercial Bounce House Combos for Importers, Distributors & Venues',
+    intro: 'YIC manufactures bounce house combos that combine jumping, sliding, basketball, ball pits, and themed play in one commercial attraction. Importers, distributors, family entertainment centers, and event operators can compare multi-activity layouts and request OEM or private-label production. Party rental companies are also served as downstream buyers. Confirm the play sequence, target age group, dimensions, artwork, and quantity for a factory quote.',
     options: ['Bounce house and slide combos', 'Ball-pit and basketball combos', 'Themed multi-play inflatables', 'Custom combo layouts for venues'],
-    buyers: [{ title: 'Party rental fleets', text: 'Offer more than one activity in a single rental package for birthdays, school events, and community celebrations.' }, { title: 'Family entertainment centers', text: 'Balance entry, exit, slide, bounce, and supervision zones for a busy indoor or outdoor venue.' }, { title: 'Distributors', text: 'Build a differentiated catalog with themed artwork, repeatable specifications, and private-label options.' }],
+    buyers: [{ title: 'Importers and distributors', text: 'Build a differentiated multi-play product range with repeatable specifications, OEM artwork, private-label options, and export packing.' }, { title: 'Family entertainment centers', text: 'Balance entry, exit, slide, bounce, and supervision zones for a busy indoor or outdoor venue.' }, { title: 'Event and activity operators', text: 'Plan the play sequence, target age group, footprint, and staffing around the intended commercial program.' }],
     oem: 'For a custom combo, send the required play features, venue footprint, reference artwork, target age, and preferred dimensions. YIC can develop the layout, confirm materials, and coordinate production and packing.',
     faq: [{ question: 'What features can be combined in one inflatable?', answer: 'Depending on the brief, a combo can include a bounce area, slide, basketball hoop, climbing section, ball pit, obstacle element, or themed play details.' }, { question: 'How do I plan a combo for a rental venue?', answer: 'Confirm the available footprint, ceiling height, access route, user age group, supervision plan, anchoring surface, blower position, and expected event flow.' }, { question: 'Can a combo be made in a custom theme?', answer: 'Yes. YIC can adapt colors, characters, printed panels, slide layout, feature placement, dimensions, and branding for an OEM or ODM project.' }],
     related: ['Bounce House', 'Inflatable Slide', 'Inflatable Games'],
   },
   'Bumper Ball': {
     title: 'Inflatable Bumper Balls & Human Bubble Balls | YIC',
-    description: 'Commercial inflatable bumper balls, human bubble balls, and zorb equipment from YIC for bubble soccer operators, schools, events, and rental fleets. Custom TPU sizes, colors, and branding.',
+    description: 'Commercial bumper balls, human bubble balls, and zorbs for sports operators, schools, events, and distributors. Custom TPU, colors, and branding from YIC.',
     keywords: 'inflatable bumper balls, human bubble balls, inflatable bubble soccer balls, commercial zorb balls, TPU bumper ball supplier',
     h1: 'Inflatable Bumper Balls for Bubble Soccer and Zorb Activities',
-    intro: 'YIC supplies commercial inflatable bumper balls, human bubble balls, and zorb equipment for bubble soccer operators, schools, team-building companies, festivals, and rental businesses. Choose a youth, adult, soccer, or zorb format, then confirm diameter, participant group, playing surface, quantity, storage, transport, team colors, and logo requirements. Custom TPU ball sets can be prepared for repeat sessions and organized group play.',
+    intro: 'YIC supplies commercial inflatable bumper balls, human bubble balls, and zorb equipment for sports operators, schools, team-building companies, festivals, distributors, and rental businesses. Choose a youth, adult, soccer, or zorb format, then confirm diameter, participant group, playing surface, quantity, storage, transport, team colors, and logo requirements. Custom TPU ball sets can be prepared for organized group play and repeat commercial programs.',
     options: ['Inflatable bumper ball sets', 'Human bubble balls for adults and kids', 'Zorb soccer and bubble-soccer formats', 'Custom TPU colors, logos, and accessories'],
     buyers: [{ title: 'Sports and activity operators', text: 'Create a portable group attraction for timed sessions, leagues, camps, and supervised recreational play.' }, { title: 'Schools and team events', text: 'Use a clear, social activity format for field days, company events, and community programs.' }, { title: 'Rental businesses', text: 'Package multiple balls with transport, storage, and accessory planning for repeat bookings.' }],
     oem: 'YIC can review ball diameter, quantity, TPU construction, colors, printed logos, accessories, packaging, and intended user group for a custom inflatable bumper ball or human bubble ball set.',
@@ -354,9 +354,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   },
   'Inflatable Games': {
     title: 'Commercial Inflatable Games | OEM Manufacturer | YIC',
-    description: 'Commercial inflatable games for carnivals, FECs, team events and rentals. YIC offers custom interactive games, sports inflatables and OEM production.',
+    description: 'Commercial inflatable games from YIC for importers, FECs, sports programs, and events. OEM/ODM themes, branded layouts, factory-direct export.',
     h1: 'Commercial Inflatable Games for Events and Entertainment Venues',
-    intro: 'YIC manufactures interactive inflatable games for carnivals, family entertainment centers, sports days, festivals, team-building events, and rental fleets. The collection includes sports challenges, target games, competitive play, and repeat-play activity stations. Compare the formats below, then share your venue, game objective, player age, artwork, quantity, and destination for a tailored quotation.',
+    intro: 'YIC manufactures interactive inflatable games for importers, family entertainment centers, sports programs, festivals, team-building events, and rental fleets. Distributors can develop a differentiated range across sports challenges, target games, competitive play, and repeat-play activity stations. Compare the formats below, then share your application, game objective, player age, artwork, quantity, and destination for a tailored quotation.',
     options: ['Interactive carnival games', 'Inflatable sports challenges', 'Target and accuracy games', 'Custom branded activity stations'],
     buyers: [{ title: 'Family entertainment centers', text: 'Add repeat-play activities that complement jumping attractions and help organize guest flow.' }, { title: 'Event and rental operators', text: 'Build a flexible game package for festivals, team days, school events, and corporate activations.' }, { title: 'Sports and education programs', text: 'Adapt the challenge, player capacity, and branding to organized activities and community programs.' }],
     oem: 'Share the game concept, player flow, target age, venue size, logo, and artwork. YIC can support the structure, scoring or target layout, printed graphics, accessories, and export-ready packing.',
@@ -365,7 +365,7 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   },
   'Inflatable Mechanical Games': {
     title: 'Commercial Inflatable Mechanical Games | OEM Factory | YIC',
-    description: 'Commercial mechanical bull, wipeout and operator-led inflatable games from YIC for events, FECs, rentals and attractions. Custom themes and project support.',
+    description: 'Commercial mechanical inflatables from YIC for FECs, attractions, events, and distributors. OEM themes, project coordination, and factory-direct supply.',
     h1: 'Commercial Mechanical Inflatable Games for High-Energy Attractions',
     intro: 'YIC supplies operator-led inflatable mechanical games for family entertainment centers, event companies, rental operators, festivals, and attraction venues. These high-energy formats require clear player zones, power planning, supervision, access, and site coordination. Select a model below, then send the venue details, operating concept, theme, quantity, and destination so the factory can prepare a practical quotation.',
     options: ['Mechanical bull attractions', 'Wipeout and challenge games', 'Operator-led event inflatables', 'Custom themed mechanical attractions'],
@@ -376,30 +376,30 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   },
   'Inflatable Obstacle Course': {
     title: 'Commercial Inflatable Obstacle Courses & Fun Runs | YIC',
-    description: 'Commercial inflatable obstacle courses for sale: 5K fun runs, Ninja, Army, Jungle, adult, themed, white wedding and race-ready layouts. Custom OEM factory production.',
+    description: 'Commercial inflatable obstacle courses for sale: 5K fun runs, Ninja, Army, Jungle, themed and race-ready layouts. Custom OEM factory production.',
     keywords: 'inflatable obstacle course, adult inflatable obstacle course, 5k inflatable obstacle course, inflatable obstacle run, ninja inflatable obstacle course, army inflatable obstacle course, jungle obstacle course, white bounce house obstacle course',
     h1: 'Commercial Inflatable Obstacle Courses, Fun Runs & Themed Challenges',
-    intro: 'YIC manufactures commercial inflatable obstacle courses for party rental companies, family entertainment centers, schools, races, team events, festivals, and activity operators. The range includes compact themed courses, Jungle and Beach layouts, Tractor and Panda designs, Ninja and Army challenges, adult inflatable obstacle courses, long fun runs, white wedding obstacle formats, and modular 5K-style race sections. Confirm the usable footprint, participant flow, target age, theme, length, quantity, and site conditions; custom obstacle sequences and branded graphics are available for commercial projects.',
+    intro: 'YIC manufactures commercial inflatable obstacle courses for activity operators, family entertainment centers, schools, race organizers, event buyers, and distributors. Party rental companies are also served as downstream commercial buyers. The range includes compact themed courses, Jungle and Beach layouts, Tractor and Panda designs, Ninja and Army challenges, adult inflatable obstacle courses, long fun runs, white wedding obstacle formats, and modular 5K-style race sections. Confirm the usable footprint, participant flow, target age, theme, length, quantity, and site conditions; custom obstacle sequences and branded graphics are available for commercial projects.',
     options: ['Compact themed obstacle courses and bounce routes', 'Adult, Ninja, Army, Jungle, and race-ready inflatables', '5K-style fun-run and modular challenge sections', 'Custom modular obstacle sequences with OEM branding'],
-    buyers: [{ title: 'Party rental businesses', text: 'Offer a larger-format challenge attraction for birthdays, school events, festivals, and team activities.' }, { title: 'FECs and activity venues', text: 'Plan lanes, obstacles, entry and exit around throughput, supervision, and the venue footprint.' }, { title: 'Race and event organizers', text: 'Create a branded course with clear participant flow, sponsor artwork, and event-specific dimensions.' }],
+    buyers: [{ title: 'Race and event organizers', text: 'Create a branded course with clear participant flow, sponsor artwork, and event-specific dimensions.' }, { title: 'FECs and activity venues', text: 'Plan lanes, obstacles, entry and exit around throughput, supervision, and the venue footprint.' }, { title: 'Importers and distributors', text: 'Source themed, race-ready, or modular obstacle-course products with OEM artwork and export specifications.' }],
     oem: 'Send a site plan, target length, obstacle preferences, age group, artwork, and expected participants. YIC can develop a custom course layout and coordinate materials, inspection, packing, and shipment.',
     faq: [{ question: 'How do I choose the right obstacle course size?', answer: 'Start with the available footprint, height clearance, access route, participant age, desired throughput, supervision plan, and transport or storage limits.' }, { question: 'Can the obstacles and race layout be changed?', answer: 'Yes. YIC can review obstacle sequence, lane count, length, climbing or sliding features, theme artwork, and branded sections for an OEM design.' }, { question: 'Can an obstacle course be used for timed races?', answer: 'Many layouts can support timed or team challenges when the start, finish, supervision, queue, and participant flow are planned for the venue.' }],
     related: ['Inflatable Games', 'Bounce House Combo', 'Inflatable Slide'],
   },
   'Inflatable Slide': {
     title: 'Commercial Inflatable Slides | OEM Manufacturer | YIC',
-    description: 'Commercial inflatable slides for party rentals, FECs, events, resorts and water venues. YIC offers dry slides, water slides, custom themes and OEM production.',
-    h1: 'Commercial Inflatable Slides for Rentals, FECs and Water Venues',
-    intro: 'YIC supplies commercial inflatable slides for party rental fleets, family entertainment centers, events, resorts, and seasonal recreation venues. The range includes dry slides, water-slide formats, themed slides, and slide combos. Compare the models below, then confirm the available height, landing zone, site conditions, intended users, artwork, quantity, and destination for a factory quotation.',
+    description: 'Commercial inflatable slides for importers, distributors, FECs, resorts, and water venues. OEM themes and factory-direct export from YIC.',
+    h1: 'Commercial Inflatable Slides for Global B2B Buyers',
+    intro: 'YIC supplies commercial inflatable slides for importers, distributors, family entertainment centers, events, resorts, and seasonal recreation venues. Party rental fleets are also served as downstream commercial buyers. The range includes dry slides, water-slide formats, themed slides, and slide combos. Compare the models below, then confirm the available height, landing zone, site conditions, intended users, artwork, quantity, and destination for a factory quotation.',
     options: ['Dry inflatable slides', 'Commercial water slides', 'Themed and character slides', 'Slide and bounce-house combos'],
-    buyers: [{ title: 'Party rental companies', text: 'Add a visible headline attraction to birthday, school, community, and seasonal rental packages.' }, { title: 'FECs and event venues', text: 'Plan height, queue, landing, supervision, and guest flow around a busy indoor or outdoor attraction area.' }, { title: 'Water parks and resorts', text: 'Coordinate wet-use layout, water supply, anchoring, drainage, access, and seasonal operations.' }],
+    buyers: [{ title: 'Family entertainment centers and event venues', text: 'Plan height, queue, landing, supervision, and guest flow around a busy indoor or outdoor attraction area.' }, { title: 'Water parks and resorts', text: 'Coordinate wet-use layout, water supply, anchoring, drainage, access, and seasonal operations.' }, { title: 'Importers and distributors', text: 'Develop a commercial slide range with custom themes, defined specifications, and destination-ready packing.' }],
     oem: 'For a custom slide, share the desired height, footprint, landing arrangement, theme, color, artwork, use environment, and quantity. YIC can review the structure, accessories, testing, and export packing.',
     faq: [{ question: 'What is the difference between a dry slide and a water slide?', answer: 'A dry slide is planned for dry landing and general event or rental use, while a water slide requires suitable water flow, wet-use planning, landing, drainage, anchoring, and local operating procedures.' }, { question: 'How should I plan the site for an inflatable slide?', answer: 'Confirm the footprint, height clearance, access route, landing area, anchoring surface, queue, supervision, blower position, and any water or drainage requirements.' }, { question: 'Can the slide be made in a custom theme or height?', answer: 'Yes. YIC can review theme artwork, colors, slide height, platform and landing layout, branding, and other project-specific requirements.' }],
     related: ['Bounce House Combo', 'Inflatable Water Park', 'Inflatable Obstacle Course'],
   },
   'Inflatable Tent': {
     title: 'Commercial Inflatable Tents | OEM Manufacturer | YIC',
-    description: 'Commercial inflatable tents, dome shelters and branded event spaces from YIC for exhibitions, activations, outdoor events and distributors. Custom OEM production available.',
+    description: 'Commercial inflatable tents, domes, and branded event spaces for exhibitions, activations, and distributors. Custom OEM supply from YIC.',
     h1: 'Commercial Inflatable Tents for Events, Exhibitions and Activations',
     intro: 'YIC manufactures inflatable tents and branded shelters for exhibitions, outdoor events, retail activations, hospitality, sports promotions, and event agencies. Choose a dome, tunnel, bar, or enclosed shelter format, then confirm the footprint, entrance, windows, lighting, artwork, anchoring, and destination. Custom inflatable event spaces can be developed for repeat campaigns and commercial use.',
     options: ['Inflatable dome tents', 'Branded exhibition shelters', 'Inflatable bars and tunnels', 'Custom pop-up event spaces'],
@@ -410,7 +410,7 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   },
   'Inflatable Theme Park': {
     title: 'Commercial Inflatable Theme Parks | OEM Manufacturer | YIC',
-    description: 'Commercial inflatable theme parks and indoor inflatable playgrounds from YIC for FECs, malls, parks and attractions. Custom themed project production available.',
+    description: 'Commercial inflatable theme parks and indoor playgrounds for FECs, malls, parks, and attractions. Custom themed OEM production from YIC.',
     h1: 'Commercial Inflatable Theme Parks for FECs and Attractions',
     intro: 'YIC develops commercial inflatable theme parks and themed playground attractions for family entertainment centers, malls, parks, resorts, and destination venues. These larger projects combine themed artwork, multiple play modules, guest flow, supervision, access, and site planning. Review the available concepts, then share your footprint, theme, target age, capacity, quantity, and destination for a project quotation.',
     options: ['Indoor inflatable playgrounds', 'Themed adventure parks', 'Modular play attractions', 'Custom multi-zone entertainment projects'],
@@ -2605,7 +2605,7 @@ function productIntentKeyword(product: Product) {
   return forms[rawIntent] ?? '';
 }
 
-export function productSeoTitle(product: Product) {
+function buildProductSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) return seoTitle(`${obstacleCourse.keywords[0]} | Commercial Course`);
@@ -2662,7 +2662,7 @@ export function productSeoTitle(product: Product) {
   return seoTitle(`${compactName} | ${suffix}`);
 }
 
-export function productMetaDescription(product: Product) {
+function buildProductMetaDescription(product: Product) {
   const detail = productDetailContent(product);
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) return truncateMeta(`YIC manufactures ${obstacleCourse.keywords[0]} for ${obstacleCourse.application}. ${product.dimensions.trim()}, ${product.material}. Custom artwork and factory quote.`, 158);
@@ -3501,11 +3501,12 @@ export function productDisplayTitle(product: Product) {
  * Keep the display/core phrase intact; only short labels receive a buying
  * intent suffix so the visible title remains useful and unambiguous.
  */
-export function productHeadingTitle(product: Product) {
-  const isBounceProduct = product.category === 'Bounce House' || product.category === 'Bounce House Combo';
-  const baseTitle = isBounceProduct
-    ? productPrimaryKeyword(product).replace(/^\s+|\s+$/g, '')
-    : productDisplayTitle(product).trim();
+function productHeadingBase(product: Product) {
+  const baseTitle = productPrimaryKeyword(product)
+    .trim()
+    .replace(/\bfor sale(?:\s+for sale)+\b/gi, 'for sale')
+    .replace(/\bfor rental(?:\s+for rental)+\b/gi, 'for rental')
+    .replace(/\bcommercial-grade\b/gi, 'commercial grade');
   const title = baseTitle ? baseTitle.charAt(0).toUpperCase() + baseTitle.slice(1) : productDisplayTitle(product).trim();
   const words = title.split(/\s+/).filter(Boolean);
   if (words.length >= 3) return title;
@@ -3516,6 +3517,122 @@ export function productHeadingTitle(product: Product) {
     ? 'For Sale'
     : preferredIntent;
   return `${title} ${intent}`;
+}
+
+function normalizedProductText(value: string) {
+  return value.toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+function productHeadingQualifier(product: Product, duplicateGroup: Product[]) {
+  const base = productHeadingBase(product);
+  const baseWords = new Set(normalizedProductText(base).split(/[^a-z0-9]+/).filter(Boolean));
+  const ignored = new Set(['a', 'and', 'commercial', 'for', 'grade', 'house', 'inflatable', 'of', 'sale', 'the', 'with']);
+  const extraWords = productDisplayTitle(product)
+    .split(/[^a-z0-9]+/i)
+    .filter((word) => word && !baseWords.has(word.toLowerCase()) && !ignored.has(word.toLowerCase()));
+  if (extraWords.length) return extraWords.join(' ');
+
+  const dimensions = product.dimensions.trim();
+  if (dimensions && !/custom dimensions available/i.test(dimensions)
+    && new Set(duplicateGroup.map((item) => normalizedProductText(item.dimensions))).size > 1) {
+    return `Model ${dimensions}`;
+  }
+
+  const intent = product.productSlug.match(/(?:^|-)(commercial|for-sale|for-rent|for-rental|rental)(?:-|$)/i)?.[1];
+  if (intent) return `${intent.replace(/-/g, ' ')} model`;
+
+  return `Model ${productCategoryPosition(product) + 1}`;
+}
+
+const productHeadingBases = new Map(products.map((product) => [product.slug, productHeadingBase(product)]));
+const productHeadingGroups = new Map<string, Product[]>();
+for (const product of products) {
+  const key = normalizedProductText(productHeadingBases.get(product.slug) ?? '');
+  productHeadingGroups.set(key, [...(productHeadingGroups.get(key) ?? []), product]);
+}
+
+export function productHeadingTitle(product: Product) {
+  const base = productHeadingBases.get(product.slug) ?? productHeadingBase(product);
+  const group = productHeadingGroups.get(normalizedProductText(base)) ?? [];
+  if (group.length < 2) return base;
+  return `${base} - ${productHeadingQualifier(product, group)}`;
+}
+
+function productSeoDifferentiator(product: Product) {
+  const heading = productHeadingTitle(product);
+  const separator = heading.lastIndexOf(' - ');
+  if (separator >= 0) return heading.slice(separator + 3).trim();
+  const dimensions = product.dimensions.trim();
+  if (dimensions && !/custom dimensions available/i.test(dimensions)) return `Model ${dimensions}`;
+  return `Model ${productCategoryPosition(product) + 1}`;
+}
+
+let baseProductSeoTitles: Map<string, string> | undefined;
+let productSeoTitleCounts: Map<string, number> | undefined;
+
+function initializeProductSeoTitles() {
+  if (baseProductSeoTitles && productSeoTitleCounts) return;
+  baseProductSeoTitles = new Map(products.map((item) => [item.slug, buildProductSeoTitle(item)]));
+  productSeoTitleCounts = new Map<string, number>();
+  for (const title of baseProductSeoTitles.values()) {
+    const key = normalizedProductText(title);
+    productSeoTitleCounts.set(key, (productSeoTitleCounts.get(key) ?? 0) + 1);
+  }
+}
+
+export function productSeoTitle(product: Product) {
+  initializeProductSeoTitles();
+  const base = baseProductSeoTitles!.get(product.slug) ?? buildProductSeoTitle(product);
+  if ((productSeoTitleCounts!.get(normalizedProductText(base)) ?? 0) < 2) return base;
+
+  const qualifier = productSeoDifferentiator(product);
+  const core = productPrimaryKeyword(product);
+  const maxCoreLength = Math.max(16, 62 - qualifier.length - ' |  | YIC'.length);
+  return seoTitle(`${truncateMeta(core, maxCoreLength, '')} | ${qualifier}`);
+}
+
+let baseProductMetaDescriptions: Map<string, string> | undefined;
+let finalProductMetaDescriptions: Map<string, string> | undefined;
+
+function initializeProductMetaDescriptions() {
+  if (finalProductMetaDescriptions) return;
+  baseProductMetaDescriptions = new Map(products.map((item) => [item.slug, buildProductMetaDescription(item)]));
+
+  const drafts = new Map(products.map((item) => {
+    const description = baseProductMetaDescriptions!.get(item.slug) ?? '';
+    const core = productPrimaryKeyword(item)
+      .replace(/\bfor sale(?:\s+for sale)+\b/gi, 'for sale')
+      .replace(/\bfor rental(?:\s+for rental)+\b/gi, 'for rental')
+      .replace(/\bcommercial-grade\b/gi, 'commercial grade');
+    const normalizedCore = core.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    const normalizedDescription = description.toLowerCase().replace(/[^a-z0-9]+/g, ' ');
+    if (normalizedDescription.includes(normalizedCore)) return [item.slug, description];
+
+    const buyer = productTargetBuyers(item)[0] ?? 'commercial B2B buyers';
+    const size = item.dimensions.trim() && !/custom dimensions available/i.test(item.dimensions)
+      ? `${item.dimensions.trim()}, `
+      : '';
+    return [item.slug, truncateMeta(`YIC manufactures ${core} for ${buyer}. ${size}${item.material}. OEM/ODM customization and factory quotation available.`, 158)];
+  }));
+  const descriptionCounts = new Map<string, number>();
+  for (const description of drafts.values()) {
+    const key = normalizedProductText(description);
+    descriptionCounts.set(key, (descriptionCounts.get(key) ?? 0) + 1);
+  }
+
+  finalProductMetaDescriptions = new Map(products.map((item) => {
+    const description = drafts.get(item.slug) ?? '';
+    if ((descriptionCounts.get(normalizedProductText(description)) ?? 0) < 2) return [item.slug, description];
+
+    const suffix = ` Model: ${productSeoDifferentiator(item)}.`;
+    const prefix = truncateMeta(description, Math.max(64, 158 - suffix.length), '');
+    return [item.slug, `${prefix.replace(/[\s.,;:]+$/g, '')}${suffix}`];
+  }));
+}
+
+export function productMetaDescription(product: Product) {
+  initializeProductMetaDescriptions();
+  return finalProductMetaDescriptions!.get(product.slug) ?? buildProductMetaDescription(product);
 }
 
 const productApplications: Record<string, string> = {
@@ -5195,7 +5312,7 @@ export function productCardLabel(product: Product) {
   return `${material} · ${labels[cardVariantIndex(product, labels.length)]}`;
 }
 
-export function productFaqs(product: Product) {
+function buildProductFaqs(product: Product) {
   const name = productDisplayTitle(product);
   const content = productDetailContent(product);
   const dimensions = product.dimensions ? `The listed reference size is ${product.dimensions.trim()}.` : 'No fixed reference size is listed for this model.';
@@ -5777,4 +5894,61 @@ export function productFaqs(product: Product) {
     { question: `What should I send for a quote and pre-shipment confirmation for ${name}?`, answer: `Send the model name, estimated quantity, destination country and city, intended use, target delivery date, and these project details: ${content.quoteItems.join('; ').toLowerCase()}. Before shipment, YIC can confirm the approved specification, production checks, inflation or appearance inspection where applicable, packing details, accessories, and applicable product or destination-market documents.` },
     deliveryFaq,
   ];
+}
+
+let productFaqCache: Map<string, Array<{ question: string; answer: string }>> | undefined;
+
+function initializeProductFaqs() {
+  if (productFaqCache) return;
+
+  const baseFaqs = new Map(products.map((product) => [product.slug, buildProductFaqs(product)]));
+  const questionCounts = new Map<string, number>();
+  for (const faqs of baseFaqs.values()) {
+    for (const faq of faqs) {
+      const key = normalizedProductText(faq.question);
+      questionCounts.set(key, (questionCounts.get(key) ?? 0) + 1);
+    }
+  }
+
+  const faqDrafts = new Map(products.map((product) => {
+    const label = productHeadingTitle(product);
+    const faqs = (baseFaqs.get(product.slug) ?? []).map((faq) => {
+      const key = normalizedProductText(faq.question);
+      if ((questionCounts.get(key) ?? 0) < 2) return faq;
+
+      const listedSize = product.dimensions.trim() || 'custom dimensions available';
+      return {
+        ...faq,
+        question: `${faq.question} (${label})`,
+        answer: `${faq.answer} For this listing, the core product focus is ${productPrimaryKeyword(product)}; the catalog specifies ${listedSize} and ${product.material}. Confirm the final configuration and included accessories in the approved order specification.`,
+      };
+    });
+    return [product.slug, faqs];
+  }));
+
+  const answerCounts = new Map<string, number>();
+  for (const faqs of faqDrafts.values()) {
+    for (const faq of faqs) {
+      const key = normalizedProductText(faq.answer);
+      answerCounts.set(key, (answerCounts.get(key) ?? 0) + 1);
+    }
+  }
+
+  productFaqCache = new Map(products.map((product) => {
+    const label = productHeadingTitle(product);
+    const listedSize = product.dimensions.trim() || 'custom dimensions available';
+    const faqs = (faqDrafts.get(product.slug) ?? []).map((faq) => {
+      if ((answerCounts.get(normalizedProductText(faq.answer)) ?? 0) < 2) return faq;
+      return {
+        ...faq,
+        answer: `${faq.answer} Product-specific details: ${label} targets ${productPrimaryKeyword(product)} and is listed as ${listedSize} in ${product.material}. Confirm the final feature and accessory scope in the order specification.`,
+      };
+    });
+    return [product.slug, faqs];
+  }));
+}
+
+export function productFaqs(product: Product) {
+  initializeProductFaqs();
+  return productFaqCache!.get(product.slug) ?? buildProductFaqs(product);
 }
