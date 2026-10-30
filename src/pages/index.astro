@@ -6,6 +6,19 @@ import { categories, products, company } from '../data/site';
 
 const heroImage = '/assets/commercial-inflatable-manufacturer-hero.webp';
 const factoryImage = '/assets/optimized/home/factory-construction.webp';
+const homeCategoryCardImageSlugs: Record<string, string> = {
+  'bounce-house': 'palm-tree-bouncy-castle',
+  'bounce-house-combo': 'dinosaur-bounce-house-slide-combo',
+  'inflatable-slide': 'spider-man-inflatable-slide',
+  'inflatable-water-park': 'outdoor-inflatable-water-park',
+  'inflatable-water-slide': 'tropical-blow-up-water-slide',
+};
+const homeCategoryCardImages = Object.fromEntries(
+  Object.entries(homeCategoryCardImageSlugs).map(([categorySlug, productSlug]) => [
+    categorySlug,
+    products.find((product) => product.productSlug === productSlug)?.images[0],
+  ]),
+);
 const featuredProductSlugs = [
   'bounce-house--commercial-grade-white-bounce-house-3',
   'bounce-house-combo--commercial-grade-bounce-house-and-slide-41',
@@ -72,7 +85,7 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
   <section class="stats" aria-label="YIC at a glance"><div class="container stats-inner"><div class="stat"><strong>15+</strong><span>Years manufacturing and export experience</span></div><div class="stat"><strong>116</strong><span>Long-term skilled production professionals</span></div><div class="stat"><strong>3,100+</strong><span>Commercial customers served</span></div><div class="stat"><strong>57</strong><span>Countries reached worldwide</span></div></div></section>
 
   <div class="home-page">
-  <section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Product range</p><h2>Commercial Inflatable Products for Global B2B Buyers</h2></div><p>Browse commercial inflatables across play, sports, event, advertising, and water applications. Importers, distributors, venues, resorts, event operators, and rental businesses can discuss specifications, private label, and OEM/ODM requirements directly with the factory.</p></div><div class="category-grid">{categories.map((category) => <CategoryCard category={category} />)}</div></div></section>
+  <section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Product range</p><h2>Commercial Inflatable Products for Global B2B Buyers</h2></div><p>Browse commercial inflatables across play, sports, event, advertising, and water applications. Importers, distributors, venues, resorts, event operators, and rental businesses can discuss specifications, private label, and OEM/ODM requirements directly with the factory.</p></div><div class="category-grid">{categories.map((category) => <CategoryCard category={category} image={homeCategoryCardImages[category.slug]} />)}</div></div></section>
 
   <section class="section section-muted"><div class="container feature-grid"><div class="feature-image"><img src={factoryImage} alt="YIC commercial inflatable manufacturing workshop" loading="lazy" width="1200" height="900" /><div class="feature-tag"><strong>Commercial</strong><span>Product-specific materials, reinforced construction, and export-ready support</span></div></div><div class="feature-copy"><p class="eyebrow">Commercial-grade construction</p><h2>Commercial Inflatable Manufacturing for B2B Orders</h2><p>For applicable PVC products, we source raw material from Plato. Material grade and construction details are selected for each product specification and intended commercial application.</p><ul class="check-list"><li>Plato PVC material for applicable products</li><li>Material specifications matched to product requirements</li><li>Reinforced high-stress points</li><li>OEM, ODM, and private-label customization</li><li>Inflation and appearance checks</li><li>Applicable specifications confirmed before production</li></ul><a class="text-link" href="/about/">See factory capability →</a></div></div></section>
 

@@ -40,9 +40,16 @@ const categoryImageIndex: Record<string, number> = {
   'inflatable-obstacle-course': 7,
   'inflatable-slide': 5,
 };
+const categoryImageProductSlugs: Record<string, string> = {
+  'bounce-house-combo': 'spiderman-inflatable-bounce-house-with-slide',
+  'inflatable-tent': 'commercial-inflatable-tent-for-party',
+  'inflatable-water-slide': 'shark-inflatable-water-slide-with-pool',
+};
 const categoryCards = categories.map((category) => ({
   ...category,
-  product: products.filter((product) => product.categorySlug === category.slug)[categoryImageIndex[category.slug] ?? 1] ?? products.find((product) => product.categorySlug === category.slug),
+  product: products.find((product) => product.productSlug === categoryImageProductSlugs[category.slug])
+    ?? products.filter((product) => product.categorySlug === category.slug)[categoryImageIndex[category.slug] ?? 1]
+    ?? products.find((product) => product.categorySlug === category.slug),
 }));
 const collectionSchema = {
   '@context': 'https://schema.org',
