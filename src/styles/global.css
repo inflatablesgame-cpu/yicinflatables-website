@@ -531,14 +531,14 @@ h3 { font-size: 1.25rem; }
 .quote-form { scroll-margin-top: 104px; padding: 34px; background: var(--surface); }
 .quote-form h2 { margin-bottom: 9px; font-size: 2rem; }
 .quote-form > p { color: var(--muted); font-size: .9rem; }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 25px; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 13px; margin-top: 25px; }
 .form-field { display: grid; gap: 7px; }
 .form-field.full { grid-column: 1 / -1; }
 .form-field label { font-size: .78rem; font-weight: 800; }
 .form-field label span { color: var(--muted); font-weight: 500; }
-.form-field input, .form-field select, .form-field textarea { width: 100%; border: 1px solid var(--line); padding: 12px 13px; background: var(--white); color: var(--ink); outline: none; }
+.form-field input, .form-field select, .form-field textarea { width: 100%; min-width: 0; min-height: 42px; border: 1px solid var(--line); padding: 10px 13px; background: var(--white); color: var(--ink); outline: none; }
 .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--teal); }
-.form-field textarea { min-height: 130px; resize: vertical; }
+.form-field textarea { min-height: 104px; resize: vertical; }
 .quote-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .quote-actions .button { min-width: 175px; }
 .quote-actions-field { gap: 8px; }
