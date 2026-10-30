@@ -11,6 +11,14 @@ type AnalyticsEvent = {
   targetUrl?: string;
   product?: string;
   sessionId?: string;
+  initialLandingPage?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmTerm?: string;
+  utmContent?: string;
+  gclid?: string;
+  msclkid?: string;
 };
 
 const allowedEvents = new Set([
@@ -38,6 +46,14 @@ function cleanEvent(value: unknown): AnalyticsEvent | null {
     targetUrl: cleanText(input.targetUrl),
     product: cleanText(input.product, 200),
     sessionId: cleanText(input.sessionId, 100),
+    initialLandingPage: cleanText(input.initialLandingPage),
+    utmSource: cleanText(input.utmSource, 200),
+    utmMedium: cleanText(input.utmMedium, 200),
+    utmCampaign: cleanText(input.utmCampaign, 300),
+    utmTerm: cleanText(input.utmTerm, 300),
+    utmContent: cleanText(input.utmContent, 300),
+    gclid: cleanText(input.gclid, 300),
+    msclkid: cleanText(input.msclkid, 300),
   };
 }
 

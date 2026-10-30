@@ -58,6 +58,20 @@ const organizationSchema = {
   knowsAbout: ['Commercial inflatables', 'Bounce houses', 'Inflatable slides', 'Inflatable obstacle courses', 'OEM inflatable manufacturing'],
   areaServed: ['United States', 'United Kingdom', 'Europe', 'Worldwide'],
 };
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `https://${company.domain}/#website`,
+  name: 'YIC Inflatable Sports',
+  url: `https://${company.domain}/`,
+  inLanguage: 'en',
+  publisher: { '@id': `https://${company.domain}/#organization` },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `https://${company.domain}/search/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
 ---
 
 <!doctype html>
@@ -96,6 +110,7 @@ const organizationSchema = {
     <link rel="icon" type="image/webp" href={logo} />
     <title>{compactTitle}</title>
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+    {currentPath !== '/' && <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>}
   </head>
   <body data-page-url={canonicalUrl}>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -222,9 +237,24 @@ const organizationSchema = {
       });
 
       type TrackingDetails = Record<string, string>;
-      type TrackingWindow = Window & { yicTrack?: (eventType: string, details?: TrackingDetails) => void };
+      type TrackingAttribution = {
+        initialLandingPage?: string;
+        utmSource?: string;
+        utmMedium?: string;
+        utmCampaign?: string;
+        utmTerm?: string;
+        utmContent?: string;
+        gclid?: string;
+        msclkid?: string;
+      };
+      type TrackingWindow = Window & {
+        yicTrack?: (eventType: string, details?: TrackingDetails) => void;
+        yicTrackingAttribution?: TrackingAttribution;
+        gtag?: (...args: unknown[]) => void;
+      };
       const trackingWindow = window as TrackingWindow;
       const trackingSessionKey = 'yic-tracking-session';
+      const trackingAttributionKey = 'yic-first-attribution';
       const trackingSessionId = window.sessionStorage.getItem(trackingSessionKey) || crypto.randomUUID();
       window.sessionStorage.setItem(trackingSessionKey, trackingSessionId);
       const cleanTrackingUrl = (value: string) => {
@@ -237,6 +267,33 @@ const organizationSchema = {
           return '';
         }
       };
+      const readStoredAttribution = (): TrackingAttribution | null => {
+        try {
+          const stored = window.sessionStorage.getItem(trackingAttributionKey);
+          if (!stored) return null;
+          const value = JSON.parse(stored);
+          return value && typeof value === 'object' ? value as TrackingAttribution : null;
+        } catch {
+          return null;
+        }
+      };
+      const query = new URLSearchParams(window.location.search);
+      const currentAttribution: TrackingAttribution = {
+        initialLandingPage: cleanTrackingUrl(window.location.href),
+        utmSource: query.get('utm_source') || '',
+        utmMedium: query.get('utm_medium') || '',
+        utmCampaign: query.get('utm_campaign') || '',
+        utmTerm: query.get('utm_term') || '',
+        utmContent: query.get('utm_content') || '',
+        gclid: query.get('gclid') || '',
+        msclkid: query.get('msclkid') || '',
+      };
+      const hasCampaignData = Object.entries(currentAttribution).some(([key, value]) => key !== 'initialLandingPage' && Boolean(value));
+      const trackingAttribution = readStoredAttribution() ?? currentAttribution;
+      if (!readStoredAttribution() || hasCampaignData) {
+        window.sessionStorage.setItem(trackingAttributionKey, JSON.stringify(trackingAttribution));
+      }
+      trackingWindow.yicTrackingAttribution = trackingAttribution;
       const sourcePage = cleanTrackingUrl(new URLSearchParams(window.location.search).get('source') || '');
       const sendAnalyticsEvent = (eventType: string, details: TrackingDetails = {}) => {
         const payload = JSON.stringify({
@@ -245,11 +302,20 @@ const organizationSchema = {
           sourceUrl: sourcePage,
           referrer: cleanTrackingUrl(document.referrer),
           sessionId: trackingSessionId,
+          ...trackingAttribution,
           ...details,
         });
         const eventBlob = new Blob([payload], { type: 'application/json' });
         if (!navigator.sendBeacon('/api/analytics', eventBlob)) {
           fetch('/api/analytics', { method: 'POST', headers: { 'content-type': 'application/json' }, body: payload, keepalive: true }).catch(() => undefined);
+        }
+        if (eventType !== 'page_view' && typeof trackingWindow.gtag === 'function') {
+          trackingWindow.gtag('event', eventType, {
+            event_category: 'lead_interaction',
+            link_text: details.linkLabel || '',
+            product: details.product || '',
+            page_location: window.location.href,
+          });
         }
       };
       trackingWindow.yicTrack = sendAnalyticsEvent;

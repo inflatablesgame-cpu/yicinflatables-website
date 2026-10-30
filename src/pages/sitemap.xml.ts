@@ -2,8 +2,6 @@ import { categories, products, categoryPath, company, productPath } from '../dat
 import { blogArticles } from '../data/blog';
 
 export function GET() {
-  const pageSize = 16;
-  const totalPages = Math.ceil(products.length / pageSize);
   const urls = [
     '/',
     '/products/',
@@ -15,12 +13,7 @@ export function GET() {
     '/terms/',
     '/shipping/',
     ...blogArticles.map((article) => `/blog/${article.slug}/`),
-    ...Array.from({ length: totalPages - 1 }, (_, index) => `/products/page/${index + 2}/`),
     ...categories.map((category) => categoryPath(category)),
-    ...categories.flatMap((category) => {
-      const categoryPageCount = Math.ceil(products.filter((product) => product.categorySlug === category.slug).length / pageSize);
-      return Array.from({ length: categoryPageCount - 1 }, (_, index) => `${categoryPath(category)}page/${index + 2}/`);
-    }),
     ...products.map((product) => productPath(product)),
   ];
   const body = urls

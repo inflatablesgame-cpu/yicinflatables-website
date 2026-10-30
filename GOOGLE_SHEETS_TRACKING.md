@@ -2,11 +2,11 @@
 
 The site records these event streams through Cloudflare Pages:
 
-- `Page Views`: one entry per page view.
-- `WhatsApp Clicks`: WhatsApp clicks only.
+- `Page Views`: one entry per page view, with first landing page and paid/UTM attribution when present.
+- `WhatsApp Clicks`: WhatsApp clicks, including the buyer's original campaign context.
 - `Quote Clicks`: clicks on quote/request buttons before the form is opened.
 - `Email Clicks`: clicks on visible email links.
-- `Form Submissions`: confirmed quote-form submissions only (`form_submit_success`).
+- `Form Submissions`: confirmed quote-form submissions only (`form_submit_success`), with buyer type, quantity, destination, timeline, and attribution fields.
 
 ## 1. Deploy the Google Apps Script
 
@@ -51,6 +51,7 @@ authorization before testing the website.
 
 1. Open a page of the live site: a row should appear in `Page Views`.
 2. Click a WhatsApp button: a row should appear in `WhatsApp Clicks`.
-3. Submit a test quote form: a row should appear in `Form Submissions` and an email should be sent to `NOTIFICATION_EMAILS`.
+3. Submit a test quote form using an email or WhatsApp number: a row should appear in `Form Submissions` and an email should be sent to `NOTIFICATION_EMAILS`.
+4. Open a tagged URL such as `?utm_source=test&utm_medium=referral&utm_campaign=tracking-check`, then submit a test quote. Confirm the first landing page and UTM fields appear in the Sheet.
 
 Do not treat a `mailto:` draft as a submitted inquiry. The site records form submissions only after the Cloudflare endpoint receives and forwards the form successfully.

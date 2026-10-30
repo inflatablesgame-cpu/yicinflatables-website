@@ -5,7 +5,7 @@ interface Env {
   INQUIRY_BACKUP_EMAIL?: string;
 }
 
-const fields = ['Name', 'Company', 'Email', 'Phone / WhatsApp', 'Country', 'Product', 'Quantity', 'Destination', 'Timeline', 'Requirements', 'Source page URL'];
+const fields = ['Name', 'Company', 'Email', 'Phone / WhatsApp', 'Buyer Type', 'Country', 'Product', 'Quantity', 'Destination', 'Timeline', 'Requirements', 'Source page URL', 'Initial Landing Page', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'GCLID', 'MSCLKID'];
 
 function cleanText(value: unknown, maxLength = 4000) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
@@ -54,12 +54,15 @@ async function deliverToBackupEmail(payload: Record<string, unknown>, env: Env) 
           `Email: ${payload.email || ''}`,
           `Phone / WhatsApp: ${payload.phone || ''}`,
           `Company: ${payload.company || ''}`,
+          `Buyer type: ${payload.buyerType || ''}`,
           `Country: ${payload.country || ''}`,
           `Product: ${payload.product || ''}`,
           `Quantity: ${payload.quantity || ''}`,
           `Destination: ${payload.destination || ''}`,
           `Timeline: ${payload.timeline || ''}`,
           `Source page: ${payload.sourceUrl || ''}`,
+          `Initial landing page: ${payload.initialLandingPage || ''}`,
+          `Campaign: ${[payload.utmSource, payload.utmMedium, payload.utmCampaign].filter(Boolean).join(' / ')}`,
           '',
           `Requirements:\n${payload.requirements || ''}`,
         ].join('\n'),
@@ -83,8 +86,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   const inquiry = Object.fromEntries(fields.map((field) => [field, cleanText(formData.get(field))]));
-  if (!inquiry.Name || !inquiry.Email) {
-    return Response.json({ ok: false, error: 'Name and email are required.' }, { status: 400 });
+  if (!inquiry.Name || (!inquiry.Email && !inquiry['Phone / WhatsApp'])) {
+    return Response.json({ ok: false, error: 'Name and either email or WhatsApp are required.' }, { status: 400 });
   }
 
   const payload = {
@@ -97,11 +100,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     company: inquiry.Company,
     email: inquiry.Email,
     phone: inquiry['Phone / WhatsApp'],
+    buyerType: inquiry['Buyer Type'],
     country: inquiry.Country,
     quantity: inquiry.Quantity,
     destination: inquiry.Destination,
     timeline: inquiry.Timeline,
     requirements: inquiry.Requirements,
+    initialLandingPage: inquiry['Initial Landing Page'],
+    utmSource: inquiry['UTM Source'],
+    utmMedium: inquiry['UTM Medium'],
+    utmCampaign: inquiry['UTM Campaign'],
+    utmTerm: inquiry['UTM Term'],
+    utmContent: inquiry['UTM Content'],
+    gclid: inquiry.GCLID,
+    msclkid: inquiry.MSCLKID,
     countryCode: context.request.cf?.country || '',
   };
   const deliveredToSheet = context.env.GOOGLE_SHEETS_WEBHOOK_URL

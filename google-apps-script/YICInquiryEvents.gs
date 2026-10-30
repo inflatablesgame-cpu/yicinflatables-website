@@ -8,12 +8,16 @@ const WEBHOOK_KEY = 'REPLACE_WITH_A_LONG_RANDOM_SECRET';
 const NOTIFICATION_EMAILS = 'lanna@yicinflatables.com';
 
 const HEADERS = {
-  'Page Views': ['Timestamp', 'Page URL', 'Referrer', 'Session ID', 'Country'],
-  'WhatsApp Clicks': ['Timestamp', 'Button or Link', 'Page URL', 'Source Page URL', 'Product', 'WhatsApp Destination', 'Session ID', 'Country'],
-  'Quote Clicks': ['Timestamp', 'Button or Link', 'Page URL', 'Source Page URL', 'Product', 'Target URL', 'Session ID', 'Country'],
-  'Email Clicks': ['Timestamp', 'Button or Link', 'Page URL', 'Source Page URL', 'Product', 'Target URL', 'Session ID', 'Country'],
-  'Form Submissions': ['Timestamp', 'Name', 'Email', 'Phone / WhatsApp', 'Company', 'Country', 'Product', 'Quantity', 'Destination', 'Timeline', 'Requirements', 'Source Page URL', 'Visitor Country'],
+  'Page Views': ['Timestamp', 'Page URL', 'Referrer', 'Session ID', 'Country', 'Initial Landing Page', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'GCLID', 'MSCLKID'],
+  'WhatsApp Clicks': ['Timestamp', 'Button or Link', 'Page URL', 'Source Page URL', 'Product', 'WhatsApp Destination', 'Session ID', 'Country', 'Initial Landing Page', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'GCLID', 'MSCLKID'],
+  'Quote Clicks': ['Timestamp', 'Button or Link', 'Page URL', 'Source Page URL', 'Product', 'Target URL', 'Session ID', 'Country', 'Initial Landing Page', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'GCLID', 'MSCLKID'],
+  'Email Clicks': ['Timestamp', 'Button or Link', 'Page URL', 'Source Page URL', 'Product', 'Target URL', 'Session ID', 'Country', 'Initial Landing Page', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'GCLID', 'MSCLKID'],
+  'Form Submissions': ['Timestamp', 'Name', 'Email', 'Phone / WhatsApp', 'Company', 'Buyer Type', 'Country', 'Product', 'Quantity', 'Destination', 'Timeline', 'Requirements', 'Source Page URL', 'Visitor Country', 'Initial Landing Page', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'GCLID', 'MSCLKID'],
 };
+
+function attributionValues_(data) {
+  return [data.initialLandingPage, data.utmSource, data.utmMedium, data.utmCampaign, data.utmTerm, data.utmContent, data.gclid, data.msclkid];
+}
 
 function doGet() {
   return reply_({ ok: true, service: 'YIC inquiry event receiver' });
@@ -32,15 +36,15 @@ function doPost(e) {
     const timestamp = data.receivedAt ? new Date(data.receivedAt) : new Date();
 
     if (data.eventType === 'page_view') {
-      append_('Page Views', [timestamp, data.pageUrl, data.referrer, data.sessionId, data.country]);
+      append_('Page Views', [timestamp, data.pageUrl, data.referrer, data.sessionId, data.country].concat(attributionValues_(data)));
     } else if (data.eventType === 'whatsapp_click') {
-      append_('WhatsApp Clicks', [timestamp, data.linkLabel, data.pageUrl, data.sourceUrl, data.product, data.targetUrl, data.sessionId, data.country]);
+      append_('WhatsApp Clicks', [timestamp, data.linkLabel, data.pageUrl, data.sourceUrl, data.product, data.targetUrl, data.sessionId, data.country].concat(attributionValues_(data)));
     } else if (data.eventType === 'quote_click') {
-      append_('Quote Clicks', [timestamp, data.linkLabel, data.pageUrl, data.sourceUrl, data.product, data.targetUrl, data.sessionId, data.country]);
+      append_('Quote Clicks', [timestamp, data.linkLabel, data.pageUrl, data.sourceUrl, data.product, data.targetUrl, data.sessionId, data.country].concat(attributionValues_(data)));
     } else if (data.eventType === 'email_click') {
-      append_('Email Clicks', [timestamp, data.linkLabel, data.pageUrl, data.sourceUrl, data.product, data.targetUrl, data.sessionId, data.country]);
+      append_('Email Clicks', [timestamp, data.linkLabel, data.pageUrl, data.sourceUrl, data.product, data.targetUrl, data.sessionId, data.country].concat(attributionValues_(data)));
     } else if (data.eventType === 'form_submit_success') {
-      append_('Form Submissions', [timestamp, data.name, data.email, data.phone, data.company, data.country, data.product, data.quantity, data.destination, data.timeline, data.requirements, data.sourceUrl, data.countryCode]);
+      append_('Form Submissions', [timestamp, data.name, data.email, data.phone, data.company, data.buyerType, data.country, data.product, data.quantity, data.destination, data.timeline, data.requirements, data.sourceUrl, data.countryCode].concat(attributionValues_(data)));
       notify_(data);
     }
     return reply_({ ok: true });
@@ -78,12 +82,15 @@ function notify_(data) {
     `Email: ${data.email || ''}`,
     `Phone / WhatsApp: ${data.phone || ''}`,
     `Company: ${data.company || ''}`,
+    `Buyer type: ${data.buyerType || ''}`,
     `Country: ${data.country || ''}`,
     `Product: ${data.product || ''}`,
     `Quantity: ${data.quantity || ''}`,
     `Destination: ${data.destination || ''}`,
     `Timeline: ${data.timeline || ''}`,
     `Source page: ${data.sourceUrl || ''}`,
+    `Initial landing page: ${data.initialLandingPage || ''}`,
+    `Campaign: ${[data.utmSource, data.utmMedium, data.utmCampaign].filter(Boolean).join(' / ')}`,
     '',
     `Requirements:`,
     data.requirements || '',

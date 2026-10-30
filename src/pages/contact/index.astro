@@ -20,14 +20,27 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
   <section class="section"><div class="container contact-grid">
     <div class="contact-copy"><p class="eyebrow">Direct contact</p><h2>Clear answers, from the people coordinating your order</h2><p>For the fastest response, include the product category, target quantity, country, preferred size, branding requirements, and expected delivery date.</p><div class="contact-list"><div class="contact-list-group"><span>Email</span><span>{company.teamEmails.map((email) => <a href={`mailto:${email}`}>{email}</a>)}</span></div><div class="contact-list-group"><span>WhatsApp</span><span>{company.teamWhatsApp.map((number, index) => <a href={`https://wa.me/${number}`} target="_blank" rel="noopener">{company.teamWhatsAppDisplay[index]}</a>)}</span></div><a href={company.facebook} target="_blank" rel="noopener"><span>Facebook</span><span>YIC Inflatable Sports</span></a><a href={company.youtube} target="_blank" rel="noopener"><span>YouTube</span><span>@YICInflatables</span></a><div><span>Website</span><span>{company.domain}</span></div></div></div>
     <form id="quote-form" class="quote-form" data-quote-form action={formEndpoint} method="post">
-      <h2>Request a quotation</h2><p>Only your name and email are required. The other details are optional and help us quote accurately.</p>
+      <h2>Request a factory quotation</h2><p>Give us your name plus either a work email or WhatsApp number. Product, quantity, destination, and timeline help the factory prepare a practical quotation without guessing.</p>
       <div class="form-grid">
         <div class="form-field"><label for="name">Name</label><input id="name" name="Name" autocomplete="name" required /></div>
         <div class="form-field"><label for="company">Company <span>(optional)</span></label><input id="company" name="Company" autocomplete="organization" /></div>
-        <div class="form-field"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required /></div>
+        <div class="form-field"><label for="email">Work email <span>(email or WhatsApp required)</span></label><input id="email" name="Email" type="email" autocomplete="email" /></div>
+        <div class="form-field"><label for="phone">Phone / WhatsApp <span>(email or WhatsApp required)</span></label><input id="phone" name="Phone / WhatsApp" type="tel" autocomplete="tel" /></div>
+        <div class="form-field"><label for="buyer-type">I am purchasing for <span>(optional)</span></label><select id="buyer-type" name="Buyer Type"><option value="">Select buyer type</option><option>Importer / distributor</option><option>Rental or event business</option><option>FEC, resort, or venue</option><option>Brand activation or agency</option><option>School, club, or community program</option><option>Other commercial use</option></select></div>
         <div class="form-field"><label for="country">Country <span>(optional)</span></label><input id="country" name="Country" autocomplete="country-name" /></div>
+        <div class="form-field"><label for="quantity">Estimated quantity <span>(optional)</span></label><input id="quantity" name="Quantity" placeholder="e.g. 1 model / 10 units" /></div>
+        <div class="form-field"><label for="destination">Delivery city or port <span>(optional)</span></label><input id="destination" name="Destination" autocomplete="address-level2" /></div>
+        <div class="form-field"><label for="timeline">Target purchasing timeline <span>(optional)</span></label><select id="timeline" name="Timeline"><option value="">Select timeline</option><option>Researching / planning</option><option>Within 30 days</option><option>1-3 months</option><option>More than 3 months</option></select></div>
         <input type="hidden" name="Product" value={product} />
         <input type="hidden" name="Source page URL" value={sourceUrl} />
+        <input type="hidden" name="Initial Landing Page" value="" />
+        <input type="hidden" name="UTM Source" value="" />
+        <input type="hidden" name="UTM Medium" value="" />
+        <input type="hidden" name="UTM Campaign" value="" />
+        <input type="hidden" name="UTM Term" value="" />
+        <input type="hidden" name="UTM Content" value="" />
+        <input type="hidden" name="GCLID" value="" />
+        <input type="hidden" name="MSCLKID" value="" />
         <div class="form-field full"><label for="message">Requirements <span>(optional)</span></label><textarea id="message" name="Requirements" placeholder="Quantity, size, logo, colors, delivery date, and any other details">{prefillMessage}</textarea></div>
         <div class="form-field full"><div class="quote-actions"><button class="button" type="submit">Send by email <span aria-hidden="true">→</span></button><a class="button button-whatsapp" data-whatsapp-button href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(quickWhatsAppText)}`} target="_blank" rel="noopener">Quick WhatsApp <span aria-hidden="true">→</span></a></div></div>
       </div>
@@ -42,6 +55,19 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
     const productInput = document.querySelector('input[name="Product"]');
     const messageInput = document.querySelector('#message');
     const sourceInput = document.querySelector('input[name="Source page URL"]');
+    const emailInput = document.querySelector('#email');
+    const phoneInput = document.querySelector('#phone');
+    const attribution = (window as Window & { yicTrackingAttribution?: Record<string, string> }).yicTrackingAttribution ?? {};
+    const attributionFields: Record<string, string> = {
+      'Initial Landing Page': attribution.initialLandingPage ?? '',
+      'UTM Source': attribution.utmSource ?? '',
+      'UTM Medium': attribution.utmMedium ?? '',
+      'UTM Campaign': attribution.utmCampaign ?? '',
+      'UTM Term': attribution.utmTerm ?? '',
+      'UTM Content': attribution.utmContent ?? '',
+      GCLID: attribution.gclid ?? '',
+      MSCLKID: attribution.msclkid ?? '',
+    };
     const query = new URLSearchParams(window.location.search);
     const queryProduct = query.get('product') || defaultProduct || '';
     const querySource = query.get('source') || '';
@@ -54,12 +80,16 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
     if (productInput) productInput.value = queryProduct;
     if (messageInput) messageInput.value = initialMessage;
     if (sourceInput) sourceInput.value = activeSourceUrl;
+    Object.entries(attributionFields).forEach(([name, value]) => {
+      const input = document.querySelector(`input[name="${name}"]`) as HTMLInputElement | null;
+      if (input) input.value = value;
+    });
     const buildMessage = () => {
       const data = new FormData(form);
       const productName = String(data.get('Product') || queryProduct || 'Commercial inflatable products');
       const requirements = String(data.get('Requirements') || initialMessage);
       const pageUrlLine = /Page URL:/i.test(requirements) ? '' : `\n\nPage URL: ${activeSourceUrl}`;
-      return `${requirements}${pageUrlLine}\n\nProduct: ${productName}\nName: ${String(data.get('Name') || '')}\nEmail: ${String(data.get('Email') || '')}\nCompany: ${String(data.get('Company') || '')}\nCountry: ${String(data.get('Country') || '')}`;
+      return `${requirements}${pageUrlLine}\n\nProduct: ${productName}\nName: ${String(data.get('Name') || '')}\nEmail: ${String(data.get('Email') || '')}\nPhone / WhatsApp: ${String(data.get('Phone / WhatsApp') || '')}\nCompany: ${String(data.get('Company') || '')}\nBuyer type: ${String(data.get('Buyer Type') || '')}\nCountry: ${String(data.get('Country') || '')}\nQuantity: ${String(data.get('Quantity') || '')}\nDestination: ${String(data.get('Destination') || '')}\nTimeline: ${String(data.get('Timeline') || '')}`;
     };
     whatsappButton?.addEventListener('click', (event) => {
       event.preventDefault();
@@ -69,6 +99,12 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
     form?.addEventListener('submit', (event) => {
       event.preventDefault();
       if (!form.reportValidity()) return;
+      if (!emailInput?.value.trim() && !phoneInput?.value.trim()) {
+        phoneInput?.setCustomValidity('Please enter a work email or WhatsApp number.');
+        phoneInput?.reportValidity();
+        phoneInput?.setCustomValidity('');
+        return;
+      }
       const data = new FormData(form);
       const subject = `Quotation request: ${String(data.get('Product') || queryProduct || 'Commercial inflatables')}`;
       const message = buildMessage();
@@ -90,6 +126,12 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
           toast?.classList.add('is-visible');
           form.reset();
           if (sourceInput) sourceInput.value = activeSourceUrl;
+          if (productInput) productInput.value = queryProduct;
+          if (messageInput) messageInput.value = initialMessage;
+          Object.entries(attributionFields).forEach(([name, value]) => {
+            const input = document.querySelector(`input[name="${name}"]`) as HTMLInputElement | null;
+            if (input) input.value = value;
+          });
         })
         .catch(() => {
           window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;

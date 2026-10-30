@@ -44,13 +44,12 @@ const breadcrumbSchema = {
 };
 ---
 
-<SiteLayout title={`Commercial Inflatable Products | Page ${page} | OEM Factory | YIC`} description={`Browse page ${page} of YIC commercial inflatable products for party rental, event, and family entertainment businesses. OEM and custom production support available.`} keywords="commercial inflatable products, OEM inflatable factory, commercial bounce house supplier, custom inflatables">
+<SiteLayout title={`Commercial Inflatable Product Catalog | Page ${page} | YIC`} description={`Browse additional commercial inflatable models in the YIC product catalog. Open any model for product details and a factory quotation.`} keywords="commercial inflatable products, OEM inflatable factory, custom inflatables" robots="noindex, follow">
   <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)}></script>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
-  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / Page {page}</div><p class="eyebrow">Product catalog · Page {page}</p><h1>Commercial Inflatable Products from an OEM Factory</h1><p>Browse page {page} of the YIC commercial product catalog. Compare models, open full specifications, and send the products you want quoted.</p></div></section>
+  <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / Page {page}</div><p class="eyebrow">Product catalog · Page {page}</p><h1>More Commercial Inflatable Models</h1><p>Compare additional catalog models, then open the product page for specifications, customization scope, and a factory quotation request.</p></div></section>
   <section class="section catalog-page"><div class="container">
-    <div class="catalog-page-intro"><p class="eyebrow">Commercial product catalog</p><p>YIC supplies commercial inflatables for rental companies, entertainment venues, events, resorts, and distributors. Send us the models, quantity, destination, and customization details you need quoted.</p></div>
-    <div class="section-heading catalog-heading"><div><p class="eyebrow">Factory catalog</p><h2>Products ready for your next quote</h2></div><p>Choose a model to view all photos, specifications, customization options, and buyer FAQs.</p></div>
+    <div class="section-heading catalog-heading"><div><p class="eyebrow">Factory catalog</p><h2>Models on this page</h2></div><p>Choose a model to view all photos, specifications, customization options, and buyer FAQs.</p></div>
     <div class="product-grid">{pageProducts.map((product) => <ProductCard product={product} />)}</div>
     <Pagination currentPage={page} totalPages={totalPages} basePath="/products/" />
   </div></section>

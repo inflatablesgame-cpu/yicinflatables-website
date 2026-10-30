@@ -3233,16 +3233,24 @@ function bounceHouseCoreKeyword(product: Product) {
   return source.includes('bounce') || source.includes('castle') ? source : `${source} ${suffix}`;
 }
 
+function normalizeCoreKeyword(value: string) {
+  return value
+    .replace(/\bfor sale(?:\s+for sale)+\b/gi, 'for sale')
+    .replace(/\bfor rental(?:\s+for rental)+\b/gi, 'for rental')
+    .replace(/\bcommercial-grade\b/gi, 'commercial grade')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 // Keep the canonical phrase consistent across visible headings and image labels.
 export function productPrimaryKeyword(product: Product) {
-  if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
-    return bounceHouseCoreKeyword(product);
-  }
-  const waterSlide = waterSlideProfile(product);
-  if (waterSlide) return waterSlide.keywords[0];
-  const newThemePark = newThemeParkProfile(product);
-  if (newThemePark) return newThemePark.coreKeyword;
-  return productKeywordVariants(product)[0] ?? productDisplayTitle(product);
+  const keyword = product.category === 'Bounce House' || product.category === 'Bounce House Combo'
+    ? bounceHouseCoreKeyword(product)
+    : waterSlideProfile(product)?.keywords[0]
+      ?? newThemeParkProfile(product)?.coreKeyword
+      ?? productKeywordVariants(product)[0]
+      ?? productDisplayTitle(product);
+  return normalizeCoreKeyword(keyword);
 }
 
 export function productKeywordVariants(product: Product) {
@@ -3502,11 +3510,7 @@ export function productDisplayTitle(product: Product) {
  * intent suffix so the visible title remains useful and unambiguous.
  */
 function productHeadingBase(product: Product) {
-  const baseTitle = productPrimaryKeyword(product)
-    .trim()
-    .replace(/\bfor sale(?:\s+for sale)+\b/gi, 'for sale')
-    .replace(/\bfor rental(?:\s+for rental)+\b/gi, 'for rental')
-    .replace(/\bcommercial-grade\b/gi, 'commercial grade');
+  const baseTitle = normalizeCoreKeyword(productPrimaryKeyword(product));
   const title = baseTitle ? baseTitle.charAt(0).toUpperCase() + baseTitle.slice(1) : productDisplayTitle(product).trim();
   const words = title.split(/\s+/).filter(Boolean);
   if (words.length >= 3) return title;
@@ -3582,13 +3586,18 @@ function initializeProductSeoTitles() {
 
 export function productSeoTitle(product: Product) {
   initializeProductSeoTitles();
-  const base = baseProductSeoTitles!.get(product.slug) ?? buildProductSeoTitle(product);
-  if ((productSeoTitleCounts!.get(normalizedProductText(base)) ?? 0) < 2) return base;
+  const candidate = baseProductSeoTitles!.get(product.slug) ?? buildProductSeoTitle(product);
+  const core = normalizeCoreKeyword(productPrimaryKeyword(product));
+  const normalizedCore = normalizedProductText(core);
+  const normalizedCandidate = normalizedProductText(candidate);
+  if ((productSeoTitleCounts!.get(normalizedCandidate) ?? 0) < 2
+    && normalizedCandidate.includes(normalizedCore)) return candidate;
 
   const qualifier = productSeoDifferentiator(product);
-  const core = productPrimaryKeyword(product);
-  const maxCoreLength = Math.max(16, 62 - qualifier.length - ' |  | YIC'.length);
-  return seoTitle(`${truncateMeta(core, maxCoreLength, '')} | ${qualifier}`);
+  const coreWithQualifier = `${core} | ${qualifier}`;
+  // A core phrase is more important than a generic suffix. Keep it whole even
+  // when the result is slightly longer than the usual desktop title target.
+  return seoTitle(coreWithQualifier.length <= 58 ? coreWithQualifier : core);
 }
 
 let baseProductMetaDescriptions: Map<string, string> | undefined;
@@ -3600,10 +3609,7 @@ function initializeProductMetaDescriptions() {
 
   const drafts = new Map(products.map((item) => {
     const description = baseProductMetaDescriptions!.get(item.slug) ?? '';
-    const core = productPrimaryKeyword(item)
-      .replace(/\bfor sale(?:\s+for sale)+\b/gi, 'for sale')
-      .replace(/\bfor rental(?:\s+for rental)+\b/gi, 'for rental')
-      .replace(/\bcommercial-grade\b/gi, 'commercial grade');
+    const core = normalizeCoreKeyword(productPrimaryKeyword(item));
     const normalizedCore = core.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
     const normalizedDescription = description.toLowerCase().replace(/[^a-z0-9]+/g, ' ');
     if (normalizedDescription.includes(normalizedCore)) return [item.slug, description];

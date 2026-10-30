@@ -13,3 +13,7 @@
 /products/bounce-house-combo/4mx4mx2-5m-lion-king-bounce-house/ /products/bounce-house-combos/lion-king-bounce-house/ 301
 /products/bounce-house-combo/ /products/bounce-house-combos/ 301
 /products/bounce-house-combo/* /products/bounce-house-combos/:splat 301
+/product /products/ 301
+/product/bounce-house-combo/ /products/bounce-house-combos/ 301
+/product/bounce-house-combo/* /products/bounce-house-combos/:splat 301
+/product/* /products/:splat 301
