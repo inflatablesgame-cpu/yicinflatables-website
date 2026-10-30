@@ -20,17 +20,12 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
   <section class="section"><div class="container contact-grid">
     <div class="contact-copy"><p class="eyebrow">Direct contact</p><h2>Clear answers, from the people coordinating your order</h2><p>For the fastest response, include the product category, target quantity, country, preferred size, branding requirements, and expected delivery date.</p><div class="contact-list"><div class="contact-list-group"><span>Email</span><span>{company.teamEmails.map((email) => <a href={`mailto:${email}`}>{email}</a>)}</span></div><div class="contact-list-group"><span>WhatsApp</span><span>{company.teamWhatsApp.map((number, index) => <a href={`https://wa.me/${number}`} target="_blank" rel="noopener">{company.teamWhatsAppDisplay[index]}</a>)}</span></div><a href={company.facebook} target="_blank" rel="noopener"><span>Facebook</span><span>YIC Inflatable Sports</span></a><a href={company.youtube} target="_blank" rel="noopener"><span>YouTube</span><span>@YICInflatables</span></a><div><span>Website</span><span>{company.domain}</span></div></div></div>
     <form id="quote-form" class="quote-form" data-quote-form action={formEndpoint} method="post">
-      <h2>Request a factory quotation</h2><p>Give us your name plus either a work email or WhatsApp number. Product, quantity, destination, and timeline help the factory prepare a practical quotation without guessing.</p>
+      <h2>Request a factory quotation</h2><p>Start with your name and one contact method. Add purchasing details only if you have them ready.</p>
       <div class="form-grid">
         <div class="form-field"><label for="name">Name</label><input id="name" name="Name" autocomplete="name" required /></div>
         <div class="form-field"><label for="company">Company <span>(optional)</span></label><input id="company" name="Company" autocomplete="organization" /></div>
         <div class="form-field"><label for="email">Work email <span>(email or WhatsApp required)</span></label><input id="email" name="Email" type="email" autocomplete="email" /></div>
         <div class="form-field"><label for="phone">Phone / WhatsApp <span>(email or WhatsApp required)</span></label><input id="phone" name="Phone / WhatsApp" type="tel" autocomplete="tel" /></div>
-        <div class="form-field"><label for="buyer-type">I am purchasing for <span>(optional)</span></label><select id="buyer-type" name="Buyer Type"><option value="">Select buyer type</option><option>Importer / distributor</option><option>Rental or event business</option><option>FEC, resort, or venue</option><option>Brand activation or agency</option><option>School, club, or community program</option><option>Other commercial use</option></select></div>
-        <div class="form-field"><label for="country">Country <span>(optional)</span></label><input id="country" name="Country" autocomplete="country-name" /></div>
-        <div class="form-field"><label for="quantity">Estimated quantity <span>(optional)</span></label><input id="quantity" name="Quantity" placeholder="e.g. 1 model / 10 units" /></div>
-        <div class="form-field"><label for="destination">Delivery city or port <span>(optional)</span></label><input id="destination" name="Destination" autocomplete="address-level2" /></div>
-        <div class="form-field"><label for="timeline">Target purchasing timeline <span>(optional)</span></label><select id="timeline" name="Timeline"><option value="">Select timeline</option><option>Researching / planning</option><option>Within 30 days</option><option>1-3 months</option><option>More than 3 months</option></select></div>
         <input type="hidden" name="Product" value={product} />
         <input type="hidden" name="Source page URL" value={sourceUrl} />
         <input type="hidden" name="Initial Landing Page" value="" />
@@ -41,8 +36,18 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
         <input type="hidden" name="UTM Content" value="" />
         <input type="hidden" name="GCLID" value="" />
         <input type="hidden" name="MSCLKID" value="" />
-        <div class="form-field full"><label for="message">Requirements <span>(optional)</span></label><textarea id="message" name="Requirements" placeholder="Quantity, size, logo, colors, delivery date, and any other details">{prefillMessage}</textarea></div>
-        <div class="form-field full"><div class="quote-actions"><button class="button" type="submit">Send by email <span aria-hidden="true">→</span></button><a class="button button-whatsapp" data-whatsapp-button href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(quickWhatsAppText)}`} target="_blank" rel="noopener">Quick WhatsApp <span aria-hidden="true">→</span></a></div></div>
+        <div class="form-field full quote-actions-field"><div class="quote-actions"><button class="button" type="submit">Send inquiry <span aria-hidden="true">→</span></button><a class="button button-whatsapp" data-whatsapp-button href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(quickWhatsAppText)}`} target="_blank" rel="noopener">Quick WhatsApp <span aria-hidden="true">→</span></a></div><p class="quote-action-note">You can send now. Extra details help us prepare a more accurate quotation.</p></div>
+        <details class="quote-details full">
+          <summary>Add purchasing details for a more accurate quote <span>(optional)</span></summary>
+          <div class="quote-details-grid">
+            <div class="form-field"><label for="buyer-type">I am purchasing for <span>(optional)</span></label><select id="buyer-type" name="Buyer Type"><option value="">Select buyer type</option><option>Importer / distributor</option><option>Rental or event business</option><option>FEC, resort, or venue</option><option>Brand activation or agency</option><option>School, club, or community program</option><option>Other commercial use</option></select></div>
+            <div class="form-field"><label for="country">Country <span>(optional)</span></label><input id="country" name="Country" autocomplete="country-name" /></div>
+            <div class="form-field"><label for="quantity">Estimated quantity <span>(optional)</span></label><input id="quantity" name="Quantity" placeholder="e.g. 1 model / 10 units" /></div>
+            <div class="form-field"><label for="destination">Delivery city or port <span>(optional)</span></label><input id="destination" name="Destination" autocomplete="address-level2" /></div>
+            <div class="form-field"><label for="timeline">Target purchasing timeline <span>(optional)</span></label><select id="timeline" name="Timeline"><option value="">Select timeline</option><option>Researching / planning</option><option>Within 30 days</option><option>1-3 months</option><option>More than 3 months</option></select></div>
+            <div class="form-field full"><label for="message">Requirements <span>(optional)</span></label><textarea id="message" name="Requirements" placeholder="Quantity, size, logo, colors, delivery date, and any other details">{prefillMessage}</textarea></div>
+          </div>
+        </details>
       </div>
     </form>
   </div></section>

@@ -541,6 +541,14 @@ h3 { font-size: 1.25rem; }
 .form-field textarea { min-height: 130px; resize: vertical; }
 .quote-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .quote-actions .button { min-width: 175px; }
+.quote-actions-field { gap: 8px; }
+.quote-action-note { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.45; }
+.quote-details { grid-column: 1 / -1; margin-top: 2px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.quote-details summary { display: flex; align-items: baseline; gap: 5px; padding: 14px 0; cursor: pointer; color: var(--teal); font-size: .85rem; font-weight: 800; }
+.quote-details summary::marker { color: var(--teal); }
+.quote-details summary span { color: var(--muted); font-weight: 500; }
+.quote-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 2px 0 20px; }
+.quote-details-grid .full { grid-column: 1 / -1; }
 .button-whatsapp { border-color: #159b58; background: #159b58; color: var(--white); }
 .button-whatsapp:hover { border-color: #117b46; background: #117b46; }
 .success-toast { position: fixed; z-index: 50; top: 94px; right: 24px; padding: 13px 18px; background: var(--ink-strong); color: var(--white); font-size: .86rem; font-weight: 800; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(-8px); transition: opacity .2s, transform .2s; }
@@ -694,8 +702,10 @@ h3 { font-size: 1.25rem; }
   .product-planning-grid article { min-height: 0; }
   .product-planning-grid article > p { margin-top: 12px; }
   .product-buyer-fit { grid-template-columns: 1fr; gap: 8px; }
-  .faq-list, .form-grid { grid-template-columns: 1fr; }
+  .faq-list, .form-grid, .quote-details-grid { grid-template-columns: 1fr; }
   .form-field.full { grid-column: auto; }
+  .quote-details { grid-column: auto; }
+  .quote-details-grid .full { grid-column: auto; }
   .quote-form { padding: 23px; }
   .about-image-grid { grid-template-columns: 1fr 1fr; }
   .about-quality-grid { grid-template-columns: 1fr; }
