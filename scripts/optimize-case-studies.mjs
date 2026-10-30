@@ -78,8 +78,7 @@ for (const [slug, source] of projectImages) {
   await writeWebp(source, `projects/${slug}.webp`, {
     width: 960,
     height: 720,
-    fit: 'contain',
-    background: { r: 244, g: 247, b: 248, alpha: 1 },
+    fit: 'inside',
     withoutEnlargement: true,
     quality: 76,
   });
@@ -89,8 +88,7 @@ for (const [slug, source] of buyerReferences) {
   await writeWebp(source, `buyers/${slug}.webp`, {
     width: 160,
     height: 100,
-    fit: 'contain',
-    background: { r: 255, g: 255, b: 255, alpha: 0 },
+    fit: 'inside',
     withoutEnlargement: true,
     quality: 82,
   });

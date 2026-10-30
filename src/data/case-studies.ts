@@ -7,9 +7,10 @@ export type CaseStudy = {
   segment: 'bounce-slide' | 'games-obstacle' | 'water-park' | 'events-branding';
   image: string;
   alt: string;
+  buyerReference?: { country: string; image: string };
 };
 
-const image = (slug: string) => `/assets/case-studies/projects/${slug}.webp`;
+const image = (slug: string) => `/assets/case-studies/projects/${slug}.webp?v=2`;
 
 export const caseStudies: CaseStudy[] = [
   { id: 'argentina-soccer-slide', title: 'Soccer-themed inflatable slide', country: 'Argentina', productType: 'Inflatable slide and jumping bouncer', application: 'Kids playground project', segment: 'bounce-slide', image: image('argentina-soccer-slide'), alt: 'Soccer-themed Argentina inflatable slide and jumping bouncer at a kids playground' },
@@ -58,7 +59,7 @@ export const selectedCaseStudies = getCaseStudies([
   'peru-soccer-field',
 ]);
 
-const referenceImage = (id: string) => `/assets/case-studies/buyers/${id}.webp`;
+const referenceImage = (id: string) => `/assets/case-studies/buyers/${id}.webp?v=2`;
 
 export const buyerReferences = [
   { country: 'Argentina', image: referenceImage('argentina-1') },
@@ -87,3 +88,24 @@ export const buyerReferences = [
   { country: 'United States', image: referenceImage('usa-5') },
   { country: 'United States', image: referenceImage('usa-6') },
 ];
+
+const referencesByCountry = buyerReferences.reduce((groups, reference) => {
+  const references = groups.get(reference.country) ?? [];
+  references.push(reference);
+  groups.set(reference.country, references);
+  return groups;
+}, new Map<string, typeof buyerReferences>());
+
+const usedBuyerReferences = new Set<string>();
+const projectIndexByCountry = new Map<string, number>();
+
+// Numbered customer references match the same-country project photo sequence.
+export const caseStudyCards = caseStudies.map((caseStudy) => {
+  const projectIndex = projectIndexByCountry.get(caseStudy.country) ?? 0;
+  projectIndexByCountry.set(caseStudy.country, projectIndex + 1);
+  const buyerReference = referencesByCountry.get(caseStudy.country)?.[projectIndex];
+  if (buyerReference) usedBuyerReferences.add(buyerReference.image);
+  return { ...caseStudy, buyerReference };
+});
+
+export const unmatchedBuyerReferences = buyerReferences.filter((reference) => !usedBuyerReferences.has(reference.image));

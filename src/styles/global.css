@@ -567,11 +567,15 @@ h3 { font-size: 1.25rem; }
 .case-card-copy h3 { margin: 0 0 7px; font-size: 1.18rem; }
 .case-card-copy > p:not(.case-country) { margin: 0; color: var(--ink); font-weight: 700; }
 .case-card-copy > span { display: block; margin-top: 7px; color: var(--muted); font-size: .84rem; }
+.case-buyer-reference { display: grid; justify-items: start; gap: 4px; margin: 14px 0 0; padding: 9px; border: 1px solid var(--line); background: var(--surface); }
+.case-buyer-reference img { display: block; width: min(100%, 220px); height: auto; object-fit: contain; background: var(--white); }
+.case-buyer-reference figcaption { color: var(--muted); font-size: .72rem; font-weight: 700; }
 .case-card-copy .text-link { display: inline-block; margin-top: 15px; font-size: .82rem; }
 .case-reference-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
 .case-reference-layout > div > p:not(.eyebrow) { max-width: 500px; color: var(--muted); line-height: 1.7; }
 .case-reference-note { font-size: .86rem; }
 .buyer-reference-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.buyer-reference-grid-single { grid-template-columns: minmax(0, 220px); }
 .buyer-reference { margin: 0; min-width: 0; border: 1px solid var(--line); background: var(--surface); text-align: center; }
 .buyer-reference img { display: block; width: 100%; height: 78px; object-fit: contain; padding: 9px; background: var(--white); }
 .buyer-reference figcaption { padding: 9px; color: var(--ink); font-size: .74rem; font-weight: 800; line-height: 1.25; }
@@ -712,6 +716,7 @@ h3 { font-size: 1.25rem; }
   .process-grid { grid-template-columns: 1fr 1fr; }
   .proof-grid, .use-case-grid, .resource-grid { grid-template-columns: 1fr; }
   .buyer-reference-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .buyer-reference-grid.buyer-reference-grid-single { grid-template-columns: minmax(0, 220px); }
   .why-benefits { grid-template-columns: 1fr; }
   .exhibition-proof-grid { grid-template-columns: 1fr; }
   .article-grid, .faq-directory { grid-template-columns: 1fr; }
