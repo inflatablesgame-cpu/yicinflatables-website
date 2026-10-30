@@ -553,7 +553,7 @@ h3 { font-size: 1.25rem; }
 .button-whatsapp:hover { border-color: #117b46; background: #117b46; }
 .case-feature-grid, .case-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .case-feature, .case-preview-card, .case-card { overflow: hidden; background: var(--white); border: 1px solid var(--line); }
-.case-feature img, .case-preview-card img, .case-card > img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.case-feature img, .case-preview-card img, .case-card > img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: var(--surface); }
 .case-feature > div, .case-preview-card > div { padding: 18px; }
 .case-feature p, .case-preview-card p, .case-country { margin: 0 0 7px; color: var(--teal); font-size: .74rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .case-feature h2 { margin: 0 0 7px; font-size: 1.35rem; }

@@ -78,8 +78,8 @@ for (const [slug, source] of projectImages) {
   await writeWebp(source, `projects/${slug}.webp`, {
     width: 960,
     height: 720,
-    fit: 'cover',
-    position: 'centre',
+    fit: 'contain',
+    background: { r: 244, g: 247, b: 248, alpha: 1 },
     withoutEnlargement: true,
     quality: 76,
   });
