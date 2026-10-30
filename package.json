@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "sync:assets": "node scripts/sync-assets.mjs",
     "optimize:images": "node scripts/optimize-page-images.mjs",
+    "optimize:case-studies": "node scripts/optimize-case-studies.mjs",
     "build:site": "npm run sync:assets && astro build"
   },
   "dependencies": {

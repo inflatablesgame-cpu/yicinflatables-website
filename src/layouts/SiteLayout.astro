@@ -134,6 +134,7 @@ const websiteSchema = {
             </div>
           </div>
           <a class:list:active={currentPath.startsWith('/about')} aria-current={currentPath.startsWith('/about') ? 'page' : undefined} href="/about/">About</a>
+          <a class:list:active={currentPath.startsWith('/case-studies')} aria-current={currentPath.startsWith('/case-studies') ? 'page' : undefined} href="/case-studies/">Projects</a>
           <a class:list:active={currentPath.startsWith('/blog')} aria-current={currentPath.startsWith('/blog') ? 'page' : undefined} href="/blog/">Blog</a>
           <a class:list:active={currentPath.startsWith('/faq')} aria-current={currentPath.startsWith('/faq') ? 'page' : undefined} href="/faq/">FAQ</a>
           <a class:list:active={currentPath === '/contact/'} aria-current={currentPath === '/contact/' ? 'page' : undefined} href="/contact/">Contact</a>
@@ -163,6 +164,7 @@ const websiteSchema = {
           <h2>Explore</h2>
           <a href="/products/">Product categories</a>
           <a href="/about/">Factory and quality</a>
+          <a href="/case-studies/">Project examples</a>
           <a href="/blog/">Buyer resources</a>
           <a href="/faq/">Frequently asked questions</a>
           <a href="/contact/">OEM and ODM service</a>

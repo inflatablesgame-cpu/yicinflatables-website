@@ -6,6 +6,7 @@ export function GET() {
     '/',
     '/products/',
     '/about/',
+    '/case-studies/',
     '/contact/',
     '/blog/',
     '/faq/',
