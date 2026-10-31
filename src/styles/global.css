@@ -566,11 +566,15 @@ h3 { font-size: 1.25rem; }
 .case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .case-card-copy { padding: 18px; }
 .case-card-copy h3 { margin: 0 0 7px; font-size: 1.18rem; }
-.case-card-copy > p:not(.case-country) { margin: 0; color: var(--ink); font-weight: 700; }
+.case-card-copy > p.case-product-type { margin: 0; color: var(--ink); font-weight: 700; }
 .case-card-copy > span { display: block; margin-top: 7px; color: var(--muted); font-size: .84rem; }
+.case-card-copy .case-detail-copy { margin: 14px 0 0; color: var(--ink); font-size: .9rem; line-height: 1.65; }
+.case-card-copy .case-buyer-focus { margin: 12px 0 0; padding: 10px 12px; border-left: 3px solid var(--teal); background: var(--surface); color: var(--muted); font-size: .82rem; line-height: 1.55; }
+.case-buyer-focus strong { color: var(--ink); }
+.case-card-actions { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 4px; }
 .case-buyer-reference { display: block; width: 82px; margin: 0 0 12px; padding: 3px; border: 1px solid var(--line); background: var(--surface); }
 .case-buyer-reference img { display: block; width: 100%; height: auto; background: var(--white); }
-.case-card-copy .text-link { display: inline-block; margin-top: 15px; font-size: .82rem; }
+.case-card-copy .text-link, .case-feature .text-link { display: inline-block; margin-top: 15px; font-size: .82rem; }
 .case-reference-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
 .case-reference-layout > div > p:not(.eyebrow) { max-width: 500px; color: var(--muted); line-height: 1.7; }
 .case-reference-note { font-size: .86rem; }
