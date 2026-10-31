@@ -108,6 +108,7 @@ export const buyerReferences = [
   { country: 'France', image: referenceImage('france-1') },
   { country: 'Germany', image: referenceImage('germany-1') },
   { country: 'Peru', image: referenceImage('peru-1') },
+  { country: 'Peru', image: referenceImage('peru-2') },
   { country: 'Philippines', image: referenceImage('philippines-1') },
   { country: 'Poland', image: referenceImage('poland-1') },
   { country: 'South Africa', image: referenceImage('south-africa-1') },
