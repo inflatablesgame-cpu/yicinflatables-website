@@ -1,11 +1,13 @@
 import { categories, products, categoryPath, company, productPath } from '../data/site';
 import { blogArticles } from '../data/blog';
+import { caseStudyCards } from '../data/case-studies';
 
 export function GET() {
   const urls = [
     '/',
     '/products/',
     '/about/',
+    '/factory-evidence/',
     '/case-studies/',
     '/contact/',
     '/blog/',
@@ -13,6 +15,7 @@ export function GET() {
     '/privacy/',
     '/terms/',
     '/shipping/',
+    ...caseStudyCards.map((caseStudy) => `/case-studies/${caseStudy.id}/`),
     ...blogArticles.map((article) => `/blog/${article.slug}/`),
     ...categories.map((category) => categoryPath(category)),
     ...products.map((product) => productPath(product)),

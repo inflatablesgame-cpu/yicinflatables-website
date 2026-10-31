@@ -85,6 +85,102 @@ export const company = {
   linkedin: 'https://www.linkedin.com/in/inflatable--toys-factory/',
 };
 
+export type ProductComplianceProfile = {
+  summary: string;
+  eu: string;
+  us: string;
+  fire: string;
+  scope: string;
+};
+
+/**
+ * Compliance language is deliberately scoped by product family and destination
+ * market. A product image, a generic certificate, or a component certificate
+ * must never be presented as proof that every configuration is certified for
+ * every market. The final order file remains the source of truth.
+ */
+export function productComplianceProfile(product: Product): ProductComplianceProfile {
+  const searchable = `${product.category} ${product.title} ${product.sourceName}`.toLowerCase();
+  const waterBorne = product.category === 'Inflatable Water Park'
+    || /water park|floating|water teeter|water walking|paddle boat/.test(searchable);
+  const landPlay = !waterBorne && [
+    'Bounce House',
+    'Bounce House Combo',
+    'Inflatable Obstacle Course',
+    'Inflatable Slide',
+    'Inflatable Theme Park',
+    'Inflatable Games',
+    'Inflatable Mechanical Games',
+  ].includes(product.category);
+  const waterSlide = !waterBorne && /water slide|wet and dry|pool slide|slip and slide/.test(searchable);
+  const eventStructure = product.category === 'Inflatable Tent' || product.category === 'Advertising Inflatable';
+
+  if (waterBorne) return {
+    summary: 'Market-specific documentation review for water-borne and recreation equipment',
+    eu: 'EN 14960 is not automatically applied to water-borne leisure equipment; confirm the exact product, water-site and destination-market documentation required for the final order.',
+    us: 'Confirm the applicable local water-attraction, venue, operator and equipment requirements for the final configuration; ASTM F2374 is not presented as an automatic certification for floating products.',
+    fire: 'NFPA 701 or equivalent flame documentation is reviewed only when requested and applicable to the specified textile or film components.',
+    scope: 'Final documents, operating instructions and any test scope are confirmed against the approved model, components, destination and intended water use.',
+  };
+
+  if (waterSlide) return {
+    summary: 'Commercial inflatable slide documentation reviewed by destination market',
+    eu: 'For European projects, YIC reviews whether EN 14960-1 and any local operating requirements apply to the final dry or wet slide configuration.',
+    us: 'For United States projects, YIC reviews the final land-based inflatable slide configuration against the buyer’s ASTM F2374 and local venue requirements where applicable.',
+    fire: 'NFPA 701 or equivalent flame documentation can be reviewed for applicable fabric or film components when the project scope requires it.',
+    scope: 'The final order must confirm wet-use configuration, landing or pool layout, blower or pump components, anchoring, instructions and destination-market documentation.',
+  };
+
+  if (landPlay) return {
+    summary: 'Commercial inflatable amusement documentation reviewed by destination market',
+    eu: 'For European projects, YIC reviews the final inflatable play configuration against EN 14960-1 requirements and the buyer’s local operating rules where applicable.',
+    us: 'For United States projects, YIC reviews the final commercial inflatable amusement configuration against ASTM F2374 and applicable local venue requirements where requested.',
+    fire: 'NFPA 701 or equivalent flame documentation can be reviewed for applicable textile or film components when required by the project or venue.',
+    scope: 'Standards, test scope, labels, anchoring, blower components and operating instructions are confirmed for the approved model rather than inferred from a catalog photo.',
+  };
+
+  if (eventStructure) return {
+    summary: 'Event-structure, component and destination-market documentation review',
+    eu: 'For European projects, confirm the final structure, anchoring, electrical components and any event-venue documentation required for the specified installation.',
+    us: 'For United States projects, confirm the final structure, anchoring, electrical components and local event-venue requirements for the specified installation.',
+    fire: 'NFPA 701 or equivalent flame documentation can be reviewed for applicable fabric or film components when the venue or project scope requires it.',
+    scope: 'CE documentation, where applicable, relates to specified electrical or mechanical components such as blowers or pumps; it is not shown as a blanket certification for every custom structure.',
+  };
+
+  return {
+    summary: 'Product-specific documentation and destination-market review',
+    eu: 'Confirm the final product, components and local European market requirements before production.',
+    us: 'Confirm the final product, components and local United States market requirements before production.',
+    fire: 'NFPA 701 or equivalent flame documentation is reviewed only when requested and applicable to the final component scope.',
+    scope: 'Documentation, labels, instructions and any test scope are confirmed against the approved order specification and destination market.',
+  };
+}
+
+export type ProductEvidenceProfile = {
+  modelId: string;
+  specification: string;
+  procurement: string;
+  productionRecord: string;
+};
+
+/**
+ * Stable product facts used on the visible page and in structured data. This
+ * makes each catalog record easier for a buyer or AI system to identify without
+ * inventing unlisted performance, capacity or certification claims.
+ */
+export function productEvidenceProfile(product: Product): ProductEvidenceProfile {
+  const detail = productDetailContent(product);
+  const index = Math.max(0, products.findIndex((item) => item.slug === product.slug)) + 1;
+  const modelId = `YIC-${product.categorySlug.replace(/[^a-z0-9]+/gi, '-').toUpperCase()}-${String(index).padStart(3, '0')}`;
+  const dimensions = product.dimensions?.trim() || 'Custom dimensions available';
+  return {
+    modelId,
+    specification: `${dimensions} reference size · ${product.material}`,
+    procurement: `${detail.primaryBuyer}. Final quotation confirms the selected layout, accessories, artwork, packing and destination requirements.`,
+    productionRecord: 'Artwork approval, material and dimension confirmation, in-process checks, inflation or operation review, final inspection and export packing are recorded against the approved order specification.',
+  };
+}
+
 const categorySummaries: Record<string, string> = {
   'Advertising Inflatable': 'Branded inflatable displays, promotional bars, tents, and eye-catching event structures for retail and activations.',
   'Bounce House': 'Commercial bounce houses designed for party rental operators, venues, and family events.',
@@ -3242,8 +3338,38 @@ function normalizeCoreKeyword(value: string) {
     .trim();
 }
 
-// Keep the canonical phrase consistent across visible headings and image labels.
-export function productPrimaryKeyword(product: Product) {
+function normalizedKeywordKey(value: string) {
+  return normalizeCoreKeyword(value).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+function keywordVariantForDuplicate(product: Product, duplicateGroup: Product[], baseKeyword: string) {
+  const searchable = `${product.title} ${product.sourceName} ${product.productSlug}`.toLowerCase();
+  const baseWords = new Set(normalizedKeywordKey(baseKeyword).split(' ').filter(Boolean));
+  const ignored = new Set(['a', 'and', 'bounce', 'bouncy', 'castle', 'commercial', 'for', 'house', 'inflatable', 'of', 'sale', 'slide', 'the', 'with']);
+  const visibleExtras = productDisplayTitle(product)
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((word) => word && !baseWords.has(word) && !ignored.has(word));
+  if (visibleExtras.length) return visibleExtras.slice(0, 2).join(' ');
+  const theme = searchable.match(/\b(shark|dinosaur|jungle|pirate|princess|unicorn|rainbow|tropical|soccer|mario|spider|dragon|castle|wedding|pink|white|blue|red|yellow|dual|double|giant|kids|adult|indoor|outdoor)\b/)?.[1];
+  const base = productDisplayTitle(product).toLowerCase()
+    .replace(/\b(for sale|for rent|rental|manufacturer|supplier|factory)\b/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (theme && !base.includes(theme)) return theme;
+
+  const dimensions = product.dimensions.trim();
+  if (dimensions && !/custom dimensions available/i.test(dimensions)
+    && new Set(duplicateGroup.map((item) => item.dimensions.trim().toLowerCase())).size > 1) {
+    return `${dimensions} model`;
+  }
+
+  const intent = product.productSlug.match(/(?:^|-)(commercial|for-sale|for-rent|for-rental|rental|manufacturer|supplier)(?:-|$)/i)?.[1];
+  if (intent) return intent.replace(/-/g, ' ');
+  return `model ${productCategoryPosition(product) + 1}`;
+}
+
+function baseProductPrimaryKeyword(product: Product) {
   const keyword = product.category === 'Bounce House' || product.category === 'Bounce House Combo'
     ? bounceHouseCoreKeyword(product)
     : waterSlideProfile(product)?.keywords[0]
@@ -3251,6 +3377,36 @@ export function productPrimaryKeyword(product: Product) {
       ?? productKeywordVariants(product)[0]
       ?? productDisplayTitle(product);
   return normalizeCoreKeyword(keyword);
+}
+
+let uniquePrimaryKeywordMap: Map<string, string> | undefined;
+
+function initializeUniquePrimaryKeywords() {
+  if (uniquePrimaryKeywordMap) return;
+  const baseKeywords = new Map(products.map((item) => [item.slug, baseProductPrimaryKeyword(item)]));
+  const groups = new Map<string, Product[]>();
+  for (const item of products) {
+    const key = normalizedKeywordKey(baseKeywords.get(item.slug) ?? '');
+    groups.set(key, [...(groups.get(key) ?? []), item]);
+  }
+  uniquePrimaryKeywordMap = new Map();
+  for (const group of groups.values()) {
+    for (const [index, item] of group.entries()) {
+      const base = baseKeywords.get(item.slug) ?? productDisplayTitle(item);
+      if (index === 0 || group.length < 2) {
+        uniquePrimaryKeywordMap.set(item.slug, base);
+        continue;
+      }
+      const qualifier = keywordVariantForDuplicate(item, group, base);
+      uniquePrimaryKeywordMap.set(item.slug, normalizeCoreKeyword(`${base} ${qualifier}`));
+    }
+  }
+}
+
+// Keep the canonical phrase consistent across visible headings and image labels.
+export function productPrimaryKeyword(product: Product) {
+  initializeUniquePrimaryKeywords();
+  return uniquePrimaryKeywordMap!.get(product.slug) ?? baseProductPrimaryKeyword(product);
 }
 
 export function productKeywordVariants(product: Product) {

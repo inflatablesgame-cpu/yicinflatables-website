@@ -1,0 +1,47 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { caseStudyCards } from '../../data/case-studies';
+import { categories, categoryPath, company, productPath, products } from '../../data/site';
+
+export function getStaticPaths() {
+  return caseStudyCards.map((caseStudy) => ({ params: { id: caseStudy.id }, props: { caseStudy } }));
+}
+
+const { caseStudy } = Astro.props as { caseStudy: (typeof caseStudyCards)[number] };
+const origin = `https://${company.domain}`;
+const product = caseStudy.relatedProductSlug ? products.find((item) => item.productSlug === caseStudy.relatedProductSlug) : undefined;
+const category = caseStudy.relatedCategorySlug ? categories.find((item) => item.slug === caseStudy.relatedCategorySlug) : undefined;
+if (!product && !category) throw new Error(`Related product or category missing for case study: ${caseStudy.id}`);
+const relatedLink = product
+  ? { href: productPath(product), label: product.title }
+  : { href: categoryPath(category!), label: `${category!.name} products` };
+const title = `${caseStudy.title} Project in ${caseStudy.country} | YIC`;
+const description = `${caseStudy.productType} project reference for ${caseStudy.application} in ${caseStudy.country}. Review visible configuration, buyer planning points and a related YIC commercial inflatable product.`;
+const canonical = `${origin}/case-studies/${caseStudy.id}/`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  '@id': `${canonical}#project`,
+  name: `${caseStudy.title} project reference in ${caseStudy.country}`,
+  url: canonical,
+  image: `${origin}${caseStudy.image}`,
+  description: caseStudy.description,
+  about: { '@type': 'Thing', name: caseStudy.productType },
+  locationCreated: { '@type': 'Country', name: caseStudy.country },
+  creator: { '@id': `${origin}/#organization` },
+  isBasedOn: { '@type': 'Product', name: relatedLink.label, url: `${origin}${relatedLink.href}` },
+};
+---
+
+<SiteLayout title={title} description={description} image={caseStudy.image} imageAlt={caseStudy.alt} preloadImage keywords={`${caseStudy.title}, ${caseStudy.country} inflatable project, ${caseStudy.productType}, commercial inflatable project reference`}>
+  <article class="case-study-detail">
+    <section class="page-hero case-study-detail-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/case-studies/">Project examples</a> / {caseStudy.title}</div><p class="eyebrow">Project reference · {caseStudy.country}</p><h1>{caseStudy.title} in {caseStudy.country}</h1><p>{caseStudy.description}</p><div class="hero-actions"><a class="button" href={relatedLink.href}>View related product</a><a class="button button-secondary" href={`/contact/?product=${encodeURIComponent(caseStudy.productType)}&source=${encodeURIComponent(canonical)}`}>Discuss a similar project</a></div></div></section>
+
+    <section class="section"><div class="container case-study-detail-grid"><figure class="case-study-main-image"><img src={caseStudy.image} alt={caseStudy.alt} width="1200" height="900" fetchpriority="high" decoding="async" />{caseStudy.buyerReference && <figcaption><img src={caseStudy.buyerReference.image} alt={`Flag and partially obscured customer name for ${caseStudy.country}`} width="102" height="74" loading="lazy" /><span>Buyer reference supplied for this market</span></figcaption>}</figure><div class="case-study-facts"><p class="eyebrow">Project facts</p><h2>What this reference shows</h2><dl><div><dt>Market</dt><dd>{caseStudy.country}</dd></div><div><dt>Product category</dt><dd>{caseStudy.productType}</dd></div><div><dt>Application</dt><dd>{caseStudy.application}</dd></div><div><dt>Related catalog route</dt><dd><a href={relatedLink.href}>{relatedLink.label}</a></dd></div></dl><div class="case-study-note"><strong>Evidence scope</strong><p>This page documents the visible project reference and its stated market context. Final dimensions, material, artwork, accessories, operating requirements and delivery scope are confirmed for each order—not inferred from the image alone.</p></div></div></div></section>
+
+    <section class="section section-muted"><div class="container case-study-learning-grid"><article><p class="eyebrow">Buyer planning</p><h2>Questions to resolve before quotation</h2><p>{caseStudy.buyerFocus}</p></article><article><p class="eyebrow">Factory discussion</p><h2>How to use this reference</h2><p>Share your site plan, target users, quantity, required theme or artwork, destination market and delivery timing. YIC can then confirm whether the related catalog model or a custom configuration is the better starting point.</p></article><article><p class="eyebrow">Product link</p><h2>Compare the related model</h2><p>The related catalog page provides the product-level specification, customization options, documentation review and RFQ checklist for this project type.</p><a class="text-link" href={relatedLink.href}>Open {relatedLink.label} →</a></article></div></section>
+
+    <section class="cta-band"><div class="container cta-band-inner"><div><p class="eyebrow">Similar commercial project</p><h2>Planning a {caseStudy.productType} for your market?</h2><p>Send the intended site, quantity, product brief, artwork, target market and delivery date for a practical factory discussion.</p></div><a class="button button-secondary" href={`/contact/?product=${encodeURIComponent(caseStudy.productType)}&source=${encodeURIComponent(canonical)}`}>Request a project quote</a></div></section>
+  </article>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+</SiteLayout>

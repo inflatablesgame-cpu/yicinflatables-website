@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "verify:images": "node scripts/verify-product-images.mjs",
-    "build": "npm run verify:images && astro build",
+    "verify:seo-geo": "node --experimental-strip-types scripts/verify-seo-geo.mjs",
+    "build": "npm run verify:images && npm run verify:seo-geo && astro build",
     "preview": "astro preview",
     "sync:assets": "node scripts/sync-assets.mjs",
     "optimize:images": "node scripts/optimize-page-images.mjs",
