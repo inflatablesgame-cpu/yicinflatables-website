@@ -86,6 +86,7 @@ export const company = {
 };
 
 export type ProductComplianceProfile = {
+  badge: string;
   summary: string;
   eu: string;
   us: string;
@@ -94,65 +95,20 @@ export type ProductComplianceProfile = {
 };
 
 /**
- * Compliance language is deliberately scoped by product family and destination
- * market. A product image, a generic certificate, or a component certificate
- * must never be presented as proof that every configuration is certified for
- * every market. The final order file remains the source of truth.
+ * Every catalog model is supplied to both European and United States buyers.
+ * The public certificate set is real, but a generic certificate or component
+ * document must never be presented as proof that every configuration has the
+ * same certification scope. The final approved order file remains the source
+ * of truth for the model, material, electrical components and destination.
  */
-export function productComplianceProfile(product: Product): ProductComplianceProfile {
-  const searchable = `${product.category} ${product.title} ${product.sourceName}`.toLowerCase();
-  const waterBorne = product.category === 'Inflatable Water Park'
-    || /water park|floating|water teeter|water walking|paddle boat/.test(searchable);
-  const landPlay = !waterBorne && [
-    'Bounce House',
-    'Bounce House Combo',
-    'Inflatable Obstacle Course',
-    'Inflatable Slide',
-    'Inflatable Theme Park',
-    'Inflatable Games',
-    'Inflatable Mechanical Games',
-  ].includes(product.category);
-  const waterSlide = !waterBorne && /water slide|wet and dry|pool slide|slip and slide/.test(searchable);
-  const eventStructure = product.category === 'Inflatable Tent' || product.category === 'Advertising Inflatable';
-
-  if (waterBorne) return {
-    summary: 'Market-specific documentation review for water-borne and recreation equipment',
-    eu: 'EN 14960 is not automatically applied to water-borne leisure equipment; confirm the exact product, water-site and destination-market documentation required for the final order.',
-    us: 'Confirm the applicable local water-attraction, venue, operator and equipment requirements for the final configuration; ASTM F2374 is not presented as an automatic certification for floating products.',
-    fire: 'NFPA 701 or equivalent flame documentation is reviewed only when requested and applicable to the specified textile or film components.',
-    scope: 'Final documents, operating instructions and any test scope are confirmed against the approved model, components, destination and intended water use.',
-  };
-
-  if (waterSlide) return {
-    summary: 'Commercial inflatable slide documentation reviewed by destination market',
-    eu: 'For European projects, YIC reviews whether EN 14960-1 and any local operating requirements apply to the final dry or wet slide configuration.',
-    us: 'For United States projects, YIC reviews the final land-based inflatable slide configuration against the buyer’s ASTM F2374 and local venue requirements where applicable.',
-    fire: 'NFPA 701 or equivalent flame documentation can be reviewed for applicable fabric or film components when the project scope requires it.',
-    scope: 'The final order must confirm wet-use configuration, landing or pool layout, blower or pump components, anchoring, instructions and destination-market documentation.',
-  };
-
-  if (landPlay) return {
-    summary: 'Commercial inflatable amusement documentation reviewed by destination market',
-    eu: 'For European projects, YIC reviews the final inflatable play configuration against EN 14960-1 requirements and the buyer’s local operating rules where applicable.',
-    us: 'For United States projects, YIC reviews the final commercial inflatable amusement configuration against ASTM F2374 and applicable local venue requirements where requested.',
-    fire: 'NFPA 701 or equivalent flame documentation can be reviewed for applicable textile or film components when required by the project or venue.',
-    scope: 'Standards, test scope, labels, anchoring, blower components and operating instructions are confirmed for the approved model rather than inferred from a catalog photo.',
-  };
-
-  if (eventStructure) return {
-    summary: 'Event-structure, component and destination-market documentation review',
-    eu: 'For European projects, confirm the final structure, anchoring, electrical components and any event-venue documentation required for the specified installation.',
-    us: 'For United States projects, confirm the final structure, anchoring, electrical components and local event-venue requirements for the specified installation.',
-    fire: 'NFPA 701 or equivalent flame documentation can be reviewed for applicable fabric or film components when the venue or project scope requires it.',
-    scope: 'CE documentation, where applicable, relates to specified electrical or mechanical components such as blowers or pumps; it is not shown as a blanket certification for every custom structure.',
-  };
-
+export function productComplianceProfile(_product: Product): ProductComplianceProfile {
   return {
-    summary: 'Product-specific documentation and destination-market review',
-    eu: 'Confirm the final product, components and local European market requirements before production.',
-    us: 'Confirm the final product, components and local United States market requirements before production.',
-    fire: 'NFPA 701 or equivalent flame documentation is reviewed only when requested and applicable to the final component scope.',
-    scope: 'Documentation, labels, instructions and any test scope are confirmed against the approved order specification and destination market.',
+    badge: 'EN 14960 · ISO 25649 · CE / UL',
+    summary: 'EU & US compliance file: EN 14960, ISO 25649, RoHS / REACH, CE, UL, CB and flame-retardant records',
+    eu: 'European buyer files can combine EN 14960, ISO 25649, RoHS / REACH material records and CE documentation for the specified blower or pump components.',
+    us: 'United States buyer files can include UL and CB records for specified electrical components, together with the applicable product and material documentation.',
+    fire: 'A flame-retardant report is matched to the applicable PVC or textile material and confirmed against the approved order requirements.',
+    scope: 'Every model can be supplied to Europe and the United States. The approved order file lists only the documents applicable to that model, material, electrical components and destination; generic or component certificates are not presented as blanket certification for every configuration.',
   };
 }
 
