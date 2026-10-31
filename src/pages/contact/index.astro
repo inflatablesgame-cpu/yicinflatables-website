@@ -72,11 +72,20 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
     const queryProduct = query.get('product') || defaultProduct || '';
     const querySource = query.get('source') || '';
     const referrer = document.referrer;
-    const sourceCandidate = querySource || (referrer && new URL(referrer).origin === window.location.origin ? referrer : defaultSourceUrl);
+    const canonicalOrigin = new URL(defaultSourceUrl).origin;
+    const allowedSourceOrigins = new Set([window.location.origin, canonicalOrigin]);
+    let validReferrer = '';
+    try {
+      const parsedReferrer = new URL(referrer);
+      if (allowedSourceOrigins.has(parsedReferrer.origin)) validReferrer = parsedReferrer.href;
+    } catch {
+      validReferrer = '';
+    }
+    const sourceCandidate = querySource || validReferrer || defaultSourceUrl;
     let activeSourceUrl = defaultSourceUrl;
     try {
       const parsedSource = new URL(sourceCandidate, window.location.origin);
-      if (parsedSource.origin === window.location.origin) activeSourceUrl = parsedSource.href;
+      if (allowedSourceOrigins.has(parsedSource.origin)) activeSourceUrl = parsedSource.href;
     } catch {
       activeSourceUrl = defaultSourceUrl;
     }

@@ -352,15 +352,16 @@ const websiteSchema = {
 
       // Preserve the page that initiated a quote request, including buttons
       // rendered by product cards and category templates.
-      const sourcePageUrl = document.body.dataset.pageUrl || window.location.href;
-      document.querySelectorAll('a[href^="/contact/"]').forEach((link) => {
+      const sourcePageUrl = document.body.dataset.pageUrl || cleanTrackingUrl(window.location.href);
+      document.querySelectorAll('a[href]').forEach((link) => {
         const href = link.getAttribute('href');
         if (!href || link.hasAttribute('data-preserve-contact-url')) return;
         const quoteUrl = new URL(href, window.location.origin);
+        if (quoteUrl.origin !== window.location.origin || quoteUrl.pathname !== '/contact/') return;
         // Keep the main navigation Contact link as a page entry point, but
-        // take every quote/request CTA directly to the quotation form.
+        // attach the originating page to every contact and quote destination.
         const isMainContactLink = link.closest('#main-nav') && !link.classList.contains('nav-cta');
-        if (!isMainContactLink && !quoteUrl.searchParams.has('source')) quoteUrl.searchParams.set('source', sourcePageUrl);
+        if (!quoteUrl.searchParams.get('source')) quoteUrl.searchParams.set('source', sourcePageUrl);
         if (!isMainContactLink && !quoteUrl.hash) quoteUrl.hash = 'quote-form';
         link.setAttribute('href', `${quoteUrl.pathname}${quoteUrl.search}${quoteUrl.hash}`);
       });
