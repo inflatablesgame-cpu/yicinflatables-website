@@ -553,7 +553,8 @@ h3 { font-size: 1.25rem; }
 .button-whatsapp:hover { border-color: #117b46; background: #117b46; }
 .case-feature-grid, .case-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .case-feature, .case-preview-card, .case-card { overflow: hidden; background: var(--white); border: 1px solid var(--line); }
-.case-feature img, .case-preview-card img, .case-card > img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: var(--surface); }
+.case-feature img, .case-preview-card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: var(--surface); }
+.case-card > img { display: block; width: 100%; height: auto; aspect-ratio: auto; object-fit: initial; background: transparent; }
 .case-feature > div, .case-preview-card > div { padding: 18px; }
 .case-feature p, .case-preview-card p, .case-country { margin: 0 0 7px; color: var(--teal); font-size: .74rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .case-feature h2 { margin: 0 0 7px; font-size: 1.35rem; }
@@ -567,9 +568,8 @@ h3 { font-size: 1.25rem; }
 .case-card-copy h3 { margin: 0 0 7px; font-size: 1.18rem; }
 .case-card-copy > p:not(.case-country) { margin: 0; color: var(--ink); font-weight: 700; }
 .case-card-copy > span { display: block; margin-top: 7px; color: var(--muted); font-size: .84rem; }
-.case-buyer-reference { display: grid; justify-items: start; gap: 4px; margin: 14px 0 0; padding: 9px; border: 1px solid var(--line); background: var(--surface); }
-.case-buyer-reference img { display: block; width: min(100%, 220px); height: auto; object-fit: contain; background: var(--white); }
-.case-buyer-reference figcaption { color: var(--muted); font-size: .72rem; font-weight: 700; }
+.case-buyer-reference { display: block; width: 82px; margin: 0 0 12px; padding: 3px; border: 1px solid var(--line); background: var(--surface); }
+.case-buyer-reference img { display: block; width: 100%; height: auto; background: var(--white); }
 .case-card-copy .text-link { display: inline-block; margin-top: 15px; font-size: .82rem; }
 .case-reference-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
 .case-reference-layout > div > p:not(.eyebrow) { max-width: 500px; color: var(--muted); line-height: 1.7; }

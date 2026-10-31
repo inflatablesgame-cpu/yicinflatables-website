@@ -9,7 +9,7 @@ const outputDir = path.join(rootDir, 'public', 'assets', 'case-studies');
 const projectImages = [
   ['argentina-soccer-slide', 'Argentina Inflatable Slide with Soccer Jumping Bouncer Graphics for Kids Playground.jpg'],
   ['france-water-slide', 'Commercial Big Water Slides Inflatable Heavy Duty in France .jpg'],
-  ['candy-house-combo', 'Commercial Grade Inflatable Castle Candy House Water Slide for Professional Rental Party.png'],
+  ['candy-house-combo', 'Commercial Grade Inflatable Castle Candy House Water Slide in Poland.png'],
   ['uk-princess-bounce-house', 'Commercial Pink Bouncy Castle in UK Princess Modern Inflatable Jumper for Rental Business.jpg'],
   ['croatia-dual-lane-combo', 'Commercial PVC Bouncing Castles Outdoor with Dual Lane Slide for Backyard Playgrounds Croatia.jpg'],
   ['usa-mario-combo', 'commercial-mario-bounce-house-slide-usa-party-rental-inflatable-castle.jpg'],

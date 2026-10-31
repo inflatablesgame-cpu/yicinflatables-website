@@ -10,12 +10,12 @@ export type CaseStudy = {
   buyerReference?: { country: string; image: string };
 };
 
-const image = (slug: string) => `/assets/case-studies/projects/${slug}.webp?v=2`;
+const image = (slug: string) => `/assets/case-studies/projects/${slug}.webp?v=3`;
 
 export const caseStudies: CaseStudy[] = [
   { id: 'argentina-soccer-slide', title: 'Soccer-themed inflatable slide', country: 'Argentina', productType: 'Inflatable slide and jumping bouncer', application: 'Kids playground project', segment: 'bounce-slide', image: image('argentina-soccer-slide'), alt: 'Soccer-themed Argentina inflatable slide and jumping bouncer at a kids playground' },
   { id: 'france-water-slide', title: 'Commercial water slide', country: 'France', productType: 'Heavy-duty inflatable water slide', application: 'Commercial recreation project', segment: 'water-park', image: image('france-water-slide'), alt: 'Commercial heavy-duty inflatable water slide project in France' },
-  { id: 'candy-house-combo', title: 'Candy-house bounce and water-slide combo', country: 'Project market private', productType: 'Inflatable castle and water slide', application: 'Professional rental project', segment: 'bounce-slide', image: image('candy-house-combo'), alt: 'Candy-house inflatable castle and water-slide combo for a professional rental project' },
+  { id: 'candy-house-combo', title: 'Candy-house bounce and water-slide combo', country: 'Poland', productType: 'Inflatable castle and water slide', application: 'Commercial outdoor playground project', segment: 'bounce-slide', image: image('candy-house-combo'), alt: 'Candy-house inflatable castle and water-slide combo installed in Poland' },
   { id: 'uk-princess-bounce-house', title: 'Princess bounce house', country: 'United Kingdom', productType: 'Commercial pink bouncy castle', application: 'Rental business project', segment: 'bounce-slide', image: image('uk-princess-bounce-house'), alt: 'Commercial pink princess bouncy castle project in the United Kingdom' },
   { id: 'croatia-dual-lane-combo', title: 'Dual-lane bounce house combo', country: 'Croatia', productType: 'Commercial bounce house with slide', application: 'Outdoor playground project', segment: 'bounce-slide', image: image('croatia-dual-lane-combo'), alt: 'Commercial dual-lane bounce house and slide project in Croatia' },
   { id: 'usa-mario-combo', title: 'Mario-themed bounce house combo', country: 'United States', productType: 'Bounce house and slide', application: 'Party-rental project', segment: 'bounce-slide', image: image('usa-mario-combo'), alt: 'Mario-themed inflatable bounce house and slide project in the United States' },
