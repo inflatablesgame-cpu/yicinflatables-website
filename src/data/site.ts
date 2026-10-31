@@ -163,6 +163,59 @@ export type ProductEvidenceProfile = {
   productionRecord: string;
 };
 
+export type ProductLeadTimeProfile = {
+  range: string;
+  sizeBand: 'compact' | 'standard' | 'large' | 'project' | 'custom';
+  basis: string;
+};
+
+function referenceDimensionValues(product: Product) {
+  const source = product.dimensions.toLowerCase().replace(',', '.');
+  const values = [...source.matchAll(/\d+(?:\.\d+)?/g)]
+    .map((match) => Number(match[0]))
+    .filter((value) => Number.isFinite(value) && value > 0);
+  const usesFeet = /(?:\bft\b|feet|foot|')/.test(source);
+  return usesFeet ? values.map((value) => value * 0.3048) : values;
+}
+
+/**
+ * Use the listed reference size as a planning range, not a production promise.
+ * Custom artwork, quantity, approved drawing revisions and destination-specific
+ * requirements are still confirmed in the quotation before manufacturing starts.
+ */
+export function productLeadTimeProfile(product: Product): ProductLeadTimeProfile {
+  if (!product.dimensions || /custom dimensions available/i.test(product.dimensions)) {
+    return {
+      range: '5–12 Work Days',
+      sizeBand: 'custom',
+      basis: 'Custom dimensions or project scope are scheduled after the approved drawing, artwork, quantity and accessory list are confirmed.',
+    };
+  }
+
+  const values = referenceDimensionValues(product);
+  const largest = Math.max(...values, 0);
+  const footprint = values.length >= 2 ? values[0] * values[1] : 0;
+  const projectCategory = ['Inflatable Theme Park', 'Inflatable Water Park'].includes(product.category);
+
+  if (largest >= 20 || footprint >= 180 || (projectCategory && largest >= 10)) {
+    return { range: '10–12 Work Days', sizeBand: 'project', basis: 'Large reference footprint or project-scale assembly requires the longest standard production window after approval.' };
+  }
+  if (largest >= 12 || footprint >= 90) {
+    return { range: '8–10 Work Days', sizeBand: 'large', basis: 'Large-format reference dimensions require additional cutting, construction, inspection and export-packing time.' };
+  }
+  if (largest >= 7 || footprint >= 45) {
+    return { range: '7–9 Work Days', sizeBand: 'large', basis: 'The reference size needs a longer production and inspection window than compact catalog models.' };
+  }
+  if (largest >= 4 || footprint >= 16) {
+    return { range: '6–8 Work Days', sizeBand: 'standard', basis: 'This standard-size reference model is scheduled after the approved specification and artwork are released.' };
+  }
+  return {
+    range: '5–7 Work Days',
+    sizeBand: 'compact',
+    basis: 'This compact reference model has the shortest standard production window after specification approval.'
+  };
+}
+
 /**
  * Stable product facts used on the visible page and in structured data. This
  * makes each catalog record easier for a buyer or AI system to identify without
@@ -170,34 +223,60 @@ export type ProductEvidenceProfile = {
  */
 export function productEvidenceProfile(product: Product): ProductEvidenceProfile {
   const detail = productDetailContent(product);
+  const leadTime = productLeadTimeProfile(product);
   const index = Math.max(0, products.findIndex((item) => item.slug === product.slug)) + 1;
   const modelId = `YIC-${product.categorySlug.replace(/[^a-z0-9]+/gi, '-').toUpperCase()}-${String(index).padStart(3, '0')}`;
   const dimensions = product.dimensions?.trim() || 'Custom dimensions available';
+  const useFocus = detail.applications[0]?.title ?? product.category;
+  const planningFocus = detail.planningPoints[0] ?? 'the approved dimensions, application, accessory scope and destination requirements';
   return {
     modelId,
     specification: `${dimensions} reference size · ${product.material}`,
-    procurement: `${detail.primaryBuyer}. Final quotation confirms the selected layout, accessories, artwork, packing and destination requirements.`,
-    productionRecord: 'Artwork approval, material and dimension confirmation, in-process checks, inflation or operation review, final inspection and export packing are recorded against the approved order specification.',
+    procurement: `Factory-direct supply for ${productTargetBuyers(product).join(', ')}. The final quotation confirms the selected layout, accessories, artwork, packing, destination requirements and ${leadTime.range} production window.`,
+    productionRecord: `${leadTime.basis} The production file is built around ${useFocus.toLowerCase()}: ${planningFocus}. Artwork approval, material and dimension confirmation, in-process checks, inflation or operation review, final inspection and export packing are recorded against the approved order specification.`,
   };
+}
+
+export function productOrderConfirmation(product: Product) {
+  const detail = productDetailContent(product);
+  const leadTime = productLeadTimeProfile(product);
+  const hasCustomDimensions = !product.dimensions || /custom dimensions available/i.test(product.dimensions);
+  const referenceSize = product.dimensions?.trim() || 'custom dimensions';
+  const timingStatement = hasCustomDimensions
+    ? `Because this is a custom-dimension or project-scope order, the standard production window is ${leadTime.range}`
+    : `The listed ${referenceSize} reference size is planned for ${leadTime.range}`;
+  const planningFocus = detail.customization.slice(0, 2).join('; ');
+  const quoteFocus = detail.quoteItems[0] ?? 'the intended application, quantity and destination';
+  const application = detail.applications[0]?.title ?? product.category.toLowerCase();
+  return `${detail.purpose} This ${productPrimaryKeyword(product)} is made to order for ${application.toLowerCase()} against the approved specification. ${timingStatement} after drawing, artwork, quantity and accessory approval. ${leadTime.basis} For this model, YIC reconfirms ${planningFocus}. The quotation should identify ${quoteFocus}. The 3-year warranty applies to the approved product configuration.`;
+}
+
+export function productHasRentalSearchIntent(product: Product) {
+  return /\b(?:rental|rent|hire)\b/i.test([productPrimaryKeyword(product), product.productSlug].join(' '));
+}
+
+export function productManufacturerSupplyNote(product: Product) {
+  if (!productHasRentalSearchIntent(product)) return '';
+  return `Where a product name or core keyword uses rental, rent, or hire wording, it describes commercial fleet procurement intent. YIC manufactures made-to-order equipment for ${productTargetBuyers(product).join(', ')}; it does not provide local consumer rental service.`;
 }
 
 const categorySummaries: Record<string, string> = {
   'Advertising Inflatable': 'Branded inflatable displays, promotional bars, tents, and eye-catching event structures for retail and activations.',
-  'Bounce House': 'Commercial bounce houses designed for party rental operators, venues, and family events.',
+  'Bounce House': 'Factory-supplied commercial bounce houses for distributors, family venues, schools and event operators; rental companies buy them as business equipment.',
   'Bounce House Combo': 'Multi-play bounce house combinations that add slides, basketball hoops, ball pits, and themed play zones.',
-  'Bumper Ball': 'Commercial TPU bubble balls and zorb-style games for sports operators, schools, events, and rental fleets.',
-  'Inflatable Games': 'Interactive inflatable games for team building, carnivals, sports days, festivals, and rental events.',
+  'Bumper Ball': 'Commercial TPU bubble balls and zorb-style games supplied to sports operators, schools, distributors and event businesses, including rental-fleet buyers.',
+  'Inflatable Games': 'Interactive inflatable games for team building, carnivals, sports days, festivals and commercial activity operators.',
   'Inflatable Mechanical Games': 'Mechanical bull and wipeout-style attractions built for high-energy events and operator-led entertainment.',
-  'Inflatable Obstacle Course': 'Commercial obstacle courses for races, events, schools, entertainment centers, and large rental orders.',
-  'Inflatable Slide': 'Dry and water inflatable slides designed for commercial party rental and event use.',
+  'Inflatable Obstacle Course': 'Commercial obstacle courses for race organizers, schools, entertainment centers, distributors and event operators.',
+  'Inflatable Slide': 'Dry and water inflatable slides supplied for commercial venues, events, resorts and professional fleet operators.',
   'Inflatable Tent': 'Inflatable shelters, event tents, dome tents, and branded spaces for outdoor operations.',
   'Inflatable Theme Park': 'Large themed inflatable play attractions for parks, malls, family entertainment centers, and events.',
-  'Inflatable Water Park': 'Commercial inflatable water attractions for resorts, rental fleets, recreation businesses, and water venues.',
-  'Inflatable Water Slide': 'Commercial inflatable water slides for party rentals, resorts, water parks, events, and seasonal recreation venues.',
+  'Inflatable Water Park': 'Commercial inflatable water attractions for resorts, water venues, recreation businesses and professional fleet operators.',
+  'Inflatable Water Slide': 'Commercial inflatable water slides for resorts, water parks, pool venues, events and seasonal recreation operators.',
 };
 
 export function categorySummary(category: string) {
-  return categorySummaries[category] ?? `Commercial ${category.toLowerCase()} for party rental and event businesses.`;
+  return categorySummaries[category] ?? `Factory-supplied commercial ${category.toLowerCase()} for importers, distributors, venues and event businesses.`;
 }
 
 export type CategorySeoProfile = {
@@ -578,11 +657,11 @@ const categorySixthFaqs: Record<string, { question: string; answer: string }> = 
 export function categorySeoProfile(category: string): CategorySeoProfile {
   const profile = categorySeoProfiles[category] ?? {
     title: `Commercial ${category} | OEM Manufacturer | YIC`,
-    description: `Commercial ${category.toLowerCase()} from YIC for rental businesses, venues, events, and global B2B buyers. OEM and custom production available.`,
+    description: `Factory-supplied commercial ${category.toLowerCase()} from YIC for importers, distributors, venues, events and global B2B buyers. OEM and custom production available.`,
     h1: `Commercial ${category} for Global B2B Buyers`,
     intro: `${categorySummary(category)} YIC supports commercial buyers with product selection, custom artwork, practical specifications, production coordination, and export quotation support.`,
     options: [category, `Custom ${category}`, `Commercial ${category} equipment`, `OEM ${category}`],
-    buyers: [{ title: 'Rental and event businesses', text: `Select ${category.toLowerCase()} around your venue, customers, operating plan, and expected repeat use.` }, { title: 'Entertainment venues', text: `Match the format and dimensions to guest flow, supervision, access, and available space.` }, { title: 'Distributors', text: 'Build a differentiated product range with custom artwork, factory communication, and export support.' }],
+    buyers: [{ title: 'Importers and distributors', text: `Build a differentiated ${category.toLowerCase()} range with custom artwork, factory communication and export support.` }, { title: 'Entertainment venues', text: `Match the format and dimensions to guest flow, supervision, access, and available space.` }, { title: 'Fleet and event operators', text: `Select ${category.toLowerCase()} around the operating plan, expected repeat use, transport, storage and buyer requirements.` }],
     oem: `Send your preferred model, reference artwork, dimensions, quantity, destination, and intended use. YIC can review a custom ${category.toLowerCase()} OEM or ODM project.`,
     faq: [{ question: `How do I choose a commercial ${category.toLowerCase()}?`, answer: `Start with the venue, user group, footprint, access, operating plan, quantity, and destination-market requirements.` }, { question: `Can this ${category.toLowerCase()} be customized?`, answer: 'Yes. YIC can review size, colors, artwork, layout, branding, accessories, and packing requirements.' }, { question: 'What should I send for a factory quotation?', answer: 'Send the model, quantity, destination, application, preferred dimensions, artwork, and target delivery date.' }],
     related: categories.filter((item) => item.name !== category).slice(0, 3).map((item) => item.name),
@@ -596,59 +675,68 @@ export function categorySeoProfile(category: string): CategorySeoProfile {
   };
 }
 
+/** Keep a rental operator visible as a valid equipment buyer without allowing
+ * rental language to become the lead B2B identity in titles or descriptions. */
+function prioritizedBuyerDisplay(value: string) {
+  const buyers = value.split(/,\s*/).map((item) => item.trim().replace(/^and\s+/i, '')).filter(Boolean);
+  const fleetBuyers = buyers.filter((buyer) => /\b(?:rental|rent|hire)\b/i.test(buyer));
+  const coreBuyers = buyers.filter((buyer) => !/\b(?:rental|rent|hire)\b/i.test(buyer));
+  return [...coreBuyers, ...fleetBuyers].join(', ');
+}
+
 export function productDescription(product: Product) {
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) {
-    return `YIC manufactures ${obstacleCourse.keywords[0]} for ${obstacleCourse.buyer}. This ${product.dimensions.trim()} model is shown as ${obstacleCourse.visual}. ${obstacleCourse.purpose} The listing specifies ${product.material}. Buyers can review ${obstacleCourse.customization}. Related buyer searches include ${obstacleCourse.keywords.slice(1).join(', ')}. Confirm the final site plan, access, anchoring, supervision, artwork, accessories, and event requirements before production.`;
+    return `YIC manufactures ${obstacleCourse.keywords[0]} for ${prioritizedBuyerDisplay(obstacleCourse.buyer)}. This ${product.dimensions.trim()} model is shown as ${obstacleCourse.visual}. ${obstacleCourse.purpose} The listing specifies ${product.material}. Buyers can review ${obstacleCourse.customization}. Related buyer searches include ${obstacleCourse.keywords.slice(1).join(', ')}. Confirm the final site plan, access, anchoring, supervision, artwork, accessories, and event requirements before production.`;
   }
   const advertisingDisplay = advertisingDisplayProfile(product);
   if (advertisingDisplay) {
-    return `YIC manufactures ${advertisingDisplay.keywords[0]} for ${advertisingDisplay.buyer}. This ${product.dimensions.trim()} model is shown as ${advertisingDisplay.visual}. ${advertisingDisplay.purpose} The listing specifies ${product.material}. Buyers can review ${advertisingDisplay.options}. Related buyer searches include ${advertisingDisplay.keywords.slice(1).join(', ')}. Confirm the final site plan, artwork, accessories, anchoring, access, supervision, and event requirements before production.`;
+    return `YIC manufactures ${advertisingDisplay.keywords[0]} for ${prioritizedBuyerDisplay(advertisingDisplay.buyer)}. This ${product.dimensions.trim()} model is shown as ${advertisingDisplay.visual}. ${advertisingDisplay.purpose} The listing specifies ${product.material}. Buyers can review ${advertisingDisplay.options}. Related buyer searches include ${advertisingDisplay.keywords.slice(1).join(', ')}. Confirm the final site plan, artwork, accessories, anchoring, access, supervision, and event requirements before production.`;
   }
   const foodService = foodServiceProfile(product);
   if (foodService && !isAirDancerProfile(product)) {
-    return `YIC manufactures ${foodService.keywords[0]} for ${foodService.buyer}. This ${product.dimensions.trim()} model is shown as ${foodService.visual}. ${foodService.purpose} The listing specifies ${product.material}. Buyers can review ${foodService.options}. Related buyer searches include ${foodService.keywords.slice(1).join(', ')}. Confirm the final site plan, service workflow, branded artwork, included equipment, anchoring, and event requirements before production.`;
+    return `YIC manufactures ${foodService.keywords[0]} for ${prioritizedBuyerDisplay(foodService.buyer)}. This ${product.dimensions.trim()} model is shown as ${foodService.visual}. ${foodService.purpose} The listing specifies ${product.material}. Buyers can review ${foodService.options}. Related buyer searches include ${foodService.keywords.slice(1).join(', ')}. Confirm the final site plan, service workflow, branded artwork, included equipment, anchoring, and event requirements before production.`;
   }
   if (isAirDancerProfile(product)) {
     const profile = foodServiceProfiles[product.productSlug];
-    return 'YIC manufactures ' + profile.keywords[0] + ' for ' + profile.buyer + '. This ' + product.dimensions.trim() + ' model is shown as ' + profile.visual + '. ' + profile.purpose + ' The listing specifies ' + product.material + '. Buyers can review ' + profile.options + '. Related buyer searches include ' + profile.keywords.slice(1).join(', ') + '. Confirm the final site, blower compatibility, electrical setup, secure positioning, weather conditions, artwork, and event requirements before production.';
+    return 'YIC manufactures ' + profile.keywords[0] + ' for ' + prioritizedBuyerDisplay(profile.buyer) + '. This ' + product.dimensions.trim() + ' model is shown as ' + profile.visual + '. ' + profile.purpose + ' The listing specifies ' + product.material + '. Buyers can review ' + profile.options + '. Related buyer searches include ' + profile.keywords.slice(1).join(', ') + '. Confirm the final site, blower compatibility, electrical setup, secure positioning, weather conditions, artwork, and event requirements before production.';
   }
   const waterSlide = waterSlideProfile(product);
   if (waterSlide) {
     const siteChecks = waterSlide.wetUse === false
       ? 'Confirm the site footprint, access route, clear zones, anchoring, supervision, and final configuration before ordering.'
       : 'Confirm the site footprint, water supply, drainage, landing or pool plan, anchoring, supervision, and final configuration before ordering.';
-    return `YIC manufactures ${waterSlide.keywords[0]} for ${waterSlide.buyer}. This ${product.dimensions.trim()} model is shown as ${waterSlide.visual}. ${waterSlide.purpose} The listing specifies ${product.material}. Buyers can review ${waterSlide.options}. Related buying searches include ${waterSlide.keywords.slice(1).join(', ')}. ${siteChecks}`;
+    return `YIC manufactures ${waterSlide.keywords[0]} for ${prioritizedBuyerDisplay(waterSlide.buyer)}. This ${product.dimensions.trim()} model is shown as ${waterSlide.visual}. ${waterSlide.purpose} The listing specifies ${product.material}. Buyers can review ${waterSlide.options}. Related buying searches include ${waterSlide.keywords.slice(1).join(', ')}. ${siteChecks}`;
   }
   const flyingFish = flyingFishProfile(product);
   if (flyingFish) {
     const planning = flyingFish.isTowable
       ? 'Confirm tow-boat compatibility, water conditions, supervision, tow-point details, and the final configuration before ordering.'
       : 'Confirm the launch area, water conditions, participant access, supervision, equipment details, and final configuration before ordering.';
-    return `YIC manufactures ${flyingFish.keywords[0]} for ${flyingFish.buyer}. This ${product.dimensions.trim()} model is shown as ${flyingFish.visual}. ${flyingFish.purpose} The listing specifies ${product.material}. Related searches include ${flyingFish.keywords.slice(1).join(', ')}. ${planning}`;
+    return `YIC manufactures ${flyingFish.keywords[0]} for ${prioritizedBuyerDisplay(flyingFish.buyer)}. This ${product.dimensions.trim()} model is shown as ${flyingFish.visual}. ${flyingFish.purpose} The listing specifies ${product.material}. Related searches include ${flyingFish.keywords.slice(1).join(', ')}. ${planning}`;
   }
   const newWaterPark = newWaterParkProfile(product);
   if (newWaterPark) {
-    return `YIC manufactures ${newWaterPark.keywords[0]} for ${newWaterPark.buyer}. This ${product.dimensions.trim()} concept is shown as ${newWaterPark.visual}. ${newWaterPark.purpose} The listing specifies ${product.material}. Project options include ${newWaterPark.options}. Related buying searches include ${newWaterPark.keywords.slice(1).join(', ')}. Confirm water depth, site access, supervision, anchoring, operating conditions, and the final configuration before ordering.`;
+    return `YIC manufactures ${newWaterPark.keywords[0]} for ${prioritizedBuyerDisplay(newWaterPark.buyer)}. This ${product.dimensions.trim()} concept is shown as ${newWaterPark.visual}. ${newWaterPark.purpose} The listing specifies ${product.material}. Project options include ${newWaterPark.options}. Related buying searches include ${newWaterPark.keywords.slice(1).join(', ')}. Confirm water depth, site access, supervision, anchoring, operating conditions, and the final configuration before ordering.`;
   }
   const newThemePark = newThemeParkProfile(product);
   if (newThemePark) {
-    return `YIC manufactures ${newThemePark.coreKeyword} for ${newThemePark.buyer}. This ${product.dimensions.trim()} attraction is shown as ${newThemePark.visual}. ${newThemePark.purpose} The listing specifies ${product.material}. Custom project options include ${newThemePark.options}. Related buyer searches include ${newThemePark.keywords.slice(1).join(', ')}. Confirm the venue footprint, height clearance, access route, anchoring, staffing, supervision, and final specification before production.`;
+    return `YIC manufactures ${newThemePark.coreKeyword} for ${prioritizedBuyerDisplay(newThemePark.buyer)}. This ${product.dimensions.trim()} attraction is shown as ${newThemePark.visual}. ${newThemePark.purpose} The listing specifies ${product.material}. Custom project options include ${newThemePark.options}. Related buyer searches include ${newThemePark.keywords.slice(1).join(', ')}. Confirm the venue footprint, height clearance, access route, anchoring, staffing, supervision, and final specification before production.`;
   }
   const newTent = newInflatableTentProfile(product);
   if (newTent) {
     const detail = productDetailContent(product);
-    return `YIC manufactures ${newTent.keywords[0]} for ${detail.primaryBuyer}. This ${product.dimensions.trim()} design is presented as ${newTent.visual}. ${newTent.purpose} The product is specified in ${product.material}; buyers can discuss dimensions, layout, branding, access, anchoring, and packing for their project. Related searches include ${newTent.keywords.slice(1).join(', ')}. Confirm the final site plan, materials, equipment, and operating requirements before production.`;
+    return `YIC manufactures ${newTent.keywords[0]} for ${prioritizedBuyerDisplay(detail.primaryBuyer)}. This ${product.dimensions.trim()} design is presented as ${newTent.visual}. ${newTent.purpose} The product is specified in ${product.material}; buyers can discuss dimensions, layout, branding, access, anchoring, and packing for their project. Related searches include ${newTent.keywords.slice(1).join(', ')}. Confirm the final site plan, materials, equipment, and operating requirements before production.`;
   }
   if (product.category === 'Bounce House' || product.category === 'Bounce House Combo') {
     const comboProfile = bounceComboSeoProfile(product);
     if (comboProfile) {
-      return `YIC manufactures ${comboProfile.keywords[0]} for ${comboProfile.buyer}. The reference imagery shows ${comboProfile.visual}. ${comboProfile.purpose} This listing specifies ${product.material}. Buyers can discuss OEM or ODM colors, artwork, dimensions, entry and exit layout, play features, accessories, and packing. Related buyer searches include ${comboProfile.keywords.slice(1).join(', ')}. Confirm the final footprint, access route, anchoring, supervision, approved graphic rights, and destination requirements before production.`;
+      return `YIC manufactures ${comboProfile.keywords[0]} for ${prioritizedBuyerDisplay(comboProfile.buyer)}. The reference imagery shows ${comboProfile.visual}. ${comboProfile.purpose} This listing specifies ${product.material}. Buyers can discuss OEM or ODM colors, artwork, dimensions, entry and exit layout, play features, accessories, and packing. Related buyer searches include ${comboProfile.keywords.slice(1).join(', ')}. Confirm the final footprint, access route, anchoring, supervision, approved graphic rights, and destination requirements before production.`;
     }
     const core = bounceHouseCoreKeyword(product);
     const detail = productDetailContent(product);
     const variants = productKeywordVariants(product).filter((term) => term !== core).slice(0, 3).join(', ');
-    return `YIC manufactures ${core} for ${detail.primaryBuyer}. The product is shown at ${product.dimensions.trim()} in ${product.material}, with a layout matched to the visible theme and play features. Buyers can request OEM or ODM changes to colors, artwork, dimensions, access, feature arrangement, accessories, and packing. Related buyer terms include ${variants}. Confirm the final footprint, user group, anchoring, supervision, and destination requirements before production.`;
+    return `YIC manufactures ${core} for ${prioritizedBuyerDisplay(detail.primaryBuyer)}. The product is shown at ${product.dimensions.trim()} in ${product.material}, with a layout matched to the visible theme and play features. Buyers can request OEM or ODM changes to colors, artwork, dimensions, access, feature arrangement, accessories, and packing. Related buyer terms include ${variants}. Confirm the final footprint, user group, anchoring, supervision, and destination requirements before production.`;
   }
   const details = productDetailContent(product);
   const focusedTerms = productSearchTerms(product);
@@ -661,7 +749,7 @@ export function productDescription(product: Product) {
       ? ` Related product searches include ${focusedTerms.join(', ')}. This model is listed at ${product.dimensions.trim()} and uses ${product.material}; confirm participant fit, intended activity, accessories, and destination-market requirements against the approved specification.`
       : ` This page covers the ${focusedTerms.join(' and ')} search intent; final dimensions and construction are confirmed against the intended application.`
     : '';
-  return `YIC Inflatable Sports manufactures commercial inflatables for ${details.primaryBuyer}. This listing features the “${name}” model. ${details.purpose} Custom artwork, colors, layout, and functional details can be developed around your venue, brand, and destination-market requirements.${intentSentence}${focusedSentence || ` Buyers researching this format may also compare terms such as ${searchVariants}.`}`;
+  return `YIC Inflatable Sports manufactures commercial inflatables for ${prioritizedBuyerDisplay(details.primaryBuyer)}. This listing features the “${name}” model. ${details.purpose} Custom artwork, colors, layout, and functional details can be developed around your venue, brand, and destination-market requirements.${intentSentence}${focusedSentence || ` Buyers researching this format may also compare terms such as ${searchVariants}.`}`;
 }
 
 type NewInflatableTentProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; options: string; use: string };
@@ -3076,7 +3164,10 @@ export function productKeyFeatures(product: Product) {
 }
 
 export function productTargetBuyers(product: Product) {
-  return productDetailContent(product).primaryBuyer.split(/, | and /i).map((item) => item.trim()).filter(Boolean);
+  const buyers = productDetailContent(product).primaryBuyer.split(/,\s*/).map((item) => item.trim().replace(/^and\s+/i, '')).filter(Boolean);
+  const rentalBuyers = buyers.filter((buyer) => /rental|hire/i.test(buyer));
+  const manufacturerBuyers = buyers.filter((buyer) => !/rental|hire/i.test(buyer));
+  return [...manufacturerBuyers, ...rentalBuyers];
 }
 
 export function productBatch(product: Product) {

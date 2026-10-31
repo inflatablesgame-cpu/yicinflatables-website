@@ -37,6 +37,7 @@ const relatedArticles = [
   ...blogArticles.filter((item) => item.slug !== article.slug && item.category !== article.category),
 ].slice(0, 3);
 const guideProfile = getBuyerGuideProfile(article.category);
+const isRentalProcurementGuide = article.category === 'Rental Business' || /\b(?:rental|rentals|for rent|hire)\b/i.test([article.title, article.keywords, article.intro].join(' '));
 const articleFaqs = [
   { question: 'What should a buyer confirm before acting on ' + article.title + '?', answer: guideProfile.decision },
   ...guideProfile.faqs,
@@ -82,6 +83,7 @@ const breadcrumbSchema = {
         <p class="eyebrow">{article.category} · {article.readTime}</p>
         <h1>{article.title}</h1>
         <p>{article.intro}</p>
+        {isRentalProcurementGuide && <p class="article-procurement-note"><strong>Commercial procurement note:</strong> This guide is for operators and distributors buying equipment for a fleet or venue. YIC is a factory-direct manufacturer, not a local consumer rental service.</p>}
         <div class="article-meta"><span>Published {article.published}</span><span>YIC Inflatable Sports buyer resource</span></div>
       </div>
     </header>
