@@ -16,6 +16,32 @@ export type CaseStudy = {
 
 const image = (slug: string) => `/assets/case-studies/projects/${slug}.webp?v=3`;
 
+const relatedProductOverrides: Record<string, string> = {
+  'philippines-water-slide': 'backyard-water-slide-for-kids',
+  'germany-obstacle-course': 'commercial-inflatable-obstacle-course-for-sale',
+  'peru-soccer-field': 'giant-inflatable-soccer-field',
+  'argentina-soccer-slide': 'soccer-themed-inflatable-slide',
+  'france-water-slide': 'inflatable-tropical-water-slide',
+  'croatia-dual-lane-combo': 'commercial-grade-bounce-house-and-slide',
+  'usa-mario-combo': 'super-mario-theme-bounce-house',
+  'usa-wedding-bounce-house': 'all-white-bounce-house-with-slide',
+  'croatia-food-truck': 'inflatable-kiosk-booth-for-sale',
+  'philippines-wedding-tent': 'small-white-bounce-house-with-ball-pit',
+  'peru-sumo-ring': 'boxing-ring-inflatable-rentals',
+  'austria-airbag-system': 'freestyle-airbag-landing',
+  'usa-bubble-house': 'tunnel-inflatable-transparent-dome-tent',
+  'usa-bumper-balls': 'inflatable-bubble-suit-for-adults',
+};
+
+const resolveRelatedProduct = (caseStudy: CaseStudy): CaseStudy => {
+  const relatedProductSlug = relatedProductOverrides[caseStudy.id] ?? caseStudy.relatedProductSlug;
+  return {
+    ...caseStudy,
+    relatedProductSlug,
+    relatedCategorySlug: relatedProductOverrides[caseStudy.id] ? undefined : caseStudy.relatedCategorySlug,
+  };
+};
+
 export const caseStudies: CaseStudy[] = [
   { id: 'argentina-soccer-slide', title: 'Soccer-themed inflatable slide', country: 'Argentina', productType: 'Inflatable slide and jumping bouncer', application: 'Kids playground project', description: 'This Argentina project photo shows a blue soccer-themed inflatable slide with a player graphic, football details and an attached bouncing area. The combination gives playground operators a sports-led attraction that can sit alongside other team or football activities. Review the linked soccer slide model as a starting point, then confirm the intended layout, artwork and operating setup for your venue.', buyerFocus: 'Plan the approach and slide-exit zones, sightlines for supervision, and any local licensing needed for team or character artwork.', relatedProductSlug: 'inflatable-soccer-slide', segment: 'bounce-slide', image: image('argentina-soccer-slide'), alt: 'Blue soccer-themed inflatable slide and bounce area with football graphics at a playground project in Argentina' },
   { id: 'france-water-slide', title: 'Commercial water slide', country: 'France', productType: 'Heavy-duty inflatable water slide', application: 'Commercial recreation project', description: 'The France project image features a bright green-and-yellow inflatable water slide with parallel sliding lanes and a blue splash pool at the runout. It is a useful reference for water-park operators, resorts and commercial recreation buyers comparing a high-visibility wet-play attraction. The related tropical slide listing offers a product-page starting point for a tailored quotation.', buyerFocus: 'Confirm the available footprint, water supply and drainage, queue direction, supervision positions, and wet-use operating plan.', relatedProductSlug: 'tropical-inflatable-water-slide-commercial', segment: 'water-park', image: image('france-water-slide'), alt: 'Green and yellow commercial inflatable water slide with blue landing pool in a France recreation project' },
@@ -48,7 +74,7 @@ export const caseStudies: CaseStudy[] = [
 const getCaseStudies = (ids: string[]) => ids.map((id) => {
   const caseStudy = caseStudies.find((item) => item.id === id);
   if (!caseStudy) throw new Error(`Case study not found: ${id}`);
-  return caseStudy;
+  return resolveRelatedProduct(caseStudy);
 });
 
 export const homeFeaturedCaseStudies = getCaseStudies([
@@ -109,7 +135,7 @@ export const caseStudyCards = caseStudies.map((caseStudy) => {
   projectIndexByCountry.set(caseStudy.country, projectIndex + 1);
   const buyerReference = referencesByCountry.get(caseStudy.country)?.[projectIndex];
   if (buyerReference) usedBuyerReferences.add(buyerReference.image);
-  return { ...caseStudy, buyerReference };
+  return { ...resolveRelatedProduct(caseStudy), buyerReference };
 });
 
 export const unmatchedBuyerReferences = buyerReferences.filter((reference) => !usedBuyerReferences.has(reference.image));
