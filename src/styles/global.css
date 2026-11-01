@@ -631,9 +631,9 @@ h3 { font-size: 1.25rem; }
 .article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .article-card { display: flex; min-height: 390px; flex-direction: column; overflow: hidden; border: 1px solid var(--line); background: var(--white); transition: box-shadow .2s, transform .2s; }
 .article-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
-.article-card-image { display: block; overflow: hidden; aspect-ratio: 16 / 10; background: var(--surface); }
-.article-card-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.article-card-image.is-contained img { padding: 10px; object-fit: contain; }
+.article-card-image { display: block; overflow: hidden; aspect-ratio: 16 / 10; background: #f3f6f7; }
+.article-card-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.article-card-image.is-contained img { padding: 0; object-fit: contain; }
 .article-card-body { display: flex; flex: 1; flex-direction: column; padding: 22px; }
 .article-card-top { display: flex; justify-content: space-between; gap: 12px; color: var(--teal); font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 .article-card h3 { margin: 16px 0 12px; font-size: 1.2rem; line-height: 1.3; }
@@ -655,8 +655,8 @@ h3 { font-size: 1.25rem; }
 .article-direct-answer .eyebrow { margin-bottom: 8px; color: var(--teal); font-size: .72rem; font-weight: 900; text-transform: uppercase; }
 .article-direct-answer p:last-child { color: var(--ink-strong); }
 .article-feature-image { margin: 0 0 34px; }
-.article-feature-image img { display: block; width: 100%; max-height: 560px; aspect-ratio: 16 / 10; background: var(--surface); object-fit: cover; }
-.article-feature-image.is-contained img { padding: 14px; object-fit: contain; }
+.article-feature-image img { display: block; width: 100%; max-height: 560px; aspect-ratio: 16 / 10; background: #f3f6f7; object-fit: contain; object-position: center; }
+.article-feature-image.is-contained img { padding: 0; object-fit: contain; }
 .article-feature-image figcaption { padding-top: 9px; color: var(--muted); font-size: .8rem; line-height: 1.5; }
 .article-toc { padding: 22px 24px; margin-bottom: 34px; border: 1px solid var(--line); background: var(--white); }
 .article-toc strong { color: var(--ink-strong); }
@@ -715,7 +715,8 @@ h3 { font-size: 1.25rem; }
 .related-articles em { margin-top: auto; color: var(--teal); font-size: .78rem; font-style: normal; }
 .article-aside { position: sticky; top: 105px; align-self: start; }
 .article-aside-card { padding: 18px; border: 1px solid var(--line); background: var(--surface); }
-.article-aside-card img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; margin-bottom: 19px; }
+.article-aside-card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: center; background: #f3f6f7; margin-bottom: 19px; }
+.article-aside-card img.is-contained { object-fit: contain; }
 .article-aside-card strong { display: block; color: var(--ink-strong); font-size: 1.05rem; }
 .article-aside-card p { margin: 8px 0 17px; color: var(--muted); font-size: .86rem; }
 .article-aside-links { display: grid; gap: 11px; padding-top: 28px; }

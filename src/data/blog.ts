@@ -13,6 +13,8 @@ export type BlogBuyerFramework = {
 export type BlogArticle = {
   slug: string;
   title: string;
+  /** Short editorial label used in cards and visible headings; the full title remains the SEO source title. */
+  shortTitle?: string;
   metaTitle?: string;
   description: string;
   keywords: string;
@@ -295,10 +297,60 @@ const existingBlogArticles: BlogArticle[] = [
 ];
 
 const buyerQuestionSlugs = new Set(buyerQuestionArticles.map((article) => article.slug));
+
+// Give legacy guides an editorially relevant product visual instead of sending every
+// article to the generic workshop fallback. These product slugs are resolved against
+// the same catalog used by product pages, so the visual and its alt text stay factual.
+const legacyArticleVisuals: Record<string, string> = {
+  'how-to-start-a-bounce-house-rental-business': 'modern-white-bounce-houses',
+  'commercial-pvc-thickness-guide': 'commercial-grade-white-bounce-house',
+  'commercial-inflatable-slide-buying-guide': 'super-mario-inflatable-slide',
+  'inflatable-obstacle-course-design-guide': 'red-and-yellow-obstacle-course',
+  'how-to-plan-an-inflatable-water-park': 'aqua-inflatable-water-park',
+  'inflatable-games-for-family-entertainment-centers': '4-in-1-inflatable-interactive-sports-game-with-blower',
+  'shipping-commercial-inflatables-internationally': 'outdoor-inflatable-water-park',
+  'commercial-inflatable-maintenance-and-repair': 'inflatable-soccer-field-commercial',
+  'choosing-inflatable-blower': 'heavy-duty-4-in-1-sports-interactive-game',
+  'custom-branded-inflatable-tent': 'commercial-inflatable-tent-for-party',
+  'planning-a-party-rental-inflatable-fleet': 'commercial-obstacle-course-bounce-house',
+  'seasonal-inflatable-inventory-planning': 'inflatable-soccer-field-for-kids',
+};
+
+// Keep visible labels concise while preserving the complete, keyword-rich article
+// title for structured data and source metadata.
+const shortTitles: Record<string, string> = {
+  'how-to-start-a-bounce-house-rental-business': 'Starting a Commercial Inflatable Fleet',
+  'commercial-vs-residential-bounce-houses': 'Commercial vs. Residential Inflatables',
+  'how-to-choose-commercial-inflatable-manufacturer': 'How to Verify an Inflatable Manufacturer',
+  'en-14960-and-astm-inflatable-safety': 'EN 14960 vs. ASTM F2374',
+  'commercial-pvc-thickness-guide': 'Commercial Inflatable PVC Guide',
+  'commercial-inflatable-slide-buying-guide': 'Commercial Inflatable Slide Buying Guide',
+  'inflatable-obstacle-course-design-guide': 'Commercial Obstacle Course Design',
+  'oem-odm-inflatable-manufacturing-process': 'Custom Inflatable OEM & ODM Process',
+  'how-to-plan-an-inflatable-water-park': 'Planning an Inflatable Water Park',
+  'inflatable-games-for-family-entertainment-centers': 'Inflatable Games for FECs',
+  'shipping-commercial-inflatables-internationally': 'Shipping Commercial Inflatables',
+  'inflatable-moq-lead-time-and-quotation': 'Inflatable MOQ & Production Lead Time',
+  'commercial-inflatable-maintenance-and-repair': 'Commercial Inflatable Maintenance',
+  'choosing-inflatable-blower': 'Choosing a Commercial Inflatable Blower',
+  'custom-branded-inflatable-tent': 'Custom Branded Inflatable Tents',
+  'planning-a-party-rental-inflatable-fleet': 'Planning a Commercial Inflatable Fleet',
+  'product-specifications-for-inflatable-buyers': 'Inflatable Specifications Buyers Need',
+  'international-inflatable-compliance-documents': 'International Inflatable Documents',
+  'seasonal-inflatable-inventory-planning': 'Seasonal Inflatable Inventory Planning',
+  'inflatable-rfq-checklist-for-factory-quotation': 'Inflatable RFQ Checklist',
+  'commercial-inflatable-pre-shipment-quality-checks': 'Pre-Shipment Inflatable Quality Checks',
+  'calculate-landed-cost-commercial-inflatable': 'Commercial Inflatable Landed Cost',
+};
+
 export const blogArticles: BlogArticle[] = [
   ...buyerQuestionArticles,
   ...existingBlogArticles.filter((article) => !buyerQuestionSlugs.has(article.slug)),
-];
+].map((article) => ({
+  ...article,
+  imageProductSlug: article.imageProductSlug ?? legacyArticleVisuals[article.slug],
+  shortTitle: article.shortTitle ?? shortTitles[article.slug],
+}));
 
 export function getBlogArticle(slug: string) {
   return blogArticles.find((article) => article.slug === slug);
