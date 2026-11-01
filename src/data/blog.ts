@@ -1,8 +1,19 @@
+import { buyerQuestionArticles } from './buyer-question-articles.ts';
+
 export type BlogSection = { heading: string; body: string };
+export type BlogFaq = { question: string; answer: string };
+export type BlogInternalLink = { label: string; href: string };
+export type BlogBuyerFramework = {
+  decision: string;
+  checklist: string[];
+  risks: string[];
+  factoryQuestions: string[];
+};
 
 export type BlogArticle = {
   slug: string;
   title: string;
+  metaTitle?: string;
   description: string;
   keywords: string;
   category: string;
@@ -10,9 +21,17 @@ export type BlogArticle = {
   readTime: string;
   intro: string;
   sections: BlogSection[];
+  updated?: string;
+  answer?: string;
+  image?: { src: string; alt: string; caption: string; fit?: 'contain' | 'cover' };
+  imageProductSlug?: string;
+  faqs?: BlogFaq[];
+  buyerFramework?: BlogBuyerFramework;
+  internalLinks?: BlogInternalLink[];
+  relatedProductSlugs?: string[];
 };
 
-export const blogArticles: BlogArticle[] = [
+const existingBlogArticles: BlogArticle[] = [
   {
     slug: 'how-to-start-a-bounce-house-rental-business',
     title: 'How to Start a Bounce House Rental Business: A Practical Equipment Guide',
@@ -273,6 +292,12 @@ export const blogArticles: BlogArticle[] = [
       { heading: 'Ask for the details that affect total cost', body: 'Request product price, blower and accessory list, packed dimensions, gross weight, lead time, payment terms, applicable documents, and quotation validity.' },
     ],
   },
+];
+
+const buyerQuestionSlugs = new Set(buyerQuestionArticles.map((article) => article.slug));
+export const blogArticles: BlogArticle[] = [
+  ...buyerQuestionArticles,
+  ...existingBlogArticles.filter((article) => !buyerQuestionSlugs.has(article.slug)),
 ];
 
 export function getBlogArticle(slug: string) {

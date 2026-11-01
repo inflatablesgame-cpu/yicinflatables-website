@@ -8,6 +8,9 @@ interface Props {
   description?: string;
   image?: string;
   imageAlt?: string;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
   preloadImage?: boolean;
   keywords?: string;
   robots?: string;
@@ -20,6 +23,9 @@ const {
   description = 'Factory-direct commercial inflatables for importers, distributors, entertainment venues, event operators, and global B2B buyers.',
   image = logo,
   imageAlt = 'YIC Inflatable Sports commercial inflatable manufacturer',
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
   keywords = 'commercial inflatable manufacturer, inflatable products, OEM inflatable, YIC Inflatable Sports',
   robots = 'index, follow, max-image-preview:large',
   preloadImage = false,
@@ -105,7 +111,9 @@ const websiteSchema = {
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={compactTitle} />
     <meta property="og:description" content={compactDescription} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    {ogType === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {ogType === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />

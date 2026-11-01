@@ -49,6 +49,38 @@ for (const article of blogArticles) {
   }
 }
 
+const buyerQuestionArticles = blogArticles.filter((article) => article.answer);
+if (buyerQuestionArticles.length !== 10) {
+  failures.push('Expected 10 distinct procurement question articles, found ' + buyerQuestionArticles.length);
+}
+duplicates('Buyer guide SEO titles', buyerQuestionArticles.map((article) => article.metaTitle ?? article.title));
+for (const article of buyerQuestionArticles) {
+  if ((article.metaTitle ?? article.title).length + ' | YIC'.length > 62) failures.push('Blog ' + article.slug + ': SEO title exceeds the site title limit');
+  if (article.description.length > 158) failures.push('Blog ' + article.slug + ': meta description exceeds the site description limit');
+  if (!article.buyerFramework || article.buyerFramework.checklist.length < 4 || article.buyerFramework.risks.length < 3 || article.buyerFramework.factoryQuestions.length < 4) {
+    failures.push('Blog ' + article.slug + ': missing article-specific procurement framework');
+  }
+  if (!article.faqs || article.faqs.length < 4 || new Set(article.faqs.map((faq) => faq.question.trim().toLowerCase())).size !== article.faqs.length) {
+    failures.push('Blog ' + article.slug + ': missing or duplicate article-specific FAQs');
+  }
+  for (const link of article.internalLinks ?? []) {
+    if (!link.href.startsWith('/')) failures.push('Blog ' + article.slug + ': internal link is not a local path: ' + link.href);
+  }
+  for (const slug of article.relatedProductSlugs ?? []) {
+    if (!products.some((product) => product.productSlug === slug)) failures.push('Blog ' + article.slug + ': unknown related product slug ' + slug);
+  }
+  if (article.image) {
+    const pathname = decodeURIComponent(article.image.src.split('?')[0]);
+    const assetPath = path.resolve(publicRoot, '.' + pathname);
+    try {
+      const file = await stat(assetPath);
+      if (!file.isFile() || file.size === 0) failures.push('Blog ' + article.slug + ': missing or empty image ' + article.image.src);
+    } catch {
+      failures.push('Blog ' + article.slug + ': missing image ' + article.image.src);
+    }
+  }
+}
+
 for (const caseStudy of caseStudyCards) {
   if (!caseStudy.description || !caseStudy.buyerFocus || !caseStudy.alt) failures.push('Case study ' + caseStudy.id + ': missing citation-ready project detail');
   if (!caseStudy.relatedProductSlug && !caseStudy.relatedCategorySlug) failures.push('Case study ' + caseStudy.id + ': missing related catalog path');
