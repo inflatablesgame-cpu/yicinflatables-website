@@ -17,3 +17,7 @@
 /product/bounce-house-combo/ /products/bounce-house-combos/ 301
 /product/bounce-house-combo/* /products/bounce-house-combos/:splat 301
 /product/* /products/:splat 301
+
+# Retire legacy paths with HTTP redirects rather than static HTML refresh pages.
+/buyer-guides/  /blog/  301
+/sitemap-index.xml  /sitemap.xml  301
