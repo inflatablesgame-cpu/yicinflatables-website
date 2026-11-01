@@ -1,6 +1,6 @@
 import { stat } from 'node:fs/promises';
 import path from 'node:path';
-import { products, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle } from '../src/data/site.ts';
+import { products, productDescription, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
 import { blogArticles } from '../src/data/blog.ts';
 import { getBuyerGuideProfile } from '../src/data/buyer-guides.ts';
 import { caseStudyCards } from '../src/data/case-studies.ts';
@@ -23,19 +23,22 @@ duplicates('Primary keywords', products.map(productPrimaryKeyword));
 duplicates('Product H1 titles', products.map(productHeadingTitle));
 duplicates('SEO titles', products.map(productSeoTitle));
 duplicates('Meta descriptions', products.map(productMetaDescription));
+duplicates('Product lead descriptions', products.map((product) => sanitizeB2BCopy(product, productDescription(product))));
 
 for (const product of products) {
   const primaryKeyword = productPrimaryKeyword(product);
   const heading = productHeadingTitle(product);
   const meta = productMetaDescription(product);
+  const leadDescription = sanitizeB2BCopy(product, productDescription(product));
   const faqs = productFaqs(product);
   const leadTime = productLeadTimeProfile(product);
   const orderConfirmation = productOrderConfirmation(product);
   if (!primaryKeyword || !heading || !meta) failures.push(product.slug + ': missing a public SEO field');
   if (faqs.length < 6) failures.push(product.slug + ': expected at least 6 product FAQs, found ' + faqs.length);
   if (new Set(faqs.map((faq) => faq.question.trim().toLowerCase())).size < 6) failures.push(product.slug + ': product FAQs are not sufficiently distinct');
-  if (!/^(?:5–7|6–8|7–9|8–10|10–12|5–12) Work Days$/.test(leadTime.range)) failures.push(product.slug + ': invalid size-based lead-time range');
+  if (!/^(?:5–7|6–8|7–9|8–10|9–11|10–12|11–14|5–12|7–14) Work Days$/.test(leadTime.range)) failures.push(product.slug + ': invalid size-based lead-time range');
   if (!orderConfirmation.includes(leadTime.range) || /7-10 Work Days/i.test(orderConfirmation)) failures.push(product.slug + ': order confirmation does not use the size-based lead-time profile');
+  if (!productHasRentalSearchIntent(product) && /\b(rental|rent|hire)\b/i.test(leadDescription)) failures.push(product.slug + ': ordinary B2B lead description still leads with rental wording');
   if (productHasRentalSearchIntent(product) && !/commercial fleet procurement intent|local consumer rental service/i.test(productManufacturerSupplyNote(product))) failures.push(product.slug + ': missing manufacturer-supply clarification for rental search intent');
 }
 

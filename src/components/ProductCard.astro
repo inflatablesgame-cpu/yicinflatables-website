@@ -1,5 +1,5 @@
 ---
-import { company, productCardDescription, productCardImage, productCardLabel, productDetailContent, productHeadingTitle, productPath, productPrimaryKeyword } from '../data/site';
+import { company, productCardDescription, productCardImage, productCardLabel, productDetailContent, productHeadingTitle, productPath, productPrimaryKeyword, sanitizeB2BCopy } from '../data/site';
 import type { Product } from '../data/site';
 
 interface Props {
@@ -14,7 +14,9 @@ const imageLabel = product.category === 'Bounce House' || product.category === '
   : displayTitle;
 const url = productPath(product);
 const detail = productDetailContent(product);
-const applications = detail.applications.slice(0, 2).map((application) => application.title).join(' · ') || detail.primaryBuyer;
+const applications = sanitizeB2BCopy(product, detail.applications.slice(0, 2).map((application) => application.title).join(' · ') || detail.primaryBuyer);
+const cardDescription = sanitizeB2BCopy(product, productCardDescription(product));
+const cardLabel = sanitizeB2BCopy(product, productCardLabel(product));
 // The quote should identify the page where the buyer clicked the card
 // (home, product hub, category, or related-products section), not silently
 // replace it with the destination product URL.
@@ -37,8 +39,8 @@ const sourcePageUrl = new URL(Astro.url.pathname, `https://${company.domain}`).h
       </dl>
     ) : (
       <>
-        <p class="product-card-description">{productCardDescription(product)}</p>
-        <small class="product-card-material">{productCardLabel(product)}</small>
+        <p class="product-card-description">{cardDescription}</p>
+        <small class="product-card-material">{cardLabel}</small>
       </>
     )}
     <div class="card-actions"><a href={url}>View details</a><a href={`/contact/?product=${encodeURIComponent(displayTitle)}&source=${encodeURIComponent(sourcePageUrl)}`}>Get quote</a></div>

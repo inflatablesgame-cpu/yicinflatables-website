@@ -101,19 +101,30 @@ export type ProductComplianceProfile = {
  * same certification scope. The final approved order file remains the source
  * of truth for the model, material, electrical components and destination.
  */
-export function productComplianceProfile(_product: Product): ProductComplianceProfile {
+export function productComplianceProfile(product: Product): ProductComplianceProfile {
+  const searchable = `${product.category} ${product.title} ${product.sourceName}`.toLowerCase();
+  const isWater = /water|pool|floating|aquatic/.test(searchable);
+  const isElectrical = /blower|pump|mechanical|bull|wipeout|sweeper|air dancer/.test(searchable);
+  const euDocuments = isWater
+    ? 'ISO 25649 where applicable, RoHS / REACH material records, and CE documentation for specified blower or pump components'
+    : /tent|advertising|display|food truck|bar|kiosk/.test(searchable)
+      ? 'RoHS / REACH material records and CE documentation for specified electrical or inflation components'
+      : 'EN 14960 where applicable, RoHS / REACH material records, and CE documentation for specified blower or pump components';
+  const usDocuments = isElectrical
+    ? 'UL and CB records for specified electrical components, plus the applicable product and material documentation'
+    : 'UL / CB component records where applicable, plus the applicable product and material documentation';
+  const badge = isWater ? 'ISO 25649 · CE · UL' : /tent|advertising|display|food truck|bar|kiosk/.test(searchable) ? 'RoHS / REACH · CE' : 'EN 14960 · CE · UL';
   return {
-    badge: 'EN 14960 · ISO 25649 · CE / UL',
-    summary: 'EU & US compliance file: EN 14960, ISO 25649, RoHS / REACH, CE, UL, CB and flame-retardant records',
-    eu: 'European buyer files can combine EN 14960, ISO 25649, RoHS / REACH material records and CE documentation for the specified blower or pump components.',
-    us: 'United States buyer files can include UL and CB records for specified electrical components, together with the applicable product and material documentation.',
+    badge,
+    summary: `Market documentation: Europe ${euDocuments}; United States ${usDocuments}; flame-retardant material report where applicable`,
+    eu: `European buyer files can include ${euDocuments}.`,
+    us: `United States buyer files can include ${usDocuments}.`,
     fire: 'A flame-retardant report is matched to the applicable PVC or textile material and confirmed against the approved order requirements.',
-    scope: 'Every model can be supplied to Europe and the United States. The approved order file lists only the documents applicable to that model, material, electrical components and destination; generic or component certificates are not presented as blanket certification for every configuration.',
+    scope: 'The final approved order file identifies the documents applicable to this model, material, electrical components and destination. Public certificates and component reports are not presented as blanket certification for every configuration.',
   };
 }
 
 export type ProductEvidenceProfile = {
-  modelId: string;
   specification: string;
   procurement: string;
   productionRecord: string;
@@ -142,9 +153,9 @@ function referenceDimensionValues(product: Product) {
 export function productLeadTimeProfile(product: Product): ProductLeadTimeProfile {
   if (!product.dimensions || /custom dimensions available/i.test(product.dimensions)) {
     return {
-      range: '5–12 Work Days',
+      range: '7–14 Work Days',
       sizeBand: 'custom',
-      basis: 'Custom dimensions or project scope are scheduled after the approved drawing, artwork, quantity and accessory list are confirmed.',
+      basis: 'Custom dimensions or project scope use the longest 7–14 work-day planning window after the approved drawing, artwork, quantity and accessory list are confirmed.',
     };
   }
 
@@ -154,13 +165,13 @@ export function productLeadTimeProfile(product: Product): ProductLeadTimeProfile
   const projectCategory = ['Inflatable Theme Park', 'Inflatable Water Park'].includes(product.category);
 
   if (largest >= 20 || footprint >= 180 || (projectCategory && largest >= 10)) {
-    return { range: '10–12 Work Days', sizeBand: 'project', basis: 'Large reference footprint or project-scale assembly requires the longest standard production window after approval.' };
+    return { range: '11–14 Work Days', sizeBand: 'project', basis: 'Large reference footprint or project-scale assembly requires the longest 11–14 work-day production and inspection window after approval.' };
   }
   if (largest >= 12 || footprint >= 90) {
-    return { range: '8–10 Work Days', sizeBand: 'large', basis: 'Large-format reference dimensions require additional cutting, construction, inspection and export-packing time.' };
+    return { range: '9–11 Work Days', sizeBand: 'large', basis: 'Large-format reference dimensions require additional cutting, construction, inspection and export-packing time.' };
   }
   if (largest >= 7 || footprint >= 45) {
-    return { range: '7–9 Work Days', sizeBand: 'large', basis: 'The reference size needs a longer production and inspection window than compact catalog models.' };
+    return { range: '8–10 Work Days', sizeBand: 'large', basis: 'The reference size needs a longer production and inspection window than compact catalog models.' };
   }
   if (largest >= 4 || footprint >= 16) {
     return { range: '6–8 Work Days', sizeBand: 'standard', basis: 'This standard-size reference model is scheduled after the approved specification and artwork are released.' };
@@ -180,16 +191,13 @@ export function productLeadTimeProfile(product: Product): ProductLeadTimeProfile
 export function productEvidenceProfile(product: Product): ProductEvidenceProfile {
   const detail = productDetailContent(product);
   const leadTime = productLeadTimeProfile(product);
-  const index = Math.max(0, products.findIndex((item) => item.slug === product.slug)) + 1;
-  const modelId = `YIC-${product.categorySlug.replace(/[^a-z0-9]+/gi, '-').toUpperCase()}-${String(index).padStart(3, '0')}`;
   const dimensions = product.dimensions?.trim() || 'Custom dimensions available';
   const useFocus = detail.applications[0]?.title ?? product.category;
   const planningFocus = detail.planningPoints[0] ?? 'the approved dimensions, application, accessory scope and destination requirements';
   return {
-    modelId,
     specification: `${dimensions} reference size · ${product.material}`,
-    procurement: `Factory-direct supply for ${productTargetBuyers(product).join(', ')}. The final quotation confirms the selected layout, accessories, artwork, packing, destination requirements and ${leadTime.range} production window.`,
-    productionRecord: `${leadTime.basis} The production file is built around ${useFocus.toLowerCase()}: ${planningFocus}. Artwork approval, material and dimension confirmation, in-process checks, inflation or operation review, final inspection and export packing are recorded against the approved order specification.`,
+    procurement: `Factory-direct supply for ${productTargetBuyers(product).join(', ')}. The final quotation confirms the selected layout, accessories, artwork, packing, destination requirements and ${leadTime.range} production window. Product-specific procurement focus for ${productPrimaryKeyword(product)}: ${useFocus}; confirm ${detail.quoteItems[0] ?? planningFocus}.`,
+    productionRecord: `${leadTime.basis} The production file for ${productPrimaryKeyword(product)} is built around ${useFocus.toLowerCase()}: ${planningFocus}. Artwork approval, material and dimension confirmation, in-process checks, inflation or operation review, final inspection and export packing are recorded against the approved order specification.`,
   };
 }
 
@@ -209,6 +217,35 @@ export function productOrderConfirmation(product: Product) {
 
 export function productHasRentalSearchIntent(product: Product) {
   return /\b(?:rental|rent|hire)\b/i.test([productPrimaryKeyword(product), product.productSlug].join(' '));
+}
+
+/**
+ * Keep rental language on pages that explicitly target a rental query, while
+ * preventing ordinary factory product pages from reading like local rental
+ * listings. The replacement keeps the underlying commercial use case truthful
+ * and does not alter a product's selected core keyword.
+ */
+export function sanitizeB2BCopy(product: Product, value: string) {
+  if (productHasRentalSearchIntent(product)) return value;
+  return sanitizeNonRentalB2BCopy(value);
+}
+
+export function sanitizeNonRentalB2BCopy(value: string) {
+  return value
+    .replace(/party[- ]rental businesses?/gi, 'party distributors and event operators')
+    .replace(/party[- ]rental companies?/gi, 'party distributors and event operators')
+    .replace(/rental[- ]fleet buyers?/gi, 'commercial fleet buyers')
+    .replace(/rental[- ]fleets?/gi, 'commercial fleets')
+    .replace(/rental[- ]operators?/gi, 'venue and event operators')
+    .replace(/rental[- ]programs?/gi, 'commercial event programs')
+    .replace(/rental[- ]packages?/gi, 'commercial event packages')
+    .replace(/rental[- ]ready/gi, 'commercial-ready')
+    .replace(/rental[- ]use/gi, 'repeat commercial use')
+    .replace(/rental[- ]businesses?/gi, 'commercial operators')
+    .replace(/rental[- ]companies?/gi, 'commercial operators')
+    .replace(/rentals?/gi, 'commercial operation')
+    .replace(/\bhire\b/gi, 'commercial supply')
+    .replace(/\brent\b/gi, 'commercial supply');
 }
 
 export function productManufacturerSupplyNote(product: Product) {
@@ -640,7 +677,7 @@ function prioritizedBuyerDisplay(value: string) {
   return [...coreBuyers, ...fleetBuyers].join(', ');
 }
 
-export function productDescription(product: Product) {
+function buildProductDescription(product: Product) {
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) {
     return `YIC manufactures ${obstacleCourse.keywords[0]} for ${prioritizedBuyerDisplay(obstacleCourse.buyer)}. This ${product.dimensions.trim()} model is shown as ${obstacleCourse.visual}. ${obstacleCourse.purpose} The listing specifies ${product.material}. Buyers can review ${obstacleCourse.customization}. Related buyer searches include ${obstacleCourse.keywords.slice(1).join(', ')}. Confirm the final site plan, access, anchoring, supervision, artwork, accessories, and event requirements before production.`;
@@ -706,6 +743,26 @@ export function productDescription(product: Product) {
       : ` This page covers the ${focusedTerms.join(' and ')} search intent; final dimensions and construction are confirmed against the intended application.`
     : '';
   return `YIC Inflatable Sports manufactures commercial inflatables for ${prioritizedBuyerDisplay(details.primaryBuyer)}. This listing features the “${name}” model. ${details.purpose} Custom artwork, colors, layout, and functional details can be developed around your venue, brand, and destination-market requirements.${intentSentence}${focusedSentence || ` Buyers researching this format may also compare terms such as ${searchVariants}.`}`;
+}
+
+/** Add a short, deterministic procurement note so the visible lead paragraph
+ * carries model-level planning information instead of ending with the same
+ * generic factory sentence on every page. All values come from the catalog
+ * record or the product detail profile; no capacity or certification is made up.
+ */
+export function productDescription(product: Product) {
+  const base = buildProductDescription(product);
+  const detail = productDetailContent(product);
+  const leadTime = productLeadTimeProfile(product);
+  const notes = [
+    `For quotation review, start with ${detail.planningPoints[0] ?? 'the approved site plan and dimensions'}; the current reference-size production window is ${leadTime.range}.`,
+    `Before artwork approval, confirm ${detail.quoteItems[0] ?? 'the intended application, quantity and destination'}; this reference model is planned at ${leadTime.range}.`,
+    `The factory brief should identify ${detail.customization[0] ?? 'the required layout and branding'} and the destination requirements; estimated production is ${leadTime.range} after approval.`,
+    `Buyers can use ${detail.applications[0]?.title ?? product.category} as the starting use case, then confirm ${detail.planningPoints[1] ?? 'access, anchoring and operating conditions'} within the ${leadTime.range} schedule.`,
+    `A practical RFQ should include ${detail.quoteItems[1] ?? 'the preferred dimensions, artwork and accessory scope'}; YIC schedules this reference format for ${leadTime.range} after sign-off.`,
+  ];
+  const index = [...product.slug].reduce((sum, character) => sum + character.charCodeAt(0), 0) % notes.length;
+  return `${base} ${sanitizeB2BCopy(product, notes[index])}`;
 }
 
 type NewInflatableTentProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; options: string; use: string };

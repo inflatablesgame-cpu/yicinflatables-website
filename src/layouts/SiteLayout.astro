@@ -29,7 +29,13 @@ const canonicalUrl = new URL(currentPath, `https://${company.domain}`).href;
 const socialImage = new URL(image, `https://${company.domain}`).href;
 const quickWhatsAppMessage = `Hello YIC, I would like to discuss a commercial inflatable. Page URL: ${canonicalUrl}`;
 const compactTitle = title.length > 62 ? `${title.slice(0, 61).replace(/\s+\S*$/, '').trim()}` : title;
-const compactDescription = description.length > 158 ? `${description.slice(0, 157).replace(/\s+\S*$/, '').trim()}.` : description;
+const compactDescription = description.length > 158
+  ? `${description.slice(0, 157)
+    .replace(/\s+\S*$/, '')
+    .replace(/\s+(and|or|with|for|from|to|the|a|an|of|in)$/i, '')
+    .replace(/[,:;\-–—.]+$/, '')
+    .trim()}.`
+  : description;
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
