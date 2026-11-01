@@ -6,6 +6,7 @@ interface Env {
 }
 
 const fields = ['Name', 'Company', 'Email', 'Phone / WhatsApp', 'Buyer Type', 'Country', 'Product', 'Quantity', 'Destination', 'Timeline', 'Requirements', 'Source page URL', 'Initial Landing Page', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'GCLID', 'MSCLKID'];
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function cleanText(value: unknown, maxLength = 4000) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
@@ -86,6 +87,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   const inquiry = Object.fromEntries(fields.map((field) => [field, cleanText(formData.get(field))]));
+  const contactMethod = cleanText(formData.get('Contact Method'));
+  if (!inquiry.Email && !inquiry['Phone / WhatsApp'] && contactMethod) {
+    if (emailPattern.test(contactMethod)) inquiry.Email = contactMethod;
+    else if (contactMethod.replace(/\D/g, '').length >= 7) inquiry['Phone / WhatsApp'] = contactMethod;
+  }
   if (!inquiry.Name || (!inquiry.Email && !inquiry['Phone / WhatsApp'])) {
     return Response.json({ ok: false, error: 'Name and either email or WhatsApp are required.' }, { status: 400 });
   }

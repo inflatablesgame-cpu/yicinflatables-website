@@ -23,7 +23,7 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
       <h2>Request a factory quotation</h2><p>Share your contact details and purchasing requirements so we can prepare a focused quotation.</p>
       <div class="form-grid">
         <div class="form-field"><label for="name">Name</label><input id="name" name="Name" autocomplete="name" required /></div>
-        <div class="form-field"><label for="contact-method">Work email <span>(email or WhatsApp required)</span></label><input id="contact-method" type="text" autocomplete="email" placeholder="name@company.com or +1 555 123 4567" required /></div>
+        <div class="form-field"><label for="contact-method">Work email <span>(email or WhatsApp required)</span></label><input id="contact-method" name="Contact Method" type="text" autocomplete="email" placeholder="name@company.com or +1 555 123 4567" required /></div>
         <div class="form-field"><label for="company">Company <span>(optional)</span></label><input id="company" name="Company" autocomplete="organization" /></div>
         <div class="form-field"><label for="country">Country <span>(optional)</span></label><input id="country" name="Country" autocomplete="country-name" /></div>
         <div class="form-field"><label for="buyer-type">I am purchasing for <span>(optional)</span></label><select id="buyer-type" name="Buyer Type"><option value="">Select buyer type</option><option>Importer / distributor</option><option>Rental or event business</option><option>FEC, resort, or venue</option><option>Brand activation or agency</option><option>School, club, or community program</option><option>Other commercial use</option></select></div>
@@ -57,8 +57,8 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
     const contactMethodInput = document.querySelector('#contact-method');
     const emailInput = document.querySelector('input[name="Email"]');
     const phoneInput = document.querySelector('input[name="Phone / WhatsApp"]');
-    const attribution = (window as Window & { yicTrackingAttribution?: Record<string, string> }).yicTrackingAttribution ?? {};
-    const attributionFields: Record<string, string> = {
+    const attribution = window.yicTrackingAttribution ?? {};
+    const attributionFields = {
       'Initial Landing Page': attribution.initialLandingPage ?? '',
       'UTM Source': attribution.utmSource ?? '',
       'UTM Medium': attribution.utmMedium ?? '',
@@ -106,7 +106,7 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
     };
     contactMethodInput?.addEventListener('input', syncContactMethod);
     Object.entries(attributionFields).forEach(([name, value]) => {
-      const input = document.querySelector(`input[name="${name}"]`) as HTMLInputElement | null;
+      const input = document.querySelector(`input[name="${name}"]`);
       if (input) input.value = value;
     });
     const buildMessage = () => {
@@ -155,7 +155,7 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
           if (messageInput) messageInput.value = initialMessage;
           syncContactMethod();
           Object.entries(attributionFields).forEach(([name, value]) => {
-            const input = document.querySelector(`input[name="${name}"]`) as HTMLInputElement | null;
+            const input = document.querySelector(`input[name="${name}"]`);
             if (input) input.value = value;
           });
         })
