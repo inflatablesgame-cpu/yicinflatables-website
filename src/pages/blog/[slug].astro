@@ -19,8 +19,6 @@ const image = article.image?.src ?? imageProduct?.images[0] ?? '/assets/commerci
 const imageAlt = article.image?.alt ?? (imageProduct ? `${imageProduct.title} commercial inflatable product` : `YIC commercial inflatable guide: ${article.title}`);
 const imageCaption = article.image?.caption;
 const displayTitle = article.shortTitle ?? article.title;
-const asideImage = imageProduct?.images[1] ?? image;
-const asideImageAlt = imageProduct ? `${imageProduct.title} commercial inflatable detail` : imageAlt;
 const articleUrl = `https://${company.domain}/blog/${article.slug}/`;
 const sectionId = (heading: string) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const categoryLinksByTopic: Record<string, string[]> = {
@@ -104,7 +102,7 @@ const breadcrumbSchema = {
     <div class="container article-layout">
       <div class="article-content">
         {article.answer && <section class="article-direct-answer"><p class="eyebrow">Quick answer</p><p>{article.answer}</p></section>}
-        <figure class:list={['article-feature-image', imageProduct && 'is-product', article.image?.fit === 'contain' && 'is-contained']}><img src={image} alt={imageAlt} width="1200" height="800" fetchpriority="high" />{imageCaption && <figcaption>{imageCaption}</figcaption>}</figure>
+        <figure class:list={['article-feature-image', article.image?.fit === 'contain' && 'is-contained']}><img src={image} alt={imageAlt} width="1200" height="800" fetchpriority="high" />{imageCaption && <figcaption>{imageCaption}</figcaption>}</figure>
         {article.sections.length >= 4 && <nav class="article-toc" aria-label="Article contents"><strong>In this guide</strong><ol>{article.sections.map((section) => <li><a href={`#${sectionId(section.heading)}`}>{section.heading}</a></li>)}</ol></nav>}
         {article.sections.map((section) => <section id={sectionId(section.heading)}><h2>{section.heading}</h2><p>{section.body}</p></section>)}
         <section class="buyer-guide-module article-decision"><p class="eyebrow">Decision before quotation</p><h2>What this guide means for a commercial buyer</h2><p>{buyerFramework.decision}</p></section>
@@ -118,10 +116,6 @@ const breadcrumbSchema = {
         <section><h2>Talk with a commercial inflatable manufacturer</h2><p>Have a product list, custom idea, or venue plan? <a href="/contact/">Send your requirements to YIC</a> and include the destination market, quantity, dimensions, artwork, and target delivery date. You can also <a href="/products/">browse the commercial product catalog</a> before requesting a quote.</p></section>
         <section class="related-articles"><p class="eyebrow">Continue learning</p><h2>Related buyer guides</h2><div>{relatedArticles.map((item) => <a href={`/blog/${item.slug}/`}><span>{item.category}</span><strong>{item.shortTitle ?? item.title}</strong><em>Read guide →</em></a>)}</div></section>
       </div>
-      <aside class="article-aside">
-        <div class="article-aside-card"><img class:list={[imageProduct && 'is-product', !imageProduct && 'is-contained']} src={asideImage} alt={asideImageAlt} loading="lazy" width="900" height="720" /><strong>Need a product recommendation?</strong><p>Tell us what you are planning to buy and where it will be used.</p><a class="button button-small" href="/contact/">Request a factory quote</a></div>
-        <div class="article-aside-links"><strong>Explore more</strong><a href="/products/">Commercial product catalog →</a><a href="/factory-evidence/">Factory evidence →</a><a href="/about/">Factory and quality →</a><a href="/faq/">Buyer FAQ →</a></div>
-      </aside>
     </div>
   </article>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
