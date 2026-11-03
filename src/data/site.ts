@@ -23,11 +23,23 @@ export type Category = {
 
 export const categories = catalogData.categories as Category[];
 const rawProducts = catalogData.products as Product[];
+function formatProductDimensions(value: string) {
+  return value
+    .replace(/(\d+(?:\.\d+)?(?:\s*[x×]\s*\d+(?:\.\d+)?)+)\s*(mm|cm|m|feet|ft|inches|inch|in)\s*(?:\2)?/gi, (_match, dimensions: string, unit: string) => `${dimensions.split(/[x×]/i).map((part) => part.trim()).join(' x ')} ${unit.toLowerCase()}`)
+    .replace(/\s+([x×])\s+/g, ' $1 ')
+    .replace(/\b(m|cm|mm|ft|feet|inches|inch|in)\s+\1\b/gi, '$1')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
 const bubbleTentSource = '/assets/product/Inflatable%20Tent/3m%20diameter%20%2B%201.7m%20tunnel%2C%200.8%20mm%20PVC%20%2B0.6mmPVC%20%20%20%20inflatable%20bubble%20tent%20with%20balloons/';
 const bubbleTentSafe = '/assets/product/inflatable-tent-bubble-tent/';
-export const products = rawProducts.map((product) => /bubble tent with balloons/i.test(product.sourceName)
-  ? { ...product, images: product.images.map((image) => image.replace(bubbleTentSource, bubbleTentSafe)) }
-  : product);
+export const products = rawProducts.map((product) => ({
+  ...product,
+  dimensions: formatProductDimensions(product.dimensions),
+  images: /bubble tent with balloons/i.test(product.sourceName)
+    ? product.images.map((image) => image.replace(bubbleTentSource, bubbleTentSafe))
+    : product.images,
+}));
 
 export function publicCategorySlug(slug: string) {
   return slug === 'bounce-house-combo' ? 'bounce-house-combos' : slug;
@@ -202,17 +214,16 @@ export function productEvidenceProfile(product: Product): ProductEvidenceProfile
 }
 
 export function productOrderConfirmation(product: Product) {
-  const detail = productDetailContent(product);
   const leadTime = productLeadTimeProfile(product);
   const hasCustomDimensions = !product.dimensions || /custom dimensions available/i.test(product.dimensions);
   const referenceSize = product.dimensions?.trim() || 'custom dimensions';
   const timingStatement = hasCustomDimensions
     ? `Because this is a custom-dimension or project-scope order, the standard production window is ${leadTime.range}`
     : `The listed ${referenceSize} reference size is planned for ${leadTime.range}`;
-  const planningFocus = detail.customization.slice(0, 2).join('; ');
-  const quoteFocus = detail.quoteItems[0] ?? 'the intended application, quantity and destination';
-  const application = detail.applications[0]?.title ?? product.category.toLowerCase();
-  return `${detail.purpose} This ${productPrimaryKeyword(product)} is made to order for ${application.toLowerCase()} against the approved specification. ${timingStatement} after drawing, artwork, quantity and accessory approval. ${leadTime.basis} For this model, YIC reconfirms ${planningFocus}. The quotation should identify ${quoteFocus}. The 3-year warranty applies to the approved product configuration.`;
+  const detail = productDetailContent(product);
+  const confirmationItems = detail.quoteItems.slice(0, 2).map((item) => item.charAt(0).toLowerCase() + item.slice(1)).join('; ');
+  const confirmation = `Before ordering this model, approve the drawing, artwork, quantity, accessories, packing, and destination requirements in writing. ${timingStatement} after those approvals. The 3-year warranty applies to the final approved product configuration. Before payment, make sure the quotation records ${confirmationItems}.`;
+  return sanitizeB2BCopy(product, confirmation);
 }
 
 export function productHasRentalSearchIntent(product: Product) {
@@ -226,26 +237,24 @@ export function productHasRentalSearchIntent(product: Product) {
  * and does not alter a product's selected core keyword.
  */
 export function sanitizeB2BCopy(product: Product, value: string) {
-  if (productHasRentalSearchIntent(product)) return value;
-  return sanitizeNonRentalB2BCopy(value);
+  const copy = productHasRentalSearchIntent(product) ? value : sanitizeNonRentalB2BCopy(value);
+  return copy.replace(/\b([\w'-]+)(?:\s+\1)+\b/gi, '$1');
 }
 
 export function sanitizeNonRentalB2BCopy(value: string) {
   return value
+    .replace(/children'?s party rentals?/gi, "children's party programs")
     .replace(/party[- ]rental businesses?/gi, 'party distributors and event operators')
     .replace(/party[- ]rental companies?/gi, 'party distributors and event operators')
     .replace(/rental[- ]fleet buyers?/gi, 'commercial fleet buyers')
-    .replace(/rental[- ]fleets?/gi, 'commercial fleets')
-    .replace(/rental[- ]operators?/gi, 'venue and event operators')
-    .replace(/rental[- ]programs?/gi, 'commercial event programs')
+    .replace(/rental[- ]fleets?/gi, 'commercial equipment fleets')
+    .replace(/rental[- ]operators?/gi, 'commercial event operators')
+    .replace(/rental[- ]programs?/gi, 'repeat-use commercial programs')
     .replace(/rental[- ]packages?/gi, 'commercial event packages')
-    .replace(/rental[- ]ready/gi, 'commercial-ready')
+    .replace(/rental[- ]ready/gi, 'repeat-use ready')
     .replace(/rental[- ]use/gi, 'repeat commercial use')
-    .replace(/rental[- ]businesses?/gi, 'commercial operators')
-    .replace(/rental[- ]companies?/gi, 'commercial operators')
-    .replace(/rentals?/gi, 'commercial operation')
-    .replace(/\bhire\b/gi, 'commercial supply')
-    .replace(/\brent\b/gi, 'commercial supply');
+    .replace(/\bfor rent\b/gi, 'for fleet procurement')
+    .replace(/\b(\w+)(?:\s+\1)+\b/gi, '$1');
 }
 
 export function productManufacturerSupplyNote(product: Product) {
@@ -727,9 +736,9 @@ function buildProductDescription(product: Product) {
       return `YIC manufactures ${comboProfile.keywords[0]} for ${prioritizedBuyerDisplay(comboProfile.buyer)}. The reference imagery shows ${comboProfile.visual}. ${comboProfile.purpose} This listing specifies ${product.material}. Buyers can discuss OEM or ODM colors, artwork, dimensions, entry and exit layout, play features, accessories, and packing. Related buyer searches include ${comboProfile.keywords.slice(1).join(', ')}. Confirm the final footprint, access route, anchoring, supervision, approved graphic rights, and destination requirements before production.`;
     }
     const core = bounceHouseCoreKeyword(product);
-    const detail = productDetailContent(product);
+    const bounceProfile = bounceHouseProductProfile(product)!;
     const variants = productKeywordVariants(product).filter((term) => term !== core).slice(0, 3).join(', ');
-    return `YIC manufactures ${core} for ${prioritizedBuyerDisplay(detail.primaryBuyer)}. The product is shown at ${product.dimensions.trim()} in ${product.material}, with a layout matched to the visible theme and play features. Buyers can request OEM or ODM changes to colors, artwork, dimensions, access, feature arrangement, accessories, and packing. Related buyer terms include ${variants}. Confirm the final footprint, user group, anchoring, supervision, and destination requirements before production.`;
+    return `YIC manufactures ${core} for ${prioritizedBuyerDisplay(bounceProfile.primaryBuyer)}. The listed ${product.dimensions.trim()} model uses ${product.material}. ${bounceProfile.purpose} The buyer specification can identify ${bounceProfile.customization.slice(0, 2).join('; ')}, plus artwork, anchoring, and packing. Related buyer terms include ${variants}. Confirm the final footprint, user group, and destination requirements before production.`;
   }
   const details = productDetailContent(product);
   const focusedTerms = productSearchTerms(product);
@@ -754,15 +763,9 @@ export function productDescription(product: Product) {
   const base = buildProductDescription(product);
   const detail = productDetailContent(product);
   const leadTime = productLeadTimeProfile(product);
-  const notes = [
-    `For quotation review, start with ${detail.planningPoints[0] ?? 'the approved site plan and dimensions'}; the current reference-size production window is ${leadTime.range}.`,
-    `Before artwork approval, confirm ${detail.quoteItems[0] ?? 'the intended application, quantity and destination'}; this reference model is planned at ${leadTime.range}.`,
-    `The factory brief should identify ${detail.customization[0] ?? 'the required layout and branding'} and the destination requirements; estimated production is ${leadTime.range} after approval.`,
-    `Buyers can use ${detail.applications[0]?.title ?? product.category} as the starting use case, then confirm ${detail.planningPoints[1] ?? 'access, anchoring and operating conditions'} within the ${leadTime.range} schedule.`,
-    `A practical RFQ should include ${detail.quoteItems[1] ?? 'the preferred dimensions, artwork and accessory scope'}; YIC schedules this reference format for ${leadTime.range} after sign-off.`,
-  ];
-  const index = [...product.slug].reduce((sum, character) => sum + character.charCodeAt(0), 0) % notes.length;
-  return `${base} ${sanitizeB2BCopy(product, notes[index])}`;
+  const quoteItem = detail.quoteItems[0] ?? 'the application, quantity, dimensions and destination';
+  const quoteFocus = quoteItem.charAt(0).toLowerCase() + quoteItem.slice(1);
+  return `${base} For an RFQ, specify ${quoteFocus}; this reference size is planned at ${leadTime.range} after drawing, artwork and order details are approved.`;
 }
 
 type NewInflatableTentProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; options: string; use: string };
@@ -3010,15 +3013,17 @@ export function productKeyFeatures(product: Product) {
       `Commercial application: ${comboProfile.application}`,
       `Customize colors, artwork, layout, dimensions, accessories, and packing before production`,
     ];
+    const bounceProfile = bounceHouseProductProfile(product)!;
     return [
       `Core buyer search: ${core}`,
-      `Visible layout: ${product.dimensions.trim()} theme and play format`,
-      `Commercial use: ${product.category === 'Bounce House Combo' ? 'party rental fleets and family entertainment centers' : 'party rental businesses, family venues, and community events'}`,
-      `Customize ${core} with approved colors, artwork, dimensions, access, accessories, and packing`,
+      `Visible format: ${bounceProfile.purpose}`,
+      `Play features: ${bounceProfile.customization[1]}`,
+      `Commercial application: ${bounceProfile.applications[0].title}; ${bounceProfile.primaryBuyer}`,
     ];
   }
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) return [
+    `Product search focus: ${interactiveProfile.keywords[0]}`,
     `Format shown: ${interactiveProfile.visibleLayout}`,
     `Play concept: ${interactiveProfile.gameMechanic}`,
     'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
@@ -3154,10 +3159,49 @@ export function productKeyFeatures(product: Product) {
   }
   if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
     return [
+      `${product.title} · ${product.dimensions.trim()} reference landing format`,
       'Controlled landing zone for BMX, FMX, or freestyle training',
       'Impact-zone and ramp interface planning',
       'Custom dimensions, artwork, and sponsor branding',
-      'Blower, anchoring, repair-kit, and carry-bag coordination',
+      `${product.material} · blower, anchoring, repair-kit, and carry-bag coordination`,
+    ];
+  }
+  if (product.category === 'Bumper Ball') {
+    const terms = bumperBallKeywordSet(product);
+    const youth = /kid|kids|child|youth/.test(searchable) || /1\.25\s*m/i.test(product.dimensions);
+    const zorb = /zorb|water walking|walking ball/.test(searchable);
+    return [
+      `${terms[0] || product.title}: listed reference size ${product.dimensions.trim()} · ${product.material}`,
+      zorb ? 'Activity planning: confirm whether the model is intended for land rolling or a separately supervised water-walking application' : youth ? 'Participant planning: verify the listed diameter against the intended youth group and supervised game format' : 'Participant planning: confirm fit, playing surface, session rules, and clear space for the selected group',
+      `Personalization: ${terms.slice(1, 3).join(', ') || 'color, team identification, and approved logo artwork'}`,
+      'Order scope: specify quantity, inflation method, repair items, carrying or packing needs, and destination requirements',
+    ];
+  }
+  if (product.category === 'Inflatable Games') {
+    const title = productDisplayTitle(product);
+    const activity = /soccer|football/.test(searchable) ? 'ball-kicking, target, or field-boundary play'
+      : /basketball/.test(searchable) ? 'shooting distance, hoop position, and scoring turns'
+        : /dart|target|toss|throw/.test(searchable) ? 'target face, compatible soft-play item, throwing line, and scoring'
+          : /climb|wall|ladder/.test(searchable) ? 'climbing route, landing zone, participant turns, and supervision'
+            : /volleyball/.test(searchable) ? 'court boundary, net position, player flow, and surface conditions'
+              : /billiard|snooker|pool table/.test(searchable) ? 'table or human-scale play format, perimeter, and game-piece compatibility'
+                : /bungee/.test(searchable) ? 'lane count, elastic-line arrangement, start and finish, and player rotation'
+                  : /boxing|joust|gladiator/.test(searchable) ? 'participant zones, protective boundary, accessories, and supervised turns'
+                    : `the activity layout and play rules for ${title}`;
+    return [
+      `Product focus: ${title} · reference size ${product.dimensions.trim()}`,
+      `Game planning: confirm ${activity} against the actual venue and user group`,
+      `Construction listed for this model: ${product.material}`,
+      'RFQ details: send site dimensions, activity rules, compatible accessories, artwork, quantity, and destination for confirmation',
+    ];
+  }
+  if (product.category === 'Inflatable Slide' || product.category === 'Inflatable Tent') {
+    const profile = namedCatalogProfile(product)!;
+    return [
+      `Product focus: ${product.title} · ${profile.productType}`,
+      `Project purpose: ${profile.purpose}`,
+      `Reference construction: ${product.dimensions.trim()} · ${product.material}`,
+      `Quotation focus: ${profile.quoteItems.slice(0, 2).join('; ')}`,
     ];
   }
   const categoryFeatures: Record<string, string[]> = {
@@ -4037,6 +4081,151 @@ function productCategoryPosition(product: Product) {
   return rawProducts.filter((item) => item.categorySlug === product.categorySlug).findIndex((item) => item.slug === product.slug);
 }
 
+function bounceHouseProductProfile(product: Product): Omit<DetailContent, 'template'> | undefined {
+  if (!['Bounce House', 'Bounce House Combo'].includes(product.category)) return undefined;
+  const searchable = `${product.title} ${product.sourceName} ${product.productSlug}`.toLowerCase();
+  const features = [
+    /double slide|dual lane|dual slide|two slides/.test(searchable) ? 'two slide lanes' : /slide/.test(searchable) ? 'integrated slide' : '',
+    /ball pit|ballpit/.test(searchable) ? 'ball-pit play' : '',
+    /basketball|hoop/.test(searchable) ? 'basketball hoop' : '',
+    /climb|climbing/.test(searchable) ? 'climbing section' : '',
+    /obstacle/.test(searchable) ? 'obstacle-play elements' : '',
+  ].filter(Boolean);
+  const theme = /white|wedding|luxury/.test(searchable) ? 'white event styling'
+    : /dinosaur|dino/.test(searchable) ? 'dinosaur artwork'
+      : /paint splatter|graffiti/.test(searchable) ? 'paint-splatter or graffiti artwork'
+        : /black/.test(searchable) ? 'black colorway'
+          : /rocket|space|galaxy/.test(searchable) ? 'space or rocket artwork'
+            : /disco/.test(searchable) ? 'disco-dome styling'
+              : /shell/.test(searchable) ? 'shell-inspired shape'
+                : /rooster|farm/.test(searchable) ? 'farm-animal artwork'
+                  : /tiktok/.test(searchable) ? 'social-media themed graphics'
+                    : /hot air balloon|balloon/.test(searchable) ? 'hot-air-balloon artwork'
+      : /pirate/.test(searchable) ? 'pirate-ship styling'
+        : /backyard|compact|small/.test(searchable) ? 'compact backyard layout'
+          : /lion|hippo|monkey|rooster|farm|animal/.test(searchable) ? 'animal-themed artwork'
+            : /pink/.test(searchable) ? 'pink colorway'
+              : /blue/.test(searchable) ? 'blue colorway'
+                : /purple/.test(searchable) ? 'purple colorway'
+                  : /yellow/.test(searchable) ? 'yellow colorway'
+                    : /red/.test(searchable) ? 'red colorway'
+        : /princess|castle/.test(searchable) ? 'castle or princess styling'
+          : /tropical|beach|luau/.test(searchable) ? 'tropical artwork'
+            : /soccer|football|sports/.test(searchable) ? 'sports-themed graphics'
+              : /mario/.test(searchable) ? 'game-inspired artwork'
+                : /spider|superhero|hulk/.test(searchable) ? 'superhero-inspired artwork'
+                  : /unicorn|rainbow/.test(searchable) ? 'unicorn or rainbow artwork'
+                    : /mermaid/.test(searchable) ? 'mermaid artwork'
+                      : /car|truck|firetruck/.test(searchable) ? 'vehicle-themed artwork'
+                        : /paw patrol|toy story|stitch|minion|frozen|barbie/.test(searchable) ? 'character-themed artwork'
+                          : 'listed colorway and artwork';
+  const isCombo = product.category === 'Bounce House Combo';
+  const playFeatures = features.length ? features.join(', ') : isCombo ? 'a combined bounce-and-play layout' : 'a defined enclosed bounce area';
+  const coreKeyword = bounceHouseCoreKeyword(product);
+  const purpose = /white|wedding|luxury/.test(searchable) && !features.length
+    ? `The ${coreKeyword} uses white event styling as a clean visual backdrop for weddings, receptions, brand events, and family venues; buyers can coordinate its footprint and artwork with the wider event design.`
+    : isCombo
+      ? `The ${coreKeyword} combines ${theme} with ${playFeatures} to create active play and a recognizable themed focal point; the final feature list should follow the supplied product image and approved drawing.`
+      : features.length
+        ? `The ${coreKeyword} pairs ${theme} and ${playFeatures} with an enclosed bounce area for supervised family entertainment, school programs, and event venues; confirm the arrangement against the approved model layout.`
+        : `The ${coreKeyword} uses ${theme} to create a recognizable bounce area for supervised family entertainment, school programs, and event venues; confirm any additional play feature only when it appears in the approved model layout.`;
+  const buyer = 'inflatable distributors, family entertainment centers, event companies, and commercial fleet operators';
+  const application = isCombo ? 'themed multi-play programs' : /white|wedding|luxury/.test(searchable) ? 'weddings, receptions, and styled events' : 'supervised bounce-play programs';
+  const base = categoryDetailProfiles[product.category];
+  return {
+    ...base,
+    productType: isCombo ? 'commercial themed bounce house combo' : 'commercial themed bounce house',
+    primaryBuyer: buyer,
+    purpose,
+    applications: [
+      { title: application, text: `${purpose} Plan the installation around the actual reference footprint, entry and exit, access route, operator position, and supervised guest flow.` },
+      { title: 'Venue and event programming', text: isCombo
+        ? `Use the ${playFeatures} as the activity focus; check participant rotation, queue space, staff sightlines, and clearance around each play section.`
+        : `Use the ${playFeatures} as a focused play station; coordinate its colorway and artwork with the event setting without assuming an unlisted slide or ball-pit feature.` },
+      { title: 'Distributor and fleet planning', text: `Compare the ${theme}, footprint, packing format, artwork area, and replacement-accessory requirements with the buyer's product range before confirming a wholesale order.` },
+    ],
+    planningPoints: [
+      `Measure the listed ${product.dimensions.trim()} reference footprint, ceiling clearance, entry and exit, blower position, anchoring surface, and spectator separation`,
+      isCombo ? `Confirm each shown play section (${playFeatures}), participant flow, intended age group, staff position, and site-specific operating rules` : `Confirm the bounce-area dimensions, shown feature set (${playFeatures}), entry opening, wall or mesh treatment, intended age group, and supervision plan`,
+      `Approve the ${theme}, colors, logo panels, material (${product.material}), accessories, and packing against the final production drawing`,
+    ],
+    customization: [
+      `Adjust the ${theme}, color blocking, printed panels, and logo placement`,
+        isCombo ? `Review the shown ${playFeatures}, entry and exit orientation, and play-zone arrangement` : `Review the bounce-area footprint, ${playFeatures}, entrance position, wall or mesh treatment, and overall proportions`,
+      'Confirm blower interface, anchoring, repair kit, carry or storage bags, accessories, and export packing',
+    ],
+    operationNote: 'Before use, review the approved layout, anchoring, blower and cable arrangement, entry control, participant rules, inspection routine, supervision, weather exposure, and local venue requirements. Product images do not establish a certified capacity or wind rating.',
+    quoteItems: [
+      `Intended venue or event, target user group, and the listed ${product.dimensions.trim()} reference footprint`,
+      `Preferred ${theme}, visible play features, artwork files, access orientation, blower and anchoring requirements`,
+      'Quantity, destination, packing needs, and requested delivery schedule',
+    ],
+  };
+}
+
+function namedCatalogProfile(product: Product): Omit<DetailContent, 'template'> | undefined {
+  if (!['Advertising Inflatable', 'Inflatable Games', 'Inflatable Slide', 'Inflatable Tent', 'Inflatable Theme Park'].includes(product.category)) return undefined;
+  const searchable = `${product.title} ${product.sourceName} ${product.productSlug}`.toLowerCase();
+  const title = product.title.trim();
+  const isSlide = product.category === 'Inflatable Slide';
+  const isTent = product.category === 'Inflatable Tent';
+  const isAdvertising = product.category === 'Advertising Inflatable';
+  const isThemePark = product.category === 'Inflatable Theme Park';
+  const isWetSlide = isSlide && /water|pool|wet|splash|slip/.test(searchable);
+  const activity = /soccer|football/.test(searchable) ? 'ball-kicking, target, or field-boundary play'
+    : /basketball/.test(searchable) ? 'shooting distance, hoop position, and scoring turns'
+      : /dart|target|toss|throw/.test(searchable) ? 'target face, compatible soft-play item, throwing line, and scoring'
+        : /climb|wall|ladder/.test(searchable) ? 'climbing route, landing zone, participant turns, and supervision'
+          : /volleyball/.test(searchable) ? 'court boundary, net position, player flow, and surface conditions'
+            : /billiard|snooker|pool table/.test(searchable) ? 'table or human-scale play format, perimeter, and game-piece compatibility'
+              : /bungee/.test(searchable) ? 'lane count, elastic-line arrangement, start and finish, and player rotation'
+                : /boxing|joust|gladiator/.test(searchable) ? 'participant zones, protective boundary, accessories, and supervised turns'
+                  : /foam/.test(searchable) ? 'contained foam-play area, access, clean-up, and drainage or dry-use plan'
+                    : `the activity layout and play rules for ${title}`;
+  const purpose = isAdvertising
+    ? `The ${title} display gives campaign teams a recognizable visual landmark for retail promotions, exhibitions, public events, and brand activations. Confirm its viewing direction, artwork, site exposure, blower or power needs, and anchoring for the campaign.`
+    : isThemePark
+      ? `The ${title} is planned as a themed play destination for a venue or event project. Match its visible modules, guest route, access points, height clearance, staffing, and supervision plan to the available site.`
+    : isSlide
+    ? `The ${title} format is presented as a ${isWetSlide ? 'water-play' : 'dry-play'} slide attraction. Buyers should plan the approach, run-out or landing area, height clearance, queue, and water interface only where the approved model requires it.`
+    : isTent
+      ? `The ${title} format creates a project-specific shelter or display space. Match its footprint, entrance orientation, interior use, branding area, anchoring, and installation conditions to the actual venue plan.`
+      : `The ${title} is a commercial inflatable game format organized around ${activity}. Define the player sequence, accessory compatibility, scoring or operating rules, and staff position for the intended venue before production.`;
+  const buyers = isAdvertising ? 'brand activation agencies, exhibition contractors, retail campaign teams, and event producers'
+    : isThemePark ? 'theme parks, family entertainment centers, malls, resorts, and project integrators'
+    : isSlide ? 'family entertainment centers, distributors, resorts, event venues, and commercial fleet operators'
+    : isTent ? 'exhibition contractors, event producers, brand agencies, hospitality teams, and inflatable distributors'
+      : 'event companies, schools, family entertainment centers, sports organizations, and commercial fleet operators';
+  const base = categoryDetailProfiles[product.category];
+  return {
+    ...base,
+    productType: isAdvertising ? `custom ${title} promotional display` : isThemePark ? `${title} themed play attraction` : isSlide ? `${isWetSlide ? 'commercial water' : 'commercial'} inflatable slide` : isTent ? 'commercial inflatable event shelter' : `${title} commercial inflatable game`,
+    primaryBuyer: buyers,
+    purpose,
+    applications: [
+      { title: isAdvertising ? 'Campaign and exhibition display' : isThemePark ? 'Themed venue programming' : isSlide ? (isWetSlide ? 'Water-play venues' : 'Dry-slide venues and events') : isTent ? 'Exhibitions and branded events' : title, text: purpose },
+      { title: isAdvertising ? 'Branding and visitor visibility' : isThemePark ? 'Guest-flow and module planning' : isSlide ? 'Guest-flow and site planning' : isTent ? 'Temporary branded environments' : 'Program-specific operation', text: isAdvertising ? 'Set the audience approach, viewing distance, queue or photo area, campaign duration, approved artwork, blower position, and anchoring plan.' : isThemePark ? 'Map activity sequence, entry and exits, queue and spectator areas, staffing positions, and emergency access before finalizing the attraction footprint.' : isSlide ? `Plan the ${product.dimensions.trim()} footprint, approach, landing area, access, operator position, and supervision; include water supply and drainage only for a wet-use model.` : isTent ? 'Coordinate visitor circulation, entrance and egress, interior use, power or blower position, anchoring, and approved artwork.' : `Translate ${activity} into written player instructions, turn duration, compatible accessories, queue layout, and staff responsibilities for the venue.` },
+      { title: 'Factory and distributor procurement', text: `Compare the listed dimensions, ${product.material}, artwork scope, accessories, packing, and destination requirements with the project brief before requesting a quotation.` },
+    ],
+    planningPoints: [
+      isAdvertising ? `Confirm the ${product.dimensions.trim()} reference, viewing direction, audience approach, display position, blower or power access, and anchoring surface` : isThemePark ? `Confirm the ${product.dimensions.trim()} reference footprint, ceiling height, module sequence, guest circulation, emergency access, and staffing position` : isSlide ? `Measure the ${product.dimensions.trim()} reference, height clearance, approach, landing or run-out zone, entry, queue, and blower position` : isTent ? `Measure the ${product.dimensions.trim()} reference footprint, height, entrance and egress, interior use, access route, and installation surface` : `Share the ${product.dimensions.trim()} reference, playable area, approach or access route, queue, operator position, and spectator separation`,
+      isWetSlide ? 'Confirm water supply, flow, drainage, landing or pool arrangement, participant group, and local operating rules' : `Confirm the intended user group, ${activity}, supervision plan, venue restrictions, and accessory compatibility`,
+      `Approve the material (${product.material}), dimensions, artwork, colorway, accessories, blower or power arrangement, and export packing in the production drawing`,
+    ],
+    customization: [
+      isAdvertising ? 'Display profile, viewing direction, logo location, campaign panels, and lighting coordination' : isThemePark ? 'Play modules, theme treatment, guest route, entrances, exits, and project footprint' : isSlide ? 'Slide height, lane count, theme, landing area, and wet- or dry-use configuration' : isTent ? 'Footprint, entrance and window positions, interior zoning, lighting coordination, and anchoring details' : `Game-specific layout: ${activity}`,
+      'Color palette, printed panels, logo placement, and event or sponsor artwork',
+      'Blower or equipment interface, anchoring, repair kit, accessories, storage, and export packing',
+    ],
+    operationNote: isAdvertising ? 'Before installation, confirm approved campaign artwork, viewing direction, blower or power arrangement, secure anchoring, weather exposure, visitor separation, and venue display rules.' : isThemePark ? 'Before operation, confirm the module sequence, access and egress, anchoring, inspection, staffing, participant rules, supervision, and venue procedures.' : isSlide ? 'Before operation, confirm the approved slide configuration, landing area, anchoring, access control, supervision, inspection, and local venue procedures. Wet-use models also require an approved water, drainage, and landing plan.' : isTent ? 'Before installation, confirm the site, anchoring, access and egress, power or blower arrangement, weather exposure, occupancy, and local venue procedures.' : 'Before operation, confirm the approved game rules, compatible accessories, anchoring, blower and cable arrangement, player flow, supervision, inspection, and local venue procedures.',
+    quoteItems: [
+      `Intended use, venue type, target user group, and the ${product.dimensions.trim()} reference`,
+      isAdvertising ? 'Campaign objective, display location, artwork, viewing direction, anchoring, power, and visitor-flow requirements' : isThemePark ? 'Project footprint, module sequence, theme brief, guest route, height clearance, staffing, and destination requirements' : isSlide ? 'Required height, lane count, theme, landing area, and water connection if applicable' : isTent ? 'Required entrance, interior, artwork, lighting, anchoring, and installation arrangement' : `Activity rules, ${activity}, compatible accessories, and score or turn format`,
+      'Quantity, destination, accessories, packing, and target delivery schedule',
+    ],
+  };
+}
+
 export function productDetailContent(product: Product): DetailContent {
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
   const obstacleCourse = obstacleCourseProfile(product);
@@ -4343,7 +4532,7 @@ export function productDetailContent(product: Product): DetailContent {
       template,
       productType: interactiveProfile.productType,
       primaryBuyer: interactiveProfile.primaryBuyer,
-      purpose: `This ${interactiveProfile.productType} is shown as ${interactiveProfile.visibleLayout}. It supports ${interactiveProfile.gameMechanic} for ${interactiveProfile.application}.`,
+      purpose: `This ${interactiveProfile.keywords[0]} listing shows ${interactiveProfile.visibleLayout.replace(/^(?:a|an)\s+/i, '')}. The layout establishes a ${interactiveProfile.productType} for ${interactiveProfile.application}; confirm game rules and compatible accessories in the approved specification.`,
       applications: [
         { title: 'Commercial event play', text: `Use the format for ${interactiveProfile.application}, with a clear operator position, guest queue, and approved participation rules.` },
         { title: 'Rental and venue programs', text: `Plan ${footprint}, access, setup, turnover, and storage around the expected audience and repeat-use schedule.` },
@@ -4513,10 +4702,10 @@ export function productDetailContent(product: Product): DetailContent {
       productType: isZorb ? 'commercial inflatable zorb ball' : isSuit ? 'inflatable bubble-soccer suit' : 'commercial inflatable bumper ball',
       primaryBuyer: 'bubble-soccer operators, sports venues, schools, event companies, rental businesses, and inflatable-equipment distributors',
       purpose: isYouth
-        ? `The ${product.dimensions.trim()} ${product.material} model is listed for youth-oriented group activities. Confirm participant fit, game format, playing surface, and supervision requirements before selecting a set.`
+        ? `The ${bumperBallKeywordSet(product)[0] || product.title} model is listed at ${product.dimensions.trim()} in ${product.material} for youth-oriented group activities. Confirm participant fit, game format, playing surface, and supervision requirements before selecting a set.`
         : isZorb
-          ? `The ${product.dimensions.trim()} ${product.material} model is listed as a zorb-style ball for operator-led recreation and event programs. Confirm the intended activity, user fit, venue conditions, and operating plan before ordering.`
-          : `The ${product.dimensions.trim()} ${product.material} model is listed for adult or mixed-group bubble-soccer activities. Confirm participant fit, playing area, supervision, and local operating rules before use.`,
+          ? `The ${bumperBallKeywordSet(product)[0] || product.title} model is listed at ${product.dimensions.trim()} in ${product.material} as a zorb-style ball for operator-led recreation and event programs. Confirm the intended activity, user fit, venue conditions, and operating plan before ordering.`
+          : `The ${bumperBallKeywordSet(product)[0] || product.title} model is listed at ${product.dimensions.trim()} in ${product.material} for adult or mixed-group bubble-soccer activities. Confirm participant fit, playing area, supervision, and local operating rules before use.`,
       applications: [
         { title: 'Bubble-soccer programs', text: 'Plan team sessions around ball diameter, participant group, suitable surface, session length, and supervised player rotation.' },
         { title: isYouth ? 'Youth sports and school events' : 'Adult group events', text: 'Confirm participant fit, available space, event format, and supervision before adding the product to a school, venue, or event program.' },
@@ -4937,7 +5126,7 @@ export function productDetailContent(product: Product): DetailContent {
       template,
       productType: isBubble ? 'bubble foam pit and foam-play attraction' : 'inflatable foam party pit',
       primaryBuyer: 'party rental businesses, family entertainment centers, indoor play venues, resorts, and event operators',
-      purpose: isBubble ? `It creates a colorful foam-play zone${isRainbow || isCandy ? ` with ${isRainbow ? 'rainbow-arch' : 'candy-land'} visual theming` : ''} for supervised events, repeat rental packages, and family entertainment.` : 'It creates a contained foam-play zone for parties, summer events, family venues, and repeat commercial rental programs.',
+      purpose: isBubble ? `The ${product.title} format creates a colorful foam-play zone${isRainbow || isCandy ? ` with ${isRainbow ? 'rainbow-arch' : 'candy-land'} visual theming` : ''} at the listed ${product.dimensions.trim()} size for supervised events and family entertainment.` : `The ${product.title} uses a ${product.dimensions.trim()} contained foam-play zone for parties, summer events, family venues, and supervised commercial programs.`,
       applications: [
         { title: 'Foam party rental', text: 'Build a memorable party package around a contained play area, foam machine position, participant flow, drainage, and practical cleanup planning.' },
         { title: 'Family entertainment centers', text: 'Add a repeat-play foam attraction with defined entry, exit, supervision, access, and customer throughput.' },
@@ -5121,7 +5310,7 @@ export function productDetailContent(product: Product): DetailContent {
       template,
       productType: format,
       primaryBuyer: 'family entertainment centers, adventure parks, party rental businesses, resorts, schools, and event operators',
-      purpose: hasSlide ? 'It combines a climb-and-slide sequence into one visible attraction for supervised play and commercial entertainment.' : `It gives venues a vertical climbing challenge with a clear route, supervised play zone, and strong visual presence${isTower ? ' for tower-style adventure programming' : ''}.`,
+      purpose: hasSlide ? `The ${product.title} combines a climb-and-slide sequence into one visible attraction for supervised play and commercial entertainment.` : `The ${product.title} gives venues a vertical climbing challenge with a clear route, supervised play zone, and strong visual presence${isTower ? ' for tower-style adventure programming' : ''}.`,
       applications: [
         { title: 'Family entertainment centers', text: 'Create a structured climbing challenge with defined entry, route, exit, supervision, and guest-flow planning.' },
         { title: 'Adventure parks and resorts', text: 'Add a high-visibility rock-wall attraction to seasonal recreation, resort programming, or outdoor activity zones.' },
@@ -5182,7 +5371,9 @@ export function productDetailContent(product: Product): DetailContent {
       ],
     };
   }
-  const profile = categoryDetailProfiles[product.category] ?? {
+  const bounceHouse = bounceHouseProductProfile(product);
+  const namedProfile = namedCatalogProfile(product);
+  const profile = bounceHouse ?? namedProfile ?? categoryDetailProfiles[product.category] ?? {
     productType: product.category.toLowerCase(), primaryBuyer: 'commercial buyers', purpose: `It supports ${productApplication(product)}.`, applications: [], planningPoints: [], customization: [], operationNote: 'Confirm site and operating requirements before production.', quoteItems: [],
   };
   const position = productCategoryPosition(product);
@@ -5319,8 +5510,8 @@ export function productCardDescription(product: Product) {
     const core = bounceHouseCoreKeyword(product);
     const comboProfile = bounceComboSeoProfile(product);
     if (comboProfile) return `${comboProfile.cardSummary} ${reference}`;
-    const audience = product.category === 'Bounce House Combo' ? 'party rental fleets and family entertainment centers' : 'party rental businesses, family venues, and community events';
-    return `${core} for ${audience}, with the visible theme and play features planned around supervised operation. Compare the reference size, artwork, access, anchoring, accessories, and OEM options before requesting a factory quotation. ${reference}`;
+    const profile = bounceHouseProductProfile(product)!;
+    return `${core} for ${profile.applications[0].title.toLowerCase()}. ${profile.purpose} Review ${profile.customization[0]}, access, anchoring, accessories, and packing before requesting a factory quotation. ${reference}`;
   }
   const interactiveProfile = interactiveGameProfile(product);
   if (interactiveProfile) {
@@ -5388,11 +5579,11 @@ export function productCardDescription(product: Product) {
   }
   if (product.category === 'Inflatable Games' && /climb|rock wall|climbing wall|climbing tower/.test(searchable)) {
     const feature = /slide/.test(searchable) ? 'climbing and slide play' : /bounce|bouncy|castle/.test(searchable) ? 'bounce-house climbing play' : 'vertical rock-wall challenge';
-    return `${name} creates ${feature} for family entertainment centers, adventure parks, resorts, and supervised rental events. ${reference}`;
+    return `${name} (${product.dimensions.trim()}) creates ${feature} for family entertainment centers, adventure parks, resorts, and supervised commercial programs. ${reference}`;
   }
   if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
     const feature = /bubble/.test(searchable) ? 'bubble-foam play' : 'foam-party play';
-    return `${name} creates a contained ${feature} attraction for party rental packages, FEC activity zones, resorts, and supervised events. ${reference}`;
+    return `${name} uses a ${product.dimensions.trim()} contained ${feature} layout for FEC activity zones, resorts, and supervised event programs. ${reference}`;
   }
   if (product.category === 'Inflatable Games' && /volleyball/.test(searchable)) {
     const feature = /field/.test(searchable)
@@ -5755,13 +5946,26 @@ function buildProductFaqs(product: Product) {
   if (interactiveProfile) {
     const terms = interactiveProfile.keywords;
     const customSize = /custom dimensions available/i.test(product.dimensions);
+    const searchable = `${product.productSlug} ${product.sourceName} ${product.title}`.toLowerCase();
+    const mechanismDetails = /mechanical-bull|bull-rid|rodeo-bull/.test(searchable)
+      ? 'the bull unit, operator control system, ride cycle settings, safety-arena dimensions, entry opening, and emergency-stop arrangement'
+      : /wipeout|sweeper|meltdown/.test(searchable)
+        ? 'the rotating-arm mechanism, arm clearance, player positions, operator control station, speed settings, and arena layout'
+        : /surfboard|surf-simulator/.test(searchable)
+          ? 'the surfboard platform, movement-control system, operator settings, safety-bed dimensions, and participant turn format'
+          : 'the themed ride figure, movement mechanism, operator control position, safety-area dimensions, and participant turn format';
+    const operatingChecks = /mechanical-bull|bull-rid|rodeo-bull/.test(searchable)
+      ? 'Follow the approved operator instructions for the bull control system and ride settings. Before each session, inspect the bull, arena, entry area, emergency stop, power connections, and clear spectator perimeter; use trained supervision and the site-specific participant rules.'
+      : /wipeout|sweeper|meltdown/.test(searchable)
+        ? 'Follow the approved operator instructions for the rotating arm and speed settings. Before each session, inspect the arm and its clearance, player stations, arena, control position, power connections, and spectator perimeter; use trained supervision and the site-specific participant rules.'
+        : 'Follow the approved operator instructions for the ride mechanism and movement settings. Before each session, inspect the ride figure, controls, safety area, power connections, and spectator perimeter; use trained supervision and the site-specific participant rules.';
     return [
       { question: `What is this ${terms[0]} designed for?`, answer: `${content.purpose} It should be operated as a managed activity station, with game rules, participant flow, and staffing matched to the venue.` },
       { question: customSize ? `Which measurements should I provide for a custom ${interactiveProfile.productType}?` : `How much space should I allow for the ${product.dimensions.trim()} game?`, answer: `${customSize ? 'Provide the usable length, width, height clearance, access route, player approach, queue zone, operator position, blower location, anchoring surface, and spectator buffer.' : `Start with the listed ${product.dimensions.trim()} footprint, then add space for the player approach, entry and exit, blower, anchoring, queue, operator, and a separated spectator area.`} Confirm the final layout from a venue plan before production.` },
-      { question: `How should I specify the ${terms[1]} game format?`, answer: `${interactiveProfile.gameMechanic} Confirm the compatible ball, soft-play piece, target, vehicle, or other accessory; player age range; turn duration; scoring or prize rules; capacity; and staff position in the approved specification.` },
-      { question: `Can the ${terms[2]} be customized for a commercial event?`, answer: `Yes. YIC can review ${interactiveProfile.customizationFocus}, overall dimensions, colors, printed logos, sponsor graphics, player instructions, accessory package, and export packing for the event or rental program.` },
-      { question: `What operational checks matter for a ${terms[3]}?`, answer: `${content.operationNote} Include pre-use inflation, anchor and accessory checks, supervised turns, cleaning, drying, repair-kit access, transport, and dry storage in the repeat-use routine.` },
-      { question: `What should I include in a ${terms[0]} quotation request?`, answer: `Send the venue type, site plan, target footprint, game mechanism and accessory preference, participant age range, expected throughput, branding files, quantity, destination, target delivery date, and blower, anchoring, packing, or storage requirements.` },
+      { question: `How should I specify the play format for ${terms[1]}?`, answer: `${interactiveProfile.gameMechanic.charAt(0).toUpperCase()}${interactiveProfile.gameMechanic.slice(1)}. Confirm ${mechanismDetails}, participant age range, turn duration, operating rules, capacity, and staff position in the approved specification.` },
+      { question: `Can this ${terms[2]} be customized for a commercial event?`, answer: `Yes. YIC can review ${interactiveProfile.customizationFocus}. Confirm artwork and brand approvals against the commercial project brief.` },
+      { question: `What pre-use checks matter for ${terms[1]}?`, answer: `${operatingChecks} Include cleaning, inspection, and storage steps from the approved manufacturer instructions in the repeat-use routine.` },
+      { question: `What should I include in a ${terms[0]} quotation request?`, answer: `Send the venue type, site plan, target footprint, game mechanism and accessory preference, participant age range, expected throughput, branding files, quantity, destination, target delivery date, and power, anchoring, packing, or storage requirements.` },
     ];
   }
   if (bubbleTent) {
@@ -6162,6 +6366,29 @@ function buildProductFaqs(product: Product) {
   ];
 }
 
+function productFaqPlanningContext(product: Product, question: string, answer: string) {
+  if (interactiveGameProfile(product)) return '';
+  const detail = productDetailContent(product);
+  const q = question.toLowerCase();
+  let candidates: string[];
+  if (product.category === 'Bumper Ball') {
+    const term = bumperBallKeywordSet(product)[0] || product.title;
+    candidates = [`${term} reference: verify the listed ${product.dimensions.trim()}, participant group, activity format, and accessory count`];
+  } else if (/custom|artwork|theme|color|brand|logo/.test(q)) {
+    candidates = [...detail.customization, ...detail.quoteItems];
+  } else if (/space|site|footprint|plan|install|setup|clearance|indoor|outdoor/.test(q)) {
+    candidates = [...detail.planningPoints, ...detail.quoteItems];
+  } else if (/operate|operation|maintain|clean|inspect|safety|supervision|storage/.test(q)) {
+    candidates = [detail.planningPoints[1], detail.operationNote, ...detail.customization].filter(Boolean);
+  } else if (/quote|order|send|price|purchase|delivery/.test(q)) {
+    candidates = [...detail.quoteItems, ...detail.customization];
+  } else {
+    candidates = [detail.applications[0]?.text ?? '', detail.purpose, ...detail.customization];
+  }
+  const normalizedAnswer = normalizedProductText(answer);
+  return candidates.find((candidate) => candidate && !normalizedAnswer.includes(normalizedProductText(candidate))) ?? '';
+}
+
 let productFaqCache: Map<string, Array<{ question: string; answer: string }>> | undefined;
 
 function initializeProductFaqs() {
@@ -6181,12 +6408,9 @@ function initializeProductFaqs() {
     const faqs = (baseFaqs.get(product.slug) ?? []).map((faq) => {
       const key = normalizedProductText(faq.question);
       if ((questionCounts.get(key) ?? 0) < 2) return faq;
-
-      const listedSize = product.dimensions.trim() || 'custom dimensions available';
       return {
         ...faq,
         question: `${faq.question} (${label})`,
-        answer: `${faq.answer} For this listing, the core product focus is ${productPrimaryKeyword(product)}; the catalog specifies ${listedSize} and ${product.material}. Confirm the final configuration and included accessories in the approved order specification.`,
       };
     });
     return [product.slug, faqs];
@@ -6201,14 +6425,12 @@ function initializeProductFaqs() {
   }
 
   productFaqCache = new Map(products.map((product) => {
-    const label = productHeadingTitle(product);
-    const listedSize = product.dimensions.trim() || 'custom dimensions available';
     const faqs = (faqDrafts.get(product.slug) ?? []).map((faq) => {
-      if ((answerCounts.get(normalizedProductText(faq.answer)) ?? 0) < 2) return faq;
-      return {
-        ...faq,
-        answer: `${faq.answer} Product-specific details: ${label} targets ${productPrimaryKeyword(product)} and is listed as ${listedSize} in ${product.material}. Confirm the final feature and accessory scope in the order specification.`,
-      };
+      const key = normalizedProductText(faq.answer);
+      if ((answerCounts.get(key) ?? 0) < 2 || /material|pvc|thickness|certificate|compliance/i.test(faq.question)) return faq;
+      const context = productFaqPlanningContext(product, faq.question, faq.answer);
+      if (!context) return faq;
+      return { ...faq, answer: `${faq.answer.replace(/[.\s]+$/g, '')}. Model-specific planning: ${context.replace(/[.\s]+$/g, '').charAt(0).toUpperCase()}${context.replace(/[.\s]+$/g, '').slice(1)}.` };
     });
     return [product.slug, faqs];
   }));

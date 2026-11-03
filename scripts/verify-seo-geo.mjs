@@ -1,6 +1,6 @@
 import { stat } from 'node:fs/promises';
 import path from 'node:path';
-import { products, productDescription, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
+import { products, productDescription, productDetailContent, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productKeyFeatures, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
 import { blogArticles } from '../src/data/blog.ts';
 import { getBuyerGuideProfile } from '../src/data/buyer-guides.ts';
 import { caseStudyCards } from '../src/data/case-studies.ts';
@@ -25,6 +25,15 @@ duplicates('SEO titles', products.map(productSeoTitle));
 duplicates('Meta descriptions', products.map(productMetaDescription));
 duplicates('Product lead descriptions', products.map((product) => sanitizeB2BCopy(product, productDescription(product))));
 
+const contentRepetition = new Map();
+for (const product of products) {
+  const key = product.category + ' | ' + productDetailContent(product).purpose.trim().toLowerCase().replace(/\s+/g, ' ');
+  contentRepetition.set(key, (contentRepetition.get(key) ?? 0) + 1);
+}
+for (const [key, count] of contentRepetition) {
+  if (count >= 5) failures.push('Product detail purpose is shared by ' + count + ' products: ' + key.slice(0, 110));
+}
+
 for (const product of products) {
   const primaryKeyword = productPrimaryKeyword(product);
   const heading = productHeadingTitle(product);
@@ -33,13 +42,35 @@ for (const product of products) {
   const faqs = productFaqs(product);
   const leadTime = productLeadTimeProfile(product);
   const orderConfirmation = productOrderConfirmation(product);
+  const detail = productDetailContent(product);
+  const features = productKeyFeatures(product).join(' ');
+  const faqText = faqs.map((faq) => `${faq.question} ${faq.answer}`).join(' ');
+  const generatedCopy = [leadDescription, detail.purpose, orderConfirmation, faqText, features]
+    .map((text) => sanitizeB2BCopy(product, text))
+    .join(' ');
   if (!primaryKeyword || !heading || !meta) failures.push(product.slug + ': missing a public SEO field');
   if (faqs.length < 6) failures.push(product.slug + ': expected at least 6 product FAQs, found ' + faqs.length);
   if (new Set(faqs.map((faq) => faq.question.trim().toLowerCase())).size < 6) failures.push(product.slug + ': product FAQs are not sufficiently distinct');
   if (!/^(?:5–7|6–8|7–9|8–10|9–11|10–12|11–14|5–12|7–14) Work Days$/.test(leadTime.range)) failures.push(product.slug + ': invalid size-based lead-time range');
   if (!orderConfirmation.includes(leadTime.range) || /7-10 Work Days/i.test(orderConfirmation)) failures.push(product.slug + ': order confirmation does not use the size-based lead-time profile');
-  if (!productHasRentalSearchIntent(product) && /\b(rental|rent|hire)\b/i.test(leadDescription)) failures.push(product.slug + ': ordinary B2B lead description still leads with rental wording');
+  if (!productHasRentalSearchIntent(product) && /\b(?:for rent|rentals? available|book (?:a )?rental|local rental service|hire this)\b/i.test(leadDescription)) failures.push(product.slug + ': ordinary B2B lead description reads like a rental-service offer');
   if (productHasRentalSearchIntent(product) && !/commercial fleet procurement intent|local consumer rental service/i.test(productManufacturerSupplyNote(product))) failures.push(product.slug + ': missing manufacturer-supply clarification for rental search intent');
+  if (/\bcommercial\s+commercial\b|party commercial fleets|\b(\w+)(?:\s+\1)+\b/i.test(leadDescription + ' ' + orderConfirmation)) failures.push(product.slug + ': generated copy contains a repeated or malformed phrase');
+  const grammarIssue = generatedCopy.match(/\b(?:the\s+the|this\s+the|the\s+a|the\s+an|commercial\s+commercial|rental\s+rental|slide\s+slide|and\s+and)\b/i);
+  if (grammarIssue) failures.push(product.slug + ': generated copy contains malformed phrase “' + grammarIssue[0] + '”');
+  if (/\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?m\s+m\b/i.test(product.dimensions)) failures.push(product.slug + ': dimensions contain a duplicated unit');
+  if (!/custom dimensions available/i.test(product.dimensions) && /\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?\s*m\b/i.test(product.dimensions)
+    && !/^\d+(?:\.\d+)?\s+x\s+\d+(?:\.\d+)?\s+x\s+\d+(?:\.\d+)?\s+m$/i.test(product.dimensions.trim())) {
+    failures.push(product.slug + ': metric dimensions are not normalized to “L x W x H m” format');
+  }
+  if (!detail.purpose || !features.trim()) failures.push(product.slug + ': missing product-specific purpose or features');
+}
+
+const whiteBounce = products.find((product) => product.productSlug === 'modern-white-bounce-houses');
+if (whiteBounce) {
+  const whiteCopy = [productDescription(whiteBounce), productDetailContent(whiteBounce).purpose, ...productKeyFeatures(whiteBounce)].join(' ').toLowerCase();
+  if (!whiteBounce.dimensions.startsWith('3 x 2.5 x 2.5 m')) failures.push('White Bounce House: listed dimensions were not normalized correctly');
+  if (/\b(slide|ball pit|basketball hoop)\b/.test(whiteCopy)) failures.push('White Bounce House: copy claims a combo feature not present in its supplied product name');
 }
 
 for (const article of blogArticles) {
