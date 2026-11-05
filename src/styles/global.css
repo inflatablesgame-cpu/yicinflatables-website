@@ -550,6 +550,8 @@ h3 { font-size: 1.25rem; }
 .about-image-grid img:first-child { grid-row: span 2; height: 534px; }
 .about-factory-collage { margin: 0; border-radius: 4px; overflow: hidden; background: var(--surface-muted); }
 .about-factory-collage img { display: block; width: 100%; height: auto; aspect-ratio: 1440 / 1706; object-fit: cover; }
+.about-company-video { background: #07182c; }
+.about-company-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
 .certificate-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 
 .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; }
