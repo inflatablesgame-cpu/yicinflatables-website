@@ -259,7 +259,7 @@ export function sanitizeNonRentalB2BCopy(value: string) {
 
 export function productManufacturerSupplyNote(product: Product) {
   if (!productHasRentalSearchIntent(product)) return '';
-  return `Where a product name or core keyword uses rental, rent, or hire wording, it describes commercial fleet procurement intent. YIC manufactures made-to-order equipment for ${productTargetBuyers(product).join(', ')}; it does not provide local consumer rental service.`;
+  return 'Factory-direct supply for commercial operators. YIC manufactures this model to order and does not provide local consumer rentals.';
 }
 
 const categorySummaries: Record<string, string> = {

@@ -499,6 +499,10 @@ h3 { font-size: 1.25rem; }
 .product-order-confirmation { display: grid; grid-template-columns: 190px 1fr; gap: 24px; padding: 23px 26px; margin-top: 1px; background: var(--ink-strong); color: var(--white); }
 .product-order-confirmation strong { font-size: .98rem; }
 .product-order-confirmation p { max-width: 980px; margin: 0; color: rgba(255,255,255,.78); font-size: .92rem; line-height: 1.62; }
+.product-order-confirmation-copy { display: grid; gap: 15px; min-width: 0; }
+.manufacturer-supply-note { display: grid; grid-template-columns: minmax(145px, max-content) minmax(0, 1fr); gap: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.18); }
+.manufacturer-supply-note strong { color: var(--white); font-size: .82rem; line-height: 1.45; }
+.manufacturer-supply-note span { color: rgba(255,255,255,.72); }
 .product-sourcing-footer { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; padding-top: 24px; }
 .product-sourcing-footer > div:first-child > strong { display: block; margin-bottom: 9px; color: var(--ink-strong); font-size: .9rem; }
 .product-search-terms { display: flex; flex-wrap: wrap; gap: 7px; }
@@ -947,7 +951,7 @@ h3 { font-size: 1.25rem; }
 @media (max-width: 700px) { .evidence-process-grid, .evidence-document-grid { grid-template-columns: 1fr; } .evidence-process-grid article, .evidence-document-grid article { min-height: 0; } }
 @media (max-width: 700px) { .category-hero .hero-actions { align-items: stretch; flex-direction: column; } .category-option-grid, .category-buyer-grid, .category-guide-grid, .related-category-grid, .category-order-flow, .category-customization ul { grid-template-columns: 1fr; } .category-option-grid article, .category-buyer-grid article, .category-guide-grid article { min-height: 0; } }
 @media (max-width: 700px) { .detail-application-grid, .detail-custom-grid { grid-template-columns: 1fr; } .detail-note { grid-template-columns: 1fr; gap: 8px; } .detail-project-flow { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 700px) { .product-sourcing-grid, .product-evidence-grid { grid-template-columns: 1fr; } .product-sourcing-card, .product-evidence-card { min-height: 0; padding: 22px; } .product-order-confirmation { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; } .product-sourcing-footer { flex-direction: column; gap: 20px; } .product-sourcing-links { justify-items: start; white-space: normal; } }
+@media (max-width: 700px) { .product-sourcing-grid, .product-evidence-grid { grid-template-columns: 1fr; } .product-sourcing-card, .product-evidence-card { min-height: 0; padding: 22px; } .product-order-confirmation { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; } .manufacturer-supply-note { grid-template-columns: 1fr; gap: 5px; } .product-sourcing-footer { flex-direction: column; gap: 20px; } .product-sourcing-links { justify-items: start; white-space: normal; } }
 @media (max-width: 800px) { .case-study-detail-grid, .case-study-learning-grid, .product-project-reference-grid { grid-template-columns: 1fr; } .case-study-learning-grid article { min-height: 0; } }
 @media (max-width: 520px) { .product-project-reference { grid-template-columns: 1fr; gap: 10px; } .product-project-reference img { grid-row: auto; width: 100%; height: auto; aspect-ratio: 4 / 3; } }
 @media (max-width: 700px) { .product-detail-page.category-template-1 .detail-gallery { order: 0; } .product-detail-page.category-template-7 .detail-meta { grid-template-columns: 1fr 1fr; } .product-detail-page.category-template-2 .detail-copy { padding: 22px; } .product-detail-page.category-template-6 .detail-copy { padding-left: 18px; } }

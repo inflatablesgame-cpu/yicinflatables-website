@@ -54,7 +54,7 @@ for (const product of products) {
   if (!/^(?:5–7|6–8|7–9|8–10|9–11|10–12|11–14|5–12|7–14) Work Days$/.test(leadTime.range)) failures.push(product.slug + ': invalid size-based lead-time range');
   if (!orderConfirmation.includes(leadTime.range) || /7-10 Work Days/i.test(orderConfirmation)) failures.push(product.slug + ': order confirmation does not use the size-based lead-time profile');
   if (!productHasRentalSearchIntent(product) && /\b(?:for rent|rentals? available|book (?:a )?rental|local rental service|hire this)\b/i.test(leadDescription)) failures.push(product.slug + ': ordinary B2B lead description reads like a rental-service offer');
-  if (productHasRentalSearchIntent(product) && !/commercial fleet procurement intent|local consumer rental service/i.test(productManufacturerSupplyNote(product))) failures.push(product.slug + ': missing manufacturer-supply clarification for rental search intent');
+  if (productHasRentalSearchIntent(product) && !/factory-direct supply for commercial operators|does not provide local consumer rentals/i.test(productManufacturerSupplyNote(product))) failures.push(product.slug + ': missing manufacturer-supply clarification for rental search intent');
   if (/\bcommercial\s+commercial\b|party commercial fleets|\b(\w+)(?:\s+\1)+\b/i.test(leadDescription + ' ' + orderConfirmation)) failures.push(product.slug + ': generated copy contains a repeated or malformed phrase');
   const grammarIssue = generatedCopy.match(/\b(?:the\s+the|this\s+the|the\s+a|the\s+an|commercial\s+commercial|rental\s+rental|slide\s+slide|and\s+and)\b/i);
   if (grammarIssue) failures.push(product.slug + ': generated copy contains malformed phrase “' + grammarIssue[0] + '”');
