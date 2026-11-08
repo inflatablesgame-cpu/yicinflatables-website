@@ -29,6 +29,9 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
         <div class="form-field"><label for="buyer-type">I am purchasing for <span>(optional)</span></label><select id="buyer-type" name="Buyer Type"><option value="">Select buyer type</option><option>Importer / distributor</option><option>Rental or event business</option><option>FEC, resort, or venue</option><option>Brand activation or agency</option><option>School, club, or community program</option><option>Other commercial use</option></select></div>
         <div class="form-field"><label for="quantity">Estimated quantity <span>(optional)</span></label><input id="quantity" name="Quantity" placeholder="e.g. 1 model / 10 units" /></div>
         <div class="form-field full"><label for="message">Requirements <span>(optional)</span></label><textarea id="message" name="Requirements" placeholder="Quantity, size, logo, colors, delivery date, and any other details">{prefillMessage}</textarea></div>
+        <div class="form-field full turnstile-field"><div class="cf-turnstile" data-sitekey="0x4AAAAAAF4ZMJcE6ROgut-Q" data-theme="light"></div></div>
+        <input type="text" name="Website" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honeypot" />
+        <input type="hidden" name="Form Started At" value="" />
         <input type="hidden" name="Email" value="" />
         <input type="hidden" name="Phone / WhatsApp" value="" />
         <input type="hidden" name="Product" value={product} />
@@ -47,6 +50,7 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
   </div></section>
   <section class="section contact-location-section"><div class="container contact-location-grid"><div class="contact-location-copy"><p class="eyebrow">Our location</p><h2>Visit the YIC team in Guangzhou</h2><p>{company.address}</p><a class="text-link" href={mapUrl} target="_blank" rel="noopener">Open in Google Maps ↗</a></div><div class="contact-map"><iframe title="YIC Inflatable Sports company location in Guangzhou" src={mapEmbedUrl} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><a class="map-overlay-link" href={mapUrl} target="_blank" rel="noopener">Open in Maps ↗</a></div></div></section>
   <div class="success-toast" data-success-toast role="status" aria-live="polite">Your request is ready to send.</div>
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script define:vars={{ email: company.email, defaultProduct: product, defaultSourceUrl: pageUrl, defaultMessage: prefillMessage, whatsapp: company.whatsapp, formEndpoint }}>
     const form = document.querySelector('[data-quote-form]');
     const toast = document.querySelector('[data-success-toast]');
@@ -57,6 +61,8 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
     const contactMethodInput = document.querySelector('#contact-method');
     const emailInput = document.querySelector('input[name="Email"]');
     const phoneInput = document.querySelector('input[name="Phone / WhatsApp"]');
+    const formStartedAtInput = document.querySelector('input[name="Form Started At"]');
+    if (formStartedAtInput) formStartedAtInput.value = String(Date.now());
     const attribution = window.yicTrackingAttribution ?? {};
     const attributionFields = {
       'Initial Landing Page': attribution.initialLandingPage ?? '',
@@ -130,6 +136,12 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
         contactMethodInput?.reportValidity();
         return;
       }
+      const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value || '';
+      if (!turnstileToken) {
+        if (toast) toast.textContent = 'Please complete the spam check before sending.';
+        toast?.classList.add('is-visible');
+        return;
+      }
       const data = new FormData(form);
       const subject = `Quotation request: ${String(data.get('Product') || queryProduct || 'Commercial inflatables')}`;
       const message = buildMessage();
@@ -138,8 +150,16 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
       payload.set('Subject', subject);
       payload.set('Message', message);
       fetch(formEndpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: payload })
-        .then((response) => {
-          if (!response.ok) throw new Error('Form submission failed');
+        .then(async (response) => {
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            if (response.status === 400 || response.status === 403) {
+              if (toast) toast.textContent = result.error || 'Please check the form and try again.';
+              toast?.classList.add('is-visible');
+              return;
+            }
+            throw new Error('Form submission failed');
+          }
           if (typeof window.gtag === 'function') {
             window.gtag('event', 'generate_lead', {
               currency: 'USD',
@@ -153,6 +173,8 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(company.
           if (sourceInput) sourceInput.value = activeSourceUrl;
           if (productInput) productInput.value = queryProduct;
           if (messageInput) messageInput.value = initialMessage;
+          if (formStartedAtInput) formStartedAtInput.value = String(Date.now());
+          window.turnstile?.reset?.();
           syncContactMethod();
           Object.entries(attributionFields).forEach(([name, value]) => {
             const input = document.querySelector(`input[name="${name}"]`);

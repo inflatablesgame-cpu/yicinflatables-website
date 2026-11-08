@@ -1,5 +1,6 @@
 interface Env {
   GOOGLE_SHEETS_WEBHOOK_URL?: string;
+  TURNSTILE_SECRET_KEY?: string;
   RESEND_API_KEY?: string;
   INQUIRY_FROM_EMAIL?: string;
   INQUIRY_BACKUP_EMAIL?: string;
@@ -7,9 +8,26 @@ interface Env {
 
 const fields = ['Name', 'Company', 'Email', 'Phone / WhatsApp', 'Buyer Type', 'Country', 'Product', 'Quantity', 'Destination', 'Timeline', 'Requirements', 'Source page URL', 'Initial Landing Page', 'UTM Source', 'UTM Medium', 'UTM Campaign', 'UTM Term', 'UTM Content', 'GCLID', 'MSCLKID'];
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phonePattern = /^[+()\d\s.-]+$/;
 
 function cleanText(value: unknown, maxLength = 4000) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
+}
+
+async function verifyTurnstile(token: string, secret: string, remoteIp: string) {
+  const body = new URLSearchParams({ secret, response: token });
+  if (remoteIp) body.set('remoteip', remoteIp);
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body,
+    });
+    const result = await response.json().catch(() => null) as { success?: boolean } | null;
+    return response.ok && result?.success === true;
+  } catch {
+    return false;
+  }
 }
 
 async function deliverToSheet(payload: Record<string, unknown>, webhookUrl: string) {
@@ -79,6 +97,10 @@ async function deliverToBackupEmail(payload: Record<string, unknown>, env: Env) 
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
+  if (!context.env.TURNSTILE_SECRET_KEY) {
+    return Response.json({ ok: false, error: 'Spam protection is not configured.' }, { status: 503 });
+  }
+
   let formData: FormData;
   try {
     formData = await context.request.formData();
@@ -86,14 +108,37 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return Response.json({ ok: false, error: 'Invalid form submission.' }, { status: 400 });
   }
 
+  const turnstileToken = cleanText(formData.get('cf-turnstile-response'), 4096);
+  const honeypot = cleanText(formData.get('Website'), 200);
+  const startedAt = Number(cleanText(formData.get('Form Started At'), 30));
+  const elapsed = Date.now() - startedAt;
+  if (honeypot || !turnstileToken || !Number.isFinite(startedAt) || elapsed < 2500 || elapsed > 2 * 60 * 60 * 1000) {
+    return Response.json({ ok: false, error: 'Spam verification failed.' }, { status: 403 });
+  }
+  const verified = await verifyTurnstile(
+    turnstileToken,
+    context.env.TURNSTILE_SECRET_KEY,
+    context.request.headers.get('CF-Connecting-IP') || '',
+  );
+  if (!verified) return Response.json({ ok: false, error: 'Spam verification failed.' }, { status: 403 });
+
   const inquiry = Object.fromEntries(fields.map((field) => [field, cleanText(formData.get(field))]));
   const contactMethod = cleanText(formData.get('Contact Method'));
   if (!inquiry.Email && !inquiry['Phone / WhatsApp'] && contactMethod) {
     if (emailPattern.test(contactMethod)) inquiry.Email = contactMethod;
-    else if (contactMethod.replace(/\D/g, '').length >= 7) inquiry['Phone / WhatsApp'] = contactMethod;
+    else if (phonePattern.test(contactMethod) && contactMethod.replace(/\D/g, '').length >= 7 && contactMethod.replace(/\D/g, '').length <= 15) inquiry['Phone / WhatsApp'] = contactMethod;
   }
   if (!inquiry.Name || (!inquiry.Email && !inquiry['Phone / WhatsApp'])) {
     return Response.json({ ok: false, error: 'Name and either email or WhatsApp are required.' }, { status: 400 });
+  }
+  if (inquiry.Email && !emailPattern.test(inquiry.Email)) {
+    return Response.json({ ok: false, error: 'Enter a valid work email.' }, { status: 400 });
+  }
+  if (inquiry['Phone / WhatsApp']) {
+    const phoneDigits = inquiry['Phone / WhatsApp'].replace(/\D/g, '');
+    if (!phonePattern.test(inquiry['Phone / WhatsApp']) || phoneDigits.length < 7 || phoneDigits.length > 15) {
+      return Response.json({ ok: false, error: 'Enter a valid WhatsApp number.' }, { status: 400 });
+    }
   }
 
   const payload = {
