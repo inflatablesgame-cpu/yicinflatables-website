@@ -1,0 +1,130 @@
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { categories, categoryPath, company, products, productPath } from '../../data/site';
+
+const pageUrl = `https://${company.domain}/inflatable-water-slide-space-requirements/`;
+const waterSlideCategory = categories.find((category) => category.slug === 'inflatable-water-slide');
+const waterParkCategory = categories.find((category) => category.slug === 'inflatable-water-park');
+const waterSlide = products.find((product) => product.categorySlug === 'inflatable-water-slide');
+const waterPark = products.find((product) => product.categorySlug === 'inflatable-water-park');
+const title = 'Inflatable Water Slide Space Requirements: Site Planning Checklist';
+const description = 'Plan inflatable water slide space requirements around product dimensions, clearance, access, landing, water supply, drainage, anchoring, queues, and supervision.';
+const faqs = [
+  { question: 'How much space does an inflatable water slide need?', answer: 'Start with the exact product dimensions, then add the clearance and operating areas required by its manufacturer and venue. Include access, entry and exit, landing or pool, blower, anchoring, queue, operator, and spectator areas. There is no single clearance number that applies to every slide or site.' },
+  { question: 'What site details should I send a water slide supplier?', answer: 'Send a measured site plan or photos, usable footprint and height limits, access route, surface, water supply, drainage, landing or pool plan, anchoring conditions, target users, expected throughput, supervision plan, destination, and preferred slide configuration.' },
+  { question: 'Do water slide space requirements differ from dry inflatable slides?', answer: 'Yes. A wet-use slide also needs a suitable water supply and flow plan, drainage, wet landing or pool arrangement, surface and anchoring review, cleaning and drying plan, and operating procedures for the venue.' },
+  { question: 'Can I estimate site clearance from the product photo?', answer: 'No. A photo does not establish the complete footprint, height clearance, access, anchoring, landing zone, or operating boundary. Use the approved model dimensions and confirm the installation plan with the manufacturer and venue.' },
+  { question: 'What should I confirm before ordering a commercial water slide?', answer: 'Confirm the model and dimensions, usable site and clearance, water and drainage plan, landing or pool configuration, access, anchoring, supervision, intended users, accessories, destination requirements, and the order-specific production and delivery plan.' },
+];
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: '2026-11-12',
+  dateModified: '2026-11-12',
+  mainEntityOfPage: pageUrl,
+  author: { '@type': 'Organization', name: company.name, url: `https://${company.domain}/about/` },
+  publisher: { '@type': 'Organization', name: company.name, url: `https://${company.domain}/` },
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${company.domain}/` },
+    { '@type': 'ListItem', position: 2, name: 'Inflatable Water Slide Space Requirements', item: pageUrl },
+  ],
+};
+---
+
+<SiteLayout
+  title={title}
+  description={description}
+  image={waterSlide?.images[0]}
+  imageAlt="Commercial inflatable water slide model used for site and space planning"
+  ogType="article"
+  publishedTime="2026-11-12"
+  modifiedTime="2026-11-12"
+  keywords="inflatable water slide space requirements, inflatable water slide site planning, commercial water slide clearance, water slide site requirements, commercial inflatable water slide"
+>
+  <article class="article-page">
+    <header class="article-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="/">Home</a> / Inflatable Water Slide Space Requirements</div>
+        <p class="eyebrow">Commercial buyer guide · Site planning</p>
+        <h1>{title}</h1>
+        <p>Use this checklist to assess the site before selecting a wet-use slide, requesting a factory quotation, or planning a resort, pool venue, event, or seasonal recreation installation.</p>
+        <div class="article-meta"><span>YIC Inflatable Sports</span><span>Updated November 12, 2026</span></div>
+      </div>
+    </header>
+
+    <div class="container article-layout">
+      <div class="article-content">
+        {waterSlide && <figure class="article-feature-image"><img src={waterSlide.images[0]} alt="Commercial inflatable water slide product for venue site planning" width="1200" height="800" fetchpriority="high" /><figcaption>Use the approved product dimensions and site plan. Product photography is not a measurement drawing.</figcaption></figure>}
+        <section class="article-direct-answer"><p class="eyebrow">Quick answer</p><p>Inflatable water slide space requirements depend on the exact model and site. Plan beyond the slide footprint to include required clearance, access, entry and exit, landing or pool, blower and anchoring, water supply and drainage, queues, operators, and spectators. Confirm the final layout with the manufacturer and venue before ordering.</p></section>
+
+        <section>
+          <h2>1. Start with the approved model dimensions</h2>
+          <p>Record the product’s inflated length, width, and height from its current specification. Confirm whether the listed dimensions include the landing area, splash pool, stairs, or attached play sections. For a custom build, ask the factory for a dimensioned drawing that shows the full operating footprint, blower position, connections, and anchoring points.</p>
+          <p>Do not scale dimensions from a catalog photograph. Images can show perspective, cropping, or a different configuration than the one quoted.</p>
+        </section>
+
+        <section>
+          <h2>2. Measure the usable site and access route</h2>
+          <p>Measure the actual installation area, overhead height limits, approach path, doors or gates, unloading point, surface, and nearby obstructions. Mark emergency routes and any venue boundaries that cannot be blocked. Include enough working area for installation, inspection, supervision, and removal, based on the product instructions and local venue requirements.</p>
+          <ul>
+            <li>Usable footprint and overhead clearance</li>
+            <li>Access width, turns, gates, doors, and unloading position</li>
+            <li>Surface type, slope or uneven areas, and anchoring conditions</li>
+            <li>Emergency routes, utilities, buildings, trees, and other attractions</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. Plan wet-use infrastructure separately</h2>
+          <p>A water slide needs a suitable water source and a planned route for runoff. Confirm the connection location, expected operating flow from the approved specification, drainage capacity, splash or landing area, nearby electrical equipment, and how water will be kept away from walkways and other attractions. Requirements vary by slide design and venue, so have the manufacturer and site team review the actual plan.</p>
+          <p>Include cleaning, drying, and storage arrangements in the operating plan. Wet-use equipment should not be folded or stored until it has been handled according to its care instructions.</p>
+        </section>
+
+        <section>
+          <h2>4. Map guest flow, supervision, and queue space</h2>
+          <p>Show where participants enter, climb, slide, exit, and return to the queue. Keep the operator’s position and sight lines clear, and separate spectators from the active path. The target age group, expected throughput, staffing, and session format influence how the approach and exit areas should be organized.</p>
+          <p>Confirm the final operating plan against the product instructions, venue rules, and applicable local requirements. A site diagram supports planning but does not itself establish capacity or safe operating conditions.</p>
+        </section>
+
+        <section>
+          <h2>5. Send a useful site brief for a factory quote</h2>
+          <p>Send the manufacturer a measured plan or clear site photos with dimensions. Include height limits, access route, surface, water source, drainage, landing or pool preference, anchoring conditions, target users, supervision plan, destination, quantity, theme, and target schedule. Ask the factory to mark the product footprint, required operating areas, blower and water connections, and any site assumptions on the proposed drawing.</p>
+        </section>
+
+        <section>
+          <h2>Compare water-slide and water-park formats</h2>
+          <p>A single water slide may need a simpler site layout than a connected attraction with several modules, but both require project-specific planning. Browse <a href={waterSlideCategory ? categoryPath(waterSlideCategory) : '/products/inflatable-water-slide/'}>commercial inflatable water slides</a> or compare <a href={waterParkCategory ? categoryPath(waterParkCategory) : '/products/inflatable-water-park/'}>inflatable water park modules</a> before requesting a quote.</p>
+          {waterPark && <p><a href={productPath(waterPark)}>View a commercial water-park product example</a> and prepare the site information needed to discuss a compatible configuration.</p>}
+        </section>
+
+        <section class="article-faq-section">
+          <p class="eyebrow">Buyer FAQ</p>
+          <h2>Water slide site planning questions</h2>
+          <div class="faq-list">{faqs.map((faq) => <details class="faq-item"><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div>
+        </section>
+
+        <section>
+          <h2>Request a site-specific review</h2>
+          <p>Send YIC the product reference, site plan, water and drainage details, quantity, and destination through the <a href="/contact/">factory quotation form</a>. You can also review <a href="/factory-evidence/">factory and quality evidence</a> before discussing a project.</p>
+        </section>
+      </div>
+    </div>
+  </article>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</SiteLayout>

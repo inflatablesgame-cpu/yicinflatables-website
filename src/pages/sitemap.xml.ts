@@ -12,6 +12,7 @@ export function GET() {
     '/contact/',
     '/blog/',
     '/inflatable-bounce-house-guide/',
+    '/inflatable-water-slide-space-requirements/',
     '/faq/',
     '/privacy/',
     '/terms/',
