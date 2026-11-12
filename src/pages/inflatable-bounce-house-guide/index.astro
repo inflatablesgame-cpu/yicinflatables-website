@@ -1,0 +1,131 @@
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { company, products, productPath } from '../../data/site';
+
+const bounceHouse = products.find((product) => product.productSlug === 'modern-white-bounce-houses');
+const combo = products.find((product) => product.productSlug === 'commercial-grade-bounce-house-and-slide');
+const pageUrl = `https://${company.domain}/inflatable-bounce-house-guide/`;
+const title = 'Commercial Bounce House Buying Guide for B2B Buyers';
+const description = 'Compare commercial bounce house types, dimensions, construction, OEM options, and quote requirements before sourcing from a factory.';
+const faqs = [
+  { question: 'What should a buyer check before ordering a commercial bounce house?', answer: 'Confirm the intended users and venue, inflated footprint and height clearance, entry and exit, blower and anchoring requirements, material and construction scope, accessories, packed shipment details, and destination requirements.' },
+  { question: 'What is the difference between a bounce house and a bounce house combo?', answer: 'A standard bounce house centers on a jumping area. A combo adds features such as a slide, climbing section, basketball hoop, or ball pit. Confirm the exact included features, layout, dimensions, and user flow in the product specification.' },
+  { question: 'How do I compare commercial and residential bounce houses?', answer: 'Compare the intended duty, material and construction details, stress-point reinforcement, anchoring, blower requirements, repairability, and available documentation. Do not assume a single fabric-weight number proves suitability for every use.' },
+  { question: 'Can a manufacturer make a private-label or custom bounce house?', answer: 'A factory can review colors, dimensions, artwork, logos, and selected layout features for an OEM or ODM project. Confirm drawing approval, artwork rights, included revisions, accessories, and final packing in the quotation.' },
+  { question: 'What information should I send for a bounce house factory quote?', answer: 'Send the model or reference image, quantity, target dimensions, intended application, destination country, preferred artwork or colors, accessories, and target delivery date. Include site limits when the product must fit a particular venue.' },
+];
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: '2026-11-12',
+  dateModified: '2026-11-12',
+  mainEntityOfPage: pageUrl,
+  author: { '@type': 'Organization', name: company.name, url: `https://${company.domain}/about/` },
+  publisher: { '@type': 'Organization', name: company.name, url: `https://${company.domain}/` },
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${company.domain}/` },
+    { '@type': 'ListItem', position: 2, name: 'Commercial Bounce House Buying Guide', item: pageUrl },
+  ],
+};
+---
+
+<SiteLayout
+  title={title}
+  description={description}
+  image={bounceHouse?.images[0]}
+  imageAlt="Commercial white bounce house model for B2B product evaluation"
+  ogType="article"
+  publishedTime="2026-11-12"
+  modifiedTime="2026-11-12"
+  keywords="commercial bounce house buying guide, commercial bounce house manufacturer, bounce house wholesale, OEM bounce house, commercial inflatable bounce house"
+>
+  <article class="article-page">
+    <header class="article-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="/">Home</a> / Commercial Bounce House Buying Guide</div>
+        <p class="eyebrow">Factory sourcing guide · Commercial equipment</p>
+        <h1>{title}</h1>
+        <p>Use this guide to compare bounce-house formats and prepare a clear factory RFQ for your distribution range, venue, school, event program, or commercial fleet.</p>
+        <div class="article-meta"><span>YIC Inflatable Sports</span><span>Updated November 12, 2026</span></div>
+      </div>
+    </header>
+
+    <div class="container article-layout">
+      <div class="article-content">
+        {bounceHouse && <figure class="article-feature-image"><img src={bounceHouse.images[0]} alt="Commercial white bounce house model for distributor and venue sourcing" width="1200" height="800" fetchpriority="high" /><figcaption>Review the final model dimensions, features, accessories, and artwork against the approved quotation.</figcaption></figure>}
+        <section class="article-direct-answer"><p class="eyebrow">Quick answer</p><p>Choose a commercial bounce house by matching its play format, dimensions, construction details, accessories, and destination requirements to the buyers or venue it will serve. Before comparing price, request the complete product specification and confirm exactly what is included.</p></section>
+
+        <section>
+          <h2>1. Choose the right bounce-house format</h2>
+          <p>A standard bounce house focuses on an open jumping area and a simple operating layout. A bounce house combo may add a slide, climbing section, basketball hoop, or ball pit. Those additions affect footprint, user flow, supervision, packing, and the order specification. Distributors building a range can compare the <a href="/products/bounce-house/">commercial bounce house catalog</a> with <a href="/products/bounce-house-combos/">bounce house and slide combos</a> before choosing the models to quote.</p>
+          {combo && <p>For example, <a href={productPath(combo)}>{combo.title}</a> gives buyers a specific combo format to evaluate alongside a standard jumping model.</p>}
+        </section>
+
+        <section>
+          <h2>2. Confirm dimensions and site fit</h2>
+          <p>Compare the inflated length, width, and height with the usable floor area and required clearance. Also check access routes, entrance and exit positions, blower location, anchoring surface, queue space, storage, and transport. For a permanent venue or repeat event program, share a site plan or measured space with the manufacturer instead of relying on a product photo.</p>
+          <ul>
+            <li>Inflated and packed dimensions, plus gross weight when available</li>
+            <li>Entry, exit, jumping-area layout, and operator sight lines</li>
+            <li>Blower specification, power connection, anchors, and included accessories</li>
+            <li>Access, setup area, queue, storage, and destination-specific constraints</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. Compare construction for the intended commercial use</h2>
+          <p>Ask about the material and construction specified for the exact model, including seams or welds, reinforcement at stress points, anchor points, zippers, and repair materials. Material thickness or fabric weight alone does not establish suitability. Compare the product’s intended use, construction details, inspection scope, and maintenance needs together.</p>
+          <p>Documentation should match the product, components, material, and destination market. Ask the supplier to identify which documents apply to the final approved configuration; do not treat a certificate shown for one item as blanket approval for every bounce house.</p>
+        </section>
+
+        <section>
+          <h2>4. Plan OEM, ODM, and private-label details early</h2>
+          <p>A commercial bounce house manufacturer can review a buyer’s requested colors, dimensions, printed artwork, logo placement, and selected play features. For OEM or ODM work, clarify who supplies the starting design, which drawing and artwork revisions are included, who owns supplied artwork, and which approved file controls production. See the <a href="/blog/oem-odm-inflatable-manufacturing-process/">OEM and ODM inflatable manufacturing process</a> before preparing a custom brief.</p>
+        </section>
+
+        <section>
+          <h2>5. Send a complete factory RFQ</h2>
+          <p>Include enough information for suppliers to quote the same product scope. A practical request should list:</p>
+          <ol>
+            <li>Product model, reference image, or required play format</li>
+            <li>Quantity, target dimensions, destination, and target delivery date</li>
+            <li>Intended users, venue or business application, and site limits</li>
+            <li>Colors, logo files, artwork, accessories, and packing requirements</li>
+            <li>Material and construction questions, applicable documents, and inspection expectations</li>
+          </ol>
+          <p>Ask the factory to identify assumptions and exclusions in writing. This makes the quotation easier to compare and gives both sides a clear basis for the final specification.</p>
+        </section>
+
+        {bounceHouse && <section class="article-related-products"><h2>Example commercial bounce house</h2><p>Use a catalog model as a starting reference, then confirm the approved dimensions, artwork, accessories, destination requirements, and order scope.</p><div><a href={productPath(bounceHouse)}><strong>{bounceHouse.title}</strong><span>{bounceHouse.category} · {bounceHouse.dimensions}</span><em>View product details →</em></a></div></section>}
+
+        <section class="article-faq-section">
+          <p class="eyebrow">Buyer FAQ</p>
+          <h2>Commercial bounce house sourcing questions</h2>
+          <div class="faq-list">{faqs.map((faq) => <details class="faq-item"><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div>
+        </section>
+
+        <section>
+          <h2>Continue planning your order</h2>
+          <p>Review <a href="/factory-evidence/">YIC factory and quality evidence</a>, compare <a href="/case-studies/">commercial project examples</a>, or <a href="/contact/">send the factory your bounce house requirements</a> for a quotation.</p>
+        </section>
+      </div>
+    </div>
+  </article>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</SiteLayout>

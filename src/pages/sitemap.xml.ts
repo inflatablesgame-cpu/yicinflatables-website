@@ -11,6 +11,7 @@ export function GET() {
     '/case-studies/',
     '/contact/',
     '/blog/',
+    '/inflatable-bounce-house-guide/',
     '/faq/',
     '/privacy/',
     '/terms/',
