@@ -1,12 +1,12 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
-import { products } from '../../data/site';
+import { products, productCatalogSearchText } from '../../data/site';
 import { blogArticles } from '../../data/blog';
 
 const searchItems = products.map((product) => ({
   product,
-  searchText: `${product.title} ${product.category} ${product.material}`.toLowerCase(),
+  searchText: productCatalogSearchText(product),
 }));
 ---
 

@@ -1,6 +1,6 @@
 import { stat } from 'node:fs/promises';
 import path from 'node:path';
-import { products, productDescription, productDetailContent, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productKeyFeatures, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
+import { products, productCardDescription, productCatalogSearchText, productComplianceProfile, productDescription, productDetailContent, productEvidenceProfile, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productKeyFeatures, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
 import { blogArticles } from '../src/data/blog.ts';
 import { getBuyerGuideProfile } from '../src/data/buyer-guides.ts';
 import { caseStudyCards } from '../src/data/case-studies.ts';
@@ -43,8 +43,46 @@ for (const product of products) {
   const leadTime = productLeadTimeProfile(product);
   const orderConfirmation = productOrderConfirmation(product);
   const detail = productDetailContent(product);
+  const evidence = productEvidenceProfile(product);
+  const compliance = productComplianceProfile(product);
+  const cardDescription = productCardDescription(product);
+  const catalogSearchText = productCatalogSearchText(product);
   const features = productKeyFeatures(product).join(' ');
   const faqText = faqs.map((faq) => `${faq.question} ${faq.answer}`).join(' ');
+  const faqJsonLdText = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  });
+  const visibleProductText = [
+    leadDescription,
+    detail.productType,
+    detail.primaryBuyer,
+    detail.purpose,
+    ...detail.applications.flatMap((item) => [item.title, item.text]),
+    ...detail.planningPoints,
+    ...detail.customization,
+    detail.operationNote,
+    ...detail.quoteItems,
+    orderConfirmation,
+    evidence.specification,
+    evidence.procurement,
+    evidence.productionRecord,
+    compliance.summary,
+    compliance.eu,
+    compliance.us,
+    compliance.fire,
+    compliance.scope,
+    cardDescription,
+    catalogSearchText,
+    faqText,
+    faqJsonLdText,
+    features,
+  ].join(' ');
   const generatedCopy = [leadDescription, detail.purpose, orderConfirmation, faqText, features]
     .map((text) => sanitizeB2BCopy(product, text))
     .join(' ');
@@ -58,6 +96,8 @@ for (const product of products) {
   if (/\bcommercial\s+commercial\b|party commercial fleets|\b(\w+)(?:\s+\1)+\b/i.test(leadDescription + ' ' + orderConfirmation)) failures.push(product.slug + ': generated copy contains a repeated or malformed phrase');
   const grammarIssue = generatedCopy.match(/\b(?:the\s+the|this\s+the|the\s+a|the\s+an|commercial\s+commercial|rental\s+rental|slide\s+slide|and\s+and)\b/i);
   if (grammarIssue) failures.push(product.slug + ': generated copy contains malformed phrase “' + grammarIssue[0] + '”');
+  const reviewAdjustIssue = visibleProductText.match(/\breview(?:\s+the)?\s+adjust\b/i);
+  if (reviewAdjustIssue) failures.push(product.slug + ': generated product output contains malformed phrase “' + reviewAdjustIssue[0] + '”');
   if (/\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?m\s+m\b/i.test(product.dimensions)) failures.push(product.slug + ': dimensions contain a duplicated unit');
   if (!/custom dimensions available/i.test(product.dimensions) && /\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?\s*m\b/i.test(product.dimensions)
     && !/^\d+(?:\.\d+)?\s+x\s+\d+(?:\.\d+)?\s+x\s+\d+(?:\.\d+)?\s+m$/i.test(product.dimensions.trim())) {
