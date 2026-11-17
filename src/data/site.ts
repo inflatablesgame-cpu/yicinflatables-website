@@ -483,8 +483,8 @@ export function categoryCustomization(category: string) {
 const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   'Advertising Inflatable': {
     title: 'Inflatable Pool Bars, Mascots & Event Displays | YIC',
-    description: 'Commercial inflatable poolside bars, tiki bars, food trucks, event mascots, team tunnels, air dancers, and branded displays. OEM factory supply from YIC.',
-    keywords: 'inflatable pool bar, blow up pool bar, inflatable pool tiki bar, inflatable tiki bar, inflatable cocktail bar, inflatable dog mascot, inflatable cat mascot manufacturer, football team spirit inflatable tunnel, inflatable air dancer, inflatable food truck',
+    description: 'Commercial inflatable poolside bars, tiki bars, food trucks, event mascots, team tunnels, air dancers for sale, and branded displays. OEM factory supply from YIC.',
+    keywords: 'dancers for sale, inflatable air dancer, inflatable pool bar, blow up pool bar, inflatable pool tiki bar, inflatable tiki bar, inflatable cocktail bar, inflatable dog mascot, inflatable cat mascot manufacturer, football team spirit inflatable tunnel, inflatable food truck',
     h1: 'Inflatable Pool Bars, Mascots & Brand Activation Displays',
     intro: 'YIC manufactures commercial advertising inflatables for exhibitions, retail promotions, resort events, product launches, sampling, and hospitality activations. The range includes poolside inflatable bars, tiki and cocktail counters, food trucks, concession stands, kiosks, air dancers, custom mascots, and sports-team entry tunnels. Confirm your artwork, functional layout, footprint, intended workflow, material, and installation plan with the factory before production.',
     options: ['Poolside inflatable bars, tiki bars, and cocktail counters', 'Inflatable food trucks, concession stands, and kiosk booths', 'Event mascots, team tunnels, air dancers, and promotional displays', 'Custom logo and campaign structures'],
@@ -494,9 +494,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Inflatable Tent', 'Bounce House', 'Inflatable Games'],
   },
   'Bounce House': {
-    title: 'Commercial Bounce Houses for Sale | Buy Inflatable Bounce House - YIC',
-    description: 'Commercial bounce houses for sale directly from manufacturer YIC. Heavy-duty Plato 0.55mm PVC bouncy castles for party rental businesses, FECs & venues. Factory wholesale prices, MOQ 1.',
-    keywords: 'commercial bounce house for sale, buy commercial bounce house, bounce house buy, bounce house commercial, commercial bounce house wholesale, commercial bouncy castle, white bounce house for weddings, commercial inflatable bounce house, bounce house manufacturer, OEM bounce house supplier',
+    title: 'Commercial Bounce Houses for Sale | Bouncy House for Sale - YIC',
+    description: 'Commercial bounce houses for sale directly from manufacturer YIC. Heavy-duty Plato 0.55mm PVC bouncy castles & adult bounce houses for party rental businesses, FECs & venues. Factory wholesale prices, MOQ 1.',
+    keywords: 'bounce house for sale, commercial bounce house for sale, bouncy house for sale, buy commercial bounce house, adult bounce house, bounce house buy, bounce house commercial, commercial bounce house wholesale, commercial bouncy castle, white bounce house for weddings, bounce house manufacturer',
     h1: 'Commercial Bounce Houses for Global B2B Buyers',
     intro: 'YIC manufactures commercial bounce houses for importers, distributors, family entertainment centers, schools, community venues, and event operators. Party rental companies are also served as downstream commercial buyers. The range covers classic jump houses, white wedding bouncers, themed castles, sports designs, and custom layouts. Send the preferred theme, footprint, quantity, destination, and artwork requirements for a factory quotation.',
     options: ['Classic commercial bounce houses', 'White wedding and luxury bouncers', 'Themed and character jump houses', 'Custom color and artwork designs'],
@@ -623,9 +623,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
 };
 
 categorySeoProfiles['Inflatable Water Slide'] = {
-  title: 'Commercial Inflatable Water Slides for Sale | Buy Water Slide - YIC',
-  description: 'Commercial inflatable water slides for sale directly from factory YIC. Heavy-duty wet/dry blow up slides, dual-lane racing & splash pool slides for rental fleets & resorts. Factory direct quotes.',
-  keywords: 'commercial inflatable water slides, buy inflatable water slide, water slides for sale, water slide blow up, commercial water slide for sale, large inflatable water slides, inflatable water slides wholesale, wet dry water slides, commercial blow up water slides',
+  title: 'Commercial Inflatable Water Slides for Sale | Bouncy Water Slides - YIC',
+  description: 'Commercial inflatable water slides for sale directly from factory YIC. Heavy-duty wet/dry bouncy water slides, dual-lane racing & splash pool slides for rental fleets & resorts. Factory direct quotes.',
+  keywords: 'water slides for sale, commercial inflatable water slides, buy inflatable water slide, bouncy water slide for sale, water slide bounce house, water slide blow up, commercial water slide for sale, large inflatable water slides, inflatable water slides wholesale',
   h1: 'Commercial Inflatable Water Slides for Sale, Rentals and Water Venues',
   intro: 'YIC manufactures commercial inflatable water slides for party-rental fleets, resorts, pool venues, events, and seasonal recreation operators. Browse tropical water slides, palm tree water slides, jungle water slides, princess water slides, shark water slides, dolphin water slides, rainbow water slides, wet dry water slides, pool-finish slides, and dual-lane or triple-lane racing formats. Every project should be matched to the usable footprint, height clearance, water supply, drainage, landing or splash-pool plan, access route, supervision, artwork, quantity, and destination before a factory quotation is confirmed.',
   options: ['Commercial water slides for sale and OEM ranges', 'Tropical, jungle, princess, shark, dolphin, rainbow, and wave themes', 'Wet dry water slides with splash-pool or landing options', 'Double, dual-lane, and triple-lane inflatable water-slide layouts'],
