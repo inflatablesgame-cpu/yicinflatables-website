@@ -494,9 +494,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Inflatable Tent', 'Bounce House', 'Inflatable Games'],
   },
   'Bounce House': {
-    title: 'Commercial Bounce House Manufacturer | OEM Factory | YIC',
-    description: 'Commercial bounce house manufacturer for importers, distributors, FECs, schools, and event venues. Factory-direct OEM, private-label, and export supply from YIC.',
-    keywords: 'commercial bounce house manufacturer, commercial bounce house wholesale, OEM bounce house supplier, commercial inflatable bounce house, bounce house for sale, commercial bouncy castle, white bounce house, themed bounce house, pink bounce house, princess bounce house, unicorn bounce house, wedding bounce house',
+    title: 'Commercial Bounce Houses for Sale | Buy Inflatable Bounce House - YIC',
+    description: 'Commercial bounce houses for sale directly from manufacturer YIC. Heavy-duty Plato 0.55mm PVC bouncy castles for party rental businesses, FECs & venues. Factory wholesale prices, MOQ 1.',
+    keywords: 'commercial bounce house for sale, buy commercial bounce house, bounce house buy, bounce house commercial, commercial bounce house wholesale, commercial bouncy castle, white bounce house for weddings, commercial inflatable bounce house, bounce house manufacturer, OEM bounce house supplier',
     h1: 'Commercial Bounce Houses for Global B2B Buyers',
     intro: 'YIC manufactures commercial bounce houses for importers, distributors, family entertainment centers, schools, community venues, and event operators. Party rental companies are also served as downstream commercial buyers. The range covers classic jump houses, white wedding bouncers, themed castles, sports designs, and custom layouts. Send the preferred theme, footprint, quantity, destination, and artwork requirements for a factory quotation.',
     options: ['Classic commercial bounce houses', 'White wedding and luxury bouncers', 'Themed and character jump houses', 'Custom color and artwork designs'],
@@ -506,9 +506,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Bounce House Combo', 'Inflatable Slide', 'Inflatable Obstacle Course'],
   },
   'Bounce House Combo': {
-    title: 'Commercial Bounce House Combos | OEM Factory | YIC',
-    description: 'Commercial bounce house combos for importers, distributors, FECs, and event venues. OEM/private label production and factory-direct export from YIC.',
-    keywords: 'bounce house combo, bounce house combo for sale, commercial bounce house combo, bounce house and slide, combo bounce house rental, bounce house with slide, bouncy castle with slide, commercial bounce house with slide, themed bounce house combo, obstacle course bounce house, paw patrol bounce house, mermaid bounce house, pirate ship bounce house, princess bounce house, unicorn bounce house with slide, toy story bounce house',
+    title: 'Commercial Bounce House with Slide Combos for Sale | YIC Factory',
+    description: 'Commercial bounce house combos for sale: jumpy house with water slide, obstacle elements, and ball pits for rental businesses, FECs & event venues. Factory direct OEM wholesale from YIC.',
+    keywords: 'commercial bounce house with slide, water slide bounce house, jumpy house with water, bounce house combo for sale, commercial bounce house combo, bounce house and slide, bouncy castle with slide, commercial combo bouncer wholesale',
     h1: 'Commercial Bounce House Combos for Importers, Distributors & Venues',
     intro: 'YIC manufactures bounce house combos that combine jumping, sliding, basketball, ball pits, and themed play in one commercial attraction. Importers, distributors, family entertainment centers, and event operators can compare multi-activity layouts and request OEM or private-label production. Party rental companies are also served as downstream buyers. Confirm the play sequence, target age group, dimensions, artwork, and quantity for a factory quote.',
     options: ['Bounce house and slide combos', 'Ball-pit and basketball combos', 'Themed multi-play inflatables', 'Custom combo layouts for venues'],
@@ -518,9 +518,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Bounce House', 'Inflatable Slide', 'Inflatable Games'],
   },
   'Bumper Ball': {
-    title: 'Inflatable Bumper Balls & Human Bubble Balls | YIC',
-    description: 'Commercial bumper balls, human bubble balls, and zorbs for sports operators, schools, events, and distributors. Custom TPU, colors, and branding from YIC.',
-    keywords: 'inflatable bumper balls, human bubble balls, inflatable bubble soccer balls, commercial zorb balls, TPU bumper ball supplier',
+    title: 'Inflatable Bumper Balls for Sale | Adult Bubble Balls Wholesale - YIC',
+    description: 'Commercial inflatable bumper balls for sale: adult bumper balls, human bubble balls, and TPU zorbs for sports operators, rental businesses & events. Factory direct from YIC.',
+    keywords: 'bumper balls for sale, adult bumper balls, commercial bumper balls, inflatable bumper balls, human bubble balls, inflatable bubble soccer balls, commercial zorb balls, TPU bumper ball wholesale',
     h1: 'Inflatable Bumper Balls for Bubble Soccer and Zorb Activities',
     intro: 'YIC supplies commercial inflatable bumper balls, human bubble balls, and zorb equipment for sports operators, schools, team-building companies, festivals, distributors, and rental businesses. Choose a youth, adult, soccer, or zorb format, then confirm diameter, participant group, playing surface, quantity, storage, transport, team colors, and logo requirements. Custom TPU ball sets can be prepared for organized group play and repeat commercial programs.',
     options: ['Inflatable bumper ball sets', 'Human bubble balls for adults and kids', 'Zorb soccer and bubble-soccer formats', 'Custom TPU colors, logos, and accessories'],
@@ -619,8 +619,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
 };
 
 categorySeoProfiles['Inflatable Water Slide'] = {
-  title: 'Commercial Inflatable Water Slides | OEM Factory | YIC',
-  description: 'Commercial inflatable water slides for sale: tropical, jungle, princess, shark, dolphin, rainbow, wet-dry, pool-finish and multi-lane formats for B2B buyers.',
+  title: 'Commercial Inflatable Water Slides for Sale | Buy Water Slide - YIC',
+  description: 'Commercial inflatable water slides for sale directly from factory YIC. Heavy-duty wet/dry blow up slides, dual-lane racing & splash pool slides for rental fleets & resorts. Factory direct quotes.',
+  keywords: 'commercial inflatable water slides, buy inflatable water slide, water slides for sale, water slide blow up, commercial water slide for sale, large inflatable water slides, inflatable water slides wholesale, wet dry water slides, commercial blow up water slides',
   h1: 'Commercial Inflatable Water Slides for Sale, Rentals and Water Venues',
   intro: 'YIC manufactures commercial inflatable water slides for party-rental fleets, resorts, pool venues, events, and seasonal recreation operators. Browse tropical water slides, palm tree water slides, jungle water slides, princess water slides, shark water slides, dolphin water slides, rainbow water slides, wet dry water slides, pool-finish slides, and dual-lane or triple-lane racing formats. Every project should be matched to the usable footprint, height clearance, water supply, drainage, landing or splash-pool plan, access route, supervision, artwork, quantity, and destination before a factory quotation is confirmed.',
   options: ['Commercial water slides for sale and OEM ranges', 'Tropical, jungle, princess, shark, dolphin, rainbow, and wave themes', 'Wet dry water slides with splash-pool or landing options', 'Double, dual-lane, and triple-lane inflatable water-slide layouts'],
