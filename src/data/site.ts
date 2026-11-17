@@ -5708,7 +5708,7 @@ function inlineCustomizationCopy(value: string | string[]) {
 }
 
 export function productCatalogSearchText(product: Product) {
-  return `${product.title} ${product.category} ${product.material} ${productCardDescription(product)}`.toLowerCase();
+  return `${product.title} ${product.category} ${product.material} MOQ 1 unit ${productCardDescription(product)}`.toLowerCase();
 }
 
 export function productCardLabel(product: Product) {
@@ -6457,5 +6457,11 @@ function initializeProductFaqs() {
 
 export function productFaqs(product: Product) {
   initializeProductFaqs();
-  return productFaqCache!.get(product.slug) ?? buildProductFaqs(product);
+  const faqs = productFaqCache!.get(product.slug) ?? buildProductFaqs(product);
+  if (faqs.some((faq) => /minimum order quantity/i.test(faq.question))) return faqs;
+  const name = productDisplayTitle(product);
+  return [
+    { question: `What is the minimum order quantity for ${name}?`, answer: `YIC’s minimum order quantity is 1 unit. You can start with one ${name}; final pricing, specifications, accessories, production timing, and shipping are confirmed for the selected configuration and destination.` },
+    ...faqs,
+  ];
 }

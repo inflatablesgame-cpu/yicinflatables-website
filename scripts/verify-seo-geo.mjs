@@ -4,6 +4,7 @@ import { products, productCardDescription, productCatalogSearchText, productComp
 import { blogArticles } from '../src/data/blog.ts';
 import { getBuyerGuideProfile } from '../src/data/buyer-guides.ts';
 import { caseStudyCards } from '../src/data/case-studies.ts';
+import { faqItems } from '../src/data/faq.ts';
 
 const failures = [];
 const publicRoot = path.resolve('public');
@@ -77,6 +78,7 @@ for (const product of products) {
     compliance.us,
     compliance.fire,
     compliance.scope,
+    'Minimum order quantity: 1 unit',
     cardDescription,
     catalogSearchText,
     faqText,
@@ -88,6 +90,8 @@ for (const product of products) {
     .join(' ');
   if (!primaryKeyword || !heading || !meta) failures.push(product.slug + ': missing a public SEO field');
   if (faqs.length < 6) failures.push(product.slug + ': expected at least 6 product FAQs, found ' + faqs.length);
+  if (!faqs.some((faq) => /minimum order quantity/i.test(faq.question) && /1 unit/i.test(faq.answer))) failures.push(product.slug + ': missing the confirmed 1-unit MOQ in product FAQ and FAQPage schema input');
+  if (!/\bMOQ\s+1\s+unit\b/i.test(catalogSearchText)) failures.push(product.slug + ': missing the confirmed 1-unit MOQ from the product search index');
   if (new Set(faqs.map((faq) => faq.question.trim().toLowerCase())).size < 6) failures.push(product.slug + ': product FAQs are not sufficiently distinct');
   if (!/^(?:5–7|6–8|7–9|8–10|9–11|10–12|11–14|5–12|7–14) Work Days$/.test(leadTime.range)) failures.push(product.slug + ': invalid size-based lead-time range');
   if (!orderConfirmation.includes(leadTime.range) || /7-10 Work Days/i.test(orderConfirmation)) failures.push(product.slug + ': order confirmation does not use the size-based lead-time profile');
@@ -104,6 +108,14 @@ for (const product of products) {
     failures.push(product.slug + ': metric dimensions are not normalized to “L x W x H m” format');
   }
   if (!detail.purpose || !features.trim()) failures.push(product.slug + ': missing product-specific purpose or features');
+}
+
+if (!faqItems.some((faq) => /minimum order quantity/i.test(faq.question) && /1 unit/i.test(faq.answer))) {
+  failures.push('Site-wide buyer FAQ does not state the confirmed 1-unit MOQ');
+}
+const moqLeadTimeArticle = blogArticles.find((article) => article.slug === 'inflatable-moq-lead-time-and-quotation');
+if (!moqLeadTimeArticle || !/minimum order quantity is 1 unit|orders starting at 1 unit/i.test(moqLeadTimeArticle.intro + ' ' + moqLeadTimeArticle.sections.map((section) => section.body).join(' '))) {
+  failures.push('MOQ and lead-time guide does not state the confirmed 1-unit MOQ');
 }
 
 const whiteBounce = products.find((product) => product.productSlug === 'modern-white-bounce-houses');

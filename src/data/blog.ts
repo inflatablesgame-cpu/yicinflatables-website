@@ -183,9 +183,9 @@ const existingBlogArticles: BlogArticle[] = [
     description: 'Understand how quantity, customization, production schedule, and documentation affect inflatable MOQ, lead time, and factory pricing.',
     keywords: 'inflatable MOQ, inflatable lead time, commercial inflatable quotation',
     category: 'Sourcing', published: '2026-09-18', readTime: '6 min read',
-    intro: 'MOQ and lead time are not universal numbers for every inflatable product. They depend on the model, quantity, artwork, accessories, raw materials, and the factory production schedule.',
+    intro: 'YIC accepts orders starting at 1 unit, including a single commercial inflatable. The minimum quantity is one unit; the final price, approved configuration, production schedule, and freight plan depend on the selected model, artwork, accessories, materials, and destination.',
     sections: [
-      { heading: 'Ask for model-specific answers', body: 'A standard product, a new custom design, and a large water attraction may have different production requirements. Request a separate confirmation for each model or product group.' },
+      { heading: 'MOQ starts at one unit; confirm the model scope', body: 'YIC’s minimum order quantity is 1 unit, so a buyer can begin with one commercial inflatable. A standard catalog model, a new custom design, and a large water attraction may still differ in specifications, price, accessories, packing, and production timing. Request a model-specific quotation for each item.' },
       { heading: 'Separate approval time from production time', body: 'Artwork confirmation, sample discussion, material preparation, production, inspection, and packing are different stages. A useful quotation makes the sequence clear.' },
       { heading: 'Give the factory a real target date', body: 'Share your event date, sales season, or warehouse deadline. The factory can then advise whether the requested schedule is practical and what information is needed to protect it.' },
     ],
