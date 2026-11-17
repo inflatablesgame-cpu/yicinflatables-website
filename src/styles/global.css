@@ -350,6 +350,9 @@ h3 { font-size: 1.25rem; }
 
 .detail-wrap { padding: 75px 0 105px; }
 .product-detail-page .detail-wrap { border-top: 4px solid var(--teal); }
+.product-detail-page .breadcrumbs { color: #5d6b78; }
+.product-detail-page .breadcrumbs a { color: var(--teal); }
+.product-detail-page .breadcrumbs a:hover { color: var(--ink-strong); }
 .product-detail-page.category-template-0 .detail-wrap { border-top-color: var(--accent); }
 .product-detail-page.category-template-1 .detail-wrap { border-top-color: #e1784b; }
 .product-detail-page.category-template-2 .detail-wrap { border-top-color: #e0a72b; }
