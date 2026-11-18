@@ -164,6 +164,22 @@ for (const article of buyerQuestionArticles) {
   }
 }
 
+const manufacturerGuide = buyerQuestionArticles.find((article) => article.slug === 'how-to-choose-commercial-inflatable-manufacturer');
+if (!manufacturerGuide || !/Chinese Inflatable Suppliers/i.test(manufacturerGuide.title) || !/buy commercial inflatables online/i.test(manufacturerGuide.keywords)) {
+  failures.push('Manufacturer sourcing guide is missing its Chinese-supplier and online-buying search intent');
+}
+if (manufacturerGuide && (!manufacturerGuide.sections.some((section) => /documented order trail/i.test(section.heading))
+  || !manufacturerGuide.faqs?.some((faq) => /buy commercial inflatables online/i.test(faq.question))
+  || !manufacturerGuide.relatedProductSlugs?.includes('shark-inflatable-water-slide-with-pool')
+  || !manufacturerGuide.internalLinks?.some((link) => link.href === '/products/inflatable-water-slide/shark-inflatable-water-slide-with-pool/'))) {
+  failures.push('Manufacturer sourcing guide is missing online-order guidance or the shark water-slide product link');
+}
+
+const sharkWaterSlide = products.find((product) => product.productSlug === 'shark-inflatable-water-slide-with-pool');
+if (!sharkWaterSlide || !productFaqs(sharkWaterSlide).some((faq) => /different shark graphics or other marine designs/i.test(faq.question))) {
+  failures.push('Shark water-slide product is missing its product-specific customization FAQ');
+}
+
 for (const caseStudy of caseStudyCards) {
   if (!caseStudy.description || !caseStudy.buyerFocus || !caseStudy.alt) failures.push('Case study ' + caseStudy.id + ': missing citation-ready project detail');
   if (!caseStudy.relatedProductSlug && !caseStudy.relatedCategorySlug) failures.push('Case study ' + caseStudy.id + ': missing related catalog path');

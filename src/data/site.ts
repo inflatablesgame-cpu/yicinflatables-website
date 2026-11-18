@@ -1672,6 +1672,7 @@ const legacyWaterSlideProfiles: Record<string, WaterSlideProfile> = {
     application: 'shark-themed party rentals, resort water activities, marine events, and supervised summer family play',
     options: 'shark head artwork, wave panels, slide profile, pool finish, colors, logos, water inlet, anchoring, and export packing',
     customizationFocus: 'shark face and mouth design, marine graphics, blue color treatment, slide and pool layout, branding, and accessories',
+    faqQuestions: ['What is this shark water slide designed for?', 'How should I plan the shark water slide footprint?', 'Which material is listed for this shark inflatable water slide?', 'Can I customize this shark water slide with different shark graphics or other marine designs?', 'What wet-use, drainage, and supervision checks should be prepared?', 'What information is needed for a shark water slide factory quotation?'],
     cardSummary: 'Shark water slide with open-mouth entry, wave styling, and pool-finish layout.',
   },
   'backyard-water-slide-for-kids': {

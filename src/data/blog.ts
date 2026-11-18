@@ -364,7 +364,7 @@ const legacyArticleVisuals: Record<string, string> = {
 const shortTitles: Record<string, string> = {
   'how-to-start-a-bounce-house-rental-business': 'Starting a Commercial Inflatable Fleet',
   'commercial-vs-residential-bounce-houses': 'Commercial vs. Residential Inflatables',
-  'how-to-choose-commercial-inflatable-manufacturer': 'How to Verify an Inflatable Manufacturer',
+  'how-to-choose-commercial-inflatable-manufacturer': 'Verify Chinese Inflatable Suppliers',
   'en-14960-and-astm-inflatable-safety': 'EN 14960 vs. ASTM F2374',
   'commercial-pvc-thickness-guide': 'Commercial Inflatable PVC Guide',
   'commercial-inflatable-slide-buying-guide': 'Commercial Inflatable Slide Buying Guide',
