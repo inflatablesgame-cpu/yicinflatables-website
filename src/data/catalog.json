@@ -435,7 +435,7 @@
     {
       "name": "Inflatable Slide",
       "slug": "inflatable-slide",
-      "count": 24,
+      "count": 25,
       "heroImage": "/assets/product/Inflatable%20Slide/10x3x2.6m%20%20%20inflatable%20slip%20and%20slide%20with%20pool/1.webp",
       "products": [
         "inflatable-slide--inflatable-slip-and-slide-with-pool-1",
@@ -461,7 +461,8 @@
         "inflatable-slide--inflatable-jungle-slide-21",
         "inflatable-slide--safari-bouncy-castle-22",
         "inflatable-slide--candy-bounce-house-23",
-        "inflatable-slide--spiderman-inflatable-water-slide-24"
+        "inflatable-slide--spiderman-inflatable-water-slide-24",
+        "inflatable-slide--jungle-animal-inflatable-bounce-house-with-slide-25"
       ]
     },
     {
@@ -7785,6 +7786,24 @@
       ],
       "dimensions": "7x4x6m     ",
       "excerpt": "Commercial inflatable slide built for party rental operators, family entertainment centers, and event venues."
+    },
+    {
+      "slug": "inflatable-slide--jungle-animal-inflatable-bounce-house-with-slide-25",
+      "productSlug": "jungle-animal-inflatable-bounce-house-with-slide",
+      "category": "Inflatable Slide",
+      "categorySlug": "inflatable-slide",
+      "title": "jungle animal inflatable bounce house with slide",
+      "sourceName": "9x5x6m jungle animal inflatable bounce house with slide",
+      "material": "Confirm material grade with YIC",
+      "images": [
+        "/assets/product/Inflatable%20Slide/9x5x6m%20jungle%20animal%20inflatable%20bounce%20house%20with%20slide/1.webp",
+        "/assets/product/Inflatable%20Slide/9x5x6m%20jungle%20animal%20inflatable%20bounce%20house%20with%20slide/2.webp",
+        "/assets/product/Inflatable%20Slide/9x5x6m%20jungle%20animal%20inflatable%20bounce%20house%20with%20slide/3.webp",
+        "/assets/product/Inflatable%20Slide/9x5x6m%20jungle%20animal%20inflatable%20bounce%20house%20with%20slide/4.webp",
+        "/assets/product/Inflatable%20Slide/9x5x6m%20jungle%20animal%20inflatable%20bounce%20house%20with%20slide/5.webp"
+      ],
+      "dimensions": "9 x 5 x 6 m",
+      "excerpt": "Commercial jungle bounce house for venues and distributors, with a central climbing ladder, two side slides and mesh side panels."
     },
     {
       "slug": "inflatable-tent--white-large-inflatable-igloo-tent-25",

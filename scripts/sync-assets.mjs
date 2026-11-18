@@ -58,6 +58,9 @@ function sortImages(left, right) {
 }
 
 function materialFor(categoryName, productName) {
+  if (categoryName === 'Inflatable Slide' && /jungle animal inflatable bounce house with slide/i.test(productName)) {
+    return 'Confirm material grade with YIC';
+  }
   const tpuMatch = productName.match(/材料\s*(\d+(?:\.\d+)?)\s*TPU/i);
   if (tpuMatch) return `${tpuMatch[1]} TPU`;
   if (/bumper ball/i.test(categoryName) || /\btpu\b/i.test(productName)) return 'Commercial TPU';

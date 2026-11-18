@@ -693,6 +693,9 @@ function prioritizedBuyerDisplay(value: string) {
 }
 
 function buildProductDescription(product: Product) {
+  if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
+    return 'YIC manufactures this dry-use jungle bounce house and slide combo for event venues, family entertainment centers and distributors. The 9 x 5 x 6 m reference has a central orange climbing ladder flanked by two side slides, a raised front entry and mesh side panels. The green and orange design features jungle animal artwork. Use the approved drawing to check access, overhead clearance and space at both slide exits.';
+  }
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) {
     return `YIC manufactures ${obstacleCourse.keywords[0]} for ${prioritizedBuyerDisplay(obstacleCourse.buyer)}. This ${product.dimensions.trim()} model is shown as ${obstacleCourse.visual}. ${obstacleCourse.purpose} The listing specifies ${product.material}. Buyers can review customization options, including ${inlineCustomizationCopy(obstacleCourse.customization)}. Related buyer searches include ${obstacleCourse.keywords.slice(1).join(', ')}. Confirm the final site plan, access, anchoring, supervision, artwork, accessories, and event requirements before production.`;
@@ -2814,6 +2817,9 @@ function productIntentKeyword(product: Product) {
 
 function buildProductSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
+    return seoTitle('Commercial Jungle Animal Bounce House with Slide');
+  }
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) return seoTitle(`${obstacleCourse.keywords[0]} | Commercial Course`);
   const advertisingDisplay = advertisingDisplayProfile(product);
@@ -2870,6 +2876,9 @@ function buildProductSeoTitle(product: Product) {
 }
 
 function buildProductMetaDescription(product: Product) {
+  if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
+    return 'Commercial jungle animal bounce house with slide, 9 x 5 x 6 m. Central ladder, twin slides and mesh sides. Factory quote from YIC. MOQ: 1 unit.';
+  }
   const detail = productDetailContent(product);
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) return truncateMeta(`YIC manufactures ${obstacleCourse.keywords[0]} for ${obstacleCourse.application}. ${product.dimensions.trim()}, ${product.material}. Custom artwork and factory quote.`, 158);
@@ -2946,6 +2955,12 @@ function buildProductMetaDescription(product: Product) {
 export function productKeyFeatures(product: Product) {
   const detail = productDetailContent(product);
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') return [
+    'Central orange climbing ladder with two side slides',
+    'Raised front entry and mesh panels for operator visibility',
+    'Jungle animal graphics across the green and orange play structure',
+    'OEM options for artwork, colors, dimensions, access orientation, and confirmed accessories',
+  ];
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) return [
     `Visible layout: ${obstacleCourse.visual}`,
@@ -3525,6 +3540,9 @@ function keywordVariantForDuplicate(product: Product, duplicateGroup: Product[],
 }
 
 function baseProductPrimaryKeyword(product: Product) {
+  if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
+    return 'commercial jungle animal bounce house with slide';
+  }
   const keyword = product.category === 'Bounce House' || product.category === 'Bounce House Combo'
     ? bounceHouseCoreKeyword(product)
     : waterSlideProfile(product)?.keywords[0]
@@ -3566,6 +3584,15 @@ export function productPrimaryKeyword(product: Product) {
 
 export function productKeywordVariants(product: Product) {
   const name = productDisplayTitle(product);
+  if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
+    return [
+      'commercial jungle animal bounce house with slide',
+      'jungle themed inflatable bounce house manufacturer',
+      'commercial jungle bounce house combo',
+      'animal theme inflatable slide combo',
+      'custom jungle bounce house with twin side slides',
+    ];
+  }
   const lowerName = name.toLowerCase();
   const searchable = `${lowerName} ${product.sourceName.toLowerCase()}`;
   const variants: string[] = [];
@@ -4204,6 +4231,36 @@ function namedCatalogProfile(product: Product): Omit<DetailContent, 'template'> 
     : isTent ? 'exhibition contractors, event producers, brand agencies, hospitality teams, and inflatable distributors'
       : 'event companies, schools, family entertainment centers, sports organizations, and commercial fleet operators';
   const base = categoryDetailProfiles[product.category];
+  if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
+    const purpose = 'The central climb and twin slides give venue buyers a layout to assess for queuing, turn taking and supervision of both exits. The raised entry and mesh sides help define access and sightlines on the floor plan.';
+    return {
+      ...base,
+      productType: 'commercial jungle-animal bounce house and slide combo',
+      primaryBuyer: 'inflatable distributors, family entertainment centers, event venues, and commercial fleet operators',
+      purpose,
+      applications: [
+        { title: 'Jungle-themed family entertainment', text: 'Use the green and orange theme as a focal point and reserve floor space for a queue that stays clear of both slide exits.' },
+        { title: 'Event and venue play zones', text: 'Check ceiling fixtures, delivery access and staff sightlines through the mesh before assigning this 6 m high reference to a venue.' },
+        { title: 'Distributor product programs', text: 'Review the 9 x 5 x 6 m reference, artwork treatment, packing, blower requirements, and destination documentation before adding the model to a catalog or project quote.' },
+      ],
+      planningPoints: [
+        'Confirm the 9 x 5 x 6 m reference footprint, overall height clearance, access route, blower position, and anchoring surface',
+        'Check the central climb, both slide exits, landing clearance and staff positions against the approved drawing',
+        'Confirm the material specification, blower requirements, included accessories and operating limits before ordering',
+      ],
+      customization: [
+        'Adjust jungle-animal artwork, green and orange color blocking, printed panels, and logo placement',
+        'Review the bounce-to-climb-to-slide layout, access orientation, landing area, and mesh treatment against the site plan',
+        'Confirm dimensions, blower interface, anchoring, repair kit, carry bag, accessories, and export packing',
+      ],
+      operationNote: 'Follow the approved operating instructions and site plan. Keep landing areas clear at both slide exits, supervise the central climb and follow the product instructions for anchoring, participant limits and weather conditions.',
+      quoteItems: [
+        'Intended venue or event, participant age group, and the 9 x 5 x 6 m reference footprint',
+        'Site plan with height clearance, access route, bounce-to-climb-to-slide orientation, landing area, and anchoring surface',
+        'Artwork and logo files, confirmed material grade, accessories, quantity, destination, packing, and target delivery date',
+      ],
+    };
+  }
   return {
     ...base,
     productType: isAdvertising ? `custom ${title} promotional display` : isThemePark ? `${title} themed play attraction` : isSlide ? `${isWetSlide ? 'commercial water' : 'commercial'} inflatable slide` : isTent ? 'commercial inflatable event shelter' : `${title} commercial inflatable game`,
@@ -5495,6 +5552,9 @@ export function productCardDescription(product: Product) {
   const application = productApplication(product);
   const reference = product.dimensions ? `Reference size: ${product.dimensions.trim()}.` : 'Custom dimensions available.';
   const searchable = `${product.title} ${product.sourceName}`.toLowerCase();
+  if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
+    return `Commercial jungle bounce house with a central climb, two side slides and mesh panels. ${product.dimensions.trim()} reference size.`;
+  }
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) return `${obstacleCourse.cardSummary} ${reference}`;
   const advertisingDisplay = advertisingDisplayProfile(product);
@@ -5795,6 +5855,15 @@ export function productCardLabel(product: Product) {
 }
 
 function buildProductFaqs(product: Product) {
+  if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
+    return [
+      { question: 'How are the slides arranged on this jungle bounce house?', answer: 'A central orange climbing ladder sits between two side slides. The reference also shows a raised front entry and mesh side panels. Review the approved drawing to check access and supervision at both exits.' },
+      { question: 'How much space should I plan for the twin-slide jungle bounce house?', answer: 'The reference is 9 x 5 x 6 m. Allow extra space for anchoring, blower access, queuing and both slide exits. Confirm ceiling clearance and the installation footprint from the approved model drawing and operating instructions.' },
+      { question: 'Is this jungle combo configured for wet or dry use?', answer: 'This reference is presented as a dry-use bounce and slide combo. For a water-play requirement, ask YIC to quote a purpose-built inflatable water slide and confirm the operating configuration.' },
+      { question: 'Can YIC match the jungle artwork to a venue theme?', answer: 'Send your preferred colors, animal graphics and logo files for review. The quotation confirms the artwork, final layout, material grade and blower and accessory package before production.' },
+      { question: 'Which market documents can I request for this jungle slide?', answer: 'Give YIC the destination country and intended use. Request the applicable product and material records and confirm which documents cover the selected configuration and blower before purchase.' },
+    ];
+  }
   const name = productDisplayTitle(product);
   const content = productDetailContent(product);
   const dimensions = product.dimensions ? `The listed reference size is ${product.dimensions.trim()}.` : 'No fixed reference size is listed for this model.';

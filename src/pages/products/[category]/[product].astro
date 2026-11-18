@@ -39,11 +39,16 @@ const relatedBuyerSearches = keywordVariants
   .filter((term) => term.toLowerCase().replace(/\s+/g, ' ').trim() !== normalizedPrimaryKeyword)
   .slice(0, 4);
 const relatedProducts = productRelatedProducts(product);
-const imageAlt = `${headingTitle}, a commercial ${detail.productType} by YIC Inflatable Sports`;
+const isDryBounceSlideCombo = product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide';
+const imageAlt = isDryBounceSlideCombo
+  ? 'Green and orange jungle bounce house with a central climbing ladder and two side slides'
+  : `${headingTitle}, a commercial ${detail.productType} by YIC Inflatable Sports`;
 const seoKeywords = productHasRentalSearchIntent(product)
   ? productSeoKeywords(product)
   : productSeoKeywords(product).split(',').map((term) => term.trim()).filter((term) => !/\b(rental|rent|hire)\b/i.test(term)).join(', ');
-const accessoryLabel = /0\.55\s*mm/i.test(product.material) ? 'Blower / Repair Kits / Carry Bag' : 'Pump / Repair Kits / Carry Bag';
+const accessoryLabel = isDryBounceSlideCombo
+  ? 'Blower and accessories confirmed in quotation'
+  : /0\.55\s*mm/i.test(product.material) ? 'Blower / Repair Kits / Carry Bag' : 'Pump / Repair Kits / Carry Bag';
 const customizationSummary = detail.customization.slice(0, 2).join('; ');
 const compliance = productComplianceProfile(product);
 const evidence = productEvidenceProfile(product);
