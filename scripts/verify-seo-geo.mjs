@@ -204,6 +204,39 @@ for (const article of [onlineBuyingGuide, qualityGuide].filter(Boolean)) {
   }
 }
 
+const reportOpportunitySlugs = [
+  'custom-shark-water-slide-design-guide',
+  'water-walking-ball-vs-water-ball',
+  'inflatable-manufacturers-in-usa-buyer-guide',
+  'commercial-inflatable-playground-and-ball-pit-buying-guide',
+  'commercial-christmas-inflatables-buying-guide',
+  'donde-comprar-toboganes-inflables-comerciales',
+];
+for (const slug of reportOpportunitySlugs) {
+  const article = blogArticles.find((item) => item.slug === slug);
+  if (!article) {
+    failures.push('Missing Semrush report opportunity article: ' + slug);
+    continue;
+  }
+  if ((article.metaTitle ?? article.title).length + ' | YIC'.length > 62 || article.description.length > 158) {
+    failures.push('Blog ' + slug + ': title or description exceeds the site metadata limit');
+  }
+  if (!article.answer || !article.updated || !article.buyerFramework || !article.internalLinks?.length || (article.faqs?.length ?? 0) < 4) {
+    failures.push('Blog ' + slug + ': missing answer-first, updated, procurement framework, internal links, or FAQs');
+  }
+  if ((article.relatedProductSlugs ?? []).some((productSlug) => !products.some((product) => product.productSlug === productSlug))) {
+    failures.push('Blog ' + slug + ': references an unknown catalog product');
+  }
+  if (article.imageProductSlug && !products.some((product) => product.productSlug === article.imageProductSlug)) {
+    failures.push('Blog ' + slug + ': references an unknown article image product');
+  }
+  if ((article.internalLinks ?? []).some((link) => link.href.startsWith('/blog/') && !blogArticles.some((item) => link.href === '/blog/' + item.slug + '/'))) {
+    failures.push('Blog ' + slug + ': contains a broken internal blog link');
+  }
+}
+const spanishWaterSlideGuide = blogArticles.find((article) => article.slug === 'donde-comprar-toboganes-inflables-comerciales');
+if (spanishWaterSlideGuide?.language !== 'es') failures.push('Spanish water-slide buyer guide is missing its Spanish document language');
+
 for (const caseStudy of caseStudyCards) {
   if (!caseStudy.description || !caseStudy.buyerFocus || !caseStudy.alt) failures.push('Case study ' + caseStudy.id + ': missing citation-ready project detail');
   if (!caseStudy.relatedProductSlug && !caseStudy.relatedCategorySlug) failures.push('Case study ' + caseStudy.id + ': missing related catalog path');

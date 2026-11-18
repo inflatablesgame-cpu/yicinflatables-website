@@ -14,6 +14,7 @@ interface Props {
   preloadImage?: boolean;
   keywords?: string;
   robots?: string;
+  lang?: string;
 }
 
 const logo = '/assets/%E6%96%B0LOGO.webp';
@@ -28,6 +29,7 @@ const {
   modifiedTime,
   keywords = 'commercial inflatable manufacturer, inflatable products, OEM inflatable, YIC Inflatable Sports',
   robots = 'index, follow, max-image-preview:large',
+  lang = 'en',
   preloadImage = false,
 } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -87,7 +89,7 @@ const websiteSchema = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GMMWMWHNMY"></script>
