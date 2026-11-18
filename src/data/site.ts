@@ -494,9 +494,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Inflatable Tent', 'Bounce House', 'Inflatable Games'],
   },
   'Bounce House': {
-    title: 'Commercial Bounce Houses for Sale | Bouncy House for Sale - YIC',
-    description: 'Commercial bounce houses for sale directly from manufacturer YIC. Heavy-duty Plato 0.55mm PVC bouncy castles & adult bounce houses for party rental businesses, FECs & venues. Factory wholesale prices, MOQ 1.',
-    keywords: 'bounce house for sale, commercial bounce house for sale, bouncy house for sale, buy commercial bounce house, adult bounce house, bounce house buy, bounce house commercial, commercial bounce house wholesale, commercial bouncy castle, white bounce house for weddings, bounce house manufacturer',
+    title: 'Commercial Bounce Houses for Sale | Wholesale Manufacturer - YIC',
+    description: 'Commercial bounce houses for sale from inflatable bounce house manufacturer YIC. Heavy-duty Plato 0.55mm PVC bouncy castles and adult bounce houses for importers, distributors, FECs, venues, and commercial operators. Factory wholesale, MOQ 1.',
+    keywords: 'inflatable bounce house manufacturers, bounce house for sale, commercial bounce house for sale, bouncy house for sale, buy commercial bounce house, adult bounce house, bounce house buy, bounce house commercial, commercial bounce house wholesale, commercial bouncy castle, white bounce house for weddings, bounce house manufacturer',
     h1: 'Commercial Bounce Houses for Global B2B Buyers',
     intro: 'YIC manufactures commercial bounce houses for importers, distributors, family entertainment centers, schools, community venues, and event operators. Party rental companies are also served as downstream commercial buyers. The range covers classic jump houses, white wedding bouncers, themed castles, sports designs, and custom layouts. Send the preferred theme, footprint, quantity, destination, and artwork requirements for a factory quotation.',
     options: ['Classic commercial bounce houses', 'White wedding and luxury bouncers', 'Themed and character jump houses', 'Custom color and artwork designs'],
@@ -532,7 +532,7 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   'Inflatable Games': {
     title: 'Commercial Inflatable Games for Sale | Human Foosball & Carnival Games - YIC',
     description: 'Commercial inflatable games for sale directly from manufacturer YIC. Human foosball, inflatable boxing rings, carnival games, jousting, and sports arenas for rental businesses & FECs.',
-    keywords: 'human foosball, inflatable carnival games, inflatable boxing ring, inflatable jousting, inflatable soccer, connect four basketball, inflatable dart board, commercial inflatable games for sale, inflatable games wholesale',
+    keywords: 'human foosball, blow up soccer, inflatable soccer field for sale, inflatable carnival games, inflatable boxing ring, inflatable jousting, inflatable soccer, connect four basketball, inflatable dart board, commercial inflatable games for sale, inflatable games wholesale',
     h1: 'Custom Commercial Inflatable Games from a B2B Manufacturer',
     intro: 'YIC manufactures custom commercial inflatable games for importers, distributors, family entertainment centers, sports programs, festivals, and event buyers. The catalog covers sports challenges, target games, competitive play, and repeat-play activity stations; OEM/ODM projects can adapt the game objective, player flow, artwork, and footprint. Share the intended application, target players, quantity, and destination for a factory quotation.',
     options: ['Interactive carnival games', 'Inflatable sports challenges', 'Target and accuracy games', 'Custom branded activity stations'],
@@ -568,9 +568,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   'Inflatable Slide': {
     title: 'Commercial Inflatable Slides for Sale | Dry & Giant Event Slides - YIC',
     description: 'Commercial inflatable slides for sale: tall dry slides, giant inflatable slides, and carnival event slides directly from manufacturer YIC. Factory wholesale pricing with global export.',
-    keywords: 'commercial inflatable slide for sale, giant inflatable slide, commercial inflatable slide, blow up slide, large inflatable slide for sale, inflatable dry slide, commercial event slide wholesale',
+    keywords: 'commercial inflatable slide for sale, commercial inflatable slip and slide, inflatable slip and slide for adults, giant inflatable slide, commercial inflatable slide, blow up slide, large inflatable slide for sale, inflatable dry slide, commercial event slide wholesale',
     h1: 'Commercial Inflatable Slides for Global B2B Buyers',
-    intro: 'YIC supplies commercial inflatable slides for importers, distributors, family entertainment centers, events, resorts, and seasonal recreation venues. Party rental fleets are also served as downstream commercial buyers. The range includes dry slides, water-slide formats, themed slides, and slide combos. Compare the models below, then confirm the available height, landing zone, site conditions, intended users, artwork, quantity, and destination for a factory quotation.',
+    intro: 'YIC supplies commercial inflatable slides, slip-and-slide formats, and water-slide products for importers, distributors, family entertainment centers, events, resorts, and seasonal recreation venues. Party rental fleets are also served as downstream commercial buyers. The range includes dry slides, wet-play slides, themed slides, and slide combos. Compare the models below, then confirm the available height, landing zone, site conditions, intended users, artwork, quantity, and destination for a factory quotation.',
     options: ['Dry inflatable slides', 'Commercial water slides', 'Themed and character slides', 'Slide and bounce-house combos'],
     buyers: [{ title: 'Family entertainment centers and event venues', text: 'Plan height, queue, landing, supervision, and guest flow around a busy indoor or outdoor attraction area.' }, { title: 'Water parks and resorts', text: 'Coordinate wet-use layout, water supply, anchoring, drainage, access, and seasonal operations.' }, { title: 'Importers and distributors', text: 'Develop a commercial slide range with custom themes, defined specifications, and destination-ready packing.' }],
     oem: 'For a custom slide, share the desired height, footprint, landing arrangement, theme, color, artwork, use environment, and quantity. YIC can review the structure, accessories, testing, and export packing.',
@@ -623,11 +623,11 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
 };
 
 categorySeoProfiles['Inflatable Water Slide'] = {
-  title: 'Commercial Inflatable Water Slides for Sale | Bouncy Water Slides - YIC',
-  description: 'Commercial inflatable water slides for sale directly from factory YIC. Heavy-duty wet/dry bouncy water slides, dual-lane racing & splash pool slides for rental fleets & resorts. Factory direct quotes.',
+  title: 'Commercial Inflatable Water Slides for Sale | Wholesale Factory - YIC',
+  description: 'Commercial inflatable water slides for sale from YIC wholesale factory. Heavy-duty wet/dry slides, dual-lane racing formats, and splash-pool layouts for importers, distributors, resorts, venues, and commercial operators.',
   keywords: 'water slides for sale, commercial inflatable water slides, buy inflatable water slide, bouncy water slide for sale, water slide bounce house, water slide blow up, commercial water slide for sale, large inflatable water slides, inflatable water slides wholesale',
-  h1: 'Commercial Inflatable Water Slides for Sale, Rentals and Water Venues',
-  intro: 'YIC manufactures commercial inflatable water slides for party-rental fleets, resorts, pool venues, events, and seasonal recreation operators. Browse tropical water slides, palm tree water slides, jungle water slides, princess water slides, shark water slides, dolphin water slides, rainbow water slides, wet dry water slides, pool-finish slides, and dual-lane or triple-lane racing formats. Every project should be matched to the usable footprint, height clearance, water supply, drainage, landing or splash-pool plan, access route, supervision, artwork, quantity, and destination before a factory quotation is confirmed.',
+  h1: 'Commercial Inflatable Water Slides for Sale | OEM & Wholesale',
+  intro: 'YIC manufactures commercial inflatable water slides for importers, distributors, resorts, pool venues, events, and seasonal recreation operators. Party-rental fleets are served as downstream commercial buyers. Browse tropical water slides, palm tree water slides, jungle water slides, princess water slides, shark water slides, dolphin water slides, rainbow water slides, wet-dry water slides, pool-finish slides, and dual-lane or triple-lane racing formats. Every project should be matched to the usable footprint, height clearance, water supply, drainage, landing or splash-pool plan, access route, supervision, artwork, quantity, and destination before a factory quotation is confirmed.',
   options: ['Commercial water slides for sale and OEM ranges', 'Tropical, jungle, princess, shark, dolphin, rainbow, and wave themes', 'Wet dry water slides with splash-pool or landing options', 'Double, dual-lane, and triple-lane inflatable water-slide layouts'],
   buyers: [
     { title: 'Water parks and resorts', text: 'Plan a commercial water slide around the landing or pool area, water supply, drainage, guest capacity, queue flow, anchoring, and seasonal operation.' },

@@ -16,6 +16,8 @@
 /product /products/ 301
 /product/bounce-house-combo/ /products/bounce-house-combos/ 301
 /product/bounce-house-combo/* /products/bounce-house-combos/:splat 301
+/product/shark-inflatable-water-slide-2/ /products/inflatable-water-slide/shark-inflatable-water-slide-with-pool/ 301
+/product/inflatable-water-walking-ball/ /products/inflatable-games/inflatable-water-walking-ball/ 301
 /product/* /products/:splat 301
 
 # Retire legacy paths with HTTP redirects rather than static HTML refresh pages.
