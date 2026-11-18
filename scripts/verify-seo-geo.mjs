@@ -2,6 +2,7 @@ import { stat } from 'node:fs/promises';
 import path from 'node:path';
 import { products, productCardDescription, productCatalogSearchText, productComplianceProfile, productDescription, productDetailContent, productEvidenceProfile, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productKeyFeatures, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
 import { blogArticles } from '../src/data/blog.ts';
+import { buyerQuestionArticles as procurementQuestionArticles } from '../src/data/buyer-question-articles.ts';
 import { getBuyerGuideProfile } from '../src/data/buyer-guides.ts';
 import { caseStudyCards } from '../src/data/case-studies.ts';
 import { faqItems } from '../src/data/faq.ts';
@@ -132,9 +133,9 @@ for (const article of blogArticles) {
   }
 }
 
-const buyerQuestionArticles = blogArticles.filter((article) => article.answer);
-if (buyerQuestionArticles.length !== 10) {
-  failures.push('Expected 10 distinct procurement question articles, found ' + buyerQuestionArticles.length);
+const buyerQuestionArticles = procurementQuestionArticles;
+if (procurementQuestionArticles.length !== 10) {
+  failures.push('Expected 10 distinct procurement question articles, found ' + procurementQuestionArticles.length);
 }
 duplicates('Buyer guide SEO titles', buyerQuestionArticles.map((article) => article.metaTitle ?? article.title));
 for (const article of buyerQuestionArticles) {
@@ -178,6 +179,29 @@ if (manufacturerGuide && (!manufacturerGuide.sections.some((section) => /documen
 const sharkWaterSlide = products.find((product) => product.productSlug === 'shark-inflatable-water-slide-with-pool');
 if (!sharkWaterSlide || !productFaqs(sharkWaterSlide).some((faq) => /different shark graphics or other marine designs/i.test(faq.question))) {
   failures.push('Shark water-slide product is missing its product-specific customization FAQ');
+}
+
+const onlineBuyingGuide = blogArticles.find((article) => article.slug === 'where-to-buy-commercial-bounce-houses-online');
+const qualityGuide = blogArticles.find((article) => article.slug === 'what-defines-high-quality-commercial-inflatables');
+if (!onlineBuyingGuide || !/where to buy bounce houses/i.test(onlineBuyingGuide.keywords)
+  || !onlineBuyingGuide.faqs?.some((faq) => /auctions and liquidation/i.test(faq.question))) {
+  failures.push('Commercial bounce-house sourcing guide is missing online-buying or auction intent');
+}
+if (!qualityGuide || !/high quality inflatables online/i.test(qualityGuide.keywords)
+  || !qualityGuide.faqs?.some((faq) => /thicker PVC/i.test(faq.question))) {
+  failures.push('Commercial inflatable quality guide is missing its online-buying or material-evaluation intent');
+}
+for (const article of [onlineBuyingGuide, qualityGuide].filter(Boolean)) {
+  const copy = [article.title, article.description, article.intro, ...article.sections.map((section) => section.body), ...(article.faqs ?? []).flatMap((faq) => [faq.question, faq.answer])].join(' ');
+  if (article.description.length > 158 || (article.metaTitle ?? article.title).length + ' | YIC'.length > 62) {
+    failures.push('Blog ' + article.slug + ': title or description exceeds the site metadata limit');
+  }
+  if (/80%\s*to\s*150%|Plato\s+0\.55|24-hour inflation|frequently fail insurance inspections|rated for high wind loads/i.test(copy)) {
+    failures.push('Blog ' + article.slug + ': contains an unverified price, brand, test, insurance, or load-rating claim');
+  }
+  if (!article.answer || !article.updated || !article.buyerFramework || !article.internalLinks?.length) {
+    failures.push('Blog ' + article.slug + ': missing direct answer, revision date, buyer framework, or supporting links');
+  }
 }
 
 for (const caseStudy of caseStudyCards) {
