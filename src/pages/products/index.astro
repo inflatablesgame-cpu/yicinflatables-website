@@ -15,7 +15,7 @@ const featuredSlugs = [
   'inflatable-obstacle-course--wipeout-inflatable-obstacle-course-for-sale-2',
   'inflatable-obstacle-course--dinosaur-inflatable-obstacle-course-5',
   'inflatable-slide--inflatable-pirate-ship-slide-2',
-  'inflatable-slide--inflatable-panda-slide-7',
+  'inflatable-water-slide--shark-inflatable-water-slide-with-pool-20',
   'inflatable-games--commercial-inflatable-carnival-games-2',
   'inflatable-games--commercial-inflatable-batting-cage-6',
   'inflatable-water-park--commercial-inflatable-paddle-boat-pool-for-sale-1',
@@ -28,6 +28,7 @@ const featuredSlugs = [
 const pageProducts = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)).filter((product): product is (typeof products)[number] => Boolean(product));
 const productHubFaqs = [
   { question: 'What types of commercial inflatables does YIC manufacture?', answer: 'YIC supplies bounce houses, bounce house combos, slides, obstacle courses, inflatable games, water attractions, theme parks, advertising inflatables, tents, and other custom commercial formats for business use.' },
+  { question: 'What is the minimum order quantity for a commercial inflatable?', answer: 'YIC accepts orders starting at one unit. The final quotation confirms the selected model, configuration, accessories, packing, destination and shipping scope.' },
   { question: 'Which products are suitable for party rental businesses?', answer: 'Bounce houses, combos, dry slides, obstacle courses, and interactive games are common rental-fleet choices. The right mix depends on your customer demand, venue footprint, transport plan, setup time, and expected repeat use.' },
   { question: 'Can I order mixed inflatable products in one shipment?', answer: 'Mixed product orders can be discussed. Send the models, quantities, destination, preferred delivery timing, and any shared artwork or accessory requirements so YIC can review packing and quotation options.' },
   { question: 'Can YIC customize a product that is not shown in the catalog?', answer: 'Yes. Share a reference image, sketch, dimensions, colors, artwork, play features, intended application, quantity, and destination. The team can review a custom OEM or ODM design before production.' },

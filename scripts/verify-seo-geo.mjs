@@ -1,6 +1,6 @@
-import { stat } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
-import { products, productCardDescription, productCatalogSearchText, productComplianceProfile, productDescription, productDetailContent, productEvidenceProfile, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productKeyFeatures, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
+import { categories, categorySeoProfile, products, productCardDescription, productCatalogSearchText, productComplianceProfile, productDescription, productDetailContent, productEvidenceProfile, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productKeyFeatures, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
 import { blogArticles } from '../src/data/blog.ts';
 import { buyerQuestionArticles as procurementQuestionArticles } from '../src/data/buyer-question-articles.ts';
 import { getBuyerGuideProfile } from '../src/data/buyer-guides.ts';
@@ -9,6 +9,8 @@ import { faqItems } from '../src/data/faq.ts';
 
 const failures = [];
 const publicRoot = path.resolve('public');
+const homePageSource = await readFile(path.resolve('src/pages/index.astro'), 'utf8');
+const contactPageSource = await readFile(path.resolve('src/pages/contact/index.astro'), 'utf8');
 
 const duplicates = (label, values) => {
   const groups = new Map();
@@ -26,6 +28,31 @@ duplicates('Product H1 titles', products.map(productHeadingTitle));
 duplicates('SEO titles', products.map(productSeoTitle));
 duplicates('Meta descriptions', products.map(productMetaDescription));
 duplicates('Product lead descriptions', products.map((product) => sanitizeB2BCopy(product, productDescription(product))));
+
+for (const category of categories) {
+  const profile = categorySeoProfile(category.name);
+  const questions = profile.faq.map((faq) => faq.question.trim().toLowerCase().replace(/\s+/g, ' '));
+  if (new Set(questions).size !== questions.length) failures.push(category.slug + ': category FAQ contains duplicate questions');
+  if (profile.title.length > 62) failures.push(category.slug + ': category title exceeds 62 characters');
+  if (profile.description.length > 158) failures.push(category.slug + ': category meta description exceeds 158 characters');
+}
+
+for (const [categoryName, phrase] of [
+  ['Bounce House', /inflatable bounce house manufacturers/i],
+  ['Inflatable Water Slide', /commercial inflatable water slides/i],
+  ['Inflatable Games', /blow up soccer/i],
+]) {
+  if (!phrase.test(categorySeoProfile(categoryName).keywords ?? '')) {
+    failures.push(categoryName + ': missing its mapped Semrush buyer-intent keyword');
+  }
+}
+
+if (/complete compliance documents|without distributor markups|genuine 0\.55\s*mm|certified anchor D-rings|high-frequency heat-sealed internal baffles/i.test(homePageSource)) {
+  failures.push('Homepage contains a broad material, certification, construction, or price claim that is not scoped to a confirmed product');
+}
+if (!/name="Destination"/.test(contactPageSource) || !/name="Timeline"/.test(contactPageSource)) {
+  failures.push('Inquiry form is missing structured destination or delivery-timing fields used in the submitted message');
+}
 
 const contentRepetition = new Map();
 for (const product of products) {
