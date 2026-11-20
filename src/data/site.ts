@@ -484,8 +484,8 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   'Advertising Inflatable': {
     title: 'Commercial Advertising Inflatables & Displays | YIC',
     description: 'Custom inflatable displays, bars, mascots, tents and promotional structures for agencies, venues and distributors. OEM production from YIC.',
-    keywords: 'dancers for sale, inflatable air dancer, inflatable pool bar, blow up pool bar, inflatable pool tiki bar, inflatable tiki bar, inflatable cocktail bar, inflatable dog mascot, inflatable cat mascot manufacturer, football team spirit inflatable tunnel, inflatable food truck',
-    h1: 'Inflatable Pool Bars, Mascots & Brand Activation Displays',
+    keywords: 'inflatable kiosk, inflatable kiosks, inflatable kiosk manufacturer, dancers for sale, inflatable air dancer, inflatable pool bar, blow up pool bar, inflatable pool tiki bar, inflatable tiki bar, inflatable cocktail bar, inflatable dog mascot, inflatable cat mascot manufacturer, football team spirit inflatable tunnel, inflatable food truck',
+    h1: 'Inflatable Kiosks, Pool Bars, Mascots & Brand Displays',
     intro: 'YIC manufactures commercial advertising inflatables for exhibitions, retail promotions, resort events, product launches, sampling, and hospitality activations. The range includes poolside inflatable bars, tiki and cocktail counters, food trucks, concession stands, kiosks, air dancers, custom mascots, and sports-team entry tunnels. Confirm your artwork, functional layout, footprint, intended workflow, material, and installation plan with the factory before production.',
     options: ['Poolside inflatable bars, tiki bars, and cocktail counters', 'Inflatable food trucks, concession stands, and kiosk booths', 'Event mascots, team tunnels, air dancers, and promotional displays', 'Custom logo and campaign structures'],
     buyers: [{ title: 'Event and activation agencies', text: 'Create a high-visibility hospitality, sampling, retail, or branded interaction point with customer flow planned around the event footprint.' }, { title: 'Resort, food, and beverage brands', text: 'Develop recognizable tiki bars, cocktail counters, food trucks, kiosks, or air dancers for promotions, launches, seasonal events, and campaign tours.' }, { title: 'Rental and venue operators', text: 'Add visible themed bars, service counters, and promotional structures to festivals, mall events, pool parties, hospitality zones, and repeat rental packages.' }],
@@ -532,7 +532,7 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   'Inflatable Games': {
     title: 'Commercial Inflatable Games Wholesale | YIC',
     description: 'Wholesale inflatable sports, carnival and team games for venues, events and distributors. OEM layouts and branding quoted by YIC.',
-    keywords: 'human foosball, blow up soccer, inflatable soccer field for sale, inflatable carnival games, inflatable boxing ring, inflatable jousting, inflatable soccer, connect four basketball, inflatable dart board, commercial inflatable games for sale, inflatable games wholesale',
+    keywords: 'commercial inflatable games, inflatable sports games manufacturer, custom inflatable games manufacturer, human foosball, blow up soccer, inflatable soccer field for sale, inflatable carnival games, inflatable boxing ring, inflatable jousting, inflatable soccer, connect four basketball, inflatable dart board, inflatable games wholesale',
     h1: 'Custom Commercial Inflatable Games from a B2B Manufacturer',
     intro: 'YIC manufactures custom commercial inflatable games for importers, distributors, family entertainment centers, sports programs, festivals, and event buyers. The catalog covers sports challenges, target games, competitive play, and repeat-play activity stations; OEM/ODM projects can adapt the game objective, player flow, artwork, and footprint. Share the intended application, target players, quantity, and destination for a factory quotation.',
     options: ['Interactive carnival games', 'Inflatable sports challenges', 'Target and accuracy games', 'Custom branded activity stations'],
@@ -542,9 +542,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Bumper Ball', 'Bounce House Combo', 'Inflatable Obstacle Course'],
   },
   'Inflatable Mechanical Games': {
-    title: 'Commercial Mechanical Bull for Sale | YIC',
-    description: 'Commercial mechanical bulls and operator-led games from YIC. Confirm model controls, electrical setup, accessories and destination documents in your quote.',
-    keywords: 'commercial mechanical bull for sale, mechanical bull ride for sale, inflatable mechanical bull, wipeout inflatable game, rodeo bull machine wholesale, commercial mechanical rides',
+    title: 'Commercial Inflatable Mechanical Games | YIC',
+    description: 'Commercial mechanical bulls and operator-led games for FECs and events. Confirm controls, power, accessories and destination documents with YIC.',
+    keywords: 'commercial inflatable mechanical games, custom inflatable games manufacturer, mechanical bull for sale, mechanical bull ride, inflatable mechanical bull, wipeout inflatable game, rodeo bull machine wholesale, commercial mechanical rides',
     h1: 'Commercial Mechanical Inflatable Games for High-Energy Attractions',
     intro: 'YIC supplies operator-led inflatable mechanical games for family entertainment centers, event companies, rental operators, festivals, and attraction venues. These high-energy formats require clear player zones, power planning, supervision, access, and site coordination. Select a model below, then send the venue details, operating concept, theme, quantity, and destination so the factory can prepare a practical quotation.',
     options: ['Mechanical bull attractions', 'Wipeout and challenge games', 'Operator-led event inflatables', 'Custom themed mechanical attractions'],
@@ -580,7 +580,7 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
   'Inflatable Tent': {
     title: 'Commercial Inflatable Tents & Event Domes | YIC',
     description: 'Commercial inflatable tents, bubble domes and event shelters from YIC. Confirm the selected model’s material, layout and anchoring details.',
-    keywords: 'commercial inflatable tent for sale, inflatable event tent wholesale, white wedding castle inflatable, commercial bubble tent, inflatable dome tent for events, blow up party tent',
+    keywords: 'commercial inflatable tent, outdoor inflatable shelter manufacturer, commercial inflatable tents, commercial inflatable tent for sale, inflatable event tent wholesale, white wedding castle inflatable, commercial bubble tent, inflatable dome tent for events, blow up party tent',
     h1: 'Commercial Inflatable Tents for Events, Exhibitions and Activations',
     intro: 'YIC manufactures inflatable tents and branded shelters for exhibitions, outdoor events, retail activations, hospitality, sports promotions, and event agencies. Choose a dome, tunnel, bar, or enclosed shelter format, then confirm the footprint, entrance, windows, lighting, artwork, anchoring, and destination. Custom inflatable event spaces can be developed for repeat campaigns and commercial use.',
     options: ['Inflatable dome tents', 'Branded exhibition shelters', 'Inflatable bars and tunnels', 'Custom pop-up event spaces'],
@@ -590,9 +590,9 @@ const categorySeoProfiles: Record<string, CategorySeoProfile> = {
     related: ['Advertising Inflatable', 'Inflatable Theme Park', 'Bounce House'],
   },
   'Inflatable Theme Park': {
-    title: 'Commercial Inflatable Theme Parks | YIC Factory',
-    description: 'Custom inflatable parks and modular play attractions for FECs, malls and resorts. Plan zones, guest flow and site fit with YIC.',
-    keywords: 'inflatable theme park manufacturer, indoor inflatable playground for sale, commercial inflatable park, giant inflatable theme park, custom modular inflatable park, inflatable park cost',
+    title: 'Inflatable Park Supplier & Theme Park Manufacturer | YIC',
+    description: 'YIC supplies custom inflatable parks and modular play attractions for FECs, malls and resorts. Plan zones, guest flow and site fit with the factory.',
+    keywords: 'inflatable park supplier, inflatable park manufacturer, inflatable theme park manufacturer, indoor inflatable playground for sale, commercial inflatable park, giant inflatable theme park, custom modular inflatable park, inflatable park cost',
     h1: 'Commercial Inflatable Theme Parks for FECs and Attractions',
     intro: 'YIC develops commercial inflatable theme parks and themed playground attractions for family entertainment centers, malls, parks, resorts, and destination venues. These larger projects combine themed artwork, multiple play modules, guest flow, supervision, access, and site planning. Review the available concepts, then share your footprint, theme, target age, capacity, quantity, and destination for a project quotation.',
     options: ['Indoor inflatable playgrounds', 'Themed adventure parks', 'Modular play attractions', 'Custom multi-zone entertainment projects'],
@@ -695,6 +695,13 @@ function prioritizedBuyerDisplay(value: string) {
 function buildProductDescription(product: Product) {
   if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
     return 'YIC manufactures this dry-use jungle bounce house and slide combo for event venues, family entertainment centers and distributors. The 9 x 5 x 6 m reference has a central orange climbing ladder flanked by two side slides, a raised front entry and mesh side panels. The green and orange design features jungle animal artwork. Use the approved drawing to check access, overhead clearance and space at both slide exits.';
+  }
+  const foamProfile = foamProductProfile(product);
+  if (foamProfile) {
+    return `YIC manufactures this ${foamProfile.productType} for ${foamProfile.buyer}. ${foamProfile.purpose} The catalog lists ${product.dimensions.trim()} and ${product.material}. Before production, confirm ${foamProfile.focus}; machine compatibility and operating procedures must match the approved site and order specification.`;
+  }
+  if (product.productSlug === 'connect-four-basketball-inflatable') {
+    return `YIC manufactures this custom-size inflatable Connect Four basketball game for family entertainment venues, event operators, schools, and rental businesses. The product uses multiple basketball hoops and target openings as part of its Connect Four-style shooting game. Confirm the target-grid layout, basketball supply, scoring and winning rules, shooting line, queue, anchoring, and supervision plan in the approved specification.`;
   }
   const obstacleCourse = obstacleCourseProfile(product);
   if (obstacleCourse) {
@@ -1842,8 +1849,8 @@ const landingKeywordSets: Record<string, string[]> = {
   'inflatable-airbag-landing': ['inflatable airbag landing', 'inflatable landing airbag'],
   'inflatable-bmx-landing-ramp': ['inflatable bmx landing ramp'],
   'freestyle-airbag-landing': ['freestyle airbag landing'],
-  'airbag-landing-ramp-for-sale': ['airbag landing ramp for sale'],
-  'fmx-landing-ramp': ['fmx landing ramp', 'fmx landing airbag'],
+  'airbag-landing-ramp-for-sale': ['airbag landing ramp for sale', 'BMX airbag landing', 'inflatable airbag landing ramp', 'commercial bike-park landing airbag'],
+  'fmx-landing-ramp': ['FMX landing ramp', 'FMX airbag landing', 'FMX airbag landing for sale', 'motocross inflatable landing ramp'],
   'fmx-airbag-landing': ['fmx airbag landing', 'fmx airbag landing for sale', 'fmx airbag landing price'],
   'inflatable-landing-ramp': ['inflatable landing ramp'],
 };
@@ -1862,14 +1869,84 @@ const climbingKeywordSets: Record<string, string[]> = {
   'inflatable-climbing-tower-commercial': ['commercial inflatable climbing tower', 'inflatable climbing tower for sale', 'portable inflatable climbing tower', 'custom inflatable climbing tower'],
 };
 
-const foamKeywordSets: Record<string, string[]> = {
-  'foam-party-inflatable': ['foam party pit', 'foam party rental', 'foam party rental near me', 'foam party inflatable'],
-  'inflatable-foam-pit-for-sale': ['foam pit', 'foam pit for sale', 'inflatable foam pit for sale', 'giant foam pit'],
-  'inflatable-foam-pit': ['inflatable foam pit', 'foam pit rental', 'foam pit rental near me', 'portable foam pit'],
-  'inflatable-rainbow-arch-bubble-foam-pit': ['bubble foam pit', 'bubble foam pit rental', 'bubble pit', 'bubble pit rental'],
-  'inflatable-candy-land-bubble-foam-pit-rental': ['foam party pit for sale', 'inflatable foam pit rental', 'inflatable foam pit rental near me', 'party foam pit'],
-  'inflatable-foam-pit-rental': ['backyard foam pit', 'foam machine pit', 'foam pit bounce house', 'soap foam pit'],
+const foamProductProfiles: Record<string, { keywords: string[]; productType: string; buyer: string; purpose: string; focus: string; application: string }> = {
+  'foam-party-inflatable': {
+    keywords: ['10 x 10 m foam party inflatable', 'large commercial foam party setup', 'foam event attraction for venues'],
+    productType: '10 x 10 m foam-party inflatable',
+    buyer: 'event rental operators, resorts, festivals, and family entertainment venues',
+    purpose: 'The listed 10 x 10 m footprint is a large-format contained area for supervised foam-party activity.',
+    focus: 'foam-machine output, drainage, queueing, surface, ventilation, access, cleaning, and drying',
+    application: 'large foam-party events and seasonal venue programs',
+  },
+  'inflatable-pool-for-foam-party': {
+    keywords: ['10 x 10 m inflatable foam-party pool', 'deep-wall foam party pool', 'commercial foam event pool'],
+    productType: '10 x 10 x 2.3 m inflatable foam-party pool',
+    buyer: 'event rental operators, resorts, festivals, and family entertainment venues',
+    purpose: 'This 10 x 10 x 2.3 m model is a deep-wall inflatable pool format for contained foam-party installations.',
+    focus: 'the 2.3 m wall height, access and exit, foam-machine output, drainage, ventilation, and supervision',
+    application: 'contained foam-party installations that need a defined pool wall and entry plan',
+  },
+  'inflatable-foam-pit-for-sale': {
+    keywords: ['10 x 10 m inflatable foam pit for sale', 'large commercial foam pit', 'foam pit for entertainment venues'],
+    productType: '10 x 10 m commercial inflatable foam pit',
+    buyer: 'family entertainment centers, resorts, event operators, and commercial activity venues',
+    purpose: 'This 10 x 10 m reference model is the large-footprint foam-pit option in the catalog.',
+    focus: 'the 10 x 10 m usable area, wall layout, foam-machine position, drainage, access, and supervision space',
+    application: 'large indoor or outdoor foam-play zones planned for supervised use',
+  },
+  'inflatable-foam-pit': {
+    keywords: ['5 x 5 m inflatable foam pit', 'compact commercial foam pit', 'foam pit for family entertainment'],
+    productType: '5 x 5 m inflatable foam pit',
+    buyer: 'family entertainment centers, indoor play venues, resorts, and event operators',
+    purpose: 'The 5 x 5 m reference footprint is a more compact foam-pit option than YIC’s 10 x 10 m model.',
+    focus: 'the 5 x 5 m footprint, entry and exit, machine position, drainage, and queue area',
+    application: 'compact supervised foam-play areas and event installations',
+  },
+  'inflatable-foam-party-pit': {
+    keywords: ['5 x 5 m inflatable foam party pit', 'commercial foam party pit', 'foam event pit for venues'],
+    productType: '5 x 5 m inflatable foam-party pit',
+    buyer: 'event operators, party rental businesses, resorts, and family entertainment venues',
+    purpose: 'This 5 x 5 m foam-party pit is a contained event format with a defined footprint for site planning.',
+    focus: 'the 5 x 5 m footprint, wall and entry layout, foam-machine connection, drainage, and supervised participant flow',
+    application: 'foam-party events and repeat commercial activity programs',
+  },
+  'commercial-inflatable-foam-pit': {
+    keywords: ['5 x 5 m commercial inflatable foam pit', 'inflatable foam pit for FECs', 'commercial foam-pit layout'],
+    productType: '5 x 5 m commercial inflatable foam pit',
+    buyer: 'family entertainment centers, resorts, and commercial event venues',
+    purpose: 'This 5 x 5 m reference pit is presented as a commercial foam-play unit for a managed venue footprint.',
+    focus: 'the 5 x 5 m footprint, wall height, entry, foam delivery, drainage, and operator sightlines',
+    application: 'contained foam-play activity in commercial venues and supervised events',
+  },
+  'inflatable-rainbow-arch-bubble-foam-pit': {
+    keywords: ['rainbow arch bubble foam pit', 'inflatable bubble-foam attraction', 'bubble foam pit for events'],
+    productType: '5 x 5 m rainbow-arch bubble-foam pit',
+    buyer: 'family entertainment venues, resorts, seasonal attractions, and event operators',
+    purpose: 'The 5 x 5 m layout adds a rainbow arch to the bubble-foam attraction, giving this model a distinct themed presentation.',
+    focus: 'the 5 x 5 m footprint, arch clearance, entry, foam-machine position, drainage, and supervision area',
+    application: 'themed bubble-foam events and supervised venue activations',
+  },
+  'inflatable-foam-party-pit-rental': {
+    keywords: ['7 x 5 m inflatable foam-party pit', 'commercial foam pit for rental fleets', 'foam party equipment for event operators'],
+    productType: '7 x 5 m inflatable foam-party pit for rental fleets',
+    buyer: 'party rental businesses, event operators, and mobile activity providers',
+    purpose: 'The 7 x 5 m reference footprint gives rental operators a defined foam-party unit to assess for transport, setup, and venue fit.',
+    focus: 'the 7 x 5 m footprint, vehicle access, setup time, machine position, drainage, cleaning, and dry storage',
+    application: 'repeat foam-party bookings and managed event rentals',
+  },
+  'inflatable-foam-pit-rental': {
+    keywords: ['custom inflatable foam pit for rental businesses', 'commercial foam pit for rental fleets', 'made-to-order foam pit'],
+    productType: 'custom-size inflatable foam pit for rental operators',
+    buyer: 'party rental businesses, mobile event operators, and commercial activity providers',
+    purpose: 'No fixed reference dimensions are listed; this model is positioned for a rental operator’s custom venue and transport requirements.',
+    focus: 'target footprint, vehicle access, setup and teardown, foam-machine connection, drainage, cleaning, and dry storage',
+    application: 'custom foam-pit equipment for repeat rental bookings',
+  },
 };
+
+function foamProductProfile(product: Product) {
+  return foamProductProfiles[product.productSlug];
+}
 
 const volleyballKeywordSets: Record<string, string[]> = {
   'inflatable-water-volleyball-court': ['inflatable water volleyball court', 'blow up water volleyball court', 'giant inflatable water volleyball court', 'water volleyball inflatable court'],
@@ -1888,6 +1965,8 @@ const billiardsKeywordSets: Record<string, string[]> = {
 const soccerFieldKeywordSets: Record<string, string[]> = {
   'inflatable-soccer-field-for-rent': ['inflatable soccer field to rent', 'inflatable soccer field for rent', 'rent inflatable soccer field', 'inflatable soccer field hire'],
   'human-foosball-game-for-sale': ['human foosball game for sale', 'human foosball game', 'human foosball table', 'inflatable foosball game'],
+  'inflatable-human-foosball-game-commercial': ['commercial inflatable human foosball game', 'human foosball court for events', 'commercial human foosball inflatable'],
+  'inflatable-human-foosball-game-for-sale': ['inflatable human foosball game for sale', 'human foosball inflatable court', 'commercial human foosball game'],
   'inflatable-soccer-arena': ['inflatable soccer arena', 'inflatable soccer field', 'inflatable soccer court', 'soccer field inflatable'],
   'inflatable-soap-football-field': ['inflatable soap football field', 'inflatable soap soccer field', 'soap soccer field', 'inflatable soap soccer field for events'],
   'inflatable-human-foosball-court': ['inflatable human foosball court', 'human foosball field game', 'human foosball inflatable court', 'human foosball court for sale'],
@@ -2012,8 +2091,9 @@ function waterWalkingBallProfile(product: Product) {
 }
 
 const connectFourBasketballKeywordSets: Record<string, string[]> = {
-  'inflatable-connect-4-basketball': ['inflatable connect 4 basketball', 'basketball connect 4 inflatable', 'connect 4 basketball inflatable', 'inflatable basketball connect 4'],
-  'connect-four-basketball-inflatable': ['connect four basketball inflatable', 'connect 4 basketball game for events', 'commercial basketball connect four', 'custom basketball connect four'],
+  'inflatable-connect-4-basketball': ['inflatable Connect 4 basketball game', 'outdoor Connect Four basketball event game', 'commercial inflatable Connect 4 game'],
+  'inflatable-basketball-connect-4-game': ['inflatable basketball Connect 4 game', 'indoor Connect Four basketball attraction', 'commercial Connect Four game for venues'],
+  'connect-four-basketball-inflatable': ['custom inflatable Connect Four basketball game', 'custom-size Connect Four basketball attraction', 'commercial inflatable Connect Four game for events'],
 };
 
 const airHockeyKeywordSets: Record<string, string[]> = {
@@ -2567,7 +2647,7 @@ function climbingKeywordSet(product: Product) {
 }
 
 function foamKeywordSet(product: Product) {
-  return foamKeywordSets[product.productSlug] ?? [];
+  return foamProductProfile(product)?.keywords ?? [];
 }
 
 function volleyballKeywordSet(product: Product) {
@@ -2801,22 +2881,29 @@ function productIntentKeyword(product: Product) {
     .find((intent) => product.productSlug.endsWith(`-${intent}`));
   if (!rawIntent) return '';
   const cleanName = name.replace(/^(commercial|custom|wholesale)\s+/i, '').trim();
+  const intentBaseName = [' for sale', ' for rent', ' for rental'].some((suffix) => cleanName.endsWith(suffix))
+    ? cleanName.slice(0, cleanName.lastIndexOf(' for ')).trim()
+    : cleanName;
   const forms: Record<string, string> = {
-    commercial: `commercial-grade ${cleanName}`,
-    'for-sale': `${cleanName} for sale`,
-    rental: `${cleanName} rental`,
-    wholesale: `wholesale ${cleanName}`,
-    custom: `custom ${cleanName}`,
-    supplier: `${cleanName} supplier`,
-    factory: `${cleanName} factory`,
-    oem: `${cleanName} OEM`,
-    odm: `${cleanName} ODM`,
+    commercial: `commercial-grade ${intentBaseName}`,
+    'for-sale': `${intentBaseName} for sale`,
+    rental: `${intentBaseName} rental`,
+    wholesale: `wholesale ${intentBaseName}`,
+    custom: `custom ${intentBaseName}`,
+    supplier: `${intentBaseName} supplier`,
+    factory: `${intentBaseName} factory`,
+    oem: `${intentBaseName} OEM`,
+    odm: `${intentBaseName} ODM`,
   };
   return forms[rawIntent] ?? '';
 }
 
 function buildProductSeoTitle(product: Product) {
   const name = productDisplayTitle(product);
+  if (product.productSlug === 'connect-four-basketball-inflatable') return seoTitle('Custom Inflatable Connect Four Basketball Game');
+  if (product.productSlug === 'inflatable-connect-4-basketball') return seoTitle('Inflatable Connect Four Basketball Game | Outdoor Event');
+  if (product.productSlug === 'inflatable-basketball-connect-4-game') return seoTitle('Inflatable Connect Four Basketball Game | Indoor Venue');
+  if (product.productSlug === 'fmx-landing-ramp') return seoTitle('FMX Landing Ramp for Action-Sports Training');
   if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
     return seoTitle('Commercial Jungle Animal Bounce House with Slide');
   }
@@ -3109,12 +3196,17 @@ export function productKeyFeatures(product: Product) {
     'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
     'Confirm blower, puck compatibility, power, operator position, queue, and anchoring before production',
   ];
-  if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return [
-    /custom dimensions available/.test(product.dimensions) ? 'Made-to-order Connect Four basketball layout for venue projects' : `Reference footprint: ${product.dimensions.trim()}`,
-    'Oversized Connect Four target grid combined with basketball shooting play',
-    'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
-    'Confirm ball size, hoop height, scoring rules, player rotation, anchoring, and queue layout before production',
-  ];
+  if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) {
+    const isOutdoor = product.productSlug === 'inflatable-connect-4-basketball';
+    const isCustom = product.productSlug === 'connect-four-basketball-inflatable';
+    return [
+      `Reference footprint: ${product.dimensions.trim()}`,
+      isCustom ? 'Custom-size Connect Four target-grid and basketball-hoop layout for the approved venue plan' : `${isOutdoor ? 'Outdoor-event' : 'Indoor-venue'} Connect Four basketball layout shown in the product imagery`,
+      'Basketball shooting and target openings combine in a Connect Four-style scoring game',
+      'Commercial grade 0.55mm (1000D, 18 OZ) PVC listed for this model',
+      'Confirm target-grid configuration, ball supply, scoring rules, shooting line, player rotation, anchoring, and queue layout before production',
+    ];
+  }
   if (waterWalkingBallKeywordSet(product).length) return [
     `Activity format: ${waterWalkingBallKeywordSet(product)[0]} for a managed water session`,
     'Transparent spherical design lets operators monitor the participant during a supervised turn',
@@ -3584,6 +3676,9 @@ export function productPrimaryKeyword(product: Product) {
 
 export function productKeywordVariants(product: Product) {
   const name = productDisplayTitle(product);
+  if (product.productSlug === 'inflatable-mechanical-bull-for-sale') {
+    return ['inflatable mechanical bull for sale', 'mechanical bull ride for sale', 'mechanical bull manufacturing company', 'commercial mechanical bull', 'mechanical bull riding machine'];
+  }
   if (product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide') {
     return [
       'commercial jungle animal bounce house with slide',
@@ -3924,6 +4019,9 @@ function initializeProductSeoTitles() {
 
 export function productSeoTitle(product: Product) {
   initializeProductSeoTitles();
+  if (connectFourBasketballKeywordSet(product).length) {
+    return buildProductSeoTitle(product);
+  }
   const candidate = baseProductSeoTitles!.get(product.slug) ?? buildProductSeoTitle(product);
   const core = normalizeCoreKeyword(productPrimaryKeyword(product));
   const normalizedCore = normalizedProductText(core);
@@ -4960,6 +5058,7 @@ export function productDetailContent(product: Product): DetailContent {
   }
   if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) {
     const isCustom = /custom dimensions available/.test(product.dimensions);
+    const isOutdoor = product.productSlug === 'inflatable-connect-4-basketball';
     const position = productCategoryPosition(product);
     const templateIndex = Math.max(0, position) % 30;
     const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
@@ -4968,20 +5067,22 @@ export function productDetailContent(product: Product): DetailContent {
       productType: 'inflatable Connect Four basketball game',
       primaryBuyer: 'party rental businesses, family entertainment centers, schools, festivals, corporate event planners, and interactive-game distributors',
       purpose: isCustom
-        ? 'It gives venues a made-to-order basketball target game that combines shooting accuracy with a giant Connect Four grid, sized around the available footprint and event format.'
-        : 'It combines basketball shooting with an oversized Connect Four target grid, creating a quick-to-understand competitive game for supervised events and repeat rental programs.',
+        ? 'This made-to-order model combines basketball shooting with a Connect Four target grid; confirm the target layout, dimensions, and scoring rules around the venue and event format.'
+        : isOutdoor
+          ? 'This 3.6 x 3 x 3.6 m Connect Four basketball model is shown in an outdoor event setting; plan the ground surface, anchoring, shooting line, and team rotation for the selected venue.'
+          : 'This 3.6 x 3 x 3.6 m Connect Four basketball model is shown in an indoor venue; confirm floor clearance, overhead space, access, shooting line, and team rotation for the selected site.',
       applications: [
-        { title: 'Party rental and FEC programs', text: 'Add a visually clear shooting game with short turns, easy team rotation, and strong repeat-play potential.' },
-        { title: 'Schools and sports events', text: 'Use the grid-and-shot format for field days, camps, basketball skills activities, and supervised group challenges.' },
+        { title: 'Party rental and FEC programs', text: 'Add a visually clear Connect Four basketball game with short turns, easy team rotation, and strong repeat-play potential.' },
+        { title: 'Schools and sports events', text: 'Use the target-grid and basketball format for field days, camps, skills activities, and supervised group challenges.' },
         { title: 'Corporate events and festivals', text: 'Create a branded competition around team colors, score rules, queue flow, and sponsor artwork.' },
       ],
       planningPoints: [
-        isCustom ? 'Target width and height, hoop position, grid layout, throwing or shooting line, access, queue, and spectator clearance' : `Reference size ${product.dimensions.trim()}, plus shooting distance, access route, queue, and spectator clearance`,
-        'Basketball size, hoop height, scoring rules, player age range, turn duration, team rotation, and operator position',
+        isCustom ? 'Target width and height, hoop positions, grid layout, shooting line, access, queue, and spectator clearance' : `Reference size ${product.dimensions.trim()}, plus shooting distance, access route, queue, and spectator clearance`,
+        'Basketball size and supply, hoop and target layout, Connect Four scoring rules, player age range, turn duration, team rotation, and operator position',
         'Surface, anchoring, blower placement, weather exposure, cleaning, transport, and dry storage',
       ],
       customization: [
-        'Overall dimensions, grid size, hoop count and height, shooting line, entry points, and player flow',
+        'Overall dimensions, Connect Four grid size, hoop count and height, shooting line, entry points, and player flow',
         'Team colors, printed grid graphics, logos, sponsor panels, and event artwork',
         'Basketball specification, blower package, anchoring, repair kit, carry bag, packing, and custom venue details',
       ],
@@ -5081,12 +5182,23 @@ export function productDetailContent(product: Product): DetailContent {
       : isWater || isSlipSlide || isSoap
         ? 'water parks, resorts, summer-event operators, party rental businesses, camps, and family entertainment centers'
         : 'sports clubs, schools, event operators, party rental businesses, recreation venues, and inflatable-equipment distributors';
+    const foosballPurpose = /10x5\.6m/i.test(product.dimensions)
+      ? 'The 10 x 5.6 m footprint offers a compact human-foosball match area for team-building, school activities, and venues with limited floor space.'
+      : /12x8m/i.test(product.dimensions)
+        ? 'The 12 x 8 m court gives teams a defined human-foosball play area for organized school, corporate, and festival matches.'
+        : /14x8/i.test(product.dimensions)
+          ? 'The 14 x 8 m court provides a larger human-foosball match footprint for group events that need room for player lanes and circulation.'
+          : /20x12/i.test(product.dimensions)
+            ? 'The 20 x 12 m format is a large human-foosball attraction suited to major event layouts, with transport, access, and spectator clearance planned around its footprint.'
+            : /21x9/i.test(product.dimensions)
+              ? 'The 21 x 9 m field provides an extended human-foosball play area for organized matches and event programs.'
+              : `The ${product.dimensions.trim()} human-foosball field turns soccer into a lane-based team match that is easy to explain, spectate, and run at an event.`;
     return {
       template,
       productType: fieldType,
       primaryBuyer: buyers,
       purpose: isFoosball
-        ? 'It turns soccer into a human-scale foosball match, with players assigned to lanes so the activity is easy to explain, spectate, and run as a team event.'
+        ? foosballPurpose
         : isSoap
           ? 'It creates a contained soap-football activity area for supervised wet-play events, where surface treatment, water supply, drainage, and operating rules must be planned together.'
           : isSlipSlide
@@ -5180,6 +5292,7 @@ export function productDetailContent(product: Product): DetailContent {
     };
   }
   if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
+    const profile = foamProductProfile(product);
     const isBubble = /bubble/.test(searchable);
     const isRainbow = /rainbow/.test(searchable);
     const isCandy = /candy/.test(searchable);
@@ -5188,21 +5301,21 @@ export function productDetailContent(product: Product): DetailContent {
     const template: DetailTemplate = templateIndex < 10 ? 'specification' : templateIndex < 20 ? 'application' : 'custom-project';
     return {
       template,
-      productType: isBubble ? 'bubble foam pit and foam-play attraction' : 'inflatable foam party pit',
-      primaryBuyer: 'party rental businesses, family entertainment centers, indoor play venues, resorts, and event operators',
-      purpose: isBubble ? `The ${product.title} format creates a colorful foam-play zone${isRainbow || isCandy ? ` with ${isRainbow ? 'rainbow-arch' : 'candy-land'} visual theming` : ''} at the listed ${product.dimensions.trim()} size for supervised events and family entertainment.` : `The ${product.title} uses a ${product.dimensions.trim()} contained foam-play zone for parties, summer events, family venues, and supervised commercial programs.`,
+      productType: profile?.productType ?? (isBubble ? 'bubble foam pit and foam-play attraction' : 'inflatable foam party pit'),
+      primaryBuyer: profile?.buyer ?? 'party rental businesses, family entertainment centers, indoor play venues, resorts, and event operators',
+      purpose: profile?.purpose ?? (isBubble ? `The ${product.title} format creates a colorful foam-play zone${isRainbow || isCandy ? ` with ${isRainbow ? 'rainbow-arch' : 'candy-land'} visual theming` : ''} at the listed ${product.dimensions.trim()} size for supervised events and family entertainment.` : `The ${product.title} uses a ${product.dimensions.trim()} contained foam-play zone for parties, summer events, family venues, and supervised commercial programs.`),
       applications: [
-        { title: 'Foam party rental', text: 'Build a memorable party package around a contained play area, foam machine position, participant flow, drainage, and practical cleanup planning.' },
+        { title: profile?.application ?? 'Foam party rental', text: `Plan ${profile?.application ?? 'a foam-party package'} around the listed footprint, foam-machine position, participant flow, drainage, cleanup, and storage.` },
         { title: 'Family entertainment centers', text: 'Add a repeat-play foam attraction with defined entry, exit, supervision, access, and customer throughput.' },
         { title: 'Events and resorts', text: 'Use the pit as a branded seasonal attraction for festivals, resort activities, camps, birthdays, and supervised outdoor programs.' },
       ],
       planningPoints: [
-        'Available footprint, wall height, foam depth, entry and exit, access route, queue area, and clear supervision zone',
+        profile ? `Confirm the ${product.dimensions.trim()} footprint and ${profile.focus}` : 'Available footprint, wall height, foam depth, entry and exit, access route, queue area, and clear supervision zone',
         'Foam machine position, power or water needs, drainage, surface, ventilation, cleaning, and drying plan',
         'Target age group, participant capacity, event schedule, indoor or outdoor exposure, storage, and local venue requirements',
       ],
       customization: [
-        'Pit footprint, wall height, entry layout, foam-machine opening, splash or drainage details, and custom dimensions',
+        profile ? `${profile.productType} footprint, wall and entry layout, machine access, drainage, and custom dimensions` : 'Pit footprint, wall height, entry layout, foam-machine opening, splash or drainage details, and custom dimensions',
         'Rainbow, candy-land, brand, sponsor, team, or event artwork with selected colors and printed graphics',
         'Blower or foam-machine coordination, anchoring, repair kit, carry bag, packing format, and accessories',
       ],
@@ -5608,7 +5721,17 @@ export function productCardDescription(product: Product) {
   if (product.category === 'Inflatable Games' && halloweenMazeKeywordSet(product).length) return `A made-to-order Halloween maze inflatable for haunted attractions, seasonal events, FECs, and festivals, with a custom route, themed artwork, and venue-specific visitor flow. ${reference}`;
   if (product.category === 'Inflatable Games' && hungryHippoKeywordSet(product).length) return `An 8 m human-scale Hungry Hippo party game for supervised team play, rental events, schools, and FEC programs. Confirm the play mechanism and included accessories in the product specification. ${reference}`;
   if (product.category === 'Inflatable Games' && airHockeyKeywordSet(product).length) return `A commercial inflatable air hockey game for supervised head-to-head play at rental events, FECs, schools, and branded activations. ${reference}`;
-  if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) return `A basketball Connect Four target game for supervised shooting contests, team rotation, school activities, rentals, and branded events. ${reference}`;
+  if (product.category === 'Inflatable Games' && connectFourBasketballKeywordSet(product).length) {
+    if (product.productSlug === 'connect-four-basketball-inflatable') {
+      return `A custom-size inflatable Connect Four basketball game combining a target grid with multiple hoops and shooting openings. Confirm grid layout, scoring rules, ball supply, and shooting-line plan. ${reference}`;
+    }
+    const scene = product.productSlug === 'inflatable-connect-4-basketball' ? 'Outdoor-event' : 'Indoor-venue';
+    return `${scene} inflatable Connect Four basketball game combining a target grid with basketball shooting for supervised contests, school activities, rentals, and branded events. Confirm scoring and player rotation. ${reference}`;
+  }
+  if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
+    const profile = foamProductProfile(product);
+    if (profile) return `${profile.purpose} Plan ${profile.focus} for ${profile.application}. ${reference}`;
+  }
   if (waterWalkingBallKeywordSet(product).length) {
     return `Transparent 2 m TPU water-walking ball for supervised pool, resort, and event sessions. Confirm venue procedures before use.`;
   }
@@ -5621,7 +5744,23 @@ export function productCardDescription(product: Product) {
     return `${targetCount} axe-throwing game planned around soft-play projectile compatibility, a clear throwing line, supervised turns, and branded target artwork. ${reference}`;
   }
   if (product.category === 'Inflatable Games' && soccerFieldKeywordSet(product).length) {
-    if (/human foosball/.test(searchable)) return `A human-scale foosball match format with fixed player lanes for team-building, school events, and rental programs. ${reference}`;
+    if (/human foosball/.test(searchable)) {
+      const isRental = /rental/.test(product.productSlug);
+      const use = isRental
+        ? 'a large human-foosball attraction for rental and event operators planning transport, setup, and repeat bookings'
+        : /10x5\.6m/i.test(product.dimensions)
+          ? 'a 10 x 5.6 m human-foosball field for compact event footprints and team-building programs'
+          : /12x8m/i.test(product.dimensions)
+            ? 'a 12 x 8 m human-foosball court for organized team play at schools, festivals, and corporate events'
+          : /14x8/i.test(product.dimensions)
+            ? 'a 14 x 8 m human-foosball court for larger team events that need a full match area and spectator clearance'
+            : /20x12/i.test(product.dimensions)
+              ? 'a 20 x 12 m large-format human-foosball attraction for major events and rental installations'
+              : /21x9/i.test(product.dimensions)
+                ? 'a 21 x 9 m human-foosball field with an extended play area for organized matches and event programs'
+            : 'a full-size human-foosball court for supervised matches, team events, and commercial rental programs';
+      return `${use.charAt(0).toUpperCase()}${use.slice(1)}. Confirm player count, lane layout, site clearance, and event flow. ${reference}`;
+    }
     if (/soap/.test(searchable)) return `A bounded soap-football play area for supervised wet-play events, planned around water supply, drainage, surface, and operator flow. ${reference}`;
     if (/slip and slide/.test(searchable)) return `A wet-play soccer field that combines match activity with a slip-and-slide surface for seasonal events and rental packages. ${reference}`;
     if (/water soccer/.test(searchable)) return `A water-based soccer field with perimeter boundaries and goals, subject to site-depth, anchoring, and supervision review. ${reference}`;
@@ -5637,9 +5776,10 @@ export function productCardDescription(product: Product) {
     return `A 4 x 7 x 1.25 m inflatable billiards pool-table game with raised perimeter walls for supervised events, rental packages, and venue play. ${reference}`;
   }
   if (product.category === 'Inflatable Games' && /airbag|landing ramp|landing/.test(searchable)) {
-    const sport = /fmx|motocross/.test(searchable) ? 'FMX and motocross' : /bmx/.test(searchable) ? 'BMX and bike' : /freestyle/.test(searchable) ? 'freestyle action-sports' : 'bike training';
-    const feature = /ramp/.test(searchable) ? 'inflatable landing ramp' : 'airbag landing zone';
-    return `${name} provides a ${feature} for ${sport} training, bike parks, and supervised stunt events. ${reference}`;
+    const isFmx = /fmx|motocross/.test(searchable);
+    const sport = isFmx ? 'FMX and motocross' : /bmx/.test(searchable) ? 'BMX and bike' : 'freestyle action-sports';
+    const productType = isFmx ? 'FMX landing ramp' : /ramp/.test(searchable) ? 'airbag landing ramp' : 'action-sports landing airbag';
+    return `${productType} for ${sport} practice and progression sessions at bike parks and stunt schools. Plan the rider level, jump profile, impact area, anchoring, and clear zone. ${reference}`;
   }
   if (product.category === 'Inflatable Games' && battingCageKeywordSet(product).length) {
     return `${material} · ${battingCageProfile(product)?.productType ?? 'Enclosed batting tunnel'} · Training and event use`;
@@ -6179,9 +6319,9 @@ function buildProductFaqs(product: Product) {
     const terms = connectFourBasketballKeywordSet(product);
     const isCustom = /custom dimensions available/.test(product.dimensions);
     return [
-      { question: `How does the ${name} Connect Four basketball game work?`, answer: `Players shoot compatible basketballs toward the target grid and follow the agreed scoring rules to build a Connect Four line. Confirm the final target and scoring layout in the approved specification.` },
+      { question: `How does the ${name} Connect Four basketball game work?`, answer: `Players shoot compatible basketballs toward the hoops and target openings to play a Connect Four-style scoring game. Confirm the exact scoring and winning rules, target layout, and turn format in the approved specification.` },
       { question: `How much space is required for the game and shooting line?`, answer: `${isCustom ? 'For this custom-size model, provide the intended footprint, target height, shooting distance, access route, and clearance.' : `Start with the ${product.dimensions.trim()} reference footprint, then add a marked shooting distance, side access, queue, operator position, and separated spectator area.`} Review the complete layout against the venue plan before production.` },
-      { question: `Which basketballs, hoop heights, and scoring rules should I specify?`, answer: `Confirm ball size and quantity, hoop height, grid-cell layout, scoring or win conditions, shooting distance, player age group, turn duration, and team rotation so the equipment and game rules work together.` },
+      { question: `Which basketballs, hoop positions, and scoring rules should I specify?`, answer: `Confirm ball size and quantity, hoop positions, target-grid layout, scoring or win conditions, shooting distance, player age group, turn duration, and team rotation so the equipment and game rules work together.` },
       { question: `Can the Connect Four grid and branding be customized?`, answer: `Yes. YIC can review project-specific options such as ${inlineCustomizationCopy(content.customization)}. Provide a venue plan, brand files, preferred colors, and event format for artwork and layout approval.` },
       { question: `What setup and operating details matter for repeated use?`, answer: `${content.operationNote} Also confirm blower access, power, packing, cleaning, inspection, repair-kit availability, and dry storage for your rental or venue program.` },
       { question: `What information should I send for a quotation?`, answer: `This model is positioned around ${terms.join(', ')}. Send the footprint, shooting distance, target layout, ball specification, scoring rules, participant profile, quantity, branding, destination, and required delivery date.` },
@@ -6248,14 +6388,15 @@ function buildProductFaqs(product: Product) {
     ];
   }
   if (product.category === 'Inflatable Games' && /foam|bubble/.test(searchable)) {
+    const profile = foamProductProfile(product);
     const terms = foamKeywordSet(product);
     const isBubble = /bubble/.test(searchable);
     return [
-      { question: `What is the ${name} designed for?`, answer: `This ${isBubble ? 'bubble-foam' : 'foam-party'} attraction is designed for supervised party rentals, family entertainment, resorts, festivals, camps, and event programs. ${dimensions}` },
-      { question: `How should I plan the site for a commercial foam pit?`, answer: `Confirm the footprint, wall height, foam depth, entry and exit, queue space, foam-machine position, drainage, surface, access route, ventilation, and clear supervision area before production.` },
+      { question: `What is this ${profile?.productType ?? name} designed for?`, answer: `${profile?.purpose ?? `This ${isBubble ? 'bubble-foam' : 'foam-party'} attraction is designed for supervised venues and event programs.`} ${dimensions}` },
+      { question: `Which site details should I confirm for this ${profile?.productType ?? 'commercial foam pit'}?`, answer: `Confirm ${profile?.focus ?? 'the footprint, wall height, entry and exit, foam-machine position, drainage, and supervision area'}, plus surface, access, ventilation, and queue space before production.` },
       { question: `Which foam machine and drainage details should I confirm?`, answer: `Share the foam-machine output, power or water requirements, drainage arrangement, cleaning routine, drying schedule, and expected operating duration so the pit layout matches the venue.` },
       { question: `Can the foam party pit be customized with a theme or branding?`, answer: `Yes. YIC can review custom dimensions, wall height, entry layout, machine opening, rainbow or candy-land artwork, colors, logos, sponsor graphics, anchoring, packing, and accessories.` },
-      { question: `Who typically buys an inflatable foam pit?`, answer: `Typical buyers include party rental companies, FECs, indoor play centers, resorts, event operators, schools, camps, and distributors building seasonal activity packages.` },
+      { question: `Who typically buys this foam attraction?`, answer: `Typical buyers include ${profile?.buyer ?? 'party rental companies, FECs, resorts, event operators, and distributors'} planning a supervised commercial program.` },
       { question: `What should I include in a foam-pit quotation request?`, answer: `This model is positioned around ${terms.join(', ')}. Send the venue type, target age group, capacity, dimensions, foam-machine details, drainage, theme or artwork, quantity, destination, target date, and storage requirements.` },
     ];
   }

@@ -18,7 +18,14 @@
 /product/bounce-house-combo/* /products/bounce-house-combos/:splat 301
 /product/shark-inflatable-water-slide-2/ /products/inflatable-water-slide/shark-inflatable-water-slide-with-pool/ 301
 /product/inflatable-water-walking-ball/ /products/inflatable-games/inflatable-water-walking-ball/ 301
+/product/commercial-inflatable-bubble-foam-pit/ /products/inflatable-games/inflatable-rainbow-arch-bubble-foam-pit/ 301
+/product/commercial-giant-inflatable-dart-board-game/ /products/inflatable-games/giant-inflatable-dart-board-game/ 301
+/product/commercial-tropical-inflatable-water-slide/ /products/inflatable-water-slide/inflatable-tropical-water-slide/ 301
+/product/inflatable-foam-pit-airbag/ /products/inflatable-games/airbag-landing-ramp-for-sale/ 301
+/product/yellow-castle-bounce-house/ /products/bounce-house/pastel-yellow-bounce-house/ 301
 /product/* /products/:splat 301
+/inflatables-for-sale/ /products/ 301
+/how-oem-inflatable-production-works-from-brief-to-shipment/ /blog/oem-odm-inflatable-manufacturing-process/ 301
 
 # Retire legacy paths with HTTP redirects rather than static HTML refresh pages.
 /buyer-guides/  /blog/  301
