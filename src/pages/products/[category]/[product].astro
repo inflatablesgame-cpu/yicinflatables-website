@@ -30,7 +30,26 @@ const batchTemplate = productBatch(product);
 const description = clean(productDescription(product));
 const metaDescription = clean(productMetaDescription(product));
 const faqs = productFaqs(product).map((faq) => ({ question: clean(faq.question), answer: clean(faq.answer) }));
-const keyFeatures = productKeyFeatures(product).map(clean);
+const normalizedDimensions = product.dimensions.replace(/[×\s]/g, '').toLowerCase();
+const normalizedDescription = description.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+const keyFeatureCandidates = productKeyFeatures(product)
+  .map(clean)
+  .filter((feature) => {
+    const normalizedFeature = feature.replace(/[×\s]/g, '').toLowerCase();
+    const dimensionValues = product.dimensions.match(/\d+(?:\.\d+)?/g) ?? [];
+    const repeatsDimensions = dimensionValues.length > 1
+      && normalizedFeature.includes(dimensionValues.join('x').toLowerCase());
+    const repeatsMaterial = Boolean(product.material && feature.toLowerCase().includes(product.material.toLowerCase()))
+      || /\b(?:PVC|TPU|Oxford)\b|\b\d+(?:\.\d+)?\s*(?:mm|oz|denier)\b/i.test(feature);
+    const repeatsSizeLabel = /reference (?:size|footprint|diameter|dimensions|training enclosure)/i.test(feature)
+      || (normalizedDimensions && normalizedFeature.includes(normalizedDimensions));
+    const normalizedCopy = feature.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    const repeatsDescription = normalizedDescription.length > 40 && normalizedCopy.includes(normalizedDescription);
+    return !repeatsDimensions && !repeatsMaterial && !repeatsSizeLabel && !repeatsDescription;
+  });
+const keyFeatures = keyFeatureCandidates.length >= 2
+  ? keyFeatureCandidates
+  : [...keyFeatureCandidates, `Primary application: ${detail.applications[0]?.title ?? product.category}`];
 const targetBuyers = detail.primaryBuyer.split(/,\s*/).map((item) => item.trim()).filter(Boolean);
 const keywordVariants = productKeywordVariants(product).map(clean);
 const primaryKeyword = productPrimaryKeyword(product);
@@ -49,7 +68,14 @@ const seoKeywords = productHasRentalSearchIntent(product)
 const accessoryLabel = isDryBounceSlideCombo
   ? 'Blower and accessories confirmed in quotation'
   : /0\.55\s*mm/i.test(product.material) ? 'Blower / Repair Kits / Carry Bag' : 'Pump / Repair Kits / Carry Bag';
-const customizationSummary = detail.customization.slice(0, 2).join('; ');
+const customizationSummarySource = clean(detail.customization[0] ?? 'Product-specific layout and artwork options')
+  .split(/[;.]/, 1)[0]
+  .replace(/^(adjust|review|add|include|plan|select|confirm|customize|specify)\s+(the\s+)?/i, '')
+  .replace(/\s+/g, ' ')
+  .trim();
+const customizationSummary = customizationSummarySource.length <= 96
+  ? customizationSummarySource
+  : customizationSummarySource.slice(0, 96).replace(/\s+\S*$/, '').replace(/[\s,;:-]+$/g, '');
 const compliance = productComplianceProfile(product);
 const evidence = productEvidenceProfile(product);
 const leadTime = productLeadTimeProfile(product);
@@ -142,7 +168,7 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
       </div>
     </div></div></section>
 
-    <section class="detail-section section-muted product-features-section"><div class="container"><div class="detail-template-heading"><p class="eyebrow">Product overview</p><h2>Why {displayTitle} works for commercial buyers</h2><p>{detail.purpose} Review the product-specific features below with your venue, guest flow, branding brief, and repeat-use plan in mind.</p></div><div class="detail-feature-grid">{keyFeatures.map((feature, index) => <article><span>0{index + 1}</span><strong>{feature}</strong></article>)}</div></div></section>
+    <section class="detail-section section-muted product-features-section"><div class="container"><div class="detail-template-heading"><p class="eyebrow">Product overview</p><h2>Why {displayTitle} works for commercial buyers</h2><p>Review the product-specific features below against your venue, guest flow, branding brief, and operating plan.</p></div><div class="detail-feature-grid">{keyFeatures.map((feature, index) => <article><span>0{index + 1}</span><strong>{feature}</strong></article>)}</div></div></section>
 
     {detail.template === 'specification' && <section class="detail-section detail-template-section product-spec-planning"><div class="container"><div class="category-intro"><div><p class="eyebrow">Specification &amp; site planning</p><h2>Plan the setup around the product</h2></div><p>Use this model-specific checklist to prepare the site and confirm the final production brief. The dimensions and material are listed above.</p></div><div class="product-planning-grid">{detail.planningPoints.map((item, index) => <article><span>0{index + 1}</span><p>{item}</p></article>)}</div><div class="detail-note"><strong>Before production</strong><p>{detail.operationNote}</p></div></div></section>}
 

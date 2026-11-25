@@ -778,13 +778,58 @@ function buildProductDescription(product: Product) {
  * generic factory sentence on every page. All values come from the catalog
  * record or the product detail profile; no capacity or certification is made up.
  */
-export function productDescription(product: Product) {
-  const base = buildProductDescription(product);
+function buildProductDescriptionSummary(product: Product) {
   const detail = productDetailContent(product);
-  const leadTime = productLeadTimeProfile(product);
-  const quoteItem = detail.quoteItems[0] ?? 'the application, quantity, dimensions and destination';
-  const quoteFocus = quoteItem.charAt(0).toLowerCase() + quoteItem.slice(1);
-  return `${base} For an RFQ, specify ${quoteFocus}; this reference size is planned at ${leadTime.range} after drawing, artwork and order details are approved.`;
+  let summary = detail.purpose.split(/(?<=[.!?])\s+|;\s*/, 1)[0];
+  summary = summary.replace(/,\s*(?:while|although|but confirm|confirm that)\b.*$/i, '');
+  if (product.material) {
+    summary = summary.replace(new RegExp(escapeRegExp(product.material), 'gi'), '');
+  }
+  const dimensions = (product.dimensions.match(/\d+(?:\.\d+)?/g) ?? []).map(escapeRegExp);
+  if (dimensions.length > 1) {
+    const sequence = dimensions.join('\\s*(?:m|cm|mm|ft|in)?\\s*[x×]\\s*');
+    summary = summary.replace(new RegExp(`\\b${sequence}\\s*(?:m|cm|mm|ft|in)?\\b`, 'gi'), '');
+  } else if (product.dimensions.trim()) {
+    summary = summary.replace(new RegExp(escapeRegExp(product.dimensions.trim()), 'gi'), '');
+  }
+  summary = summary
+    .replace(/\s+([,.;:])/g, '$1')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/^[,.;:\s-]+|[,.;:\s-]+$/g, '')
+    .trim();
+  if (!summary || summary.length < 24) {
+    const application = detail.applications[0]?.title ?? product.category;
+    summary = `${productDisplayTitle(product)} is designed for ${application.toLowerCase()}.`;
+  }
+  summary = truncateMeta(summary, 190, '');
+  return `${summary.replace(/[\s,;:-]+$/g, '')}.`;
+}
+
+let productDescriptionCache: Map<string, string> | undefined;
+
+function initializeProductDescriptions() {
+  if (productDescriptionCache) return;
+  const summaries = new Map(products.map((product) => [product.slug, buildProductDescriptionSummary(product)]));
+  const counts = new Map<string, number>();
+  for (const summary of summaries.values()) {
+    const key = normalizedProductText(summary);
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  productDescriptionCache = new Map(products.map((product) => {
+    const summary = summaries.get(product.slug) ?? '';
+    if ((counts.get(normalizedProductText(summary)) ?? 0) < 2) return [product.slug, summary];
+    const listingName = productHeadingTitle(product).replace(/\b(\w+)(?:\s+\1\b)+/gi, '$1');
+    return [product.slug, `${summary} It is listed as ${listingName}.`];
+  }));
+}
+
+export function productDescription(product: Product) {
+  initializeProductDescriptions();
+  return productDescriptionCache!.get(product.slug) ?? buildProductDescriptionSummary(product);
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 type NewInflatableTentProfile = { keywords: string[]; visual: string; purpose: string; buyer: string; options: string; use: string };
