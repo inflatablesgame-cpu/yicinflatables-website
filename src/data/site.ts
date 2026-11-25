@@ -780,29 +780,101 @@ function buildProductDescription(product: Product) {
  */
 function buildProductDescriptionSummary(product: Product) {
   const detail = productDetailContent(product);
-  let summary = detail.purpose.split(/(?<=[.!?])\s+|;\s*/, 1)[0];
-  summary = summary.replace(/,\s*(?:while|although|but confirm|confirm that)\b.*$/i, '');
-  if (product.material) {
-    summary = summary.replace(new RegExp(escapeRegExp(product.material), 'gi'), '');
+  const customizationScope = (detail.customization[0] ?? '')
+    .replace(/^(?:adjust|review|add|include|plan|select|confirm|customize|specify)\s+(?:the\s+)?/i, '')
+    .replace(/[.]+$/g, '')
+    .trim();
+  const customizationItems = customizationScope.split(/,\s*/).map((item) => item.replace(/^and\s+/i, '').trim()).filter(Boolean).slice(0, 4);
+  const compactCustomization = customizationItems.length > 1
+    ? `${customizationItems.slice(0, -1).join(', ')}, and ${customizationItems.at(-1)}`
+    : customizationItems[0] ?? '';
+  if (product.category === 'Bumper Ball') {
+    const core = bumperBallKeywordSet(product)[0] ?? productDisplayTitle(product);
+    const application = detail.applications[0]?.title.toLowerCase() ?? 'supervised group activities';
+    const bumperSummary = `The ${core} model suits ${application}, with participant fit, playing surface, and session format confirmed for the intended group.`;
+    const customSummary = compactCustomization ? `Customization options include ${compactCustomization.charAt(0).toLowerCase()}${compactCustomization.slice(1)}.` : '';
+    return [bumperSummary, customSummary].filter(Boolean).join(' ');
   }
-  const dimensions = (product.dimensions.match(/\d+(?:\.\d+)?/g) ?? []).map(escapeRegExp);
-  if (dimensions.length > 1) {
-    const sequence = dimensions.join('\\s*(?:m|cm|mm|ft|in)?\\s*[x×]\\s*');
-    summary = summary.replace(new RegExp(`\\b${sequence}\\s*(?:m|cm|mm|ft|in)?\\b`, 'gi'), '');
-  } else if (product.dimensions.trim()) {
-    summary = summary.replace(new RegExp(escapeRegExp(product.dimensions.trim()), 'gi'), '');
+  const candidates = [
+    detail.purpose,
+    compactCustomization ? `Customization options include ${compactCustomization.charAt(0).toLowerCase()}${compactCustomization.slice(1)}.` : '',
+    buildProductDescription(product),
+    ...productKeyFeatures(product).filter((feature) => /^(?:visible format|visible layout|format shown|play concept|play features|activity format):/i.test(feature)),
+    productCardDescription(product),
+    ...detail.applications.map((application) => application.text),
+  ];
+  const sentences = candidates
+    .flatMap((value) => value.split(/(?<=[.!?])\s+|;\s*/))
+    .map((value) => cleanProductSummarySentence(value, product))
+    .filter((value): value is string => Boolean(value));
+  const selected: string[] = [];
+  let length = 0;
+  for (const sentence of sentences) {
+    const normalized = normalizedProductText(sentence);
+    if (!normalized || selected.some((current) => {
+      const existingTokens = new Set(normalizedProductText(current).split(' ').filter((token) => token.length > 2));
+      const nextTokens = new Set(normalized.split(' ').filter((token) => token.length > 2));
+      const overlap = [...existingTokens].filter((token) => nextTokens.has(token)).length;
+      return Math.min(existingTokens.size, nextTokens.size) > 5 && overlap / Math.min(existingTokens.size, nextTokens.size) >= 0.68;
+    })) continue;
+    const nextLength = length + sentence.length + (selected.length ? 1 : 0);
+    if (selected.length && nextLength > 360) continue;
+    selected.push(sentence.length > 260 ? truncateMeta(sentence, 257, '') + '.' : sentence);
+    length = selected.reduce((total, item) => total + item.length, 0) + Math.max(0, selected.length - 1);
+    if (selected.length >= 3 || length >= 280) break;
   }
-  summary = summary
+
+  if (!selected.length) {
+    const application = detail.applications.find((item) => item.title)?.title ?? product.category;
+    selected.push(`${productHeadingTitle(product)} is designed for ${application.toLowerCase()}.`);
+  }
+  return selected.join(' ');
+}
+
+function cleanProductSummarySentence(value: string, product: Product) {
+  let sentence = value
+    .replace(/^(?:visible format|visible layout|format shown|play concept|play features|activity format|commercial application|typical buyers|primary application|product focus|product search focus|core buyer search|reference construction|reference footprint|construction listed for this model|game planning|rfq details):\s*/i, '')
+    .replace(/^This listing focuses on\s+/i, '')
+    .replace(/\s*Reference (?:size|footprint|dimensions):?[^.]*\.?/gi, '')
+    .replace(/\s*(?:Reference construction|Construction listed for this model):?[^.]*\.?/gi, '')
+    .replace(/\bRelated (?:buyer |buying |product )?searches include\b.*$/i, '')
+    .replace(/\bThis listing (?:features|is positioned for buyers searching for)\b.*$/i, '')
+    .replace(/\bThis page covers the\b.*$/i, '')
+    .replace(/\bFinal dimensions and construction are confirmed\b.*$/i, '')
+    .replace(/\bThe buyer specification can identify\b.*$/i, '')
+    .replace(/\bCustom artwork, colors, layout, and functional details can be developed around\b.*$/i, '')
+    .replace(/\b\d+(?:\.\d+)?\s*(?:m|cm|mm|ft|in)\s*(?:dia(?:meter)?|high|wide|long)\b/gi, '')
+    .replace(/\b\d+(?:\.\d+)?\s*[x×]\s*\d+(?:\.\d+)?(?:\s*[x×]\s*\d+(?:\.\d+)?)*(?:\s*(?:m|cm|mm|ft|in))?\b/gi, '')
+    .replace(/\bCommercial grade\s+\d+(?:\.\d+)?\s*mm(?:\s*\([^)]*\))?\s*PVC\b/gi, '')
+    .replace(/\b\d+(?:\.\d+)?\s*mm(?:\s*\([^)]*\))?\s*PVC\b/gi, '')
+    .replace(/\bCommercial\s+(?:TPU|PVC)\b/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (product.material) sentence = sentence.replace(new RegExp(escapeRegExp(product.material), 'gi'), '');
+  if (/\b(?:PVC|TPU|Oxford)\b|\b\d+(?:\.\d+)?\s*(?:mm|oz|denier)\b/i.test(sentence)) return '';
+  if (/^(?:plan|confirm|review|specify|send|provide|use|add|offer|create|build|match|coordinate|check|compare|before production|related searches|related buyer|buyers searching|commercial applications|typical buyers|explore)\b/i.test(sentence)) return '';
+  if (/^YIC Inflatable Sports manufactures commercial inflatables for\b/i.test(sentence)) return '';
+  if (/^YIC manufactures\b.*\bfor\b/i.test(sentence) && (sentence.match(/,/g)?.length ?? 0) >= 3) return '';
+  if (/\blisted at\s+(?:in|for|as)\b/i.test(sentence)) return '';
+  sentence = sentence
+    .replace(/,\s*(?:while|although|but confirm|confirm that)\b.*$/i, '')
+    .replace(/\bthe\s+(?:a|an)\b/gi, '$1')
+    .replace(/\b(the|a|an|for|with|to|of|and|or|after|before|from|that|which|including)\s*\.$/i, '')
     .replace(/\s+([,.;:])/g, '$1')
-    .replace(/\s{2,}/g, ' ')
     .replace(/^[,.;:\s-]+|[,.;:\s-]+$/g, '')
     .trim();
-  if (!summary || summary.length < 24) {
-    const application = detail.applications[0]?.title ?? product.category;
-    summary = `${productDisplayTitle(product)} is designed for ${application.toLowerCase()}.`;
+  if (sentence.length < 45) return '';
+  if (!/^(?:the|a|an|this|it|its|players|participants|teams|venues|buyers|yic)\b/i.test(sentence)) {
+    if (/^(?:small|mini|adult|youth|human|commercial|custom|inflatable|large|giant|pink|white|blue|tropical|pyramid|soccer|football|basketball|volleyball|bubble|zorb)\b/i.test(sentence)) {
+      sentence = `The ${sentence.charAt(0).toLowerCase()}${sentence.slice(1)}`;
+    } else {
+      sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+    }
   }
-  summary = truncateMeta(summary, 190, '');
-  return `${summary.replace(/[\s,;:-]+$/g, '')}.`;
+  if (sentence.length > 230) sentence = truncateMeta(sentence, 227, '...');
+  sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+  sentence = sentence.replace(/\.\s*\./g, '.').replace(/\s+([,.;:])/g, '$1');
+  return /[.!?]$/.test(sentence) ? sentence : `${sentence}.`;
 }
 
 let productDescriptionCache: Map<string, string> | undefined;
@@ -819,7 +891,8 @@ function initializeProductDescriptions() {
     const summary = summaries.get(product.slug) ?? '';
     if ((counts.get(normalizedProductText(summary)) ?? 0) < 2) return [product.slug, summary];
     const listingName = productHeadingTitle(product).replace(/\b(\w+)(?:\s+\1\b)+/gi, '$1');
-    return [product.slug, `${summary} It is listed as ${listingName}.`];
+    const duplicateSafeSummary = truncateMeta(summary, 320, '');
+    return [product.slug, `${duplicateSafeSummary.replace(/[\s,;:.!?-]+$/g, '')}. Listed as ${listingName}.`];
   }));
 }
 
