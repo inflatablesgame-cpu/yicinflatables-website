@@ -8,8 +8,8 @@ const catalog = JSON.parse(await readFile(path.join(rootDir, 'src/data/catalog.j
 const bubbleTentSource = '/assets/product/Inflatable%20Tent/3m%20diameter%20%2B%201.7m%20tunnel%2C%200.8%20mm%20PVC%20%2B0.6mmPVC%20%20%20%20inflatable%20bubble%20tent%20with%20balloons/';
 const bubbleTentSafe = '/assets/product/inflatable-tent-bubble-tent/';
 
-const toFilePath = (assetUrl) => path.join(publicDir, decodeURIComponent(assetUrl.replace(/^\//, '')));
-const thumbUrl = (assetUrl) => assetUrl
+const toFilePath = (assetUrl) => path.join(publicDir, decodeURIComponent(assetUrl.split('?')[0].replace(/^\//, '')));
+const thumbUrl = (assetUrl) => assetUrl.split('?')[0]
   .replace('/assets/product/', '/assets/product-thumbs/')
   .replace(/\.(jpe?g|png|webp)$/i, '.webp');
 
@@ -39,6 +39,29 @@ async function writeContentWebp(sourceUrl, outputUrl, width, quality = 70) {
     .toFile(outputPath);
 }
 
+async function writeProductDetailWebp(sourceUrl, outputUrl) {
+  const outputPath = toFilePath(outputUrl);
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  await sharp(toFilePath(sourceUrl))
+    .rotate()
+    .resize({ width: 1200, withoutEnlargement: true })
+    .webp({ quality: 72, effort: 5 })
+    .toFile(outputPath);
+}
+
+async function writeProductGalleryWebp(sourceUrl) {
+  const outputUrl = sourceUrl.split('?')[0]
+    .replace('/assets/product/', '/assets/product-gallery/')
+    .replace(/\.(jpe?g|png|webp)$/i, '.webp');
+  const outputPath = toFilePath(outputUrl);
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  await sharp(toFilePath(sourceUrl))
+    .rotate()
+    .resize({ width: 360, height: 270, fit: 'cover', position: 'centre', withoutEnlargement: true })
+    .webp({ quality: 60, effort: 5 })
+    .toFile(outputPath);
+}
+
 async function writeHeroMobile(sourceUrl, outputUrl) {
   const outputPath = toFilePath(outputUrl);
   await mkdir(path.dirname(outputPath), { recursive: true });
@@ -54,11 +77,27 @@ const productSources = new Set(
     ? product.images[0].replace(bubbleTentSource, bubbleTentSafe)
     : product.images[0]),
 );
+const productImages = new Map();
+for (const product of catalog.products) {
+  const images = product.images.map((image) => /bubble tent with balloons/i.test(product.sourceName)
+    ? image.replace(bubbleTentSource, bubbleTentSafe)
+    : image);
+  productImages.set(product.slug, images);
+}
 
 let productCount = 0;
 for (const sourceUrl of productSources) {
   await writeWebp(sourceUrl, thumbUrl(sourceUrl), 720, 72);
   productCount += 1;
+}
+
+for (const [slug, images] of productImages) {
+  await writeProductDetailWebp(images[0], `/assets/product-detail/${slug}.webp`);
+}
+
+const productGallerySources = new Set([...productImages.values()].flat());
+for (const sourceUrl of productGallerySources) {
+  await writeProductGalleryWebp(sourceUrl);
 }
 
 let categoryCardCount = 0;
@@ -85,6 +124,20 @@ for (const [sourceUrl, outputUrl, width, quality] of aboutImages) {
   await writeWebp(sourceUrl, outputUrl, width, quality);
 }
 
+const blogImages = [
+  ['/assets/about%E9%A1%B5/commercial-inflatable-manufacturer-yic-in-process-inspection.webp', '/assets/optimized/blog/manufacturer-inspection.webp', 1100, 68],
+  ['/assets/%E8%AF%81%E4%B9%A6/commercial-inflatable-manufacturer-EN14960-certificate.webp', '/assets/optimized/blog/en14960-document.webp', 1100, 68],
+  ['/assets/%E8%AF%81%E4%B9%A6/commercial-inflatable-manufacturer-UL-certified.webp', '/assets/optimized/blog/ul-document.webp', 1100, 68],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-design-process.webp', '/assets/optimized/blog/design-process.webp', 1100, 68],
+  ['/assets/commercial-inflatable-manufacturer-workshop-interior.webp', '/assets/optimized/blog/workshop-interior.webp', 1100, 68],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-inspection-packaging.webp', '/assets/optimized/blog/inspection-packaging.webp', 1100, 68],
+  ['/assets/%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE/commercial-inflatable-manufacturer-yic-packing-shipping.webp', '/assets/optimized/blog/packing-shipping.webp', 1100, 68],
+];
+
+for (const [sourceUrl, outputUrl, width, quality] of blogImages) {
+  await writeContentWebp(sourceUrl, outputUrl, width, quality);
+}
+
 const homeImages = [
   ['/assets/%E5%B7%A5%E5%8E%82%E5%86%85%E9%83%A8%E5%B1%95%E7%A4%BA.webp', '/assets/optimized/home/factory-construction.webp', 980, 70],
   ['/assets/commercial-inflatable-manufacturer-workshop-interior.webp', '/assets/optimized/home/workshop-interior.webp', 1000, 70],
@@ -108,4 +161,4 @@ for (const [sourceUrl, outputUrl, width, quality] of homeImages) {
 
 await writeHeroMobile('/assets/commercial-inflatable-manufacturer-hero.webp', '/assets/optimized/home/hero-mobile.webp');
 
-console.log(`Created ${productCount} product thumbnails, ${categoryCardCount} mobile category-card assets, ${aboutImages.length} optimized About assets, ${homeImages.length} optimized Home assets, and a mobile Hero image.`);
+console.log(`Created ${productCount} product card thumbnails, ${productImages.size} product detail images, ${productGallerySources.size} product gallery thumbnails, ${categoryCardCount} mobile category-card assets, ${aboutImages.length} optimized About assets, ${blogImages.length} optimized Blog assets, ${homeImages.length} optimized Home assets, and a mobile Hero image.`);

@@ -54,11 +54,94 @@ export function productPath(product: Pick<Product, 'categorySlug' | 'productSlug
   return `${categoryPath(product.categorySlug)}${product.productSlug}/`;
 }
 
-// Compact product cards use generated WebP thumbnails; product pages retain
-// the original files for their full-detail galleries.
-export function productCardImage(product: Pick<Product, 'images'>) {
-  return product.images[0]
+// Product cards and detail galleries use generated WebP derivatives while
+// opening a gallery image still points to the original file.
+export function productThumbnailImage(image: string) {
+  return image.split('?')[0]
     .replace('/assets/product/', '/assets/product-thumbs/')
+    .replace(/\.(jpe?g|png|webp)$/i, '.webp');
+}
+
+export function productCardImage(product: Pick<Product, 'images'>) {
+  return productThumbnailImage(product.images[0]);
+}
+
+const productGalleryImageAltOverrides: Record<string, string[]> = {
+  'iron-man-bounce-house': [
+    'Front view of a red Iron Man bounce house combo with a character-shaped entrance and front step',
+    'Side view of the Iron Man bounce house showing the enclosed jumping area and mesh window',
+    'Opposite side view of the Iron Man bounce house with mesh panels and character artwork',
+    'Interior view of the Iron Man bounce house showing its printed superhero panel and padded floor',
+    'Design rendering of the Iron Man bounce house with a 4 by 4 meter footprint and 4 meter height',
+  ],
+};
+
+function conciseAlt(value: string, limit = 125) {
+  const sentence = value.trim()
+    .replace(/\blisted at \d+(?:\.\d+)?\s*m\s*(?:dia|diameter) in Commercial TPU\b/gi, 'configured')
+    .replace(/\b\d+(?:\.\d+)?\s*m\s*(?:dia|diameter)\b/gi, '')
+    .replace(/\b\d+(?:\.\d+)?\s*(?:x|×)\s*\d+(?:\.\d+)?(?:\s*(?:x|×)\s*\d+(?:\.\d+)?)?\s*(?:m|cm|mm|ft|feet|inch|inches)\b/gi, '')
+    .replace(/\b(?:commercial grade\s+)?\d+(?:\.\d+)?\s*mm\b/gi, '')
+    .replace(/\b\d+\s*(?:oz|denier)\b/gi, '')
+    .replace(/\bcommercial TPU\b/gi, '')
+    .replace(/\blisted (?:at|for)\s+in\b/gi, 'listed for')
+    .split(/(?<=[.!?])\s+/)[0]
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([,.;:])/g, '$1')
+    .trim();
+  if (sentence.length <= limit) return sentence;
+  return `${sentence.slice(0, limit - 1).replace(/\s+\S*$/, '').replace(/[\s,;:.-]+$/, '')}…`;
+}
+
+let productImageAltCache: Map<string, string> | undefined;
+
+function buildProductImageAltCache() {
+  const candidates = products.map((product) => ({
+    product,
+    alt: (() => {
+      if (product.productSlug === 'iron-man-bounce-house') return productGalleryImageAltOverrides[product.productSlug][0];
+      const visual = conciseAlt(sanitizeB2BCopy(product, productDetailContent(product).purpose));
+      const keyword = productPrimaryKeyword(product).trim();
+      if (visual.toLowerCase().includes(keyword.toLowerCase())) return visual;
+      const keywordSuffix = ` — ${keyword}`;
+      return `${conciseAlt(visual, 125 - keywordSuffix.length)}${keywordSuffix}`;
+    })(),
+  }));
+  const counts = new Map<string, number>();
+  for (const { alt } of candidates) {
+    const key = alt.toLowerCase();
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+
+  return new Map(candidates.map(({ product, alt }) => {
+    if ((counts.get(alt.toLowerCase()) ?? 0) === 1) return [product.slug, alt];
+    const suffix = ` — ${productHeadingTitle(product)}`;
+    return [product.slug, `${conciseAlt(alt, 125 - suffix.length)}${suffix}`];
+  }));
+}
+
+export function productImageAlt(product: Product) {
+  productImageAltCache ??= buildProductImageAltCache();
+  return productImageAltCache.get(product.slug) ?? productHeadingTitle(product);
+}
+
+export function productGalleryImageAlt(product: Product, index: number) {
+  return productGalleryImageAltOverrides[product.productSlug]?.[index] ?? '';
+}
+
+export function categoryImageAlt(category: Category) {
+  const heroProduct = products.find((product) => product.images[0] === category.heroImage)
+    ?? category.products.map((slug) => products.find((product) => product.slug === slug)).find((product) => product !== undefined);
+  return heroProduct ? productImageAlt(heroProduct) : category.name;
+}
+
+export function productDetailImage(product: Pick<Product, 'slug'>) {
+  return `/assets/product-detail/${product.slug}.webp`;
+}
+
+export function productGalleryThumbnail(image: string) {
+  return image.split('?')[0]
+    .replace('/assets/product/', '/assets/product-gallery/')
     .replace(/\.(jpe?g|png|webp)$/i, '.webp');
 }
 

@@ -2,7 +2,7 @@
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import ProductCard from '../../../components/ProductCard.astro';
 import { caseStudyCards } from '../../../data/case-studies';
-import { products, company, categoryPath, publicCategorySlug, productAbsoluteUrl, productBatch, productCategoryTemplate, productComplianceProfile, productDescription, productDetailContent, productEvidenceProfile, productHeadingTitle, productFaqs, productKeyFeatures, productKeywordVariants, productLeadTimeProfile, productManufacturerSupplyNote, productOrderConfirmation, productPrimaryKeyword, productRelatedProducts, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers, productHasRentalSearchIntent, sanitizeB2BCopy } from '../../../data/site';
+import { products, company, categoryPath, publicCategorySlug, productAbsoluteUrl, productDetailImage, productGalleryImageAlt, productGalleryThumbnail, productImageAlt, productBatch, productCategoryTemplate, productComplianceProfile, productDescription, productDetailContent, productEvidenceProfile, productHeadingTitle, productFaqs, productKeyFeatures, productKeywordVariants, productLeadTimeProfile, productManufacturerSupplyNote, productOrderConfirmation, productPrimaryKeyword, productRelatedProducts, productSeoKeywords, productSeoTitle, productMetaDescription, productTargetBuyers, productHasRentalSearchIntent, sanitizeB2BCopy } from '../../../data/site';
 import type { Product } from '../../../data/site';
 
 export function getStaticPaths() {
@@ -61,7 +61,7 @@ const relatedProducts = productRelatedProducts(product);
 const isDryBounceSlideCombo = product.productSlug === 'jungle-animal-inflatable-bounce-house-with-slide';
 const imageAlt = isDryBounceSlideCombo
   ? 'Green and orange jungle bounce house with a central climbing ladder and two side slides'
-  : `${headingTitle}, a commercial ${detail.productType} by YIC Inflatable Sports`;
+  : productImageAlt(product);
 const seoKeywords = productHasRentalSearchIntent(product)
   ? productSeoKeywords(product)
   : productSeoKeywords(product).split(',').map((term) => term.trim()).filter((term) => !/\b(rental|rent|hire)\b/i.test(term)).join(', ');
@@ -148,15 +148,15 @@ const breadcrumbSchema = {
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) };
 ---
 
-<SiteLayout title={productSeoTitle(product)} description={metaDescription} image={product.images[0]} imageAlt={imageAlt} keywords={seoKeywords}>
+<SiteLayout title={productSeoTitle(product)} description={metaDescription} image={productDetailImage(product)} imageAlt={imageAlt} keywords={seoKeywords}>
   <article class:list={['product-detail-page', `product-template-${detail.template}`, `category-template-${categoryTemplate}`, `batch-template-${batchTemplate}`]}>
     <section class="detail-wrap"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / <a href={categoryPath(product.categorySlug)}>{product.category}</a> / {displayTitle}</div><div class="detail-grid">
       <div class="detail-gallery" data-gallery>
         <div class="detail-main-frame">
-          <img class="detail-main-image" data-main-image src={product.images[0]} alt={imageAlt} title={imageAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
+          <img class="detail-main-image" data-main-image src={productDetailImage(product)} alt={imageAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
           <span class="detail-certification-badge" aria-label="European and United States compliance documentation">{compliance.badge}</span>
         </div>
-        <div class="detail-thumbs">{product.images.map((image, index) => <button class:list:active={index === 0} type="button" data-image={image} aria-label={`View ${headingTitle} photo ${index + 1}`}><img src={image} alt={`${headingTitle} product photo ${index + 1}`} title={`${headingTitle} product photo ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width="240" height="180" /></button>)}</div>
+        <div class="detail-thumbs">{product.images.map((image, index) => <button class:list:active={index === 0} type="button" data-image={image} data-alt={productGalleryImageAlt(product, index)} aria-label={`View ${headingTitle} image ${index + 1}`}><img src={productGalleryThumbnail(image)} alt="" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width="240" height="180" /></button>)}</div>
       </div>
       <div class="detail-copy">
         <p class="eyebrow">{product.category} · Custom OEM/ODM manufacturer · Factory direct</p>
@@ -196,6 +196,7 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
       button.addEventListener('click', () => {
         if (!mainImage) return;
         mainImage.src = button.dataset.image ?? mainImage.src;
+        if (button.dataset.alt) mainImage.alt = button.dataset.alt;
         gallery.querySelectorAll('button[data-image]').forEach((item) => item.classList.remove('active'));
         button.classList.add('active');
       });
