@@ -89,22 +89,82 @@ function conciseAlt(value: string, limit = 125) {
     .replace(/\s+/g, ' ')
     .replace(/\s+([,.;:])/g, '$1')
     .trim();
-  if (sentence.length <= limit) return sentence;
-  return `${sentence.slice(0, limit - 1).replace(/\s+\S*$/, '').replace(/[\s,;:.-]+$/, '')}…`;
+  const cleanEnding = (text: string) => text
+    .replace(/[\s,;:.-]+$/, '')
+    .replace(/(?:^|\s)(?:and|or|with|for|to|a|an|the)$/i, '')
+    .replace(/[\s,;:.-]+$/, '')
+    .trim();
+  if (sentence.length <= limit) return cleanEnding(sentence);
+  return cleanEnding(sentence.slice(0, limit)
+    .replace(/\s+\S*$/, '')
+  );
 }
 
 let productImageAltCache: Map<string, string> | undefined;
+
+function productImageFact(product: Product) {
+  const visibleFeature = productKeyFeatures(product).find((feature) => /^(?:visible layout|visual format|format shown|visible format):/i.test(feature));
+  if (visibleFeature) {
+    return visibleFeature
+      .replace(/^(?:visible layout|visual format|format shown|visible format):\s*/i, '')
+      .replace(/;.*$/, '')
+      .replace(/\s+to (?:create|provide|support|form|make)\b.*$/i, '')
+      .replace(/\s+for (?:weddings|receptions|events|exhibitions|festivals|retail|public|brand|family)\b.*$/i, '')
+      .trim();
+  }
+
+  const purpose = sanitizeB2BCopy(product, productDetailContent(product).purpose)
+    .split(/(?<=[.!?])\s+/)[0]
+    .replace(/;.*$/, '')
+    .replace(/\s+to (?:create|provide|support|form|make)\b.*$/i, '')
+    .replace(/\s+for (?:weddings|receptions|events|exhibitions|festivals|retail|public|brand|family)\b.*$/i, '');
+  if (/\b(?:shows?|features?|combines?|uses?)\b/i.test(purpose)) return purpose;
+
+  const categoryFacts: Record<string, string> = {
+    'Advertising Inflatable': 'as a custom promotional display in its catalog configuration',
+    'Bounce House': 'as an enclosed inflatable jumping structure with its pictured theme and entrance',
+    'Bounce House Combo': 'with the pictured bounce area, entrance, and integrated play features',
+    'Bumper Ball': 'as a body-worn inflatable ball for supervised group activities',
+    'Inflatable Games': 'with its pictured target, lane, court, or interactive game structure',
+    'Inflatable Mechanical Games': 'with its mechanical activity unit and surrounding inflatable play area',
+    'Inflatable Obstacle Course': 'with its pictured climb, barrier, tunnel, and slide sequence',
+    'Inflatable Slide': 'with an inflatable sliding lane and landing or run-out section',
+    'Inflatable Tent': 'with its pictured covered structure, entrance, and event-space layout',
+    'Inflatable Theme Park': 'as a multi-module themed inflatable play environment',
+    'Inflatable Water Park': 'as an inflatable water-play layout for a supervised recreation site',
+    'Inflatable Water Slide': 'with its pictured slide lane, access section, and pool or landing area',
+  };
+  return categoryFacts[product.category] ?? `shown in its catalog product configuration`;
+}
+
+export function productImageKeyword(product: Product) {
+  const cleaned = productPrimaryKeyword(product)
+    .replace(/\b\d+(?:\.\d+)?\s*(?:x|×)\s*\d+(?:\.\d+)?(?:\s*(?:x|×)\s*\d+(?:\.\d+)?)?\s*(?:m|cm|mm|ft|feet|inch|inches)\b/gi, '')
+    .replace(/\s+model$/i, '')
+    .replace(/\bcommercial\s+commercial\b/gi, 'commercial')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const words = cleaned.split(' ');
+  if (words.length > 2 && words.slice(0, -1).some((word) => word.toLowerCase() === words.at(-1)?.toLowerCase())) words.pop();
+  return words.join(' ');
+}
 
 function buildProductImageAltCache() {
   const candidates = products.map((product) => ({
     product,
     alt: (() => {
       if (product.productSlug === 'iron-man-bounce-house') return productGalleryImageAltOverrides[product.productSlug][0];
-      const visual = conciseAlt(sanitizeB2BCopy(product, productDetailContent(product).purpose));
-      const keyword = productPrimaryKeyword(product).trim();
-      if (visual.toLowerCase().includes(keyword.toLowerCase())) return visual;
-      const keywordSuffix = ` — ${keyword}`;
-      return `${conciseAlt(visual, 125 - keywordSuffix.length)}${keywordSuffix}`;
+      const keyword = productImageKeyword(product);
+      const fact = productImageFact(product);
+      const description = fact.toLowerCase().includes(keyword.toLowerCase())
+        ? fact
+        : `${keyword.charAt(0).toUpperCase()}${keyword.slice(1)}${/^(?:as|with)\b/i.test(fact) ? ' shown ' : ' showing '}${fact}`;
+      const alt = conciseAlt(description);
+      if (alt.length >= 60) return alt;
+      const shortFactSuffix = product.category === 'Bounce House'
+        ? 'with its pictured entrance and enclosed jumping area'
+        : 'with its visible structure shown in the product catalog';
+      return conciseAlt(`${alt} ${shortFactSuffix}`);
     })(),
   }));
   const counts = new Map<string, number>();
@@ -115,14 +175,17 @@ function buildProductImageAltCache() {
 
   return new Map(candidates.map(({ product, alt }) => {
     if ((counts.get(alt.toLowerCase()) ?? 0) === 1) return [product.slug, alt];
-    const suffix = ` — ${productHeadingTitle(product)}`;
-    return [product.slug, `${conciseAlt(alt, 125 - suffix.length)}${suffix}`];
+    const title = productHeadingTitle(product);
+    return [product.slug, conciseAlt(`${title}: ${alt}`)];
   }));
 }
 
 export function productImageAlt(product: Product) {
   productImageAltCache ??= buildProductImageAltCache();
-  return productImageAltCache.get(product.slug) ?? productHeadingTitle(product);
+  return (productImageAltCache.get(product.slug) ?? productHeadingTitle(product))
+    .replace(/(?:,\s*)?(?:and|or|with|for|to|a|an|the)$/i, '')
+    .replace(/[\s,;:.-]+$/, '')
+    .trim();
 }
 
 export function productGalleryImageAlt(product: Product, index: number) {

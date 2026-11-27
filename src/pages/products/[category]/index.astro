@@ -2,7 +2,7 @@
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import ProductCard from '../../../components/ProductCard.astro';
 import Pagination from '../../../components/Pagination.astro';
-import { categories, products, categoryPath, publicCategorySlug, categorySeoProfile, categoryBuyingGuide, categoryCustomization, categoryOptionDescription, company, productAbsoluteUrl, productDisplayTitle, sanitizeNonRentalB2BCopy } from '../../../data/site';
+import { categories, products, categoryImageAlt, categoryPath, publicCategorySlug, categorySeoProfile, categoryBuyingGuide, categoryCustomization, categoryOptionDescription, company, productAbsoluteUrl, productDisplayTitle, sanitizeNonRentalB2BCopy } from '../../../data/site';
 
 export function getStaticPaths() {
   return categories.map((category) => ({ params: { category: publicCategorySlug(category.slug) }, props: { category } }));
@@ -49,7 +49,7 @@ const collectionSchema = {
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: cleanProfile.faq.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) };
 ---
 
-<SiteLayout title={cleanProfile.title} description={cleanProfile.description} image={category.heroImage} imageAlt={`Commercial ${category.name.toLowerCase()} products manufactured by YIC`} keywords={profile.keywords ?? `${category.name.toLowerCase()}, commercial ${category.name.toLowerCase()}, ${category.name.toLowerCase()} manufacturer, custom ${category.name.toLowerCase()}, OEM inflatables`}>
+<SiteLayout title={cleanProfile.title} description={cleanProfile.description} image={category.heroImage} imageAlt={categoryImageAlt(category)} keywords={profile.keywords ?? `${category.name.toLowerCase()}, commercial ${category.name.toLowerCase()}, ${category.name.toLowerCase()} manufacturer, custom ${category.name.toLowerCase()}, OEM inflatables`}>
   <section class="page-hero category-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / {category.name}</div><p class="eyebrow">Commercial {category.name} · OEM factory</p><h1>{cleanProfile.h1}</h1><p>{cleanProfile.intro}</p><div class="hero-actions"><a class="button button-secondary" href="#catalog">Browse {category.name} models</a><a class="button button-secondary" href="/contact/">Request a factory quote</a></div></div></section>
 
   <section class="section category-options-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">Category overview</p><h2>Commercial {category.name} options</h2></div><p>Compare formats by activity, site requirements, buyer application, and customization potential before selecting models.</p></div><div class="category-option-grid">{cleanProfile.options.map((option, index) => <article><span>0{index + 1}</span><h3>{option}</h3><p>{clean(categoryOptionDescription(category.name, option))}</p></article>)}</div></div></section>

@@ -2,7 +2,7 @@
 import SiteLayout from '../../../../layouts/SiteLayout.astro';
 import ProductCard from '../../../../components/ProductCard.astro';
 import Pagination from '../../../../components/Pagination.astro';
-import { categories, products, categoryPath, publicCategorySlug, categorySeoProfile, company, productAbsoluteUrl, productDisplayTitle, seoTitle } from '../../../../data/site';
+import { categories, products, categoryImageAlt, categoryPath, publicCategorySlug, categorySeoProfile, company, productAbsoluteUrl, productDisplayTitle, seoTitle } from '../../../../data/site';
 
 const pageSize = 16;
 
@@ -35,7 +35,7 @@ const breadcrumbSchema = {
 };
 ---
 
-<SiteLayout title={seoTitle(`${profile.title.replace(/\s*\|\s*YIC.*$/i, '')} | More Models`)} description={`Browse additional ${category.name.toLowerCase()} models from YIC. Open any model for specifications and a factory quotation.`} image={category.heroImage} imageAlt={`Commercial ${category.name.toLowerCase()} products manufactured by YIC`} keywords={`${category.name.toLowerCase()}, commercial ${category.name.toLowerCase()}, OEM inflatables`} robots="noindex, follow">
+<SiteLayout title={seoTitle(`${profile.title.replace(/\s*\|\s*YIC.*$/i, '')} | More Models`)} description={`Browse additional ${category.name.toLowerCase()} models from YIC. Open any model for specifications and a factory quotation.`} image={category.heroImage} imageAlt={categoryImageAlt(category)} keywords={`${category.name.toLowerCase()}, commercial ${category.name.toLowerCase()}, OEM inflatables`} robots="noindex, follow">
   <section class="page-hero category-hero"><div class="container"><div class="breadcrumbs"><a href="/">Home</a> / <a href="/products/">Products</a> / <a href={categoryPath(category)}>{category.name}</a> / Page {page}</div><p class="eyebrow">{category.name} catalog · Page {page}</p><h1>More {category.name} Models</h1><p>Use this catalog page to compare additional models. For the full category buying guide, OEM overview, and category FAQs, visit the main {category.name} page.</p><div class="hero-actions"><a class="button button-secondary" href={categoryPath(category)}>View category overview</a><a class="button button-secondary" href="#catalog">Browse models</a></div></div></section>
 
   <section class="section section-muted" id="catalog"><div class="container"><div class="category-intro"><div><p class="eyebrow">Factory catalog · {category.name} · Page {page}</p><h2>More {category.name} models for your next order</h2></div><p>Open any model for specifications, applications, product-level FAQs, and a direct quotation request. The catalog uses 16 products per page for easier comparison.</p></div><div class="product-grid">{pageProducts.map((product) => <ProductCard product={product} />)}</div><Pagination currentPage={page} totalPages={totalPages} basePath={categoryPath(category)} label={`${category.name} product pages`} /></div></section>

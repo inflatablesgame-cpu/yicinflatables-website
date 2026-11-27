@@ -2,7 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import { blogArticles, getBlogArticle } from '../../data/blog';
 import { getBuyerGuideProfile } from '../../data/buyer-guides';
-import { categories, categoryPath, company, products, productPath, seoTitle } from '../../data/site';
+import { categories, categoryPath, company, products, productDetailImage, productImageAlt, productPath, seoTitle } from '../../data/site';
 
 export function getStaticPaths() {
   return blogArticles.map((article) => ({ params: { slug: article.slug }, props: { article } }));
@@ -15,8 +15,8 @@ if (!article) throw new Error('Blog article not found');
 const imageProduct = article.imageProductSlug
   ? products.find((product) => product.productSlug === article.imageProductSlug)
   : undefined;
-const image = article.image?.src ?? imageProduct?.images[0] ?? '/assets/commercial-inflatable-manufacturer-workshop-interior.webp';
-const imageAlt = article.image?.alt ?? (imageProduct ? `${imageProduct.title} commercial inflatable product` : `YIC commercial inflatable guide: ${article.title}`);
+const image = article.image?.src ?? (imageProduct ? productDetailImage(imageProduct) : '/assets/commercial-inflatable-manufacturer-workshop-interior.webp');
+const imageAlt = article.image?.alt ?? (imageProduct ? productImageAlt(imageProduct) : `Commercial inflatable production workshop`);
 const imageCaption = article.image?.caption;
 const displayTitle = article.shortTitle ?? article.title;
 const isSpanish = article.language === 'es';

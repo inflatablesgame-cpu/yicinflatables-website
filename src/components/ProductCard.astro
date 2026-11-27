@@ -1,5 +1,5 @@
 ---
-import { company, productCardDescription, productCardImage, productCardLabel, productDetailContent, productHeadingTitle, productPath, productPrimaryKeyword, sanitizeB2BCopy } from '../data/site';
+import { company, productCardDescription, productCardImage, productCardLabel, productDetailContent, productHeadingTitle, productImageAlt, productPath, sanitizeB2BCopy } from '../data/site';
 import type { Product } from '../data/site';
 
 interface Props {
@@ -9,9 +9,7 @@ interface Props {
 
 const { product, variant = 'default' } = Astro.props;
 const displayTitle = productHeadingTitle(product);
-const imageLabel = product.category === 'Bounce House' || product.category === 'Bounce House Combo'
-  ? productPrimaryKeyword(product)
-  : displayTitle;
+const imageLabel = productImageAlt(product);
 const url = productPath(product);
 const detail = productDetailContent(product);
 const applications = sanitizeB2BCopy(product, detail.applications.slice(0, 2).map((application) => application.title).join(' · ') || detail.primaryBuyer);

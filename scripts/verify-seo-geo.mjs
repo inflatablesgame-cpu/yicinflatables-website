@@ -1,6 +1,6 @@
-import { readFile, stat } from 'node:fs/promises';
+import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
-import { categories, categorySeoProfile, products, productCardDescription, productCatalogSearchText, productComplianceProfile, productDescription, productDetailContent, productEvidenceProfile, productFaqs, productHasRentalSearchIntent, productHeadingTitle, productKeyFeatures, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
+import { categories, categoryImageAlt, categorySeoProfile, products, productCardDescription, productCatalogSearchText, productComplianceProfile, productDescription, productDetailContent, productEvidenceProfile, productFaqs, productGalleryImageAlt, productHasRentalSearchIntent, productHeadingTitle, productImageAlt, productImageKeyword, productKeyFeatures, productLeadTimeProfile, productManufacturerSupplyNote, productMetaDescription, productOrderConfirmation, productPrimaryKeyword, productSeoTitle, sanitizeB2BCopy } from '../src/data/site.ts';
 import { blogArticles } from '../src/data/blog.ts';
 import { buyerQuestionArticles as procurementQuestionArticles } from '../src/data/buyer-question-articles.ts';
 import { getBuyerGuideProfile } from '../src/data/buyer-guides.ts';
@@ -28,6 +28,64 @@ duplicates('Product H1 titles', products.map(productHeadingTitle));
 duplicates('SEO titles', products.map(productSeoTitle));
 duplicates('Meta descriptions', products.map(productMetaDescription));
 duplicates('Product lead descriptions', products.map((product) => sanitizeB2BCopy(product, productDescription(product))));
+duplicates('Product image ALT descriptions', products.map(productImageAlt));
+for (const category of categories) {
+  const alt = categoryImageAlt(category);
+  if (alt.length < 60 || alt.length > 125) failures.push(category.slug + ': category hero ALT must be 60–125 characters');
+}
+
+for (const product of products) {
+  const alt = productImageAlt(product);
+  if (alt.length < 60 || alt.length > 125) failures.push(product.slug + ': product image ALT must be concise (60–125 characters)');
+  if (/\b(?:image|photo)\s*\d+\b/i.test(alt)) failures.push(product.slug + ': product image ALT uses a generic photo-number label');
+  if (/\bcommercial\s+commercial\b/i.test(alt)) failures.push(product.slug + ': product image ALT repeats “commercial”');
+  if (!alt.toLowerCase().includes(productImageKeyword(product).toLowerCase())) failures.push(product.slug + ': product image ALT omits its mapped image keyword');
+  if (/\blisted (?:at|for)\s+in\b|\blisted for for\b/i.test(alt)) failures.push(product.slug + ': product image ALT contains broken dimension wording');
+  if (/(?:,\s*)?(?:and|or|with|for|to|a|an|the)$/i.test(alt)) failures.push(product.slug + ': product image ALT ends with an incomplete phrase');
+  product.images.forEach((_image, index) => {
+    const galleryAlt = productGalleryImageAlt(product, index);
+    if (galleryAlt && (galleryAlt.length < 10 || galleryAlt.length > 125)) {
+      failures.push(product.slug + ': curated gallery ALT ' + (index + 1) + ' must be 10–125 characters');
+    }
+  });
+}
+
+async function checkImageAltSource(directory) {
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const filePath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      await checkImageAltSource(filePath);
+      continue;
+    }
+    if (!entry.name.endsWith('.astro')) continue;
+    const source = await readFile(filePath, 'utf8');
+    for (const match of source.matchAll(/<img\b[^>]*>/gs)) {
+      const imageTag = match[0];
+      if (!/\balt\s*=/.test(imageTag)) failures.push(filePath + ': image element is missing an ALT attribute');
+      const quotedAlt = imageTag.match(/\balt=(['"])(.*?)\1/s);
+      if (quotedAlt && quotedAlt[2].length > 125) failures.push(filePath + ': image ALT exceeds 125 characters: ' + quotedAlt[2].slice(0, 80));
+      if (quotedAlt && /^\s*$/.test(quotedAlt[2])) {
+        const buttonStart = source.lastIndexOf('<button', match.index);
+        const buttonContext = buttonStart >= 0 ? source.slice(buttonStart, match.index) : '';
+        if (!filePath.endsWith(path.join('products', '[category]', '[product].astro')) || !/data-image/.test(buttonContext)) {
+          failures.push(filePath + ': empty ALT is only allowed on product-gallery selector thumbnails');
+        }
+      }
+    }
+  }
+}
+
+await checkImageAltSource(path.resolve('src'));
+
+for (const article of blogArticles) {
+  if (article.image && (!article.image.alt.trim() || article.image.alt.length > 125)) {
+    failures.push('Blog ' + article.slug + ': image ALT is missing or exceeds 125 characters');
+  }
+}
+
+for (const caseStudy of caseStudyCards) {
+  if (!caseStudy.alt.trim() || caseStudy.alt.length > 125) failures.push('Case study ' + caseStudy.id + ': image ALT is missing or exceeds 125 characters');
+}
 
 for (const category of categories) {
   const profile = categorySeoProfile(category.name);
