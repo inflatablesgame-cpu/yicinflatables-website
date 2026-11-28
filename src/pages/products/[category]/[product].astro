@@ -108,7 +108,7 @@ const procurementGuide = { href: '/blog/inflatable-rfq-checklist-for-factory-quo
 const schema = {
   '@context': 'https://schema.org', '@type': 'Product', '@id': `${pageUrl}#product`,
   name: headingTitle, category: product.category, url: pageUrl, sku: product.slug, keywords: seoKeywords,
-  image: product.images.map((image) => new URL(image, `https://${company.domain}`).href), description,
+  image: [productDetailImage(product), ...product.images].map((image) => new URL(image, `https://${company.domain}`).href), description,
   brand: { '@type': 'Brand', name: 'YIC Inflatable Sports' }, manufacturer: { '@id': `https://${company.domain}/#organization` },
   audience: { '@type': 'Audience', audienceType: buyerDisplay },
   isRelatedTo: [
@@ -156,7 +156,7 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
           <img class="detail-main-image" data-main-image src={productDetailImage(product)} alt={imageAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
           <span class="detail-certification-badge" aria-label="European and United States compliance documentation">{compliance.badge}</span>
         </div>
-        <div class="detail-thumbs">{product.images.map((image, index) => <button class:list:active={index === 0} type="button" data-image={image} data-alt={productGalleryImageAlt(product, index)} aria-label={`View ${headingTitle} image ${index + 1}`}><img src={productGalleryThumbnail(image)} alt="" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width="240" height="180" /></button>)}</div>
+        <div class="detail-thumbs">{product.images.map((image, index) => { const galleryAlt = productGalleryImageAlt(product, index); const curatedAlt = product.imageAlts?.[index] ?? undefined; const controlLabel = curatedAlt?.trim() ? `View ${curatedAlt}` : `View another image of ${headingTitle}`; return <button class:list:active={index === 0} type="button" data-image={image} data-alt={galleryAlt} aria-label={controlLabel} aria-pressed={index === 0 ? 'true' : 'false'}><img src={productGalleryThumbnail(image)} alt="" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" width="240" height="180" /></button>; })}</div>
       </div>
       <div class="detail-copy">
         <p class="eyebrow">{product.category} · Custom OEM/ODM manufacturer · Factory direct</p>
@@ -197,8 +197,12 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
         if (!mainImage) return;
         mainImage.src = button.dataset.image ?? mainImage.src;
         if (button.dataset.alt) mainImage.alt = button.dataset.alt;
-        gallery.querySelectorAll('button[data-image]').forEach((item) => item.classList.remove('active'));
+        gallery.querySelectorAll('button[data-image]').forEach((item) => {
+          item.classList.remove('active');
+          item.setAttribute('aria-pressed', 'false');
+        });
         button.classList.add('active');
+        button.setAttribute('aria-pressed', 'true');
       });
     });
   </script>

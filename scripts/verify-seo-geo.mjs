@@ -44,8 +44,13 @@ for (const product of products) {
   if (/(?:,\s*)?(?:and|or|with|for|to|a|an|the)$/i.test(alt)) failures.push(product.slug + ': product image ALT ends with an incomplete phrase');
   product.images.forEach((_image, index) => {
     const galleryAlt = productGalleryImageAlt(product, index);
-    if (galleryAlt && (galleryAlt.length < 10 || galleryAlt.length > 125)) {
-      failures.push(product.slug + ': curated gallery ALT ' + (index + 1) + ' must be 10–125 characters');
+    if (!galleryAlt.trim()) failures.push(product.slug + ': gallery ALT ' + (index + 1) + ' is empty');
+    if (galleryAlt.length < 10 || galleryAlt.length > 125) {
+      failures.push(product.slug + ': gallery ALT ' + (index + 1) + ' must be 10–125 characters');
+    }
+    const curatedGalleryAlt = product.imageAlts?.[index] ?? undefined;
+    if (index > 0 && curatedGalleryAlt?.trim() && galleryAlt.toLowerCase() === productGalleryImageAlt(product, index - 1).toLowerCase()) {
+      failures.push(product.slug + ': adjacent curated gallery ALT values are duplicated at ' + index + ' and ' + (index + 1));
     }
   });
 }
@@ -67,8 +72,8 @@ async function checkImageAltSource(directory) {
       if (quotedAlt && /^\s*$/.test(quotedAlt[2])) {
         const buttonStart = source.lastIndexOf('<button', match.index);
         const buttonContext = buttonStart >= 0 ? source.slice(buttonStart, match.index) : '';
-        if (!filePath.endsWith(path.join('products', '[category]', '[product].astro')) || !/data-image/.test(buttonContext)) {
-          failures.push(filePath + ': empty ALT is only allowed on product-gallery selector thumbnails');
+        if (!filePath.endsWith(path.join('products', '[category]', '[product].astro')) || !/data-image/.test(buttonContext) || !/aria-label=/.test(buttonContext)) {
+          failures.push(filePath + ': empty ALT is only allowed on accessible product-gallery selector thumbnails');
         }
       }
     }
